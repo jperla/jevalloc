@@ -178,6 +178,126 @@ VARIANTS.update({
     'noul-desc': lambda s: noul_q(deep_state(s, desc=True)),
 })
 
+# ---- runtime-state renderings (round 3) -------------------------------------------
+# The statistics are the site's whole-run histogram from the trace, i.e. what a live
+# allocator would converge to for a busy site. This isolates one question: given the
+# observations, which presentation lets the model read them correctly?
+HYB = {'short': 'A temporary: freed almost immediately, before the program has allocated much more memory.',
+       'medium': 'Kept for a while (many operations) and released later, well before the program ends.',
+       'long': 'Stays alive for most of the program, or is never freed.'}
+
+
+def human(n):
+    for unit in ('bytes', 'KiB', 'MiB', 'GiB'):
+        if n < 1024 or unit == 'GiB':
+            return ('%d %s' % (n, unit)) if unit == 'bytes' else ('%.0f %s' % (n, unit))
+        n /= 1024
+
+
+def obs(site):
+    h = site['lifetime_histogram']; n = max(site['count'], 1); total = site['total_allocation_bytes']
+    half = max(total // 2, 1).bit_length() - 1
+    q = lambda lo, hi: sum(h[lo:hi]) / n
+    return {'n': n, 'total': total, 'imm': q(0, 10), 'soon': q(10, 20), 'later': q(20, half), 'most': q(half, len(h)),
+            'never': site['never_freed'] / n, 'h': h}
+
+
+def pct(x):
+    return 'none' if x < 0.005 else 'about %d%%' % round(100 * x)
+
+
+def stats_raw(site):
+    o = obs(site)
+    buckets = ','.join('%d:%d' % (i, round(65536 * c / o['n'])) for i, c in enumerate(o['h']) if c)
+    return 'Live stats: allocs=%d never_freed=%d lifetime log2-byte buckets, shares /65536: %s\nProcess: alloc_clock=%d' % (
+        o['n'], site['never_freed'], buckets, o['total'])
+
+
+def stats_plain(site):
+    o = obs(site)
+    return ('Observed so far at this site: %d objects allocated while the program allocated %s in total. '
+            'Freed almost immediately (before another 1 KiB was allocated): %s. '
+            'Freed soon (before another 1 MiB was allocated): %s. '
+            'Freed later, but within the first half of the run: %s. '
+            'Alive for more than half of the run before being freed: %s. '
+            'Never freed: %s.' % (o['n'], human(o['total']), pct(o['imm']), pct(o['soon']), pct(o['later']), pct(o['most']), pct(o['never'])))
+
+
+def stats_table(site):
+    o = obs(site)
+    rows = [('freed within 1 KiB of further allocation', o['imm']), ('freed within 1 MiB', o['soon']),
+            ('freed later, within half the run', o['later']), ('alive for more than half the run', o['most']), ('never freed', o['never'])]
+    return 'Observed lifetimes at this site (%d objects, program total %s):\n' % (o['n'], human(o['total'])) + '\n'.join(
+        '  %-42s %3d%%' % (k, round(100 * v)) for k, v in rows)
+
+
+def stat_q(state, criteria, text='The call path below allocates heap memory; its observed behaviour so far is given. How long do objects from this site stay alive?'):
+    return {'state': state, 'questions': {'lifetime': {'type': 'choice', 'instructions': text, 'criteria': criteria}}}
+
+
+def code_ctx(site):
+    return deep_state(site, radius=20, nsnip=3)
+
+
+VARIANTS.update({
+    'rt-raw-tech': lambda s: stat_q(code_ctx(s) + '\n\n' + stats_raw(s), TECH),
+    'rt-raw-sem': lambda s: stat_q(code_ctx(s) + '\n\n' + stats_raw(s), HYB),
+    'rt-plain-sem': lambda s: stat_q(code_ctx(s) + '\n\n' + stats_plain(s), HYB),
+    'rt-plain-tech': lambda s: stat_q(code_ctx(s) + '\n\n' + stats_plain(s), TECH),
+    'rt-table-sem': lambda s: stat_q(code_ctx(s) + '\n\n' + stats_table(s), HYB),
+    'rt-plain-first': lambda s: stat_q(stats_plain(s) + '\n\n' + code_ctx(s), HYB),
+    'rt-plain-nocode': lambda s: stat_q('Program: ' + s['program'] + '\n' + stats_plain(s), HYB),
+    'rt-table-nocode': lambda s: stat_q('Program: ' + s['program'] + '\n' + stats_table(s), HYB),
+    'rt-noul-plain': lambda s: noul_q(code_ctx(s) + '\n\n' + stats_plain(s)),
+})
+
+# ---- two classes (round 4): short vs long, where long = everything that is not short ----
+TWO = {'short': 'A temporary: freed once the current operation is finished, before the program has allocated much more memory.',
+       'long': 'Kept beyond the current operation: stored in a data structure, table, cache or global and freed much later, or never freed.'}
+Q2 = 'The marked lines lead to a heap allocation. Is the allocated object a short-lived temporary or is it kept?'
+Q1 = 'The marked lines lead to a heap allocation. Is the allocated object a temporary that is freed once the current operation is finished?'
+
+
+def obs2(site):
+    h = site['lifetime_histogram']; n = max(site['count'], 1)
+    quick = sum(h[:20]) / n
+    return n, quick, site['never_freed'] / n, 1 - quick - site['never_freed'] / n
+
+
+def stats2_plain(site):
+    n, quick, never, later = obs2(site)
+    return ('Observed so far at this site: %d objects allocated. Freed quickly (before the program allocated another 1 MiB): %s. '
+            'Kept longer than that before being freed: %s. Never freed: %s.' % (n, pct(quick), pct(max(later, 0)), pct(never)))
+
+
+def stats2_table(site):
+    n, quick, never, later = obs2(site)
+    return 'Observed lifetimes at this site (%d objects):\n  freed quickly (within 1 MiB of further allocation) %3d%%\n  kept longer, freed later %3d%%\n  never freed %3d%%' % (
+        n, round(100 * quick), round(100 * max(later, 0)), round(100 * never))
+
+
+def choice2(state, text=Q2):
+    return {'state': state, 'questions': {'lifetime': {'type': 'choice', 'instructions': text, 'criteria': TWO}}}
+
+
+def noul1(state, text=Q1):
+    return {'state': state, 'questions': {'temporary': {'type': 'noul', 'instructions': text}}}
+
+
+QS = 'The call path allocates heap memory; its observed behaviour so far is given. Is the allocated object a short-lived temporary or is it kept?'
+VARIANTS.update({
+    'c2': lambda s: choice2(deep_state(s, radius=20, nsnip=3)),
+    'c2-desc': lambda s: choice2(deep_state(s, radius=20, nsnip=3, desc=True)),
+    'c2-desc-small': lambda s: choice2(deep_state(s, radius=6, nsnip=2, desc=True)),
+    'c2-desc-stackonly': lambda s: choice2(deep_state(s, nsnip=0, desc=True)),
+    'n1-desc': lambda s: noul1(deep_state(s, radius=20, nsnip=3, desc=True)),
+    'rt2-plain-nocode': lambda s: choice2('Program: ' + s['program'] + '\n' + stats2_plain(s), QS),
+    'rt2-table-nocode': lambda s: choice2('Program: ' + s['program'] + '\n' + stats2_table(s), QS),
+    'rt2-raw-nocode': lambda s: choice2('Program: ' + s['program'] + '\n' + stats_raw(s), QS),
+    'rt2-plain-code-desc': lambda s: choice2(deep_state(s, radius=20, nsnip=3, desc=True) + '\n\n' + stats2_plain(s), QS),
+    'rt2-n1-plain': lambda s: noul1('Program: ' + s['program'] + '\n' + stats2_plain(s), 'The observed behaviour of an allocation site is given. Are its objects temporaries that are freed quickly?'),
+})
+
 
 def prob_true(ans):
     for k in ('noul', 'probability'):
@@ -188,11 +308,24 @@ def prob_true(ans):
 
 
 def decide(variant, ans):
+    if 'temporary' in ans and 'retained' not in ans:
+        t = prob_true(ans['temporary'])
+        return ('short' if t >= 0.5 else 'long'), {'temporary': t, 'retained': 1 - t}
     if variant.startswith('noul'):
         t, r = prob_true(ans['temporary']), prob_true(ans['retained'])
         return ('short' if t >= r else 'long'), {'temporary': t, 'retained': r}
     a = ans['lifetime']
     return a['choice'], a.get('probabilities', {})
+
+
+def busy(gate):
+    """True while a benchmark runner is alive and inside a timed repetition."""
+    if not gate or subprocess.run(['pgrep', '-f', 'bench/run.py'], capture_output=True).returncode != 0:
+        return False
+    try:
+        return ' rep ' in open(gate).read().strip().split('\n')[-1]
+    except (OSError, IndexError):
+        return False
 
 
 def ask(url, cache_dir, req):
@@ -247,7 +380,7 @@ def main():
         conf = collections.Counter(); secs = []; toks = []
         for s in sample:
             req = VARIANTS[v](s)
-            while a.gate and ' rep ' in (open(a.gate).read().strip().split('\n') or [''])[-1]:
+            while busy(a.gate):
                 time.sleep(3)
             try:
                 r, dt = ask(a.url, a.cache, req)
