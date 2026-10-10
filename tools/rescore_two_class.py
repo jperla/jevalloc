@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
-"""Rescore prompt-study answers as two classes: short vs long (old "medium" counts as long).
+"""Rescore prompt-study answers as two classes.
 
-A three-way answer is short when P(short) >= P(medium) + P(long); a yes/no pair is short
-when P(temporary) >= P(retained).
+Default: short vs long with old "medium" counted as long (a three-way answer is short
+when P(short) >= P(medium) + P(long)). With --medium-as-short the cut moves to
+transient vs permanent: old short and medium are both "short" (transient), and a
+three-way answer is long only when P(long) > P(short) + P(medium). A yes/no pair is
+short when P(temporary) >= P(retained).
 """
 import collections, json, sys
 
-for path in sys.argv[1:]:
+MS = '--medium-as-short' in sys.argv
+for path in [a for a in sys.argv[1:] if not a.startswith('--')]:
     rows = json.load(open(path))
     print(path)
     for v in dict.fromkeys(r['variant'] for r in rows):
@@ -18,8 +22,11 @@ for path in sys.argv[1:]:
             if 'temporary' in p:
                 pred = 'short' if p['temporary'] >= p['retained'] else 'long'
             else:
-                pred = 'short' if p.get('short', 0) >= p.get('medium', 0) + p.get('long', 0) else 'long'
-            truth = 'short' if r['truth'] == 'short' else 'long'
+                if MS:
+                    pred = 'long' if p.get('long', 0) > p.get('short', 0) + p.get('medium', 0) else 'short'
+                else:
+                    pred = 'short' if p.get('short', 0) >= p.get('medium', 0) + p.get('long', 0) else 'long'
+            truth = ('long' if r['truth'] == 'long' else 'short') if MS else ('short' if r['truth'] == 'short' else 'long')
             c[(truth, pred)] += 1
             per[r['program']][0] += truth == pred; per[r['program']][1] += 1
         ns, nl = c[('short', 'short')] + c[('short', 'long')], c[('long', 'long')] + c[('long', 'short')]
