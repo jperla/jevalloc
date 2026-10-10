@@ -18,7 +18,7 @@ def main():
     d = json.load(open(a.results))
     g = collections.defaultdict(list)
     for r in d['runs']:
-        if r.get('exit_status') == 0:
+        if r.get('exit_status') == 0 and not r.get('cold') and r.get('repetition', 0) >= 0:
             g[(r['benchmark'], r['variant'])].append(r)
     benches = list(dict.fromkeys(b for b, _ in g))
     short = [v.replace('jev-', '').replace('table:', 't:').replace('live:', 'l:')[:9] for v in V]
