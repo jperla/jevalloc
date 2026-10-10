@@ -1,0 +1,9 @@
+/build/
+/third_party/
+*.pyc
+__pycache__/
+/build-*.log
+.DS_Store
+/.venv-clef/
+/results/*
+!/results/interim/

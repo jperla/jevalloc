@@ -1,0 +1,5 @@
+{
+  "mimalloc": "fbd8b99c2b828428947d70fdc046bb55609be93e",
+  "mimalloc_tag": "v2.2.4",
+  "mimalloc-bench": "69c41ed7e6419fb5d362eb04ba34b850ec89dc8e"
+}
