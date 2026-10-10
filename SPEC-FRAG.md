@@ -1,6 +1,6 @@
 # jevalloc — pass 4: fix the two defects, add a fragmentation benchmark, rerun
 
-Read RESULTS.md first (interim headline results), then `build/REVIEW-1.md` (an
+Read RESULTS.md first (interim headline results), then `reviews/REVIEW-1.md` (an
 independent review of those results and of the code; treat every finding there as part
 of this task unless it is wrong, in which case say why in the report).
 
