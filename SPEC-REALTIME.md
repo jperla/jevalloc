@@ -75,3 +75,26 @@ Be explicit that the context API requires a small change to the application.
 Constraints unchanged: no git writes, no sudo, no system packages, never write the
 machine's address into a file, do not disturb `~/jevalloc/promptlab`, leave
 `tools/promptstudy.py` alone. Keep appending to CODEX-REPORT.md.
+
+## 5. Compaction baseline: Mesh
+
+Two readers asked the same question from different sides: "why not just make a better
+collector?" and "just catch the segfault and rewrite the pointer". In C the workable form
+of that idea keeps every virtual address and moves the physical memory underneath it:
+Mesh (Powers et al., PLDI 2019) merges two pages whose live objects do not overlap onto
+one physical page by remapping, and uses page protection and a fault handler only as a
+write barrier while it copies. Add it as a fragbench variant so the report can say where
+compaction beats placement and where placement is enough.
+
+- Build Mesh from source under `build/` the way mimalloc-bench's `build-bench-env.sh`
+  does (variant names `mesh` and, with meshing disabled, `nomesh`). No system packages;
+  if it cannot be built that way, say exactly what is missing and skip it.
+- Run both on every fragbench workload (server-sim pure and mixed at 1 and 16 threads,
+  the three Redis workloads, and the pass-8 real programs), five interleaved repetitions,
+  same settle period; Mesh compacts on its own timer, so also report idle RSS after a
+  longer settle (10 s) for every variant on these workloads.
+- Report idle RSS, peak RSS and time next to plain mimalloc, the oracles and the model
+  policies. Different base allocators have different baselines, so also report each
+  compactor against its own non-compacting twin (`mesh` vs `nomesh`) and each placement
+  policy against `jev-keyonly`.
+- Do this after sections 1–4 are measured; it must not delay them.
