@@ -1,1 +1,1 @@
-Mstress stresses threaded allocation, reallocation and cross-thread transfer. CUSTOM_MALLOC, CUSTOM_FREE and CUSTOM_REALLOC wrap the allocator. alloc_items produces both working and retained items according to its caller; free_items releases them. Some objects are freed during an iteration, others remain in retained arrays or transfers until a later iteration.
+Mstress exercises threaded allocation, reallocation, and object transfer between workers with varied block sizes.

@@ -24,7 +24,7 @@ class Tools(unittest.TestCase):
             args=SimpleNamespace(prompt='v2',cache=d,log=str(Path(d)/'log'),table=None,replay=None,policy='heuristic',model='none',seed=1,max_rechecks=4)
             service=jevd.Decisions(args)
             for count,total,freed,expected in ((0,0,0,0),(15,1000,0,0),(16,0,0,0),(16,1000,0,1),(128,1000,49,1),(128,1000,50,0),(128,1000,900,0)):
-                request=dict(key='median',site=dict(cohort_count=count,older_sampled_bytes=total,older_freed_bytes=freed))
+                request=dict(key='median',site=dict(cohort_count=count,older_sampled_bytes=total,older_freed_bytes=freed,oldest_age_bytes=26),process=dict(alloc_clock=100))
                 self.assertEqual(service.decide(request)['class'],expected)
             service.log.close()
     def test_legacy_replay_rejected(self):
@@ -36,7 +36,8 @@ class Tools(unittest.TestCase):
         s={'key':'DEADBEEF','program':'fixture','count':999,'bytes':888,'class_bytes':[7,9], 'frames':[{'image':'secret','address':'123','function':'func','file':'test.c','line':7,'source':[{'line':7,'text':'malloc(42);'}],'count':999}]}
         with patch('prompts.symbolize'):state=label.state(s)
         self.assertIn('Program: fixture',state)
-        self.assertIn('malloc(42)',state)
+        self.assertNotIn('malloc(42)',state)
+        self.assertIn('func  (test.c:7)',state)
         self.assertNotIn('999',state);self.assertNotIn('class_bytes',state)
         a=label.request_body(s,'test');s.update(count=1,bytes=2,class_bytes=[0,100]);self.assertEqual(a,label.request_body(s,'test'))
     def test_billed_502_never_retried(self):
@@ -81,7 +82,7 @@ class Tools(unittest.TestCase):
         with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]/'build') as d:
             folder=Path(d);schedule=folder/'schedule.jsonl'
             request={'key':'abc','frames':[],'site':{'allocs':1},'prior':None}
-            schedule.write_text(json.dumps({'schema':3,'class_schema':'transient-permanent-v1','prompt':'v2','request':request,'ordinal':0,'response':{'class':1,'recheck_after':1024},'raw_response':None})+'\n')
+            schedule.write_text(json.dumps({'schema':4,'class_schema':'transient-permanent-v1','prompt':'v2','request':request,'ordinal':0,'response':{'class':1,'recheck_after':1024},'raw_response':None})+'\n')
             args=SimpleNamespace(prompt='v2',cache=d,log=str(folder/'fill.jsonl'),table=None,replay=str(schedule),fill_replay=True,policy='model',model='fake',seed=1,max_rechecks=4,reasoning=False,decide_url='http://localhost',decide_path='/v1/systemone',http_timeout=1)
             service=jevd.Decisions(args)
             response={'answers':{'lifetime':{'probabilities':{'transient':.1,'permanent':.9}}},'usage':{'input_tokens':10}}
@@ -134,7 +135,7 @@ class Tools(unittest.TestCase):
             folder=Path(d);schedule=folder/'schedule.jsonl'
             raw={'answers':{'lifetime':{'probabilities':{'transient':.8,'permanent':.1}}}}
             request={'key':'a','frames':[],'site':{'allocs':1},'prior':None}
-            schedule.write_text(json.dumps({'schema':3,'class_schema':'transient-permanent-v1','prompt':'v2','request':request,'ordinal':0,'response':{'class':0,'recheck_after':1024},'raw_response':raw,'model_backend':'cpu','model_origin':'legacy'})+'\n')
+            schedule.write_text(json.dumps({'schema':4,'class_schema':'transient-permanent-v1','prompt':'v2','request':request,'ordinal':0,'response':{'class':0,'recheck_after':1024},'raw_response':raw,'model_backend':'cpu','model_origin':'legacy'})+'\n')
             args=SimpleNamespace(prompt='v2',cache=d,log=str(folder/'log'),table=None,replay=str(schedule),fill_replay=True,policy='model',model='fake',seed=1,max_rechecks=4,max_model_decisions=1)
             service=jevd.Decisions(args)
             with patch('urllib.request.urlopen',side_effect=AssertionError('reserved cold budget must prevent further inference')):

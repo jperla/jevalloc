@@ -1,1 +1,1 @@
-Sh8bench is a threaded allocator stress benchmark related to sh6bench, with different allocation-size and replacement patterns. malloc/free allocate blocks held in pointer slots and later released; thread and benchmark bookkeeping remain across worker operations.
+Sh8bench is a threaded allocator stress benchmark related to sh6bench, with a different distribution of block sizes and replacement patterns.

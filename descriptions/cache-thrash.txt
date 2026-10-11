@@ -1,1 +1,1 @@
-Cache-thrash tests heap cache locality. Workers repeatedly allocate char arrays, write them and delete them before the next loop iteration. Thread and worker-argument arrays remain for the duration of the workers and are released after joins.
+Cache-thrash benchmarks heap cache locality with concurrent workers and repeated writes to small memory blocks.

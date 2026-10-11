@@ -1,1 +1,1 @@
-Glibc-thread measures multithreaded malloc/free throughput. Each worker has a working set of pointers; the loop selects a slot, frees the old block and allocates a replacement of a chosen size. Working-set and thread bookkeeping survive the worker phase. Blocks remain until their slot is selected again.
+Glibc-thread measures multithreaded allocation throughput using randomized pointer-slot and block-size workloads.

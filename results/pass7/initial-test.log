@@ -1,0 +1,254 @@
+cmake -S . -B build
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/quill/jevalloc/src-tree/build
+cmake --build build -j 4
+gmake[1]: Entering directory '/home/quill/jevalloc/src-tree/build'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+[  3%] Built target site-test
+[  7%] Built target stress
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build'
+[  9%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/segment.c.o
+[ 40%] Built target mimalloc
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+[ 41%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/heap.c.o
+[ 45%] Built target lifetimes
+[ 49%] Built target measure
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+[ 52%] Built target live-test
+[ 56%] Built target cost
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+[ 60%] Built target server-sim
+[ 63%] Built target defects
+[ 65%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/init.c.o
+[ 67%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/alloc.c.o
+[ 69%] Linking C static library libmi-core.a
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+[ 90%] Built target mi-core
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build'
+[ 94%] Building C object CMakeFiles/jevalloc.dir/override.c.o
+[ 94%] Building C object CMakeFiles/jevalloc.dir/src/jevalloc.c.o
+[ 96%] Building C object CMakeFiles/jevalloc.dir/zone.c.o
+[ 98%] Linking C shared library libjevalloc.so
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+[100%] Built target jevalloc
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+gmake[1]: Leaving directory '/home/quill/jevalloc/src-tree/build'
+python3 tools/build_bench.py
+CMake Warning (deprecated) at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- GNU
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/32_byte_memcpy_overflow.c 32_byte_memcpy_overflow
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/32_byte_memcpy_underflow.c 32_byte_memcpy_underflow
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/32_byte_overflow.c 32_byte_overflow
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/32_byte_underflow.c 32_byte_underflow
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/double_free.c double_free
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/double_free_delayed.c double_free_delayed
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/double_free_interleaved.c double_free_interleaved
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/double_free_reuse.c double_free_reuse
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/double_free_single_reuse.c double_free_single_reuse
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/executable_heap.c executable_heap
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/impossibly_large_malloc.c impossibly_large_malloc
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/invalid_free.c invalid_free
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/invalid_free_alloca.c invalid_free_alloca
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/invalid_free_close.c invalid_free_close
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/invalid_free_far.c invalid_free_far
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/invalid_free_stack.c invalid_free_stack
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/invalid_free_unaligned.c invalid_free_unaligned
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/invalid_free_unaligned_multiple.c invalid_free_unaligned_multiple
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/malloc_reuse.c malloc_reuse
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/malloc_reuse_downsize.c malloc_reuse_downsize
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/one_byte_memcpy_overflow.c one_byte_memcpy_overflow
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/one_byte_memcpy_underflow.c one_byte_memcpy_underflow
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/one_byte_overflow.c one_byte_overflow
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/one_byte_underflow.c one_byte_underflow
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/one_mbyte_memcpy_overflow.c one_mbyte_memcpy_overflow
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/one_mbyte_memcpy_underflow.c one_mbyte_memcpy_underflow
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/one_mbyte_overflow.c one_mbyte_overflow
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/one_mbyte_underflow.c one_mbyte_underflow
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/read_zero_size.c read_zero_size
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/read_zero_size_free.c read_zero_size_free
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/realloc_reuse.c realloc_reuse
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/write_after_free.c write_after_free
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/write_after_free_reuse.c write_after_free_reuse
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/write_zero_size.c write_zero_size
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/write_zero_size_free.c write_zero_size_free
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/zero_after_free.c zero_after_free
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/zero_on_malloc.c zero_on_malloc
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/delete_type_size_mismatch.cc delete_type_size_mismatch
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/invalid_array_delete_char.cc invalid_array_delete_char
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/invalid_array_delete_string.cc invalid_array_delete_string
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/invalid_delete_array_char.cc invalid_delete_array_char
+-- Compiling /home/quill/jevalloc/src-tree/build/bench-source/security/invalid_delete_array_string.cc invalid_delete_array_string
+-- Configuring done (0.0s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/quill/jevalloc/src-tree/build/bench
+gmake[1]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+[100%] Built target cfrac
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+[100%] Built target espresso
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+[100%] Built target barnes
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+Built target larson
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+[100%] Built target larson-sized
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+[100%] Built target xmalloc-test
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+Built target cache-scratch
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+[100%] Built target cache-thrash
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+[100%] Built target mstress
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+[100%] Built target rptest
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+Built target glibc-simple
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+[100%] Built target glibc-thread
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+Built target alloc-test
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+Built target malloc-large
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[3]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Entering directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[4]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+[100%] Built target mleak
+gmake[3]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[2]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+gmake[1]: Leaving directory '/home/quill/jevalloc/src-tree/build/bench'
+python3 tests/test.py
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.011s
+
+OK
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.006s
+
+OK
+....F
+======================================================================
+FAIL: test_v2_context_and_token_limit (__main__.Pass4.test_v2_context_and_token_limit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/quill/jevalloc/src-tree/tests/test_pass4.py", line 29, in test_v2_context_and_token_limit
+    self.assertIn('fn11',text);self.assertEqual(text.count('>> 21:'),3)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 3
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.046s
+
+FAILED (failures=1)
+Traceback (most recent call last):
+  File "/home/quill/jevalloc/src-tree/tests/test.py", line 95, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/quill/jevalloc/src-tree/tests/test.py", line 34, in main
+    subprocess.run([sys.executable,str(ROOT/'tests/test_pass4.py')],check=True)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/quill/jevalloc/venv/bin/python3', '/home/quill/jevalloc/src-tree/tests/test_pass4.py']' returned non-zero exit status 1.
+make: *** [Makefile:11: test] Error 1

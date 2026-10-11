@@ -25,7 +25,7 @@ class Pass4(unittest.TestCase):
     def test_v2_context_and_token_limit(self):
         frames=[dict(addr=hex(i+1),image='fixture',function=f'fn{i}',file='test.c',line=21,source=[dict(line=j,text='long_variable_name();'*10) for j in range(1,42)]) for i in range(12)]
         with patch('prompts.symbolize'):
-            text=prompts.state(dict(program='fixture',frames=frames,prior=1,site=dict(allocs=1024,short_share=70,long_freed_share=20,alive_share=10)))
+            text=prompts.state(dict(program='fixture',frames=frames,prior=1,site=dict(allocs=1024,short_share=70,long_freed_share=20,alive_share=10)),prompt="v2")
         self.assertIn('fn11',text);self.assertEqual(text.count('>> 21:'),3)
         def token_response(req,**kw):
             text=json.loads(req.data)['content']

@@ -1,1 +1,1 @@
-Cache-scratch tests allocator-induced false sharing. Each worker frees an initial object, then repeatedly allocates a small char array with new, writes it many times and deletes it before the next allocation. Thread handles, worker arguments and initial pointer arrays survive the worker phase.
+Cache-scratch measures allocator-induced false sharing by having multiple workers repeatedly write small blocks of memory.

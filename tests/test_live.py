@@ -24,9 +24,9 @@ def fake(path, delay=0, silent=False,changing_to_short=False,invalid_class=False
     try:yield requests
     finally:server.shutdown();server.server_close();path.unlink(missing_ok=True)
 
-def execute(path,sock,args=None,timeout=5000,sample_rate=8):
+def execute(path,sock,args=None,timeout=5000,sample_rate=8,min_site_bytes=0):
     env,extra=environment('jev-live:heuristic','',ROOT/'results/tables');env.update(extra)
-    env.update(JEVALLOC_MODE='live',JEVALLOC_SOCKET=str(sock),JEVALLOC_STATS_OUT=str(path),JEVALLOC_TIMEOUT_MS=str(timeout),JEVALLOC_SAMPLE=str(sample_rate))
+    env.update(JEVALLOC_MIN_SITE_BYTES=str(min_site_bytes),JEVALLOC_MODE='live',JEVALLOC_SOCKET=str(sock),JEVALLOC_STATS_OUT=str(path),JEVALLOC_TIMEOUT_MS=str(timeout),JEVALLOC_SAMPLE=str(sample_rate))
     begin=time.monotonic();subprocess.run(args or [str(ROOT/'build/live-test')],env=env,check=True,stdout=subprocess.DEVNULL,timeout=120)
     return json.loads(path.read_text()),time.monotonic()-begin
 
@@ -43,6 +43,18 @@ def main():
     report={}
     with tempfile.TemporaryDirectory(dir=ROOT/'build',prefix='live-') as name:
         folder=Path(name);stats=folder/'stats.json';sock=folder/'fake.sock'
+        # Default admission must depend on successful requested bytes, not size
+        # of the pending allocation or the number of allocation attempts.
+        with fake(sock) as requests:
+            data,_=execute(stats,sock,[str(ROOT/'build/live-test'),'single'],min_site_bytes=65536)
+            assert requests and all(r['site']['eligible_bytes']>=65536 for r in requests),requests
+            assert any(n<65536 for n in data['site_bytes'].values()),data
+            assert all(data['site_bytes'][r['key']]>=65536 for r in requests)
+            report['byte_admission']=data
+        with fake(sock) as requests:
+            data,_=execute(stats,sock,[str(ROOT/'build/defects'),'failed-only'],sample_rate=1,min_site_bytes=65536)
+            assert not any(r['size']==123 for r in requests),requests
+            report['failed_allocations_never_eligible']=data
         with fake(sock,delay=.005) as requests:
             data,elapsed=execute(stats,sock)
             assert sum(data['site_bytes'].values())==data['allocation_clock'],data

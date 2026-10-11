@@ -61,18 +61,25 @@ kill "$sidecar_pid"
 Wait for the socket to exist before launching the application. The benchmark runner
 does this automatically. On macOS use `DYLD_INSERT_LIBRARIES` and `.dylib`.
 
-Policies: `model` sees symbolized stack, up to twelve named frames, three source snippets and plain-language
-quantized live statistics (prompt v2); `static-model` sees code only and never rechecks; `heuristic` defaults transient, then uses the freed-byte share among sampled objects older than the site median age (details below). `oracle` reads `--table`;
-`random` is seeded. Model classes use the probability argmax. All requests, raw
-responses, probabilities, token usage, model latency and cache provenance are logged.
-The prompt stays fixed across the matrix.
+Policies: `model` sees up to twelve named stack frames and a neutral program
+summary (`stack-v1`), with sampled runtime observations at rechecks. `static-model`
+uses the same first-sight context and never rechecks; neither includes source code.
+`stack-v1-nodesc` omits the summary. `heuristic` uses sampled free evidence and an
+age gate (details below). `oracle` reads `--table`; `random` is seeded.
+All requests, probabilities, responses, model latency and provenance are logged.
 
-`--max-model-decisions` defaults to 400, including initial decisions, cache hits and
-rechecks. When exhausted, new sites get the default class; existing sites retain
-their class and stop rechecking. Coverage fills reserve the model slots already in
-the replay schedule, so they cannot repeatedly acquire another 400 decisions.
-Fallbacks are logged without polluting the model cache. `--default-class` defaults
-to transient and should match `JEVALLOC_DEFAULT` when running manually.
+Sites use the default class until they have successfully requested at least 64 KiB.
+Only then can the allocator ask the sidecar. Cross-thread counter batching can delay
+this threshold. `--max-model-decisions` defaults to 1,500 including cache hits,
+rechecks and replay coverage fills. At exhaustion new sites default transient and
+existing sites keep their class without further rechecks. Fallbacks do not enter
+the model cache. `--default-class` should match `JEVALLOC_DEFAULT` when run manually.
+
+First-sight model answers use argmax. An initially transient site can become permanent
+only when a recheck gives permanent probability >=0.8 and the oldest still-live
+reservoir sample has aged through strictly more than a quarter of the current
+process allocation clock. Replayed runs apply recorded decisions with unchanged
+instrumentation and no inference; drift from the recorded request is logged.
 
 The historical CPU-to-Vulkan transition preserved its cache identity and answers. Every
 model decision records its originating backend; the transition manifest and original
@@ -93,6 +100,7 @@ CPU logs are archived in results. Those historical cfrac cold timings include CP
 | `JEVALLOC_POLICY` | segregation | `none`: bypass key, one heap; `keyonly`: key/lookup on default heap; `explicit`: one explicit heap |
 | `JEVALLOC_TRACE_OUT` | `jevalloc-trace.jsonl` | Trace at orderly exit |
 | `JEVALLOC_SOCKET` | absent | Live Unix socket |
+| `JEVALLOC_MIN_SITE_BYTES` | `65536` | Successful requested site bytes before sidecar admission; `0` is a protocol-test control |
 | `JEVALLOC_SAMPLE` | `64` | Sample one in this many successful allocations per thread/site |
 | `JEVALLOC_TIMEOUT_MS` | `30000` | One deadline covering socket connect/send/receive |
 | `JEVALLOC_STATS_OUT` | `jevalloc-stats.json` | Live accounting and per-site requested-byte totals |
@@ -238,13 +246,15 @@ rather than scanning every previously seen site.
 Suitable reallocs remain in place and retain their page class; trace/live bookkeeping
 closes the old logical lifetime and starts a new one at the realloc site.
 
-`jevd --prompt v2` uses the native two-class question, program descriptions from
-`descriptions/<program>.txt`, up to twelve named frames and three ±20-line source
-snippets. Descriptions are hand-written from workload source and docs. Runtime
-sentences at rechecks give quantised sampled-byte shares for freed quickly, freed later and
-still alive. Still alive is an observation, not knowledge of the eventual exit.
-`static-model` omits runtime sentences and never rechecks. Model answers use the
-probability argmax. Schema 3 rejects short/long and three-class replay logs and has a separate cache identity. The tokenizer limits state to 3,000 tokens.
+`jevd --prompt stack-v1` uses the exact first-sight wording in SPEC-STACK.md,
+neutral hand-written descriptions from `descriptions/<program>.txt`, and up to
+twelve function/file/line frames. Rechecks append freed-quickly, freed-later and
+still-alive sampled-byte shares, plus the oldest still-live reservoir sample's age
+in allocated bytes. At 100% still alive, the prompt explicitly notes that eventually
+freed objects also look this way early on. `stack-v1-nodesc` omits descriptions.
+Legacy `v2` uses the pass-6 wording, snippets and `descriptions-leaky/` for ablations.
+Decision schema 4 and policy-cache version 3 reject earlier replay/policy decisions.
+Trace schema remains 3. The tokenizer limits state to 3,000 tokens.
 The unknown-site default is transient. `all-transient` and `all-permanent` are controls.
 `tools/oracle.py --short-bytes S` recomputes exact power-of-two thresholds from trace
 histograms; for other thresholds use a trace recorded with `JEVALLOC_SHORT_BYTES=S`.
@@ -270,3 +280,8 @@ if strictly under 5% were freed; otherwise transient. Empty/equal-age evidence u
 transient. Reservoir replacement is independent of survival; no final-run length
 is assumed. Sampled updates use a per-site lock, while unsampled paths are unchanged.
 `tools/oracle.py --permanent-percent 25|50|90|never` selects sensitivity truth.
+
+The heuristic additionally requires the oldest still-live reservoir sample to be
+strictly older than one quarter of the current allocation clock before choosing
+permanent. Otherwise it selects transient, including when no live sample exists.
+The age and clock use the same batched snapshot; neither requires final run length.

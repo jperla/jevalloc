@@ -1,1 +1,1 @@
-Larson is a threaded allocator stress program. Worker routines repeatedly free and replace random slots in arrays of allocated objects, using C++ allocation routines. Some objects survive many replacements and pass to successor workers; worker metadata and slot arrays last across many operations. The sized variant uses sized deallocation but the same workload.
+Larson is a multithreaded allocator stress benchmark using randomized block sizes, pointer slots, and successive groups of workers.

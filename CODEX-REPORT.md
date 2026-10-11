@@ -1450,3 +1450,254 @@ retaining each site's first model stack so cache collisions cannot change rechec
 source context. Linux supports startup images only; dynamic loading/unloading and
 post-fork synchronization remain outside the validated set.
 
+
+## Pass 7 start — stack-only live classification
+
+SPEC-STACK.md governs this pass. Inspected the remote process tree before editing.
+Stopped the pass-6 regression runner (57170) and its cfrac/sidecar descendants;
+archived its partial JSON, Markdown, decision/cache/log directory and bench.log in
+results/pass6-regression-partial/. The independent promptlab process was left alone.
+Pass-6 fragmentation remains the v-permanent-1 historical result.
+
+Implementing stack-v1 and stack-v1-nodesc with the exact specified question and
+choices, no source code, and neutral hand-written descriptions. Original descriptions
+are preserved verbatim in descriptions-leaky/. Default budget becomes 1,500 answers.
+Only sites with >=64 KiB of successful requested allocation bytes may contact the
+sidecar. Before eligibility the allocator uses its default class, checking local byte
+progress and periodically checking published cross-thread totals. Other threads'
+4096-allocation batching can delay eligibility; it cannot admit an undersized site.
+
+Runtime age is the oldest still-live object in the uniform 128-sample reservoir,
+measured in requested allocation bytes on the batched clock. Model promotion of a
+first-sight transient site requires permanent probability >=0.8 and age strictly
+above one quarter of the current process clock. The heuristic retains pass 6's
+>=16-sample, strictly-older-than-median cohort and <5% freed-byte rule, but also
+requires the same strict age gate before choosing permanent. Meaningful frees
+immediately permit transient, with no confidence/age barrier. Replay schema 4 and
+policy-cache version 3 isolate old policy decisions; raw model caches are prompt-keyed.
+
+Full Linux correctness PASSED for all 22 trace/random workload pairs, plus live
+ownership/protocol, sample-reservoir transitions at 1/64, replay, budget and new
+stack/age/admission checks. The standalone label-default checks also passed on
+Linux after switching that tool to stack-v1. The remote pass-6 supervisor recorded
+exit 1 at the interrupted regression stage; this is an intentional partial archive,
+not a completed regression. Instrument validation and the new model matrices follow.
+
+The pass-7 instrument PASSED on library
+cae42e81344dd0838d08f595627fda1256a21eca6a15f2b0251ab7c5d478ca92.
+At every idle point oracle <= random and < half mimalloc; all 40 warm instrument
+intervals have zero inference overlap. Full workload correctness also passed.
+The first site-pure-1 stack-v1 cold decisions classify create_session_state transient
+(p=0.867) and insert_cache_index permanent (p=0.797), with both request-buffer paths
+transient. Five model-answered sites cover 99.99855% of requested bytes; six small
+sites totaling 13,376 bytes are never asked. Warm performance remains pending.
+
+First cold site-pure-1 observation (not yet five-run performance): code-only Clef
+idle RSS is 43.58 MiB, while runtime Clef is 231.14 MiB and heuristic 228.51 MiB.
+Runtime's session first-sight answer is correctly transient, but its first recheck
+returns permanent p=0.906 and satisfies the specified age gate. Subsequent early
+rechecks also return permanent around p=0.90 while no session has ended. The last
+recheck has 52% still alive and permanent p=0.641, so the new guard restores
+transient; earlier mixing can already pin pages. No prompt or policy tuning is
+being applied to this negative runtime result.
+
+## Pass 7 — first audited stack-v1 result
+
+Both site-pure workloads completed five repetitions for every variant; 120 warm
+intervals have zero inference overlap. Idle MiB, mi/oracle/code-only/runtime/heuristic:
+site-pure-1 = 280.22/41.36/43.57/231.13/228.54;
+site-pure-16 = 296.55/51.68/66.36/261.70/262.83.
+Code-only captures 99.1% and 94.0% of oracle saving; runtime 20.6% and 14.2%;
+heuristic 21.6% and 13.8%. All five queried first-sight sites agree with trace truth.
+Thus there is no first-sight misclassified site to fix. The remaining code-only
+RSS gap (2.21/14.68 MiB) is consistent with live metadata and permanent cache objects
+allocated transient before byte eligibility, especially across threads; these two
+contributors have not been independently measured. No prompt tuning is applied.
+The runtime gate admits early session promotions because sampled age already spans
+95–99% of the current allocation clock, despite no session having ended.
+RESULTS.md now includes these audited observations above the unchanged pass-6 report.
+
+## Pass 7 — site-pure description ablation complete
+
+All four prompt/thread blocks are audited (240 warm intervals; zero inference
+overlap). stack-v1-nodesc code-only captures 99.1%/94.8% of oracle saving at 1/16
+threads, versus 99.1%/94.0% with the description. Both classify all five asked sites
+correctly. The neutral description increases session transient probability from
+0.654 to 0.867, and cache permanent probability from 0.685 to 0.797, but no RSS
+benefit is established on this workload. Nodesc idle MiB mi/oracle/static/runtime/
+heuristic: 280.21/41.33/43.57/231.13/228.51 (1 thread), and
+296.55/51.53/64.27/260.20/261.50 (16 threads). Runtime still promotes sessions early;
+its capture is 20.5%/14.8%. Five-run ranges and cold costs are in results/pass7/.
+The rest of fragbench is now running under stack-v1, then stack-v1-nodesc.
+
+Redis Mesh stack-v1 code-only cold collection completes with 12 model-answered
+sites out of 630 observed sites, covering 99.8104% of requested bytes; 794,698 of
+419,116,478 bytes remain at unasked sites. No budget fallback. New HTTP time is
+25.15 seconds. This contrasts with pass 6's 400 startup answers and only ~2.03%
+byte coverage. Runtime collection and warm memory results are still pending;
+coverage improvement alone does not establish an RSS benefit.
+
+## Pass 7 — full stack-v1 fragbench audited
+
+All six stack-v1 workloads and the two nodesc site-pure workloads are complete and
+audited: 480 warm intervals, zero inference overlap. Mixed-1 mi/oracle/static/
+runtime/heuristic idle MiB: 144.70/144.98/146.36/154.28/146.43; mixed-16:
+146.43/149.67/154.39/164.95/154.89. Redis Mesh:
+183.95/185.96/192.90/224.95/226.93; Redis drop:
+269.43/271.02/277.69/277.84/277.78. The oracle saves no memory in these four blocks,
+so saving capture is undefined, not zero or a success. Static/runtime Redis coverage
+is 99.81% (Mesh) and 99.78% (drop). Model schedules consume 12/43 slots for Mesh
+(static/runtime, 31 runtime rechecks) and 13/38 for drop (25 runtime rechecks), all
+well below 1,500. The byte gate, rather than a binding raised budget, is the observed
+reason startup sites no longer consume the available decisions on Redis.
+High coverage alone does not improve memory. In Mesh runtime uses 1.165x code-only
+RSS and 1.223x mimalloc RSS, versus heuristic 1.234x mimalloc. The nodesc remainder
+is running before regression begins. RESULTS.md includes the audited data and costs.
+
+The nodesc Redis Mesh third warm runtime repetition encountered a new replay slot.
+The runner retained that observation as a coverage probe, filled missing decisions
+outside headline measurements, and successfully retried the same repetition. Warm
+state drift is not fresh inference; results measure the recorded policy. Fill slots
+continue to share the 1,500-answer cold budget. No failed/probe row is used as one of
+five accepted repetitions. (Mesh runtime/code-only RSS ratio above rounds to 1.166.)
+
+## Pass 7 — fragmentation complete
+
+All 12 prompt/workload blocks have five accepted interleaved observations for each
+of 12 variants: 720 warm intervals, zero inference overlap (plus the separate
+40-interval instrument audit). Nodesc mixed-1/mixed-16 mi/oracle/static/runtime/
+heuristic idle MiB: 144.70/144.98/146.37/154.28/146.42 and
+146.43/149.62/154.57/166.34/154.96. Nodesc Mesh:
+185.95/186.01/192.90/220.93/230.93; nodesc drop:
+270.52/271.37/277.28/277.49/277.73. None has a positive oracle saving. Nodesc
+Redis coverage remains about 99.8%, with 12/43 static/runtime model slots in Mesh
+and 13/38 in drop. The two new variants isolate description text at first sight;
+comparisons to pass 6 also change admission, budget and runtime policy and cannot
+isolate source removal alone. Full results, ranges, phase medians, cold costs,
+coverage and dominant-site decisions are in RESULTS.md and results/pass7/.
+
+The full 22-workload mimalloc-bench regression has now started with stack-v1,
+1,500-slot schedules and five interleaved warm repetitions. No regression aggregate
+is claimed until it completes and is independently audited.
+
+Regression checkpoint: cfrac completed all 60 warm observations; espresso cold
+collection has begun. The partial matrix is checkpointed locally as
+results/pass7/regression-progress.json (not yet independently audited). Cfrac
+static coverage is 99.9588% with 66 answered sites; runtime cold collection used
+229 answers including rechecks. Regression remains incomplete, so no full-matrix
+aggregate is published yet.
+
+Cfrac's completed 60 warm observations are now independently audited (zero
+inference overlap) and published. Espresso static cold collection completed in
+799.1 s: 500 answered sites of 1,045 observed, 99.7999% byte coverage, no budget
+fallback. Its trace has 501 sites totaling >=64 KiB; a site may cross the threshold
+on its final allocation and have no subsequent allocation to classify. Thus the
+larger budget is actually used on Espresso: static answers exceed the old 400 cap.
+Espresso runtime collection is active; timings from it remain outside warm results.
+
+Regression checkpoint: Espresso completed all five warm repetitions for every
+variant. Runtime cold collection took 1,342.6 s, used 1,235 model-backed decisions
+(500 initial sites plus rechecks), covered 99.7999% of bytes, and had zero budget
+fallbacks. This is substantial inference cost even with stack-only prompts; it is
+reported separately from replay timings. Barnes has started warm repetitions.
+The recorded Redis headers were also checked directly: stack-v1 includes the
+neutral Redis description, while nodesc omits it; program names remain redis-server
+after delayed admission. No source/prompt changes were made during measurements.
+
+The first three regression workloads are now audited and published; no inference
+overlap. Barnes has 0% model coverage and no model calls: its six >=64-KiB trace
+sites each allocate exactly one object (6.25, 250, 63.75, 137.5, 18.75 and 12.5 MiB
+requested). Admission checks before a subsequent allocation, so crossing the byte
+threshold on the only allocation cannot retrospectively classify it. This is an
+explicit limitation, not a budget failure; requesting a model answer after that
+last allocation would not change its already chosen heap. All such bytes remain
+in the coverage denominator. Larson warm repetitions are active.
+
+Larson completed: preliminary score/mi (lower is better) is 1.021 for jev-none,
+1.673 for the oracle table, 2.052 for heuristic, 2.041 for static and 2.027 for
+runtime. Peak RSS/mi is 0.980/1.141/1.412/1.158/1.158 respectively. Heuristic/oracle
+score is about 1.227, above the 1.15 target; retained stack capture and sampled
+lifetime tracking are plausible contributors, not separately isolated causes.
+Per SPEC-TWOCLASS, this target miss is recorded without tuning or withholding the
+remaining matrix. Larson-sized cold collection follows. Full audit is pending for
+this newly completed block.
+
+Five regression workloads are now audited and published, with zero inference
+overlap. Current target misses: cfrac keyonly RSS/none 1.0319 vs 1.03; Larson
+heuristic score/oracle 1.2267 vs 1.15; Larson-sized none score/mi 1.0375 vs 1.03,
+and heuristic score/oracle 1.2046 vs 1.15. These are measured medians, not claims
+of statistical significance or isolated causes. Xmalloc-test warm repetitions
+have begun. Source, library and prompt fingerprints remain fixed.
+
+Ten regression workloads (through cache-thrashN) are complete and independently
+audited, with zero inference overlap. Xmalloc heuristic/oracle score is 1.4181,
+another >1.15 target miss; none/mi score is 1.0068. All detailed ranges and current
+target misses are published in results/pass7/ and RESULTS.md. Mstress cold
+collection is active. No benchmark or prompt tuning was applied after these misses.
+
+Twelve regression workloads, through rptest, are now independently audited and
+published with zero inference overlap. The primary time table now includes the
+normalized score as well as wall and CPU ratios so duration-limited throughput
+costs are visible directly. Glibc-simple is running; the remaining matrix continues.
+
+Sixteen regression workloads, through alloc-testN, are now independently audited
+and published with zero inference overlap. Alloc-testN runtime repetition five
+needed a second coverage fill: the missing-slot probe was excluded, the fill ran
+outside timing, and the retry completed. Mstress keyonly RSS/none is 1.0474
+(target 1.03); this additional miss is recorded without tuning. Malloc-large is
+running. RESULTS.md now leads with the measured first-sight success and the
+runtime session-promotion failure, followed by the full evidence tables.
+
+Twenty-one regression workloads, through sh8benchN, are complete and independently
+audited with zero inference overlap. Redis cold collection has completed and its
+five warm repetitions are underway. All current results and target misses are
+published; final matrix completion and audit remain pending.
+
+Focused macOS validation passed: stack prompt contract (12 frames, no source,
+neutral-description ablation, runtime caveat), strict quarter-clock and 0.8 model
+promotion boundaries including response-cache hits, heuristic free/age boundaries,
+64-KiB admission and failed-allocation exclusion, existing ownership/protocol,
+reservoir sample rates 1/64, replay and zero-budget integration. Legacy protocol
+fixtures explicitly set JEVALLOC_MIN_SITE_BYTES=0; dedicated admission cases and
+benchmark runs use the 65536 default. The old source-context test now explicitly
+selects v2, rather than assuming the default still includes snippets.
+
+Full Linux validation is running. scripts/pass7.sh waits for it, then validates
+the instrument, runs both site-pure thread counts under each prompt, completes the
+other four fragbench workloads under each prompt, and finally runs all 22 regression
+workloads under stack-v1. Every block uses five interleaved warm repetitions after
+cold collection and coverage fills, followed by an independent inference-overlap audit.
+
+Final pass-7 completion (supersedes the queued launch-status paragraph immediately
+above, which the long-lived launch shell appended when it finally exited): full
+Linux validation passed, the instrument passed, both prompts completed all six
+fragbench workloads, and stack-v1 completed all 22 mimalloc-bench workloads. The
+remote pipeline reports stage complete and exit status 0. Each variant has five
+accepted interleaved warm repetitions. Independent audits verified 2,080 warm
+intervals (40 instrument, 720 fragbench, 1,320 regression), zero inference overlap,
+and matching matrix hashes. The measured library is the full-suite-validated
+cae42e81344dd0838d08f595627fda1256a21eca6a15f2b0251ab7c5d478ca92.
+
+Final RESULTS.md preserves every pass-6 table after the pass-7 report. Audited
+matrices, audit evidence, warm ranges, phase medians, byte coverage, cold/fill costs,
+first-sight accuracy and dominant-site histories are in results/pass7/. Regression
+is saved locally as results/pass7/pass7-regression.json with its matching audit;
+raw traces, model cache and detailed run logs remain on the test machine. The old
+pass-6 partial regression remains archived in results/pass6-regression-partial/.
+
+The main outcome is first-sight success: code-only stack-v1 captures 99.1%/94.0%
+of site-pure oracle idle-RSS savings at 1/16 threads; nodesc captures 99.1%/94.8%.
+The specified runtime guard still allows the wrong early session promotion, leaving
+runtime capture at 20.6%/14.2%. No further prompt or policy tuning was applied.
+Redis fragmentation model-byte coverage is about 99.8%; regression Redis reaches
+99.98% with 7 static or 20 runtime model decisions. Its static/runtime time score
+is 1.378/1.432 times mimalloc. Barnes remains the explicit 0%-coverage, one-shot
+allocation limitation of next-allocation admission.
+
+There are 13 recorded regression acceptance-target misses, including heuristic
+score/oracle 3.104 on sh6benchN and 2.276 on sh8benchN. They are diagnostic misses,
+not hidden or treated as passing. Full Linux correctness and focused local tests
+passed; no source changes followed measurement startup. Only reporting and journal
+updates were made while the matrix ran. Everything remains uncommitted, no git
+writes were performed, and promptstudy.py and the independent prompt study were
+left alone. The remote address was never written into an artifact.

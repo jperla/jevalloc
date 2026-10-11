@@ -1,0 +1,80 @@
+[
+  {
+    "benchmark": "cfrac",
+    "check": "keyonly_peak_rss/none",
+    "ratio": 1.0319343065693432,
+    "target": 1.03
+  },
+  {
+    "benchmark": "larson",
+    "check": "heuristic_score/oracle",
+    "ratio": 1.2266636384283445,
+    "target": 1.15
+  },
+  {
+    "benchmark": "larson-sized",
+    "check": "none_score/mi",
+    "ratio": 1.037485800833018,
+    "target": 1.03
+  },
+  {
+    "benchmark": "larson-sized",
+    "check": "heuristic_score/oracle",
+    "ratio": 1.204616763783057,
+    "target": 1.15
+  },
+  {
+    "benchmark": "xmalloc-test",
+    "check": "heuristic_score/oracle",
+    "ratio": 1.4181286549707601,
+    "target": 1.15
+  },
+  {
+    "benchmark": "mstress",
+    "check": "keyonly_peak_rss/none",
+    "ratio": 1.0474085883179303,
+    "target": 1.03
+  },
+  {
+    "benchmark": "glibc-thread",
+    "check": "none_score/mi",
+    "ratio": 1.0358268037105653,
+    "target": 1.03
+  },
+  {
+    "benchmark": "alloc-test1",
+    "check": "none_score/mi",
+    "ratio": 1.0358388814513821,
+    "target": 1.03
+  },
+  {
+    "benchmark": "alloc-testN",
+    "check": "none_score/mi",
+    "ratio": 1.034326473447789,
+    "target": 1.03
+  },
+  {
+    "benchmark": "mleak100",
+    "check": "keyonly_peak_rss/none",
+    "ratio": 1.0978549902499557,
+    "target": 1.03
+  },
+  {
+    "benchmark": "sh6benchN",
+    "check": "none_score/mi",
+    "ratio": 1.0481496587563186,
+    "target": 1.03
+  },
+  {
+    "benchmark": "sh6benchN",
+    "check": "heuristic_score/oracle",
+    "ratio": 3.104299055672242,
+    "target": 1.15
+  },
+  {
+    "benchmark": "sh8benchN",
+    "check": "heuristic_score/oracle",
+    "ratio": 2.276140774535277,
+    "target": 1.15
+  }
+]

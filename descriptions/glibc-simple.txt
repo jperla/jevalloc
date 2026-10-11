@@ -1,1 +1,1 @@
-Glibc-simple benchmarks malloc/free for batches of equal-sized blocks. It allocates a batch, touches memory, frees half in FIFO order and the remainder in reverse order. The pointer array is retained across benchmark cases and freed at the end. Individual blocks last through their batch, with lifetime in allocated bytes depending on batch size.
+Glibc-simple benchmarks allocation throughput across batches of equal-sized blocks and a range of batch sizes.

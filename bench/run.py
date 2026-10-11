@@ -88,7 +88,7 @@ def wait_model_idle():
         time.sleep(.2)
     raise RuntimeError('model server did not become idle after warm rep marker')
 
-def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,attempt=0,max_model_decisions=400):
+def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,attempt=0,max_model_decisions=1500):
     if rep<0:timeout=max(timeout,86400)
     outdir=Path(outdir);outdir.mkdir(parents=True,exist_ok=True)
     label='cold' if rep==-1 else (f'fill{-rep-2}' if rep<-1 else str(rep))
@@ -104,7 +104,7 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
         sock=ROOT/'build'/('jvd-'+hashlib.sha256(tag.encode()).hexdigest()[:12]+'.sock')
         sock.unlink(missing_ok=True);decision_log.unlink(missing_ok=True);stats.unlink(missing_ok=True)
         policy=variant.split(':')[1]
-        service=[sys.executable,str(ROOT/'tools/jevd.py'),'--socket',str(sock),'--policy',policy,'--prompt',row.get('prompt','v2'),'--short-bytes',str(extra.get('JEVALLOC_SHORT_BYTES',1048576)),'--max-model-decisions',str(max_model_decisions),'--model-cache',str(ROOT/'results/pass6/model-cache'),'--cache',str(outdir/'cache'/row['name']/policy),'--log',str(decision_log),'--table',str(Path(tables)/row['name']/'oracle.txt')]
+        service=[sys.executable,str(ROOT/'tools/jevd.py'),'--socket',str(sock),'--policy',policy,'--prompt',row.get('prompt','stack-v1'),'--short-bytes',str(extra.get('JEVALLOC_SHORT_BYTES',1048576)),'--max-model-decisions',str(max_model_decisions),'--model-cache',str(ROOT/'results/pass7/model-cache'),'--cache',str(outdir/'cache'/row['name']/policy),'--log',str(decision_log),'--table',str(Path(tables)/row['name']/'oracle.txt')]
         if len(variant.split(':'))>2:service+=['--model',variant.split(':',2)[2]]
         replay=schedule_path(row,variant,outdir)
         if rep!=-1:
@@ -234,7 +234,7 @@ def markdown(data):
 def save(path,data):
     data['summary']=summarize(data['runs']);tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(data,indent=2));tmp.replace(path);path.with_suffix('.md').write_text(markdown(data))
 
-def prepare_replay(row,variant,outdir,tables,timeout,data,path,max_model_decisions=400):
+def prepare_replay(row,variant,outdir,tables,timeout,data,path,max_model_decisions=1500):
     replay=schedule_path(row,variant,outdir)
     for _ in range(12):
         index=sum(r.get('coverage_fill',False) and r['benchmark']==row['name'] and r['variant']==variant for r in data['coverage_runs'])
@@ -246,7 +246,7 @@ def prepare_replay(row,variant,outdir,tables,timeout,data,path,max_model_decisio
     raise RuntimeError('Replay coverage did not converge after 12 cache-fill runs')
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--prompt',choices=['v2','v2-no-description','v2-runtime-only'],default='v2');p.add_argument('--short-bytes',type=int,default=1048576);p.add_argument('--name',default='first-pass');p.add_argument('--reps',type=int,default=5);p.add_argument('--variants',nargs='+',default=DEFAULT_VARIANTS);p.add_argument('--benchmarks',nargs='+');p.add_argument('--tables',default=str(ROOT/'results/tables'));p.add_argument('--procs',type=int,default=8 if sys.platform=='darwin' else 16);p.add_argument('--timeout',type=int,default=7200);p.add_argument('--resume',action='store_true');p.add_argument('--allow-cold-upgrade',action='store_true',help='Adopt completed cold-only records across a runner/sidecar coverage change; preserve old code fingerprints');p.add_argument('--max-model-decisions',type=int,default=400);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--prompt',choices=['stack-v1','stack-v1-nodesc','v2','v2-no-description','v2-runtime-only'],default='stack-v1');p.add_argument('--short-bytes',type=int,default=1048576);p.add_argument('--name',default='first-pass');p.add_argument('--reps',type=int,default=5);p.add_argument('--variants',nargs='+',default=DEFAULT_VARIANTS);p.add_argument('--benchmarks',nargs='+');p.add_argument('--tables',default=str(ROOT/'results/tables'));p.add_argument('--procs',type=int,default=8 if sys.platform=='darwin' else 16);p.add_argument('--timeout',type=int,default=7200);p.add_argument('--resume',action='store_true');p.add_argument('--allow-cold-upgrade',action='store_true',help='Adopt completed cold-only records across a runner/sidecar coverage change; preserve old code fingerprints');p.add_argument('--max-model-decisions',type=int,default=1500);a=p.parse_args()
     if a.max_model_decisions<0:p.error('max-model-decisions must be nonnegative')
     signal.signal(signal.SIGTERM,lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
     signal.signal(signal.SIGINT,lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))

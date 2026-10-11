@@ -1,0 +1,1736 @@
+[
+  {
+    "prompt": "stack-v1",
+    "benchmark": "site-pure-1",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "site-pure-1",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 5,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "site-pure-1",
+    "variant": "jev-live:model",
+    "first_sight_sites": 5,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "site-pure-16",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "site-pure-16",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 5,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "site-pure-16",
+    "variant": "jev-live:model",
+    "first_sight_sites": 5,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "site-pure-1",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "site-pure-1",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 5,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "site-pure-1",
+    "variant": "jev-live:model",
+    "first_sight_sites": 5,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "site-pure-16",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "site-pure-16",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 5,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "site-pure-16",
+    "variant": "jev-live:model",
+    "first_sight_sites": 5,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "site-mixed-1",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "site-mixed-1",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 4,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "site-mixed-1",
+    "variant": "jev-live:model",
+    "first_sight_sites": 4,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "site-mixed-16",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "site-mixed-16",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 4,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "site-mixed-16",
+    "variant": "jev-live:model",
+    "first_sight_sites": 4,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "redis-mesh",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "redis-mesh",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 12,
+    "missing_truth": [],
+    "confusion": [
+      [
+        9,
+        1
+      ],
+      [
+        0,
+        2
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "redis-mesh",
+    "variant": "jev-live:model",
+    "first_sight_sites": 12,
+    "missing_truth": [],
+    "confusion": [
+      [
+        9,
+        1
+      ],
+      [
+        0,
+        2
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "redis-drop",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "redis-drop",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 13,
+    "missing_truth": [],
+    "confusion": [
+      [
+        6,
+        1
+      ],
+      [
+        4,
+        2
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "redis-drop",
+    "variant": "jev-live:model",
+    "first_sight_sites": 13,
+    "missing_truth": [],
+    "confusion": [
+      [
+        6,
+        1
+      ],
+      [
+        4,
+        2
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "site-mixed-1",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "site-mixed-1",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 4,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "site-mixed-1",
+    "variant": "jev-live:model",
+    "first_sight_sites": 4,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "site-mixed-16",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "site-mixed-16",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 4,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "site-mixed-16",
+    "variant": "jev-live:model",
+    "first_sight_sites": 4,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "redis-mesh",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "redis-mesh",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 12,
+    "missing_truth": [],
+    "confusion": [
+      [
+        8,
+        2
+      ],
+      [
+        0,
+        2
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "redis-mesh",
+    "variant": "jev-live:model",
+    "first_sight_sites": 11,
+    "missing_truth": [],
+    "confusion": [
+      [
+        7,
+        2
+      ],
+      [
+        0,
+        2
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "redis-drop",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "redis-drop",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 13,
+    "missing_truth": [],
+    "confusion": [
+      [
+        5,
+        1
+      ],
+      [
+        4,
+        3
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1-nodesc",
+    "benchmark": "redis-drop",
+    "variant": "jev-live:model",
+    "first_sight_sites": 13,
+    "missing_truth": [],
+    "confusion": [
+      [
+        5,
+        1
+      ],
+      [
+        4,
+        3
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cfrac",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cfrac",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 66,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        64
+      ],
+      [
+        0,
+        2
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cfrac",
+    "variant": "jev-live:model",
+    "first_sight_sites": 66,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        64
+      ],
+      [
+        0,
+        2
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "espresso",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "espresso",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 500,
+    "missing_truth": [],
+    "confusion": [
+      [
+        125,
+        374
+      ],
+      [
+        1,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "espresso",
+    "variant": "jev-live:model",
+    "first_sight_sites": 500,
+    "missing_truth": [],
+    "confusion": [
+      [
+        125,
+        374
+      ],
+      [
+        1,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "barnes",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "barnes",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "barnes",
+    "variant": "jev-live:model",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "larson",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "larson",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 4,
+    "missing_truth": [],
+    "confusion": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "larson",
+    "variant": "jev-live:model",
+    "first_sight_sites": 3,
+    "missing_truth": [],
+    "confusion": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "larson-sized",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "larson-sized",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 4,
+    "missing_truth": [],
+    "confusion": [
+      [
+        3,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "larson-sized",
+    "variant": "jev-live:model",
+    "first_sight_sites": 3,
+    "missing_truth": [],
+    "confusion": [
+      [
+        3,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "xmalloc-test",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "xmalloc-test",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 2,
+    "missing_truth": [],
+    "confusion": [
+      [
+        2,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "xmalloc-test",
+    "variant": "jev-live:model",
+    "first_sight_sites": 2,
+    "missing_truth": [],
+    "confusion": [
+      [
+        2,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cache-scratch1",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cache-scratch1",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cache-scratch1",
+    "variant": "jev-live:model",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cache-scratchN",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cache-scratchN",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cache-scratchN",
+    "variant": "jev-live:model",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cache-thrash1",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cache-thrash1",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cache-thrash1",
+    "variant": "jev-live:model",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cache-thrashN",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cache-thrashN",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "cache-thrashN",
+    "variant": "jev-live:model",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "mstress",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "mstress",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 20,
+    "missing_truth": [],
+    "confusion": [
+      [
+        19,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "mstress",
+    "variant": "jev-live:model",
+    "first_sight_sites": 20,
+    "missing_truth": [],
+    "confusion": [
+      [
+        19,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "rptest",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "rptest",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 7,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "rptest",
+    "variant": "jev-live:model",
+    "first_sight_sites": 7,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "glibc-simple",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "glibc-simple",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 31,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        31
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "glibc-simple",
+    "variant": "jev-live:model",
+    "first_sight_sites": 31,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        31
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "glibc-thread",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "glibc-thread",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 1,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "glibc-thread",
+    "variant": "jev-live:model",
+    "first_sight_sites": 1,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "alloc-test1",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "alloc-test1",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 2,
+    "missing_truth": [],
+    "confusion": [
+      [
+        2,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "alloc-test1",
+    "variant": "jev-live:model",
+    "first_sight_sites": 2,
+    "missing_truth": [],
+    "confusion": [
+      [
+        2,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "alloc-testN",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "alloc-testN",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 3,
+    "missing_truth": [],
+    "confusion": [
+      [
+        3,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "alloc-testN",
+    "variant": "jev-live:model",
+    "first_sight_sites": 3,
+    "missing_truth": [],
+    "confusion": [
+      [
+        3,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "malloc-large",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "malloc-large",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 1,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "malloc-large",
+    "variant": "jev-live:model",
+    "first_sight_sites": 1,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "mleak10",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "mleak10",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 2,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "mleak10",
+    "variant": "jev-live:model",
+    "first_sight_sites": 2,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "mleak100",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "mleak100",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 3,
+    "missing_truth": [],
+    "confusion": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "mleak100",
+    "variant": "jev-live:model",
+    "first_sight_sites": 3,
+    "missing_truth": [],
+    "confusion": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "sh6benchN",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "sh6benchN",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 1,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "sh6benchN",
+    "variant": "jev-live:model",
+    "first_sight_sites": 1,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "sh8benchN",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "sh8benchN",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 2,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "sh8benchN",
+    "variant": "jev-live:model",
+    "first_sight_sites": 2,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "redis",
+    "variant": "jev-live:heuristic",
+    "first_sight_sites": 0,
+    "missing_truth": [],
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "redis",
+    "variant": "jev-live:static-model",
+    "first_sight_sites": 7,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        2,
+        1
+      ]
+    ]
+  },
+  {
+    "prompt": "stack-v1",
+    "benchmark": "redis",
+    "variant": "jev-live:model",
+    "first_sight_sites": 7,
+    "missing_truth": [],
+    "confusion": [
+      [
+        4,
+        0
+      ],
+      [
+        2,
+        1
+      ]
+    ]
+  }
+]

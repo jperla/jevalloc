@@ -1,1 +1,1 @@
-Alloc-test is a C++ multithreaded allocation benchmark. The new-delete allocator wraps new uint8_t[size] and delete[]. Worker tests allocate blocks into pointer slots and later deallocate or replace them. Slot arrays and thread metadata remain through many operations; individual blocks last until their scheduled deallocation.
+Alloc-test is a multithreaded C++ benchmark that exercises allocation and deallocation with configurable block sizes and pointer-slot workloads.

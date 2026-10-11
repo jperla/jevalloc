@@ -20,6 +20,6 @@ with tempfile.TemporaryDirectory(dir=ROOT/'build',prefix='permanent-') as name:
         assert rows[1]['request']['site']['older_freed_bytes']==0
         assert rows[2]['request']['site']['older_freed_bytes']>0
         reports.append(dict(sample_rate=sample,events=rows))
-    out=ROOT/'results/pass6/validation';out.mkdir(parents=True,exist_ok=True)
+    out=ROOT/'results/pass7/validation';out.mkdir(parents=True,exist_ok=True)
     (out/'permanent-heuristic.json').write_text(json.dumps(reports,indent=2))
 print('PERMANENT HEURISTIC INTEGRATION PASSED')

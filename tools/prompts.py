@@ -9,13 +9,40 @@ CRITERIA = {
  'transient': 'Released at some point while the program keeps running: a temporary, or something held for a while (a request, a session, a work item) and then freed.',
  'permanent': 'Permanent: kept for the rest of the program - a cache or index entry, a global table, configuration, or anything that is never freed.'}
 def canonical(obj): return json.dumps(obj,sort_keys=True,separators=(',',':'))
-def criteria(name): return CRITERIA
+STACK_QUESTION = 'The marked lines lead to a heap allocation. Will this object be freed while the program is still running?'
+STACK_CRITERIA = {
+ 'transient': 'Yes: it is freed at some point - right away, when the request finishes, or when a session or connection ends.',
+ 'permanent': 'No: it stays until the program exits - an entry added to a cache, index or global table that is never removed.'}
+PROMPTS = ['stack-v1', 'stack-v1-nodesc', 'v2', 'v2-no-description', 'v2-runtime-only']
+def criteria(name): return STACK_CRITERIA if name.startswith('stack-v1') else CRITERIA
+def question(name): return STACK_QUESTION if name.startswith('stack-v1') else QUESTION
 
-def state(request,static=False,prompt='v2'):
+def stack_state(request, static, prompt):
+    frames=[dict(f,address=f.get('address',f.get('addr','0x0'))) for f in request.get('frames',[])[:12]]
+    symbolize([{'frames':[f for f in frames if 'function' not in f]}])
+    program=request.get('program','unknown')
+    lines=['Program: '+program]
+    description=Path(__file__).resolve().parents[1]/'descriptions'/(Path(program).name+'.txt')
+    if prompt=='stack-v1' and description.exists():lines.append('About the program: '+description.read_text().strip())
+    lines.append('Call stack of the allocation to classify (innermost first):')
+    for f in frames:
+        function=str(f.get('function','?')).split('\n')[0][:160]
+        lines.append(f"  {function}  ({f.get('file') or '?'}:{f.get('line') or '?'})")
+    if not static and request.get('prior') is not None:
+        site=request.get('site',{})
+        age=site.get('oldest_age_bytes',0)
+        volume=f'{age:,} bytes'
+        lines.append(f"Observed so far at this site: {site.get('allocs',0):,} objects allocated. Freed quickly (before the program allocated another 1 MiB): about {site.get('short_share',0)}%. Freed later: about {site.get('long_freed_share',0)}%. Not freed so far: about {site.get('alive_share',0)}%. The oldest objects from this site have existed while the program allocated another {volume}.")
+        if site.get('alive_share')==100:
+            lines.append('Nothing from this site has been freed yet, which is also what a long-lived but eventually freed object looks like early on.')
+    return '\n'.join(lines)
+
+def state(request,static=False,prompt='stack-v1'):
+    if prompt.startswith('stack-v1'):return stack_state(request,static,prompt)
     frames=[dict(f,address=f.get('address',f.get('addr','0x0'))) for f in request.get('frames',[])]
     symbolize([{'frames':[f for f in frames if 'function' not in f]}])
     program=request.get('program','unknown')
-    description=Path(__file__).resolve().parents[1]/'descriptions'/(Path(program).name+'.txt')
+    description=Path(__file__).resolve().parents[1]/'descriptions-leaky'/(Path(program).name+'.txt')
     lines=['Program: '+program]
     if prompt!='v2-no-description' and description.exists(): lines.append('Program description (hand-written): '+description.read_text().strip())
     lines.append('Stack (innermost first):')

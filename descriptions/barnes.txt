@@ -1,1 +1,1 @@
-Barnes simulates gravitational N-body interactions using a spatial tree. Initialization allocates body arrays, per-worker cell and leaf tables, pointer tables and global synchronization state with malloc. These tables are reused through simulation steps and retained for most of the run; numerical work operates mainly in those existing arrays.
+Barnes simulates gravitational interactions among bodies using a hierarchical spatial tree and parallel numerical computation.

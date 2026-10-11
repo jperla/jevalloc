@@ -30,6 +30,7 @@ def main():
     env,extra=environment('jev','',out/'tables');env.update(extra)
     # environment('jev') does not set run flags but loads jevalloc.
     subprocess.run([sys.executable,str(ROOT/'tests/test_tools.py')],check=True)
+    subprocess.run([sys.executable,str(ROOT/'tests/test_stack.py')],check=True)
     subprocess.run([sys.executable,str(ROOT/'tests/test_pass4.py')],check=True)
     for policy in ('none','keyonly','segregate'):
         e=dict(env,JEVALLOC_POLICY=policy);subprocess.run([str(ROOT/'build/stress')],env=e,check=True)

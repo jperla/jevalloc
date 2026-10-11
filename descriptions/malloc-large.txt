@@ -1,1 +1,1 @@
-Malloc-large repeatedly replaces one of twenty std::unique_ptr<char[]> buffers, choosing 5–25 MiB sizes and buffer slots with a seeded generator. std::make_unique allocates and initializes the new array; assigning it releases the previous array in that slot. Other slots retain their arrays across many replacements, and remaining arrays are freed at function exit.
+Malloc-large benchmarks large C++ array allocations with seeded random buffer sizes and slot selection.

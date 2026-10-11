@@ -1,1 +1,1 @@
-Rptest is a configurable multithreaded allocator benchmark. benchmark_malloc and benchmark_free wrap allocation with requested alignment. Workers hold pointer tables while repeatedly allocating, touching and releasing blocks, including cross-thread transfers. Worker setup arrays persist through the run; block retention depends on the loop and transfer data.
+Rptest is a configurable multithreaded allocator benchmark with aligned blocks, memory writes, and cross-thread transfers.

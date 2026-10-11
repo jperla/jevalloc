@@ -1,1 +1,1 @@
-Xmalloc-test measures cross-thread allocation and free throughput. xmalloc and xfree wrap allocation. Producers build batches of objects and transfer them to consumers, which free each object and its batch. Worker identifiers, counters and thread arrays live for the benchmark, while batch payloads survive only until consumed.
+Xmalloc-test measures allocation throughput with producer and consumer threads that exchange batches of objects.

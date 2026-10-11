@@ -1,0 +1,1 @@
+Sh6bench is a threaded allocator stress benchmark. Its loops allocate blocks of varied sizes and free them through malloc/free; arrays track blocks awaiting replacement or release. Thread and benchmark bookkeeping persist across the loop. Caller loops and retained pointer slots determine block lifetimes.

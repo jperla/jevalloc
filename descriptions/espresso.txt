@@ -1,1 +1,1 @@
-Espresso minimizes Boolean logic covers. ALLOC, REALLOC and FREE macros wrap heap allocation; set and set-family routines store cubes and covers. Temporary covers, working sets and intermediate minimization results are freed after the operation; input/output covers and global cube metadata remain across multiple operations.
+Espresso is a Boolean logic minimizer that transforms sets of logic cubes and covers into simplified expressions.

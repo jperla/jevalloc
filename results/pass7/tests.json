@@ -1,0 +1,2131 @@
+{
+  "checks": [
+    "tools",
+    "stress none/keyonly/segregate/trace",
+    "site stability depth 1/4/16",
+    "exact lifetime boundaries"
+  ],
+  "workloads": [
+    {
+      "name": "cfrac",
+      "sites": 175,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681496.718379,
+        "finished_unix": 1791681503.9922478,
+        "host_before": {
+          "load_average": [
+            0.3759765625,
+            0.14453125,
+            0.15576171875
+          ],
+          "MemAvailable_bytes": 13622112256,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "cfrac",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+          "17545186520507317056371138836327483792789528"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/cfrac.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 7.25183455,
+        "stdout": "results/logs/tests/cfrac-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/cfrac-jev-trace-0.stderr",
+        "user_seconds": 7.245368,
+        "sys_seconds": 0.003999,
+        "peak_rss_bytes": 15126528,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 7.249367,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 7.25183455,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681504.004164,
+        "finished_unix": 1791681509.0253098,
+        "host_before": {
+          "load_average": [
+            0.42626953125,
+            0.1591796875,
+            0.16064453125
+          ],
+          "MemAvailable_bytes": 13705707520,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "cfrac",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+          "17545186520507317056371138836327483792789528"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/cfrac/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 4.974209931,
+        "stdout": "results/logs/tests/cfrac-jev-random-0.stdout",
+        "stderr": "results/logs/tests/cfrac-jev-random-0.stderr",
+        "user_seconds": 4.972265,
+        "sys_seconds": 0.001,
+        "peak_rss_bytes": 4501504,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 4.9732650000000005,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 4.974209931,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "espresso",
+      "sites": 1045,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681509.0269573,
+        "finished_unix": 1791681513.7472866,
+        "host_before": {
+          "load_average": [
+            0.47265625,
+            0.17333984375,
+            0.16552734375
+          ],
+          "MemAvailable_bytes": 13742346240,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "espresso",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/espresso",
+          "/home/quill/jevalloc/src-tree/third_party/mimalloc-bench/bench/espresso/largest.espresso"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/espresso.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 4.709068133,
+        "stdout": "results/logs/tests/espresso-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/espresso-jev-trace-0.stderr",
+        "user_seconds": 4.67043,
+        "sys_seconds": 0.034988,
+        "peak_rss_bytes": 19226624,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 4.705418,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 4.709068133,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681513.7914677,
+        "finished_unix": 1791681517.4607053,
+        "host_before": {
+          "load_average": [
+            0.59521484375,
+            0.2041015625,
+            0.17578125
+          ],
+          "MemAvailable_bytes": 13734907904,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "espresso",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/espresso",
+          "/home/quill/jevalloc/src-tree/third_party/mimalloc-bench/bench/espresso/largest.espresso"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/espresso/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 3.657619335,
+        "stdout": "results/logs/tests/espresso-jev-random-0.stdout",
+        "stderr": "results/logs/tests/espresso-jev-random-0.stderr",
+        "user_seconds": 3.61913,
+        "sys_seconds": 0.037663,
+        "peak_rss_bytes": 14917632,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 3.6567930000000004,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 3.657619335,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "barnes",
+      "sites": 20,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681517.4626484,
+        "finished_unix": 1791681519.529815,
+        "host_before": {
+          "load_average": [
+            0.6279296875,
+            0.2177734375,
+            0.1806640625
+          ],
+          "MemAvailable_bytes": 13739462656,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "barnes",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/barnes"
+        ],
+        "stdin": "/home/quill/jevalloc/src-tree/third_party/mimalloc-bench/bench/barnes/input",
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/barnes.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.055080098,
+        "stdout": "results/logs/tests/barnes-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/barnes-jev-trace-0.stderr",
+        "user_seconds": 2.040213,
+        "sys_seconds": 0.013994,
+        "peak_rss_bytes": 79032320,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.054207,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.055080098,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681519.5368822,
+        "finished_unix": 1791681521.6040838,
+        "host_before": {
+          "load_average": [
+            0.818359375,
+            0.26416015625,
+            0.1962890625
+          ],
+          "MemAvailable_bytes": 13742645248,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "barnes",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/barnes"
+        ],
+        "stdin": "/home/quill/jevalloc/src-tree/third_party/mimalloc-bench/bench/barnes/input",
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/barnes/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.050727151,
+        "stdout": "results/logs/tests/barnes-jev-random-0.stdout",
+        "stderr": "results/logs/tests/barnes-jev-random-0.stderr",
+        "user_seconds": 2.035163,
+        "sys_seconds": 0.015001,
+        "peak_rss_bytes": 66564096,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.0501639999999997,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.050727151,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "larson",
+      "sites": 9,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681521.6063805,
+        "finished_unix": 1791681528.7345042,
+        "host_before": {
+          "load_average": [
+            0.818359375,
+            0.26416015625,
+            0.1962890625
+          ],
+          "MemAvailable_bytes": 13736980480,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "larson",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/larson",
+          "5",
+          "8",
+          "1000",
+          "5000",
+          "100",
+          "4141",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/larson.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 7.108081136,
+        "stdout": "results/logs/tests/larson-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/larson-jev-trace-0.stderr",
+        "user_seconds": 7.187474,
+        "sys_seconds": 55.279746,
+        "peak_rss_bytes": 205185024,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 62.467220000000005,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 454.432,
+        "score_metric": "relative_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681528.737382,
+        "finished_unix": 1791681535.8212175,
+        "host_before": {
+          "load_average": [
+            1.7939453125,
+            0.47607421875,
+            0.26513671875
+          ],
+          "MemAvailable_bytes": 13752045568,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "larson",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/larson",
+          "5",
+          "8",
+          "1000",
+          "5000",
+          "100",
+          "4141",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/larson/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 7.076334758,
+        "stdout": "results/logs/tests/larson-jev-random-0.stdout",
+        "stderr": "results/logs/tests/larson-jev-random-0.stderr",
+        "user_seconds": 79.057872,
+        "sys_seconds": 0.465363,
+        "peak_rss_bytes": 228290560,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 79.523235,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 4.878,
+        "score_metric": "relative_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "larson-sized",
+      "sites": 9,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681535.822603,
+        "finished_unix": 1791681542.9493086,
+        "host_before": {
+          "load_average": [
+            2.77685546875,
+            0.73876953125,
+            0.35400390625
+          ],
+          "MemAvailable_bytes": 13741252608,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "larson-sized",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/larson-sized",
+          "5",
+          "8",
+          "1000",
+          "5000",
+          "100",
+          "4141",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/larson-sized.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 7.12064483,
+        "stdout": "results/logs/tests/larson-sized-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/larson-sized-jev-trace-0.stderr",
+        "user_seconds": 7.20847,
+        "sys_seconds": 55.979173,
+        "peak_rss_bytes": 200908800,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 63.187643,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 444.732,
+        "score_metric": "relative_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681542.9515681,
+        "finished_unix": 1791681550.0372977,
+        "host_before": {
+          "load_average": [
+            3.435546875,
+            0.9091796875,
+            0.41162109375
+          ],
+          "MemAvailable_bytes": 13752197120,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "larson-sized",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/larson-sized",
+          "5",
+          "8",
+          "1000",
+          "5000",
+          "100",
+          "4141",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/larson-sized/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 7.059789372,
+        "stdout": "results/logs/tests/larson-sized-jev-random-0.stdout",
+        "stderr": "results/logs/tests/larson-sized-jev-random-0.stderr",
+        "user_seconds": 78.837903,
+        "sys_seconds": 0.41841,
+        "peak_rss_bytes": 199053312,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 79.25631299999999,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 4.99,
+        "score_metric": "relative_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "xmalloc-test",
+      "sites": 8,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681550.0392542,
+        "finished_unix": 1791681555.1698527,
+        "host_before": {
+          "load_average": [
+            4.0859375,
+            1.140625,
+            0.49267578125
+          ],
+          "MemAvailable_bytes": 13730238464,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "xmalloc-test",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/xmalloc-test",
+          "-w",
+          "16",
+          "-t",
+          "5",
+          "-s",
+          "64"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/xmalloc-test.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 5.090109855,
+        "stdout": "results/logs/tests/xmalloc-test-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/xmalloc-test-jev-trace-0.stderr",
+        "user_seconds": 8.474381,
+        "sys_seconds": 66.399625,
+        "peak_rss_bytes": 103731200,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 74.874006,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 55.018,
+        "score_metric": "relative_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681555.1720755,
+        "finished_unix": 1791681560.2276156,
+        "host_before": {
+          "load_average": [
+            6.2412109375,
+            1.63671875,
+            0.65673828125
+          ],
+          "MemAvailable_bytes": 13740560384,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "xmalloc-test",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/xmalloc-test",
+          "-w",
+          "16",
+          "-t",
+          "5",
+          "-s",
+          "64"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/xmalloc-test/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 5.005898206,
+        "stdout": "results/logs/tests/xmalloc-test-jev-random-0.stdout",
+        "stderr": "results/logs/tests/xmalloc-test-jev-random-0.stderr",
+        "user_seconds": 60.932799,
+        "sys_seconds": 1.696296,
+        "peak_rss_bytes": 107585536,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 62.629095,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.394,
+        "score_metric": "relative_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "cache-scratch1",
+      "sites": 5,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681560.2299209,
+        "finished_unix": 1791681563.0476298,
+        "host_before": {
+          "load_average": [
+            6.94287109375,
+            1.85888671875,
+            0.73388671875
+          ],
+          "MemAvailable_bytes": 13737558016,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "cache-scratch1",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/cache-scratch",
+          "1",
+          "1000",
+          "1",
+          "2000000",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/cache-scratch1.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.784068106,
+        "stdout": "results/logs/tests/cache-scratch1-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/cache-scratch1-jev-trace-0.stderr",
+        "user_seconds": 2.778449,
+        "sys_seconds": 0.004999,
+        "peak_rss_bytes": 14680064,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.7834480000000004,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.784068106,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681563.0499306,
+        "finished_unix": 1791681565.8177352,
+        "host_before": {
+          "load_average": [
+            6.94287109375,
+            1.85888671875,
+            0.73388671875
+          ],
+          "MemAvailable_bytes": 13738995712,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "cache-scratch1",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/cache-scratch",
+          "1",
+          "1000",
+          "1",
+          "2000000",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/cache-scratch1/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.720712786,
+        "stdout": "results/logs/tests/cache-scratch1-jev-random-0.stdout",
+        "stderr": "results/logs/tests/cache-scratch1-jev-random-0.stderr",
+        "user_seconds": 2.715267,
+        "sys_seconds": 0.003998,
+        "peak_rss_bytes": 6524928,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.719265,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.720712786,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "cache-scratchN",
+      "sites": 5,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681565.8199277,
+        "finished_unix": 1791681565.9858174,
+        "host_before": {
+          "load_average": [
+            6.466796875,
+            1.84423828125,
+            0.7353515625
+          ],
+          "MemAvailable_bytes": 13734604800,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "cache-scratchN",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/cache-scratch",
+          "16",
+          "1000",
+          "1",
+          "2000000",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/cache-scratchN.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.151949516,
+        "stdout": "results/logs/tests/cache-scratchN-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/cache-scratchN-jev-trace-0.stderr",
+        "user_seconds": 2.31071,
+        "sys_seconds": 0.005012,
+        "peak_rss_bytes": 14680064,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.3157219999999996,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.151949516,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681565.9879243,
+        "finished_unix": 1791681566.1528153,
+        "host_before": {
+          "load_average": [
+            6.466796875,
+            1.84423828125,
+            0.7353515625
+          ],
+          "MemAvailable_bytes": 13737771008,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "cache-scratchN",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/cache-scratch",
+          "16",
+          "1000",
+          "1",
+          "2000000",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/cache-scratchN/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.150007729,
+        "stdout": "results/logs/tests/cache-scratchN-jev-random-0.stdout",
+        "stderr": "results/logs/tests/cache-scratchN-jev-random-0.stderr",
+        "user_seconds": 2.316045,
+        "sys_seconds": 0.002996,
+        "peak_rss_bytes": 6393856,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.319041,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.150007729,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "cache-thrash1",
+      "sites": 3,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681566.1552832,
+        "finished_unix": 1791681569.1735914,
+        "host_before": {
+          "load_average": [
+            6.466796875,
+            1.84423828125,
+            0.7353515625
+          ],
+          "MemAvailable_bytes": 13741490176,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "cache-thrash1",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/cache-thrash",
+          "1",
+          "1000",
+          "1",
+          "2000000",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/cache-thrash1.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.972761526,
+        "stdout": "results/logs/tests/cache-thrash1-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/cache-thrash1-jev-trace-0.stderr",
+        "user_seconds": 2.941067,
+        "sys_seconds": 0.004,
+        "peak_rss_bytes": 14684160,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.945067,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.972761526,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681569.1757052,
+        "finished_unix": 1791681571.993816,
+        "host_before": {
+          "load_average": [
+            6.466796875,
+            1.84423828125,
+            0.7353515625
+          ],
+          "MemAvailable_bytes": 13733699584,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "cache-thrash1",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/cache-thrash",
+          "1",
+          "1000",
+          "1",
+          "2000000",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/cache-thrash1/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.793419782,
+        "stdout": "results/logs/tests/cache-thrash1-jev-random-0.stdout",
+        "stderr": "results/logs/tests/cache-thrash1-jev-random-0.stderr",
+        "user_seconds": 2.789387,
+        "sys_seconds": 0.002999,
+        "peak_rss_bytes": 6524928,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.792386,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.793419782,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "cache-thrashN",
+      "sites": 3,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681571.9966617,
+        "finished_unix": 1791681572.162554,
+        "host_before": {
+          "load_average": [
+            6.02880859375,
+            1.830078125,
+            0.73681640625
+          ],
+          "MemAvailable_bytes": 13734772736,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "cache-thrashN",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/cache-thrash",
+          "16",
+          "1000",
+          "1",
+          "2000000",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/cache-thrashN.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.156939279,
+        "stdout": "results/logs/tests/cache-thrashN-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/cache-thrashN-jev-trace-0.stderr",
+        "user_seconds": 2.399207,
+        "sys_seconds": 0.007,
+        "peak_rss_bytes": 14684160,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.406207,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.156939279,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681572.164696,
+        "finished_unix": 1791681572.3297544,
+        "host_before": {
+          "load_average": [
+            6.02880859375,
+            1.830078125,
+            0.73681640625
+          ],
+          "MemAvailable_bytes": 13738651648,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "cache-thrashN",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/cache-thrash",
+          "16",
+          "1000",
+          "1",
+          "2000000",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/cache-thrashN/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.154667548,
+        "stdout": "results/logs/tests/cache-thrashN-jev-random-0.stdout",
+        "stderr": "results/logs/tests/cache-thrashN-jev-random-0.stderr",
+        "user_seconds": 2.397821,
+        "sys_seconds": 0.003986,
+        "peak_rss_bytes": 6524928,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.401807,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.154667548,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "mstress",
+      "sites": 22,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681572.3318062,
+        "finished_unix": 1791681582.7706532,
+        "host_before": {
+          "load_average": [
+            6.02880859375,
+            1.830078125,
+            0.73681640625
+          ],
+          "MemAvailable_bytes": 13733711872,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "mstress",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/mstress",
+          "16",
+          "50",
+          "25"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/mstress.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 10.420110815,
+        "stdout": "results/logs/tests/mstress-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/mstress-jev-trace-0.stderr",
+        "user_seconds": 19.873182,
+        "sys_seconds": 65.394467,
+        "peak_rss_bytes": 383242240,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 85.267649,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 10.420110815,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681582.7730527,
+        "finished_unix": 1791681584.0450168,
+        "host_before": {
+          "load_average": [
+            5.89013671875,
+            1.935546875,
+            0.78271484375
+          ],
+          "MemAvailable_bytes": 13275774976,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "mstress",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/mstress",
+          "16",
+          "50",
+          "25"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/mstress/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 1.233199383,
+        "stdout": "results/logs/tests/mstress-jev-random-0.stdout",
+        "stderr": "results/logs/tests/mstress-jev-random-0.stderr",
+        "user_seconds": 11.78171,
+        "sys_seconds": 0.86614,
+        "peak_rss_bytes": 882171904,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 12.64785,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 1.233199383,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "rptest",
+      "sites": 22,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681584.0476341,
+        "finished_unix": 1791681600.137604,
+        "host_before": {
+          "load_average": [
+            5.89013671875,
+            1.935546875,
+            0.78271484375
+          ],
+          "MemAvailable_bytes": 13363036160,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "rptest",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/rptest",
+          "16",
+          "0",
+          "1",
+          "2",
+          "500",
+          "1000",
+          "100",
+          "8",
+          "16000"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/rptest.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 16.049113771,
+        "stdout": "results/logs/tests/rptest-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/rptest-jev-trace-0.stderr",
+        "user_seconds": 4.836421,
+        "sys_seconds": 17.583595,
+        "peak_rss_bytes": 141426688,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 22.420015999999997,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 8.670394936489357,
+        "score_metric": "relative_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681600.140578,
+        "finished_unix": 1791681616.1869788,
+        "host_before": {
+          "load_average": [
+            4.27978515625,
+            1.82470703125,
+            0.77099609375
+          ],
+          "MemAvailable_bytes": 13668478976,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "rptest",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/rptest",
+          "16",
+          "0",
+          "1",
+          "2",
+          "500",
+          "1000",
+          "100",
+          "8",
+          "16000"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/rptest/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 16.017556856,
+        "stdout": "results/logs/tests/rptest-jev-random-0.stdout",
+        "stderr": "results/logs/tests/rptest-jev-random-0.stderr",
+        "user_seconds": 7.845239,
+        "sys_seconds": 0.385026,
+        "peak_rss_bytes": 141602816,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 8.230265000000001,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.198381990854731,
+        "score_metric": "relative_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "glibc-simple",
+      "sites": 35,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681616.1897776,
+        "finished_unix": 1791681621.0602791,
+        "host_before": {
+          "load_average": [
+            4.51025390625,
+            1.99609375,
+            0.84375
+          ],
+          "MemAvailable_bytes": 13720576000,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "glibc-simple",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/glibc-simple"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/glibc-simple.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 4.866269156,
+        "stdout": "results/logs/tests/glibc-simple-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/glibc-simple-jev-trace-0.stderr",
+        "user_seconds": 4.858031,
+        "sys_seconds": 0.006998,
+        "peak_rss_bytes": 14602240,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 4.865029000000001,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 4.866269156,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681621.062854,
+        "finished_unix": 1791681623.5301197,
+        "host_before": {
+          "load_average": [
+            4.22900390625,
+            1.9794921875,
+            0.8447265625
+          ],
+          "MemAvailable_bytes": 13729837056,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "glibc-simple",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/glibc-simple"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/glibc-simple/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.460282548,
+        "stdout": "results/logs/tests/glibc-simple-jev-random-0.stdout",
+        "stderr": "results/logs/tests/glibc-simple-jev-random-0.stderr",
+        "user_seconds": 2.458596,
+        "sys_seconds": 0.000999,
+        "peak_rss_bytes": 6213632,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.459595,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.460282548,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "glibc-thread",
+      "sites": 3,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681623.5321379,
+        "finished_unix": 1791681625.549969,
+        "host_before": {
+          "load_average": [
+            4.22900390625,
+            1.9794921875,
+            0.8447265625
+          ],
+          "MemAvailable_bytes": 13729927168,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "glibc-thread",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/glibc-thread",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/glibc-thread.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.006757139,
+        "stdout": "results/logs/tests/glibc-thread-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/glibc-thread-jev-trace-0.stderr",
+        "user_seconds": 2.57508,
+        "sys_seconds": 22.813214,
+        "peak_rss_bytes": 80228352,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 25.388294,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 181.05478898969616,
+        "score_metric": "relative_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681625.5519285,
+        "finished_unix": 1791681627.5736701,
+        "host_before": {
+          "load_average": [
+            5.091796875,
+            2.19580078125,
+            0.9208984375
+          ],
+          "MemAvailable_bytes": 13744766976,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "glibc-thread",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/glibc-thread",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/glibc-thread/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.006263478,
+        "stdout": "results/logs/tests/glibc-thread-jev-random-0.stdout",
+        "stderr": "results/logs/tests/glibc-thread-jev-random-0.stderr",
+        "user_seconds": 31.528691,
+        "sys_seconds": 0.126845,
+        "peak_rss_bytes": 71782400,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 31.655535999999998,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 1.9754891148564404,
+        "score_metric": "relative_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "alloc-test1",
+      "sites": 11,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681627.5764189,
+        "finished_unix": 1791681632.5478613,
+        "host_before": {
+          "load_average": [
+            5.091796875,
+            2.19580078125,
+            0.9208984375
+          ],
+          "MemAvailable_bytes": 13750505472,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "alloc-test1",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/alloc-test",
+          "1"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/alloc-test1.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 4.947154094,
+        "stdout": "results/logs/tests/alloc-test1-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/alloc-test1-jev-trace-0.stderr",
+        "user_seconds": 4.914677,
+        "sys_seconds": 0.030997,
+        "peak_rss_bytes": 30560256,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 4.945674,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 4.947154094,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681632.5502512,
+        "finished_unix": 1791681635.418305,
+        "host_before": {
+          "load_average": [
+            4.763671875,
+            2.17578125,
+            0.92138671875
+          ],
+          "MemAvailable_bytes": 13742202880,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "alloc-test1",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/alloc-test",
+          "1"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/alloc-test1/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.854531362,
+        "stdout": "results/logs/tests/alloc-test1-jev-random-0.stdout",
+        "stderr": "results/logs/tests/alloc-test1-jev-random-0.stderr",
+        "user_seconds": 2.841374,
+        "sys_seconds": 0.010997,
+        "peak_rss_bytes": 15699968,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.852371,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.854531362,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "alloc-testN",
+      "sites": 11,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681635.4218996,
+        "finished_unix": 1791681891.8837392,
+        "host_before": {
+          "load_average": [
+            4.4619140625,
+            2.15625,
+            0.921875
+          ],
+          "MemAvailable_bytes": 13737725952,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "alloc-testN",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/alloc-test",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/alloc-testN.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 256.41669045,
+        "stdout": "results/logs/tests/alloc-testN-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/alloc-testN-jev-trace-0.stderr",
+        "user_seconds": 316.691189,
+        "sys_seconds": 3021.163597,
+        "peak_rss_bytes": 34328576,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 3337.8547860000003,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 256.41669045,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681891.8857973,
+        "finished_unix": 1791681896.106831,
+        "host_before": {
+          "load_average": [
+            11.7802734375,
+            8.04931640625,
+            3.71826171875
+          ],
+          "MemAvailable_bytes": 13960273920,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "alloc-testN",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/alloc-test",
+          "16"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/alloc-testN/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 4.213591945,
+        "stdout": "results/logs/tests/alloc-testN-jev-random-0.stdout",
+        "stderr": "results/logs/tests/alloc-testN-jev-random-0.stderr",
+        "user_seconds": 66.881498,
+        "sys_seconds": 0.039969,
+        "peak_rss_bytes": 18976768,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 66.92146699999999,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 4.213591945,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "malloc-large",
+      "sites": 1,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681896.108717,
+        "finished_unix": 1791681896.523418,
+        "host_before": {
+          "load_average": [
+            12.11865234375,
+            8.181640625,
+            3.78466796875
+          ],
+          "MemAvailable_bytes": 13962690560,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "malloc-large",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/malloc-large"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/malloc-large.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.364969261,
+        "stdout": "results/logs/tests/malloc-large-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/malloc-large-jev-trace-0.stderr",
+        "user_seconds": 0.327422,
+        "sys_seconds": 0.036934,
+        "peak_rss_bytes": 666570752,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 0.364356,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.364969261,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681896.525341,
+        "finished_unix": 1791681896.9404721,
+        "host_before": {
+          "load_average": [
+            12.11865234375,
+            8.181640625,
+            3.78466796875
+          ],
+          "MemAvailable_bytes": 13955371008,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "malloc-large",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/malloc-large"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/malloc-large/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.373195548,
+        "stdout": "results/logs/tests/malloc-large-jev-random-0.stdout",
+        "stderr": "results/logs/tests/malloc-large-jev-random-0.stderr",
+        "user_seconds": 0.33469,
+        "sys_seconds": 0.037964,
+        "peak_rss_bytes": 681189376,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 0.372654,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.373195548,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "mleak10",
+      "sites": 4,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681896.9437814,
+        "finished_unix": 1791681897.1088653,
+        "host_before": {
+          "load_average": [
+            12.11865234375,
+            8.181640625,
+            3.78466796875
+          ],
+          "MemAvailable_bytes": 13952110592,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "mleak10",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/mleak",
+          "5"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/mleak10.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.130450603,
+        "stdout": "results/logs/tests/mleak10-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/mleak10-jev-trace-0.stderr",
+        "user_seconds": 0.044565,
+        "sys_seconds": 0.269512,
+        "peak_rss_bytes": 54755328,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 0.314077,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.130450603,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681897.1109772,
+        "finished_unix": 1791681897.2755585,
+        "host_before": {
+          "load_average": [
+            12.11865234375,
+            8.181640625,
+            3.78466796875
+          ],
+          "MemAvailable_bytes": 13967679488,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "mleak10",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/mleak",
+          "5"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/mleak10/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.125095357,
+        "stdout": "results/logs/tests/mleak10-jev-random-0.stdout",
+        "stderr": "results/logs/tests/mleak10-jev-random-0.stderr",
+        "user_seconds": 0.043913,
+        "sys_seconds": 0.249818,
+        "peak_rss_bytes": 33771520,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 0.293731,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.125095357,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "mleak100",
+      "sites": 4,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681897.278532,
+        "finished_unix": 1791681898.4951143,
+        "host_before": {
+          "load_average": [
+            12.11865234375,
+            8.181640625,
+            3.78466796875
+          ],
+          "MemAvailable_bytes": 13970800640,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "mleak100",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/mleak",
+          "50"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/mleak100.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 1.210006021,
+        "stdout": "results/logs/tests/mleak100-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/mleak100-jev-trace-0.stderr",
+        "user_seconds": 0.411555,
+        "sys_seconds": 2.531169,
+        "peak_rss_bytes": 52662272,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.9427239999999997,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 1.210006021,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681898.4966211,
+        "finished_unix": 1791681899.7130566,
+        "host_before": {
+          "load_average": [
+            12.11865234375,
+            8.181640625,
+            3.78466796875
+          ],
+          "MemAvailable_bytes": 13972946944,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "mleak100",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/mleak",
+          "50"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/mleak100/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 1.198160856,
+        "stdout": "results/logs/tests/mleak100-jev-random-0.stdout",
+        "stderr": "results/logs/tests/mleak100-jev-random-0.stderr",
+        "user_seconds": 0.390541,
+        "sys_seconds": 2.462804,
+        "peak_rss_bytes": 46362624,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 2.853345,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 1.198160856,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "sh6benchN",
+      "sites": 4,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681899.7157726,
+        "finished_unix": 1791681950.6737213,
+        "host_before": {
+          "load_average": [
+            11.30810546875,
+            8.07861328125,
+            3.77490234375
+          ],
+          "MemAvailable_bytes": 13967003648,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "sh6benchN",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/sh6bench",
+          "32"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/sh6benchN.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 50.941547307,
+        "stdout": "results/logs/tests/sh6benchN-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/sh6benchN-jev-trace-0.stderr",
+        "user_seconds": 85.085373,
+        "sys_seconds": 713.88797,
+        "peak_rss_bytes": 608485376,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 798.973343,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 50.941547307,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681950.675937,
+        "finished_unix": 1791681951.1482186,
+        "host_before": {
+          "load_average": [
+            22.517578125,
+            11.65478515625,
+            5.22021484375
+          ],
+          "MemAvailable_bytes": 13956730880,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "sh6benchN",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/sh6bench",
+          "32"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/sh6benchN/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.45136929,
+        "stdout": "results/logs/tests/sh6benchN-jev-random-0.stdout",
+        "stderr": "results/logs/tests/sh6benchN-jev-random-0.stderr",
+        "user_seconds": 6.764242,
+        "sys_seconds": 0.059904,
+        "peak_rss_bytes": 262713344,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 6.824146000000001,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.45136929,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "sh8benchN",
+      "sites": 7,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791681951.1516638,
+        "finished_unix": 1791682192.2180514,
+        "host_before": {
+          "load_average": [
+            22.517578125,
+            11.65478515625,
+            5.22021484375
+          ],
+          "MemAvailable_bytes": 13954850816,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "sh8benchN",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/sh8bench",
+          "32"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/sh8benchN.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 241.016608322,
+        "stdout": "results/logs/tests/sh8benchN-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/sh8benchN-jev-trace-0.stderr",
+        "user_seconds": 373.69408,
+        "sys_seconds": 3165.296809,
+        "peak_rss_bytes": 296845312,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 3538.9908889999997,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 241.016608322,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791682192.22094,
+        "finished_unix": 1791682193.298038,
+        "host_before": {
+          "load_average": [
+            26.00732421875,
+            20.33056640625,
+            10.31787109375
+          ],
+          "MemAvailable_bytes": 13932306432,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "sh8benchN",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/sh8bench",
+          "32"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/sh8benchN/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 1.058144455,
+        "stdout": "results/logs/tests/sh8benchN-jev-random-0.stdout",
+        "stderr": "results/logs/tests/sh8benchN-jev-random-0.stderr",
+        "user_seconds": 16.2922,
+        "sys_seconds": 0.066947,
+        "peak_rss_bytes": 221102080,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 16.359147,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 1.058144455,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    },
+    {
+      "name": "redis",
+      "sites": 627,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791682193.3009882,
+        "finished_unix": 1791682197.6381836,
+        "host_before": {
+          "load_average": [
+            26.00732421875,
+            20.33056640625,
+            10.31787109375
+          ],
+          "MemAvailable_bytes": 13944295424,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "redis",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/redis-server",
+          "--port",
+          "0",
+          "--unixsocket",
+          "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+          "--save",
+          "",
+          "--appendonly",
+          "no"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/traces/redis.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 4.33312309,
+        "stdout": "results/logs/tests/redis-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/redis-jev-trace-0.stderr",
+        "user_seconds": 0.186655,
+        "sys_seconds": 0.026806,
+        "peak_rss_bytes": 24682496,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 0.21346099999999998,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 3.8399999508480005,
+        "score_metric": "relative_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791682197.6553323,
+        "finished_unix": 1791682201.8832312,
+        "host_before": {
+          "load_average": [
+            23.92431640625,
+            19.99267578125,
+            10.26220703125
+          ],
+          "MemAvailable_bytes": 13940989952,
+          "SwapFree_bytes": 7085748224,
+          "SwapTotal_bytes": 8589930496
+        },
+        "benchmark": "redis",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/home/quill/jevalloc/src-tree/build/bench/redis-server",
+          "--port",
+          "0",
+          "--unixsocket",
+          "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+          "--save",
+          "",
+          "--appendonly",
+          "no"
+        ],
+        "stdin": null,
+        "environment": {
+          "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/redis/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 4.224781893,
+        "stdout": "results/logs/tests/redis-jev-random-0.stdout",
+        "stderr": "results/logs/tests/redis-jev-random-0.stderr",
+        "user_seconds": 0.113038,
+        "sys_seconds": 0.018619,
+        "peak_rss_bytes": 16588800,
+        "peak_footprint_bytes": null,
+        "cpu_seconds": 0.131657,
+        "time_exit_status": 0,
+        "footprint_final_read": false,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.479999978176,
+        "score_metric": "relative_seconds",
+        "phases": []
+      }
+    }
+  ],
+  "full_suite": true,
+  "library_sha256": "cae42e81344dd0838d08f595627fda1256a21eca6a15f2b0251ab7c5d478ca92",
+  "passed": true
+}

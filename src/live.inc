@@ -29,7 +29,7 @@ typedef struct LiveShard {
  _Alignas(128) uint64_t allocs,bytes,merged_allocs,merged_bytes;
  unsigned until_sample,sample_mask;
  _Atomic unsigned cls;
- uint64_t check_at;
+ uint64_t check_at,byte_check_at;
  LiveSite* site;
  _Atomic uint64_t sample_count,sample_bytes;
  _Alignas(128) _Atomic uint64_t refs,freed_bytes,frees,short_freed,hist[65];
@@ -103,6 +103,7 @@ static _Alignas(128) _Atomic uint64_t sampled_count;
 static uint64_t live_site_count,blocked_ns,decisions,rechecks,timeouts,failures;
 static int last_failure_errno;
 static unsigned sample_rate=64,timeout_ms=30000;
+static uint64_t min_site_bytes=65536;
 static _Alignas(128) atomic_bool circuit_open,live_closed;
 static const char* socket_path;
 static char socket_path_copy[sizeof(((struct sockaddr_un*)0)->sun_path)];
@@ -110,6 +111,7 @@ static uint64_t nanos(void) {struct timespec t;clock_gettime(CLOCK_MONOTONIC,&t)
 static uint64_t quant(uint64_t n) {return n?UINT64_C(1)<<(63-__builtin_clzll(n)):0;}
 static void live_init(void) {
  for(unsigned i=0;i<64;i++)atomic_init(&sample_mutex[i].lock,0);
+ const char* minimum=getenv("JEVALLOC_MIN_SITE_BYTES");if(minimum)min_site_bytes=strtoull(minimum,NULL,10);
  const char* s=getenv("JEVALLOC_SAMPLE");if(s){long n=strtol(s,NULL,10);if(n>0&&n<=1048576)sample_rate=(unsigned)n;}
  s=getenv("JEVALLOC_TIMEOUT_MS");if(s){long n=strtol(s,NULL,10);if(n>0&&n<=3600000)timeout_ms=(unsigned)n;}
  const char* filter=getenv("JEVALLOC_SAMPLE_FILTER");if(filter)filter_mode=*filter=='0'?0:!strcmp(filter,"spatial")?1:2;
@@ -180,11 +182,13 @@ static LiveTotals live_totals(LiveSite* site) {
 static void cohort_lock(LiveSite* s){while(atomic_flag_test_and_set_explicit(&s->cohort_lock,memory_order_acquire))sched_yield();}
 static void cohort_unlock(LiveSite* s){atomic_flag_clear_explicit(&s->cohort_lock,memory_order_release);}
 static int cohort_birth_compare(const void* a,const void* b){uint64_t x=((const CohortEntry*)a)->birth,y=((const CohortEntry*)b)->birth;return (x>y)-(x<y);}
-static void cohort_stats(LiveSite* s,uint64_t* bytes,uint64_t* freed,unsigned* count) {
+static void cohort_stats(LiveSite* s,uint64_t* bytes,uint64_t* freed,unsigned* count,uint64_t now,uint64_t* oldest) {
  CohortEntry copy[COHORT_SIZE];cohort_lock(s);
  *count=s->cohort_seen<COHORT_SIZE?(unsigned)s->cohort_seen:COHORT_SIZE;
  memcpy(copy,s->cohort,*count*sizeof(*copy));cohort_unlock(s);
  qsort(copy,*count,sizeof(*copy),cohort_birth_compare);*bytes=0;*freed=0;
+ *oldest=0;
+ for(unsigned i=0;i<*count;i++)if(!copy[i].freed && now>=copy[i].birth && now-copy[i].birth>*oldest)*oldest=now-copy[i].birth;
  if(*count<16)return;
  /* Strictly older than the count median age = strictly earlier birth. */
  uint64_t median=copy[*count/2].birth;
@@ -192,7 +196,7 @@ static void cohort_stats(LiveSite* s,uint64_t* bytes,uint64_t* freed,unsigned* c
 }
 static char* live_request(LiveSite* s,size_t size,Frame* frames,unsigned nf) {
  LiveTotals totals=live_totals(s);
- uint64_t older_bytes,older_freed;unsigned cohort_count;cohort_stats(s,&older_bytes,&older_freed,&cohort_count);
+ uint64_t older_bytes,older_freed,oldest;unsigned cohort_count;cohort_stats(s,&older_bytes,&older_freed,&cohort_count,totals.clock,&oldest);
  /* Concurrent sampled allocations/frees can straddle this approximate snapshot.
   * Bound the partition before subtraction; never emit wrapped percentages. */
  if(totals.sampled_live_bytes>totals.sampled_bytes)totals.sampled_live_bytes=totals.sampled_bytes;
@@ -213,6 +217,7 @@ static char* live_request(LiveSite* s,size_t size,Frame* frames,unsigned nf) {
  fprintf(f,"],\"sampled_bytes\":%llu,\"sampled_live_bytes\":%llu",(unsigned long long)quant(totals.sampled_bytes),(unsigned long long)quant(totals.sampled_live_bytes));
  fprintf(f,",\"short_share\":%u,\"long_freed_share\":%u,\"alive_share\":%u,\"short_bytes\":%llu",totals.sampled_bytes?(unsigned)(100* (long double)totals.short_freed/totals.sampled_bytes):0,totals.sampled_bytes?(unsigned)(100*(long double)(totals.sampled_bytes-totals.sampled_live_bytes-totals.short_freed)/totals.sampled_bytes):0,totals.sampled_bytes?(unsigned)(100*(long double)totals.sampled_live_bytes/totals.sampled_bytes):0,(unsigned long long)short_bytes);
  fprintf(f,",\"cohort_count\":%u,\"older_sampled_bytes\":%llu,\"older_freed_bytes\":%llu",cohort_count,(unsigned long long)older_bytes,(unsigned long long)older_freed);
+ fprintf(f,",\"oldest_age_bytes\":%llu,\"eligible_bytes\":%llu",(unsigned long long)oldest,(unsigned long long)GET(s->bytes));
  size_t rss=0,commit=0;mi_process_info(NULL,NULL,NULL,&rss,NULL,&commit,NULL,NULL);
  /* Upstream signed commit accounting can transiently be negative; zero means unavailable. */
  if(commit>PTRDIFF_MAX)commit=0;if(rss>PTRDIFF_MAX)rss=0;
@@ -220,7 +225,7 @@ static char* live_request(LiveSite* s,size_t size,Frame* frames,unsigned nf) {
 #ifndef __APPLE__
  FILE* status=fopen("/proc/self/status","r");if(status){char line[256];while(fgets(line,sizeof(line),status))if(sscanf(line,"Threads: %u",&threads)==1)break;fclose(status);}
 #endif
- fprintf(f," },\"process\":{\"alloc_clock\":%llu,\"live_bytes\":%llu,\"committed\":%llu,\"rss\":%llu,\"threads\":%llu,\"sites\":%llu},\"prior\":",(unsigned long long)quant(live_clock),(unsigned long long)quant(totals.estimate),(unsigned long long)quant(commit),(unsigned long long)quant(rss),(unsigned long long)quant(threads),(unsigned long long)quant(live_site_count));
+ fprintf(f," },\"process\":{\"alloc_clock\":%llu,\"live_bytes\":%llu,\"committed\":%llu,\"rss\":%llu,\"threads\":%llu,\"sites\":%llu},\"prior\":",(unsigned long long)totals.clock,(unsigned long long)quant(totals.estimate),(unsigned long long)quant(commit),(unsigned long long)quant(rss),(unsigned long long)quant(threads),(unsigned long long)quant(live_site_count));
  if(s->answers)fprintf(f,"%u",s->cls);else fputs("null",f);fputs("}\n",f);fclose(f);return text;
 }
 static void live_merge(LiveShard* shard) {
@@ -277,7 +282,8 @@ static LiveShard* live_before_slow(KeyCache* cached,size_t n,unsigned* cls) {
  uint64_t local=shard->allocs;
  uint64_t count=GET(s->allocs)+shard->allocs-shard->merged_allocs;
  uint64_t next=GET(s->next_check);
- if(!GET(circuit_open) && (!atomic_load_explicit(&s->answers,memory_order_acquire) || (next&&count>=next))){
+ bool eligible=GET(s->bytes)+shard->bytes-shard->merged_bytes>=min_site_bytes;
+ if(eligible && !GET(circuit_open) && (!atomic_load_explicit(&s->answers,memory_order_acquire) || (next&&count>=next))){
   pthread_mutex_lock(&live_mutex);
   while(s->deciding){uint64_t begin=nanos();pthread_cond_wait(&live_condition,&live_mutex);blocked_ns+=nanos()-begin;}
   next=GET(s->next_check);
@@ -300,12 +306,19 @@ static LiveShard* live_before_slow(KeyCache* cached,size_t n,unsigned* cls) {
  }
  next=GET(s->next_check);
  uint64_t remaining=next>count?next-count:64;
- shard->check_at=next?local+(remaining<64?remaining:64):UINT64_MAX;
+ if(!GET(s->answers)) {
+  uint64_t bytes=GET(s->bytes)+shard->bytes-shard->merged_bytes;
+  shard->check_at=local+64;
+  shard->byte_check_at=shard->bytes+(bytes<min_site_bytes?min_site_bytes-bytes:0);
+ } else {
+  shard->check_at=next?local+(remaining<64?remaining:64):UINT64_MAX;
+  shard->byte_check_at=UINT64_MAX;
+ }
  *cls=GET(s->cls);return shard;
 }
 static inline __attribute__((always_inline)) LiveShard* live_before(KeyCache* cached,size_t n,unsigned* cls) {
  LiveShard* shard=cached->live_site;
- if(!GET(live_closed)&&shard&&shard->allocs<shard->check_at){*cls=GET(shard->cls);return shard;}
+ if(!GET(live_closed)&&shard&&shard->allocs<shard->check_at&&shard->bytes<shard->byte_check_at){*cls=GET(shard->cls);return shard;}
  return live_before_slow(cached,n,cls);
 }
 /* Multiplicative hashing uses the high bits of the product, so aligned size
