@@ -1,0 +1,376 @@
+{
+  "alloc-test1": {
+    "sites": [
+      6,
+      5
+    ],
+    "actual_object_byte_shares": [
+      0.9146213815354101,
+      0.0853786184645899
+    ],
+    "majority_site_byte_shares": [
+      0.994345795125086,
+      0.005654204874914005
+    ],
+    "total_requested_bytes": 1382421432,
+    "oracle_mismatches": 0,
+    "trace_sha256": "038b9b203c554ddcbfbaf353fb52293b6a7e143b38c027a8c09e921661b29a79"
+  },
+  "alloc-testN": {
+    "sites": [
+      6,
+      5
+    ],
+    "actual_object_byte_shares": [
+      0.9194536916359441,
+      0.0805463083640558
+    ],
+    "majority_site_byte_shares": [
+      0.9996488732265035,
+      0.0003511267734965101
+    ],
+    "total_requested_bytes": 22011468744,
+    "oracle_mismatches": 0,
+    "trace_sha256": "136ba6116829c02889db027703e0a07c027aab7ac979887d2466d2efd2f4fb61"
+  },
+  "barnes": {
+    "sites": [
+      0,
+      20
+    ],
+    "actual_object_byte_shares": [
+      0.0,
+      1.0
+    ],
+    "majority_site_byte_shares": [
+      0.0,
+      1.0
+    ],
+    "total_requested_bytes": 512500227,
+    "oracle_mismatches": 0,
+    "trace_sha256": "ce02df9e8a8517b3b828c95b082721b9230073eddfe0149cc1efe4e1d4794bf9"
+  },
+  "cache-scratch1": {
+    "sites": [
+      4,
+      1
+    ],
+    "actual_object_byte_shares": [
+      0.11357340720221606,
+      0.8864265927977839
+    ],
+    "majority_site_byte_shares": [
+      0.11357340720221606,
+      0.8864265927977839
+    ],
+    "total_requested_bytes": 361,
+    "oracle_mismatches": 0,
+    "trace_sha256": "19a5b600b263d344b22429a4c29cbc68a1bfb7856a7c08e3c1fd97af3b6d00e0"
+  },
+  "cache-scratchN": {
+    "sites": [
+      5,
+      0
+    ],
+    "actual_object_byte_shares": [
+      0.778393351800554,
+      0.22160664819944598
+    ],
+    "majority_site_byte_shares": [
+      1.0,
+      0.0
+    ],
+    "total_requested_bytes": 5776,
+    "oracle_mismatches": 0,
+    "trace_sha256": "396b6f51208f8d6aabf0d5d9912b08636a342ad8a37ae699b388bd0bb04f284d"
+  },
+  "cache-thrash1": {
+    "sites": [
+      2,
+      1
+    ],
+    "actual_object_byte_shares": [
+      0.058823529411764705,
+      0.9411764705882353
+    ],
+    "majority_site_byte_shares": [
+      0.058823529411764705,
+      0.9411764705882353
+    ],
+    "total_requested_bytes": 340,
+    "oracle_mismatches": 0,
+    "trace_sha256": "d05d61d4b1f32f47a5769fcf04edcc204a0f1c7f1f4978275778cc458e627909"
+  },
+  "cache-thrashN": {
+    "sites": [
+      3,
+      0
+    ],
+    "actual_object_byte_shares": [
+      0.7647058823529411,
+      0.23529411764705882
+    ],
+    "majority_site_byte_shares": [
+      1.0,
+      0.0
+    ],
+    "total_requested_bytes": 5440,
+    "oracle_mismatches": 0,
+    "trace_sha256": "4f57c5b0f68c15b8f5723767ecbedaa75368accb177188b1fa7dccede4da14dd"
+  },
+  "cfrac": {
+    "sites": [
+      160,
+      15
+    ],
+    "actual_object_byte_shares": [
+      0.9996332641723674,
+      0.0003667358276325637
+    ],
+    "majority_site_byte_shares": [
+      0.9997254433951193,
+      0.0002745566048806864
+    ],
+    "total_requested_bytes": 1831844476,
+    "oracle_mismatches": 0,
+    "trace_sha256": "46596b0cd3967355fa5e826fc400a5e80ee2f19b0e0224aa6f1791e4ab8e40d8"
+  },
+  "espresso": {
+    "sites": [
+      943,
+      102
+    ],
+    "actual_object_byte_shares": [
+      0.9950259122471765,
+      0.004974087752823494
+    ],
+    "majority_site_byte_shares": [
+      0.9968232839994043,
+      0.0031767160005956104
+    ],
+    "total_requested_bytes": 3726596900,
+    "oracle_mismatches": 0,
+    "trace_sha256": "5406b50e4a804a464dfea2dec159c56f60fbb25aeb581ed0024dffd7026da5cd"
+  },
+  "glibc-simple": {
+    "sites": [
+      31,
+      4
+    ],
+    "actual_object_byte_shares": [
+      0.9999892054736659,
+      1.0794526334086268e-05
+    ],
+    "majority_site_byte_shares": [
+      0.9999892054736659,
+      1.0794526334086268e-05
+    ],
+    "total_requested_bytes": 3584038688,
+    "oracle_mismatches": 0,
+    "trace_sha256": "fb70a9e705b6fcbb621d72932d1589b4675b146a0ebcb31918a875ba234d5683"
+  },
+  "glibc-thread": {
+    "sites": [
+      1,
+      2
+    ],
+    "actual_object_byte_shares": [
+      0.7851455782599549,
+      0.21485442174004504
+    ],
+    "majority_site_byte_shares": [
+      0.9999623787070432,
+      3.7621292956787814e-05
+    ],
+    "total_requested_bytes": 231358343,
+    "oracle_mismatches": 0,
+    "trace_sha256": "7ebad66cc0c8f57bae7e506ed7154d78eb54f390770b11f054b875bbe9d66664"
+  },
+  "larson-sized": {
+    "sites": [
+      1,
+      8
+    ],
+    "actual_object_byte_shares": [
+      0.02430823929839402,
+      0.975691760701606
+    ],
+    "majority_site_byte_shares": [
+      1.377675126874963e-09,
+      0.9999999986223249
+    ],
+    "total_requested_bytes": 5806884253,
+    "oracle_mismatches": 0,
+    "trace_sha256": "da550f1dde3a1cd65cc1b304d2efe310166e636b8deebf0d013954cdb2816292"
+  },
+  "larson": {
+    "sites": [
+      1,
+      8
+    ],
+    "actual_object_byte_shares": [
+      0.024299844340659658,
+      0.9757001556593403
+    ],
+    "majority_site_byte_shares": [
+      1.4011574075812548e-09,
+      0.9999999985988426
+    ],
+    "total_requested_bytes": 5709565504,
+    "oracle_mismatches": 0,
+    "trace_sha256": "e9eb63cd733d2774579249d600a0236960f520fb9fcb9f4397475a7c8e45808b"
+  },
+  "malloc-large": {
+    "sites": [
+      0,
+      1
+    ],
+    "actual_object_byte_shares": [
+      0.0007606383497342789,
+      0.9992393616502657
+    ],
+    "majority_site_byte_shares": [
+      0.0,
+      1.0
+    ],
+    "total_requested_bytes": 31879034246,
+    "oracle_mismatches": 0,
+    "trace_sha256": "1fc01c97f71daef983e708eb887e5d6b302ea4cefef0b48fe6872285b6c45e70"
+  },
+  "mleak10": {
+    "sites": [
+      3,
+      1
+    ],
+    "actual_object_byte_shares": [
+      0.9932251001776345,
+      0.006774899822365432
+    ],
+    "majority_site_byte_shares": [
+      0.9973561366546867,
+      0.0026438633453133393
+    ],
+    "total_requested_bytes": 1549248,
+    "oracle_mismatches": 0,
+    "trace_sha256": "4e7d8f423aa3738718ec45515dd43b71946c39ffbb20c2585ea29d8f29d4ee02"
+  },
+  "mleak100": {
+    "sites": [
+      3,
+      1
+    ],
+    "actual_object_byte_shares": [
+      0.9869971657301974,
+      0.013002834269802595
+    ],
+    "majority_site_byte_shares": [
+      0.9997348051646694,
+      0.00026519483533058195
+    ],
+    "total_requested_bytes": 15445248,
+    "oracle_mismatches": 0,
+    "trace_sha256": "d30d6093f43102b8d951049c99cb8de8bba6e5bba454d4572864178911cb87dc"
+  },
+  "mstress": {
+    "sites": [
+      0,
+      22
+    ],
+    "actual_object_byte_shares": [
+      0.008699736732520103,
+      0.9913002632674799
+    ],
+    "majority_site_byte_shares": [
+      0.0,
+      1.0
+    ],
+    "total_requested_bytes": 10644526248,
+    "oracle_mismatches": 0,
+    "trace_sha256": "eb7c73643fcc96a8dffb2d1ad9bad23a042347405adddae3ccef1cc91e3c55d8"
+  },
+  "redis": {
+    "sites": [
+      88,
+      539
+    ],
+    "actual_object_byte_shares": [
+      0.998144451128322,
+      0.0018555488716781
+    ],
+    "majority_site_byte_shares": [
+      0.9989141225766052,
+      0.0010858774233948344
+    ],
+    "total_requested_bytes": 3727734745,
+    "oracle_mismatches": 0,
+    "trace_sha256": "623b5e3b110ed1ff61c15da15f4c86651326ed5eb465e138e15143f6a5241cbc"
+  },
+  "rptest": {
+    "sites": [
+      5,
+      17
+    ],
+    "actual_object_byte_shares": [
+      0.006759964447902201,
+      0.9932400355520978
+    ],
+    "majority_site_byte_shares": [
+      7.500001963761343e-07,
+      0.9999992499998036
+    ],
+    "total_requested_bytes": 8618664410,
+    "oracle_mismatches": 0,
+    "trace_sha256": "e3e54a947210dcd9687249845920c7f55d712848ea9299e38677faf79c922c3e"
+  },
+  "sh6benchN": {
+    "sites": [
+      1,
+      3
+    ],
+    "actual_object_byte_shares": [
+      0.9617730074026236,
+      0.03822699259737638
+    ],
+    "majority_site_byte_shares": [
+      0.9999797635982387,
+      2.0236401761343938e-05
+    ],
+    "total_requested_bytes": 4415014144,
+    "oracle_mismatches": 0,
+    "trace_sha256": "0a0a440c42a211acc3927db02af231061fdea8584928670479d393d2ea73ac75"
+  },
+  "sh8benchN": {
+    "sites": [
+      0,
+      7
+    ],
+    "actual_object_byte_shares": [
+      0.012602830557807615,
+      0.9873971694421924
+    ],
+    "majority_site_byte_shares": [
+      0.0,
+      1.0
+    ],
+    "total_requested_bytes": 24260967296,
+    "oracle_mismatches": 0,
+    "trace_sha256": "cc2321bbf40bea6e89984a226b0b21a48c24e24cb6a71123eb0d483f64a1a87d"
+  },
+  "xmalloc-test": {
+    "sites": [
+      0,
+      8
+    ],
+    "actual_object_byte_shares": [
+      0.001600312276622312,
+      0.9983996877233777
+    ],
+    "majority_site_byte_shares": [
+      0.0,
+      1.0
+    ],
+    "total_requested_bytes": 652672616,
+    "oracle_mismatches": 0,
+    "trace_sha256": "33ff95176e369267b4faa1502da0b3dbc74384ab9d89ac6ddd14bf8fc8c3d104"
+  }
+}

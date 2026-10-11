@@ -1,0 +1,1621 @@
+{
+  "checks": [
+    "tools",
+    "stress none/keyonly/segregate/trace",
+    "site stability depth 1/4/16",
+    "exact lifetime boundaries"
+  ],
+  "workloads": [
+    {
+      "name": "espresso",
+      "sites": 1046,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            22.58984375,
+            19.00244140625,
+            16.95703125
+          ]
+        },
+        "benchmark": "espresso",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/espresso",
+          "/Users/jperla/josh/repos/jevalloc/third_party/mimalloc-bench/bench/espresso/largest.espresso"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/espresso.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 20.728436,
+        "stdout": "results/logs/tests/espresso-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/espresso-jev-trace-0.stderr",
+        "time_wall_seconds": 20.73,
+        "user_seconds": 9.031437,
+        "sys_seconds": 0.235579,
+        "peak_rss_bytes": 22347776,
+        "peak_footprint_bytes": 24298624,
+        "cpu_seconds": 9.267016,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 20.728436,
+        "score_metric": "wall_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            23.740234375,
+            19.501953125,
+            17.18359375
+          ]
+        },
+        "benchmark": "espresso",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/espresso",
+          "/Users/jperla/josh/repos/jevalloc/third_party/mimalloc-bench/bench/espresso/largest.espresso"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/espresso/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 19.290221,
+        "stdout": "results/logs/tests/espresso-jev-random-0.stdout",
+        "stderr": "results/logs/tests/espresso-jev-random-0.stderr",
+        "time_wall_seconds": 19.29,
+        "user_seconds": 7.293694,
+        "sys_seconds": 0.360336,
+        "peak_rss_bytes": 17612800,
+        "peak_footprint_bytes": 15746176,
+        "cpu_seconds": 7.6540300000000006,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 19.290221,
+        "score_metric": "wall_seconds"
+      }
+    },
+    {
+      "name": "barnes",
+      "sites": 22,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            22.89013671875,
+            19.5947265625,
+            17.27099609375
+          ]
+        },
+        "benchmark": "barnes",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/barnes"
+        ],
+        "stdin": "/Users/jperla/josh/repos/jevalloc/third_party/mimalloc-bench/bench/barnes/input",
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/barnes.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 5.658906,
+        "stdout": "results/logs/tests/barnes-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/barnes-jev-trace-0.stderr",
+        "time_wall_seconds": 5.66,
+        "user_seconds": 2.941621,
+        "sys_seconds": 0.318359,
+        "peak_rss_bytes": 52379648,
+        "peak_footprint_bytes": 77383104,
+        "cpu_seconds": 3.25998,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 5.658906,
+        "score_metric": "wall_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            22.01806640625,
+            19.46826171875,
+            17.23974609375
+          ]
+        },
+        "benchmark": "barnes",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/barnes"
+        ],
+        "stdin": "/Users/jperla/josh/repos/jevalloc/third_party/mimalloc-bench/bench/barnes/input",
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/barnes/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 4.081894,
+        "stdout": "results/logs/tests/barnes-jev-random-0.stdout",
+        "stderr": "results/logs/tests/barnes-jev-random-0.stderr",
+        "time_wall_seconds": 4.08,
+        "user_seconds": 2.802811,
+        "sys_seconds": 0.09708,
+        "peak_rss_bytes": 43991040,
+        "peak_footprint_bytes": 68879808,
+        "cpu_seconds": 2.899891,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 4.081894,
+        "score_metric": "wall_seconds"
+      }
+    },
+    {
+      "name": "larson",
+      "sites": 22,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            22.0166015625,
+            19.51025390625,
+            17.267578125
+          ]
+        },
+        "benchmark": "larson",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/larson",
+          "5",
+          "8",
+          "1000",
+          "5000",
+          "100",
+          "4141",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/larson.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 7.193739,
+        "stdout": "results/logs/tests/larson-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/larson-jev-trace-0.stderr",
+        "time_wall_seconds": 7.21,
+        "user_seconds": 3.501903,
+        "sys_seconds": 9.759367,
+        "peak_rss_bytes": 72663040,
+        "peak_footprint_bytes": 89442112,
+        "cpu_seconds": 13.26127,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 500.152,
+        "score_metric": "relative_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            21.69482421875,
+            19.48486328125,
+            17.271484375
+          ]
+        },
+        "benchmark": "larson",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/larson",
+          "5",
+          "8",
+          "1000",
+          "5000",
+          "100",
+          "4141",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/larson/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 7.178121,
+        "stdout": "results/logs/tests/larson-jev-random-0.stdout",
+        "stderr": "results/logs/tests/larson-jev-random-0.stderr",
+        "time_wall_seconds": 7.18,
+        "user_seconds": 27.68336,
+        "sys_seconds": 0.434363,
+        "peak_rss_bytes": 112607232,
+        "peak_footprint_bytes": 126814912,
+        "cpu_seconds": 28.117723,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 12.512,
+        "score_metric": "relative_seconds"
+      }
+    },
+    {
+      "name": "larson-sized",
+      "sites": 22,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            21.99462890625,
+            19.61767578125,
+            17.34375
+          ]
+        },
+        "benchmark": "larson-sized",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/larson-sized",
+          "5",
+          "8",
+          "1000",
+          "5000",
+          "100",
+          "4141",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/larson-sized.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 7.321892,
+        "stdout": "results/logs/tests/larson-sized-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/larson-sized-jev-trace-0.stderr",
+        "time_wall_seconds": 7.32,
+        "user_seconds": 3.864017,
+        "sys_seconds": 12.021636,
+        "peak_rss_bytes": 76906496,
+        "peak_footprint_bytes": 94635840,
+        "cpu_seconds": 15.885653000000001,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 441.429,
+        "score_metric": "relative_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            21.67431640625,
+            19.59033203125,
+            17.34716796875
+          ]
+        },
+        "benchmark": "larson-sized",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/larson-sized",
+          "5",
+          "8",
+          "1000",
+          "5000",
+          "100",
+          "4141",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/larson-sized/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 7.18811,
+        "stdout": "results/logs/tests/larson-sized-jev-random-0.stdout",
+        "stderr": "results/logs/tests/larson-sized-jev-random-0.stderr",
+        "time_wall_seconds": 7.19,
+        "user_seconds": 29.88743,
+        "sys_seconds": 0.390001,
+        "peak_rss_bytes": 141377536,
+        "peak_footprint_bytes": 141429632,
+        "cpu_seconds": 30.277431,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 11.35,
+        "score_metric": "relative_seconds"
+      }
+    },
+    {
+      "name": "xmalloc-test",
+      "sites": 9,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            21.3525390625,
+            19.6005859375,
+            17.376953125
+          ]
+        },
+        "benchmark": "xmalloc-test",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/xmalloc-test",
+          "-w",
+          "8",
+          "-t",
+          "5",
+          "-s",
+          "64"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/xmalloc-test.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 5.133444,
+        "stdout": "results/logs/tests/xmalloc-test-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/xmalloc-test-jev-trace-0.stderr",
+        "time_wall_seconds": 5.13,
+        "user_seconds": 3.669247,
+        "sys_seconds": 13.91478,
+        "peak_rss_bytes": 43450368,
+        "peak_footprint_bytes": 42322048,
+        "cpu_seconds": 17.584027,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 34.082,
+        "score_metric": "relative_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            21.083984375,
+            19.57373046875,
+            17.38037109375
+          ]
+        },
+        "benchmark": "xmalloc-test",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/xmalloc-test",
+          "-w",
+          "8",
+          "-t",
+          "5",
+          "-s",
+          "64"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/xmalloc-test/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 5.01987,
+        "stdout": "results/logs/tests/xmalloc-test-jev-random-0.stdout",
+        "stderr": "results/logs/tests/xmalloc-test-jev-random-0.stderr",
+        "time_wall_seconds": 5.02,
+        "user_seconds": 19.817551,
+        "sys_seconds": 0.500418,
+        "peak_rss_bytes": 89341952,
+        "peak_footprint_bytes": 88278656,
+        "cpu_seconds": 20.317969,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 1.38,
+        "score_metric": "relative_seconds"
+      }
+    },
+    {
+      "name": "cache-scratch1",
+      "sites": 5,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            22.7587890625,
+            19.94580078125,
+            17.5244140625
+          ]
+        },
+        "benchmark": "cache-scratch1",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/cache-scratch",
+          "1",
+          "1000",
+          "1",
+          "2000000",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/cache-scratch1.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.229665,
+        "stdout": "results/logs/tests/cache-scratch1-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/cache-scratch1-jev-trace-0.stderr",
+        "time_wall_seconds": 2.23,
+        "user_seconds": 1.422968,
+        "sys_seconds": 0.097162,
+        "peak_rss_bytes": 20905984,
+        "peak_footprint_bytes": 19858624,
+        "cpu_seconds": 1.52013,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.229665,
+        "score_metric": "wall_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            22.7587890625,
+            19.94580078125,
+            17.5244140625
+          ]
+        },
+        "benchmark": "cache-scratch1",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/cache-scratch",
+          "1",
+          "1000",
+          "1",
+          "2000000",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/cache-scratch1/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.255581,
+        "stdout": "results/logs/tests/cache-scratch1-jev-random-0.stdout",
+        "stderr": "results/logs/tests/cache-scratch1-jev-random-0.stderr",
+        "time_wall_seconds": 2.25,
+        "user_seconds": 1.458871,
+        "sys_seconds": 0.037439,
+        "peak_rss_bytes": 12353536,
+        "peak_footprint_bytes": 11289728,
+        "cpu_seconds": 1.49631,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.255581,
+        "score_metric": "wall_seconds"
+      }
+    },
+    {
+      "name": "cache-scratchN",
+      "sites": 5,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            21.89697265625,
+            19.8134765625,
+            17.49169921875
+          ]
+        },
+        "benchmark": "cache-scratchN",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/cache-scratch",
+          "8",
+          "1000",
+          "1",
+          "2000000",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/cache-scratchN.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.558869,
+        "stdout": "results/logs/tests/cache-scratchN-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/cache-scratchN-jev-trace-0.stderr",
+        "time_wall_seconds": 0.57,
+        "user_seconds": 1.446635,
+        "sys_seconds": 0.068603,
+        "peak_rss_bytes": 21954560,
+        "peak_footprint_bytes": 21022336,
+        "cpu_seconds": 1.5152379999999999,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.558869,
+        "score_metric": "wall_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            21.89697265625,
+            19.8134765625,
+            17.49169921875
+          ]
+        },
+        "benchmark": "cache-scratchN",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/cache-scratch",
+          "8",
+          "1000",
+          "1",
+          "2000000",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/cache-scratchN/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.502224,
+        "stdout": "results/logs/tests/cache-scratchN-jev-random-0.stdout",
+        "stderr": "results/logs/tests/cache-scratchN-jev-random-0.stderr",
+        "time_wall_seconds": 0.5,
+        "user_seconds": 1.471975,
+        "sys_seconds": 0.056745,
+        "peak_rss_bytes": 12484608,
+        "peak_footprint_bytes": 11420800,
+        "cpu_seconds": 1.52872,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.502224,
+        "score_metric": "wall_seconds"
+      }
+    },
+    {
+      "name": "cache-thrash1",
+      "sites": 3,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            21.89697265625,
+            19.8134765625,
+            17.49169921875
+          ]
+        },
+        "benchmark": "cache-thrash1",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/cache-thrash",
+          "1",
+          "1000",
+          "1",
+          "2000000",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/cache-thrash1.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.283747,
+        "stdout": "results/logs/tests/cache-thrash1-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/cache-thrash1-jev-trace-0.stderr",
+        "time_wall_seconds": 2.28,
+        "user_seconds": 1.485802,
+        "sys_seconds": 0.028669,
+        "peak_rss_bytes": 20709376,
+        "peak_footprint_bytes": 19727488,
+        "cpu_seconds": 1.5144710000000001,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.283747,
+        "score_metric": "wall_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            21.89697265625,
+            19.8134765625,
+            17.49169921875
+          ]
+        },
+        "benchmark": "cache-thrash1",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/cache-thrash",
+          "1",
+          "1000",
+          "1",
+          "2000000",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/cache-thrash1/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.098226,
+        "stdout": "results/logs/tests/cache-thrash1-jev-random-0.stdout",
+        "stderr": "results/logs/tests/cache-thrash1-jev-random-0.stderr",
+        "time_wall_seconds": 2.14,
+        "user_seconds": 1.442424,
+        "sys_seconds": 0.022397,
+        "peak_rss_bytes": 12337152,
+        "peak_footprint_bytes": 11273344,
+        "cpu_seconds": 1.464821,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 2.098226,
+        "score_metric": "wall_seconds"
+      }
+    },
+    {
+      "name": "cache-thrashN",
+      "sites": 3,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            22.30517578125,
+            19.9326171875,
+            17.54736328125
+          ]
+        },
+        "benchmark": "cache-thrashN",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/cache-thrash",
+          "8",
+          "1000",
+          "1",
+          "2000000",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/cache-thrashN.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.382392,
+        "stdout": "results/logs/tests/cache-thrashN-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/cache-thrashN-jev-trace-0.stderr",
+        "time_wall_seconds": 0.38,
+        "user_seconds": 1.44899,
+        "sys_seconds": 0.061105,
+        "peak_rss_bytes": 20840448,
+        "peak_footprint_bytes": 19776640,
+        "cpu_seconds": 1.510095,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.382392,
+        "score_metric": "wall_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            22.30517578125,
+            19.9326171875,
+            17.54736328125
+          ]
+        },
+        "benchmark": "cache-thrashN",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/cache-thrash",
+          "8",
+          "1000",
+          "1",
+          "2000000",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/cache-thrashN/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.408805,
+        "stdout": "results/logs/tests/cache-thrashN-jev-random-0.stdout",
+        "stderr": "results/logs/tests/cache-thrashN-jev-random-0.stderr",
+        "time_wall_seconds": 0.41,
+        "user_seconds": 1.491596,
+        "sys_seconds": 0.0197,
+        "peak_rss_bytes": 12451840,
+        "peak_footprint_bytes": 11388032,
+        "cpu_seconds": 1.511296,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.408805,
+        "score_metric": "wall_seconds"
+      }
+    },
+    {
+      "name": "mstress",
+      "sites": 11,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            22.30517578125,
+            19.9326171875,
+            17.54736328125
+          ]
+        },
+        "benchmark": "mstress",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/mstress",
+          "8",
+          "50",
+          "25"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/mstress.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 6.449909,
+        "stdout": "results/logs/tests/mstress-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/mstress-jev-trace-0.stderr",
+        "time_wall_seconds": 6.48,
+        "user_seconds": 4.565459,
+        "sys_seconds": 11.606251,
+        "peak_rss_bytes": 248692736,
+        "peak_footprint_bytes": 210863808,
+        "cpu_seconds": 16.17171,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 6.449909,
+        "score_metric": "wall_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            22.8408203125,
+            20.0830078125,
+            17.6142578125
+          ]
+        },
+        "benchmark": "mstress",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/mstress",
+          "8",
+          "50",
+          "25"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/mstress/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.681444,
+        "stdout": "results/logs/tests/mstress-jev-random-0.stdout",
+        "stderr": "results/logs/tests/mstress-jev-random-0.stderr",
+        "time_wall_seconds": 0.68,
+        "user_seconds": 1.532487,
+        "sys_seconds": 0.148125,
+        "peak_rss_bytes": 274235392,
+        "peak_footprint_bytes": 283756160,
+        "cpu_seconds": 1.680612,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.681444,
+        "score_metric": "wall_seconds"
+      }
+    },
+    {
+      "name": "rptest",
+      "sites": 13,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            22.8408203125,
+            20.0830078125,
+            17.6142578125
+          ]
+        },
+        "benchmark": "rptest",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/rptest",
+          "8",
+          "0",
+          "1",
+          "2",
+          "500",
+          "1000",
+          "100",
+          "8",
+          "16000"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/rptest.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 16.158148,
+        "stdout": "results/logs/tests/rptest-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/rptest-jev-trace-0.stderr",
+        "time_wall_seconds": 16.17,
+        "user_seconds": 1.437344,
+        "sys_seconds": 3.484843,
+        "peak_rss_bytes": 99450880,
+        "peak_footprint_bytes": 100058752,
+        "cpu_seconds": 4.922187,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 8.022527256536353,
+        "score_metric": "relative_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            21.00537109375,
+            19.8486328125,
+            17.5869140625
+          ]
+        },
+        "benchmark": "rptest",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/rptest",
+          "8",
+          "0",
+          "1",
+          "2",
+          "500",
+          "1000",
+          "100",
+          "8",
+          "16000"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/rptest/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 16.163341,
+        "stdout": "results/logs/tests/rptest-jev-random-0.stdout",
+        "stderr": "results/logs/tests/rptest-jev-random-0.stderr",
+        "time_wall_seconds": 16.16,
+        "user_seconds": 0.525794,
+        "sys_seconds": 0.417052,
+        "peak_rss_bytes": 90406912,
+        "peak_footprint_bytes": 111756928,
+        "cpu_seconds": 0.942846,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 1.0817587883436164,
+        "score_metric": "relative_seconds"
+      }
+    },
+    {
+      "name": "glibc-simple",
+      "sites": 35,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            18.88623046875,
+            19.43212890625,
+            17.4765625
+          ]
+        },
+        "benchmark": "glibc-simple",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/glibc-simple"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/glibc-simple.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 11.796718,
+        "stdout": "results/logs/tests/glibc-simple-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/glibc-simple-jev-trace-0.stderr",
+        "time_wall_seconds": 11.8,
+        "user_seconds": 10.182938,
+        "sys_seconds": 0.190273,
+        "peak_rss_bytes": 20676608,
+        "peak_footprint_bytes": 20284608,
+        "cpu_seconds": 10.373211,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 11.796718,
+        "score_metric": "wall_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            17.51953125,
+            19.12109375,
+            17.388671875
+          ]
+        },
+        "benchmark": "glibc-simple",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/glibc-simple"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/glibc-simple/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 6.398795,
+        "stdout": "results/logs/tests/glibc-simple-jev-random-0.stdout",
+        "stderr": "results/logs/tests/glibc-simple-jev-random-0.stderr",
+        "time_wall_seconds": 6.4,
+        "user_seconds": 5.210068,
+        "sys_seconds": 0.114103,
+        "peak_rss_bytes": 12288000,
+        "peak_footprint_bytes": 11830464,
+        "cpu_seconds": 5.324171,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 6.398795,
+        "score_metric": "wall_seconds"
+      }
+    },
+    {
+      "name": "glibc-thread",
+      "sites": 3,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            17.775390625,
+            19.130859375,
+            17.41259765625
+          ]
+        },
+        "benchmark": "glibc-thread",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/glibc-thread",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/glibc-thread.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.18199,
+        "stdout": "results/logs/tests/glibc-thread-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/glibc-thread-jev-trace-0.stderr",
+        "time_wall_seconds": 2.18,
+        "user_seconds": 1.437382,
+        "sys_seconds": 5.317655,
+        "peak_rss_bytes": 31129600,
+        "peak_footprint_bytes": 31262336,
+        "cpu_seconds": 6.755037,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 212.82948931351208,
+        "score_metric": "relative_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            17.775390625,
+            19.130859375,
+            17.41259765625
+          ]
+        },
+        "benchmark": "glibc-thread",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/glibc-thread",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/glibc-thread/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 2.020586,
+        "stdout": "results/logs/tests/glibc-thread-jev-random-0.stdout",
+        "stderr": "results/logs/tests/glibc-thread-jev-random-0.stderr",
+        "time_wall_seconds": 2.02,
+        "user_seconds": 7.066757,
+        "sys_seconds": 0.097989,
+        "peak_rss_bytes": 37306368,
+        "peak_footprint_bytes": 36505216,
+        "cpu_seconds": 7.164746,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 8.089138946104267,
+        "score_metric": "relative_seconds"
+      }
+    },
+    {
+      "name": "alloc-test1",
+      "sites": 8,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            17.775390625,
+            19.130859375,
+            17.41259765625
+          ]
+        },
+        "benchmark": "alloc-test1",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/alloc-test",
+          "1"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/alloc-test1.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 15.162896,
+        "stdout": "results/logs/tests/alloc-test1-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/alloc-test1-jev-trace-0.stderr",
+        "time_wall_seconds": 15.16,
+        "user_seconds": 11.864482,
+        "sys_seconds": 0.209554,
+        "peak_rss_bytes": 36945920,
+        "peak_footprint_bytes": 37405888,
+        "cpu_seconds": 12.074036000000001,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 15.162896,
+        "score_metric": "wall_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            16.35986328125,
+            18.7490234375,
+            17.30615234375
+          ]
+        },
+        "benchmark": "alloc-test1",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/alloc-test",
+          "1"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/alloc-test1/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 8.426469,
+        "stdout": "results/logs/tests/alloc-test1-jev-random-0.stdout",
+        "stderr": "results/logs/tests/alloc-test1-jev-random-0.stderr",
+        "time_wall_seconds": 8.43,
+        "user_seconds": 6.570966,
+        "sys_seconds": 0.140975,
+        "peak_rss_bytes": 22626304,
+        "peak_footprint_bytes": 22758592,
+        "cpu_seconds": 6.711941,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 8.426469,
+        "score_metric": "wall_seconds"
+      }
+    },
+    {
+      "name": "alloc-testN",
+      "sites": 8,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            15.6953125,
+            18.5263671875,
+            17.24365234375
+          ]
+        },
+        "benchmark": "alloc-testN",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/alloc-test",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/alloc-testN.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 234.115415,
+        "stdout": "results/logs/tests/alloc-testN-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/alloc-testN-jev-trace-0.stderr",
+        "time_wall_seconds": 234.12,
+        "user_seconds": 157.09286,
+        "sys_seconds": 433.548483,
+        "peak_rss_bytes": 38895616,
+        "peak_footprint_bytes": 40863360,
+        "cpu_seconds": 590.641343,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 234.115415,
+        "score_metric": "wall_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            28.0712890625,
+            22.89892578125,
+            19.3642578125
+          ]
+        },
+        "benchmark": "alloc-testN",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/alloc-test",
+          "8"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/alloc-testN/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 24.485998,
+        "stdout": "results/logs/tests/alloc-testN-jev-random-0.stdout",
+        "stderr": "results/logs/tests/alloc-testN-jev-random-0.stderr",
+        "time_wall_seconds": 24.49,
+        "user_seconds": 48.619967,
+        "sys_seconds": 0.798285,
+        "peak_rss_bytes": 26607616,
+        "peak_footprint_bytes": 28444288,
+        "cpu_seconds": 49.418252,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 24.485998,
+        "score_metric": "wall_seconds"
+      }
+    },
+    {
+      "name": "malloc-large",
+      "sites": 2,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            30.6015625,
+            23.94189453125,
+            19.84375
+          ]
+        },
+        "benchmark": "malloc-large",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/malloc-large"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/malloc-large.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 4.446772,
+        "stdout": "results/logs/tests/malloc-large-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/malloc-large-jev-trace-0.stderr",
+        "time_wall_seconds": 4.45,
+        "user_seconds": 0.529232,
+        "sys_seconds": 1.034504,
+        "peak_rss_bytes": 556630016,
+        "peak_footprint_bytes": 624380288,
+        "cpu_seconds": 1.563736,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 4.446772,
+        "score_metric": "wall_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            29.75244140625,
+            23.8759765625,
+            19.84423828125
+          ]
+        },
+        "benchmark": "malloc-large",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/malloc-large"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/malloc-large/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 6.166498,
+        "stdout": "results/logs/tests/malloc-large-jev-random-0.stdout",
+        "stderr": "results/logs/tests/malloc-large-jev-random-0.stderr",
+        "time_wall_seconds": 6.18,
+        "user_seconds": 0.561093,
+        "sys_seconds": 1.302226,
+        "peak_rss_bytes": 585236480,
+        "peak_footprint_bytes": 590629248,
+        "cpu_seconds": 1.8633190000000002,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 6.166498,
+        "score_metric": "wall_seconds"
+      }
+    },
+    {
+      "name": "mleak10",
+      "sites": 4,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            29.05126953125,
+            23.828125,
+            19.8505859375
+          ]
+        },
+        "benchmark": "mleak10",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/mleak",
+          "5"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/mleak10.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.244499,
+        "stdout": "results/logs/tests/mleak10-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/mleak10-jev-trace-0.stderr",
+        "time_wall_seconds": 0.24,
+        "user_seconds": 0.128512,
+        "sys_seconds": 0.156945,
+        "peak_rss_bytes": 44761088,
+        "peak_footprint_bytes": 43533760,
+        "cpu_seconds": 0.28545699999999996,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.244499,
+        "score_metric": "wall_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            29.05126953125,
+            23.828125,
+            19.8505859375
+          ]
+        },
+        "benchmark": "mleak10",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/mleak",
+          "5"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/mleak10/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 0.102783,
+        "stdout": "results/logs/tests/mleak10-jev-random-0.stdout",
+        "stderr": "results/logs/tests/mleak10-jev-random-0.stderr",
+        "time_wall_seconds": 0.1,
+        "user_seconds": 0.12099,
+        "sys_seconds": 0.116419,
+        "peak_rss_bytes": 34324480,
+        "peak_footprint_bytes": 33162688,
+        "cpu_seconds": 0.23740899999999998,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 0.102783,
+        "score_metric": "wall_seconds"
+      }
+    },
+    {
+      "name": "mleak100",
+      "sites": 4,
+      "trace": {
+        "host_before": {
+          "load_average": [
+            29.05126953125,
+            23.828125,
+            19.8505859375
+          ]
+        },
+        "benchmark": "mleak100",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/mleak",
+          "50"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/mleak100.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 1.761643,
+        "stdout": "results/logs/tests/mleak100-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/mleak100-jev-trace-0.stderr",
+        "time_wall_seconds": 1.76,
+        "user_seconds": 1.267104,
+        "sys_seconds": 0.805347,
+        "peak_rss_bytes": 60669952,
+        "peak_footprint_bytes": 54691520,
+        "cpu_seconds": 2.072451,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 1.761643,
+        "score_metric": "wall_seconds"
+      },
+      "run": {
+        "host_before": {
+          "load_average": [
+            29.05126953125,
+            23.828125,
+            19.8505859375
+          ]
+        },
+        "benchmark": "mleak100",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/mleak",
+          "50"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/mleak100/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 1.771507,
+        "stdout": "results/logs/tests/mleak100-jev-random-0.stdout",
+        "stderr": "results/logs/tests/mleak100-jev-random-0.stderr",
+        "time_wall_seconds": 1.77,
+        "user_seconds": 1.229718,
+        "sys_seconds": 0.766826,
+        "peak_rss_bytes": 37191680,
+        "peak_footprint_bytes": 42288640,
+        "cpu_seconds": 1.996544,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 1.771507,
+        "score_metric": "wall_seconds"
+      }
+    },
+    {
+      "name": "cfrac",
+      "sites": 171,
+      "trace": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791667225.901866,
+        "finished_unix": 1791667238.691641,
+        "host_before": {
+          "load_average": [
+            6.4052734375,
+            8.671875,
+            14.47216796875
+          ]
+        },
+        "benchmark": "cfrac",
+        "variant": "jev-trace",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/cfrac",
+          "17545186520507317056371138836327483792789528"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "trace",
+          "JEVALLOC_TRACE_OUT": "/Users/jperla/josh/repos/jevalloc/results/traces/cfrac.jsonl"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 12.753679,
+        "stdout": "results/logs/tests/cfrac-jev-trace-0.stdout",
+        "stderr": "results/logs/tests/cfrac-jev-trace-0.stderr",
+        "time_wall_seconds": 12.75,
+        "user_seconds": 12.437694,
+        "sys_seconds": 0.076681,
+        "peak_rss_bytes": 20725760,
+        "peak_footprint_bytes": 21922880,
+        "cpu_seconds": 12.514375000000001,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 12.753679,
+        "score_metric": "wall_seconds",
+        "phases": []
+      },
+      "run": {
+        "inference_gate": "not-requested",
+        "started_unix": 1791667238.700278,
+        "finished_unix": 1791667248.706913,
+        "host_before": {
+          "load_average": [
+            6.39453125,
+            8.55712890625,
+            14.3291015625
+          ]
+        },
+        "benchmark": "cfrac",
+        "variant": "jev-random",
+        "repetition": 0,
+        "command": [
+          "/Users/jperla/josh/repos/jevalloc/build/bench/cfrac",
+          "17545186520507317056371138836327483792789528"
+        ],
+        "stdin": null,
+        "environment": {
+          "DYLD_INSERT_LIBRARIES": "/Users/jperla/josh/repos/jevalloc/build/libjevalloc.dylib",
+          "JEVALLOC_MODE": "run",
+          "JEVALLOC_TABLE": "/Users/jperla/josh/repos/jevalloc/results/tables/cfrac/random.txt"
+        },
+        "exit_status": 0,
+        "output_ok": true,
+        "wall_seconds": 9.992356,
+        "stdout": "results/logs/tests/cfrac-jev-random-0.stdout",
+        "stderr": "results/logs/tests/cfrac-jev-random-0.stderr",
+        "time_wall_seconds": 9.99,
+        "user_seconds": 9.363502,
+        "sys_seconds": 0.121068,
+        "peak_rss_bytes": 11862016,
+        "peak_footprint_bytes": 11895872,
+        "cpu_seconds": 9.48457,
+        "time_exit_status": 1,
+        "footprint_final_read": true,
+        "measurement": "wait4 + proc_pid_rusage",
+        "score": 9.992356,
+        "score_metric": "wall_seconds",
+        "phases": []
+      }
+    }
+  ],
+  "passed": true,
+  "full_suite": false,
+  "library_sha256": "d0ff1699b11ccd88fc82f3fc6b8529d6ea4cc099f524588fc952a7104ba77bcd"
+}

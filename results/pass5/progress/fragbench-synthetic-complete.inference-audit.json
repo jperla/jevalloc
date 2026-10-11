@@ -1,0 +1,1499 @@
+{
+  "matrix_sha256": "c6f6a815ebd4e5ceb64102e55d46a42644af6784ce69f8eebd31ea4a868ad783",
+  "server_pid": 970221,
+  "source_log": "/home/quill/jevalloc/model-server.log",
+  "checked": 240,
+  "overlapping_runs": 0,
+  "runs": [
+    {
+      "benchmark": "site-pure-1",
+      "variant": "sys",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "mi",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-none",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-keyonly",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:random",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:size",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-short",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-long",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:model",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "mi",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-none",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-keyonly",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:random",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:size",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-short",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-long",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:model",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "sys",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-none",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-keyonly",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:random",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:size",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-short",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-long",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:model",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "sys",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "mi",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-keyonly",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:random",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:size",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-short",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-long",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:model",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "sys",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "mi",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-none",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:random",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:size",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-short",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-long",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:model",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "sys",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "mi",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-none",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-keyonly",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "sys",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-none",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-keyonly",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:oracle",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:random",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:size",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:all-short",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:all-long",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:heuristic",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:static-model",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:model",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-none",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-keyonly",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:oracle",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:random",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:size",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:all-short",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:all-long",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:heuristic",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:static-model",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:model",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "sys",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-none",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-keyonly",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:oracle",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:random",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:size",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:all-short",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:all-long",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:heuristic",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:static-model",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:model",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "sys",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-keyonly",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:oracle",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:random",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:size",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:all-short",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:all-long",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:heuristic",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:static-model",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:model",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "sys",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-none",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:oracle",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:random",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:size",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:all-short",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-table:all-long",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:heuristic",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:static-model",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-live:model",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "sys",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-none",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "jev-keyonly",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "sys",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "mi",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-none",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-keyonly",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:oracle",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:random",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:size",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:all-short",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:all-long",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:static-model",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:model",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "mi",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-none",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-keyonly",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:oracle",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:random",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:size",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:all-short",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:all-long",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:static-model",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:model",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "sys",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-none",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-keyonly",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:oracle",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:random",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:size",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:all-short",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:all-long",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:static-model",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:model",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "sys",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "mi",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-keyonly",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:oracle",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:random",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:size",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:all-short",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:all-long",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:static-model",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:model",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "sys",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "mi",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-none",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:oracle",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:random",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:size",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:all-short",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-table:all-long",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:static-model",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-live:model",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "sys",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "mi",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-none",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-1",
+      "variant": "jev-keyonly",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "sys",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "mi",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-none",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-keyonly",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:oracle",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:random",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:size",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:all-short",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:all-long",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:heuristic",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:static-model",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:model",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "mi",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-none",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-keyonly",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:oracle",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:random",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:size",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:all-short",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:all-long",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:heuristic",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:static-model",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:model",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "sys",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-none",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-keyonly",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:oracle",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:random",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:size",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:all-short",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:all-long",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:heuristic",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:static-model",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:model",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "sys",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "mi",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-keyonly",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:oracle",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:random",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:size",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:all-short",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:all-long",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:heuristic",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:static-model",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:model",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "sys",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "mi",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-none",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:oracle",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:random",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:size",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:all-short",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-table:all-long",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:heuristic",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:static-model",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-live:model",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "sys",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "mi",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-none",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-mixed-16",
+      "variant": "jev-keyonly",
+      "repetition": 4,
+      "tasks": []
+    }
+  ],
+  "clock_calibration": {
+    "logger_start_unix": 1791649771.3960822,
+    "process_start_unix": 1791649771.19,
+    "spread_seconds": 2.1457672119140625e-06,
+    "wall_minus_monotonic": 1786470747.187324,
+    "pairs": [
+      {
+        "log_release_seconds": 23794.200267,
+        "monotonic_release_seconds": 5202818.409026
+      },
+      {
+        "log_release_seconds": 23800.861842000002,
+        "monotonic_release_seconds": 5202825.070601
+      },
+      {
+        "log_release_seconds": 23804.197481,
+        "monotonic_release_seconds": 5202828.406241
+      },
+      {
+        "log_release_seconds": 23810.869434,
+        "monotonic_release_seconds": 5202835.078192
+      },
+      {
+        "log_release_seconds": 23813.135612,
+        "monotonic_release_seconds": 5202837.34437
+      },
+      {
+        "log_release_seconds": 23819.821979,
+        "monotonic_release_seconds": 5202844.030737
+      },
+      {
+        "log_release_seconds": 23824.163127,
+        "monotonic_release_seconds": 5202848.371885
+      },
+      {
+        "log_release_seconds": 23830.792569,
+        "monotonic_release_seconds": 5202855.001327
+      },
+      {
+        "log_release_seconds": 23832.627094,
+        "monotonic_release_seconds": 5202856.835852
+      },
+      {
+        "log_release_seconds": 23836.757103,
+        "monotonic_release_seconds": 5202860.965861
+      }
+    ],
+    "source": "common/log.cpp t_us; tools/server/server-context.cpp release/t_last_used; ggml/src/ggml.c ggml_time_us"
+  },
+  "clock_note": "Explicit wall-clock benchmark intervals. Logger origin calibrated from recent paired wall-log/CLOCK_MONOTONIC release timestamps; PID start independently verified. Calibration is approximate at sub-millisecond logging granularity."
+}

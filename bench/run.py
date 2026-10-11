@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Sequential, interleaved allocator benchmark matrix. Oracle is same-run hindsight."""
+"""Sequential, interleaved allocator benchmark matrix. Oracle is a byte-majority site label from a prior trace."""
+import urllib.request
 import argparse, datetime, hashlib, json, os, platform, re, signal, statistics, subprocess, sys, time
 from pathlib import Path
 from definitions import ROOT, definitions
-DEFAULT_VARIANTS=['sys','mi','jev-none','jev-keyonly','jev-table:oracle','jev-table:random','jev-table:size','jev-live:heuristic','jev-live:static-model','jev-live:model']
+sys.path.insert(0,str(ROOT/'tools'))
+from selection import accepted
+DEFAULT_VARIANTS=['sys','mi','jev-none','jev-keyonly','jev-table:oracle','jev-table:random','jev-table:size','jev-table:all-transient','jev-table:all-permanent','jev-live:heuristic','jev-live:static-model','jev-live:model']
 
 def environment(variant, name, tables, mode='run', trace=None):
     env={k:v for k,v in os.environ.items() if not (k.startswith('JEVALLOC_') or k.startswith('MIMALLOC_') or k in ('DYLD_INSERT_LIBRARIES','LD_PRELOAD'))}
@@ -13,9 +16,9 @@ def environment(variant, name, tables, mode='run', trace=None):
         extra['DYLD_INSERT_LIBRARIES' if sys.platform=='darwin' else 'LD_PRELOAD']=str(lib)+('.dylib' if sys.platform=='darwin' else '.so')
     if variant.startswith('jev-'):
         extra['JEVALLOC_MODE']=mode
-        if variant in ('jev-none','jev-keyonly'):
+        if variant in ('jev-none','jev-keyonly','jev-explicit'):
             extra['JEVALLOC_POLICY']=variant[4:]
-            if variant=='jev-keyonly':extra['JEVALLOC_TABLE']=str(Path(tables).resolve()/name/'oracle.txt')
+            if variant in ('jev-keyonly','jev-explicit'):extra['JEVALLOC_TABLE']=str(Path(tables).resolve()/name/'oracle.txt')
         elif variant.startswith('jev-table:'):extra['JEVALLOC_TABLE']=str(Path(tables).resolve()/name/(variant.split(':')[1]+'.txt'))
         elif variant.startswith('jev-live:'):extra['JEVALLOC_MODE']='live'
         elif variant.startswith('jev-model:'):extra['JEVALLOC_TABLE']=str(Path(variant.split(':',1)[1]).resolve())
@@ -68,6 +71,23 @@ def merge_schedule(path,log):
     temp.write_text(''.join(json.dumps(entries[key],sort_keys=True,separators=(',',':'))+'\n' for key in sorted(entries)))
     temp.replace(path)
 
+def wait_model_idle():
+    """Drain an already-running prompt-study request after publishing the rep marker.
+
+    The independent study sees that marker and stops submitting. Nothing is paused
+    or killed. Missing /slots is recorded as unavailable, not an idle assertion.
+    """
+    deadline=time.monotonic()+300;quiet=None
+    while time.monotonic()<deadline:
+        try:
+            with urllib.request.urlopen('http://127.0.0.1:8765/slots',timeout=2) as response:slots=json.load(response)
+        except OSError:return 'unavailable'
+        if any(s.get('is_processing') for s in slots):quiet=None
+        elif quiet is None:quiet=time.monotonic()
+        elif time.monotonic()-quiet>=1:return 'idle-before-run'
+        time.sleep(.2)
+    raise RuntimeError('model server did not become idle after warm rep marker')
+
 def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,attempt=0,max_model_decisions=400):
     if rep<0:timeout=max(timeout,86400)
     outdir=Path(outdir);outdir.mkdir(parents=True,exist_ok=True)
@@ -77,13 +97,14 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
     if attempt:tag+=f'-attempt{attempt}'
     stdout=outdir/(tag+'.stdout');stderr=outdir/(tag+'.stderr');timing=outdir/(tag+'.time')
     env,extra=environment(variant,row['name'],tables,mode,trace)
+    extra.update(row.get('environment',{}))
     cmd=[str(ROOT/'build/bench'/row['binary']),*row['args']]
     sidecar=None;decision_log=outdir/(tag+'.decisions.jsonl');stats=outdir/(tag+'.stats.json')
     if variant.startswith('jev-live:'):
         sock=ROOT/'build'/('jvd-'+hashlib.sha256(tag.encode()).hexdigest()[:12]+'.sock')
         sock.unlink(missing_ok=True);decision_log.unlink(missing_ok=True);stats.unlink(missing_ok=True)
         policy=variant.split(':')[1]
-        service=[sys.executable,str(ROOT/'tools/jevd.py'),'--socket',str(sock),'--policy',policy,'--max-model-decisions',str(max_model_decisions),'--cache',str(outdir/'cache'/row['name']/policy),'--log',str(decision_log),'--table',str(Path(tables)/row['name']/'oracle.txt')]
+        service=[sys.executable,str(ROOT/'tools/jevd.py'),'--socket',str(sock),'--policy',policy,'--prompt',row.get('prompt','v2'),'--short-bytes',str(extra.get('JEVALLOC_SHORT_BYTES',1048576)),'--max-model-decisions',str(max_model_decisions),'--model-cache',str(ROOT/'results/pass6/model-cache'),'--cache',str(outdir/'cache'/row['name']/policy),'--log',str(decision_log),'--table',str(Path(tables)/row['name']/'oracle.txt')]
         if len(variant.split(':'))>2:service+=['--model',variant.split(':',2)[2]]
         replay=schedule_path(row,variant,outdir)
         if rep!=-1:
@@ -95,9 +116,9 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
             if sidecar.poll() is not None:raise RuntimeError('jevd failed to start')
             time.sleep(.01)
         else:sidecar.terminate();sidecar.wait();raise RuntimeError('jevd startup timeout')
-        extra.update(JEVALLOC_SOCKET=str(sock),JEVALLOC_STATS_OUT=str(stats.resolve()),JEVALLOC_TIMEOUT_MS='120000')
+        extra.update(JEVALLOC_SOCKET=str(sock),JEVALLOC_STATS_OUT=str(stats.resolve()),JEVALLOC_TIMEOUT_MS='600000')
     redis_socket=ROOT/'build/redis-bench.sock'
-    if row['name']=='redis':
+    if row['name']=='redis' or row.get('redis_driver'):
         redis_socket.unlink(missing_ok=True)
         cmd += ['--port','0','--unixsocket',str(redis_socket),'--save','','--appendonly','no']
     measure=outdir/(tag+'.measure.json')
@@ -109,21 +130,25 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
         for field in ('MemAvailable','SwapFree','SwapTotal'):
             match=re.search(r'^'+field+r':\s+(\d+)',memory,re.M)
             if match:host_before[field+'_bytes']=int(match[1])*1024
-    start=time.monotonic()
+    inference_gate=wait_model_idle() if rep>=0 and mode=='run' and row.get('gate_inference') else 'not-requested'
+    started_unix=time.time();start=time.monotonic()
     with open(row['stdin'] or os.devnull,'rb') as inp,open(stdout,'wb') as out,open(stderr,'wb') as err:
         process=subprocess.Popen(timed,cwd=outdir,env=env,stdin=inp,stdout=out,stderr=err,start_new_session=True)
         try:
-            if row['name']=='redis':
+            if row['name']=='redis' or row.get('redis_driver'):
                 deadline=time.monotonic()+timeout
                 while not redis_socket.exists():
                     if process.poll() is not None:raise RuntimeError('Redis server exited before readiness')
                     if time.monotonic()>deadline:raise subprocess.TimeoutExpired(cmd,timeout)
                     time.sleep(.05)
                 cli=[str(ROOT/'build/bench/redis-cli'),'-s',str(redis_socket)]
-                time.sleep(1);subprocess.run([*cli,'flushall'],env=env,check=True,stdout=out,stderr=err,timeout=timeout)
-                time.sleep(1);subprocess.run([str(ROOT/'build/bench/redis-benchmark'),'-s',str(redis_socket),'-r','1000000','-n','100000','-q','-P','16','lpush','a','1','2','3','4','5','lrange','a','1','5'],env=env,check=True,stdout=out,stderr=err,timeout=timeout)
-                time.sleep(1);subprocess.run([*cli,'flushall'],env=env,check=True,stdout=out,stderr=err,timeout=timeout)
-                time.sleep(1);subprocess.run([*cli,'shutdown','nosave'],env=env,check=True,stdout=out,stderr=err,timeout=timeout)
+                if row.get('redis_driver'):
+                    subprocess.run([sys.executable,str(ROOT/'fragbench/redis_workload.py'),str(redis_socket),row['redis_driver']],env=env,check=True,stdout=out,stderr=err,timeout=timeout)
+                else:
+                    time.sleep(1);subprocess.run([*cli,'flushall'],env=env,check=True,stdout=out,stderr=err,timeout=timeout)
+                    time.sleep(1);subprocess.run([str(ROOT/'build/bench/redis-benchmark'),'-s',str(redis_socket),'-r','1000000','-n','100000','-q','-P','16','lpush','a','1','2','3','4','5','lrange','a','1','5'],env=env,check=True,stdout=out,stderr=err,timeout=timeout)
+                    time.sleep(1);subprocess.run([*cli,'flushall'],env=env,check=True,stdout=out,stderr=err,timeout=timeout)
+                    time.sleep(1);subprocess.run([*cli,'shutdown','nosave'],env=env,check=True,stdout=out,stderr=err,timeout=timeout)
             code=process.wait(timeout=timeout)
         except subprocess.TimeoutExpired:
             os.killpg(process.pid,signal.SIGKILL)
@@ -140,7 +165,7 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
     output=stdout.read_text(errors='replace');errors=stderr.read_text(errors='replace')
     expected=not row['expect'] or re.search(row['expect'],output) is not None
     clean=not re.search(r'memory corruption|assertion.*failed|mimalloc: error|ERROR:',errors,re.I)
-    record={'host_before':host_before,'benchmark':row['name'],'variant':variant,'repetition':rep,'command':cmd,'stdin':row['stdin'],'environment':extra,'exit_status':code,'output_ok':bool(expected and clean),'wall_seconds':wall,'stdout':str(stdout.relative_to(ROOT)),'stderr':str(stderr.relative_to(ROOT))}
+    record={'inference_gate':inference_gate,'started_unix':started_unix,'finished_unix':time.time(),'host_before':host_before,'benchmark':row['name'],'variant':variant,'repetition':rep,'command':cmd,'stdin':row['stdin'],'environment':extra,'exit_status':code,'output_ok':bool(expected and clean),'wall_seconds':wall,'stdout':str(stdout.relative_to(ROOT)),'stderr':str(stderr.relative_to(ROOT))}
     record.update(parse_time(timing.read_text() if timing.exists() else ''))
     if measure.exists():
         record['time_exit_status']=code
@@ -148,6 +173,7 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
         code=record['exit_status']
         record['cpu_seconds']=record['user_seconds']+record['sys_seconds']
     record['score'],record['score_metric']=score(row['name'],output,record['wall_seconds'])
+    record['phases']=[json.loads(line) for line in output.splitlines() if line.startswith('{"phase":')]
     if sidecar is not None:
         if not stats.exists():raise RuntimeError('missing live allocator stats: '+str(stats))
         record['allocator_stats']=json.loads(stats.read_text());record['blocked_seconds']=record['allocator_stats']['blocked_ns']/1e9
@@ -180,7 +206,7 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
 def summarize(records):
     groups={}
     for r in records:
-        if not r.get('cold'):groups.setdefault((r['benchmark'],r['variant']),[]).append(r)
+        if accepted(r):groups.setdefault((r['benchmark'],r['variant']),[]).append(r)
     summary=[]
     for (b,v),runs in groups.items():
         row={'benchmark':b,'variant':v,'repetitions':len(runs),'score_metric':runs[0]['score_metric']}
@@ -195,7 +221,7 @@ def summarize(records):
     return summary
 
 def markdown(data):
-    lines=['# '+data['name'],'','Oracle is fitted and evaluated on the same workload (hindsight upper-bound control). Live cold runs are reported separately; headline live timings replay their decision sequence without model inference.','',
+    lines=['# '+data['name'],'','Oracle is fitted and evaluated on the same workload (prior-trace byte-majority site control). Live cold runs are reported separately; headline live timings replay their decision sequence without model inference.','',
            'Ratios are variant / plain mimalloc; lower is better. Score follows bench.sh throughput normalization for larson, xmalloc-test, rptest, and glibc-thread; otherwise score is wall time. Wall and score are both recorded. RSS and footprint are bytes in JSON.','',
            '| Benchmark | Variant | Wall s median [min, max] | Score / mi | CPU s median [min, max] | CPU / mi | RSS MiB [min, max] | RSS / mi | Footprint MiB [min, max] |',
            '|---|---|---:|---:|---:|---:|---:|---:|---:|']
@@ -220,14 +246,15 @@ def prepare_replay(row,variant,outdir,tables,timeout,data,path,max_model_decisio
     raise RuntimeError('Replay coverage did not converge after 12 cache-fill runs')
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--name',default='first-pass');p.add_argument('--reps',type=int,default=5);p.add_argument('--variants',nargs='+',default=DEFAULT_VARIANTS);p.add_argument('--benchmarks',nargs='+');p.add_argument('--tables',default=str(ROOT/'results/tables'));p.add_argument('--procs',type=int,default=8 if sys.platform=='darwin' else 16);p.add_argument('--timeout',type=int,default=7200);p.add_argument('--resume',action='store_true');p.add_argument('--allow-cold-upgrade',action='store_true',help='Adopt completed cold-only records across a runner/sidecar coverage change; preserve old code fingerprints');p.add_argument('--max-model-decisions',type=int,default=400);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--prompt',choices=['v2','v2-no-description','v2-runtime-only'],default='v2');p.add_argument('--short-bytes',type=int,default=1048576);p.add_argument('--name',default='first-pass');p.add_argument('--reps',type=int,default=5);p.add_argument('--variants',nargs='+',default=DEFAULT_VARIANTS);p.add_argument('--benchmarks',nargs='+');p.add_argument('--tables',default=str(ROOT/'results/tables'));p.add_argument('--procs',type=int,default=8 if sys.platform=='darwin' else 16);p.add_argument('--timeout',type=int,default=7200);p.add_argument('--resume',action='store_true');p.add_argument('--allow-cold-upgrade',action='store_true',help='Adopt completed cold-only records across a runner/sidecar coverage change; preserve old code fingerprints');p.add_argument('--max-model-decisions',type=int,default=400);a=p.parse_args()
     if a.max_model_decisions<0:p.error('max-model-decisions must be nonnegative')
     signal.signal(signal.SIGTERM,lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
     signal.signal(signal.SIGINT,lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
-    invalid=[v for v in a.variants if v not in DEFAULT_VARIANTS and not v.startswith(('jev-model:','jev-live:')) and v not in ('jev-oracle','jev-random','jev-size')]
+    invalid=[v for v in a.variants if v not in DEFAULT_VARIANTS and not v.startswith(('jev-model:','jev-live:')) and v not in ('jev-oracle','jev-random','jev-size','jev-explicit')]
     if invalid:p.error('Unknown allocator variants: '+', '.join(invalid))
     path=ROOT/'results'/(a.name+'.json');path.parent.mkdir(exist_ok=True)
     rows=definitions(a.procs)
+    for row in rows:row['gate_inference']=True;row['prompt']=a.prompt;row['environment']={'JEVALLOC_SHORT_BYTES':str(a.short_bytes)}
     if a.benchmarks:
         unknown=set(a.benchmarks)-{r['name'] for r in rows}
         if unknown:p.error('Unknown benchmarks: '+', '.join(sorted(unknown)))
@@ -240,13 +267,14 @@ def main():
         for v in a.variants:
             _,extra=environment(v,r['name'],a.tables)
             if extra.get('JEVALLOC_TABLE'):files.add(Path(extra['JEVALLOC_TABLE']))
-    files.update(ROOT/p for p in ('tools/jevd.py','tools/symbolize.py','bench/definitions.py','bench/run.py','build/measure'))
+    files.update(ROOT/p for p in ('tools/common.py','tools/selection.py','tools/jevd.py','tools/prompts.py','tools/symbolize.py','bench/definitions.py','bench/run.py','build/measure'))
     if any(r['name']=='redis' for r in rows):files.update(ROOT/'build/bench'/p for p in ('redis-cli','redis-benchmark'))
     suffix='.dylib' if sys.platform=='darwin' else '.so'
     files.update((ROOT/'build'/('lib'+name+suffix)) for name in ('jevalloc','mimalloc'))
+    files.update((ROOT/'descriptions').glob('*.txt'))
     fingerprint={str(f):hashlib.sha256(f.read_bytes()).hexdigest() for f in sorted(files)}
-    configuration={'max_model_decisions':a.max_model_decisions,'repetitions':a.reps,'variants':a.variants,'workloads':[r['name'] for r in rows],'procs':a.procs,'fingerprints':fingerprint}
-    data=json.loads(path.read_text()) if a.resume and path.exists() else {'name':a.name,'created':datetime.datetime.now(datetime.timezone.utc).isoformat(),'platform':platform.platform(),'processor_count':a.procs,'oracle':'same-workload hindsight upper bound','runs':[]}
+    configuration={'prompt':a.prompt,'class_schema':'transient-permanent-v1','short_bytes':a.short_bytes,'max_model_decisions':a.max_model_decisions,'repetitions':a.reps,'variants':a.variants,'workloads':[r['name'] for r in rows],'procs':a.procs,'fingerprints':fingerprint}
+    data=json.loads(path.read_text()) if a.resume and path.exists() else {'name':a.name,'created':datetime.datetime.now(datetime.timezone.utc).isoformat(),'platform':platform.platform(),'processor_count':a.procs,'oracle':'prior-trace byte-majority site control','runs':[]}
     previous=data.get('configuration',configuration)
     if previous!=configuration:
         allowed={str(ROOT/'tools/jevd.py'),str(ROOT/'bench/run.py')}
@@ -285,4 +313,13 @@ def main():
                 else:raise RuntimeError('Replay still has unseen decision slots after six attempts')
                 data['runs'].append(result);save(path,data)
     print(path)
-if __name__=='__main__':main()
+if __name__=='__main__':
+    if '--live-ablation' in sys.argv:
+        sys.argv.remove('--live-ablation')
+        import runpy
+        runpy.run_path(str(ROOT/'tools/live_ablation.py'),run_name='__main__')
+    elif '--fragbench' in sys.argv:
+        sys.argv.remove('--fragbench')
+        import runpy
+        runpy.run_path(str(ROOT/'fragbench/run.py'),run_name='__main__')
+    else:main()

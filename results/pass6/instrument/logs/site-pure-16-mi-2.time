@@ -1,0 +1,23 @@
+	Command being timed: "/home/quill/jevalloc/src-tree/build/measure /home/quill/jevalloc/src-tree/results/frag-instrument/logs/site-pure-16-mi-2.measure.json /usr/bin/env LD_PRELOAD=/home/quill/jevalloc/src-tree/build/libmimalloc.so MIMALLOC_PURGE_DELAY=0 MIMALLOC_ARENA_PURGE_MULT=1 MIMALLOC_PURGE_DECOMMITS=1 JEVALLOC_DEPTH=4 JEVALLOC_MODEL_DEPTH=12 JEVALLOC_SHORT_BYTES=1048576 /home/quill/jevalloc/src-tree/build/bench/../server-sim 16 site-pure 400000 250"
+	User time (seconds): 0.27
+	System time (seconds): 0.18
+	Percent of CPU this job got: 44%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.04
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 305488
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2889
+	Voluntary context switches: 1370
+	Involuntary context switches: 25
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

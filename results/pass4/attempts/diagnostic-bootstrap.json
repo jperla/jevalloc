@@ -1,0 +1,818 @@
+{
+  "name": "diagnostic-bootstrap",
+  "created": "2026-10-10T20:42:23.012660+00:00",
+  "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+  "processor_count": 16,
+  "oracle": "prior-trace byte-majority site control",
+  "runs": [
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791664945.8412547,
+      "finished_unix": 1791664948.65974,
+      "host_before": {
+        "load_average": [
+          1.5654296875,
+          4.798828125,
+          3.849609375
+        ],
+        "MemAvailable_bytes": 12883869696,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "mi",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 2.800827005,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-mi-0.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-mi-0.stderr",
+      "user_seconds": 2.797879,
+      "sys_seconds": 0.001999,
+      "peak_rss_bytes": 4476928,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.799878,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 2.800827005,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791664949.6675034,
+      "finished_unix": 1791664952.5356483,
+      "host_before": {
+        "load_average": [
+          1.52001953125,
+          4.7353515625,
+          3.833984375
+        ],
+        "MemAvailable_bytes": 12886831104,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "jev-none",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "none"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 2.836003229,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-jev-none-0.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-jev-none-0.stderr",
+      "user_seconds": 2.831063,
+      "sys_seconds": 0.004,
+      "peak_rss_bytes": 4476928,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.835063,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 2.836003229,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791664953.5442383,
+      "finished_unix": 1791664958.266919,
+      "host_before": {
+        "load_average": [
+          1.47802734375,
+          4.6728515625,
+          3.818359375
+        ],
+        "MemAvailable_bytes": 12885819392,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "jev-keyonly",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/cfrac/oracle.txt"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 4.683229216,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-jev-keyonly-0.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-jev-keyonly-0.stderr",
+      "user_seconds": 4.677775,
+      "sys_seconds": 0.003998,
+      "peak_rss_bytes": 4636672,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 4.681773,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 4.683229216,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791664959.275658,
+      "finished_unix": 1791664962.0937636,
+      "host_before": {
+        "load_average": [
+          1.439453125,
+          4.61181640625,
+          3.802734375
+        ],
+        "MemAvailable_bytes": 12888174592,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "jev-none",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "none"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 2.78507411,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-jev-none-1.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-jev-none-1.stderr",
+      "user_seconds": 2.783453,
+      "sys_seconds": 0.000999,
+      "peak_rss_bytes": 4481024,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.7844520000000004,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 2.78507411,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791664963.102408,
+      "finished_unix": 1791664967.8234293,
+      "host_before": {
+        "load_average": [
+          1.40380859375,
+          4.5517578125,
+          3.78759765625
+        ],
+        "MemAvailable_bytes": 12890849280,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "jev-keyonly",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/cfrac/oracle.txt"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 4.673781151,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-jev-keyonly-1.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-jev-keyonly-1.stderr",
+      "user_seconds": 4.669038,
+      "sys_seconds": 0.002999,
+      "peak_rss_bytes": 4632576,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 4.6720369999999996,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 4.673781151,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791664968.8317628,
+      "finished_unix": 1791664971.7001803,
+      "host_before": {
+        "load_average": [
+          1.37109375,
+          4.49267578125,
+          3.7724609375
+        ],
+        "MemAvailable_bytes": 12887244800,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "mi",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 2.850497126,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-mi-1.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-mi-1.stderr",
+      "user_seconds": 2.846351,
+      "sys_seconds": 0.003,
+      "peak_rss_bytes": 4481024,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.849351,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 2.850497126,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791664972.7082841,
+      "finished_unix": 1791664977.3284247,
+      "host_before": {
+        "load_average": [
+          1.34130859375,
+          4.4345703125,
+          3.75732421875
+        ],
+        "MemAvailable_bytes": 12887658496,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "jev-keyonly",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/cfrac/oracle.txt"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 4.597479491,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-jev-keyonly-2.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-jev-keyonly-2.stderr",
+      "user_seconds": 4.594513,
+      "sys_seconds": 0.001999,
+      "peak_rss_bytes": 4632576,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 4.596512,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 4.597479491,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791664978.3372276,
+      "finished_unix": 1791664981.1053762,
+      "host_before": {
+        "load_average": [
+          1.31396484375,
+          4.37744140625,
+          3.7421875
+        ],
+        "MemAvailable_bytes": 12885868544,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "mi",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 2.749522036,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-mi-2.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-mi-2.stderr",
+      "user_seconds": 2.746009,
+      "sys_seconds": 0.002998,
+      "peak_rss_bytes": 4608000,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.7490069999999998,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 2.749522036,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791664982.113657,
+      "finished_unix": 1791664984.9819577,
+      "host_before": {
+        "load_average": [
+          1.28857421875,
+          4.3212890625,
+          3.72705078125
+        ],
+        "MemAvailable_bytes": 12885389312,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "jev-none",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "none"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 2.818966963,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-jev-none-2.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-jev-none-2.stderr",
+      "user_seconds": 2.815009,
+      "sys_seconds": 0.002998,
+      "peak_rss_bytes": 4616192,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.8180069999999997,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 2.818966963,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791664985.991491,
+      "finished_unix": 1791664988.759665,
+      "host_before": {
+        "load_average": [
+          1.28857421875,
+          4.3212890625,
+          3.72705078125
+        ],
+        "MemAvailable_bytes": 12880457728,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "mi",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 2.738499736,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-mi-3.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-mi-3.stderr",
+      "user_seconds": 2.735841,
+      "sys_seconds": 0.001999,
+      "peak_rss_bytes": 4612096,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.7378400000000003,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 2.738499736,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791664989.7682712,
+      "finished_unix": 1791664992.6366374,
+      "host_before": {
+        "load_average": [
+          1.18505859375,
+          4.24951171875,
+          3.70703125
+        ],
+        "MemAvailable_bytes": 12875100160,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "jev-none",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "none"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 2.820211019,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-jev-none-3.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-jev-none-3.stderr",
+      "user_seconds": 2.816072,
+      "sys_seconds": 0.002999,
+      "peak_rss_bytes": 4481024,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.819071,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 2.820211019,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791664993.6459877,
+      "finished_unix": 1791664998.3667014,
+      "host_before": {
+        "load_average": [
+          1.169921875,
+          4.1953125,
+          3.6923828125
+        ],
+        "MemAvailable_bytes": 12881678336,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "jev-keyonly",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/cfrac/oracle.txt"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 4.706269245,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-jev-keyonly-3.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-jev-keyonly-3.stderr",
+      "user_seconds": 4.701491,
+      "sys_seconds": 0.003999,
+      "peak_rss_bytes": 4636672,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 4.70549,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 4.706269245,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791664999.3751307,
+      "finished_unix": 1791665002.1930745,
+      "host_before": {
+        "load_average": [
+          1.15625,
+          4.14208984375,
+          3.677734375
+        ],
+        "MemAvailable_bytes": 12885254144,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "jev-none",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "none"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 2.785888261,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-jev-none-4.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-jev-none-4.stderr",
+      "user_seconds": 2.781825,
+      "sys_seconds": 0.002999,
+      "peak_rss_bytes": 4481024,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.784824,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 2.785888261,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791665003.201215,
+      "finished_unix": 1791665007.5214412,
+      "host_before": {
+        "load_average": [
+          1.1435546875,
+          4.08984375,
+          3.6630859375
+        ],
+        "MemAvailable_bytes": 12883095552,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "jev-keyonly",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/cfrac/oracle.txt"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 4.29471,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-jev-keyonly-4.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-jev-keyonly-4.stderr",
+      "user_seconds": 4.28949,
+      "sys_seconds": 0.003999,
+      "peak_rss_bytes": 4636672,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 4.293489,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 4.29471,
+      "score_metric": "wall_seconds",
+      "phases": []
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791665008.530134,
+      "finished_unix": 1791665011.3482308,
+      "host_before": {
+        "load_average": [
+          1.1318359375,
+          4.0380859375,
+          3.6484375
+        ],
+        "MemAvailable_bytes": 12880805888,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "mi",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 2.785038354,
+      "stdout": "results/logs/diagnostic-bootstrap/cfrac-mi-4.stdout",
+      "stderr": "results/logs/diagnostic-bootstrap/cfrac-mi-4.stderr",
+      "user_seconds": 2.781547,
+      "sys_seconds": 0.001999,
+      "peak_rss_bytes": 4481024,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.7835460000000003,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 2.785038354,
+      "score_metric": "wall_seconds",
+      "phases": []
+    }
+  ],
+  "coverage_runs": [],
+  "configuration": {
+    "max_model_decisions": 400,
+    "repetitions": 5,
+    "variants": [
+      "mi",
+      "jev-none",
+      "jev-keyonly"
+    ],
+    "workloads": [
+      "cfrac"
+    ],
+    "procs": 16,
+    "fingerprints": {
+      "/home/quill/jevalloc/src-tree/bench/definitions.py": "db782cc59a8ec2406a20869fd664c76afa20965cdd526311fa1a624225982d11",
+      "/home/quill/jevalloc/src-tree/bench/run.py": "1edd2df7ef8b30d06cf9d437b9f9461dc41fcef7da1e368e35e5488e5390b0f3",
+      "/home/quill/jevalloc/src-tree/build/bench/cfrac": "94809f97a84a9ee36b43fcc0779949a41b18a9ce84f86211229ead21a44f776a",
+      "/home/quill/jevalloc/src-tree/build/libjevalloc.so": "1d9754cb25bc652c787eec835c4a564a932596c77d1c45dcd2c2ded4edad315a",
+      "/home/quill/jevalloc/src-tree/build/libmimalloc.so": "927db9974948cc9a524bee26035671fe0303cafa60d1079af3fa7cd6fa2e319b",
+      "/home/quill/jevalloc/src-tree/build/measure": "ab5798f926c4183e1b482ff2fd6bde0579d653d31da3546f8d055cf99606d391",
+      "/home/quill/jevalloc/src-tree/results/tables/cfrac/oracle.txt": "ba455cb6be5b97cfaa328a73f235cf387ce328838640363e65826c8a918a6fb7",
+      "/home/quill/jevalloc/src-tree/tools/jevd.py": "f1e63c1cb12d094f41088a0beb8542a68caf359a5c8e6edb89e4d541b94e253b",
+      "/home/quill/jevalloc/src-tree/tools/prompts.py": "21983b5d9cf454ca5f9bfba8ff3f083b3784a995d149ee8aec63e577b811a6b8",
+      "/home/quill/jevalloc/src-tree/tools/symbolize.py": "0120115e2ecbe28d2e8b3d7146181244f2d78aa61d8bd2579cc7258e47c23177"
+    }
+  },
+  "summary": [
+    {
+      "benchmark": "cfrac",
+      "variant": "mi",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 2.785038354,
+        "min": 2.738499736,
+        "max": 2.850497126
+      },
+      "user_seconds": {
+        "median": 2.781547,
+        "min": 2.735841,
+        "max": 2.846351
+      },
+      "sys_seconds": {
+        "median": 0.001999,
+        "min": 0.001999,
+        "max": 0.003
+      },
+      "cpu_seconds": {
+        "median": 2.7835460000000003,
+        "min": 2.7378400000000003,
+        "max": 2.849351
+      },
+      "peak_rss_bytes": {
+        "median": 4481024,
+        "min": 4476928,
+        "max": 4612096
+      },
+      "score": {
+        "median": 2.785038354,
+        "min": 2.738499736,
+        "max": 2.850497126
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.0,
+        "cpu_seconds": 1.0,
+        "peak_rss_bytes": 1.0,
+        "score": 1.0
+      }
+    },
+    {
+      "benchmark": "cfrac",
+      "variant": "jev-none",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 2.818966963,
+        "min": 2.78507411,
+        "max": 2.836003229
+      },
+      "user_seconds": {
+        "median": 2.815009,
+        "min": 2.781825,
+        "max": 2.831063
+      },
+      "sys_seconds": {
+        "median": 0.002999,
+        "min": 0.000999,
+        "max": 0.004
+      },
+      "cpu_seconds": {
+        "median": 2.8180069999999997,
+        "min": 2.7844520000000004,
+        "max": 2.835063
+      },
+      "peak_rss_bytes": {
+        "median": 4481024,
+        "min": 4476928,
+        "max": 4616192
+      },
+      "score": {
+        "median": 2.818966963,
+        "min": 2.78507411,
+        "max": 2.836003229
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.012182456644186,
+        "cpu_seconds": 1.0123802516646032,
+        "peak_rss_bytes": 1.0,
+        "score": 1.012182456644186
+      }
+    },
+    {
+      "benchmark": "cfrac",
+      "variant": "jev-keyonly",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 4.673781151,
+        "min": 4.29471,
+        "max": 4.706269245
+      },
+      "user_seconds": {
+        "median": 4.669038,
+        "min": 4.28949,
+        "max": 4.701491
+      },
+      "sys_seconds": {
+        "median": 0.003998,
+        "min": 0.001999,
+        "max": 0.003999
+      },
+      "cpu_seconds": {
+        "median": 4.6720369999999996,
+        "min": 4.293489,
+        "max": 4.70549
+      },
+      "peak_rss_bytes": {
+        "median": 4636672,
+        "min": 4632576,
+        "max": 4636672
+      },
+      "score": {
+        "median": 4.673781151,
+        "min": 4.29471,
+        "max": 4.706269245
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.6781747886119056,
+        "cpu_seconds": 1.678447922182712,
+        "peak_rss_bytes": 1.0347349177330896,
+        "score": 1.6781747886119056
+      }
+    }
+  ]
+}

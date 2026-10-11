@@ -1,0 +1,134 @@
+{
+  "site-pure-1": {
+    "class_schema": "transient-permanent-v1",
+    "classes": [
+      "transient",
+      "permanent"
+    ],
+    "sites": [
+      8,
+      3
+    ],
+    "actual_object_byte_shares": [
+      0.9292270787824489,
+      0.0707729212175511
+    ],
+    "majority_site_byte_shares": [
+      0.9666623052698218,
+      0.03333769473017823
+    ],
+    "total_requested_bytes": 921784192,
+    "oracle_mismatches": 0,
+    "trace_sha256": "5bfefe783f0a3938889588b6de24a0c1b38959e3a9613b33cb88bc7bcbea0cfc"
+  },
+  "site-pure-16": {
+    "class_schema": "transient-permanent-v1",
+    "classes": [
+      "transient",
+      "permanent"
+    ],
+    "sites": [
+      8,
+      3
+    ],
+    "actual_object_byte_shares": [
+      0.9295805660408306,
+      0.07041943395916943
+    ],
+    "majority_site_byte_shares": [
+      0.9667035172323144,
+      0.03329648276768561
+    ],
+    "total_requested_bytes": 923788624,
+    "oracle_mismatches": 0,
+    "trace_sha256": "7912393958b04e20d32b50deba47aea5cdb3aa88ce9234042f5ef96d08982f66"
+  },
+  "site-mixed-1": {
+    "class_schema": "transient-permanent-v1",
+    "classes": [
+      "transient",
+      "permanent"
+    ],
+    "sites": [
+      8,
+      2
+    ],
+    "actual_object_byte_shares": [
+      0.9646609297577653,
+      0.03533907024223474
+    ],
+    "majority_site_byte_shares": [
+      0.9999952268025555,
+      4.773197444509931e-06
+    ],
+    "total_requested_bytes": 921813952,
+    "oracle_mismatches": 0,
+    "trace_sha256": "613dc522e4a94a8a38ad61f1e4e460916b9441b9f737a68b5de7366a854496eb"
+  },
+  "site-mixed-16": {
+    "class_schema": "transient-permanent-v1",
+    "classes": [
+      "transient",
+      "permanent"
+    ],
+    "sites": [
+      8,
+      2
+    ],
+    "actual_object_byte_shares": [
+      0.964720912907693,
+      0.035279087092306934
+    ],
+    "majority_site_byte_shares": [
+      0.9999903032621852,
+      9.696737814806541e-06
+    ],
+    "total_requested_bytes": 924022096,
+    "oracle_mismatches": 0,
+    "trace_sha256": "8db0c6447e310c79a2873150074ff0c963d929ac50ad85b87673b22efed43996"
+  },
+  "redis-mesh": {
+    "class_schema": "transient-permanent-v1",
+    "classes": [
+      "transient",
+      "permanent"
+    ],
+    "sites": [
+      93,
+      528
+    ],
+    "actual_object_byte_shares": [
+      0.7403135492435231,
+      0.2596864507564769
+    ],
+    "majority_site_byte_shares": [
+      0.9779224896627097,
+      0.022077510337290326
+    ],
+    "total_requested_bytes": 419192783,
+    "oracle_mismatches": 0,
+    "trace_sha256": "eae4f391cbe6ca41980d1c85a8e5da6d1542516950a9aa96a346356cce3113db"
+  },
+  "redis-drop": {
+    "class_schema": "transient-permanent-v1",
+    "classes": [
+      "transient",
+      "permanent"
+    ],
+    "sites": [
+      95,
+      534
+    ],
+    "actual_object_byte_shares": [
+      0.732145965124221,
+      0.26785403487577897
+    ],
+    "majority_site_byte_shares": [
+      0.5189343617812244,
+      0.48106563821877557
+    ],
+    "total_requested_bytes": 489247280,
+    "oracle_mismatches": 0,
+    "trace_sha256": "aca9d42614ce29942a0153f27d1de13af5e8d3df2ca1087982a85d8064e7df64"
+  }
+}

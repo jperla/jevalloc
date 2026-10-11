@@ -1,0 +1,1 @@
+{"exit_status":0,"wall_seconds":1.049065791,"user_seconds":0.327263,"sys_seconds":0.173767,"peak_rss_bytes":309624832,"peak_footprint_bytes":null,"footprint_final_read":false,"measurement":"wait4 + proc_pid_rusage"}

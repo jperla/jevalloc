@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Controls. Size thresholds fixed independently of lifetime data: <=256 short,
-257..16384 medium, >16384 long. Typical size is mean requested bytes/allocation."""
+"""Controls. Size thresholds fixed independently of lifetime data: <=256 transient,
+>256 permanent. Typical size is mean requested bytes/allocation."""
 import argparse, random
 from pathlib import Path
 from common import sites, write_table
@@ -9,11 +9,11 @@ def generate(trace, output, seed=42):
     ss = sorted(sites(trace), key=lambda s:s['key'])
     rng = random.Random(seed)
     out = Path(output); out.mkdir(parents=True, exist_ok=True)
-    for mode in ('random', 'all-short', 'all-long', 'size'):
+    for mode in ('random', 'all-transient', 'all-permanent', 'size'):
         entries = []
         for s in ss:
             mean = s['bytes'] / max(1, s['count'])
-            cls = rng.randrange(3) if mode == 'random' else 0 if mode == 'all-short' else 2 if mode == 'all-long' else (0 if mean <= 256 else 1 if mean <= 16384 else 2)
+            cls = rng.randrange(2) if mode == 'random' else 0 if mode == 'all-transient' else 1 if mode == 'all-permanent' else (0 if mean <= 256 else 1)
             entries.append((s['key'], cls))
         write_table(out / (mode+'.txt'), entries)
 

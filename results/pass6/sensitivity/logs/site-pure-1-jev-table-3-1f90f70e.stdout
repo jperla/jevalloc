@@ -1,0 +1,7 @@
+{"phase":"peak","cycle":0,"rss_bytes":127868928,"live_bytes":115245248,"fragmentation_ratio":1.109538,"peak_rss_bytes":127549440}
+{"phase":"drop","cycle":0,"rss_bytes":127873024,"live_bytes":11523136,"fragmentation_ratio":11.097068,"peak_rss_bytes":127549440}
+{"phase":"idle","cycle":0,"rss_bytes":127946752,"live_bytes":11523136,"fragmentation_ratio":11.103466,"peak_rss_bytes":127680512}
+{"phase":"peak","cycle":1,"rss_bytes":293679104,"live_bytes":203491136,"fragmentation_ratio":1.443203,"peak_rss_bytes":293445632}
+{"phase":"drop","cycle":1,"rss_bytes":293613568,"live_bytes":30725760,"fragmentation_ratio":9.555942,"peak_rss_bytes":293445632}
+{"phase":"idle","cycle":1,"rss_bytes":293621760,"live_bytes":30725760,"fragmentation_ratio":9.556208,"peak_rss_bytes":293445632}
+fragbench OK

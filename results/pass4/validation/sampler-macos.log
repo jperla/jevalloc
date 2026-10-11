@@ -1,0 +1,22 @@
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 0.020s
+
+OK
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.020s
+
+OK
+stress OK
+stress OK
+stress OK
+defects OK
+stress OK
+lifetimes OK
+TRACE cfrac
+RANDOM RUN cfrac (171 sites)
+LIVE TESTS PASSED
+REPLAY COVERAGE TEST PASSED
+BUDGET INTEGRATION TEST PASSED
+ALL TESTS PASSED

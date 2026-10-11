@@ -1,0 +1,168 @@
+{
+  "complete_workloads": 21,
+  "expected_workloads": 22,
+  "passed": false,
+  "checks": [
+    {
+      "workload": "cfrac",
+      "none_time": 1.0185266269952966,
+      "none_rss": 1.0018281535648994,
+      "keyonly_rss": 1.0045620437956204,
+      "fix1_pass": true
+    },
+    {
+      "workload": "espresso",
+      "none_time": 1.00024331936212,
+      "none_rss": 1.001156069364162,
+      "keyonly_rss": 1.0084680523479599,
+      "fix1_pass": true
+    },
+    {
+      "workload": "barnes",
+      "none_time": 1.000497260223086,
+      "none_rss": 1.002035027133695,
+      "keyonly_rss": 1.0004923379900301,
+      "fix1_pass": true
+    },
+    {
+      "workload": "larson",
+      "none_time": 1.0237821250479477,
+      "none_rss": 0.983913086322428,
+      "keyonly_rss": 0.8705025163374146,
+      "fix1_pass": true,
+      "live_time": 1.1883014623172103,
+      "fix2_pass": false
+    },
+    {
+      "workload": "larson-sized",
+      "none_time": 1.0215664018161181,
+      "none_rss": 0.9752919360497169,
+      "keyonly_rss": 0.8986125385405961,
+      "fix1_pass": true,
+      "live_time": 1.1912519526891319,
+      "fix2_pass": false
+    },
+    {
+      "workload": "xmalloc-test",
+      "none_time": 1.0472972972972974,
+      "none_rss": 0.9851830331202789,
+      "keyonly_rss": 0.7599233264523739,
+      "fix1_pass": false,
+      "live_time": 1.1946107784431137,
+      "fix2_pass": false
+    },
+    {
+      "workload": "cache-scratch1",
+      "none_time": 0.9991820760335256,
+      "none_rss": 1.0006277463904583,
+      "keyonly_rss": 0.9993726474278545,
+      "fix1_pass": true
+    },
+    {
+      "workload": "cache-scratchN",
+      "none_time": 1.0029632811128193,
+      "none_rss": 0.9598494353826851,
+      "keyonly_rss": 1.0,
+      "fix1_pass": true
+    },
+    {
+      "workload": "cache-thrash1",
+      "none_time": 0.9767108676599843,
+      "none_rss": 0.9993726474278545,
+      "keyonly_rss": 1.0,
+      "fix1_pass": true
+    },
+    {
+      "workload": "cache-thrashN",
+      "none_time": 0.9942674720974541,
+      "none_rss": 0.9891165172855314,
+      "keyonly_rss": 0.9754045307443365,
+      "fix1_pass": true
+    },
+    {
+      "workload": "mstress",
+      "none_time": 1.003892119794663,
+      "none_rss": 0.9395933462097051,
+      "keyonly_rss": 1.0526257081165493,
+      "fix1_pass": false,
+      "live_time": 0.9583087889727449,
+      "fix2_pass": true
+    },
+    {
+      "workload": "rptest",
+      "none_time": 1.0224713934206973,
+      "none_rss": 1.0374691240737222,
+      "keyonly_rss": 1.0026006373392915,
+      "fix1_pass": false,
+      "live_time": 1.0885263627698474,
+      "fix2_pass": true
+    },
+    {
+      "workload": "glibc-simple",
+      "none_time": 1.027508454614094,
+      "none_rss": 1.003898635477583,
+      "keyonly_rss": 0.9611650485436893,
+      "fix1_pass": true
+    },
+    {
+      "workload": "glibc-thread",
+      "none_time": 1.0597701689175623,
+      "none_rss": 1.0001713991887105,
+      "keyonly_rss": 1.0011995887124414,
+      "fix1_pass": false
+    },
+    {
+      "workload": "alloc-test1",
+      "none_time": 1.0173447673753322,
+      "none_rss": 0.9831911042151539,
+      "keyonly_rss": 1.0,
+      "fix1_pass": true
+    },
+    {
+      "workload": "alloc-testN",
+      "none_time": 1.026039750730661,
+      "none_rss": 0.9923554706163402,
+      "keyonly_rss": 1.007462686567164,
+      "fix1_pass": true
+    },
+    {
+      "workload": "malloc-large",
+      "none_time": 0.9940656688488534,
+      "none_rss": 0.999380879391699,
+      "keyonly_rss": 1.0002646425521164,
+      "fix1_pass": true
+    },
+    {
+      "workload": "mleak10",
+      "none_time": 0.9885906858576896,
+      "none_rss": 1.0066380320187427,
+      "keyonly_rss": 1.2011249030256013,
+      "fix1_pass": false
+    },
+    {
+      "workload": "mleak100",
+      "none_time": 1.0017770661425593,
+      "none_rss": 0.9951503394762367,
+      "keyonly_rss": 1.0061728395061729,
+      "fix1_pass": true
+    },
+    {
+      "workload": "sh6benchN",
+      "none_time": 1.1018058295929642,
+      "none_rss": 1.004024521503112,
+      "keyonly_rss": 0.9805328983143012,
+      "fix1_pass": false,
+      "live_time": 1.7719951298061085,
+      "fix2_pass": false
+    },
+    {
+      "workload": "sh8benchN",
+      "none_time": 1.055625443290608,
+      "none_rss": 0.9994807410566919,
+      "keyonly_rss": 1.001892568883941,
+      "fix1_pass": false,
+      "live_time": 1.4846087186377541,
+      "fix2_pass": false
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "workload": "site-mixed-1",
+    "payload_key": "4ecb89f4eb3f6b87",
+    "payload_class_bytes": [
+      274651520,
+      32571648
+    ],
+    "payload_ceiling": 0.8939804956376206,
+    "whole_workload_ceiling": 0.9646657029552098
+  },
+  {
+    "workload": "site-mixed-16",
+    "payload_key": "4ecb89f4eb3f6b87",
+    "payload_class_bytes": [
+      274712640,
+      32589696
+    ],
+    "payload_ceiling": 0.8939490782133201,
+    "whole_workload_ceiling": 0.9647306096455078
+  }
+]

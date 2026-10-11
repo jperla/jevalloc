@@ -1,28 +1,18 @@
-"""First-sight vs recheck accuracy of live model decisions against the oracle table.
-
-usage: live_accuracy.py <results dir containing tables/ and logs/beelink/>
-"""
-import json,glob,collections,os,sys
-R=sys.argv[1] if len(sys.argv)>1 else "results"
-for w in ("cfrac","espresso"):
-    truth={l.split()[0]:int(l.split()[1]) for l in open(f"{R}/tables/{w}/oracle.txt") if l.strip()}
-    for f in sorted(glob.glob(f"{R}/logs/beelink/{w}-jev-live-*.decisions.jsonl")):
-        rows=[json.loads(l) for l in open(f)]
-        if not rows: continue
-        mr=[r for r in rows if r.get("raw_response")]
-        if not mr: continue
-        first=collections.Counter(); re=collections.Counter(); last={}
-        for r in rows:
-            k=r["request"]["key"]; 
-            if k not in truth or "response" not in r: continue
-            ok=(r["response"]["class"]==truth[k], truth[k])
-            (first if r["request"].get("prior") is None else re)[ok]+=1
-            last[k]=r["response"]["class"]
-        def fmt(c):
-            n=sum(c.values()); a=sum(v for (ok,t),v in c.items() if ok)
-            per=" ".join("%s %d/%d"%("SML"[t], c[(True,t)], c[(True,t)]+c[(False,t)]) for t in range(3))
-            return "%d/%d=%.2f [%s]"%(a,n,a/max(n,1),per)
-        fin=collections.Counter((last[k]==truth[k],truth[k]) for k in last)
-        print(w, os.path.basename(f)[-28:-16], "rows",len(rows),"model",len(mr),"| first-sight",fmt(first),"| rechecks",fmt(re),"| final per site",fmt(fin))
-        ex=[r for r in mr if r["request"].get("prior") is not None and r.get("model_request")][:1]
-        if ex and w=="cfrac": print("   sample recheck state tail:", repr(ex[0]["model_request"]["state"][-420:]))
+#!/usr/bin/env python3
+"""Audit explicit cold logs only; separate policy/model populations and coverage."""
+import argparse,collections,json
+from pathlib import Path
+p=argparse.ArgumentParser();p.add_argument('results',nargs='?',default='results');p.add_argument('--matrix',default='pass4.json');a=p.parse_args();root=Path(a.results);matrix_path=root/a.matrix;matrix=json.loads(matrix_path.read_text())
+for run in matrix['runs']:
+    if not run.get('cold'):continue
+    workload=run['benchmark'];truth={k:int(v) for k,v in (s.split() for s in (matrix_path.parent/'tables'/workload/'oracle.txt').read_text().splitlines() if s.strip())}
+    path=root/Path(run['decision_log']).relative_to('results');events=[json.loads(s) for s in path.read_text().splitlines()]
+    unknown={e['request']['key'] for e in events if 'response' in e and e['request']['key'] not in truth}
+    if unknown:raise SystemExit(f'{path}: {len(unknown)} decision sites have no matching truth; accuracy withheld')
+    for scope in ('policy','model-only'):
+        rows=[e for e in events if 'response' in e and (scope=='policy' or e.get('raw_response'))]
+        matched=[e for e in rows if e['request']['key'] in truth]
+        first=[e for e in matched if e['ordinal']==0];rechecks=[e for e in matched if e['ordinal']>0]
+        last={e['request']['key']:e for e in sorted(matched,key=lambda e:e['ordinal'])}
+        def metric(xs):return {'correct':sum(e['response']['class']==truth[e['request']['key']] for e in xs),'observations':len(xs)}
+        print(json.dumps(dict(file=str(path),benchmark=workload,variant=run['variant'],scope=scope,first=metric(first),rechecks=metric(rechecks),final_sites=metric(list(last.values())),matched_sites=len(last),truth_sites=len(truth),unmatched_decisions=len(rows)-len(matched),recheck_note='Repeated decisions; not independent sites.')))

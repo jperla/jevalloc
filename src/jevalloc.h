@@ -28,7 +28,7 @@ void* jev_new_nothrow(size_t);
 void* jev_new_aligned(size_t,size_t);
 void* jev_new_aligned_nothrow(size_t,size_t);
 uint64_t jev_site_key(void);
-#define jev_realpath mi_realpath
+char* jev_realpath(const char*,char*);
 #define jev_malloc_good_size mi_malloc_good_size
 #ifdef __cplusplus
 }

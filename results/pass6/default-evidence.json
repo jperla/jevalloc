@@ -1,0 +1,86 @@
+[
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:static-model",
+    "permanent_bytes": 0,
+    "transient_bytes": 0,
+    "unknown_bytes": 0
+  },
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:model",
+    "permanent_bytes": 0,
+    "transient_bytes": 0,
+    "unknown_bytes": 0
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:static-model",
+    "permanent_bytes": 0,
+    "transient_bytes": 0,
+    "unknown_bytes": 0
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:model",
+    "permanent_bytes": 0,
+    "transient_bytes": 0,
+    "unknown_bytes": 0
+  },
+  {
+    "workload": "site-mixed-1",
+    "policy": "jev-live:static-model",
+    "permanent_bytes": 0,
+    "transient_bytes": 0,
+    "unknown_bytes": 0
+  },
+  {
+    "workload": "site-mixed-1",
+    "policy": "jev-live:model",
+    "permanent_bytes": 0,
+    "transient_bytes": 0,
+    "unknown_bytes": 0
+  },
+  {
+    "workload": "site-mixed-16",
+    "policy": "jev-live:static-model",
+    "permanent_bytes": 0,
+    "transient_bytes": 0,
+    "unknown_bytes": 0
+  },
+  {
+    "workload": "site-mixed-16",
+    "policy": "jev-live:model",
+    "permanent_bytes": 0,
+    "transient_bytes": 0,
+    "unknown_bytes": 0
+  },
+  {
+    "workload": "redis-mesh",
+    "policy": "jev-live:static-model",
+    "permanent_bytes": 805980,
+    "transient_bytes": 409621701,
+    "unknown_bytes": 0
+  },
+  {
+    "workload": "redis-mesh",
+    "policy": "jev-live:model",
+    "permanent_bytes": 805980,
+    "transient_bytes": 409303271,
+    "unknown_bytes": 0
+  },
+  {
+    "workload": "redis-drop",
+    "policy": "jev-live:static-model",
+    "permanent_bytes": 235184966,
+    "transient_bytes": 249640696,
+    "unknown_bytes": 0
+  },
+  {
+    "workload": "redis-drop",
+    "policy": "jev-live:model",
+    "permanent_bytes": 235184966,
+    "transient_bytes": 249646064,
+    "unknown_bytes": 0
+  }
+]

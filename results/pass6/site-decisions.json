@@ -1,0 +1,1423 @@
+[
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:heuristic",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "key": "5c53db02b8740e6a",
+    "stack": [
+      "xmalloc",
+      "assemble_response_buffer",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 307213248,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 1,
+        "class_": 0,
+        "allocs": 1024,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 2240,
+        "older_freed_bytes": 2240,
+        "probabilities": null
+      },
+      {
+        "ordinal": 2,
+        "class_": 0,
+        "allocs": 8192,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18688,
+        "older_freed_bytes": 18688,
+        "probabilities": null
+      },
+      {
+        "ordinal": 3,
+        "class_": 0,
+        "allocs": 65536,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18432,
+        "older_freed_bytes": 18432,
+        "probabilities": null
+      },
+      {
+        "ordinal": 4,
+        "class_": 0,
+        "allocs": 524288,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 17536,
+        "older_freed_bytes": 17536,
+        "probabilities": null
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:heuristic",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "key": "3451e92622c48aa4",
+    "stack": [
+      "xmalloc",
+      "parse_request_buffer",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 307213248,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 1,
+        "class_": 0,
+        "allocs": 1024,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 2240,
+        "older_freed_bytes": 2240,
+        "probabilities": null
+      },
+      {
+        "ordinal": 2,
+        "class_": 0,
+        "allocs": 8192,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18880,
+        "older_freed_bytes": 18880,
+        "probabilities": null
+      },
+      {
+        "ordinal": 3,
+        "class_": 0,
+        "allocs": 65536,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18496,
+        "older_freed_bytes": 18496,
+        "probabilities": null
+      },
+      {
+        "ordinal": 4,
+        "class_": 0,
+        "allocs": 524288,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18688,
+        "older_freed_bytes": 18688,
+        "probabilities": null
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:heuristic",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "key": "f3a079814f25f832",
+    "stack": [
+      "xmalloc",
+      "create_session_state",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 276487488,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 1,
+        "class_": 1,
+        "allocs": 1024,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 2368,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 2,
+        "class_": 1,
+        "allocs": 8192,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 18944,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 3,
+        "class_": 1,
+        "allocs": 65536,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 18560,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 4,
+        "class_": 0,
+        "allocs": 524288,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 47,
+        "alive_percent": 52,
+        "older_bytes": 17152,
+        "older_freed_bytes": 17152,
+        "probabilities": null
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:heuristic",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "key": "fb2dde1009925a15",
+    "stack": [
+      "xmalloc",
+      "insert_cache_index",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 30725760,
+    "oracle": 1,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 1,
+        "class_": 1,
+        "allocs": 1024,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 1856,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 2,
+        "class_": 1,
+        "allocs": 8192,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 18176,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 3,
+        "class_": 1,
+        "allocs": 65536,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 19264,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:static-model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "key": "5c53db02b8740e6a",
+    "stack": [
+      "xmalloc",
+      "assemble_response_buffer",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 307213248,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.46038712559269496,
+          "transient": 0.5396128744073051
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:static-model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "key": "3451e92622c48aa4",
+    "stack": [
+      "xmalloc",
+      "parse_request_buffer",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 307213248,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.3964846979216406,
+          "transient": 0.6035153020783594
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:static-model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "key": "f3a079814f25f832",
+    "stack": [
+      "xmalloc",
+      "create_session_state",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 276487488,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 1,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.5820481955531065,
+          "transient": 0.4179518044468935
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:static-model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "key": "fb2dde1009925a15",
+    "stack": [
+      "xmalloc",
+      "insert_cache_index",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 30725760,
+    "oracle": 1,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 1,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.5995956165111449,
+          "transient": 0.40040438348885515
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "key": "5c53db02b8740e6a",
+    "stack": [
+      "xmalloc",
+      "assemble_response_buffer",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 307213248,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.46038712559269496,
+          "transient": 0.5396128744073051
+        }
+      },
+      {
+        "ordinal": 1,
+        "class_": 0,
+        "allocs": 1024,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 2240,
+        "older_freed_bytes": 2240,
+        "probabilities": {
+          "permanent": 0.3520745046081597,
+          "transient": 0.6479254953918404
+        }
+      },
+      {
+        "ordinal": 2,
+        "class_": 0,
+        "allocs": 8192,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18688,
+        "older_freed_bytes": 18688,
+        "probabilities": {
+          "permanent": 0.37960270029061854,
+          "transient": 0.6203972997093815
+        }
+      },
+      {
+        "ordinal": 3,
+        "class_": 0,
+        "allocs": 65536,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18432,
+        "older_freed_bytes": 18432,
+        "probabilities": {
+          "permanent": 0.3913447746760315,
+          "transient": 0.6086552253239685
+        }
+      },
+      {
+        "ordinal": 4,
+        "class_": 0,
+        "allocs": 524288,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 17536,
+        "older_freed_bytes": 17536,
+        "probabilities": {
+          "permanent": 0.4034799433839053,
+          "transient": 0.5965200566160948
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "key": "3451e92622c48aa4",
+    "stack": [
+      "xmalloc",
+      "parse_request_buffer",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 307213248,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.3964846979216406,
+          "transient": 0.6035153020783594
+        }
+      },
+      {
+        "ordinal": 1,
+        "class_": 0,
+        "allocs": 1024,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 2240,
+        "older_freed_bytes": 2240,
+        "probabilities": {
+          "permanent": 0.3032390924096448,
+          "transient": 0.6967609075903551
+        }
+      },
+      {
+        "ordinal": 2,
+        "class_": 0,
+        "allocs": 8192,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18880,
+        "older_freed_bytes": 18880,
+        "probabilities": {
+          "permanent": 0.3391322197940041,
+          "transient": 0.6608677802059959
+        }
+      },
+      {
+        "ordinal": 3,
+        "class_": 0,
+        "allocs": 65536,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18496,
+        "older_freed_bytes": 18496,
+        "probabilities": {
+          "permanent": 0.35650892727674705,
+          "transient": 0.643491072723253
+        }
+      },
+      {
+        "ordinal": 4,
+        "class_": 0,
+        "allocs": 524288,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18688,
+        "older_freed_bytes": 18688,
+        "probabilities": {
+          "permanent": 0.3597978837853679,
+          "transient": 0.640202116214632
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "key": "f3a079814f25f832",
+    "stack": [
+      "xmalloc",
+      "create_session_state",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 276487488,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 1,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.5820481955531065,
+          "transient": 0.4179518044468935
+        }
+      },
+      {
+        "ordinal": 1,
+        "class_": 1,
+        "allocs": 1024,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 2368,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.933765876549752,
+          "transient": 0.06623412345024807
+        }
+      },
+      {
+        "ordinal": 2,
+        "class_": 1,
+        "allocs": 8192,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 18944,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.9372795881397797,
+          "transient": 0.06272041186022038
+        }
+      },
+      {
+        "ordinal": 3,
+        "class_": 1,
+        "allocs": 65536,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 18560,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.9236963820778112,
+          "transient": 0.07630361792218868
+        }
+      },
+      {
+        "ordinal": 4,
+        "class_": 1,
+        "allocs": 524288,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 47,
+        "alive_percent": 52,
+        "older_bytes": 17152,
+        "older_freed_bytes": 17152,
+        "probabilities": {
+          "permanent": 0.7834087044846476,
+          "transient": 0.2165912955153524
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-1",
+    "policy": "jev-live:model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "key": "fb2dde1009925a15",
+    "stack": [
+      "xmalloc",
+      "insert_cache_index",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 30725760,
+    "oracle": 1,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 1,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.5995956165111449,
+          "transient": 0.40040438348885515
+        }
+      },
+      {
+        "ordinal": 1,
+        "class_": 1,
+        "allocs": 1024,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 1856,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.9332664899408915,
+          "transient": 0.06673351005910848
+        }
+      },
+      {
+        "ordinal": 2,
+        "class_": 1,
+        "allocs": 8192,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 18176,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.9289688193701336,
+          "transient": 0.07103118062986631
+        }
+      },
+      {
+        "ordinal": 3,
+        "class_": 1,
+        "allocs": 65536,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 19264,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.9143924709289737,
+          "transient": 0.08560752907102634
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:heuristic",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "key": "5c53db02b8740e6a",
+    "stack": [
+      "xmalloc",
+      "assemble_response_buffer",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 307224512,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 1,
+        "class_": 0,
+        "allocs": 1024,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18432,
+        "older_freed_bytes": 18432,
+        "probabilities": null
+      },
+      {
+        "ordinal": 2,
+        "class_": 0,
+        "allocs": 16384,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18176,
+        "older_freed_bytes": 18176,
+        "probabilities": null
+      },
+      {
+        "ordinal": 3,
+        "class_": 0,
+        "allocs": 65536,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18240,
+        "older_freed_bytes": 18240,
+        "probabilities": null
+      },
+      {
+        "ordinal": 4,
+        "class_": 0,
+        "allocs": 524288,
+        "quick_freed_percent": 99,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18048,
+        "older_freed_bytes": 18048,
+        "probabilities": null
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:heuristic",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "key": "3451e92622c48aa4",
+    "stack": [
+      "xmalloc",
+      "parse_request_buffer",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 307224512,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 1,
+        "class_": 0,
+        "allocs": 1024,
+        "quick_freed_percent": 98,
+        "later_freed_percent": 0,
+        "alive_percent": 1,
+        "older_bytes": 18304,
+        "older_freed_bytes": 17984,
+        "probabilities": null
+      },
+      {
+        "ordinal": 2,
+        "class_": 0,
+        "allocs": 8192,
+        "quick_freed_percent": 99,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 19264,
+        "older_freed_bytes": 19264,
+        "probabilities": null
+      },
+      {
+        "ordinal": 3,
+        "class_": 0,
+        "allocs": 65536,
+        "quick_freed_percent": 99,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 19200,
+        "older_freed_bytes": 19200,
+        "probabilities": null
+      },
+      {
+        "ordinal": 4,
+        "class_": 0,
+        "allocs": 524288,
+        "quick_freed_percent": 99,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18560,
+        "older_freed_bytes": 18560,
+        "probabilities": null
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:heuristic",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "key": "f3a079814f25f832",
+    "stack": [
+      "xmalloc",
+      "create_session_state",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 276474560,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 1,
+        "class_": 1,
+        "allocs": 1024,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 18432,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 2,
+        "class_": 1,
+        "allocs": 8192,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 17472,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 3,
+        "class_": 1,
+        "allocs": 65536,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 18304,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 4,
+        "class_": 0,
+        "allocs": 524288,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 43,
+        "alive_percent": 56,
+        "older_bytes": 18304,
+        "older_freed_bytes": 18304,
+        "probabilities": null
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:heuristic",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "key": "fb2dde1009925a15",
+    "stack": [
+      "xmalloc",
+      "insert_cache_index",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 30749952,
+    "oracle": 1,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 1,
+        "class_": 1,
+        "allocs": 1024,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 18240,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      },
+      {
+        "ordinal": 2,
+        "class_": 1,
+        "allocs": 8192,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 17600,
+        "older_freed_bytes": 0,
+        "probabilities": null
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:static-model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "key": "5c53db02b8740e6a",
+    "stack": [
+      "xmalloc",
+      "assemble_response_buffer",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 307224512,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.46038712559269496,
+          "transient": 0.5396128744073051
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:static-model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "key": "3451e92622c48aa4",
+    "stack": [
+      "xmalloc",
+      "parse_request_buffer",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 307224512,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.3964846979216406,
+          "transient": 0.6035153020783594
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:static-model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "key": "f3a079814f25f832",
+    "stack": [
+      "xmalloc",
+      "create_session_state",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 276474560,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 1,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.5820481955531065,
+          "transient": 0.4179518044468935
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:static-model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "key": "fb2dde1009925a15",
+    "stack": [
+      "xmalloc",
+      "insert_cache_index",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 30749952,
+    "oracle": 1,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 1,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.5995956165111449,
+          "transient": 0.40040438348885515
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "key": "5c53db02b8740e6a",
+    "stack": [
+      "xmalloc",
+      "assemble_response_buffer",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 307224512,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.46038712559269496,
+          "transient": 0.5396128744073051
+        }
+      },
+      {
+        "ordinal": 1,
+        "class_": 0,
+        "allocs": 1024,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18176,
+        "older_freed_bytes": 18176,
+        "probabilities": {
+          "permanent": 0.3520745046081597,
+          "transient": 0.6479254953918404
+        }
+      },
+      {
+        "ordinal": 2,
+        "class_": 0,
+        "allocs": 8192,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18880,
+        "older_freed_bytes": 18880,
+        "probabilities": {
+          "permanent": 0.37960270029061854,
+          "transient": 0.6203972997093815
+        }
+      },
+      {
+        "ordinal": 3,
+        "class_": 0,
+        "allocs": 65536,
+        "quick_freed_percent": 99,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 19072,
+        "older_freed_bytes": 19072,
+        "probabilities": {
+          "permanent": 0.38091554670837896,
+          "transient": 0.619084453291621
+        }
+      },
+      {
+        "ordinal": 4,
+        "class_": 0,
+        "allocs": 524288,
+        "quick_freed_percent": 99,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 17536,
+        "older_freed_bytes": 17536,
+        "probabilities": {
+          "permanent": 0.42184823370158747,
+          "transient": 0.5781517662984125
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "key": "3451e92622c48aa4",
+    "stack": [
+      "xmalloc",
+      "parse_request_buffer",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 307224512,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 0,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.3964846979216406,
+          "transient": 0.6035153020783594
+        }
+      },
+      {
+        "ordinal": 1,
+        "class_": 1,
+        "allocs": 1024,
+        "quick_freed_percent": 98,
+        "later_freed_percent": 0,
+        "alive_percent": 1,
+        "older_bytes": 18752,
+        "older_freed_bytes": 18368,
+        "probabilities": {
+          "permanent": 0.6471692740251077,
+          "transient": 0.35283072597489235
+        }
+      },
+      {
+        "ordinal": 2,
+        "class_": 0,
+        "allocs": 8192,
+        "quick_freed_percent": 100,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18944,
+        "older_freed_bytes": 18944,
+        "probabilities": {
+          "permanent": 0.3391322197940041,
+          "transient": 0.6608677802059959
+        }
+      },
+      {
+        "ordinal": 3,
+        "class_": 0,
+        "allocs": 65536,
+        "quick_freed_percent": 99,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 18816,
+        "older_freed_bytes": 18816,
+        "probabilities": {
+          "permanent": 0.36378612471573724,
+          "transient": 0.6362138752842629
+        }
+      },
+      {
+        "ordinal": 4,
+        "class_": 0,
+        "allocs": 524288,
+        "quick_freed_percent": 99,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 17984,
+        "older_freed_bytes": 17984,
+        "probabilities": {
+          "permanent": 0.3990715822648352,
+          "transient": 0.6009284177351648
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "key": "f3a079814f25f832",
+    "stack": [
+      "xmalloc",
+      "create_session_state",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 276474560,
+    "oracle": 0,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 1,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.5820481955531065,
+          "transient": 0.4179518044468935
+        }
+      },
+      {
+        "ordinal": 1,
+        "class_": 1,
+        "allocs": 1024,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 18240,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.933765876549752,
+          "transient": 0.06623412345024807
+        }
+      },
+      {
+        "ordinal": 2,
+        "class_": 1,
+        "allocs": 8192,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 19520,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.9372795881397797,
+          "transient": 0.06272041186022038
+        }
+      },
+      {
+        "ordinal": 3,
+        "class_": 1,
+        "allocs": 65536,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 19328,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.9236963820778112,
+          "transient": 0.07630361792218868
+        }
+      },
+      {
+        "ordinal": 4,
+        "class_": 1,
+        "allocs": 524288,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 43,
+        "alive_percent": 56,
+        "older_bytes": 17856,
+        "older_freed_bytes": 17856,
+        "probabilities": {
+          "permanent": 0.7947305365763752,
+          "transient": 0.20526946342362473
+        }
+      }
+    ]
+  },
+  {
+    "workload": "site-pure-16",
+    "policy": "jev-live:model",
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "key": "fb2dde1009925a15",
+    "stack": [
+      "xmalloc",
+      "insert_cache_index",
+      "server_worker",
+      "start_thread"
+    ],
+    "bytes": 30749952,
+    "oracle": 1,
+    "timeline": [
+      {
+        "ordinal": 0,
+        "class_": 1,
+        "allocs": 0,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 0,
+        "older_bytes": 0,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.5995956165111449,
+          "transient": 0.40040438348885515
+        }
+      },
+      {
+        "ordinal": 1,
+        "class_": 1,
+        "allocs": 1024,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 17664,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.9332664899408915,
+          "transient": 0.06673351005910848
+        }
+      },
+      {
+        "ordinal": 2,
+        "class_": 1,
+        "allocs": 8192,
+        "quick_freed_percent": 0,
+        "later_freed_percent": 0,
+        "alive_percent": 100,
+        "older_bytes": 18112,
+        "older_freed_bytes": 0,
+        "probabilities": {
+          "permanent": 0.9289688193701336,
+          "transient": 0.07103118062986631
+        }
+      }
+    ]
+  }
+]

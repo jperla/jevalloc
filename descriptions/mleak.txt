@@ -1,0 +1,1 @@
+Mleak creates short-lived threads that allocate small objects with custom_calloc and transfer them through shared slots. A later thread exchanges the slot and frees the previous object. Thus objects can outlive their allocating thread. The main thread retains thread-handle arrays and eventually frees remaining transfer objects.

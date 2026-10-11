@@ -7,3 +7,6 @@ __pycache__/
 /.venv-clef/
 /results/*
 !/results/interim/
+!/results/pass4/
+!/results/pass5/
+!/results/pass6/

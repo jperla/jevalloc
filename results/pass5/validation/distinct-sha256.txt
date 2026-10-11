@@ -1,0 +1,3 @@
+c15e9f5ca2e429f883b5e93db1b110d1fb44f443b6b16d07a713fc96e28f7195  results/pass5/frozen-distinct/libjevalloc.so
+927db9974948cc9a524bee26035671fe0303cafa60d1079af3fa7cd6fa2e319b  results/pass5/frozen-distinct/libmimalloc.so
+2bd8e95865531b34a715b536d99b4519b93c85c516464724ff31ce4920f5a5c9  results/pass5/frozen-distinct/server-sim

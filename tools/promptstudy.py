@@ -100,6 +100,7 @@ DESC = {
  'glibc-simple': 'glibc-simple is a micro-benchmark that allocates and frees blocks of fixed sizes in loops.',
  'rptest': 'rptest is a multi-threaded allocator stress test: each thread repeatedly allocates batches of random-size blocks, frees some, and passes others to other threads.',
  'larson': 'larson simulates a server: threads keep an array of blocks alive and repeatedly replace random slots with newly allocated blocks.',
+ 'server-sim': 'server-sim is a request server: it parses each request, builds a response, keeps per-client session state while a session is active, and maintains a cache index of content it has served.',
  'redis-server': 'redis-server is an in-memory key-value database serving client commands; zmalloc/zcalloc/zrealloc are its malloc wrappers, sds are its strings, robj its values; some objects are per-command temporaries and others are stored in the keyspace or in server-wide state.',
 }
 
@@ -330,6 +331,20 @@ VARIANTS.update({
     'rtp-plain-code-desc': lambda s: choicep(deep_state(s, radius=20, nsnip=3, desc=True) + '\n\n' + statsp_plain(s), QPS),
 })
 
+# ---- round 6: wordings for the first-sight decision on fragbench ----------------------
+QF = 'The marked lines lead to a heap allocation. Will this object be freed while the program is still running?'
+FREE = {'short': 'Yes: it is freed at some point - right away, when the request finishes, or when a session or connection ends.',
+        'long': 'No: it stays until the program exits - an entry added to a cache, index or global table that is never removed.'}
+VARIANTS.update({
+    'f2-desc': lambda s: {'state': deep_state(s, radius=20, nsnip=3, desc=True), 'questions': {'lifetime': {'type': 'choice', 'instructions': QF, 'criteria': FREE}}},
+    'f2': lambda s: {'state': deep_state(s, radius=20, nsnip=3), 'questions': {'lifetime': {'type': 'choice', 'instructions': QF, 'criteria': FREE}}},
+    'f2-desc-small': lambda s: {'state': deep_state(s, radius=4, nsnip=3, desc=True), 'questions': {'lifetime': {'type': 'choice', 'instructions': QF, 'criteria': FREE}}},
+    'f2-desc-stack': lambda s: {'state': deep_state(s, nsnip=0, desc=True), 'questions': {'lifetime': {'type': 'choice', 'instructions': QF, 'criteria': FREE}}},
+    'f2-stack': lambda s: {'state': deep_state(s, nsnip=0), 'questions': {'lifetime': {'type': 'choice', 'instructions': QF, 'criteria': FREE}}},
+    'fn-desc-stack': lambda s: {'state': deep_state(s, nsnip=0, desc=True), 'questions': {'retained': {'type': 'noul', 'instructions': 'Does the allocated object stay until the program exits (an entry added to a cache, index or global table that is never removed)?'}}},
+    'p2-desc-stack': lambda s: choicep(deep_state(s, nsnip=0, desc=True)),
+})
+
 
 def prob_true(ans):
     for k in ('noul', 'probability'):
@@ -384,6 +399,7 @@ def main():
     ap.add_argument('--url', default='http://127.0.0.1:8765/v1/systemone')
     ap.add_argument('--out', default='promptlab.json')
     ap.add_argument('--cache', default='promptlab-cache')
+    ap.add_argument('--show', action='store_true', help='print each site and its answer')
     ap.add_argument('--traces', default=None, help='trace dir whose own class_bytes give the truth')
     ap.add_argument('--gate', default=None, help='benchmark log; wait while it is inside a timed repetition')
     a = ap.parse_args()
@@ -423,6 +439,8 @@ def main():
                 print('ERR', v, s['key'], e, flush=True); continue
             pred, probs = decide(v, r['answers'])
             conf[(s['truth'], pred)] += 1
+            if a.show:
+                print('   %-9s truth=%-6s pred=%-6s %s  %s' % (v, s['truth'], pred, {k: round(x, 2) for k, x in probs.items()}, ' < '.join(f[0] for f in frames(s)[:3])), flush=True)
             if dt: secs.append(dt)
             toks.append((r.get('usage') or {}).get('input_tokens', 0))
             rows.append({'variant': v, 'program': s['program'], 'key': s['key'], 'truth': s['truth'], 'pred': pred, 'probs': probs, 'seconds': dt})

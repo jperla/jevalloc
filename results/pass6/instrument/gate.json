@@ -1,0 +1,49 @@
+{
+  "class_schema": "transient-permanent-v1",
+  "short_bytes": 1048576,
+  "passed": true,
+  "server_sha256": "2bd8e95865531b34a715b536d99b4519b93c85c516464724ff31ce4920f5a5c9",
+  "environment": {
+    "MIMALLOC_PURGE_DELAY": "0",
+    "MIMALLOC_ARENA_PURGE_MULT": "1",
+    "MIMALLOC_PURGE_DECOMMITS": "1",
+    "JEVALLOC_DEPTH": "4",
+    "JEVALLOC_MODEL_DEPTH": "12"
+  },
+  "repetitions": 5,
+  "comparisons": [
+    {
+      "workload": "site-pure-1",
+      "cycle": 0,
+      "oracle": 23941120,
+      "keyonly": 128229376,
+      "mi": 128155648,
+      "random": 23977984
+    },
+    {
+      "workload": "site-pure-1",
+      "cycle": 1,
+      "oracle": 43417600,
+      "keyonly": 293908480,
+      "mi": 293830656,
+      "random": 44621824
+    },
+    {
+      "workload": "site-pure-16",
+      "cycle": 0,
+      "oracle": 33726464,
+      "keyonly": 143458304,
+      "mi": 143183872,
+      "random": 43421696
+    },
+    {
+      "workload": "site-pure-16",
+      "cycle": 1,
+      "oracle": 53047296,
+      "keyonly": 310063104,
+      "mi": 310038528,
+      "random": 67923968
+    }
+  ],
+  "library_sha256": "0348583f88903b991810a4528f70a0013f591cde762406aa3a3fa80aa4413d95"
+}

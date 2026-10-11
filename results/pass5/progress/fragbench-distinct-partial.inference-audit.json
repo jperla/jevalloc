@@ -1,0 +1,419 @@
+{
+  "matrix_sha256": "e602e01b710a669fa432f6a7849becff1b591d07088a6c78887bfaab9af527c3",
+  "server_pid": 970221,
+  "source_log": "/home/quill/jevalloc/model-server.log",
+  "checked": 60,
+  "overlapping_runs": 0,
+  "runs": [
+    {
+      "benchmark": "site-pure-1",
+      "variant": "sys",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "mi",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-none",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-keyonly",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:random",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:size",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-short",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-long",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:model",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "mi",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-none",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-keyonly",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:random",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:size",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-short",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-long",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:model",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "sys",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-none",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-keyonly",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:random",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:size",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-short",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-long",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:model",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "sys",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "mi",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-keyonly",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:random",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:size",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-short",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-long",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:model",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "sys",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "mi",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-none",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:random",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:size",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-short",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:all-long",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:heuristic",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:model",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "sys",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "mi",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-none",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-1",
+      "variant": "jev-keyonly",
+      "repetition": 4,
+      "tasks": []
+    }
+  ],
+  "clock_calibration": {
+    "logger_start_unix": 1791649771.3960838,
+    "process_start_unix": 1791649771.19,
+    "spread_seconds": 3.0994415283203125e-06,
+    "wall_minus_monotonic": 1786470747.1873252,
+    "pairs": [
+      {
+        "log_release_seconds": 22857.795972999997,
+        "monotonic_release_seconds": 5201882.004734
+      },
+      {
+        "log_release_seconds": 22864.367834999997,
+        "monotonic_release_seconds": 5201888.576593
+      },
+      {
+        "log_release_seconds": 22877.888795,
+        "monotonic_release_seconds": 5201902.097553
+      },
+      {
+        "log_release_seconds": 22884.093701,
+        "monotonic_release_seconds": 5201908.30246
+      },
+      {
+        "log_release_seconds": 22897.07521,
+        "monotonic_release_seconds": 5201921.283969
+      },
+      {
+        "log_release_seconds": 22903.237787000002,
+        "monotonic_release_seconds": 5201927.446545
+      },
+      {
+        "log_release_seconds": 23042.821214,
+        "monotonic_release_seconds": 5202067.029972
+      },
+      {
+        "log_release_seconds": 23050.010682999997,
+        "monotonic_release_seconds": 5202074.219442
+      },
+      {
+        "log_release_seconds": 23063.537667,
+        "monotonic_release_seconds": 5202087.746425
+      },
+      {
+        "log_release_seconds": 23069.713843999998,
+        "monotonic_release_seconds": 5202093.922603
+      }
+    ],
+    "source": "common/log.cpp t_us; tools/server/server-context.cpp release/t_last_used; ggml/src/ggml.c ggml_time_us"
+  },
+  "clock_note": "Explicit wall-clock benchmark intervals. Logger origin calibrated from recent paired wall-log/CLOCK_MONOTONIC release timestamps; PID start independently verified. Calibration is approximate at sub-millisecond logging granularity."
+}

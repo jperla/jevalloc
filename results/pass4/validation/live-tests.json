@@ -1,0 +1,210 @@
+{
+  "delayed_changing_classes": {
+    "stats": {
+      "site_bytes": {
+        "6957cfd0d57e38ee": 4096,
+        "5036358f76132456": 1152,
+        "b3558ddb02299e4c": 1536000
+      },
+      "site_sampled_live": {
+        "6957cfd0d57e38ee": 0,
+        "5036358f76132456": 0,
+        "b3558ddb02299e4c": 0
+      },
+      "blocked_ns": 54509157,
+      "decisions": 4,
+      "rechecks": 1,
+      "timeouts": 0,
+      "failures": 0,
+      "sites": 3,
+      "samples": 6000,
+      "sampled_live_objects": 0,
+      "sample_rate": 8,
+      "allocation_clock": 1541248
+    },
+    "wall_seconds": 0.03203389700502157
+  },
+  "live_stress": {
+    "site_bytes": {
+      "bd66ec649842e6a4": 135799,
+      "f5f79670f514b20d": 120,
+      "48b063988f886b4a": 135800,
+      "9f24d7518d0570b3": 262128,
+      "d0d355a56d957667": 0,
+      "f339c5c5021e12cd": 16,
+      "8b33fa92b8f500ab": 217,
+      "133aff8dbba8211d": 256,
+      "4a7e3ff6335af9d5": 135795,
+      "6957cfd0d57e38ee": 4096,
+      "7d979827340c348b": 135791,
+      "9eaa6d9de41491de": 135797,
+      "919673b62890c353": 135801,
+      "93fab37cb4c05cdc": 132,
+      "bcad7def69ffdbff": 1280,
+      "00eed58f5d4495df": 136,
+      "eff626ee04a554a1": 33199040,
+      "1b1a2ec9074cd3b4": 64,
+      "844802ad8d41127c": 135792,
+      "bc493b88804e4705": 10,
+      "c546cb63090a4b92": 4,
+      "c551e887d0696563": 100,
+      "4a3a521d13b03c0c": 135802,
+      "004c5a16cdfa8ab5": 128,
+      "3dd9a414d5b5904e": 1280,
+      "47e46bc71baf1b07": 135798,
+      "13f95164048550ae": 1280,
+      "a7f02603782c560c": 32607040,
+      "d7ad7ea14596f8b0": 0,
+      "0bed922258e5a98c": 135793,
+      "0d8ab9bf224b0760": 132,
+      "f3c10658c37f3693": 400,
+      "e474f0279efb05d9": 135796,
+      "4f25083141b4c597": 0,
+      "511e320cd1c720af": 136,
+      "2c673233f3cfe5db": 6,
+      "3dae3507878c5272": 135794,
+      "76091a1b5c46875d": 131106,
+      "35bc4181f5b52610": 64
+    },
+    "site_sampled_live": {
+      "bd66ec649842e6a4": 0,
+      "f5f79670f514b20d": 0,
+      "48b063988f886b4a": 0,
+      "9f24d7518d0570b3": 0,
+      "d0d355a56d957667": 0,
+      "f339c5c5021e12cd": 0,
+      "8b33fa92b8f500ab": 0,
+      "133aff8dbba8211d": 0,
+      "4a7e3ff6335af9d5": 0,
+      "6957cfd0d57e38ee": 0,
+      "7d979827340c348b": 0,
+      "9eaa6d9de41491de": 0,
+      "919673b62890c353": 0,
+      "93fab37cb4c05cdc": 0,
+      "bcad7def69ffdbff": 0,
+      "00eed58f5d4495df": 0,
+      "eff626ee04a554a1": 0,
+      "1b1a2ec9074cd3b4": 0,
+      "844802ad8d41127c": 0,
+      "bc493b88804e4705": 0,
+      "c546cb63090a4b92": 0,
+      "c551e887d0696563": 0,
+      "4a3a521d13b03c0c": 0,
+      "004c5a16cdfa8ab5": 0,
+      "3dd9a414d5b5904e": 0,
+      "47e46bc71baf1b07": 0,
+      "13f95164048550ae": 0,
+      "a7f02603782c560c": 0,
+      "d7ad7ea14596f8b0": 0,
+      "0bed922258e5a98c": 0,
+      "0d8ab9bf224b0760": 0,
+      "f3c10658c37f3693": 0,
+      "e474f0279efb05d9": 0,
+      "4f25083141b4c597": 0,
+      "511e320cd1c720af": 0,
+      "2c673233f3cfe5db": 0,
+      "3dae3507878c5272": 0,
+      "76091a1b5c46875d": 0,
+      "35bc4181f5b52610": 0
+    },
+    "blocked_ns": 17224168,
+    "decisions": 41,
+    "rechecks": 2,
+    "timeouts": 0,
+    "failures": 0,
+    "sites": 39,
+    "samples": 4003,
+    "sampled_live_objects": 0,
+    "sample_rate": 8,
+    "allocation_clock": 67838729
+  },
+  "late_thread_destructor_frees": {
+    "site_bytes": {
+      "6957cfd0d57e38ee": 4096,
+      "5036358f76132456": 1152,
+      "b3558ddb02299e4c": 1536000
+    },
+    "site_sampled_live": {
+      "6957cfd0d57e38ee": 1,
+      "5036358f76132456": 4,
+      "b3558ddb02299e4c": 0
+    },
+    "blocked_ns": 2390864,
+    "decisions": 4,
+    "rechecks": 1,
+    "timeouts": 0,
+    "failures": 0,
+    "sites": 3,
+    "samples": 48005,
+    "sampled_live_objects": 5,
+    "sample_rate": 1,
+    "allocation_clock": 1541248
+  },
+  "timeout": {
+    "site_bytes": {
+      "6957cfd0d57e38ee": 4096,
+      "5036358f76132456": 1152,
+      "b3558ddb02299e4c": 1536000
+    },
+    "site_sampled_live": {
+      "6957cfd0d57e38ee": 0,
+      "5036358f76132456": 0,
+      "b3558ddb02299e4c": 0
+    },
+    "blocked_ns": 50120417,
+    "decisions": 1,
+    "rechecks": 0,
+    "timeouts": 1,
+    "failures": 1,
+    "sites": 3,
+    "samples": 6000,
+    "sampled_live_objects": 0,
+    "sample_rate": 8,
+    "allocation_clock": 1541248
+  },
+  "unreachable": {
+    "site_bytes": {
+      "6957cfd0d57e38ee": 4096,
+      "5036358f76132456": 1152,
+      "b3558ddb02299e4c": 1536000
+    },
+    "site_sampled_live": {
+      "6957cfd0d57e38ee": 0,
+      "5036358f76132456": 0,
+      "b3558ddb02299e4c": 0
+    },
+    "blocked_ns": 37393,
+    "decisions": 1,
+    "rechecks": 0,
+    "timeouts": 0,
+    "failures": 1,
+    "sites": 3,
+    "samples": 6000,
+    "sampled_live_objects": 0,
+    "sample_rate": 8,
+    "allocation_clock": 1541248
+  },
+  "cfrac_byte_identical": true,
+  "cfrac_cache_hits": 362,
+  "cfrac_requests": 362,
+  "real_model": {
+    "site_bytes": {
+      "6957cfd0d57e38ee": 4096,
+      "9afa91fdbb4546f0": 384000
+    },
+    "site_sampled_live": {
+      "6957cfd0d57e38ee": 0,
+      "9afa91fdbb4546f0": 0
+    },
+    "blocked_ns": 15169938733,
+    "decisions": 2,
+    "rechecks": 0,
+    "timeouts": 0,
+    "failures": 0,
+    "sites": 2,
+    "samples": 1500,
+    "sampled_live_objects": 0,
+    "sample_rate": 8,
+    "allocation_clock": 388096
+  }
+}

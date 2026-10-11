@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "comparisons": [
+    {
+      "workload": "site-pure-1",
+      "cycle": 0,
+      "oracle": 23740416,
+      "keyonly": 128233472,
+      "mi": 128098304
+    },
+    {
+      "workload": "site-pure-1",
+      "cycle": 1,
+      "oracle": 44384256,
+      "keyonly": 293908480,
+      "mi": 293826560
+    },
+    {
+      "workload": "site-pure-16",
+      "cycle": 0,
+      "oracle": 43294720,
+      "keyonly": 143327232,
+      "mi": 143183872
+    },
+    {
+      "workload": "site-pure-16",
+      "cycle": 1,
+      "oracle": 61435904,
+      "keyonly": 310046720,
+      "mi": 310947840
+    }
+  ],
+  "library_sha256": "d6f884c98ceab947a596cb21c0947e1c2d2e66719832909eb7bbe705ddef6509"
+}

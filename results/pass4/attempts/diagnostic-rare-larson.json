@@ -1,0 +1,473 @@
+{
+  "name": "diagnostic-rare-larson",
+  "created": "2026-10-10T19:43:11.488375+00:00",
+  "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+  "processor_count": 16,
+  "oracle": "prior-trace byte-majority site control",
+  "runs": [
+    {
+      "inference_gate": "not-requested",
+      "started_unix": 1791661391.5314586,
+      "finished_unix": 1791661398.6171944,
+      "host_before": {
+        "load_average": [
+          1.74365234375,
+          4.72119140625,
+          6.28564453125
+        ],
+        "MemAvailable_bytes": 12902105088,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "larson",
+      "variant": "jev-live:heuristic",
+      "repetition": -1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/larson",
+        "5",
+        "8",
+        "1000",
+        "5000",
+        "100",
+        "4141",
+        "16"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_SAMPLE": "1048576",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-6521ae66cb03.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/logs/diagnostic-rare-larson/larson-jev-live-cold-e1cd4f77.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 7.063834037,
+      "stdout": "results/logs/diagnostic-rare-larson/larson-jev-live-cold-e1cd4f77.stdout",
+      "stderr": "results/logs/diagnostic-rare-larson/larson-jev-live-cold-e1cd4f77.stderr",
+      "user_seconds": 79.13514,
+      "sys_seconds": 0.375088,
+      "peak_rss_bytes": 190820352,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 79.51022800000001,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 5.639,
+      "score_metric": "relative_seconds",
+      "phases": [],
+      "allocator_stats": {
+        "site_bytes": {
+          "9e54a7ea8e77bb1f": 56,
+          "6957cfd0d57e38ee": 4096,
+          "14ef80f9216cfcd0": 564480,
+          "113d8ce0b7d8b444": 446422679697,
+          "396c81e936259b22": 2304,
+          "60e9ac1f74153edc": 5120,
+          "4c10c70e10f73074": 40312811,
+          "cae9ccad761085a8": 161254450,
+          "7f35af13be00a14c": 8
+        },
+        "site_sampled_live": {
+          "9e54a7ea8e77bb1f": 0,
+          "6957cfd0d57e38ee": 0,
+          "14ef80f9216cfcd0": 0,
+          "113d8ce0b7d8b444": 0,
+          "396c81e936259b22": 0,
+          "60e9ac1f74153edc": 0,
+          "4c10c70e10f73074": 0,
+          "cae9ccad761085a8": 0,
+          "7f35af13be00a14c": 0
+        },
+        "blocked_ns": 75631570,
+        "decisions": 20,
+        "rechecks": 11,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 9,
+        "samples": 0,
+        "sampled_live_objects": 0,
+        "sample_rate": 1048576,
+        "allocation_clock": 446624823022
+      },
+      "blocked_seconds": 0.07563157,
+      "chip_seconds": 6.988202467000001,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/logs/diagnostic-rare-larson/larson-jev-live-cold-e1cd4f77.decisions.jsonl",
+      "cold": true,
+      "coverage_fill": false,
+      "replay_schedule": "results/logs/diagnostic-rare-larson/larson-e1cd4f77.schedule.jsonl",
+      "model_coverage": null,
+      "cache_hits": 0,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 0,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0,
+      "diagnostic": true
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791661412.0004263,
+      "finished_unix": 1791661419.0792665,
+      "host_before": {
+        "load_average": [
+          3.62060546875,
+          5.00830078125,
+          6.35546875
+        ],
+        "MemAvailable_bytes": 12899823616,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "larson",
+      "variant": "jev-table:oracle",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/larson",
+        "5",
+        "8",
+        "1000",
+        "5000",
+        "100",
+        "4141",
+        "16"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/larson/oracle.txt",
+        "JEVALLOC_SAMPLE": "1048576"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 7.052053854,
+      "stdout": "results/logs/diagnostic-rare-larson/larson-jev-table-0-6fcf7183.stdout",
+      "stderr": "results/logs/diagnostic-rare-larson/larson-jev-table-0-6fcf7183.stderr",
+      "user_seconds": 79.368044,
+      "sys_seconds": 0.340545,
+      "peak_rss_bytes": 190857216,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 79.708589,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 4.548,
+      "score_metric": "relative_seconds",
+      "phases": [],
+      "diagnostic": true
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791661420.1293676,
+      "finished_unix": 1791661427.2414553,
+      "host_before": {
+        "load_average": [
+          4.34521484375,
+          5.10888671875,
+          6.37353515625
+        ],
+        "MemAvailable_bytes": 12917334016,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "larson",
+      "variant": "jev-live:heuristic",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/larson",
+        "5",
+        "8",
+        "1000",
+        "5000",
+        "100",
+        "4141",
+        "16"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_SAMPLE": "1048576",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-02c047c45171.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/logs/diagnostic-rare-larson/larson-jev-live-0-e1cd4f77.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 7.057631224,
+      "stdout": "results/logs/diagnostic-rare-larson/larson-jev-live-0-e1cd4f77.stdout",
+      "stderr": "results/logs/diagnostic-rare-larson/larson-jev-live-0-e1cd4f77.stderr",
+      "user_seconds": 79.463841,
+      "sys_seconds": 0.29432,
+      "peak_rss_bytes": 190730240,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 79.758161,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 5.076,
+      "score_metric": "relative_seconds",
+      "phases": [],
+      "allocator_stats": {
+        "site_bytes": {
+          "9e54a7ea8e77bb1f": 56,
+          "6957cfd0d57e38ee": 4096,
+          "14ef80f9216cfcd0": 627840,
+          "113d8ce0b7d8b444": 495883186489,
+          "396c81e936259b22": 2304,
+          "60e9ac1f74153edc": 5120,
+          "4c10c70e10f73074": 40312811,
+          "cae9ccad761085a8": 161254450,
+          "7f35af13be00a14c": 8
+        },
+        "site_sampled_live": {
+          "9e54a7ea8e77bb1f": 0,
+          "6957cfd0d57e38ee": 0,
+          "14ef80f9216cfcd0": 0,
+          "113d8ce0b7d8b444": 0,
+          "396c81e936259b22": 0,
+          "60e9ac1f74153edc": 0,
+          "4c10c70e10f73074": 0,
+          "cae9ccad761085a8": 0,
+          "7f35af13be00a14c": 0
+        },
+        "blocked_ns": 41000346,
+        "decisions": 20,
+        "rechecks": 11,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 9,
+        "samples": 0,
+        "sampled_live_objects": 0,
+        "sample_rate": 1048576,
+        "allocation_clock": 496085393174
+      },
+      "blocked_seconds": 0.041000346,
+      "chip_seconds": 7.016630878,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/logs/diagnostic-rare-larson/larson-jev-live-0-e1cd4f77.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/logs/diagnostic-rare-larson/larson-e1cd4f77.schedule.jsonl",
+      "model_coverage": null,
+      "cache_hits": 20,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 5,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0,
+      "diagnostic": true
+    }
+  ],
+  "coverage_runs": [
+    {
+      "inference_gate": "not-requested",
+      "started_unix": 1791661398.6620073,
+      "finished_unix": 1791661405.7475405,
+      "host_before": {
+        "load_average": [
+          2.8857421875,
+          4.90869140625,
+          6.337890625
+        ],
+        "MemAvailable_bytes": 12897935360,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "larson",
+      "variant": "jev-live:heuristic",
+      "repetition": -2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/larson",
+        "5",
+        "8",
+        "1000",
+        "5000",
+        "100",
+        "4141",
+        "16"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_SAMPLE": "1048576",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-27a116e39d3c.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/logs/diagnostic-rare-larson/larson-jev-live-fill0-e1cd4f77.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 7.062504734,
+      "stdout": "results/logs/diagnostic-rare-larson/larson-jev-live-fill0-e1cd4f77.stdout",
+      "stderr": "results/logs/diagnostic-rare-larson/larson-jev-live-fill0-e1cd4f77.stderr",
+      "user_seconds": 79.171857,
+      "sys_seconds": 0.38334,
+      "peak_rss_bytes": 194895872,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 79.555197,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 5.71,
+      "score_metric": "relative_seconds",
+      "phases": [],
+      "allocator_stats": {
+        "site_bytes": {
+          "9e54a7ea8e77bb1f": 56,
+          "6957cfd0d57e38ee": 4096,
+          "14ef80f9216cfcd0": 558080,
+          "113d8ce0b7d8b444": 440894497194,
+          "396c81e936259b22": 2304,
+          "60e9ac1f74153edc": 5120,
+          "4c10c70e10f73074": 40312811,
+          "cae9ccad761085a8": 161254450,
+          "7f35af13be00a14c": 8
+        },
+        "site_sampled_live": {
+          "9e54a7ea8e77bb1f": 0,
+          "6957cfd0d57e38ee": 0,
+          "14ef80f9216cfcd0": 0,
+          "113d8ce0b7d8b444": 0,
+          "396c81e936259b22": 0,
+          "60e9ac1f74153edc": 0,
+          "4c10c70e10f73074": 0,
+          "cae9ccad761085a8": 0,
+          "7f35af13be00a14c": 0
+        },
+        "blocked_ns": 44102719,
+        "decisions": 20,
+        "rechecks": 11,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 9,
+        "samples": 0,
+        "sampled_live_objects": 0,
+        "sample_rate": 1048576,
+        "allocation_clock": 441096634119
+      },
+      "blocked_seconds": 0.044102719,
+      "chip_seconds": 7.018402015,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/logs/diagnostic-rare-larson/larson-jev-live-fill0-e1cd4f77.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": true,
+      "replay_schedule": "results/logs/diagnostic-rare-larson/larson-e1cd4f77.schedule.jsonl",
+      "model_coverage": null,
+      "cache_hits": 20,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 6,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0
+    }
+  ],
+  "configuration": {
+    "max_model_decisions": 400,
+    "repetitions": 1,
+    "variants": [
+      "jev-table:oracle",
+      "jev-live:heuristic"
+    ],
+    "workloads": [
+      "larson"
+    ],
+    "procs": 16,
+    "fingerprints": {
+      "/home/quill/jevalloc/src-tree/bench/definitions.py": "db782cc59a8ec2406a20869fd664c76afa20965cdd526311fa1a624225982d11",
+      "/home/quill/jevalloc/src-tree/bench/run.py": "1edd2df7ef8b30d06cf9d437b9f9461dc41fcef7da1e368e35e5488e5390b0f3",
+      "/home/quill/jevalloc/src-tree/build/bench/larson": "c4b23b983ee0d8c5c9e757cfd1bfc008af26ac20427713ce0e88ede602fdfe9f",
+      "/home/quill/jevalloc/src-tree/build/libjevalloc.so": "e3bef351c479a202119bf4e5a9a6e760ae8e6d806c90586df20de015e3a6ac52",
+      "/home/quill/jevalloc/src-tree/build/libmimalloc.so": "927db9974948cc9a524bee26035671fe0303cafa60d1079af3fa7cd6fa2e319b",
+      "/home/quill/jevalloc/src-tree/build/measure": "ab5798f926c4183e1b482ff2fd6bde0579d653d31da3546f8d055cf99606d391",
+      "/home/quill/jevalloc/src-tree/results/tables/larson/oracle.txt": "a1461fd7413f2497f21bcfe3717ee3dfcdec454257b301e9fc6beb9e2048442e",
+      "/home/quill/jevalloc/src-tree/tools/jevd.py": "f1e63c1cb12d094f41088a0beb8542a68caf359a5c8e6edb89e4d541b94e253b",
+      "/home/quill/jevalloc/src-tree/tools/prompts.py": "21983b5d9cf454ca5f9bfba8ff3f083b3784a995d149ee8aec63e577b811a6b8",
+      "/home/quill/jevalloc/src-tree/tools/symbolize.py": "0120115e2ecbe28d2e8b3d7146181244f2d78aa61d8bd2579cc7258e47c23177"
+    }
+  },
+  "summary": [
+    {
+      "benchmark": "larson",
+      "variant": "jev-table:oracle",
+      "repetitions": 1,
+      "score_metric": "relative_seconds",
+      "wall_seconds": {
+        "median": 7.052053854,
+        "min": 7.052053854,
+        "max": 7.052053854
+      },
+      "user_seconds": {
+        "median": 79.368044,
+        "min": 79.368044,
+        "max": 79.368044
+      },
+      "sys_seconds": {
+        "median": 0.340545,
+        "min": 0.340545,
+        "max": 0.340545
+      },
+      "cpu_seconds": {
+        "median": 79.708589,
+        "min": 79.708589,
+        "max": 79.708589
+      },
+      "peak_rss_bytes": {
+        "median": 190857216,
+        "min": 190857216,
+        "max": 190857216
+      },
+      "score": {
+        "median": 4.548,
+        "min": 4.548,
+        "max": 4.548
+      }
+    },
+    {
+      "benchmark": "larson",
+      "variant": "jev-live:heuristic",
+      "repetitions": 1,
+      "score_metric": "relative_seconds",
+      "wall_seconds": {
+        "median": 7.057631224,
+        "min": 7.057631224,
+        "max": 7.057631224
+      },
+      "user_seconds": {
+        "median": 79.463841,
+        "min": 79.463841,
+        "max": 79.463841
+      },
+      "sys_seconds": {
+        "median": 0.29432,
+        "min": 0.29432,
+        "max": 0.29432
+      },
+      "cpu_seconds": {
+        "median": 79.758161,
+        "min": 79.758161,
+        "max": 79.758161
+      },
+      "peak_rss_bytes": {
+        "median": 190730240,
+        "min": 190730240,
+        "max": 190730240
+      },
+      "score": {
+        "median": 5.076,
+        "min": 5.076,
+        "max": 5.076
+      }
+    }
+  ],
+  "diagnostic_note": "Profiling/rare-sampling ablation; not acceptance or headline evidence."
+}

@@ -1,0 +1,23 @@
+	Command being timed: "/home/quill/jevalloc/src-tree/build/measure /home/quill/jevalloc/src-tree/results/frag-sensitivity/logs/site-pure-16-jev-table-4-6fcf7183.measure.json /usr/bin/env LD_PRELOAD=/home/quill/jevalloc/src-tree/build/libjevalloc.so JEVALLOC_MODE=run JEVALLOC_TABLE=/home/quill/jevalloc/src-tree/results/frag-sensitivity/tables/site-pure-16/oracle.txt MIMALLOC_PURGE_DELAY=0 MIMALLOC_ARENA_PURGE_MULT=1 MIMALLOC_PURGE_DECOMMITS=1 JEVALLOC_DEPTH=4 JEVALLOC_MODEL_DEPTH=12 JEVALLOC_SHORT_BYTES=1048576 /home/quill/jevalloc/src-tree/build/bench/../server-sim 16 site-pure 400000 250"
+	User time (seconds): 0.22
+	System time (seconds): 0.41
+	Percent of CPU this job got: 60%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.05
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 223856
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 60923
+	Voluntary context switches: 1508
+	Involuntary context switches: 57
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

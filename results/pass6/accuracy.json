@@ -1,0 +1,2810 @@
+[
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        8,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 16,
+    "matched": 16,
+    "unknown": 0,
+    "confusion": [
+      [
+        10,
+        3
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "accuracy": 0.8125
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        8,
+        0
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.8181818181818182
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 16,
+    "matched": 16,
+    "unknown": 0,
+    "confusion": [
+      [
+        9,
+        4
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "accuracy": 0.75
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 16,
+    "matched": 16,
+    "unknown": 0,
+    "confusion": [
+      [
+        9,
+        4
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "accuracy": 0.75
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-pure-1",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 921784192,
+    "matched_successful_bytes": 921784192,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        8,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 15,
+    "matched": 15,
+    "unknown": 0,
+    "confusion": [
+      [
+        10,
+        3
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "accuracy": 0.8
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        8,
+        0
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.8181818181818182
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 15,
+    "matched": 15,
+    "unknown": 0,
+    "confusion": [
+      [
+        8,
+        5
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "accuracy": 0.6666666666666666
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 15,
+    "matched": 15,
+    "unknown": 0,
+    "confusion": [
+      [
+        8,
+        5
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "accuracy": 0.6666666666666666
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-pure-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-pure-16",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 11,
+    "observed_sites": 11,
+    "matched_sites": 11,
+    "total_successful_bytes": 923788624,
+    "matched_successful_bytes": 923788624,
+    "observations": 11,
+    "matched": 11,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "accuracy": 0.7272727272727273
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        8,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.8
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 13,
+    "matched": 13,
+    "unknown": 0,
+    "confusion": [
+      [
+        13,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        8,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.8
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 13,
+    "matched": 13,
+    "unknown": 0,
+    "confusion": [
+      [
+        9,
+        4
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 0.6923076923076923
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 13,
+    "matched": 13,
+    "unknown": 0,
+    "confusion": [
+      [
+        9,
+        4
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 0.6923076923076923
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-1-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-mixed-1",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 921813952,
+    "matched_successful_bytes": 921813952,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        8,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.8
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 13,
+    "matched": 13,
+    "unknown": 0,
+    "confusion": [
+      [
+        13,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 1.0
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        8,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.8
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 13,
+    "matched": 13,
+    "unknown": 0,
+    "confusion": [
+      [
+        9,
+        4
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 0.6923076923076923
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 13,
+    "matched": 13,
+    "unknown": 0,
+    "confusion": [
+      [
+        9,
+        4
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": 0.6923076923076923
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/site-mixed-16-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "site-mixed-16",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 10,
+    "observed_sites": 10,
+    "matched_sites": 10,
+    "total_successful_bytes": 924022096,
+    "matched_successful_bytes": 924022096,
+    "observations": 10,
+    "matched": 10,
+    "unknown": 0,
+    "confusion": [
+      [
+        7,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "accuracy": 0.7
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418949302,
+    "matched_successful_bytes": 418949302,
+    "observations": 621,
+    "matched": 621,
+    "unknown": 0,
+    "confusion": [
+      [
+        93,
+        0
+      ],
+      [
+        528,
+        0
+      ]
+    ],
+    "accuracy": 0.1497584541062802
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418949302,
+    "matched_successful_bytes": 418949302,
+    "observations": 32,
+    "matched": 32,
+    "unknown": 0,
+    "confusion": [
+      [
+        18,
+        12
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "accuracy": 0.625
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418949302,
+    "matched_successful_bytes": 418949302,
+    "observations": 621,
+    "matched": 621,
+    "unknown": 0,
+    "confusion": [
+      [
+        93,
+        0
+      ],
+      [
+        527,
+        1
+      ]
+    ],
+    "accuracy": 0.15136876006441224
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418949302,
+    "matched_successful_bytes": 418949302,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418949302,
+    "matched_successful_bytes": 418949302,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418949302,
+    "matched_successful_bytes": 418949302,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418945062,
+    "matched_successful_bytes": 418945062,
+    "observations": 621,
+    "matched": 621,
+    "unknown": 0,
+    "confusion": [
+      [
+        60,
+        33
+      ],
+      [
+        187,
+        341
+      ]
+    ],
+    "accuracy": 0.6457326892109501
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418945062,
+    "matched_successful_bytes": 418945062,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418945062,
+    "matched_successful_bytes": 418945062,
+    "observations": 621,
+    "matched": 621,
+    "unknown": 0,
+    "confusion": [
+      [
+        60,
+        33
+      ],
+      [
+        187,
+        341
+      ]
+    ],
+    "accuracy": 0.6457326892109501
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418945062,
+    "matched_successful_bytes": 418945062,
+    "observations": 400,
+    "matched": 400,
+    "unknown": 0,
+    "confusion": [
+      [
+        22,
+        33
+      ],
+      [
+        4,
+        341
+      ]
+    ],
+    "accuracy": 0.9075
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418945062,
+    "matched_successful_bytes": 418945062,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418945062,
+    "matched_successful_bytes": 418945062,
+    "observations": 400,
+    "matched": 400,
+    "unknown": 0,
+    "confusion": [
+      [
+        22,
+        33
+      ],
+      [
+        4,
+        341
+      ]
+    ],
+    "accuracy": 0.9075
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418626632,
+    "matched_successful_bytes": 418626632,
+    "observations": 621,
+    "matched": 621,
+    "unknown": 0,
+    "confusion": [
+      [
+        60,
+        33
+      ],
+      [
+        187,
+        341
+      ]
+    ],
+    "accuracy": 0.6457326892109501
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418626632,
+    "matched_successful_bytes": 418626632,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418626632,
+    "matched_successful_bytes": 418626632,
+    "observations": 621,
+    "matched": 621,
+    "unknown": 0,
+    "confusion": [
+      [
+        60,
+        33
+      ],
+      [
+        187,
+        341
+      ]
+    ],
+    "accuracy": 0.6457326892109501
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418626632,
+    "matched_successful_bytes": 418626632,
+    "observations": 400,
+    "matched": 400,
+    "unknown": 0,
+    "confusion": [
+      [
+        22,
+        33
+      ],
+      [
+        4,
+        341
+      ]
+    ],
+    "accuracy": 0.9075
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418626632,
+    "matched_successful_bytes": 418626632,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-mesh-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "redis-mesh",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 621,
+    "observed_sites": 621,
+    "matched_sites": 621,
+    "total_successful_bytes": 418626632,
+    "matched_successful_bytes": 418626632,
+    "observations": 400,
+    "matched": 400,
+    "unknown": 0,
+    "confusion": [
+      [
+        22,
+        33
+      ],
+      [
+        4,
+        341
+      ]
+    ],
+    "accuracy": 0.9075
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489299761,
+    "matched_successful_bytes": 489299761,
+    "observations": 629,
+    "matched": 629,
+    "unknown": 0,
+    "confusion": [
+      [
+        95,
+        0
+      ],
+      [
+        534,
+        0
+      ]
+    ],
+    "accuracy": 0.151033386327504
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489299761,
+    "matched_successful_bytes": 489299761,
+    "observations": 26,
+    "matched": 26,
+    "unknown": 0,
+    "confusion": [
+      [
+        12,
+        0
+      ],
+      [
+        0,
+        14
+      ]
+    ],
+    "accuracy": 1.0
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:heuristic",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489299761,
+    "matched_successful_bytes": 489299761,
+    "observations": 629,
+    "matched": 629,
+    "unknown": 0,
+    "confusion": [
+      [
+        95,
+        0
+      ],
+      [
+        529,
+        5
+      ]
+    ],
+    "accuracy": 0.1589825119236884
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489299761,
+    "matched_successful_bytes": 489299761,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489299761,
+    "matched_successful_bytes": 489299761,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-e1cd4f77.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:heuristic",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489299761,
+    "matched_successful_bytes": 489299761,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489150227,
+    "matched_successful_bytes": 489150227,
+    "observations": 629,
+    "matched": 629,
+    "unknown": 0,
+    "confusion": [
+      [
+        61,
+        34
+      ],
+      [
+        194,
+        340
+      ]
+    ],
+    "accuracy": 0.6375198728139905
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489150227,
+    "matched_successful_bytes": 489150227,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:static-model",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489150227,
+    "matched_successful_bytes": 489150227,
+    "observations": 629,
+    "matched": 629,
+    "unknown": 0,
+    "confusion": [
+      [
+        61,
+        34
+      ],
+      [
+        194,
+        340
+      ]
+    ],
+    "accuracy": 0.6375198728139905
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489150227,
+    "matched_successful_bytes": 489150227,
+    "observations": 400,
+    "matched": 400,
+    "unknown": 0,
+    "confusion": [
+      [
+        22,
+        34
+      ],
+      [
+        4,
+        340
+      ]
+    ],
+    "accuracy": 0.905
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489150227,
+    "matched_successful_bytes": 489150227,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-90f1a81f.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:static-model",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489150227,
+    "matched_successful_bytes": 489150227,
+    "observations": 400,
+    "matched": 400,
+    "unknown": 0,
+    "confusion": [
+      [
+        22,
+        34
+      ],
+      [
+        4,
+        340
+      ]
+    ],
+    "accuracy": 0.905
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "first",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489155595,
+    "matched_successful_bytes": 489155595,
+    "observations": 629,
+    "matched": 629,
+    "unknown": 0,
+    "confusion": [
+      [
+        61,
+        34
+      ],
+      [
+        194,
+        340
+      ]
+    ],
+    "accuracy": 0.6375198728139905
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "rechecks",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489155595,
+    "matched_successful_bytes": 489155595,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:model",
+    "scope": "policy",
+    "stage": "final",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489155595,
+    "matched_successful_bytes": 489155595,
+    "observations": 629,
+    "matched": 629,
+    "unknown": 0,
+    "confusion": [
+      [
+        61,
+        34
+      ],
+      [
+        194,
+        340
+      ]
+    ],
+    "accuracy": 0.6375198728139905
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "first",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489155595,
+    "matched_successful_bytes": 489155595,
+    "observations": 400,
+    "matched": 400,
+    "unknown": 0,
+    "confusion": [
+      [
+        22,
+        34
+      ],
+      [
+        4,
+        340
+      ]
+    ],
+    "accuracy": 0.905
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "rechecks",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489155595,
+    "matched_successful_bytes": 489155595,
+    "observations": 0,
+    "matched": 0,
+    "unknown": 0,
+    "confusion": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "accuracy": null
+  },
+  {
+    "decision_log": "results/fragbench-permanent/logs/redis-drop-jev-live-cold-0b787c30.decisions.jsonl",
+    "workload": "redis-drop",
+    "policy": "jev-live:model",
+    "scope": "model-only",
+    "stage": "final",
+    "truth_sites": 629,
+    "observed_sites": 629,
+    "matched_sites": 629,
+    "total_successful_bytes": 489155595,
+    "matched_successful_bytes": 489155595,
+    "observations": 400,
+    "matched": 400,
+    "unknown": 0,
+    "confusion": [
+      [
+        22,
+        34
+      ],
+      [
+        4,
+        340
+      ]
+    ],
+    "accuracy": 0.905
+  }
+]

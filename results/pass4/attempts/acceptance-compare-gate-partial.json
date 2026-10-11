@@ -1,0 +1,14 @@
+{
+  "complete_workloads": 1,
+  "expected_workloads": 22,
+  "passed": false,
+  "checks": [
+    {
+      "workload": "cfrac",
+      "none_time": 1.0237609296314985,
+      "none_rss": 1.0009140767824498,
+      "keyonly_rss": 1.0337899543378994,
+      "fix1_pass": false
+    }
+  ]
+}

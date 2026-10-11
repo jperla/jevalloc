@@ -5,15 +5,40 @@ sys.path[:0]=[str(Path(__file__).resolve().parents[1]/'tools'),str(Path(__file__
 import common, label, baselines, run, jevd
 from types import SimpleNamespace
 class Tools(unittest.TestCase):
+    def setUp(self):
+        mock=patch('jevd.fit_state',side_effect=lambda text,*args:text)
+        mock.start();self.addCleanup(mock.stop)
     def test_majority_bytes(self):
-        self.assertEqual(common.oracle({'class_bytes':[1,9,3]}),1)
-        self.assertEqual(common.oracle({'class_bytes':[0,0,0]}),1)
+        row=dict(class_schema=common.CLASS_SCHEMA,bytes=10,never_freed_bytes=1,permanent_bytes_by_percent={'25':9,'50':5,'90':1})
+        self.assertEqual(common.oracle(row),0)  # ties use the transient default
+        self.assertEqual(common.oracle(row,permanent_percent=25),1)
+        self.assertEqual(common.class_bytes(row,permanent_percent='never'),[9,1])
+    def test_threshold_histogram_and_legacy_rejection(self):
+        row=dict(class_schema=common.CLASS_SCHEMA,short_bytes=1,fixed_s_class_bytes=[3,17],bytes=20,lifetime_histogram_bytes=[3,5,7],never_freed_bytes=5)
+        self.assertEqual(common.class_bytes(row,2),[8,12])
+        self.assertEqual(common.class_bytes(row,4),[15,5])
+        with self.assertRaises(ValueError):common.class_bytes(row,3)
+        with self.assertRaises(ValueError):common.oracle({'class_bytes':[1,9]})
+    def test_heuristic_median_age_freed_bytes(self):
+        with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]/'build') as d:
+            args=SimpleNamespace(prompt='v2',cache=d,log=str(Path(d)/'log'),table=None,replay=None,policy='heuristic',model='none',seed=1,max_rechecks=4)
+            service=jevd.Decisions(args)
+            for count,total,freed,expected in ((0,0,0,0),(15,1000,0,0),(16,0,0,0),(16,1000,0,1),(128,1000,49,1),(128,1000,50,0),(128,1000,900,0)):
+                request=dict(key='median',site=dict(cohort_count=count,older_sampled_bytes=total,older_freed_bytes=freed))
+                self.assertEqual(service.decide(request)['class'],expected)
+            service.log.close()
+    def test_legacy_replay_rejected(self):
+        with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]/'build') as d:
+            p=Path(d);(p/'old').write_text(json.dumps(dict(schema=2,prompt='v2',request={'key':'old'},ordinal=0,response={'class':1,'recheck_after':0})))
+            args=SimpleNamespace(prompt='v2',cache=d,log=str(p/'log'),table=None,replay=str(p/'old'),policy='heuristic')
+            with self.assertRaisesRegex(ValueError,'Replay prompt'):jevd.Decisions(args)
     def test_no_runtime_leakage(self):
-        s={'key':'DEADBEEF','program':'fixture','count':999,'bytes':888,'class_bytes':[7,8,9], 'frames':[{'image':'secret','address':'123','function':'func','file':'test.c','line':7,'source':[{'line':7,'text':'malloc(42);'}],'count':999}]}
-        state=json.loads(label.state(s))
-        self.assertEqual(set(state),{'program','stack'})
-        self.assertEqual(set(state['stack'][0]),{'function','file','line','source'})
-        a=label.request_body(s,'test');s.update(count=1,bytes=2,class_bytes=[0,0,100]);self.assertEqual(a,label.request_body(s,'test'))
+        s={'key':'DEADBEEF','program':'fixture','count':999,'bytes':888,'class_bytes':[7,9], 'frames':[{'image':'secret','address':'123','function':'func','file':'test.c','line':7,'source':[{'line':7,'text':'malloc(42);'}],'count':999}]}
+        with patch('prompts.symbolize'):state=label.state(s)
+        self.assertIn('Program: fixture',state)
+        self.assertIn('malloc(42)',state)
+        self.assertNotIn('999',state);self.assertNotIn('class_bytes',state)
+        a=label.request_body(s,'test');s.update(count=1,bytes=2,class_bytes=[0,100]);self.assertEqual(a,label.request_body(s,'test'))
     def test_billed_502_never_retried(self):
         error=urllib.error.HTTPError('url',502,'error',{'x-should-retry':'false'},io.BytesIO(b'billed'))
         with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]/'build') as d:
@@ -23,66 +48,66 @@ class Tools(unittest.TestCase):
                 self.assertEqual(mock.call_count,1)
     def test_baselines_ignore_lifetimes(self):
         with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]/'build') as d:
-            p=Path(d);trace=p/'trace';row={'key':'1','bytes':1024,'count':4,'class_bytes':[0,0,1024]};trace.write_text(json.dumps(row));baselines.generate(trace,p/'a');row['class_bytes']=[1024,0,0];trace.write_text(json.dumps(row));baselines.generate(trace,p/'b')
-            for name in ('random','size','all-short','all-long'):self.assertEqual((p/'a'/f'{name}.txt').read_bytes(),(p/'b'/f'{name}.txt').read_bytes())
+            p=Path(d);trace=p/'trace';row={'key':'1','bytes':1024,'count':4,'class_bytes':[0,1024]};trace.write_text(json.dumps(row));baselines.generate(trace,p/'a');row['class_bytes']=[1024,0];trace.write_text(json.dumps(row));baselines.generate(trace,p/'b')
+            for name in ('random','size','all-transient','all-permanent'):self.assertEqual((p/'a'/f'{name}.txt').read_bytes(),(p/'b'/f'{name}.txt').read_bytes())
     def test_live_schedule_and_static_input(self):
         service=object.__new__(jevd.Decisions)
         service.a=SimpleNamespace(policy='heuristic',max_rechecks=4)
         counts=range(5)
         self.assertEqual([service.schedule(n) for n in counts],[1024,8192,65536,524288,0])
-        request={'program':'p','frames':[],'site':{'allocs':999},'process':{'rss':777},'size':333,'prior':2}
+        request={'program':'p','frames':[],'site':{'allocs':999},'process':{'rss':777},'size':333,'prior':1}
         a=jevd.state(request,True);request['site']['allocs']=123;request['size']=111
         self.assertEqual(a,jevd.state(request,True))
         self.assertNotIn('999',a);self.assertNotIn('777',a);self.assertNotIn('333',a)
     def test_heuristic_ignores_process_state(self):
         with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]/'build') as d:
-            args=SimpleNamespace(cache=d,log=str(Path(d)/'log'),table=None,replay=None,policy='heuristic',model='none',seed=1,max_rechecks=4)
+            args=SimpleNamespace(prompt='v2',cache=d,log=str(Path(d)/'log'),table=None,replay=None,policy='heuristic',model='none',seed=1,max_rechecks=4)
             service=jevd.Decisions(args)
             hist=[0]*65;hist[23]=65536
             request={'key':'abc','prior':1,'site':{'life_hist':hist},'process':{'alloc_clock':1}}
-            self.assertEqual(service.decide(request)['class'],1)
+            self.assertEqual(service.decide(request)['class'],0)
             request['process']['alloc_clock']=2**50
-            self.assertEqual(service.decide(request)['class'],1)
+            self.assertEqual(service.decide(request)['class'],0)
             service.log.close()
     def test_probability_argmax(self):
         with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]/'build') as d:
-            args=SimpleNamespace(cache=d,log=str(Path(d)/'log'),table=None,replay=None,policy='model',model='fake',seed=1,max_rechecks=4,reasoning=False,decide_url='http://localhost',decide_path='/v1/systemone',http_timeout=1)
+            args=SimpleNamespace(prompt='v2',cache=d,log=str(Path(d)/'log'),table=None,replay=None,policy='model',model='fake',seed=1,max_rechecks=4,reasoning=False,decide_url='http://localhost',decide_path='/v1/systemone',http_timeout=1)
             service=jevd.Decisions(args)
-            response={'answers':{'lifetime':{'choice':'short','probabilities':{'short':.1,'medium':.2,'long':.7}}},'usage':{'input_tokens':10}}
+            response={'answers':{'lifetime':{'choice':'transient','probabilities':{'transient':.1,'permanent':.7}}},'usage':{'input_tokens':10}}
             with patch('urllib.request.urlopen',return_value=io.BytesIO(json.dumps(response).encode())):
-                self.assertEqual(service.decide({'key':'abc','frames':[],'site':{'allocs':1}})['class'],2)
+                self.assertEqual(service.decide({'key':'abc','frames':[],'site':{'allocs':1}})['class'],1)
             service.log.close()
     def test_replay_fills_missing_model_answers(self):
         with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]/'build') as d:
             folder=Path(d);schedule=folder/'schedule.jsonl'
             request={'key':'abc','frames':[],'site':{'allocs':1},'prior':None}
-            schedule.write_text(json.dumps({'request':request,'ordinal':0,'response':{'class':2,'recheck_after':1024},'raw_response':None})+'\n')
-            args=SimpleNamespace(cache=d,log=str(folder/'fill.jsonl'),table=None,replay=str(schedule),fill_replay=True,policy='model',model='fake',seed=1,max_rechecks=4,reasoning=False,decide_url='http://localhost',decide_path='/v1/systemone',http_timeout=1)
+            schedule.write_text(json.dumps({'schema':3,'class_schema':'transient-permanent-v1','prompt':'v2','request':request,'ordinal':0,'response':{'class':1,'recheck_after':1024},'raw_response':None})+'\n')
+            args=SimpleNamespace(prompt='v2',cache=d,log=str(folder/'fill.jsonl'),table=None,replay=str(schedule),fill_replay=True,policy='model',model='fake',seed=1,max_rechecks=4,reasoning=False,decide_url='http://localhost',decide_path='/v1/systemone',http_timeout=1)
             service=jevd.Decisions(args)
-            response={'answers':{'lifetime':{'probabilities':{'short':.1,'medium':.8,'long':.1}}},'usage':{'input_tokens':10}}
+            response={'answers':{'lifetime':{'probabilities':{'transient':.1,'permanent':.9}}},'usage':{'input_tokens':10}}
             with patch('urllib.request.urlopen',return_value=io.BytesIO(json.dumps(response).encode())) as http:
-                self.assertEqual(service.decide(request)['class'],2)
+                self.assertEqual(service.decide(request)['class'],1)
                 self.assertEqual(http.call_count,0)
-                request={**request,'prior':2,'site':{'allocs':1024}}
+                request={**request,'prior':1,'site':{'allocs':1024}}
                 self.assertEqual(service.decide(request)['class'],1)
                 self.assertEqual(http.call_count,1)
             service.log.close();run.merge_schedule(schedule,folder/'fill.jsonl')
             args.fill_replay=False;args.log=str(folder/'replay.jsonl');service=jevd.Decisions(args)
             with patch('urllib.request.urlopen',side_effect=AssertionError('model called during replay')):
-                self.assertEqual(service.decide(request)['class'],2)
+                self.assertEqual(service.decide(request)['class'],1)
                 self.assertEqual(service.decide(request)['class'],1)
             service.log.close()
     def test_model_budget_and_provenance(self):
         with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]/'build') as d:
-            args=SimpleNamespace(cache=d,log=str(Path(d)/'log'),table=None,replay=None,policy='model',model='fake',seed=1,max_rechecks=4,reasoning=False,decide_url='http://localhost',decide_path='/v1/systemone',http_timeout=1,max_model_decisions=2,model_backend='vulkan',default_class=0)
-            response={'answers':{'lifetime':{'probabilities':{'short':.1,'medium':.2,'long':.7}}}}
+            args=SimpleNamespace(prompt='v2',cache=d,log=str(Path(d)/'log'),table=None,replay=None,policy='model',model='fake',seed=1,max_rechecks=4,reasoning=False,decide_url='http://localhost',decide_path='/v1/systemone',http_timeout=1,max_model_decisions=2,model_backend='vulkan',default_class=0)
+            response={'answers':{'lifetime':{'probabilities':{'transient':.1,'permanent':.7}}}}
             request={'key':'a','frames':[],'site':{'allocs':1},'prior':None}
             service=jevd.Decisions(args)
             with patch('urllib.request.urlopen',side_effect=lambda *a,**k:io.BytesIO(json.dumps(response).encode())) as http:
-                self.assertEqual(service.decide(request),{'class':2,'recheck_after':1024})
-                self.assertEqual(service.decide({**request,'prior':2}),{'class':2,'recheck_after':0})
+                self.assertEqual(service.decide(request),{'class':1,'recheck_after':1024})
+                self.assertEqual(service.decide({**request,'prior':1}),{'class':1,'recheck_after':0})
                 self.assertEqual(service.decide({**request,'key':'b'}),{'class':0,'recheck_after':0})
-                self.assertEqual(service.decide({**request,'prior':2}),{'class':2,'recheck_after':0})
+                self.assertEqual(service.decide({**request,'prior':1}),{'class':1,'recheck_after':0})
                 self.assertEqual(http.call_count,2)
             service.log.close()
             events=[json.loads(s) for s in Path(args.log).read_text().splitlines()]
@@ -92,7 +117,7 @@ class Tools(unittest.TestCase):
             with patch('urllib.request.urlopen',side_effect=AssertionError('cache should survive backend change')):
                 args.model_backend='different'
                 service.decide(request)
-                service.decide({**request,'prior':2})
+                service.decide({**request,'prior':1})
                 self.assertEqual(service.decide({**request,'key':'b'})['class'],0)
             service.log.close()
             events=[json.loads(s) for s in Path(args.log).read_text().splitlines()]
@@ -107,14 +132,14 @@ class Tools(unittest.TestCase):
     def test_replay_fill_shares_model_budget(self):
         with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]/'build') as d:
             folder=Path(d);schedule=folder/'schedule.jsonl'
-            raw={'answers':{'lifetime':{'probabilities':{'short':.8,'medium':.1,'long':.1}}}}
+            raw={'answers':{'lifetime':{'probabilities':{'transient':.8,'permanent':.1}}}}
             request={'key':'a','frames':[],'site':{'allocs':1},'prior':None}
-            schedule.write_text(json.dumps({'request':request,'ordinal':0,'response':{'class':0,'recheck_after':1024},'raw_response':raw,'model_backend':'cpu','model_origin':'legacy'})+'\n')
-            args=SimpleNamespace(cache=d,log=str(folder/'log'),table=None,replay=str(schedule),fill_replay=True,policy='model',model='fake',seed=1,max_rechecks=4,max_model_decisions=1)
+            schedule.write_text(json.dumps({'schema':3,'class_schema':'transient-permanent-v1','prompt':'v2','request':request,'ordinal':0,'response':{'class':0,'recheck_after':1024},'raw_response':raw,'model_backend':'cpu','model_origin':'legacy'})+'\n')
+            args=SimpleNamespace(prompt='v2',cache=d,log=str(folder/'log'),table=None,replay=str(schedule),fill_replay=True,policy='model',model='fake',seed=1,max_rechecks=4,max_model_decisions=1)
             service=jevd.Decisions(args)
             with patch('urllib.request.urlopen',side_effect=AssertionError('reserved cold budget must prevent further inference')):
                 # An unseen site can arrive before any recorded site.
-                self.assertEqual(service.decide({**request,'key':'b'}),{'class':1,'recheck_after':0})
+                self.assertEqual(service.decide({**request,'key':'b'}),{'class':0,'recheck_after':0})
                 self.assertEqual(service.decide(request),{'class':0,'recheck_after':1024})
                 self.assertEqual(service.decide({**request,'prior':0}),{'class':0,'recheck_after':0})
             service.log.close()
@@ -124,6 +149,19 @@ class Tools(unittest.TestCase):
             run.merge_schedule(schedule,folder/'log')
             self.assertEqual(sum(json.loads(s).get('raw_response') is not None for s in schedule.read_text().splitlines()),1)
 
+    def test_shared_native_model_cache_preserves_budget(self):
+        with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]/'build') as d:
+            p=Path(d)
+            response={'answers':{'lifetime':{'probabilities':{'transient':.7,'permanent':.3}}}}
+            for index,policy in enumerate(('static-model','model')):
+                args=SimpleNamespace(prompt='v2',cache=str(p/policy),model_cache=str(p/'shared'),log=str(p/(policy+'.log')),table=None,replay=None,policy=policy,model='fake',seed=1,max_rechecks=4,reasoning=False,decide_url='http://localhost',decide_path='/v1/systemone',http_timeout=1,max_model_decisions=1)
+                service=jevd.Decisions(args)
+                with patch('urllib.request.urlopen',side_effect=lambda *a,**k:io.BytesIO(json.dumps(response).encode())) as http:
+                    answer=service.decide(dict(key='native',frames=[],site={},prior=None))
+                    self.assertEqual(answer,{'class':0,'recheck_after':0})
+                    self.assertEqual(service.model_decisions,1)
+                    self.assertEqual(http.call_count,1 if index==0 else 0)
+                service.log.close()
     def test_time_parse(self):
         old=run.sys.platform
         try:

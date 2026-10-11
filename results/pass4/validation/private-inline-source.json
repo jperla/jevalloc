@@ -1,0 +1,7 @@
+{
+  "src/jevalloc.c": "bbcb958f6f7ecae95fea0a2b439e3fd44d068a5959468e294da29ab71fa903ed",
+  "src/live.inc": "22f474d4257228c1cc59374f2f0dd05e0ae58fe2a654d90ef4686498917adf8e",
+  "src/new.cpp": "f1bfa64e219543383405f2f1be3f6b657272deb60044421d4e43f023821be92b",
+  "patches/mimalloc-class-tags.patch": "7043d75e54c71a29a76dad12226878645da439bfded30e955af75eb903b128d3",
+  "CMakeLists.txt": "604b334500d1339dd2771245022130f30253d80786c7fa735036759bf6d5efe3"
+}

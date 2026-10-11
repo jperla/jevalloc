@@ -32,10 +32,10 @@ def symbolize(rows):
                     candidates=[Path(filename)] if Path(filename).is_absolute() else list(SOURCE.rglob(filename))
                     for path in candidates:
                         path=path.resolve()
-                        if (SOURCE in path.parents or ROOT/'build/extras' in path.parents) and path.is_file():
+                        if (SOURCE in path.parents or ROOT/'build/extras' in path.parents or ROOT/'fragbench' in path.parents) and path.is_file():
                             lines=path.read_text(errors='replace').splitlines()
                             info['file']=str(path.relative_to(ROOT))
-                            info['source']=[{'line':i+1,'text':lines[i]} for i in range(max(0,line-13),min(len(lines),line+12))]
+                            info['source']=[{'line':i+1,'text':lines[i]} for i in range(max(0,line-21),min(len(lines),line+20))]
                             break
                 cache[key]=info
             frame.update(cache[key])

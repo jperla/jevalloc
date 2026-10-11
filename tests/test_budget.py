@@ -24,7 +24,7 @@ def main():
             assert c['unasked_byte_share']==1 and st['rechecks']==0,r
             assert r['model_seconds']==0 and r['replay_missing']==0,r
             events=[json.loads(line) for line in (ROOT/r['decision_log']).read_text().splitlines()]
-            assert all(e['response']=={'class':1,'recheck_after':0} and e['budget_exhausted'] and e['raw_response'] is None for e in events)
+            assert all(e['response']=={'class':0,'recheck_after':0} and e['budget_exhausted'] and e['raw_response'] is None for e in events)
         (out/(variant.split(':')[1]+'.json')).write_text(json.dumps({'cold':cold,'warm':warm,'passed':True},indent=2))
     print('BUDGET INTEGRATION TEST PASSED')
 if __name__=='__main__':main()

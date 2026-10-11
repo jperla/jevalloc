@@ -1,0 +1,46 @@
+{
+  "wrapper_addresses": {
+    "insert_cache_index": "0000000000001680",
+    "create_session_state": "0000000000001690",
+    "assemble_response_buffer": "00000000000016a0",
+    "parse_request_buffer": "00000000000016b0"
+  },
+  "workloads": [
+    {
+      "name": "site-pure-1",
+      "sites": 11,
+      "class_bytes": [
+        856546832,
+        65237360
+      ],
+      "oracle_correct_byte_share": 0.9625647735126271
+    },
+    {
+      "name": "site-pure-16",
+      "sites": 11,
+      "class_bytes": [
+        858735888,
+        65052736
+      ],
+      "oracle_correct_byte_share": 0.9628769795285983
+    },
+    {
+      "name": "site-mixed-1",
+      "sites": 10,
+      "class_bytes": [
+        889237904,
+        32576048
+      ],
+      "oracle_correct_byte_share": 0.9646657029552098
+    },
+    {
+      "name": "site-mixed-16",
+      "sites": 10,
+      "class_bytes": [
+        891422544,
+        32599552
+      ],
+      "oracle_correct_byte_share": 0.9647296399717263
+    }
+  ]
+}

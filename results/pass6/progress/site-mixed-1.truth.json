@@ -1,0 +1,8 @@
+{
+  "sites": 10,
+  "class_bytes": [
+    889237904,
+    32576048
+  ],
+  "oracle_correct_byte_share": 0.9646657029552098
+}

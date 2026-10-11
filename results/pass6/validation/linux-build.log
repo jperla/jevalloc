@@ -1,0 +1,20 @@
+[ 10%] Built target measure
+[ 10%] Built target stress
+[ 12%] Built target site-test
+[ 14%] Built target cost
+[ 21%] Built target lifetimes
+[ 21%] Built target live-test
+[ 29%] Built target defects
+[ 29%] Built target server-sim
+[ 60%] Built target mimalloc
+[ 63%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/heap.c.o
+[ 63%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/init.c.o
+[ 65%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/alloc.c.o
+[ 67%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/segment.c.o
+[ 69%] Linking C static library libmi-core.a
+[ 90%] Built target mi-core
+[ 92%] Building C object CMakeFiles/jevalloc.dir/override.c.o
+[ 94%] Building C object CMakeFiles/jevalloc.dir/src/jevalloc.c.o
+[ 96%] Building C object CMakeFiles/jevalloc.dir/zone.c.o
+[ 98%] Linking C shared library libjevalloc.so
+[100%] Built target jevalloc

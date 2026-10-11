@@ -1,0 +1,44 @@
+{
+  "short_bytes": 1048576,
+  "passed": false,
+  "server_sha256": "63f1279adc081ada10c94b6a7a632a5767ca183ea4d2f5f8b39a59cc37e31147",
+  "environment": {
+    "MIMALLOC_PURGE_DELAY": "0",
+    "MIMALLOC_ARENA_PURGE_MULT": "1",
+    "MIMALLOC_PURGE_DECOMMITS": "1",
+    "JEVALLOC_DEPTH": "4",
+    "JEVALLOC_MODEL_DEPTH": "12"
+  },
+  "repetitions": 5,
+  "comparisons": [
+    {
+      "workload": "site-pure-1",
+      "cycle": 0,
+      "oracle": 128008192,
+      "keyonly": 128237568,
+      "mi": 128155648
+    },
+    {
+      "workload": "site-pure-1",
+      "cycle": 1,
+      "oracle": 293679104,
+      "keyonly": 293912576,
+      "mi": 293830656
+    },
+    {
+      "workload": "site-pure-16",
+      "cycle": 0,
+      "oracle": 144375808,
+      "keyonly": 143458304,
+      "mi": 143183872
+    },
+    {
+      "workload": "site-pure-16",
+      "cycle": 1,
+      "oracle": 306651136,
+      "keyonly": 309997568,
+      "mi": 309846016
+    }
+  ],
+  "library_sha256": "1dd1f000706ee02d223b9647dc1d3e3ef162bfbb4f2aef11bdd6d1ef0cae2000"
+}

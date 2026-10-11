@@ -46,5 +46,8 @@ int main(){
  np=::operator new[](135802,std::align_val_t(256));::operator delete[](np,size_t(135802),std::align_val_t(256));
  assert(!::operator new(huge,std::nothrow));
  bool threw=false;try{np=::operator new(huge);::operator delete(np);}catch(const std::bad_alloc&){threw=true;}assert(threw);
+ auto previous=std::set_new_handler([](){throw 17;});
+ bool handler=false;try{np=::operator new(huge);}catch(int n){handler=n==17;}assert(handler);
+ assert(!::operator new(huge,std::nothrow));std::set_new_handler(previous);
  puts("stress OK");
 }

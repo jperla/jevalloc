@@ -1,0 +1,102 @@
+{
+  "matrix_file": "results/interim/matrix-11-workloads.json",
+  "complete_workloads": [
+    "cfrac",
+    "espresso",
+    "barnes",
+    "larson",
+    "larson-sized",
+    "xmalloc-test",
+    "cache-scratch1",
+    "cache-scratchN",
+    "cache-thrash1",
+    "cache-thrashN",
+    "mstress"
+  ],
+  "warm_ratios": {
+    "sys": {
+      "score": 1.2355473498990943,
+      "peak_rss_bytes": 0.6521845250421408
+    },
+    "mi": {
+      "score": 1.0,
+      "peak_rss_bytes": 1.0
+    },
+    "jev-none": {
+      "score": 1.0523930447528995,
+      "peak_rss_bytes": 1.263330696215574
+    },
+    "jev-keyonly": {
+      "score": 1.2483966818334917,
+      "peak_rss_bytes": 1.3187409017831648
+    },
+    "jev-table:oracle": {
+      "score": 1.251700891527696,
+      "peak_rss_bytes": 1.3978338998194357
+    },
+    "jev-table:random": {
+      "score": 1.2433989077871082,
+      "peak_rss_bytes": 1.4560866092976574
+    },
+    "jev-table:size": {
+      "score": 1.258906685119591,
+      "peak_rss_bytes": 1.3708491916043457
+    },
+    "jev-live:heuristic": {
+      "score": 2.0736097499247137,
+      "peak_rss_bytes": 1.081847992647239
+    },
+    "jev-live:static-model": {
+      "score": 2.0569436966693813,
+      "peak_rss_bytes": 1.1278329232286368
+    },
+    "jev-live:model": {
+      "score": 2.068056575385975,
+      "peak_rss_bytes": 1.1016682911361446
+    }
+  },
+  "prompt_file": "results/interim/promptlab-round1.json",
+  "prompt_variants": {
+    "baseline": {
+      "short_long_correct": 58,
+      "short_long_total": 92,
+      "medium_correct": 2,
+      "medium_total": 31,
+      "three_class_correct": 50,
+      "three_class_total": 123
+    },
+    "semantic": {
+      "short_long_correct": 64,
+      "short_long_total": 92,
+      "medium_correct": 2,
+      "medium_total": 31,
+      "three_class_correct": 53,
+      "three_class_total": 123
+    },
+    "wide": {
+      "short_long_correct": 67,
+      "short_long_total": 92,
+      "medium_correct": 2,
+      "medium_total": 31,
+      "three_class_correct": 55,
+      "three_class_total": 123
+    },
+    "noul": {
+      "short_long_correct": 66,
+      "short_long_total": 92,
+      "medium_correct": 0,
+      "medium_total": 31,
+      "three_class_correct": 66,
+      "three_class_total": 123
+    },
+    "json": {
+      "short_long_correct": 63,
+      "short_long_total": 92,
+      "medium_correct": 2,
+      "medium_total": 31,
+      "three_class_correct": 61,
+      "three_class_total": 123
+    }
+  },
+  "always_short_baseline": 0.5978260869565217
+}

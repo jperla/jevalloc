@@ -1,0 +1,122 @@
+{
+  "cfrac": {
+    "sites": [
+      161,
+      3,
+      11
+    ],
+    "actual_object_byte_shares": [
+      0.9996332641723674,
+      0.00018182274989156884,
+      0.00018491307774099486
+    ],
+    "majority_site_byte_shares": [
+      0.9997439951883775,
+      1.929694385256317e-05,
+      0.00023670786776988376
+    ],
+    "total_requested_bytes": 1831844476,
+    "oracle_mismatches": 0,
+    "trace_sha256": "bb194ea5f794517f8e3ce08471e68a327adfbf39a3df3b6a910bb01a9837567f"
+  },
+  "espresso": {
+    "sites": [
+      943,
+      100,
+      2
+    ],
+    "actual_object_byte_shares": [
+      0.9950259122471765,
+      0.004949572088142938,
+      2.451566468055614e-05
+    ],
+    "majority_site_byte_shares": [
+      0.9968232839994043,
+      0.0031522003359150544,
+      2.451566468055614e-05
+    ],
+    "total_requested_bytes": 3726596900,
+    "oracle_mismatches": 0,
+    "trace_sha256": "d0bb2d11173a8cb357c7b9cc0ccf960aabda464dafdea3d104f081dcd27dd873"
+  },
+  "redis": {
+    "sites": [
+      89,
+      4,
+      534
+    ],
+    "actual_object_byte_shares": [
+      0.9981444059929951,
+      0.0006098466138707153,
+      0.0012457473931341888
+    ],
+    "majority_site_byte_shares": [
+      0.998914151620263,
+      4.292902792821807e-05,
+      0.0010429193518088054
+    ],
+    "total_requested_bytes": 3727734070,
+    "oracle_mismatches": 0,
+    "trace_sha256": "12bed453b57a4e6295f0d2b0d2b7a122c81ec04bf117ccff520defb0a438fcd4"
+  },
+  "barnes": {
+    "sites": [
+      0,
+      0,
+      20
+    ],
+    "actual_object_byte_shares": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "majority_site_byte_shares": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "total_requested_bytes": 512500227,
+    "oracle_mismatches": 0,
+    "trace_sha256": "3944f945cffadc68c54fd97e1e2b8551840e553d1901602ba90866173d17ec73"
+  },
+  "larson": {
+    "sites": [
+      1,
+      3,
+      5
+    ],
+    "actual_object_byte_shares": [
+      0.024327302217830048,
+      0.9690599607191692,
+      0.0066127370630006815
+    ],
+    "majority_site_byte_shares": [
+      3.9419914040846745e-09,
+      0.9999972537459885,
+      2.742312020108239e-06
+    ],
+    "total_requested_bytes": 6088293337,
+    "oracle_mismatches": 0,
+    "trace_sha256": "1e8aa5476248d4481b236d74c95454864c822f2217903cc331594ce12067f518"
+  },
+  "mstress": {
+    "sites": [
+      0,
+      21,
+      1
+    ],
+    "actual_object_byte_shares": [
+      0.009069616136707481,
+      0.9909298788154054,
+      5.050478871187489e-07
+    ],
+    "majority_site_byte_shares": [
+      0.0,
+      0.9999996152016098,
+      3.8479839018571344e-07
+    ],
+    "total_requested_bytes": 10644535176,
+    "oracle_mismatches": 0,
+    "trace_sha256": "c331f720262a00c5a6ca012b4ebb68a8946a1bb1e65bb4f92b00f34f4d39f072"
+  }
+}

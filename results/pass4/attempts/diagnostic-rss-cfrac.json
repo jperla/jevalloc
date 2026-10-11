@@ -1,0 +1,136 @@
+{
+  "name": "diagnostic-rss-cfrac",
+  "created": "2026-10-10T20:21:25.509567+00:00",
+  "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+  "processor_count": 16,
+  "oracle": "prior-trace byte-majority site control",
+  "runs": [
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791663689.545858,
+      "finished_unix": 1791663692.3653536,
+      "host_before": {
+        "load_average": [
+          0.7412109375,
+          1.11669921875,
+          2.2373046875
+        ],
+        "MemAvailable_bytes": 12895768576,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "jev-none",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so:/home/quill/jevalloc/src-tree/build/rss-probe.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "none",
+        "JEVALLOC_SMAPS_OUT": "/home/quill/jevalloc/src-tree/results/diagnostic-rss-cfrac-jev-none.smaps"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 2.806098732,
+      "stdout": "results/logs/diagnostic-rss-cfrac/cfrac-jev-none-0.stdout",
+      "stderr": "results/logs/diagnostic-rss-cfrac/cfrac-jev-none-0.stderr",
+      "user_seconds": 2.802203,
+      "sys_seconds": 0.003,
+      "peak_rss_bytes": 4620288,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.805203,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 2.806098732,
+      "score_metric": "wall_seconds",
+      "phases": [],
+      "diagnostic": true
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791663693.3728538,
+      "finished_unix": 1791663698.5440896,
+      "host_before": {
+        "load_average": [
+          0.70751953125,
+          1.09619140625,
+          2.21826171875
+        ],
+        "MemAvailable_bytes": 12894277632,
+        "SwapFree_bytes": 8588357632,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "cfrac",
+      "variant": "jev-keyonly",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/cfrac",
+        "17545186520507317056371138836327483792789528"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so:/home/quill/jevalloc/src-tree/build/rss-probe.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/tables/cfrac/oracle.txt",
+        "JEVALLOC_SMAPS_OUT": "/home/quill/jevalloc/src-tree/results/diagnostic-rss-cfrac-jev-keyonly.smaps"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 5.156508613,
+      "stdout": "results/logs/diagnostic-rss-cfrac/cfrac-jev-keyonly-0.stdout",
+      "stderr": "results/logs/diagnostic-rss-cfrac/cfrac-jev-keyonly-0.stderr",
+      "user_seconds": 5.151096,
+      "sys_seconds": 0.003999,
+      "peak_rss_bytes": 4644864,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 5.155095,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 5.156508613,
+      "score_metric": "wall_seconds",
+      "phases": [],
+      "diagnostic": true
+    }
+  ],
+  "coverage_runs": [],
+  "configuration": {
+    "max_model_decisions": 400,
+    "repetitions": 1,
+    "variants": [
+      "jev-none",
+      "jev-keyonly"
+    ],
+    "workloads": [
+      "cfrac"
+    ],
+    "procs": 16,
+    "fingerprints": {
+      "/home/quill/jevalloc/src-tree/bench/definitions.py": "db782cc59a8ec2406a20869fd664c76afa20965cdd526311fa1a624225982d11",
+      "/home/quill/jevalloc/src-tree/bench/run.py": "1edd2df7ef8b30d06cf9d437b9f9461dc41fcef7da1e368e35e5488e5390b0f3",
+      "/home/quill/jevalloc/src-tree/build/bench/cfrac": "94809f97a84a9ee36b43fcc0779949a41b18a9ce84f86211229ead21a44f776a",
+      "/home/quill/jevalloc/src-tree/build/libjevalloc.so": "636659cd612b731195af53c06e1caa73d7d183219a8d0cc6c02cacd9689168e4",
+      "/home/quill/jevalloc/src-tree/build/libmimalloc.so": "927db9974948cc9a524bee26035671fe0303cafa60d1079af3fa7cd6fa2e319b",
+      "/home/quill/jevalloc/src-tree/build/measure": "ab5798f926c4183e1b482ff2fd6bde0579d653d31da3546f8d055cf99606d391",
+      "/home/quill/jevalloc/src-tree/results/tables/cfrac/oracle.txt": "ba455cb6be5b97cfaa328a73f235cf387ce328838640363e65826c8a918a6fb7",
+      "/home/quill/jevalloc/src-tree/tools/jevd.py": "f1e63c1cb12d094f41088a0beb8542a68caf359a5c8e6edb89e4d541b94e253b",
+      "/home/quill/jevalloc/src-tree/tools/prompts.py": "21983b5d9cf454ca5f9bfba8ff3f083b3784a995d149ee8aec63e577b811a6b8",
+      "/home/quill/jevalloc/src-tree/tools/symbolize.py": "0120115e2ecbe28d2e8b3d7146181244f2d78aa61d8bd2579cc7258e47c23177"
+    }
+  },
+  "summary": [],
+  "diagnostic_fingerprints": {
+    "tools/live_ablation.py": "c1ccdaf7819cd38ca1f33ce07b28692bd5c9cbebbcb18add902615e6acaea576",
+    "tools/profile_sampler.c": "d03efe99f6c1a2e0f455c8187a0ee43d6b91e2ade8705fa47817602c4d857639",
+    "build/profile-sampler.so": "52662cc99a8b3c812cbafd8b0975205252a5474c85ccc38610f9ec7a8924368b",
+    "tools/rss_probe.c": "32c57ddaabecbfa8f7f741f2223a6882086673df3fbe522bf24217d1ef600590",
+    "build/rss-probe.so": "966a9560a0b6b0a42b66dee9b50c1ecff74103191dc95d2bd214904f6cf99dc0"
+  },
+  "diagnostic_note": "Profiling/rare-sampling ablation; not acceptance or headline evidence."
+}
