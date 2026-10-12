@@ -4,17 +4,17 @@
   "changed_requests": 1200,
   "total_requests": 2229,
   "changed_fields": {
-    "process.committed": 1200,
     "process.rss": 1200,
+    "process.committed": 1200,
     "process.alloc_clock": 1200,
     "site.oldest_age_bytes": 68
   },
   "first_examples": {
-    "process.committed": [
+    "process.rss": [
       536870912,
       1073741824
     ],
-    "process.rss": [
+    "process.committed": [
       536870912,
       1073741824
     ],

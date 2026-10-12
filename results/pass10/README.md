@@ -16,6 +16,12 @@ no model inference and no decision replay. Static/hybrid priors use cold
 schedules; C hybrid transitions execute in every warm process. Rules and naming
 maps were fixed in CODEX-REPORT.md before measurement.
 
+Warm model replay bypasses prompt preparation and sidecar symbolization as well
+as HTTP inference. The live names rule resolves symbols during each measured
+process, with an in-process symbol cache. Its wall time includes that work;
+target CPU excludes the sidecar and its symbolizer subprocesses. These timings
+describe the implemented replay/control paths, not an end-to-end deployment.
+
 `model-decisions.jsonl.gz` contains model answers, probabilities, contexts and
 prompt states. `sites.json` in each synthetic directory contains the trace site
 catalogue including unasked sites. `phases.md`, `summary.json`, and `costs.json`

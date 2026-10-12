@@ -1,0 +1,299 @@
+{
+  "matrix_sha256": "86a5ebf0589315961a6a69655d3698c196fd669b98a74e07cd45d0d733a6d4f1",
+  "server_pid": 970221,
+  "source_log": "/home/quill/jevalloc/model-server.log",
+  "checked": 40,
+  "overlapping_runs": 0,
+  "runs": [
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "mi",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-keyonly",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-table:oracle-site",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:static-model",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:hybrid",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:heuristic",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:rules-neutral",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:rule-names",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-keyonly",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-table:oracle-site",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:static-model",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:hybrid",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:heuristic",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:rules-neutral",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:rule-names",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "mi",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-table:oracle-site",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:static-model",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:hybrid",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:heuristic",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:rules-neutral",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:rule-names",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "mi",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-keyonly",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:static-model",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:hybrid",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:heuristic",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:rules-neutral",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:rule-names",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "mi",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-keyonly",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-table:oracle-site",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:hybrid",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:heuristic",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:rules-neutral",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:rule-names",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "mi",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-keyonly",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-table:oracle-site",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "rocksdb-cache",
+      "variant": "jev-live:static-model",
+      "repetition": 4,
+      "tasks": []
+    }
+  ],
+  "clock_calibration": {
+    "logger_start_unix": 1791649771.3960834,
+    "process_start_unix": 1791649771.19,
+    "spread_seconds": 3.0994415283203125e-06,
+    "wall_minus_monotonic": 1786470747.1873248,
+    "pairs": [
+      {
+        "log_release_seconds": 149081.462779,
+        "monotonic_release_seconds": 5328105.671539
+      },
+      {
+        "log_release_seconds": 149095.99867499998,
+        "monotonic_release_seconds": 5328120.207432
+      },
+      {
+        "log_release_seconds": 149109.105027,
+        "monotonic_release_seconds": 5328133.313785
+      },
+      {
+        "log_release_seconds": 149116.929946,
+        "monotonic_release_seconds": 5328141.138706
+      },
+      {
+        "log_release_seconds": 149136.882645,
+        "monotonic_release_seconds": 5328161.091403
+      },
+      {
+        "log_release_seconds": 149651.39047100002,
+        "monotonic_release_seconds": 5328675.59923
+      },
+      {
+        "log_release_seconds": 149660.268921,
+        "monotonic_release_seconds": 5328684.47768
+      },
+      {
+        "log_release_seconds": 149671.892509,
+        "monotonic_release_seconds": 5328696.101267
+      },
+      {
+        "log_release_seconds": 149676.771279,
+        "monotonic_release_seconds": 5328700.980037
+      },
+      {
+        "log_release_seconds": 150854.13896100002,
+        "monotonic_release_seconds": 5329878.34772
+      }
+    ],
+    "source": "common/log.cpp t_us; tools/server/server-context.cpp release/t_last_used; ggml/src/ggml.c ggml_time_us"
+  },
+  "clock_note": "Explicit wall-clock benchmark intervals. Logger origin calibrated from recent paired wall-log/CLOCK_MONOTONIC release timestamps; PID start independently verified. Calibration is approximate at sub-millisecond logging granularity."
+}

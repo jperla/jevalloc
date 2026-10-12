@@ -2,7 +2,7 @@
 
 The question is whether lifetime placement saves RSS under mimalloc defaults, whether live runtime rules help, and whether a model adds value beyond the supplied function names and TTL text.
 
-Completed fragmentation blocks: 19/25. Each published group has five interleaved successful repetitions. **Defaults** means no `MIMALLOC_*` overrides on any variant; **immediate** means purge delay 0, arena purge multiplier 1 and decommit enabled. Earlier measurements remain separately labelled below.
+Completed fragmentation blocks: 24/25. Each published group has five interleaved successful repetitions. **Defaults** means no `MIMALLOC_*` overrides on any variant; **immediate** means purge delay 0, arena purge multiplier 1 and decommit enabled. Earlier measurements remain separately labelled below.
 
 With defaults on one-thread site-pure, static-model holds 216.81 MiB versus mimalloc 280.21 MiB: a 22.6% reduction. The names rule holds 216.81 MiB. The earlier roughly 84% model RSS reduction therefore does not carry over to defaults in this fixture. Capturing most of the default-options oracle saving is a smaller absolute benefit.
 
@@ -57,9 +57,14 @@ Default-options real-program final idle / 10-second RSS is in the full phase tab
 
 | Workload | mi MiB | Oracle MiB | Static MiB | Hybrid MiB | Live heuristic MiB | Neutral rules MiB |
 |---|---:|---:|---:|---:|---:|---:|
+| leveldb | 147.06 | 147.65 | 151.99 | 152.02 | 156.41 | 152.22 |
+| redis-drop | 274.33 | 290.27 | 4246.53 | 4245.87 | 4243.61 | 4244.93 |
 | redis-mesh | 185.97 | 196.07 | 193.01 | 208.96 | 231.00 | 219.03 |
+| redis-sessions | 157.41 | 161.56 | 162.24 | 165.26 | 172.47 | 160.30 |
+| rocksdb-cache | 144.25 | 160.02 | 242.89 | 1019.11 | 236.77 | 237.86 |
+| sqlite | 207.02 | 208.95 | 209.88 | 209.76 | 209.82 | 209.90 |
 
 The combined object-logging free path now updates trace and sampled-live state exactly once before releasing storage. The dedicated test covers retired allocating threads, cross-thread frees, actual address reuse, sample counts, survivors and hybrid demotions at sample rates 1 and 64.
 
-Warm model runs replay first-sight answers; hybrid’s rules and all no-model controls execute live. Warm replay retains IPC/service costs and excludes sidecar CPU. It is not end-to-end deployment or hypothetical on-chip inference. Server-sim live bytes exclude metadata, bookkeeping mappings and thread resources, so RSS/live is process-memory amplification. In-place realloc can log a new policy class while retaining its physical heap. Compact aggregates support the published medians; complete trace/cache/decision reconstruction still needs remote artifacts.
+Warm model runs replay collected answers; hybrid’s rules and all no-model controls execute live. Warm replay retains IPC/service costs and excludes sidecar CPU. It bypasses prompt preparation and sidecar symbolization as well as HTTP inference; rule-names resolves symbols live, so its wall time includes that work. It is not end-to-end deployment or hypothetical on-chip inference. Server-sim live bytes exclude metadata, bookkeeping mappings and thread resources, so RSS/live is process-memory amplification. In-place realloc can log a new policy class while retaining its physical heap. Compact aggregates support the published medians; complete trace/cache/decision reconstruction still needs remote artifacts.
 

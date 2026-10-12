@@ -4,6 +4,14 @@ Five interleaved repetitions; MiB. Each row reports a workload’s original cycl
 
 | Options / naming / workload | Variant | Cycle | Idle median [min, max] MiB | 10 s idle MiB | Peak MiB | Wall s | Target CPU s |
 |---|---|---:|---:|---:|---:|---:|---:|
+| defaults/named/leveldb | mi | 0 | 147.059 [146.969, 147.125] | 147.059 | 206.582 | 11.331 | 1.292 |
+| defaults/named/leveldb | jev-keyonly | 0 | 147.242 [147.180, 147.277] | 147.242 | 206.770 | 11.357 | 1.330 |
+| defaults/named/leveldb | jev-table:oracle-site | 0 | 147.652 [141.059, 147.699] | 147.652 | 207.004 | 11.348 | 1.322 |
+| defaults/named/leveldb | jev-live:static-model | 0 | 151.988 [151.914, 152.125] | 151.988 | 211.820 | 11.384 | 1.343 |
+| defaults/named/leveldb | jev-live:hybrid | 0 | 152.016 [149.504, 152.480] | 152.016 | 211.691 | 11.389 | 1.363 |
+| defaults/named/leveldb | jev-live:heuristic | 0 | 156.406 [156.355, 156.488] | 156.406 | 216.168 | 11.417 | 1.365 |
+| defaults/named/leveldb | jev-live:rules-neutral | 0 | 152.219 [151.949, 152.500] | 152.223 | 212.094 | 11.401 | 1.359 |
+| defaults/named/leveldb | jev-live:rule-names | 0 | 152.613 [152.551, 153.078] | 152.613 | 212.496 | 13.819 | 1.369 |
 | defaults/named/per-alloc-small | mi | 0 | 6.129 [6.121, 6.129] | 6.129 | 8.035 | 20.506 | 0.005 |
 | defaults/named/per-alloc-small | mi | 1 | 8.129 [8.121, 8.129] | 8.129 | 8.035 | 20.506 | 0.005 |
 | defaults/named/per-alloc-small | jev-keyonly | 0 | 6.223 [6.215, 6.227] | 6.223 | 8.188 | 20.508 | 0.006 |
@@ -14,6 +22,17 @@ Five interleaved repetitions; MiB. Each row reports a workload’s original cycl
 | defaults/named/per-alloc-small | jev-table:oracle-context | 1 | 6.219 [6.215, 6.223] | 6.219 | 6.184 | 20.507 | 0.006 |
 | defaults/named/per-alloc-small | jev-live:per-alloc | 0 | 6.391 [6.383, 6.398] | 6.395 | 8.086 | 21.336 | 0.162 |
 | defaults/named/per-alloc-small | jev-live:per-alloc | 1 | 8.453 [8.449, 8.465] | 8.453 | 8.086 | 21.336 | 0.162 |
+| defaults/named/redis-drop | mi | 0 | 274.332 [272.684, 274.633] | 274.332 | 277.691 | 11.924 | 0.332 |
+| defaults/named/redis-drop | jev-keyonly | 0 | 288.781 [288.629, 290.570] | 288.781 | 291.984 | 11.995 | 0.531 |
+| defaults/named/redis-drop | jev-table:oracle-site | 0 | 274.582 [273.781, 274.961] | 274.582 | 278.008 | 11.948 | 0.405 |
+| defaults/named/redis-drop | jev-table:oracle-context | 0 | 290.266 [289.344, 290.465] | 290.266 | 293.973 | 11.997 | 0.521 |
+| defaults/named/redis-drop | jev-live:static-site | 0 | 281.422 [281.203, 282.188] | 281.422 | 284.879 | 11.957 | 0.429 |
+| defaults/named/redis-drop | jev-live:static-model | 0 | 4246.531 [4245.742, 4247.184] | 4246.531 | 4248.508 | 39.493 | 28.235 |
+| defaults/named/redis-drop | jev-live:hybrid | 0 | 4245.867 [4244.836, 4247.203] | 4245.867 | 4247.176 | 39.575 | 28.274 |
+| defaults/named/redis-drop | jev-live:heuristic | 0 | 4243.613 [4242.438, 4246.984] | 4243.613 | 4247.262 | 39.554 | 28.253 |
+| defaults/named/redis-drop | jev-live:rules-neutral | 0 | 4244.930 [4242.918, 4246.402] | 4244.930 | 4247.438 | 39.559 | 28.275 |
+| defaults/named/redis-drop | jev-live:rule-names | 0 | 4243.910 [4242.027, 4245.316] | 4243.910 | 4247.387 | 39.839 | 28.276 |
+| defaults/named/redis-drop | jev-live:rule-ttl | 0 | 4244.422 [4243.152, 4245.988] | 4244.422 | 4247.094 | 39.535 | 28.268 |
 | defaults/named/redis-mesh | mi | 0 | 107.973 [107.961, 108.027] | 107.973 | 185.938 | 22.828 | 1.363 |
 | defaults/named/redis-mesh | mi | 1 | 185.973 [185.961, 186.027] | 185.973 | 185.938 | 22.828 | 1.363 |
 | defaults/named/redis-mesh | jev-keyonly | 0 | 108.094 [108.035, 108.160] | 108.094 | 186.000 | 23.236 | 1.755 |
@@ -36,6 +55,25 @@ Five interleaved repetitions; MiB. Each row reports a workload’s original cycl
 | defaults/named/redis-mesh | jev-live:rule-names | 1 | 192.961 [192.945, 193.039] | 192.961 | 192.770 | 23.717 | 1.858 |
 | defaults/named/redis-mesh | jev-live:rule-ttl | 0 | 115.000 [114.977, 115.023] | 115.000 | 192.848 | 23.328 | 1.852 |
 | defaults/named/redis-mesh | jev-live:rule-ttl | 1 | 193.000 [192.977, 193.023] | 193.000 | 192.848 | 23.328 | 1.852 |
+| defaults/named/redis-sessions | mi | 0 | 157.406 [151.691, 189.266] | 157.406 | 201.926 | 13.207 | 0.347 |
+| defaults/named/redis-sessions | jev-keyonly | 0 | 159.312 [152.895, 188.645] | 159.312 | 202.012 | 13.261 | 0.415 |
+| defaults/named/redis-sessions | jev-table:oracle-site | 0 | 159.387 [147.949, 169.844] | 159.387 | 203.863 | 13.259 | 0.402 |
+| defaults/named/redis-sessions | jev-table:oracle-context | 0 | 161.562 [144.254, 178.676] | 161.562 | 204.000 | 13.258 | 0.402 |
+| defaults/named/redis-sessions | jev-live:static-site | 0 | 164.582 [149.305, 194.367] | 164.582 | 208.879 | 13.268 | 0.436 |
+| defaults/named/redis-sessions | jev-live:static-model | 0 | 162.238 [126.855, 172.984] | 162.238 | 210.715 | 13.366 | 0.430 |
+| defaults/named/redis-sessions | jev-live:hybrid | 0 | 165.258 [147.148, 172.883] | 165.258 | 209.000 | 13.276 | 0.444 |
+| defaults/named/redis-sessions | jev-live:heuristic | 0 | 172.469 [163.555, 173.195] | 172.469 | 208.883 | 13.376 | 0.435 |
+| defaults/named/redis-sessions | jev-live:rules-neutral | 0 | 160.301 [134.016, 168.992] | 160.301 | 208.883 | 13.277 | 0.444 |
+| defaults/named/redis-sessions | jev-live:rule-names | 0 | 172.609 [158.848, 192.234] | 172.609 | 210.785 | 14.066 | 0.468 |
+| defaults/named/redis-sessions | jev-live:rule-ttl | 0 | 165.523 [135.105, 169.172] | 165.523 | 210.203 | 13.276 | 0.452 |
+| defaults/named/rocksdb-cache | mi | 0 | 144.246 [133.000, 152.816] | 144.246 | 188.492 | 14.576 | 61.577 |
+| defaults/named/rocksdb-cache | jev-keyonly | 0 | 142.984 [125.355, 149.020] | 142.984 | 186.148 | 14.629 | 62.123 |
+| defaults/named/rocksdb-cache | jev-table:oracle-site | 0 | 160.023 [145.629, 183.820] | 160.023 | 192.855 | 14.582 | 62.040 |
+| defaults/named/rocksdb-cache | jev-live:static-model | 0 | 242.895 [234.504, 245.172] | 242.895 | 328.508 | 14.736 | 63.165 |
+| defaults/named/rocksdb-cache | jev-live:hybrid | 0 | 1019.105 [941.098, 1112.109] | 1019.105 | 1604.020 | 14.801 | 63.586 |
+| defaults/named/rocksdb-cache | jev-live:heuristic | 0 | 236.773 [223.500, 250.027] | 236.773 | 323.562 | 14.759 | 63.158 |
+| defaults/named/rocksdb-cache | jev-live:rules-neutral | 0 | 237.855 [219.906, 241.176] | 237.855 | 316.043 | 14.740 | 63.177 |
+| defaults/named/rocksdb-cache | jev-live:rule-names | 0 | 697.719 [622.043, 807.012] | 697.734 | 1560.504 | 397.451 | 79.495 |
 | defaults/named/site-mixed-1 | mi | 0 | 66.215 [66.211, 66.219] | 66.215 | 146.031 | 20.579 | 0.078 |
 | defaults/named/site-mixed-1 | mi | 1 | 146.215 [146.211, 146.219] | 146.215 | 146.031 | 20.579 | 0.078 |
 | defaults/named/site-mixed-1 | jev-keyonly | 0 | 66.312 [66.309, 66.316] | 66.312 | 146.246 | 20.646 | 0.144 |
@@ -112,6 +150,14 @@ Five interleaved repetitions; MiB. Each row reports a workload’s original cycl
 | defaults/named/site-pure-16 | jev-live:rules-neutral | 1 | 331.914 [331.820, 331.980] | 331.914 | 331.727 | 20.561 | 0.582 |
 | defaults/named/site-pure-16 | jev-live:rule-names | 0 | 141.789 [139.922, 141.910] | 141.801 | 239.551 | 20.722 | 0.561 |
 | defaults/named/site-pure-16 | jev-live:rule-names | 1 | 239.742 [237.922, 241.809] | 239.742 | 239.551 | 20.722 | 0.561 |
+| defaults/named/sqlite | mi | 0 | 207.020 [207.012, 207.066] | 207.020 | 206.918 | 10.109 | 0.108 |
+| defaults/named/sqlite | jev-keyonly | 0 | 207.074 [207.055, 207.164] | 207.074 | 207.078 | 10.114 | 0.113 |
+| defaults/named/sqlite | jev-table:oracle-site | 0 | 208.949 [208.926, 208.965] | 208.949 | 208.953 | 10.113 | 0.111 |
+| defaults/named/sqlite | jev-live:static-model | 0 | 209.875 [209.871, 209.914] | 209.875 | 209.793 | 10.122 | 0.117 |
+| defaults/named/sqlite | jev-live:hybrid | 0 | 209.762 [209.758, 209.770] | 209.762 | 209.934 | 10.125 | 0.119 |
+| defaults/named/sqlite | jev-live:heuristic | 0 | 209.824 [209.801, 209.855] | 209.824 | 209.766 | 10.130 | 0.118 |
+| defaults/named/sqlite | jev-live:rules-neutral | 0 | 209.902 [209.867, 209.902] | 209.902 | 209.801 | 10.128 | 0.120 |
+| defaults/named/sqlite | jev-live:rule-names | 0 | 209.773 [209.727, 209.816] | 209.773 | 209.922 | 11.902 | 0.123 |
 | defaults/opaque/site-mixed-1 | mi | 0 | 66.215 [66.215, 66.219] | 66.215 | 146.047 | 20.583 | 0.079 |
 | defaults/opaque/site-mixed-1 | mi | 1 | 146.215 [146.215, 146.219] | 146.215 | 146.047 | 20.583 | 0.079 |
 | defaults/opaque/site-mixed-1 | jev-keyonly | 0 | 66.309 [66.309, 66.312] | 66.309 | 146.191 | 20.638 | 0.137 |

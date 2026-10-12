@@ -2,7 +2,7 @@
 
 This pass asks whether lifetime placement saves memory under mimalloc defaults, whether current runtime statistics help, and whether a model adds value beyond function names and TTL text.
 
-19/25 fragmentation blocks are complete. Every published comparison uses five interleaved repetitions. **Defaults** unsets every `MIMALLOC_*` override; **immediate purge** sets delay 0, arena multiplier 1 and decommit enabled. Full measurements, both cycles and 10-second idle observations are in the [pass-10 report](results/pass10/results.md) and [phase table](results/pass10/phases.md).
+24/25 fragmentation blocks are complete. Every published comparison uses five interleaved repetitions. **Defaults** unsets every `MIMALLOC_*` override; **immediate purge** sets delay 0, arena multiplier 1 and decommit enabled. Full measurements, both cycles and 10-second idle observations are in the [pass-10 report](results/pass10/results.md) and [phase table](results/pass10/phases.md).
 
 Final idle RSS under **defaults**, MiB. Plain mimalloc is `mi`; oracle uses sites on pure workloads and context pairs on mixed. Rules share the model’s placement machinery.
 
@@ -21,7 +21,7 @@ Static-model retains a positive saving over its own mimalloc baseline in 0/8 ren
 
 With plausible names, hybrid retains 52.3–81.2% of its named saving and beats the matching fixed names/TTL rule by 22.00–54.37 MiB. The model initially chooses transient, but its probability priors permit promotion of the retained path while blocking the session path. Some mixed-context priors lie close to the fixed 0.7 gate. This is a benefit in these specific synthetic ablations; the [answer/probability table](results/pass10/model-sites.md) and full ranges show its scope.
 
-Default-options real programs: 1/7 complete. Model-policy reductions above 5% are absent in the completed workloads. All policies, costs and ranges are in the full report. Earlier table-search gates and the later contrary RocksDB result remain below.
+Default-options real programs: 6/7 complete. Model-policy reductions above 5% are absent in the completed workloads. All policies, costs and ranges are in the full report. Earlier table-search gates and the later contrary RocksDB result remain below. Redis drop is a severe failure: live/context static-model holds 4.15 GiB versus mi 274.33 MiB, with 85.2× target CPU. Its roughly 495,000 context entries also burden the no-model live controls. RocksDB cache hybrid holds 1019.11 MiB versus mi 144.25 MiB.
 
 The recollected small per-object run has 94.66% model-answered accuracy versus 91.12% always-transient accuracy, with 39.90% permanent recall. The TTL rule reproduces 2229/2229 model-answered classes. Accuracy, logged checks and separate unlogged RSS/cost comparisons are in the full report. Unlogged per-object idle RSS is immediate: 7.77 versus mi 7.96 MiB; defaults: 8.45 versus mi 8.13 MiB. Fresh cold inference took 50.8 minutes.
 

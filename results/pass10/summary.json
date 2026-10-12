@@ -1,4 +1,206 @@
 {
+  "defaults/named/leveldb": {
+    "mi": {
+      "idle": 154202112,
+      "idle_range": [
+        154107904,
+        154271744
+      ],
+      "wall": 11.331118046,
+      "cpu": 1.292128,
+      "peak": 216616960,
+      "phases": {
+        "0": {
+          "idle": 154202112,
+          "range": [
+            154107904,
+            154271744
+          ],
+          "idle10": 154202112
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": 0.0,
+      "capture": null
+    },
+    "jev-keyonly": {
+      "idle": 154394624,
+      "idle_range": [
+        154329088,
+        154431488
+      ],
+      "wall": 11.357273081,
+      "cpu": 1.330287,
+      "peak": 216813568,
+      "phases": {
+        "0": {
+          "idle": 154394624,
+          "range": [
+            154329088,
+            154431488
+          ],
+          "idle10": 154394624
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.0012484394506866447,
+      "capture": null
+    },
+    "jev-table:oracle-site": {
+      "idle": 154824704,
+      "idle_range": [
+        147910656,
+        154873856
+      ],
+      "wall": 11.348139094,
+      "cpu": 1.321965,
+      "peak": 217059328,
+      "phases": {
+        "0": {
+          "idle": 154824704,
+          "range": [
+            147910656,
+            154873856
+          ],
+          "idle10": 154824704
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.004037506308603556,
+      "capture": null
+    },
+    "jev-live:static-model": {
+      "idle": 159371264,
+      "idle_range": [
+        159293440,
+        159514624
+      ],
+      "wall": 11.384098358,
+      "cpu": 1.343334,
+      "peak": 222109696,
+      "phases": {
+        "0": {
+          "idle": 159371264,
+          "range": [
+            159293440,
+            159514624
+          ],
+          "idle10": 159371264
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.03352192737801163,
+      "capture": null
+    },
+    "jev-live:hybrid": {
+      "idle": 159399936,
+      "idle_range": [
+        156766208,
+        159887360
+      ],
+      "wall": 11.38887562,
+      "cpu": 1.3628770000000001,
+      "peak": 221974528,
+      "phases": {
+        "0": {
+          "idle": 159399936,
+          "range": [
+            156766208,
+            159887360
+          ],
+          "idle10": 159399936
+        }
+      },
+      "n": 5,
+      "demotions": 2,
+      "promotions": 0,
+      "saving_fraction": -0.03370786516853941,
+      "capture": null
+    },
+    "jev-live:heuristic": {
+      "idle": 164003840,
+      "idle_range": [
+        163950592,
+        164089856
+      ],
+      "wall": 11.416842306,
+      "cpu": 1.3645070000000001,
+      "peak": 226668544,
+      "phases": {
+        "0": {
+          "idle": 164003840,
+          "range": [
+            163950592,
+            164089856
+          ],
+          "idle10": 164003840
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.06356416181900282,
+      "capture": null
+    },
+    "jev-live:rules-neutral": {
+      "idle": 159612928,
+      "idle_range": [
+        159330304,
+        159907840
+      ],
+      "wall": 11.401157367,
+      "cpu": 1.3589980000000002,
+      "peak": 222396416,
+      "phases": {
+        "0": {
+          "idle": 159612928,
+          "range": [
+            159330304,
+            159907840
+          ],
+          "idle10": 159617024
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.0350891173267458,
+      "capture": null
+    },
+    "jev-live:rule-names": {
+      "idle": 160026624,
+      "idle_range": [
+        159961088,
+        160514048
+      ],
+      "wall": 13.819400963,
+      "cpu": 1.369393,
+      "peak": 222818304,
+      "phases": {
+        "0": {
+          "idle": 160026624,
+          "range": [
+            159961088,
+            160514048
+          ],
+          "idle10": 160026624
+        }
+      },
+      "n": 5,
+      "demotions": 12,
+      "promotions": 0,
+      "saving_fraction": -0.03777193401864687,
+      "capture": null
+    }
+  },
   "defaults/named/per-alloc-small": {
     "mi": {
       "idle": 8523776,
@@ -164,6 +366,283 @@
       "promotions": 0,
       "saving_fraction": -0.03988467083133118,
       "capture": -0.16973415132924335
+    }
+  },
+  "defaults/named/redis-drop": {
+    "mi": {
+      "idle": 287657984,
+      "idle_range": [
+        285929472,
+        287973376
+      ],
+      "wall": 11.923730833,
+      "cpu": 0.331577,
+      "peak": 291180544,
+      "phases": {
+        "0": {
+          "idle": 287657984,
+          "range": [
+            285929472,
+            287973376
+          ],
+          "idle10": 287657984
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": 0.0,
+      "capture": null
+    },
+    "jev-keyonly": {
+      "idle": 302809088,
+      "idle_range": [
+        302649344,
+        304685056
+      ],
+      "wall": 11.995240157,
+      "cpu": 0.530761,
+      "peak": 306167808,
+      "phases": {
+        "0": {
+          "idle": 302809088,
+          "range": [
+            302649344,
+            304685056
+          ],
+          "idle10": 302809088
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.052670549203320594,
+      "capture": null
+    },
+    "jev-table:oracle-site": {
+      "idle": 287920128,
+      "idle_range": [
+        287080448,
+        288317440
+      ],
+      "wall": 11.947711817,
+      "cpu": 0.404758,
+      "peak": 291512320,
+      "phases": {
+        "0": {
+          "idle": 287920128,
+          "range": [
+            287080448,
+            288317440
+          ],
+          "idle10": 287920128
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.0009113044468809228,
+      "capture": null
+    },
+    "jev-table:oracle-context": {
+      "idle": 304365568,
+      "idle_range": [
+        303398912,
+        304574464
+      ],
+      "wall": 11.996941846,
+      "cpu": 0.521352,
+      "peak": 308252672,
+      "phases": {
+        "0": {
+          "idle": 304365568,
+          "range": [
+            303398912,
+            304574464
+          ],
+          "idle10": 304365568
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.0580814193566761,
+      "capture": null
+    },
+    "jev-live:static-site": {
+      "idle": 295092224,
+      "idle_range": [
+        294862848,
+        295895040
+      ],
+      "wall": 11.957302487,
+      "cpu": 0.429206,
+      "peak": 298717184,
+      "phases": {
+        "0": {
+          "idle": 295092224,
+          "range": [
+            294862848,
+            295895040
+          ],
+          "idle10": 295092224
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.025844024548263622,
+      "capture": null
+    },
+    "jev-live:static-model": {
+      "idle": 4452810752,
+      "idle_range": [
+        4451983360,
+        4453494784
+      ],
+      "wall": 39.493284394,
+      "cpu": 28.23523,
+      "peak": 4454883328,
+      "phases": {
+        "0": {
+          "idle": 4452810752,
+          "range": [
+            4451983360,
+            4453494784
+          ],
+          "idle10": 4452810752
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -14.479531247775135,
+      "capture": null
+    },
+    "jev-live:hybrid": {
+      "idle": 4452114432,
+      "idle_range": [
+        4451033088,
+        4453515264
+      ],
+      "wall": 39.575173919,
+      "cpu": 28.27437,
+      "peak": 4453486592,
+      "phases": {
+        "0": {
+          "idle": 4452114432,
+          "range": [
+            4451033088,
+            4453515264
+          ],
+          "idle10": 4452114432
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -14.477110595338107,
+      "capture": null
+    },
+    "jev-live:heuristic": {
+      "idle": 4449751040,
+      "idle_range": [
+        4448518144,
+        4453285888
+      ],
+      "wall": 39.554094923,
+      "cpu": 28.253446,
+      "peak": 4453576704,
+      "phases": {
+        "0": {
+          "idle": 4449751040,
+          "range": [
+            4448518144,
+            4453285888
+          ],
+          "idle10": 4449751040
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -14.468894616184198,
+      "capture": null
+    },
+    "jev-live:rules-neutral": {
+      "idle": 4451131392,
+      "idle_range": [
+        4449021952,
+        4452675584
+      ],
+      "wall": 39.559215446,
+      "cpu": 28.274957,
+      "peak": 4453761024,
+      "phases": {
+        "0": {
+          "idle": 4451131392,
+          "range": [
+            4449021952,
+            4452675584
+          ],
+          "idle10": 4451131392
+        }
+      },
+      "n": 5,
+      "demotions": 1,
+      "promotions": 1,
+      "saving_fraction": -14.473693203662306,
+      "capture": null
+    },
+    "jev-live:rule-names": {
+      "idle": 4450062336,
+      "idle_range": [
+        4448088064,
+        4451536896
+      ],
+      "wall": 39.838739082,
+      "cpu": 28.275530000000003,
+      "peak": 4453707776,
+      "phases": {
+        "0": {
+          "idle": 4450062336,
+          "range": [
+            4448088064,
+            4451536896
+          ],
+          "idle10": 4450062336
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -14.469976790214869,
+      "capture": null
+    },
+    "jev-live:rule-ttl": {
+      "idle": 4450598912,
+      "idle_range": [
+        4449267712,
+        4452241408
+      ],
+      "wall": 39.534717741,
+      "cpu": 28.267916000000003,
+      "peak": 4453400576,
+      "phases": {
+        "0": {
+          "idle": 4450598912,
+          "range": [
+            4449267712,
+            4452241408
+          ],
+          "idle10": 4450598912
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -14.471842116504577,
+      "capture": null
     }
   },
   "defaults/named/redis-mesh": {
@@ -528,6 +1007,485 @@
       "demotions": 0,
       "promotions": 0,
       "saving_fraction": -0.037786973051313844,
+      "capture": null
+    }
+  },
+  "defaults/named/redis-sessions": {
+    "mi": {
+      "idle": 165052416,
+      "idle_range": [
+        159059968,
+        198459392
+      ],
+      "wall": 13.206730898,
+      "cpu": 0.347214,
+      "peak": 211734528,
+      "phases": {
+        "0": {
+          "idle": 165052416,
+          "range": [
+            159059968,
+            198459392
+          ],
+          "idle10": 165052416
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": 0.0,
+      "capture": null
+    },
+    "jev-keyonly": {
+      "idle": 167051264,
+      "idle_range": [
+        160321536,
+        197808128
+      ],
+      "wall": 13.26118677,
+      "cpu": 0.41470799999999997,
+      "peak": 211824640,
+      "phases": {
+        "0": {
+          "idle": 167051264,
+          "range": [
+            160321536,
+            197808128
+          ],
+          "idle10": 167051264
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.012110383164582128,
+      "capture": null
+    },
+    "jev-table:oracle-site": {
+      "idle": 167129088,
+      "idle_range": [
+        155136000,
+        178094080
+      ],
+      "wall": 13.259051365,
+      "cpu": 0.402146,
+      "peak": 213766144,
+      "phases": {
+        "0": {
+          "idle": 167129088,
+          "range": [
+            155136000,
+            178094080
+          ],
+          "idle10": 167129088
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.012581893984514592,
+      "capture": null
+    },
+    "jev-table:oracle-context": {
+      "idle": 169410560,
+      "idle_range": [
+        151261184,
+        187355136
+      ],
+      "wall": 13.258406712,
+      "cpu": 0.401917,
+      "peak": 213909504,
+      "phases": {
+        "0": {
+          "idle": 169410560,
+          "range": [
+            151261184,
+            187355136
+          ],
+          "idle10": 169410560
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.02640460591621996,
+      "capture": null
+    },
+    "jev-live:static-site": {
+      "idle": 172576768,
+      "idle_range": [
+        156557312,
+        203808768
+      ],
+      "wall": 13.267790407,
+      "cpu": 0.435567,
+      "peak": 219025408,
+      "phases": {
+        "0": {
+          "idle": 172576768,
+          "range": [
+            156557312,
+            203808768
+          ],
+          "idle10": 172576768
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.045587651379789484,
+      "capture": null
+    },
+    "jev-live:static-model": {
+      "idle": 170119168,
+      "idle_range": [
+        133017600,
+        181387264
+      ],
+      "wall": 13.365806139,
+      "cpu": 0.429823,
+      "peak": 220950528,
+      "phases": {
+        "0": {
+          "idle": 170119168,
+          "range": [
+            133017600,
+            181387264
+          ],
+          "idle10": 170119168
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.03069783601350018,
+      "capture": null
+    },
+    "jev-live:hybrid": {
+      "idle": 173285376,
+      "idle_range": [
+        154296320,
+        181280768
+      ],
+      "wall": 13.276125784,
+      "cpu": 0.444249,
+      "peak": 219152384,
+      "phases": {
+        "0": {
+          "idle": 173285376,
+          "range": [
+            154296320,
+            181280768
+          ],
+          "idle10": 173285376
+        }
+      },
+      "n": 5,
+      "demotions": 7,
+      "promotions": 0,
+      "saving_fraction": -0.049880881477069705,
+      "capture": null
+    },
+    "jev-live:heuristic": {
+      "idle": 180846592,
+      "idle_range": [
+        171499520,
+        181608448
+      ],
+      "wall": 13.375971096,
+      "cpu": 0.435203,
+      "peak": 219029504,
+      "phases": {
+        "0": {
+          "idle": 180846592,
+          "range": [
+            171499520,
+            181608448
+          ],
+          "idle10": 180846592
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.09569188008735363,
+      "capture": null
+    },
+    "jev-live:rules-neutral": {
+      "idle": 168087552,
+      "idle_range": [
+        140525568,
+        177201152
+      ],
+      "wall": 13.276526713,
+      "cpu": 0.444144,
+      "peak": 219029504,
+      "phases": {
+        "0": {
+          "idle": 168087552,
+          "range": [
+            140525568,
+            177201152
+          ],
+          "idle10": 168087552
+        }
+      },
+      "n": 5,
+      "demotions": 7,
+      "promotions": 10,
+      "saving_fraction": -0.018388921977367412,
+      "capture": null
+    },
+    "jev-live:rule-names": {
+      "idle": 180994048,
+      "idle_range": [
+        166563840,
+        201572352
+      ],
+      "wall": 14.06590827,
+      "cpu": 0.467549,
+      "peak": 221024256,
+      "phases": {
+        "0": {
+          "idle": 180994048,
+          "range": [
+            166563840,
+            201572352
+          ],
+          "idle10": 180994048
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.09658526900933095,
+      "capture": null
+    },
+    "jev-live:rule-ttl": {
+      "idle": 173563904,
+      "idle_range": [
+        141668352,
+        177389568
+      ],
+      "wall": 13.276156901,
+      "cpu": 0.45209,
+      "peak": 220413952,
+      "phases": {
+        "0": {
+          "idle": 173563904,
+          "range": [
+            141668352,
+            177389568
+          ],
+          "idle10": 173563904
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.05156839388524914,
+      "capture": null
+    }
+  },
+  "defaults/named/rocksdb-cache": {
+    "mi": {
+      "idle": 151252992,
+      "idle_range": [
+        139460608,
+        160239616
+      ],
+      "wall": 14.576092523,
+      "cpu": 61.577274,
+      "peak": 197648384,
+      "phases": {
+        "0": {
+          "idle": 151252992,
+          "range": [
+            139460608,
+            160239616
+          ],
+          "idle10": 151252992
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": 0.0,
+      "capture": null
+    },
+    "jev-keyonly": {
+      "idle": 149929984,
+      "idle_range": [
+        131444736,
+        156258304
+      ],
+      "wall": 14.62923439,
+      "cpu": 62.123316,
+      "peak": 195190784,
+      "phases": {
+        "0": {
+          "idle": 149929984,
+          "range": [
+            131444736,
+            156258304
+          ],
+          "idle10": 149929984
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": 0.008746987299266151,
+      "capture": null
+    },
+    "jev-table:oracle-site": {
+      "idle": 167796736,
+      "idle_range": [
+        152702976,
+        192749568
+      ],
+      "wall": 14.582214447,
+      "cpu": 62.039512,
+      "peak": 202223616,
+      "phases": {
+        "0": {
+          "idle": 167796736,
+          "range": [
+            152702976,
+            192749568
+          ],
+          "idle10": 167796736
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.10937796192487892,
+      "capture": null
+    },
+    "jev-live:static-model": {
+      "idle": 254693376,
+      "idle_range": [
+        245895168,
+        257081344
+      ],
+      "wall": 14.736246396,
+      "cpu": 63.165314,
+      "peak": 344465408,
+      "phases": {
+        "0": {
+          "idle": 254693376,
+          "range": [
+            245895168,
+            257081344
+          ],
+          "idle10": 254693376
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.68388983670485,
+      "capture": null
+    },
+    "jev-live:hybrid": {
+      "idle": 1068609536,
+      "idle_range": [
+        986812416,
+        1166131200
+      ],
+      "wall": 14.801246575,
+      "cpu": 63.585983,
+      "peak": 1681936384,
+      "phases": {
+        "0": {
+          "idle": 1068609536,
+          "range": [
+            986812416,
+            1166131200
+          ],
+          "idle10": 1068609536
+        }
+      },
+      "n": 5,
+      "demotions": 7,
+      "promotions": 0,
+      "saving_fraction": -6.065047255395781,
+      "capture": null
+    },
+    "jev-live:heuristic": {
+      "idle": 248274944,
+      "idle_range": [
+        234356736,
+        262172672
+      ],
+      "wall": 14.75943466,
+      "cpu": 63.158191,
+      "peak": 339279872,
+      "phases": {
+        "0": {
+          "idle": 248274944,
+          "range": [
+            234356736,
+            262172672
+          ],
+          "idle10": 248274944
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.6414547620981936,
+      "capture": null
+    },
+    "jev-live:rules-neutral": {
+      "idle": 249409536,
+      "idle_range": [
+        230588416,
+        252891136
+      ],
+      "wall": 14.740248693,
+      "cpu": 63.177468000000005,
+      "peak": 331395072,
+      "phases": {
+        "0": {
+          "idle": 249409536,
+          "range": [
+            230588416,
+            252891136
+          ],
+          "idle10": 249409536
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.6489560484198553,
+      "capture": null
+    },
+    "jev-live:rule-names": {
+      "idle": 731611136,
+      "idle_range": [
+        652259328,
+        846213120
+      ],
+      "wall": 397.450527657,
+      "cpu": 79.494554,
+      "peak": 1636306944,
+      "phases": {
+        "0": {
+          "idle": 731611136,
+          "range": [
+            652259328,
+            846213120
+          ],
+          "idle10": 731627520
+        }
+      },
+      "n": 5,
+      "demotions": 19,
+      "promotions": 0,
+      "saving_fraction": -3.8370027351260596,
       "capture": null
     }
   },
@@ -1791,6 +2749,208 @@
       "promotions": 0,
       "saving_fraction": 0.19155382264608256,
       "capture": 0.9199721642310369
+    }
+  },
+  "defaults/named/sqlite": {
+    "mi": {
+      "idle": 217075712,
+      "idle_range": [
+        217067520,
+        217124864
+      ],
+      "wall": 10.109241377,
+      "cpu": 0.108268,
+      "peak": 216969216,
+      "phases": {
+        "0": {
+          "idle": 217075712,
+          "range": [
+            217067520,
+            217124864
+          ],
+          "idle10": 217075712
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": 0.0,
+      "capture": null
+    },
+    "jev-keyonly": {
+      "idle": 217133056,
+      "idle_range": [
+        217112576,
+        217227264
+      ],
+      "wall": 10.113798554,
+      "cpu": 0.112787,
+      "peak": 217137152,
+      "phases": {
+        "0": {
+          "idle": 217133056,
+          "range": [
+            217112576,
+            217227264
+          ],
+          "idle10": 217133056
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.00026416589618283304,
+      "capture": null
+    },
+    "jev-table:oracle-site": {
+      "idle": 219099136,
+      "idle_range": [
+        219074560,
+        219115520
+      ],
+      "wall": 10.112898741,
+      "cpu": 0.111452,
+      "peak": 219103232,
+      "phases": {
+        "0": {
+          "idle": 219099136,
+          "range": [
+            219074560,
+            219115520
+          ],
+          "idle10": 219099136
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.009321282336736125,
+      "capture": null
+    },
+    "jev-live:static-model": {
+      "idle": 220069888,
+      "idle_range": [
+        220065792,
+        220110848
+      ],
+      "wall": 10.122294937,
+      "cpu": 0.117249,
+      "peak": 219983872,
+      "phases": {
+        "0": {
+          "idle": 220069888,
+          "range": [
+            220065792,
+            220110848
+          ],
+          "idle10": 220069888
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.013793233579259212,
+      "capture": null
+    },
+    "jev-live:hybrid": {
+      "idle": 219951104,
+      "idle_range": [
+        219947008,
+        219959296
+      ],
+      "wall": 10.12469992,
+      "cpu": 0.11916299999999999,
+      "peak": 220131328,
+      "phases": {
+        "0": {
+          "idle": 219951104,
+          "range": [
+            219947008,
+            219959296
+          ],
+          "idle10": 219951104
+        }
+      },
+      "n": 5,
+      "demotions": 2,
+      "promotions": 2,
+      "saving_fraction": -0.013246032794309137,
+      "capture": null
+    },
+    "jev-live:heuristic": {
+      "idle": 220016640,
+      "idle_range": [
+        219992064,
+        220049408
+      ],
+      "wall": 10.130120545,
+      "cpu": 0.117779,
+      "peak": 219955200,
+      "phases": {
+        "0": {
+          "idle": 220016640,
+          "range": [
+            219992064,
+            220049408
+          ],
+          "idle10": 220016640
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.013547936675660788,
+      "capture": null
+    },
+    "jev-live:rules-neutral": {
+      "idle": 220098560,
+      "idle_range": [
+        220061696,
+        220098560
+      ],
+      "wall": 10.127545419,
+      "cpu": 0.12028599999999999,
+      "peak": 219992064,
+      "phases": {
+        "0": {
+          "idle": 220098560,
+          "range": [
+            220061696,
+            220098560
+          ],
+          "idle10": 220098560
+        }
+      },
+      "n": 5,
+      "demotions": 2,
+      "promotions": 3,
+      "saving_fraction": -0.013925316527350518,
+      "capture": null
+    },
+    "jev-live:rule-names": {
+      "idle": 219963392,
+      "idle_range": [
+        219914240,
+        220008448
+      ],
+      "wall": 11.902488065,
+      "cpu": 0.12306500000000001,
+      "peak": 220119040,
+      "phases": {
+        "0": {
+          "idle": 219963392,
+          "range": [
+            219914240,
+            220008448
+          ],
+          "idle10": 219963392
+        }
+      },
+      "n": 5,
+      "demotions": 1,
+      "promotions": 0,
+      "saving_fraction": -0.013302639772062586,
+      "capture": null
     }
   },
   "defaults/opaque/site-mixed-1": {
