@@ -2,7 +2,7 @@
 
 This pass asks whether lifetime placement saves memory under mimalloc defaults, whether current runtime statistics help, and whether a model adds value beyond function names and TTL text.
 
-12/25 fragmentation blocks are complete. Every published comparison uses five interleaved repetitions. **Defaults** unsets every MIMALLOC_* override; **immediate purge** sets delay 0, arena multiplier 1 and decommit enabled. Full measurements, both cycles and 10-second idle observations are in the [pass-10 report](results/pass10/results.md) and [phase table](results/pass10/phases.md).
+13/25 fragmentation blocks are complete. Every published comparison uses five interleaved repetitions. **Defaults** unsets every MIMALLOC_* override; **immediate purge** sets delay 0, arena multiplier 1 and decommit enabled. Full measurements, both cycles and 10-second idle observations are in the [pass-10 report](results/pass10/results.md) and [phase table](results/pass10/phases.md).
 
 Final idle RSS under **defaults**, MiB. Plain mimalloc is the `mi` column; rules use the same placement machinery as the model.
 
@@ -21,12 +21,18 @@ Fraction of the named saving retained after renaming, **static / hybrid**, relat
 
 | Workload | Opaque | Plausible |
 |---|---:|---:|
-| site-pure-1 | -4.6% / -38.8% | pending |
+| site-pure-1 | -4.6% / -38.8% | -4.6% / 81.2% |
 | site-pure-16 | -3.6% / -64.7% | pending |
 | site-mixed-1 | -2.9% / -40.8% | pending |
 | site-mixed-16 | -5.2% / -24.8% | pending |
 
-Static-model has a lower median than the matching keyword/TTL rule in 1/8 completed default-options comparisons. The largest difference is 0.17 MiB on opaque/site-pure-16. These are descriptive median comparisons; all differences and ranges remain in the full report. [Every first-sight model answer and probability](results/pass10/model-sites.md) is reported beside trace truth.
+static-model has a lower median than the matching keyword/TTL rule in 1/9 completed default-options comparisons. The largest difference is 0.17 MiB on opaque/site-pure-16.
+
+hybrid has a lower median than the matching keyword/TTL rule in 1/9 completed default-options comparisons. The largest difference is 54.37 MiB on plausible/site-pure-1.
+
+These are descriptive median comparisons; all differences and ranges remain in the full report. [Every first-sight model answer and probability](results/pass10/model-sites.md) is reported beside trace truth.
+
+On plausible-name pure-1, hybrid holds 228.75 MiB versus the names rule’s 283.12 MiB. Its recorded promotion is on entry_put. The model’s transient priors are 0.549 for entry_put and 0.733 for conn_attach, on opposite sides of hybrid’s fixed 0.7 promotion gate; all initial classes are transient. This positive result uses model probabilities together with runtime rules. Static-model alone does not retain the named saving in this case.
 
 The combined logging/live-free bug is fixed. Tests cover cross-thread frees, retired allocating threads, actual address reuse, sample/survivor counts and hybrid demotions with logging on and off. Warm model measurements replay answers and retain service/IPC costs; target CPU excludes sidecar CPU. Compact evidence supports the medians, while full trace/cache reconstruction requires the retained remote artifacts.
 

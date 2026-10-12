@@ -760,6 +760,82 @@
     }
   },
   {
+    "block": "defaults/plausible/site-pure-1",
+    "variant": "jev-live:static-model",
+    "repetition": -1,
+    "wall": 27.72217411,
+    "http": 6.843632041476667,
+    "answers": 5,
+    "budget_fallbacks": 0,
+    "coverage": {
+      "sites": 12,
+      "asked_sites": 5,
+      "unasked_sites": 7,
+      "allocated_bytes": 921787184,
+      "unasked_bytes": 16368,
+      "unasked_byte_share": 1.7756810122888407e-05,
+      "max_model_decisions": 3000,
+      "budget_fallbacks": 0
+    }
+  },
+  {
+    "block": "defaults/plausible/site-pure-1",
+    "variant": "jev-live:hybrid",
+    "repetition": -1,
+    "wall": 20.846674046,
+    "http": 0.0,
+    "answers": 5,
+    "budget_fallbacks": 0,
+    "coverage": {
+      "sites": 12,
+      "asked_sites": 5,
+      "unasked_sites": 7,
+      "allocated_bytes": 921787184,
+      "unasked_bytes": 16368,
+      "unasked_byte_share": 1.7756810122888407e-05,
+      "max_model_decisions": 3000,
+      "budget_fallbacks": 0
+    }
+  },
+  {
+    "block": "defaults/plausible/site-pure-1",
+    "variant": "jev-live:static-model",
+    "repetition": -2,
+    "wall": 20.674645848,
+    "http": 0.0,
+    "answers": 5,
+    "budget_fallbacks": 0,
+    "coverage": {
+      "sites": 12,
+      "asked_sites": 5,
+      "unasked_sites": 7,
+      "allocated_bytes": 921787184,
+      "unasked_bytes": 16368,
+      "unasked_byte_share": 1.7756810122888407e-05,
+      "max_model_decisions": 3000,
+      "budget_fallbacks": 0
+    }
+  },
+  {
+    "block": "defaults/plausible/site-pure-1",
+    "variant": "jev-live:hybrid",
+    "repetition": -2,
+    "wall": 20.657570363,
+    "http": 0.0,
+    "answers": 5,
+    "budget_fallbacks": 0,
+    "coverage": {
+      "sites": 12,
+      "asked_sites": 5,
+      "unasked_sites": 7,
+      "allocated_bytes": 921787184,
+      "unasked_bytes": 16368,
+      "unasked_byte_share": 1.7756810122888407e-05,
+      "max_model_decisions": 3000,
+      "budget_fallbacks": 0
+    }
+  },
+  {
     "block": "immediate/named/site-mixed-1",
     "variant": "jev-live:static-site",
     "repetition": -1,

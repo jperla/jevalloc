@@ -64,3 +64,8 @@ Static first-sight answers under defaults. Probabilities are the recorded native
 | opaque/site-pure-16 | 6f22fe2acb8efeed | empty | xmalloc → fn_c → server_worker → start_thread → clone3 | 0.568800 | 0.431200 | transient | transient |
 | opaque/site-pure-16 | 31b4a969152f71a9 | empty | xmalloc → fn_d → server_worker → start_thread → clone3 | 0.589242 | 0.410758 | transient | permanent |
 | opaque/site-pure-16 | e6ab1a46631f359d | empty | xmalloc → fn_a → server_worker → start_thread → clone3 | 0.587907 | 0.412093 | transient | transient |
+| plausible/site-pure-1 | 3ae0a936eeeb4cfb | empty | xmalloc → buf_get → server_worker → start_thread → clone3 | 0.743953 | 0.256047 | transient | transient |
+| plausible/site-pure-1 | 29576832f1f5b260 | empty | xmalloc → resp_build → server_worker → start_thread → clone3 | 0.738968 | 0.261032 | transient | transient |
+| plausible/site-pure-1 | fcbeb76a3434e316 | empty | xmalloc → conn_attach → server_worker → start_thread → clone3 | 0.733194 | 0.266806 | transient | transient |
+| plausible/site-pure-1 | 3e6e881d5301cf0a | empty | xmalloc → entry_put → server_worker → start_thread → clone3 | 0.549059 | 0.450941 | transient | permanent |
+| plausible/site-pure-1 | 9b90b058545f9dfb | empty | xmalloc → buf_get → server_worker → start_thread → clone3 | 0.738635 | 0.261365 | transient | transient |
