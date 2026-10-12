@@ -1,6 +1,6 @@
 # Pass 10 measured phases
 
-Five interleaved repetitions; MiB. Each row reports a workload’s original cycle. Defaults unset every MIMALLOC_* variable; immediate sets purge delay 0, arena multiplier 1, decommit 1.
+Five interleaved repetitions; MiB. Each row reports a workload’s original cycle. Defaults unset every MIMALLOC_* variable; immediate sets purge delay 0, arena multiplier 1, decommit 1. Wall time includes the prescribed idle waits; target CPU excludes sidecar CPU.
 
 | Options / naming / workload | Variant | Cycle | Idle median [min, max] MiB | 10 s idle MiB | Peak MiB | Wall s | Target CPU s |
 |---|---|---:|---:|---:|---:|---:|---:|
@@ -156,6 +156,50 @@ Five interleaved repetitions; MiB. Each row reports a workload’s original cycl
 | defaults/opaque/site-pure-16 | jev-live:rules-neutral | 1 | 331.934 [331.883, 332.000] | 331.934 | 331.734 | 20.564 | 0.623 |
 | defaults/opaque/site-pure-16 | jev-live:rule-names | 0 | 141.855 [139.816, 142.047] | 141.855 | 299.668 | 20.728 | 0.558 |
 | defaults/opaque/site-pure-16 | jev-live:rule-names | 1 | 298.746 [298.258, 298.836] | 298.746 | 299.668 | 20.728 | 0.558 |
+| defaults/plausible/site-mixed-1 | mi | 0 | 66.215 [66.215, 66.219] | 66.215 | 146.066 | 20.578 | 0.077 |
+| defaults/plausible/site-mixed-1 | mi | 1 | 146.215 [146.215, 146.219] | 146.215 | 146.066 | 20.578 | 0.077 |
+| defaults/plausible/site-mixed-1 | jev-keyonly | 0 | 66.309 [66.297, 66.312] | 66.309 | 146.160 | 20.643 | 0.141 |
+| defaults/plausible/site-mixed-1 | jev-keyonly | 1 | 146.309 [146.297, 146.312] | 146.309 | 146.160 | 20.643 | 0.141 |
+| defaults/plausible/site-mixed-1 | jev-table:oracle-site | 0 | 66.309 [66.301, 66.312] | 66.309 | 146.219 | 20.638 | 0.137 |
+| defaults/plausible/site-mixed-1 | jev-table:oracle-site | 1 | 146.309 [146.301, 146.312] | 146.309 | 146.219 | 20.638 | 0.137 |
+| defaults/plausible/site-mixed-1 | jev-table:oracle-context | 0 | 68.250 [68.250, 68.250] | 68.250 | 112.254 | 20.646 | 0.141 |
+| defaults/plausible/site-mixed-1 | jev-table:oracle-context | 1 | 112.188 [112.188, 112.188] | 112.188 | 112.254 | 20.646 | 0.141 |
+| defaults/plausible/site-mixed-1 | jev-live:static-site | 0 | 69.117 [69.105, 69.125] | 69.121 | 146.934 | 20.659 | 0.154 |
+| defaults/plausible/site-mixed-1 | jev-live:static-site | 1 | 147.121 [147.113, 147.129] | 147.121 | 146.934 | 20.659 | 0.154 |
+| defaults/plausible/site-mixed-1 | jev-live:static-model | 0 | 69.129 [69.121, 69.133] | 69.133 | 146.867 | 20.665 | 0.158 |
+| defaults/plausible/site-mixed-1 | jev-live:static-model | 1 | 147.133 [147.125, 147.137] | 147.133 | 146.867 | 20.665 | 0.158 |
+| defaults/plausible/site-mixed-1 | jev-live:hybrid | 0 | 69.066 [69.059, 69.074] | 69.070 | 120.922 | 20.677 | 0.170 |
+| defaults/plausible/site-mixed-1 | jev-live:hybrid | 1 | 120.945 [120.938, 120.953] | 120.945 | 120.922 | 20.677 | 0.170 |
+| defaults/plausible/site-mixed-1 | jev-live:heuristic | 0 | 69.070 [69.066, 69.070] | 69.074 | 146.875 | 20.684 | 0.162 |
+| defaults/plausible/site-mixed-1 | jev-live:heuristic | 1 | 147.137 [147.133, 147.137] | 147.137 | 146.875 | 20.684 | 0.162 |
+| defaults/plausible/site-mixed-1 | jev-live:rules-neutral | 0 | 69.129 [69.129, 69.133] | 69.133 | 158.934 | 20.677 | 0.169 |
+| defaults/plausible/site-mixed-1 | jev-live:rules-neutral | 1 | 158.945 [158.945, 158.949] | 158.945 | 158.934 | 20.677 | 0.169 |
+| defaults/plausible/site-mixed-1 | jev-live:rule-names | 0 | 69.129 [69.125, 69.137] | 69.137 | 146.879 | 20.835 | 0.161 |
+| defaults/plausible/site-mixed-1 | jev-live:rule-names | 1 | 147.137 [147.133, 147.141] | 147.137 | 146.879 | 20.835 | 0.161 |
+| defaults/plausible/site-mixed-1 | jev-live:rule-ttl | 0 | 69.129 [69.129, 69.129] | 69.133 | 146.914 | 20.675 | 0.164 |
+| defaults/plausible/site-mixed-1 | jev-live:rule-ttl | 1 | 147.133 [147.133, 147.133] | 147.133 | 146.914 | 20.675 | 0.164 |
+| defaults/plausible/site-mixed-16 | mi | 0 | 74.531 [74.531, 74.531] | 74.531 | 170.328 | 20.533 | 0.337 |
+| defaults/plausible/site-mixed-16 | mi | 1 | 170.531 [170.531, 170.531] | 170.531 | 170.328 | 20.533 | 0.337 |
+| defaults/plausible/site-mixed-16 | jev-keyonly | 0 | 74.977 [74.859, 74.984] | 74.977 | 170.754 | 20.540 | 0.438 |
+| defaults/plausible/site-mixed-16 | jev-keyonly | 1 | 170.977 [170.859, 170.984] | 170.977 | 170.754 | 20.540 | 0.438 |
+| defaults/plausible/site-mixed-16 | jev-table:oracle-site | 0 | 74.797 [74.746, 74.859] | 74.797 | 170.668 | 20.539 | 0.432 |
+| defaults/plausible/site-mixed-16 | jev-table:oracle-site | 1 | 170.797 [163.664, 170.859] | 170.797 | 170.668 | 20.539 | 0.432 |
+| defaults/plausible/site-mixed-16 | jev-table:oracle-context | 0 | 78.914 [78.910, 78.977] | 78.914 | 138.781 | 20.539 | 0.429 |
+| defaults/plausible/site-mixed-16 | jev-table:oracle-context | 1 | 138.914 [120.477, 138.977] | 138.914 | 138.781 | 20.539 | 0.429 |
+| defaults/plausible/site-mixed-16 | jev-live:static-site | 0 | 107.863 [107.801, 107.969] | 107.867 | 171.664 | 20.548 | 0.447 |
+| defaults/plausible/site-mixed-16 | jev-live:static-site | 1 | 171.875 [171.812, 171.980] | 171.875 | 171.664 | 20.548 | 0.447 |
+| defaults/plausible/site-mixed-16 | jev-live:static-model | 0 | 108.113 [107.930, 108.121] | 108.117 | 171.926 | 20.549 | 0.448 |
+| defaults/plausible/site-mixed-16 | jev-live:static-model | 1 | 172.117 [166.488, 172.129] | 172.117 | 171.926 | 20.549 | 0.448 |
+| defaults/plausible/site-mixed-16 | jev-live:hybrid | 0 | 108.059 [108.000, 108.117] | 108.062 | 149.832 | 20.552 | 0.495 |
+| defaults/plausible/site-mixed-16 | jev-live:hybrid | 1 | 150.066 [148.016, 152.078] | 150.066 | 149.832 | 20.552 | 0.495 |
+| defaults/plausible/site-mixed-16 | jev-live:heuristic | 0 | 108.102 [108.043, 108.148] | 108.105 | 171.875 | 20.561 | 0.431 |
+| defaults/plausible/site-mixed-16 | jev-live:heuristic | 1 | 171.438 [169.871, 172.059] | 171.438 | 171.875 | 20.561 | 0.431 |
+| defaults/plausible/site-mixed-16 | jev-live:rules-neutral | 0 | 108.051 [107.988, 108.113] | 108.055 | 177.859 | 20.551 | 0.479 |
+| defaults/plausible/site-mixed-16 | jev-live:rules-neutral | 1 | 178.055 [176.062, 180.117] | 178.055 | 177.859 | 20.551 | 0.479 |
+| defaults/plausible/site-mixed-16 | jev-live:rule-names | 0 | 108.059 [107.934, 108.117] | 108.062 | 171.871 | 20.719 | 0.449 |
+| defaults/plausible/site-mixed-16 | jev-live:rule-names | 1 | 172.070 [171.945, 172.129] | 172.070 | 171.871 | 20.719 | 0.449 |
+| defaults/plausible/site-mixed-16 | jev-live:rule-ttl | 0 | 108.059 [107.938, 108.117] | 108.062 | 171.926 | 20.555 | 0.490 |
+| defaults/plausible/site-mixed-16 | jev-live:rule-ttl | 1 | 172.070 [171.949, 172.129] | 172.070 | 171.926 | 20.555 | 0.490 |
 | defaults/plausible/site-pure-1 | mi | 0 | 122.219 [122.215, 122.219] | 122.219 | 280.082 | 20.590 | 0.088 |
 | defaults/plausible/site-pure-1 | mi | 1 | 280.219 [280.215, 280.219] | 280.219 | 280.082 | 20.590 | 0.088 |
 | defaults/plausible/site-pure-1 | jev-keyonly | 0 | 122.305 [122.305, 122.316] | 122.305 | 280.223 | 20.630 | 0.128 |
@@ -172,6 +216,22 @@ Five interleaved repetitions; MiB. Each row reports a workload’s original cycl
 | defaults/plausible/site-pure-1 | jev-live:rules-neutral | 1 | 304.809 [304.758, 304.809] | 304.809 | 304.918 | 20.660 | 0.153 |
 | defaults/plausible/site-pure-1 | jev-live:rule-names | 0 | 125.113 [125.105, 125.117] | 125.117 | 282.820 | 20.821 | 0.147 |
 | defaults/plausible/site-pure-1 | jev-live:rule-names | 1 | 283.117 [283.113, 283.125] | 283.117 | 282.820 | 20.821 | 0.147 |
+| defaults/plausible/site-pure-16 | mi | 0 | 138.531 [138.527, 138.531] | 138.531 | 298.328 | 20.542 | 0.470 |
+| defaults/plausible/site-pure-16 | mi | 1 | 296.547 [296.488, 296.672] | 296.547 | 298.328 | 20.542 | 0.470 |
+| defaults/plausible/site-pure-16 | jev-keyonly | 0 | 138.859 [136.887, 138.918] | 138.863 | 298.734 | 20.548 | 0.517 |
+| defaults/plausible/site-pure-16 | jev-keyonly | 1 | 298.863 [297.863, 298.867] | 298.863 | 298.734 | 20.548 | 0.517 |
+| defaults/plausible/site-pure-16 | jev-table:oracle-site | 0 | 138.852 [138.789, 138.863] | 138.855 | 234.727 | 20.549 | 0.533 |
+| defaults/plausible/site-pure-16 | jev-table:oracle-site | 1 | 234.855 [234.789, 234.863] | 234.855 | 234.727 | 20.549 | 0.533 |
+| defaults/plausible/site-pure-16 | jev-live:static-model | 0 | 139.992 [139.848, 141.914] | 139.996 | 299.727 | 20.555 | 0.553 |
+| defaults/plausible/site-pure-16 | jev-live:static-model | 1 | 298.770 [298.566, 299.223] | 298.770 | 299.727 | 20.555 | 0.553 |
+| defaults/plausible/site-pure-16 | jev-live:hybrid | 0 | 141.980 [140.039, 142.098] | 141.984 | 267.793 | 20.562 | 0.568 |
+| defaults/plausible/site-pure-16 | jev-live:hybrid | 1 | 267.992 [254.797, 268.051] | 267.992 | 267.793 | 20.562 | 0.568 |
+| defaults/plausible/site-pure-16 | jev-live:heuristic | 0 | 141.844 [139.820, 141.996] | 141.852 | 304.734 | 20.565 | 0.553 |
+| defaults/plausible/site-pure-16 | jev-live:heuristic | 1 | 305.125 [298.301, 311.766] | 305.125 | 304.734 | 20.565 | 0.553 |
+| defaults/plausible/site-pure-16 | jev-live:rules-neutral | 0 | 141.992 [139.922, 142.043] | 141.996 | 331.805 | 20.561 | 0.596 |
+| defaults/plausible/site-pure-16 | jev-live:rules-neutral | 1 | 332.004 [331.871, 332.051] | 332.004 | 331.805 | 20.561 | 0.596 |
+| defaults/plausible/site-pure-16 | jev-live:rule-names | 0 | 139.922 [139.875, 141.863] | 139.926 | 299.688 | 20.730 | 0.541 |
+| defaults/plausible/site-pure-16 | jev-live:rule-names | 1 | 298.465 [297.969, 298.934] | 298.465 | 299.688 | 20.730 | 0.541 |
 | immediate/named/site-mixed-1 | mi | 0 | 65.695 [65.695, 65.699] | — | 145.855 | 1.148 | 0.147 |
 | immediate/named/site-mixed-1 | mi | 1 | 144.695 [144.691, 144.715] | — | 145.855 | 1.148 | 0.147 |
 | immediate/named/site-mixed-1 | jev-keyonly | 0 | 65.793 [65.773, 65.797] | — | 145.984 | 1.217 | 0.214 |

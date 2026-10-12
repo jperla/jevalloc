@@ -1,0 +1,191 @@
+{
+  "name": "pass10/immediate/named/per-alloc-small",
+  "configuration": {
+    "row": {
+      "stdin": null,
+      "expect": "fragbench OK",
+      "environment": {
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12"
+      },
+      "gate_inference": true,
+      "prompt": "stack-v1",
+      "name": "per-alloc-small",
+      "binary": "../server-sim",
+      "args": [
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ]
+    },
+    "options": "immediate",
+    "naming": "named",
+    "variants": [
+      "mi",
+      "jev-keyonly",
+      "jev-table:oracle-site",
+      "jev-table:oracle-context",
+      "jev-live:per-alloc"
+    ],
+    "repetitions": 5,
+    "workloads": [
+      "per-alloc-small"
+    ],
+    "fingerprints": {
+      "build/bench/../server-sim": "ae574099413b96df990aa8175ba1b21603889a7b3ad04681e1843dccdf221bc0",
+      "build/libjevalloc.so": "b0892403a2a03779c1e6ab29caf0a6800c31936a717c9b6d83676858880c582e",
+      "build/libmimalloc.so": "927db9974948cc9a524bee26035671fe0303cafa60d1079af3fa7cd6fa2e319b",
+      "bench/run.py": "58f1425c3b23b7a4a51c93f77a108fbc24cd2b5db7f50024b1ed050fdc098814",
+      "tools/jevd.py": "f4eae35096d132a4c409264f2a511901bcb1a26b57ef5953adeb3630edf29083",
+      "tools/prompts.py": "7c8f1b5a5e7ad5d0809c26c46f60b180134f9ea9b2436f4bfe60a92018ee60f8",
+      "tools/symbolize.py": "0120115e2ecbe28d2e8b3d7146181244f2d78aa61d8bd2579cc7258e47c23177",
+      "fragbench/server-sim.c": "acb56ad5b94098e20d4627821cfc3055a0c2e42bdc2c136bb2eb49e3f88ee41d",
+      "fragbench/redis_workload.py": "d0c81c11a4ca9edaaecc841a70e7572764631fc47316872a036a1781d4d9720f",
+      "fragbench/review2.py": "81e1b2ac579a6222e8b8e043817f7fbf79da0a27327a1e9b738df86ca74106f8",
+      "descriptions/alloc-test.txt": "92fdd1fe7c1aebc14cc4d125eeb89eb6ce7478960617c41d1008f2c380d4b31d",
+      "descriptions/barnes.txt": "4cf040ef82e3109be696b252e6bb0690b5cd57f5f84fb30bb2509c31dcf2166b",
+      "descriptions/cache-scratch.txt": "bc78b70ef8daee4eda1976c11ff3c683cce3e4900876b0cd57efc34eb60a6aa8",
+      "descriptions/cache-thrash.txt": "fee622bc8e0e2263535a4a864b70099bbfb3662d2382cd6cf9ce3f00d2944ba8",
+      "descriptions/cfrac.txt": "a9bddca082f8d6585db0bb50facb8d3f5a6afe272c5d535d6478b2a9d11d73e7",
+      "descriptions/db_bench.txt": "0ebb0bd87799df9fb068b63ba27fd3bc2d0d34a19daf92491d5f2d80492281bd",
+      "descriptions/espresso.txt": "5e12050977f6fa152beeb0d364a250e12d5e13514a77648b0a5dbfaa670e37cf",
+      "descriptions/glibc-simple.txt": "b77f1fbc1713c72d39906a030a9aff6a90777c378527658a9853ee44e8e734a9",
+      "descriptions/glibc-thread.txt": "d0362bc6977469479e0bc7589490e80a986479116907f3d2f3cc6f52f5ee1e25",
+      "descriptions/larson-sized.txt": "7f8aee285a890bccf000813a3ad57dcbd9d6597cedd3842cd112e8342a7cdd5c",
+      "descriptions/larson.txt": "c3c31d1a593e849b1bb529df477c39e2159411e6f61f4633165ed9d31760cf18",
+      "descriptions/leveldb-driver.txt": "6d01dec4a8f621053d1a02979c822296ef76a43bd8a08160a5bc7b6df231a70b",
+      "descriptions/malloc-large.txt": "cb72f58244cec1b9b2c84d45bb488d7783d269bb9916599885a2865df3b1314c",
+      "descriptions/mleak.txt": "6f22a9cbf6c42cbf5b814de221ad2dcaa8e37ec4b10633a9f198d4654cacd9b6",
+      "descriptions/mstress.txt": "9b51507fc8144b2d50aff7635f91b5dc5dbc16eeb1be51b64e95a146fdb6179d",
+      "descriptions/redis-context-server.txt": "cb1e2682fab3a78000b716249e0e94758b6e1642a6311b808e5987628bc39eff",
+      "descriptions/redis-server.txt": "cb1e2682fab3a78000b716249e0e94758b6e1642a6311b808e5987628bc39eff",
+      "descriptions/rptest.txt": "f962d0a35301908d251add993ed9ad6f60e00a990d591418a28b2765491e3edc",
+      "descriptions/server-sim-opaque.txt": "8da4db6643df00fb798fb35ef1ff5c3a0f7972e0180589ef094f7cdcb2c429aa",
+      "descriptions/server-sim-plausible.txt": "8da4db6643df00fb798fb35ef1ff5c3a0f7972e0180589ef094f7cdcb2c429aa",
+      "descriptions/server-sim.txt": "8da4db6643df00fb798fb35ef1ff5c3a0f7972e0180589ef094f7cdcb2c429aa",
+      "descriptions/sh6bench.txt": "542c7170ca529445520953561a68f8efcb2203b53419a07768e0565e4399592c",
+      "descriptions/sh8bench.txt": "8d09f2763380768acaa9c900677ce05f8be6746e63e8c406fe2e287375e1e682",
+      "descriptions/sqlite-driver.txt": "da3169e3d25e621245e3510f65706080a4d6e496c9ca542edd05fd98bc3a7db1",
+      "descriptions/xmalloc-test.txt": "a52e04d9c548bf855bdb22e6ae82a71e1895927142aa2cd1af37bb63eae9dbd0"
+    }
+  },
+  "runs": [],
+  "coverage_runs": [],
+  "trace_run": {
+    "inference_gate": "not-requested",
+    "started_unix": 1791788686.1747453,
+    "finished_unix": 1791788687.190715,
+    "host_before": {
+      "load_average": [
+        0.0224609375,
+        0.009765625,
+        0.0
+      ],
+      "MemAvailable_bytes": 14169194496,
+      "SwapFree_bytes": 6878130176,
+      "SwapTotal_bytes": 8589930496
+    },
+    "benchmark": "per-alloc-small",
+    "variant": "jev-trace",
+    "repetition": 0,
+    "command": [
+      "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+      "1",
+      "site-mixed",
+      "1200",
+      "250",
+      "payload-only"
+    ],
+    "stdin": null,
+    "environment": {
+      "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+      "JEVALLOC_MODE": "trace",
+      "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/pass10/immediate/named/per-alloc-small/trace.jsonl",
+      "MIMALLOC_PURGE_DELAY": "0",
+      "MIMALLOC_ARENA_PURGE_MULT": "1",
+      "MIMALLOC_PURGE_DECOMMITS": "1",
+      "JEVALLOC_DEPTH": "4",
+      "JEVALLOC_MODEL_DEPTH": "12"
+    },
+    "exit_status": 0,
+    "output_ok": true,
+    "wall_seconds": 1.007928666,
+    "stdout": "results/pass10/immediate/named/per-alloc-small/logs/trace/per-alloc-small-jev-trace-0.stdout",
+    "stderr": "results/pass10/immediate/named/per-alloc-small/logs/trace/per-alloc-small-jev-trace-0.stderr",
+    "user_seconds": 0.001906,
+    "sys_seconds": 0.004766,
+    "peak_rss_bytes": 16969728,
+    "peak_footprint_bytes": null,
+    "cpu_seconds": 0.006672,
+    "time_exit_status": 0,
+    "footprint_final_read": false,
+    "measurement": "wait4 + proc_pid_rusage",
+    "score": 1.007928666,
+    "score_metric": "wall_seconds",
+    "phases": [
+      {
+        "phase": "peak",
+        "cycle": 0,
+        "rss_bytes": 14815232,
+        "live_bytes": 675072,
+        "fragmentation_ratio": 21.946151,
+        "peak_rss_bytes": 14741504
+      },
+      {
+        "phase": "drop",
+        "cycle": 0,
+        "rss_bytes": 14893056,
+        "live_bytes": 80896,
+        "fragmentation_ratio": 184.101266,
+        "peak_rss_bytes": 14741504
+      },
+      {
+        "phase": "idle",
+        "cycle": 0,
+        "rss_bytes": 14962688,
+        "live_bytes": 80896,
+        "fragmentation_ratio": 184.962025,
+        "peak_rss_bytes": 14872576
+      },
+      {
+        "phase": "peak",
+        "cycle": 1,
+        "rss_bytes": 17018880,
+        "live_bytes": 1238528,
+        "fragmentation_ratio": 13.741215,
+        "peak_rss_bytes": 16969728
+      },
+      {
+        "phase": "drop",
+        "cycle": 1,
+        "rss_bytes": 16887808,
+        "live_bytes": 210176,
+        "fragmentation_ratio": 80.350792,
+        "peak_rss_bytes": 16969728
+      },
+      {
+        "phase": "idle",
+        "cycle": 1,
+        "rss_bytes": 16887808,
+        "live_bytes": 210176,
+        "fragmentation_ratio": 80.350792,
+        "peak_rss_bytes": 16969728
+      }
+    ]
+  },
+  "truth": {
+    "pairs": 9,
+    "sites": 7,
+    "contexts": 4,
+    "oracle_site_correct_bytes": 3256640,
+    "oracle_context_correct_bytes": 3466816,
+    "allocated_bytes": 3695936
+  },
+  "trace_complete": true,
+  "summary": []
+}
