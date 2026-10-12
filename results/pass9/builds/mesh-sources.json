@@ -1,0 +1,16 @@
+[
+  {
+    "repository": "plasma-umass/Mesh",
+    "revision": "2987f883b8695c07a80dc40da67c61f524460dfd",
+    "archive": "build/source-plasma-umass-Mesh-2987f883b8695c07a80dc40da67c61f524460dfd.tar.gz",
+    "sha256": "87e5bd88c90e1cf49137d65c124f9ade5363dcdd6a2181c5854c96f5413e22cc",
+    "directory": "build/mesh-source"
+  },
+  {
+    "repository": "brendangregg/FlameGraph",
+    "revision": "41fee1f99f9276008b7cd112fca19dc3ea84ac32",
+    "archive": "build/source-brendangregg-FlameGraph-41fee1f99f9276008b7cd112fca19dc3ea84ac32.tar.gz",
+    "sha256": "b1ba3aaaf296ab72ced4dca84514377a4b2c8122831d743f726c106d3d339c2a",
+    "directory": "build/mesh-source/third_party/FlameGraph"
+  }
+]

@@ -1701,3 +1701,583 @@ passed; no source changes followed measurement startup. Only reporting and journ
 updates were made while the matrix ran. Everything remains uncommitted, no git
 writes were performed, and promptstudy.py and the independent prompt study were
 left alone. The remote address was never written into an artifact.
+
+## Pass 8 — initial state and hybrid implementation
+
+SPEC-REAL.md is authoritative for this pass. Initial remote inspection found no
+running regression process: pass 7 had completed all 22 workloads, status 0, as
+also recorded by the committed report. Preserved the completed aggregate, audit,
+and raw logs under results/pass7-regression-partial/ with an ARCHIVE-NOTE.txt
+explaining this discrepancy. There was no process to stop. No promptlab files or
+processes were touched. New regressions remain last in the pass.
+
+Hybrid uses exactly the static-model first-sight payload and returns both prior
+probabilities. Runtime transitions execute locally on sampled allocation/free
+updates, without a second model request. Exact cumulative sampled bytes and frees
+include samples evicted from the age reservoir and samples from retired threads.
+Demotion requires >=16 samples and >=5% sampled requested bytes freed. Promotion
+requires no sampled free ever, P(transient)<0.7, oldest live reservoir sample older
+than half the allocation clock, and >=64 MiB clock. Classes persist between
+transitions; a demoted site cannot promote again because it has observed frees.
+The sampled path uses the existing cohort lock; hybrid allocation reads the site's
+atomic class so cross-thread demotion reaches subsequent allocations. Clock and
+oldest-live reservoir age remain approximate, as in the previous pass.
+
+Pass-8 workload design: SQLite 3.50.4 amalgamation, RocksDB 10.10.1 (matching the
+mimalloc-bench recipe), LevelDB 1.23, and gflags 2.2.2 are fetched from upstream
+archives into build/real. No system installation is used. SQLite holds a 100,000
+row in-memory database through a burst of 48 connections and 16 sorted prepared
+queries per connection, then closes the burst. LevelDB retains iterators across
+memtable churn, releases them, and compacts. RocksDB's db_bench is patched only to
+add phase markers and a flush/background-compaction wait before idle; both cache
+and small-cache/churn variants use 16 threads. Program memory estimates are labelled
+as partial where appropriate; they are not presented as exact allocator live bytes.
+
+Redis sessions keeps a 30,000-key catalogue, writes 64,000 session keys through 16
+pipelined clients, reads large MGET replies, and publishes to 32 subscribers. TTLs
+are armed after the fixed-work peak, subscribers disconnect, and idle measurement
+waits for every session to expire. This prevents cold model time changing the live
+key set at the measured peak. All workloads use the same purge options as pass 7
+and a 500-ms settle period (purge delay is zero). Existing Mesh/drop workloads stay.
+
+The headroom runner traces first, starts with all-transient, considers the 24
+highest-byte sites once in descending byte order, and accepts a flip only for a
+>2% fall in three-run median idle RSS. Candidate measurements remain separate from
+the final five interleaved baseline/oracle/search runs. Only a >5% saving in that
+final comparison permits model collection. Eligible workloads then get a fresh
+five-run interleaved comparison of baseline, both tables and all three policies.
+No-headroom cases consume no model decisions. Search overfitting and run noise are
+controlled by separate final measurements, not by calling the lifetime oracle an
+RSS optimum.
+
+Hybrid validation additionally exercises the complete socket/allocator path using
+one fake first-sight answer per site. At sample rates 1 and 64: a .9 transient prior
+stays transient through 128 MiB with no frees; a .6 transient prior promotes only
+after maturity; a .1 transient prior (permanent answer) demotes when frees occur.
+All six cases passed, with exact expected sample/free totals, no failures, and no
+rechecks. This validates the C transition plumbing, not just the isolated rule.
+
+Full Linux correctness completed successfully for all 22 mimalloc-bench workloads,
+including ownership/stress, exact trace accounting, live protocol, reservoir,
+replay coverage, and budget tests. Fragmentation attribution/accounting checks
+also passed. The instrument and site-pure warm comparisons follow using the same
+library; there have been no allocator changes since this build.
+
+Site-pure-1 five-run provisional medians: mi 280.21875 MiB, oracle 41.32422,
+static-model 43.56250, hybrid 43.57422, heuristic 228.55078. Hybrid preserves all
+five first-sight classes; session P(transient)=0.867015, no promotions or demotions.
+The corresponding 16-thread cold run also preserves all five classes. Combined
+independent audit and 16-thread warm completion are still pending at this checkpoint.
+
+Site-pure complete and independently audited: 50 warm intervals, zero inference
+overlap. Final-idle medians at 16 threads: mi 296.55 MiB, oracle 51.45,
+static-model 63.55, hybrid 63.27, heuristic 260.22. Saving capture is 95.1% static
+and 95.2% hybrid; at one thread both capture 99.1%. The 0.28-MiB difference at
+16 threads is not an established advantage from five runs; hybrid and static use
+the same five classes and have no runtime class transitions. The originally
+motivating wrong session promotion is absent. The real-program build now follows.
+
+Build correction: gflags' upstream default REGISTER_INSTALL_PREFIX=ON created one
+CMake package-registry pointer under ~/.cmake despite the local install prefix.
+The exact generated pointer was verified and removed immediately; build-real.sh
+now explicitly disables both REGISTER_INSTALL_PREFIX and REGISTER_BUILD_DIR.
+No libraries or headers were installed outside build/real/prefix, and no system
+packages were used. This fixes the recipe's unintended registry side effect.
+
+Real-driver smoke checks passed (not headline measurements; RocksDB compilation
+was concurrent). SQLite retains ~59.85 MiB by sqlite3_memory_used after closing the
+query burst, down from ~179.89 MiB at peak. LevelDB's approximate-memory-usage drops
+to only 4,104 bytes after compaction despite ~88 MiB RSS: this property excludes
+substantial process state and must not be called exact live bytes or used as an
+exact fragmentation denominator. Phase records and report text label that limit.
+
+All requested new source builds succeeded: SQLite amalgamation, LevelDB, and
+RocksDB db_bench with local gflags. No application needed a build skip. Source
+archive and executable SHA-256 files are in results/pass8/builds/. The sequential
+real headroom pipeline has started with SQLite; no real-program model decisions
+are collected before its workload's independent >5% table-saving gate.
+
+SQLite is complete and independently audited. Final medians: mimalloc 78.9453 MiB,
+oracle 82.0703 MiB, search 79.0078 MiB. No search flip cleared 2% in training; the
+final search is all-transient. Neither table saves >5% (neither saves anything),
+so this workload is reported as no per-site headroom and receives zero model
+runs. That is a result for these tables/workload, not proof that all possible
+per-site assignments are ineffective. LevelDB's search follows.
+
+LevelDB completed with zero inference overlap. Final idle RSS bytes are
+91,869,184 (mi), 92,200,960 (oracle), and 92,069,888 (search), all about 88 MiB.
+No greedy flip was accepted. Neither table cleared 5%, so LevelDB receives no
+model runs. Redis sessions trace/workload validation completed and its headroom
+search started; RocksDB variants and the existing Redis cases remain queued.
+
+Redis sessions completed and audited: mi 50,372,608 bytes, oracle 52,383,744,
+search 50,532,352 (about 48.04/49.96/48.19 MiB). All 24 greedy flips were rejected;
+no per-site headroom and no model runs. The catalogue survived and all 64,000
+session keys expired before idle. RocksDB cache-heavy trace is now running,
+followed by its small-cache/memtable-churn variant and the older Redis workloads.
+
+RocksDB cache-heavy search has provisional positive training evidence. Starting
+all-transient at 131.668 MiB, it accepted AllocateBlock/ReadBlockContents through
+MaybeReadBlockAndLoadToCache (128.46 MiB), then a distinct key through
+ReadAndParseBlockFromFile and CompactionJob (114.55 MiB). These are training
+medians only, not established headroom against plain mimalloc; the full greedy
+pass and independent five-run control comparison must finish before model calls.
+
+RocksDB cache-heavy independent validation rejected the apparent training gain.
+Five-run idle MiB: mi [137.98, 137.23, 121.97, 120.66, 120.87]; oracle
+[137.72, 114.64, 132.64, 109.09, 132.94]; search
+[125.93, 133.14, 116.23, 134.20, 126.64]. Medians are 121.97 / 132.64 / 126.64.
+The final search file is byte-identical to the selected training candidate
+(indices 0 and 2 retained). Thus this is not a lost-label bug: run variability and
+selection on three trials did not produce a reproducible saving. No per-site
+headroom under the required final gate; no model run. Independent audit passed.
+Keep the accepted block-cache/compaction labels and all training measurements in
+the report rather than hiding the failed validation. RocksDB churn now follows.
+
+RocksDB churn baseline trials take 78–86 seconds each (roughly 270–290 target CPU
+seconds). The full requested 24-site/three-trial search and five final repetitions
+are retained; this block is substantially longer than the others. It remains
+sequential, with all later real blocks and regression queued behind it. No partial
+training result is treated as completed headroom or used to authorize model calls.
+
+Long-run checkpoint: RocksDB churn has reached candidate 11 of 24. The runner is
+healthy and retains every completed three-run trial. Real-program completion and
+the final regression matrix are still pending; no new aggregate is claimed.
+
+RocksDB churn's complete 24-candidate search finished. Its independent five-run
+baseline/oracle/search validation has started. The lengthy search was completed
+without reducing workload size, candidate count, or trial repetitions.
+
+RocksDB churn finished all 24 three-run candidates and all five interleaved final
+repetitions. No flips were accepted. Final idle RSS bytes: mi 26,083,328; oracle
+27,189,248; search 26,333,184 (24.88/25.93/25.11 MiB). No per-site headroom, no
+model runs, and zero inference overlap in the independent audit. All five newly
+added real-program workloads are complete; the retained Redis Mesh/drop headroom
+checks now run before the full regression matrix.
+
+The source-build recipe now verifies the four upstream archive SHA-256 values
+recorded during this pass and downloads through a temporary file. This changes
+only future fetch validation, not any measured binary, workload, or policy.
+
+## Final-idle metric correction before regression
+
+An audit found that headroom.py averaged all idle points, whereas the report and
+prior fragbench convention use the final idle point. This affects only the
+existing two-cycle Redis Mesh workload. Every other real workload has exactly one
+idle point, so its search, gate and reported result are unchanged. The old runner
+is preserved as results/pass8/headroom-average-idle.py.
+
+Stopped only the waiting pass-8 regression launcher, leaving the active Redis-drop
+run alone. Re-scoring Mesh changes the greedy acceptance path (it cannot be fixed
+by reformatting the final table). Its entire average-idle experiment is archived
+as results/pass8/redis-mesh-average-idle/, with a raw-path relocation note. A fresh
+complete Mesh trace/search/five-run gate now uses final idle, then the regression
+launcher resumes. New unit tests distinguish final idle from both the maximum and
+an average, and ensure averaging cannot incorrectly authorize model collection;
+all three tests pass. No model decisions were made on the superseded pilot.
+
+Corrected Mesh completed all 24 candidates (three runs each), accepted no flips,
+and completed five interleaved final repetitions. Final idle RSS bytes:
+mi 194,879,488; oracle 194,998,272; search 195,100,672. Redis-drop completed with
+mi 283,856,896; oracle 284,209,152; search 284,168,192. Both fail the >5% headroom
+gate. All seven real-program workload blocks are complete and independently
+audited; none authorized model evaluation. No inference accuracy claim is made
+for the new real-program stacks. The superseded Mesh pilot remains separate.
+
+The complete 22-workload/12-variant regression matrix is now running last, with
+five warm repetitions, stack-v1, static-model, hybrid and heuristic. The legacy
+model-reask policy is retained but not rerun. Preserved the full correctness
+report and current instrumentation matrix/gate/audit under results/pass8/.
+The reporting code now links exact wrong-permanent-prior probabilities/stacks
+and hybrid counters; shutdown demotions will not be presented as proven useful
+corrections. Added final-idle tests to the standard test entry point; the new
+headroom and hybrid protocol tests pass locally.
+
+Regression checkpoint: cfrac, espresso, Barnes and Larson completed all requested
+warm repetitions. Completed hybrid observations have zero rechecks. Cfrac and
+espresso record runtime demotions; these are not yet interpreted as an RSS gain
+because end-of-process counters include shutdown. The full matrix and its final
+inference audit remain pending. Benchmark inputs and measured allocator remain
+unchanged during collection.
+
+## Pass 8 completed
+
+The final pipeline exited 0. Pure, real, corrected-Mesh, regression and overall
+status files are all 0. No pass-8 benchmark or launcher process remains; the
+existing model server is left running. No work was committed or staged.
+
+Completed the full 22-workload, 12-variant, five-repetition regression matrix:
+1,320 accepted warm observations, 66 cold observations and 66 coverage records.
+All 110 warm hybrid observations have zero model rechecks and zero HTTP inference
+time. Every headline run exited successfully and passed its workload output
+check. The independently audited warm intervals comprise 1,320 regression, 50
+site-pure, 105 real-program validation and 40 instrumentation observations.
+An additional audit covers all 525 retained greedy-search trials. All 2,040
+intervals have zero inference overlap. The superseded average-idle Mesh pilot is
+excluded from these final counts.
+
+Added tools/pass8_validate.py to recompute all 168 greedy candidate decisions,
+all seven five-run headroom gates, selected permanent-site tables, repetition
+counts, and library fingerprints. Validation passes. All measured blocks match
+the full correctness report's allocator SHA-256:
+e6ffcfc52823ef422a8565967bccf7986d86ac6e0de6057f13bc5b40681fa48e.
+The new protocol/final-idle unit tests pass locally; Python compilation and
+`git diff --check` pass. Full Linux correctness for 22 workloads, hybrid allocator
+integration, stack tests, and fragmentation tests passed earlier in this pass.
+
+Final findings:
+
+- Site-pure hybrid idle RSS is 43.57 MiB (one thread) and 63.27 MiB (16 threads),
+  capturing 99.1% and 95.2% of the oracle saving. It preserves the confident
+  transient session prior, matching static-model without runtime promotions.
+- All seven real-program workloads fail the >5% per-site headroom gate. All
+  requested source builds succeeded, including LevelDB as the additional program.
+  No models were evaluated on these real-program fragmentation stacks, as required.
+  RocksDB cache search accepted two training flips but lost in final validation;
+  both the failed validation and the noisy training improvement remain visible.
+- Wrong permanent priors occur in 12 regression workloads (488 workload/site
+  first-sight answers versus prior-trace lifetime labels). Hybrid demotes many,
+  but RSS changes are mixed. Glibc-thread median peak falls 95.30 -> 69.16 MiB
+  versus static-model, while its inverse-throughput cost grows 3.26x -> 6.69x
+  mimalloc; duration-limited work also differs. Rptest peak increases
+  159.88 -> 193.83 MiB. Mleak100's lower median has overlapping five-run ranges.
+  End-of-process demotion counters may include shutdown, so they do not establish
+  that a useful correction preceded peak RSS.
+- Runtime cost is a serious limitation. Hybrid sh6benchN takes 35.29x mimalloc
+  time versus 13.09x for static-model; sh8benchN is 20.22x versus 9.18x.
+  Xmalloc-test inverse-throughput cost is 10.15x versus 4.83x. No late allocator
+  tuning was performed after collecting the measurements.
+- The inherited acceptance diagnostic is false: four baseline/key-only checks
+  and five heuristic/oracle timing checks miss their thresholds. These are
+  performance/memory targets, distinct from the passing correctness tests.
+  Every miss and all 12 variants' ranges remain in the report.
+
+All pass-8 model answers reused exact-payload cached answers, including coverage
+fills: total native HTTP inference time was zero. The cache provenance and model
+probabilities are retained; this pass does not measure fresh inference latency.
+Warm runs still execute sampling and local hybrid transitions on each new process.
+
+RESULTS.md now leads with completed findings, negative real headroom, and severe
+regression costs, followed by full tables and earlier-pass history. Exact wrong
+prior probabilities/stacks/counters are in results/pass8/wrong-priors.json;
+validation and search-inference audit artifacts are preserved alongside aggregates.
+Raw traces, decision schedules, stdout/stderr and caches remain on the test machine
+at the paths recorded in the matrices; compact evidence and final oracle/search
+tables were synced locally. results/pass8/README.md explains the artifact layout
+and the superseded Mesh pilot.
+
+The final scan of every modified/untracked local file found neither the remote
+address nor its host component. tools/promptstudy.py is unchanged, promptlab was
+not touched, and no system packages were installed. The prior pass's already
+completed matrix remains archived with an explanatory note under the requested
+pass7-regression-partial directory. Everything is left uncommitted.
+
+## Pass 9 — initial state and request-context implementation
+
+SPEC-REALTIME.md governs this pass. Inspected the test machine before changing it:
+all five pass-8 status files (overall, pure, real, corrected Mesh workload,
+regression) contain 0, and no benchmark/launcher/sidecar remains running. The
+existing llama-server is healthy on its configured local port and is left alone.
+No previous work needs stopping; pass-8 evidence stays intact. The existing local
+uncommitted changes belong to the prior pass and are preserved.
+
+Implementing bounded thread-local application context, pair-keyed trace/table/live
+policies, and an explicitly uncached per-allocation policy. The application owns
+normalization. Per-site controls disable context in the allocator so they measure
+the same instrumented executable and the same request stream.
+
+Context integration passes on Linux, including weak-link operation without preload,
+255-byte copying, two-thread isolation, empty-context compatibility, and exact
+64-KiB admission per pair. A mock sidecar returning recheck_after=0 still receives
+every admitted allocation in per-alloc mode (408/408 expected requests); cached
+mode receives exactly three first-sight requests on the same fixture.
+
+Redis instrumentation is kept as patches/redis-request-context.patch. Its build
+copies the existing source tree under build/real and applies the patch there,
+leaving the original source and pass-8 binary alone. The hook wraps cmd->proc,
+restores outer context for nested commands, and records command, key prefix,
+expiry presence and a size bucket. Parser/network allocations preceding dispatch
+remain context-free. Keys without a colon retain up to 16 bytes as specified;
+this can be high-cardinality (notably redis-drop) and is not hidden by the report.
+
+The small per-allocation experiment uses 2,400 payload allocations, four times
+the normal size so rare day-TTL pairs can pass admission. It omits parse/response
+buffers and purge pulses to spend its <3,000 decision budget on request payloads.
+The same scaled workload is used for all its controls. Optional exact object
+logging records allocation/free clocks, requested sizes, pair keys, returned
+classes and per-pair ordinals; its overhead is included in the small live run.
+
+Both exploratory mixed-site blocks completed. Before publishing, archived them
+under results/pass9/pilot-before-final on the test machine and started fresh
+matrices after finalizing per-allocation protocol negotiation, per-object replay
+checks and optional long-settle phase hooks. These pilots are excluded from final
+results. The preliminary context oracle reduced one-thread idle RSS from about
+145 MiB to 26 MiB, and Clef/context was about 28 MiB; final numbers must come from
+the new five-run matrices and their matching library/workload fingerprints.
+
+The final context pipeline runs full Linux correctness, fragmentation truth
+checks, the isolated Redis build, both mixed server cases, all three Redis
+24-pair greedy searches/gates, and the small per-allocation experiment, in that
+order. Existing test artifacts that used historical pass directories now support
+JEVALLOC_TEST_REPORT_DIR; this pass redirects them under results/pass9 to preserve
+prior evidence. Mesh work waits until these context measurements complete.
+
+Full Linux correctness passed for all 22 trace/random workload pairs, C/C++ stress,
+site/table checks, exact lifetime accounting, hybrid integration, live/replay/budget
+checks and the new context/per-allocation tests. The context fixture forces depth
+1 so all three contexts share the same stack site; cached mode still asks exactly
+three times, while per-alloc asks on all 408 admitted allocations. Unit coverage
+also rejects a per-allocation replay when the object's requested size changes.
+
+Normal model budget defaults are now 3,000 in jevd and both benchmark CLIs.
+The instrumented Redis executable has its own copy of the neutral Redis program
+description, avoiding an accidental no-description ablation caused by its name.
+
+Final site-mixed-1 completed all five interleaved repetitions and passed the
+independent inference audit (zero overlaps). Median final idle MiB:
+mi 144.6953; jev-keyonly 144.8008; per-site oracle 145.0000;
+context oracle 26.0547; code-only/site 146.4336; Clef/context 28.1055;
+hybrid/context 28.1094; heuristic/context 146.8711. Live context therefore creates
+a saving absent from the per-site control, and both Clef policies capture about
+98.3% of the context oracle's saving. These are final-library measurements, not
+the archived pilot. The 16-thread block and Redis gates continue sequentially.
+
+Final site-mixed-16 also completed all five repetitions and has zero inference
+overlap. Median idle MiB: mi 146.4219; keyonly 146.8398; per-site oracle 149.6992;
+context oracle 33.4062; code-only/site 154.4531; Clef/context 46.1055;
+hybrid/context 46.6172; heuristic/context 167.0273. Clef captures 88.8% and hybrid
+88.3% of the oracle saving. Both mixed workloads have 16 distinct pairs, 10
+original sites and four signatures including empty context. The gap from the
+context oracle is larger with 16 threads; warm ranges and admission/metadata
+costs remain visible rather than calling this oracle-equivalent.
+
+Redis-Mesh trace has 626 pairs, 621 sites and six signatures. Its greedy search
+has an accepted training move at empty context so far; this is not a validated
+saving and does not authorize model calls until the independent five-run gate.
+
+The Redis-Mesh trace quantifies the dispatch-hook limit: 372,103,036 of
+419,219,686 requested bytes (88.8%) carry empty context. The accepted search
+training move is also empty-context, at ztrymalloc_usable -> _sdsnewlen ->
+createRawStringObject -> processMultibulkBuffer. Thus most value allocation
+happens during RESP parsing, before cmd->proc receives the dispatch context.
+This is measured coverage of the specified small application patch, not a claim
+that richer instrumentation could never separate those allocations.
+
+Redis-Mesh completed and passed its inference audit. Median idle MiB:
+mi 185.9609; keyonly 182.0742; per-site oracle 188.0430;
+context oracle 196.0625; context search 180.0117. Search saves only 3.2% against
+mimalloc, below the strict >5% gate, so no model runs are authorized for this
+workload. The accepted empty-context parsing-site move is retained as training
+and validation evidence; it is not attributed to live request information.
+
+Redis-drop trace completed: 495,421 pairs, 629 sites and 160,292 signatures.
+Its colon-free k<number> keys expose the specified prefix rule's high cardinality.
+The raw 907-MiB trace stays on the test machine. The permanent-pair catalogue is
+compressed, so every label remains available without putting this raw trace in
+the repository. Its 24-pair search now runs with the same admission/gate rules.
+
+Redis-drop has another important measurement limit. A sampled context-bearing
+1,030-byte value row symbolizes to ztryrealloc_usable -> zrealloc ->
+sdsRemoveFreeSpace -> trimStringObjectIfNeeded -> setCommand -> call. Redis first
+allocates these strings in the context-free RESP parser, then trims them during
+command execution. The inherited jev_realloc fast path retains the physical block
+when the request fits its usable size; trace mode nevertheless records a logical
+free/new-allocation lifetime transition. A context label on that realloc does not
+retroactively move its original storage. Consequently the context trace's high
+classification accuracy is not a physical-placement upper bound. This limit will
+be stated alongside the Redis headroom result, rather than attributed to a model
+failure or hidden behind the logical oracle's accuracy.
+
+Redis-drop completed with no accepted greedy flips and passed its inference
+audit. Median idle MiB: mi 271.1992; keyonly 286.9648; per-site oracle 270.5469;
+context oracle 283.7773; search 285.7109. No context table clears the >5% gate,
+so model decisions remain zero. The enormous context table itself increases the
+key-only control's memory cost; comparison with keyonly is retained alongside
+comparison with plain mimalloc. Redis-sessions follows (662 pairs, 644 sites,
+13 signatures in its trace).
+
+The mixed payload call path makes the model's use of context explicit. Without
+context it answers transient with probability 0.641128. With context: ttl=0 is
+transient at 0.648658; ttl=short is transient at 0.717772; ttl=day is permanent at
+0.618898. Both thread counts reuse these exact-payload answers. All five warm
+hybrid runs at both thread counts have zero promotions and zero demotions, so
+this saving comes from the context-conditioned prior, not runtime corrections.
+The day answer is only moderately confident; no probability threshold was tuned.
+
+Redis-sessions completed and passed its inference audit. No greedy flips were
+accepted. Median idle MiB: mi 48.1094; keyonly 48.2031; per-site oracle 50.0312;
+context oracle 50.0352; search 48.2539. All three Redis workloads therefore fail
+the >5% context-table gate and receive zero model decisions. Live request context
+turns the mixed synthetic workload into a saving, but the specified Redis command
+hook does not produce a validated saving in these three tests.
+
+The per-allocation small experiment has started its cold run. Initial records
+show one HTTP decision per admitted allocation, with no errors; final per-object
+accuracy waits for the exact free events and final allocation clock at exit.
+Additional protocol negotiation integration passed with JEVALLOC_PER_ALLOC=0:
+the sidecar's per_allocation response enables all 408 expected subsequent
+admitted requests, including when recheck_after remains zero.
+
+While remote per-allocation inference runs, built the allocator locally on macOS
+arm64 and ran the context integration fixture. The fixture now uses a portable
+mutex/condition rendezvous instead of pthread_barrier_t. This Darwin linker needs
+-Wl,-undefined,dynamic_lookup for unbound weak imports; the test and README now
+include that application link option. Linking/running without the library, TLS
+isolation, context admission and both explicit/negotiated per-allocation modes
+all pass on macOS as well. These are test/documentation changes; the measured
+Linux allocator binary is unchanged.
+
+The fixed-seed small workload contains 1,218 ttl=0, 1,047 ttl=short and 135 ttl=day
+payloads. Applying the 64-KiB per-pair gate to that sequence predicts 1,159, 991
+and 79 model decisions respectively: 2,229 total, safely within budget 3,000.
+This provides an independent expected dispatch count for the completed trace.
+At the 583-decision checkpoint there are no errors or response-cache hits;
+observed HTTP time is about 1.37 seconds per allocation.
+
+The per-allocation cold run passed 1,915 decisions / 2,618.8 HTTP seconds with
+zero decision errors and zero response-cache hits. A queued validation launcher
+waits for successful context completion before the portable Linux integration
+fixture, five additional replay repetitions without exact lifetime logging,
+and independent inference-overlap audits of the search and gate trials. The
+cold lifetime logger is retained for exact object truth, but excluded from the
+headline warm RSS and time comparison. The permanent-pair catalogue now includes
+all small-run per-allocation answers and probabilities, not just cached policies.
+Mesh has not been fetched or built while sections 1–4 remain in progress.
+
+Sections 1–4 are complete and independently validated. The per-allocation cold
+run made exactly 2,229 native HTTP calls in 3,048.32 model seconds / 3,060.34 wall
+seconds, with no budget fallbacks. Accuracy is 2,110/2,229 (94.66%) on answered
+objects and 2,225/2,400 (92.71%) across payloads. The 119 answered errors are
+short-TTL objects exceeding the trace lifetime threshold; 56 day-TTL objects
+precede admission. Five separate warm repetitions without object logging yield
+7.75 MiB for per-alloc vs 7.96 MiB mi and 5.11 MiB context oracle. All 180 main
+warm runs, 25 supplemental runs and 285 search/gate trials have zero independently
+observed inference overlap. Validation recomputes oracle labels, all search
+choices and gates, the full permanent-pair catalogue and per-object truth.
+
+Only after that completion, fetched Mesh master at
+2987f883b8695c07a80dc40da67c61f524460dfd and built both recipe configurations.
+Both builds pass. Dependencies use archives at the exact CMake/gitlink revisions,
+not git clone; the build-only dependency-path patch and archive hashes are in
+results/pass9/builds. CMake 4 compatibility is enabled for the old googletest
+project. No allocator source code or default randomization/meshing settings are
+changed. The recipe's serial make behavior is retained. No packages installed.
+The updated benchmark runner maps mesh/nomesh to their separate shared libraries;
+the context-phase runner is preserved with its verified original fingerprint in
+results/pass9/context-inputs/bench-run.py. Old real-program binaries are preserved
+remotely in build/pre-long-settle before adding the optional 10-second sample.
+The eleven-workload compaction matrix is now running.
+
+The first compaction block (site-pure-1) completed all 40 warm runs without
+failures. Median normal/10-second idle MiB are identical: mi 280.22, keyonly
+280.31, oracle-site 41.37, static 43.56, hybrid 43.57, heuristic 228.50, Mesh
+270.62, nomesh 328.86. Mesh improves its own twin by 17.7%, while placement is
+much smaller on this site-separable synthetic case. Final server-log audits
+will cover all eleven blocks. Source inspection shows the pinned Mesh revision
+checks its 100 ms interval on eligible frees rather than on a background idle
+timer. The report also distinguishes mapping RSS from physical memory sharing;
+unchanged RSS cannot establish zero physical compaction, and PSS is not measured.
+
+Site-pure-16 also completed all 40 warm runs without failures. Median normal and
+10-second idle MiB: mi 296.55, keyonly 295.95, oracle-site 51.83, static 64.86,
+hybrid 63.38, heuristic 255.43, Mesh 290.95, nomesh 331.42. Mesh improves its twin
+by 12.2%; the two placement policies remain much smaller. Two of eleven
+compaction blocks / 80 warm runs are complete; mixed-context blocks follow.
+
+Site-mixed-1 completed all 50 compaction warm runs. Normal/10-second median idle
+MiB are identical: mi 144.70, keyonly 144.80, per-site oracle 145.00, context
+oracle 26.05, code-only/site 146.46, Clef/context 28.12, hybrid/context 28.12,
+heuristic 146.87, Mesh 139.98, nomesh 170.27. Mesh saves 17.8% against its twin;
+context-aware placement saves about 80.6% against keyonly. The per-site controls
+still show no placement headroom. Three blocks / 130 warm runs are complete.
+
+Site-mixed-16 completed all 50 compaction warm runs. Normal/10-second median idle
+MiB are identical: mi 146.42, keyonly 146.82, per-site oracle 149.71, context
+oracle 33.52, code-only/site 154.62, Clef/context 46.73, hybrid/context 47.33,
+heuristic 165.64, Mesh 149.88, nomesh 172.70. Mesh saves 13.2% against its twin
+but remains above plain mimalloc; context-aware placement remains much smaller.
+All four synthetic blocks / 180 warm runs are complete, with no failures.
+The Redis compaction blocks have started. Their failed context-placement gates
+remain in force; no new Redis model runs are introduced by this comparison.
+
+Redis-mesh completed all 35 compaction warm runs without failures. Normal and
+10-second median idle MiB: mi 185.98, keyonly 186.05, per-site oracle 188.01,
+context oracle 196.07, search 186.09, Mesh 144.56, nomesh 198.40. This is a real
+case where compaction improves the measured RSS and the tested context placement
+tables do not: Mesh saves 27.1% against nomesh and 22.3% against mimalloc.
+Median workload CPU is 2.13 s Mesh vs 1.80 s nomesh and 1.35 s mimalloc; wall
+including common waits is 23.49 / 23.24 / 22.82 s. The extra first-cycle idle can
+change second-cycle layouts, so this comparison is not pooled with the original
+short-settle headroom measurements. Five blocks / 215 warm runs are complete.
+
+Redis-drop completed all 35 compaction warm runs. Median normal/10-second idle
+MiB: mi 269.41, keyonly 285.60, per-site oracle 270.20, context oracle 284.31,
+search 286.48, Mesh 92.40, nomesh 331.20. Mesh saves 72.1% against its twin and
+65.7% against mimalloc, while this dispatch context still gives no table saving.
+Median workload CPU: Mesh 0.89 s, nomesh 0.53 s, mi 0.34 s. Six blocks / 250
+warm runs are complete without failures. Redis-sessions follows.
+
+Redis-sessions completed all 35 compaction warm runs. Normal/10-second median
+idle MiB: mi 48.03, keyonly 48.21, per-site/context oracles 50.02, search 48.20,
+Mesh 68.25, nomesh 264.00. Compaction saves 74.1% against its own twin, but Mesh
+still uses more RSS than plain mimalloc. This is why both baselines are reported.
+All three Redis blocks and four synthetic blocks are complete: 285 warm runs,
+zero allocator failures. SQLite, LevelDB and the two RocksDB workloads follow.
+The optional additional database request-context hooks were not added; these
+four programs retain their per-site oracle controls in the compaction matrix.
+
+SQLite completed all 25 compaction warm runs. Normal/10-second median idle MiB:
+mi 78.94, keyonly 79.01, oracle-site 82.10, Mesh 317.53, nomesh 317.52. Meshing
+shows no measurable RSS benefit against its twin here, and both Mesh variants
+use about four times mimalloc's RSS. Median workload CPU is 0.44 s Mesh,
+0.29 s nomesh and 0.15 s mimalloc. No vendor allocator tuning was applied.
+Eight blocks / 310 warm runs are complete; LevelDB is running.
+
+LevelDB completed all 25 compaction warm runs. Normal/10-second median idle MiB:
+mi 87.59, keyonly 87.72, oracle-site 87.92, Mesh 78.43, nomesh 177.30. Mesh saves
+55.8% against its twin and 10.5% against mimalloc. Nine blocks / 335 warm runs
+are complete without failures. The two RocksDB blocks remain.
+
+RocksDB-cache completed all 25 compaction warm runs. Normal/10-second median
+idle MiB: mi 125.15, keyonly 128.47, oracle-site 114.58, Mesh 106.54, nomesh
+129.02. Mesh saves 17.4% against its twin and 14.9% against mimalloc. The later
+oracle median is 8.4% below mimalloc, but its five-run range (111.11–128.12 MiB)
+overlaps mimalloc (123.33–137.04); Mesh spans 100.18–122.66. This descriptive
+compaction matrix is not pooled with the earlier headroom gate or used as a
+post-hoc model gate. No additional database context hook/model experiment was
+added. Ten blocks / 360 warm runs are complete; RocksDB-churn is last.
+
+RocksDB-churn completed all 25 warm runs. Normal/10-second median idle MiB:
+mi 24.96, keyonly 25.22, oracle-site 26.25, Mesh 37.67, nomesh 68.52. Mesh saves
+45.0% against its twin, but mimalloc remains smaller. Median wall/CPU seconds
+are mi 95.31/271.12, Mesh 92.49/249.61, nomesh 91.23/245.78. This completes
+all eleven compaction blocks: 385 warm runs, zero allocator/workload failures.
+All eleven independent inference audits pass with zero overlap. Normal and
+10-second median RSS are exactly equal in all 77 allocator/workload groups.
+
+Mesh saves more than 5% RSS against nomesh on 10/11 workloads (SQLite is the
+exception), and against mimalloc on four real workloads: Redis eviction, Redis
+drop, LevelDB and RocksDB-cache. Placement remains much smaller on all four
+synthetic cases. The report includes all idle/long-idle, peak, wall and CPU costs,
+both baselines, full ranges, a visually checked PNG/SVG comparison, and explicit
+RSS/PSS and free-triggered-meshing limitations.
+
+After measurements and audits finished, upstream Mesh unit checks passed:
+35/35 enabled tests; nomesh 28 passed and 7 meshing-specific tests skipped.
+The measured library SHA256 values are unchanged before/after these checks.
+The unit-check script now explicitly rebuilds each configuration on future runs,
+so rerunning it cannot mislabel upstream's shared unit-binary output path.
+The source fetcher can restore absent source archives using the recorded commit
+and archive hashes, without following a newer master or making git writes.
+
+Final validation passed: all six context blocks, the unlogged per-allocation
+performance comparison, and all eleven compaction blocks are complete. Across
+875 independently audited warm/search/gate intervals there is zero inference
+overlap. All 279 recorded input fingerprints verify (the historical context
+runner uses its preserved snapshot). Every launcher status is zero. No owned
+benchmark, sidecar, or test jobs remain running. The original model server
+(PID 970221) remains healthy and was left available; promptlab was not touched.
+The compact evidence, plots, validation and build/test logs are copied locally.
+Raw traces, decision caches and full run stdout/stderr remain on the test machine.
+The remote-address scan is clean; tools/promptstudy.py is unchanged. Everything
+is left uncommitted, with no git writes, sudo, or system-package installation.

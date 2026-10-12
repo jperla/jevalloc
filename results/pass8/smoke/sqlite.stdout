@@ -1,0 +1,4 @@
+{"phase":"peak","cycle":0,"rss_bytes":215666688,"live_bytes":188623152,"live_metric":"sqlite3_memory_used","fragmentation_ratio":1.143373}
+{"phase":"drop","cycle":0,"rss_bytes":82694144,"live_bytes":62754176,"live_metric":"sqlite3_memory_used","fragmentation_ratio":1.317747}
+{"phase":"idle","cycle":0,"rss_bytes":82759680,"live_bytes":62754176,"live_metric":"sqlite3_memory_used","fragmentation_ratio":1.318792}
+fragbench OK

@@ -1,0 +1,149 @@
+{
+  "matrix_sha256": "9a5b99bd4ba3924076e159562726bd919f73973d2e8876e14b2473e7c0676e29",
+  "server_pid": 970221,
+  "source_log": "/home/quill/jevalloc/model-server.log",
+  "checked": 15,
+  "overlapping_runs": 0,
+  "runs": [
+    {
+      "benchmark": "redis-sessions",
+      "variant": "mi",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "jev-table:oracle",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "jev-table:search",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "jev-table:oracle",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "jev-table:search",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "mi",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "jev-table:search",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "mi",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "jev-table:oracle",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "mi",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "jev-table:oracle",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "jev-table:search",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "jev-table:oracle",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "jev-table:search",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "redis-sessions",
+      "variant": "mi",
+      "repetition": 4,
+      "tasks": []
+    }
+  ],
+  "clock_calibration": {
+    "logger_start_unix": 1791649771.3960829,
+    "process_start_unix": 1791649771.19,
+    "spread_seconds": 3.0994415283203125e-06,
+    "wall_minus_monotonic": 1786470747.1873248,
+    "pairs": [
+      {
+        "log_release_seconds": 31969.207667,
+        "monotonic_release_seconds": 5210993.416424
+      },
+      {
+        "log_release_seconds": 33382.963046000004,
+        "monotonic_release_seconds": 5212407.171804
+      },
+      {
+        "log_release_seconds": 34403.998396,
+        "monotonic_release_seconds": 5213428.207154
+      },
+      {
+        "log_release_seconds": 35003.3843,
+        "monotonic_release_seconds": 5214027.593058
+      },
+      {
+        "log_release_seconds": 35005.718119,
+        "monotonic_release_seconds": 5214029.926878
+      },
+      {
+        "log_release_seconds": 35015.236079999995,
+        "monotonic_release_seconds": 5214039.444838
+      },
+      {
+        "log_release_seconds": 35031.519566,
+        "monotonic_release_seconds": 5214055.728324
+      },
+      {
+        "log_release_seconds": 35046.296876,
+        "monotonic_release_seconds": 5214070.505634
+      },
+      {
+        "log_release_seconds": 35633.776754,
+        "monotonic_release_seconds": 5214657.985512
+      },
+      {
+        "log_release_seconds": 43754.042779,
+        "monotonic_release_seconds": 5222778.251539
+      }
+    ],
+    "source": "common/log.cpp t_us; tools/server/server-context.cpp release/t_last_used; ggml/src/ggml.c ggml_time_us"
+  },
+  "clock_note": "Explicit wall-clock benchmark intervals. Logger origin calibrated from recent paired wall-log/CLOCK_MONOTONIC release timestamps; PID start independently verified. Calibration is approximate at sub-millisecond logging granularity."
+}

@@ -1,0 +1,4 @@
+[ 98%] Built target rocksdb
+[ 98%] Building CXX object CMakeFiles/db_bench.dir/tools/db_bench_tool.cc.o
+[ 98%] Linking CXX executable db_bench
+[100%] Built target db_bench

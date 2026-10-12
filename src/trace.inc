@@ -3,13 +3,21 @@
 #define SITE_BUCKETS 16384
 #define PTR_BUCKETS 1048576
 typedef struct Site {
+ char context[256]; uint64_t site_key,signature;
  uint64_t key,count,bytes,live,live_bytes,hist[65],hist_bytes[65],classes[2],permanent[3];
  Frame frames[MAX_DEPTH]; unsigned nf; struct Site* next;
 } Site;
-typedef struct Live {void* p;uint64_t birth,size;Site* site;struct Live* next;} Live;
+typedef struct Live {void* p;uint64_t birth,size,id;Site* site;struct Live* next;} Live;
 static Site* sites[SITE_BUCKETS];
 static Live** pointers;
-static uint64_t allocation_clock;
+static uint64_t allocation_clock,object_sequence;
+static FILE* object_log;
+static bool object_log_checked;
+static void object_log_init(void) {
+ if(object_log_checked)return;object_log_checked=true;
+ const char* path=getenv("JEVALLOC_OBJECT_TRACE");
+ if(path){object_log=fopen(path,"w");if(!object_log)abort();}
+}
 typedef struct LifetimeRecord {Site* site;uint64_t life,size;} LifetimeRecord;
 static FILE* lifetime_spool;
 static void trace_lifetime(Site* site,uint64_t life,uint64_t size) {
@@ -27,14 +35,16 @@ static void trace_lifetime(Site* site,uint64_t life,uint64_t size) {
 static pthread_mutex_t trace_mutex=PTHREAD_MUTEX_INITIALIZER;
 static bool trace_closed;
 static void* metadata(size_t n) {void* p=mi_zalloc(n);if(!p)abort();return p;}
-static void trace_alloc(void* p,size_t n,uint64_t key,Frame* frames,unsigned nf) {
+static void trace_alloc(void* p,size_t n,uint64_t key,Frame* frames,unsigned nf,unsigned cls) {
  pthread_mutex_lock(&trace_mutex);
  if(trace_closed){pthread_mutex_unlock(&trace_mutex);return;}
  if(!pointers)pointers=metadata(PTR_BUCKETS*sizeof(*pointers));
  size_t h=mix(key)&(SITE_BUCKETS-1);Site* s=sites[h];while(s&&s->key!=key)s=s->next;
- if(!s){s=metadata(sizeof(*s));s->key=key;s->nf=nf;memcpy(s->frames,frames,nf*sizeof(Frame));s->next=sites[h];sites[h]=s;}
+ if(!s){s=metadata(sizeof(*s));s->key=key;KeyCache* k=context()->active_key;s->site_key=k?k->site_key:key;s->signature=k?k->signature:0;if(s->signature)memcpy(s->context,context()->request_context,256);s->nf=nf;memcpy(s->frames,frames,nf*sizeof(Frame));s->next=sites[h];sites[h]=s;}
  if(UINT64_MAX-allocation_clock<n)abort();allocation_clock+=n;s->count++;s->bytes+=n;s->live++;s->live_bytes+=n;
- h=mix((uintptr_t)p)&(PTR_BUCKETS-1);Live* l=metadata(sizeof(*l));*l=(Live){p,allocation_clock,n,s,pointers[h]};pointers[h]=l;
+ h=mix((uintptr_t)p)&(PTR_BUCKETS-1);Live* l=metadata(sizeof(*l));*l=(Live){p,allocation_clock,n,++object_sequence,s,pointers[h]};pointers[h]=l;
+ object_log_init();
+ if(object_log)fprintf(object_log,"{\"event\":\"alloc\",\"id\":%llu,\"clock\":%llu,\"size\":%zu,\"key\":\"%016llx\",\"class\":%u,\"decided\":%s,\"ordinal\":%llu}\n",(unsigned long long)l->id,(unsigned long long)allocation_clock,n,(unsigned long long)key,cls,context()->allocation_decided?"true":"false",(unsigned long long)context()->decision_ordinal);
  pthread_mutex_unlock(&trace_mutex);
 }
 static void trace_free(void* p) {
@@ -44,6 +54,7 @@ static void trace_free(void* p) {
  if(*pp){Live* l=*pp;*pp=l->next;Site* s=l->site;uint64_t life=allocation_clock-l->birth;unsigned bucket=life?64-__builtin_clzll(life):0;
    s->hist[bucket]++;s->hist_bytes[bucket]+=l->size;s->live--;s->live_bytes-=l->size;
    s->classes[life<short_bytes?0:1]+=l->size;trace_lifetime(s,life,l->size);
+   if(object_log)fprintf(object_log,"{\"event\":\"free\",\"id\":%llu,\"clock\":%llu}\n",(unsigned long long)l->id,(unsigned long long)allocation_clock);
    mi_free(l);
  }
  pthread_mutex_unlock(&trace_mutex);
@@ -68,6 +79,7 @@ static void trace_finish(void) {
 #else
   extern char* program_invocation_short_name;json_string(f,program_invocation_short_name);
 #endif
+  fprintf(f,",\"site_key\":\"%016llx\",\"context_signature\":\"%016llx\",\"context\":",(unsigned long long)s->site_key,(unsigned long long)s->signature);json_string(f,s->context);
   fprintf(f,",\"total_allocation_bytes\":%llu,\"count\":%llu,\"bytes\":%llu,\"never_freed\":%llu,\"never_freed_bytes\":%llu,\"lifetime_histogram\":",(unsigned long long)allocation_clock,(unsigned long long)s->count,(unsigned long long)s->bytes,(unsigned long long)s->live,(unsigned long long)s->live_bytes);
   array(f,s->hist,65);fputs(",\"lifetime_histogram_bytes\":",f);array(f,s->hist_bytes,65);s->classes[1]+=s->live_bytes;
   fprintf(f,",\"short_bytes\":%llu",(unsigned long long)short_bytes);
@@ -80,5 +92,6 @@ static void trace_finish(void) {
   for(unsigned i=0;i<s->nf;i++){fprintf(f,"%s{\"address\":\"0x%llx\",\"image\":",i?",":"",(unsigned long long)s->frames[i].addr);json_string(f,images[s->frames[i].image].path);fputc('}',f);}
   fputs("]}\n",f);
  }
+ if(object_log){fprintf(object_log,"{\"event\":\"end\",\"clock\":%llu}\n",(unsigned long long)allocation_clock);if(fclose(object_log))abort();object_log=NULL;}
  if(fclose(f))abort();pthread_mutex_unlock(&trace_mutex);
 }

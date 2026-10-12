@@ -1,0 +1,112 @@
+[  2%] Creating directories for 'googletest'
+[  4%] No download step for 'googletest'
+[  6%] No update step for 'googletest'
+[  8%] No patch step for 'googletest'
+[ 10%] Performing configure step for 'googletest'
+CMake Warning (deprecated) at CMakeLists.txt:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Warning (deprecated) at googlemock/CMakeLists.txt:39 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+CMake Warning (deprecated) at googletest/CMakeLists.txt:49 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- Found Python: /home/quill/jevalloc/venv/bin/python3.12 (found version "3.12.3") found components: Interpreter
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (0.9s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/quill/jevalloc/src-tree/build/mesh-build/googletest-build
+[ 12%] Performing build step for 'googletest'
+[ 12%] Building CXX object googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[ 25%] Linking CXX static library ../lib/libgtest.a
+[ 25%] Built target gtest
+[ 37%] Building CXX object googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
+[ 50%] Linking CXX static library ../lib/libgmock.a
+[ 50%] Built target gmock
+[ 62%] Building CXX object googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
+[ 75%] Linking CXX static library ../lib/libgmock_main.a
+[ 75%] Built target gmock_main
+[ 87%] Building CXX object googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[100%] Linking CXX static library ../lib/libgtest_main.a
+[100%] Built target gtest_main
+[ 14%] No install step for 'googletest'
+[ 17%] No test step for 'googletest'
+[ 19%] Completed 'googletest'
+[ 19%] Built target googletest
+[ 21%] Creating directories for 'heap_layers'
+[ 23%] No download step for 'heap_layers'
+[ 25%] No update step for 'heap_layers'
+[ 27%] No patch step for 'heap_layers'
+[ 29%] No configure step for 'heap_layers'
+[ 31%] No build step for 'heap_layers'
+[ 34%] No install step for 'heap_layers'
+[ 36%] No test step for 'heap_layers'
+[ 38%] Completed 'heap_layers'
+[ 38%] Built target heap_layers
+[ 40%] Building CXX object src/CMakeFiles/mesh.dir/d_assert.cc.o
+[ 42%] Building CXX object src/CMakeFiles/mesh.dir/global_heap.cc.o
+[ 44%] Building CXX object src/CMakeFiles/mesh.dir/runtime.cc.o
+[ 46%] Building CXX object src/CMakeFiles/mesh.dir/real.cc.o
+[ 48%] Building CXX object src/CMakeFiles/mesh.dir/meshable_arena.cc.o
+[ 51%] Building CXX object src/CMakeFiles/mesh.dir/measure_rss.cc.o
+[ 53%] Building CXX object src/CMakeFiles/mesh.dir/thread_local_heap.cc.o
+[ 55%] Building CXX object src/CMakeFiles/mesh.dir/memory_stats_linux.cc.o
+[ 57%] Building CXX object src/CMakeFiles/mesh.dir/libmesh.cc.o
+[ 59%] Linking CXX shared library /home/quill/jevalloc/src-tree/build/mesh-source/build/lib/libmesh.so
+[ 59%] Built target mesh
+[ 61%] Building CXX object src/CMakeFiles/unit.test.dir/d_assert.cc.o
+[ 63%] Building CXX object src/CMakeFiles/unit.test.dir/global_heap.cc.o
+[ 65%] Building CXX object src/CMakeFiles/unit.test.dir/runtime.cc.o
+[ 68%] Building CXX object src/CMakeFiles/unit.test.dir/real.cc.o
+[ 70%] Building CXX object src/CMakeFiles/unit.test.dir/meshable_arena.cc.o
+[ 72%] Building CXX object src/CMakeFiles/unit.test.dir/measure_rss.cc.o
+[ 74%] Building CXX object src/CMakeFiles/unit.test.dir/thread_local_heap.cc.o
+[ 76%] Building CXX object src/CMakeFiles/unit.test.dir/memory_stats_linux.cc.o
+[ 78%] Building CXX object src/CMakeFiles/unit.test.dir/testing/unit/alignment.cc.o
+[ 80%] Building CXX object src/CMakeFiles/unit.test.dir/testing/unit/bitmap_test.cc.o
+[ 82%] Building CXX object src/CMakeFiles/unit.test.dir/testing/unit/concurrent_mesh_test.cc.o
+[ 85%] Building CXX object src/CMakeFiles/unit.test.dir/testing/unit/mesh_memory_test.cc.o
+[ 87%] Building CXX object src/CMakeFiles/unit.test.dir/testing/unit/mesh_test.cc.o
+[ 89%] Building CXX object src/CMakeFiles/unit.test.dir/testing/unit/pending_list_test.cc.o
+[ 91%] Building CXX object src/CMakeFiles/unit.test.dir/testing/unit/rng_test.cc.o
+[ 93%] Building CXX object src/CMakeFiles/unit.test.dir/testing/unit/thread_exit_test.cc.o
+[ 95%] Building CXX object src/CMakeFiles/unit.test.dir/testing/unit/size_class_test.cc.o
+[ 97%] Building CXX object src/CMakeFiles/unit.test.dir/testing/unit/triple_mesh_test.cc.o
+[100%] Linking CXX executable /home/quill/jevalloc/src-tree/build/mesh-source/build/bin/unit.test
+[100%] Built target unit.test

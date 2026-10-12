@@ -1,0 +1,50 @@
+{
+  "per-alloc-small": {
+    "bytes": 3695936,
+    "context_bytes": 3682560,
+    "pairs": 9,
+    "pairs_below_admission": 6,
+    "bytes_below_admission": 13376,
+    "context_byte_share": 0.9963808897123759
+  },
+  "redis-drop": {
+    "bytes": 490543684,
+    "context_bytes": 235973404,
+    "pairs": 495421,
+    "pairs_below_admission": 495403,
+    "bytes_below_admission": 232146127,
+    "context_byte_share": 0.4810446280254217
+  },
+  "redis-mesh": {
+    "bytes": 419219686,
+    "context_bytes": 47116650,
+    "pairs": 626,
+    "pairs_below_admission": 608,
+    "bytes_below_admission": 283278,
+    "context_byte_share": 0.11239131074584126
+  },
+  "redis-sessions": {
+    "bytes": 494185221,
+    "context_bytes": 313892976,
+    "pairs": 662,
+    "pairs_below_admission": 631,
+    "bytes_below_admission": 477894,
+    "context_byte_share": 0.6351727301047718
+  },
+  "site-mixed-1": {
+    "bytes": 921813952,
+    "context_bytes": 921669504,
+    "pairs": 16,
+    "pairs_below_admission": 6,
+    "bytes_below_admission": 13376,
+    "context_byte_share": 0.9998433002671672
+  },
+  "site-mixed-16": {
+    "bytes": 924022096,
+    "context_bytes": 921907008,
+    "pairs": 16,
+    "pairs_below_admission": 6,
+    "bytes_below_admission": 17936,
+    "context_byte_share": 0.9977109984607987
+  }
+}

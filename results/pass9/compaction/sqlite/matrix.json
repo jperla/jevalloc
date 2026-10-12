@@ -1,0 +1,2381 @@
+{
+  "name": "pass9/compaction/sqlite",
+  "configuration": {
+    "row": {
+      "stdin": null,
+      "expect": "fragbench OK",
+      "environment": {
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "gate_inference": true,
+      "prompt": "stack-v1",
+      "name": "sqlite",
+      "binary": "sqlite-driver",
+      "args": []
+    },
+    "variants": [
+      "mi",
+      "jev-keyonly",
+      "jev-table:oracle-site",
+      "mesh",
+      "nomesh"
+    ],
+    "workloads": [
+      "sqlite"
+    ],
+    "repetitions": 5,
+    "long_settle_ms": 10000,
+    "fingerprints": {
+      "build/bench/sqlite-driver": "c2a05e08b4de7061644cdddfd748c1b09a72ea49edac44f77cee69e3715b854c",
+      "build/libjevalloc.so": "7f29e09b37cf0762a2de0c0e002300c94da9f2771cbabc5c74f2b9dcc58eb096",
+      "build/libmimalloc.so": "927db9974948cc9a524bee26035671fe0303cafa60d1079af3fa7cd6fa2e319b",
+      "build/libmesh.so": "f817c176a63e722016a57c6d5bc6c3ca5660ba15c9d0d77886b6e2e3df18e956",
+      "build/libnomesh.so": "29c9d3969f812afc3d1a194320b9e0cf37b2bb933885defc6a3b4ebf81d92acc",
+      "bench/run.py": "99b6f3c1ddf716e9e5c2adede1884fced58f6b459c85098cecaedc9a4cbcb48f",
+      "fragbench/redis_workload.py": "d0c81c11a4ca9edaaecc841a70e7572764631fc47316872a036a1781d4d9720f",
+      "fragbench/compaction.py": "ec581c24b0580ae67743371b2def2cb4ff47ca6720885f896ba1ae8a18d68428"
+    }
+  },
+  "runs": [
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761573.959306,
+      "finished_unix": 1791761584.139728,
+      "host_before": {
+        "load_average": [
+          0.103515625,
+          0.09228515625,
+          0.08837890625
+        ],
+        "MemAvailable_bytes": 14049001472,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "mi",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.146816515,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-mi-0.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-mi-0.stderr",
+      "user_seconds": 0.076533,
+      "sys_seconds": 0.069576,
+      "peak_rss_bytes": 215797760,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.146109,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.146816515,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 215678976,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.143439
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 82706432,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.317943
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 82771968,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.318987
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 82771968,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.318987
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761585.1490927,
+      "finished_unix": 1791761595.3296754,
+      "host_before": {
+        "load_average": [
+          0.08740234375,
+          0.08837890625,
+          0.08740234375
+        ],
+        "MemAvailable_bytes": 14047088640,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "jev-keyonly",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/compaction/sqlite/tables/sqlite/oracle.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.155084601,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-jev-keyonly-0.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-jev-keyonly-0.stderr",
+      "user_seconds": 0.093242,
+      "sys_seconds": 0.0608,
+      "peak_rss_bytes": 215941120,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.154042,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.155084601,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 215842816,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.144307
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 82804736,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.31951
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 82870272,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.320554
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 82870272,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.320554
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761596.338569,
+      "finished_unix": 1791761606.5183623,
+      "host_before": {
+        "load_average": [
+          0.13525390625,
+          0.099609375,
+          0.0908203125
+        ],
+        "MemAvailable_bytes": 14041604096,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "jev-table:oracle-site",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/compaction/sqlite/tables/sqlite/oracle-site.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.134513567,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-jev-table-0-6241130e.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-jev-table-0-6241130e.stderr",
+      "user_seconds": 0.100856,
+      "sys_seconds": 0.032953,
+      "peak_rss_bytes": 219037696,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.133809,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.134513567,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 219025408,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.16118
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 86003712,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.370486
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 86069248,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.37153
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 86069248,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.37153
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761607.5293496,
+      "finished_unix": 1791761618.0103803,
+      "host_before": {
+        "load_average": [
+          0.11376953125,
+          0.095703125,
+          0.08984375
+        ],
+        "MemAvailable_bytes": 14060433408,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "mesh",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.443455172,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-mesh-0.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-mesh-0.stderr",
+      "user_seconds": 0.180889,
+      "sys_seconds": 0.261839,
+      "peak_rss_bytes": 332251136,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.442728,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.443455172,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 332697600,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.763822
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 332795904,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.303167
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 332861440,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.304212
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 332861440,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.304212
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761619.0192819,
+      "finished_unix": 1791761629.3503194,
+      "host_before": {
+        "load_average": [
+          0.095703125,
+          0.091796875,
+          0.0888671875
+        ],
+        "MemAvailable_bytes": 14018809856,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "nomesh",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libnomesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.300452529,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-nomesh-0.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-nomesh-0.stderr",
+      "user_seconds": 0.160823,
+      "sys_seconds": 0.138847,
+      "peak_rss_bytes": 332660736,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.29967,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.300452529,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 332775424,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.764234
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 332877824,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.304473
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 332943360,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.305517
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 332943360,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.305517
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761630.3599496,
+      "finished_unix": 1791761640.5401127,
+      "host_before": {
+        "load_average": [
+          0.08056640625,
+          0.087890625,
+          0.087890625
+        ],
+        "MemAvailable_bytes": 13999525888,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "jev-keyonly",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/compaction/sqlite/tables/sqlite/oracle.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.149041613,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-jev-keyonly-1.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-jev-keyonly-1.stderr",
+      "user_seconds": 0.101384,
+      "sys_seconds": 0.047178,
+      "peak_rss_bytes": 215969792,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.148562,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.149041613,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 215838720,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.144285
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 82800640,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.319444
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 82866176,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.320489
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 82866176,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.320489
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761641.5678332,
+      "finished_unix": 1791761651.7470093,
+      "host_before": {
+        "load_average": [
+          0.0615234375,
+          0.08349609375,
+          0.08642578125
+        ],
+        "MemAvailable_bytes": 14037356544,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "jev-table:oracle-site",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/compaction/sqlite/tables/sqlite/oracle-site.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.134635828,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-jev-table-1-6241130e.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-jev-table-1-6241130e.stderr",
+      "user_seconds": 0.095794,
+      "sys_seconds": 0.037918,
+      "peak_rss_bytes": 219164672,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.133712,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.134635828,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 219045888,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.161288
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 86024192,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.370812
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 86089728,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.371857
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 86089728,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.371857
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761652.757495,
+      "finished_unix": 1791761663.2381892,
+      "host_before": {
+        "load_average": [
+          0.05126953125,
+          0.08056640625,
+          0.08544921875
+        ],
+        "MemAvailable_bytes": 14053974016,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "mesh",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.437539065,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-mesh-1.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-mesh-1.stderr",
+      "user_seconds": 0.185233,
+      "sys_seconds": 0.251317,
+      "peak_rss_bytes": 332537856,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.43655,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.437539065,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 332795904,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.764343
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 332894208,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.304734
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 332959744,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.305778
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 332959744,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.305778
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761664.2484798,
+      "finished_unix": 1791761674.5785003,
+      "host_before": {
+        "load_average": [
+          0.04296875,
+          0.07763671875,
+          0.08447265625
+        ],
+        "MemAvailable_bytes": 14042722304,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "nomesh",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libnomesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.291882817,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-nomesh-1.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-nomesh-1.stderr",
+      "user_seconds": 0.159584,
+      "sys_seconds": 0.131481,
+      "peak_rss_bytes": 332660736,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.291065,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.291882817,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 332783616,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.764278
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 332886016,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.304603
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 332951552,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.305648
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 332951552,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.305648
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761675.5879085,
+      "finished_unix": 1791761685.7684731,
+      "host_before": {
+        "load_average": [
+          0.03564453125,
+          0.07470703125,
+          0.08349609375
+        ],
+        "MemAvailable_bytes": 13991530496,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "mi",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.148109923,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-mi-1.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-mi-1.stderr",
+      "user_seconds": 0.095259,
+      "sys_seconds": 0.052141,
+      "peak_rss_bytes": 215752704,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.1474,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.148109923,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 215650304,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.143287
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 82677760,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.317486
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 82743296,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.318531
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 82743296,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.318531
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761686.7788086,
+      "finished_unix": 1791761696.9578643,
+      "host_before": {
+        "load_average": [
+          0.02734375,
+          0.0703125,
+          0.08203125
+        ],
+        "MemAvailable_bytes": 14044762112,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "jev-table:oracle-site",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/compaction/sqlite/tables/sqlite/oracle-site.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.134075293,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-jev-table-2-6241130e.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-jev-table-2-6241130e.stderr",
+      "user_seconds": 0.092757,
+      "sys_seconds": 0.039895,
+      "peak_rss_bytes": 219181056,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.132652,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.134075293,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 219086848,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.161506
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 86048768,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.371204
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 86114304,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.372248
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 86114304,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.372248
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761697.9688747,
+      "finished_unix": 1791761708.4496627,
+      "host_before": {
+        "load_average": [
+          0.0224609375,
+          0.0673828125,
+          0.0810546875
+        ],
+        "MemAvailable_bytes": 14058868736,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "mesh",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.43908603,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-mesh-2.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-mesh-2.stderr",
+      "user_seconds": 0.175202,
+      "sys_seconds": 0.263304,
+      "peak_rss_bytes": 332521472,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.43850599999999995,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.43908603,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 332787712,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.764299
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 332886016,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.304603
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 332951552,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.305648
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 332951552,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.305648
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761709.4597666,
+      "finished_unix": 1791761719.7904456,
+      "host_before": {
+        "load_average": [
+          0.0185546875,
+          0.064453125,
+          0.080078125
+        ],
+        "MemAvailable_bytes": 14011604992,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "nomesh",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libnomesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.294989898,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-nomesh-2.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-nomesh-2.stderr",
+      "user_seconds": 0.151872,
+      "sys_seconds": 0.14188,
+      "peak_rss_bytes": 332660736,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.293752,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.294989898,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 332746752,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.764082
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 332849152,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.304016
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 332914688,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.30506
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 332914688,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.30506
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761720.800882,
+      "finished_unix": 1791761730.9807515,
+      "host_before": {
+        "load_average": [
+          0.095703125,
+          0.07861328125,
+          0.0849609375
+        ],
+        "MemAvailable_bytes": 14000398336,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "mi",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.147161893,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-mi-2.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-mi-2.stderr",
+      "user_seconds": 0.096913,
+      "sys_seconds": 0.048956,
+      "peak_rss_bytes": 215834624,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.145869,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.147161893,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 215695360,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.143525
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 82722816,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.318204
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 82788352,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.319248
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 82788352,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.319248
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761731.9904518,
+      "finished_unix": 1791761742.1704202,
+      "host_before": {
+        "load_average": [
+          0.07373046875,
+          0.07421875,
+          0.08349609375
+        ],
+        "MemAvailable_bytes": 14043648000,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "jev-keyonly",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/compaction/sqlite/tables/sqlite/oracle.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.154459159,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-jev-keyonly-2.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-jev-keyonly-2.stderr",
+      "user_seconds": 0.099433,
+      "sys_seconds": 0.054236,
+      "peak_rss_bytes": 215777280,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.153669,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.154459159,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 215818240,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.144177
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 82780160,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.319118
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 82845696,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.320162
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 82845696,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.320162
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761743.180553,
+      "finished_unix": 1791761753.6610649,
+      "host_before": {
+        "load_average": [
+          0.0615234375,
+          0.0712890625,
+          0.08251953125
+        ],
+        "MemAvailable_bytes": 14031437824,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "mesh",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.440259146,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-mesh-3.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-mesh-3.stderr",
+      "user_seconds": 0.176224,
+      "sys_seconds": 0.262334,
+      "peak_rss_bytes": 332443648,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.438558,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.440259146,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 332771328,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.764213
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 260612096,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 4.152904
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 260677632,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 4.153949
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 260677632,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 4.153949
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761754.6712322,
+      "finished_unix": 1791761765.0017169,
+      "host_before": {
+        "load_average": [
+          0.05126953125,
+          0.068359375,
+          0.08154296875
+        ],
+        "MemAvailable_bytes": 13984583680,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "nomesh",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libnomesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.294966185,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-nomesh-3.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-nomesh-3.stderr",
+      "user_seconds": 0.14898,
+      "sys_seconds": 0.144981,
+      "peak_rss_bytes": 332922880,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.29396100000000003,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.294966185,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 332791808,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.764321
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 332894208,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.304734
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 332959744,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.305778
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 332959744,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.305778
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761766.0121517,
+      "finished_unix": 1791761776.1920938,
+      "host_before": {
+        "load_average": [
+          0.04296875,
+          0.0654296875,
+          0.08056640625
+        ],
+        "MemAvailable_bytes": 14008143872,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "mi",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.147579506,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-mi-3.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-mi-3.stderr",
+      "user_seconds": 0.085932,
+      "sys_seconds": 0.060952,
+      "peak_rss_bytes": 215764992,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.146884,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.147579506,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 215650304,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.143287
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 82677760,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.317486
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 82743296,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.318531
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 82743296,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.318531
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761777.2027044,
+      "finished_unix": 1791761787.3847537,
+      "host_before": {
+        "load_average": [
+          0.03271484375,
+          0.06103515625,
+          0.0791015625
+        ],
+        "MemAvailable_bytes": 14038298624,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "jev-keyonly",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/compaction/sqlite/tables/sqlite/oracle.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.152578565,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-jev-keyonly-3.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-jev-keyonly-3.stderr",
+      "user_seconds": 0.101907,
+      "sys_seconds": 0.049954,
+      "peak_rss_bytes": 215781376,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.151861,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.152578565,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 215814144,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.144155
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 82776064,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.319053
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 82841600,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.320097
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 82841600,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.320097
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761788.3949487,
+      "finished_unix": 1791761798.5747283,
+      "host_before": {
+        "load_average": [
+          0.02734375,
+          0.05810546875,
+          0.078125
+        ],
+        "MemAvailable_bytes": 14043615232,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "jev-table:oracle-site",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/compaction/sqlite/tables/sqlite/oracle-site.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.131448681,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-jev-table-3-6241130e.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-jev-table-3-6241130e.stderr",
+      "user_seconds": 0.093741,
+      "sys_seconds": 0.036898,
+      "peak_rss_bytes": 218947584,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.130639,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.131448681,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 218968064,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.160876
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 85929984,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.369311
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 85995520,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.370355
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 85995520,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.370355
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761799.5862632,
+      "finished_unix": 1791761809.916723,
+      "host_before": {
+        "load_average": [
+          0.0224609375,
+          0.05615234375,
+          0.0771484375
+        ],
+        "MemAvailable_bytes": 14063136768,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "nomesh",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libnomesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.296192921,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-nomesh-4.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-nomesh-4.stderr",
+      "user_seconds": 0.149566,
+      "sys_seconds": 0.145578,
+      "peak_rss_bytes": 332529664,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.295144,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.296192921,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 332779520,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.764256
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 332881920,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.304538
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 332947456,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.305582
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 332947456,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.305582
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761810.9276273,
+      "finished_unix": 1791761821.108227,
+      "host_before": {
+        "load_average": [
+          0.0185546875,
+          0.05419921875,
+          0.076171875
+        ],
+        "MemAvailable_bytes": 14015262720,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "mi",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.146566472,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-mi-4.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-mi-4.stderr",
+      "user_seconds": 0.085099,
+      "sys_seconds": 0.061071,
+      "peak_rss_bytes": 215805952,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.14617,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.146566472,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 215703552,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.143569
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 82731008,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.318335
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 82796544,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.319379
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 82796544,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.319379
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761822.1194372,
+      "finished_unix": 1791761832.2992072,
+      "host_before": {
+        "load_average": [
+          0.013671875,
+          0.05126953125,
+          0.07470703125
+        ],
+        "MemAvailable_bytes": 14022389760,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "jev-keyonly",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/compaction/sqlite/tables/sqlite/oracle.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.156190942,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-jev-keyonly-4.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-jev-keyonly-4.stderr",
+      "user_seconds": 0.09684,
+      "sys_seconds": 0.058903,
+      "peak_rss_bytes": 215703552,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.155743,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.156190942,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 215785472,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.144003
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 82747392,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.318596
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 82812928,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.31964
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 82812928,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.31964
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761833.3093507,
+      "finished_unix": 1791761843.4896073,
+      "host_before": {
+        "load_average": [
+          0.0107421875,
+          0.04931640625,
+          0.07373046875
+        ],
+        "MemAvailable_bytes": 14028230656,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "jev-table:oracle-site",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/compaction/sqlite/tables/sqlite/oracle-site.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.132352594,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-jev-table-4-6241130e.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-jev-table-4-6241130e.stderr",
+      "user_seconds": 0.096805,
+      "sys_seconds": 0.034929,
+      "peak_rss_bytes": 219172864,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.13173400000000002,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.132352594,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 219058176,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.161354
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 86036480,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.371008
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 86102016,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.372052
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 86102016,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.372052
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791761844.500542,
+      "finished_unix": 1791761854.9812238,
+      "host_before": {
+        "load_average": [
+          0.0087890625,
+          0.04736328125,
+          0.07275390625
+        ],
+        "MemAvailable_bytes": 14045863936,
+        "SwapFree_bytes": 6979055616,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "sqlite",
+      "variant": "mesh",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 10.435869572,
+      "stdout": "results/pass9/compaction/sqlite/logs/sqlite-mesh-4.stdout",
+      "stderr": "results/pass9/compaction/sqlite/logs/sqlite-mesh-4.stderr",
+      "user_seconds": 0.181034,
+      "sys_seconds": 0.254047,
+      "peak_rss_bytes": 332767232,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.43508100000000005,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 10.435869572,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 332861440,
+          "live_bytes": 188623152,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 1.76469
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 332959744,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.305778
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 333025280,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.306823
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 333025280,
+          "live_bytes": 62754176,
+          "live_metric": "sqlite3_memory_used",
+          "fragmentation_ratio": 5.306823
+        }
+      ]
+    }
+  ],
+  "coverage_runs": [],
+  "trace_run": {
+    "inference_gate": "not-requested",
+    "started_unix": 1791761562.7200325,
+    "finished_unix": 1791761572.9496906,
+    "host_before": {
+      "load_average": [
+        0.123046875,
+        0.09619140625,
+        0.08935546875
+      ],
+      "MemAvailable_bytes": 14059307008,
+      "SwapFree_bytes": 6979055616,
+      "SwapTotal_bytes": 8589930496
+    },
+    "benchmark": "sqlite",
+    "variant": "jev-trace",
+    "repetition": 0,
+    "command": [
+      "/home/quill/jevalloc/src-tree/build/bench/sqlite-driver"
+    ],
+    "stdin": null,
+    "environment": {
+      "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+      "JEVALLOC_MODE": "trace",
+      "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/pass9/compaction/sqlite/trace.jsonl",
+      "MIMALLOC_PURGE_DELAY": "0",
+      "MIMALLOC_ARENA_PURGE_MULT": "1",
+      "MIMALLOC_PURGE_DECOMMITS": "1",
+      "JEVALLOC_DEPTH": "4",
+      "JEVALLOC_MODEL_DEPTH": "12",
+      "FRAG_LONG_SETTLE_MS": "10000"
+    },
+    "exit_status": 0,
+    "output_ok": true,
+    "wall_seconds": 10.20727238,
+    "stdout": "results/pass9/compaction/sqlite/logs/trace/sqlite-jev-trace-0.stdout",
+    "stderr": "results/pass9/compaction/sqlite/logs/trace/sqlite-jev-trace-0.stderr",
+    "user_seconds": 0.139006,
+    "sys_seconds": 0.067003,
+    "peak_rss_bytes": 236920832,
+    "peak_footprint_bytes": null,
+    "cpu_seconds": 0.206009,
+    "time_exit_status": 0,
+    "footprint_final_read": false,
+    "measurement": "wait4 + proc_pid_rusage",
+    "score": 10.20727238,
+    "score_metric": "wall_seconds",
+    "phases": [
+      {
+        "phase": "peak",
+        "cycle": 0,
+        "rss_bytes": 236912640,
+        "live_bytes": 188623152,
+        "live_metric": "sqlite3_memory_used",
+        "fragmentation_ratio": 1.25601
+      },
+      {
+        "phase": "drop",
+        "cycle": 0,
+        "rss_bytes": 93798400,
+        "live_bytes": 62754176,
+        "live_metric": "sqlite3_memory_used",
+        "fragmentation_ratio": 1.494696
+      },
+      {
+        "phase": "idle",
+        "cycle": 0,
+        "rss_bytes": 93863936,
+        "live_bytes": 62754176,
+        "live_metric": "sqlite3_memory_used",
+        "fragmentation_ratio": 1.49574
+      },
+      {
+        "phase": "idle10",
+        "cycle": 0,
+        "rss_bytes": 93863936,
+        "live_bytes": 62754176,
+        "live_metric": "sqlite3_memory_used",
+        "fragmentation_ratio": 1.49574
+      }
+    ]
+  },
+  "truth": {
+    "pairs": 45,
+    "sites": 45,
+    "contexts": 1,
+    "oracle_site_correct_bytes": 170861240,
+    "oracle_context_correct_bytes": 170861240,
+    "allocated_bytes": 201876728
+  },
+  "trace_complete": true,
+  "summary": [
+    {
+      "benchmark": "sqlite",
+      "variant": "mi",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 10.147161893,
+        "min": 10.146566472,
+        "max": 10.148109923
+      },
+      "user_seconds": {
+        "median": 0.085932,
+        "min": 0.076533,
+        "max": 0.096913
+      },
+      "sys_seconds": {
+        "median": 0.060952,
+        "min": 0.048956,
+        "max": 0.069576
+      },
+      "cpu_seconds": {
+        "median": 0.14617,
+        "min": 0.145869,
+        "max": 0.1474
+      },
+      "peak_rss_bytes": {
+        "median": 215797760,
+        "min": 215752704,
+        "max": 215834624
+      },
+      "score": {
+        "median": 10.147161893,
+        "min": 10.146566472,
+        "max": 10.148109923
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.0,
+        "cpu_seconds": 1.0,
+        "peak_rss_bytes": 1.0,
+        "score": 1.0
+      }
+    },
+    {
+      "benchmark": "sqlite",
+      "variant": "jev-keyonly",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 10.154459159,
+        "min": 10.149041613,
+        "max": 10.156190942
+      },
+      "user_seconds": {
+        "median": 0.099433,
+        "min": 0.093242,
+        "max": 0.101907
+      },
+      "sys_seconds": {
+        "median": 0.054236,
+        "min": 0.047178,
+        "max": 0.0608
+      },
+      "cpu_seconds": {
+        "median": 0.153669,
+        "min": 0.148562,
+        "max": 0.155743
+      },
+      "peak_rss_bytes": {
+        "median": 215781376,
+        "min": 215703552,
+        "max": 215969792
+      },
+      "score": {
+        "median": 10.154459159,
+        "min": 10.149041613,
+        "max": 10.156190942
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.0007191435474223,
+        "cpu_seconds": 1.0513032770062256,
+        "peak_rss_bytes": 0.9999240770617823,
+        "score": 1.0007191435474223
+      }
+    },
+    {
+      "benchmark": "sqlite",
+      "variant": "jev-table:oracle-site",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 10.134075293,
+        "min": 10.131448681,
+        "max": 10.134635828
+      },
+      "user_seconds": {
+        "median": 0.095794,
+        "min": 0.092757,
+        "max": 0.100856
+      },
+      "sys_seconds": {
+        "median": 0.036898,
+        "min": 0.032953,
+        "max": 0.039895
+      },
+      "cpu_seconds": {
+        "median": 0.132652,
+        "min": 0.130639,
+        "max": 0.133809
+      },
+      "peak_rss_bytes": {
+        "median": 219164672,
+        "min": 218947584,
+        "max": 219181056
+      },
+      "score": {
+        "median": 10.134075293,
+        "min": 10.131448681,
+        "max": 10.134635828
+      },
+      "relative_to_mi": {
+        "wall_seconds": 0.998710319186981,
+        "cpu_seconds": 0.9075186426763358,
+        "peak_rss_bytes": 1.0156021638037391,
+        "score": 0.998710319186981
+      }
+    },
+    {
+      "benchmark": "sqlite",
+      "variant": "mesh",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 10.43908603,
+        "min": 10.435869572,
+        "max": 10.443455172
+      },
+      "user_seconds": {
+        "median": 0.180889,
+        "min": 0.175202,
+        "max": 0.185233
+      },
+      "sys_seconds": {
+        "median": 0.261839,
+        "min": 0.251317,
+        "max": 0.263304
+      },
+      "cpu_seconds": {
+        "median": 0.43850599999999995,
+        "min": 0.43508100000000005,
+        "max": 0.442728
+      },
+      "peak_rss_bytes": {
+        "median": 332521472,
+        "min": 332251136,
+        "max": 332767232
+      },
+      "score": {
+        "median": 10.43908603,
+        "min": 10.435869572,
+        "max": 10.443455172
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.0287690430169822,
+        "cpu_seconds": 2.9999726346035436,
+        "peak_rss_bytes": 1.5408939925975136,
+        "score": 1.0287690430169822
+      }
+    },
+    {
+      "benchmark": "sqlite",
+      "variant": "nomesh",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 10.294989898,
+        "min": 10.291882817,
+        "max": 10.300452529
+      },
+      "user_seconds": {
+        "median": 0.151872,
+        "min": 0.14898,
+        "max": 0.160823
+      },
+      "sys_seconds": {
+        "median": 0.14188,
+        "min": 0.131481,
+        "max": 0.145578
+      },
+      "cpu_seconds": {
+        "median": 0.29396100000000003,
+        "min": 0.291065,
+        "max": 0.29967
+      },
+      "peak_rss_bytes": {
+        "median": 332660736,
+        "min": 332529664,
+        "max": 332922880
+      },
+      "score": {
+        "median": 10.294989898,
+        "min": 10.291882817,
+        "max": 10.300452529
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.0145684090348435,
+        "cpu_seconds": 2.0110898269138677,
+        "peak_rss_bytes": 1.541539337572364,
+        "score": 1.0145684090348435
+      }
+    }
+  ],
+  "complete": true
+}

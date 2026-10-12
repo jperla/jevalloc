@@ -4,6 +4,20 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+/* Optional application hooks: guard calls with if (jev_context_set).
+ * Text is copied (255 bytes plus NUL); bucket numbers/strip unique IDs yourself.
+ * High-cardinality context defeats the decision cache. */
+#ifdef JEVALLOC_IMPLEMENTATION
+#define JEV_OPTIONAL
+#elif defined(__APPLE__)
+#define JEV_OPTIONAL __attribute__((weak_import))
+#else
+#define JEV_OPTIONAL __attribute__((weak))
+#endif
+void jev_context_set(const char* text) JEV_OPTIONAL;
+void jev_context_clear(void) JEV_OPTIONAL;
+void jev_context_setf(const char* format, ...) JEV_OPTIONAL __attribute__((format(printf,1,2)));
+#undef JEV_OPTIONAL
 void* jev_malloc(size_t);
 void* jev_calloc(size_t,size_t);
 void* jev_realloc(void*,size_t);

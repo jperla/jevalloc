@@ -1,0 +1,4 @@
+{"phase":"peak","cycle":0,"rss_bytes":205451264,"live_bytes":8794678,"live_metric":"LevelDB approximate-memory-usage (partial estimate)","fragmentation_ratio":23.360863}
+{"phase":"drop","cycle":0,"rss_bytes":91910144,"live_bytes":4104,"live_metric":"LevelDB approximate-memory-usage (partial estimate)","fragmentation_ratio":22395.259259}
+{"phase":"idle","cycle":0,"rss_bytes":91975680,"live_bytes":4104,"live_metric":"LevelDB approximate-memory-usage (partial estimate)","fragmentation_ratio":22411.228070}
+fragbench OK

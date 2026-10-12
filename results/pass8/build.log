@@ -1,0 +1,23 @@
+[ 14%] Built target site-test
+[ 14%] Built target lifetimes
+[ 14%] Built target measure
+[ 14%] Built target live-test
+[ 21%] Built target cost
+[ 21%] Built target stress
+[ 26%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/init.c.o
+[ 26%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/segment.c.o
+[ 45%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/alloc.c.o
+[ 56%] Built target mimalloc
+[ 57%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/heap.c.o
+[ 59%] Building C object CMakeFiles/hybrid-test.dir/tests/hybrid.c.o
+[ 63%] Built target server-sim
+[ 66%] Built target defects
+[ 68%] Linking C executable hybrid-test
+[ 68%] Built target hybrid-test
+[ 70%] Linking C static library libmi-core.a
+[ 91%] Built target mi-core
+[ 92%] Building C object CMakeFiles/jevalloc.dir/override.c.o
+[ 94%] Building C object CMakeFiles/jevalloc.dir/src/jevalloc.c.o
+[ 96%] Building C object CMakeFiles/jevalloc.dir/zone.c.o
+[ 98%] Linking C shared library libjevalloc.so
+[100%] Built target jevalloc

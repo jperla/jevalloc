@@ -1,3 +1,358 @@
+# Pass 9 — decisions from live request context
+
+site-mixed-1: context oracle saves 82.0% of mimalloc idle RSS; Clef/context captures 98.3% and hybrid/context 98.3% of that saving. site-mixed-16: context oracle saves 77.2% of mimalloc idle RSS; Clef/context captures 88.8% and hybrid/context 88.3% of that saving. No validated >5% context-table headroom on redis-drop, redis-mesh, redis-sessions. These workloads receive no model decisions.
+
+The context API requires a small change to the application at request dispatch.
+
+Completed context workload blocks: 6/6. Five interleaved warm repetitions per published variant.
+
+| Workload | mi MiB | Per-site oracle | Context oracle | Code-only/site | Clef/context | Hybrid/context | Heuristic/context | Search | Per-alloc |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| per-alloc-small | 7.96 | 8.05 | 5.11 | — | — | — | — | — | 7.75 |
+| redis-drop | 271.20 | 270.55 | 283.78 | — | — | — | — | 285.71 | — |
+| redis-mesh | 185.96 | 188.04 | 196.06 | — | — | — | — | 180.01 | — |
+| redis-sessions | 48.11 | 50.03 | 50.04 | — | — | — | — | 48.25 | — |
+| site-mixed-1 | 144.70 | 145.00 | 26.05 | 146.43 | 28.11 | 28.11 | 146.87 | — | — |
+| site-mixed-16 | 146.42 | 149.70 | 33.41 | 154.45 | 46.11 | 46.62 | 167.03 | — | — |
+
+| Workload | Original sites | Context pairs | Distinct signatures | Bytes carrying context |
+|---|---:|---:|---:|---:|
+| per-alloc-small | 7 | 9 | 4 | 99.64% |
+| redis-drop | 629 | 495421 | 160292 | 48.10% |
+| redis-mesh | 621 | 626 | 6 | 11.24% |
+| redis-sessions | 644 | 662 | 13 | 63.52% |
+| site-mixed-1 | 10 | 16 | 4 | 99.98% |
+| site-mixed-16 | 10 | 16 | 4 | 99.77% |
+
+| Workload | Policy | Warm wall/mi | CPU/mi | Peak MiB | Cold wall s | Cold+fill HTTP s | Sidecar / model answers | Asked pairs |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| per-alloc-small | jev-live:per-alloc | 1.809 | 32.843 | 8.11 | 3060.34 | 3048.32 | 2229 / 2229 | 3 / 9 |
+| site-mixed-1 | jev-live:static-site | 1.072 | 1.571 | 146.48 | 6.86 | 5.45 | 4 / 4 | 4 / 10 |
+| site-mixed-1 | jev-live:static-model | 1.082 | 1.636 | 114.61 | 13.69 | 12.25 | 10 / 10 | 10 / 16 |
+| site-mixed-1 | jev-live:hybrid | 1.097 | 1.751 | 114.60 | 1.44 | 0.00 | 10 / 10 | 10 / 16 |
+| site-mixed-1 | jev-live:heuristic | 1.040 | 1.259 | 146.62 | 1.18 | 0.00 | 34 / 0 | n/a / 16 |
+| site-mixed-16 | jev-live:static-site | 1.017 | 1.302 | 156.38 | 1.24 | 0.00 | 4 / 4 | 4 / 10 |
+| site-mixed-16 | jev-live:static-model | 1.009 | 1.306 | 126.48 | 1.24 | 0.00 | 10 / 10 | 10 / 16 |
+| site-mixed-16 | jev-live:hybrid | 1.009 | 1.380 | 126.86 | 1.25 | 0.00 | 10 / 10 | 10 / 16 |
+| site-mixed-16 | jev-live:heuristic | 1.005 | 1.011 | 169.04 | 1.05 | 0.00 | 32 / 0 | n/a / 16 |
+
+Per-allocation accuracy on model-answered objects: 2110/2229 (94.66%). Across all payloads, including the default class before admission: 2225/2400 (92.71%). 185 total objects were not model-answered. The confusion matrix and byte accuracy are in [object-accuracy.json](results/pass9/per-alloc-small/object-accuracy.json).
+Cold per-allocation: 2229 model decisions, 2229 HTTP requests, 3048.32 model seconds, 3060.34 wall seconds.
+The small experiment has 2,400 payload allocations over two cycles, four times the normal payload size, and omits parsing/response allocations and purge pulses. This allows the rare day-TTL pair to reach admission within a 3,000-decision budget. The cold run logs exact object lifetimes. Separate five-run warm comparisons disable this logger, retain per-allocation decisions and sampling, and replay the recorded answers; headline RSS and warm timing use those measurements when complete.
+An always-transient classifier would score 2031/2229 (91.12%) on the same answered objects. Permanent-object recall is 79/198 (39.90%). The observed chosen class is constant within each TTL bucket across the tested requested sizes.
+
+At this small scale, per-allocation placement saves 2.6% of mimalloc idle RSS and captures 7.4% of the context oracle's saving. High object accuracy does not imply the same RSS saving: admission leaves early allocations in the default heap, and live-decision machinery has a material fixed cost. The 119 model-answered errors are short-TTL objects that exceed the trace's half-volume lifetime threshold; 56 additional day-TTL payloads precede admission.
+
+At the shared payload stack: no context: transient (P=0.6411); kind=store ttl=0: transient (P=0.6487); kind=store ttl=short: transient (P=0.7178); kind=store ttl=day: permanent (P=0.6189).
+Hybrid makes 0 class transitions across 10 warm mixed-workload runs.
+
+The context API requires a small application change. Applications normalize and bucket the supplied text; the library copies 255 bytes plus NUL. Context applies to allocations after the dispatch hook. Redis input parsing precedes the command hook. Some context-bearing value records are logical realloc events during string trimming; the inherited in-place realloc path retains the original physical block. Context on that later event does not retroactively relocate storage, so trace classification accuracy is not a physical-placement upper bound.
+
+Redis-drop uses colon-free numbered keys. The specified prefix rule retains these identifiers (up to 16 bytes), producing 160,292 signatures and 495,421 pairs. That defeats cache sharing and adds table/key metadata overhead; the key-only control is about 16 MiB above mimalloc. No model was run on this failed-gate workload.
+
+Admission is 64 KiB per (site, context signature), budget 3,000. Cross-thread counter batching can delay admission. Byte coverage includes bytes allocated before an answer; it is not the fraction routed under the model label. Hybrid rules operate per pair. Cached warm runs replay recorded answers without HTTP inference; sampling and hybrid transitions still execute. The per-allocation response cache includes the full allocation request; warm ordinal replay rejects changed size, context or stack. Runtime statistics may drift.
+
+RSS is the final idle phase, not the mean of multiple cycles. Greedy search uses the top 24 byte-heavy pairs, three runs per flip and a >2% training improvement, followed by five independent interleaved comparisons. Redis model runs require >5% validated table savings against mimalloc. Search does not prove an optimum.
+
+CPU time is the workload process user plus system time from wait4; sidecar CPU is excluded. Wall time includes synchronous decision-service delays. Native model HTTP seconds are reported separately.
+
+Exact permanent-pair labels, model probabilities and prompt states: [permanent-pairs.jsonl.gz](results/pass9/permanent-pairs.jsonl.gz). All measured costs: [costs.json](results/pass9/costs.json). Full median/range data: [summary.json](results/pass9/summary.json).
+
+## Mesh compaction comparison
+
+After 10 seconds, Mesh saves more than 5% RSS against nomesh on 10/11 comparable workloads: leveldb, redis-drop, redis-mesh, redis-sessions, rocksdb-cache, rocksdb-churn, site-mixed-1, site-mixed-16, site-pure-1, site-pure-16. Against plain mimalloc, Mesh clears 5% on these real-program workloads: leveldb, redis-drop, redis-mesh, rocksdb-cache. These are descriptive five-run comparisons, not new model-admission gates. Normal and 10-second idle RSS medians are identical in all 77 allocator/workload comparisons.
+
+![Idle RSS and ratios against each allocator's own baseline](results/pass9/compaction-comparison.png)
+[Vector figure](results/pass9/compaction-comparison.svg)
+
+11/11 workload blocks processed, with 0 allocator/workload failures. Five interleaved repetitions per reported successful variant. Normal idle and 10-second idle are sampled in the same process; longer idle in the first cycle can affect the next cycle. Wall time includes all common settle periods.
+
+| Workload | Variant | Idle MiB | 10 s idle MiB | Peak MiB | Wall s | CPU s | Idle / mi | Idle / twin | 10 s / twin |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| leveldb | mi | 87.59 | 87.59 | 198.84 | 11.373 | 1.464 | 1.000 | — | — |
+| leveldb | jev-keyonly | 87.72 | 87.72 | 199.15 | 11.375 | 1.510 | 1.001 | 1.000 | 1.000 |
+| leveldb | jev-table:oracle-site | 87.92 | 87.92 | 199.45 | 11.369 | 1.483 | 1.004 | 1.002 | 1.002 |
+| leveldb | mesh | 78.43 | 78.43 | 236.90 | 11.444 | 1.454 | 0.895 | 0.442 | 0.442 |
+| leveldb | nomesh | 177.30 | 177.30 | 237.11 | 11.431 | 1.401 | 2.024 | 1.000 | 1.000 |
+| redis-drop | mi | 269.41 | 269.41 | 275.82 | 11.916 | 0.336 | 1.000 | — | — |
+| redis-drop | jev-keyonly | 285.60 | 285.60 | 291.98 | 12.006 | 0.536 | 1.060 | 1.000 | 1.000 |
+| redis-drop | jev-table:oracle-site | 270.20 | 270.20 | 278.00 | 11.947 | 0.408 | 1.003 | 0.946 | 0.946 |
+| redis-drop | jev-table:oracle-context | 284.31 | 284.31 | 293.91 | 12.012 | 0.528 | 1.055 | 0.995 | 0.995 |
+| redis-drop | jev-table:search | 286.48 | 286.48 | 293.91 | 12.007 | 0.532 | 1.063 | 1.003 | 1.003 |
+| redis-drop | mesh | 92.40 | 92.40 | 330.32 | 12.069 | 0.886 | 0.343 | 0.279 | 0.279 |
+| redis-drop | nomesh | 331.20 | 331.20 | 330.50 | 11.972 | 0.530 | 1.229 | 1.000 | 1.000 |
+| redis-mesh | mi | 185.98 | 185.98 | 185.92 | 22.825 | 1.354 | 1.000 | — | — |
+| redis-mesh | jev-keyonly | 186.05 | 186.05 | 185.82 | 23.279 | 1.779 | 1.000 | 1.000 | 1.000 |
+| redis-mesh | jev-table:oracle-site | 188.01 | 188.01 | 187.95 | 23.134 | 1.660 | 1.011 | 1.010 | 1.010 |
+| redis-mesh | jev-table:oracle-context | 196.07 | 196.07 | 196.00 | 23.129 | 1.655 | 1.054 | 1.054 | 1.054 |
+| redis-mesh | jev-table:search | 186.09 | 186.09 | 185.98 | 23.160 | 1.702 | 1.001 | 1.000 | 1.000 |
+| redis-mesh | mesh | 144.56 | 144.56 | 188.70 | 23.485 | 2.134 | 0.777 | 0.729 | 0.729 |
+| redis-mesh | nomesh | 198.40 | 198.40 | 198.00 | 23.237 | 1.803 | 1.067 | 1.000 | 1.000 |
+| redis-sessions | mi | 48.03 | 48.03 | 201.72 | 13.211 | 0.363 | 1.000 | — | — |
+| redis-sessions | jev-keyonly | 48.21 | 48.21 | 201.96 | 13.198 | 0.425 | 1.004 | 1.000 | 1.000 |
+| redis-sessions | jev-table:oracle-site | 50.02 | 50.02 | 203.75 | 13.266 | 0.420 | 1.041 | 1.038 | 1.038 |
+| redis-sessions | jev-table:oracle-context | 50.02 | 50.02 | 203.99 | 13.266 | 0.422 | 1.041 | 1.037 | 1.037 |
+| redis-sessions | jev-table:search | 48.20 | 48.20 | 201.95 | 13.264 | 0.421 | 1.004 | 1.000 | 1.000 |
+| redis-sessions | mesh | 68.25 | 68.25 | 269.11 | 13.480 | 0.754 | 1.421 | 0.259 | 0.259 |
+| redis-sessions | nomesh | 264.00 | 264.00 | 270.29 | 13.289 | 0.512 | 5.496 | 1.000 | 1.000 |
+| rocksdb-cache | mi | 125.15 | 125.15 | 140.79 | 15.244 | 63.573 | 1.000 | — | — |
+| rocksdb-cache | jev-keyonly | 128.47 | 128.47 | 132.09 | 15.052 | 63.450 | 1.027 | 1.000 | 1.000 |
+| rocksdb-cache | jev-table:oracle-site | 114.58 | 114.58 | 129.35 | 15.209 | 63.482 | 0.916 | 0.892 | 0.892 |
+| rocksdb-cache | mesh | 106.54 | 106.54 | 119.70 | 15.127 | 62.509 | 0.851 | 0.826 | 0.826 |
+| rocksdb-cache | nomesh | 129.02 | 129.02 | 128.00 | 14.914 | 61.904 | 1.031 | 1.000 | 1.000 |
+| rocksdb-churn | mi | 24.96 | 24.96 | 102.75 | 95.308 | 271.123 | 1.000 | — | — |
+| rocksdb-churn | jev-keyonly | 25.22 | 25.22 | 100.05 | 92.909 | 259.962 | 1.010 | 1.000 | 1.000 |
+| rocksdb-churn | jev-table:oracle-site | 26.25 | 26.25 | 105.30 | 93.031 | 271.983 | 1.052 | 1.041 | 1.041 |
+| rocksdb-churn | mesh | 37.67 | 37.67 | 71.21 | 92.487 | 249.609 | 1.509 | 0.550 | 0.550 |
+| rocksdb-churn | nomesh | 68.52 | 68.52 | 84.49 | 91.235 | 245.783 | 2.745 | 1.000 | 1.000 |
+| site-mixed-1 | mi | 144.70 | 144.70 | 145.81 | 20.651 | 0.150 | 1.000 | — | — |
+| site-mixed-1 | jev-keyonly | 144.80 | 144.80 | 145.90 | 20.725 | 0.224 | 1.001 | 1.000 | 1.000 |
+| site-mixed-1 | jev-table:oracle-site | 145.00 | 145.00 | 145.95 | 20.715 | 0.213 | 1.002 | 1.001 | 1.001 |
+| site-mixed-1 | jev-table:oracle-context | 26.05 | 26.05 | 111.95 | 20.728 | 0.225 | 0.180 | 0.180 | 0.180 |
+| site-mixed-1 | jev-live:static-site | 146.46 | 146.46 | 146.61 | 20.743 | 0.234 | 1.012 | 1.011 | 1.011 |
+| site-mixed-1 | jev-live:static-model | 28.12 | 28.12 | 114.63 | 20.768 | 0.261 | 0.194 | 0.194 | 0.194 |
+| site-mixed-1 | jev-live:hybrid | 28.12 | 28.12 | 114.61 | 20.760 | 0.253 | 0.194 | 0.194 | 0.194 |
+| site-mixed-1 | jev-live:heuristic | 146.87 | 146.87 | 146.61 | 20.683 | 0.168 | 1.015 | 1.014 | 1.014 |
+| site-mixed-1 | mesh | 139.98 | 139.98 | 142.00 | 20.836 | 0.330 | 0.967 | 0.822 | 0.822 |
+| site-mixed-1 | nomesh | 170.27 | 170.27 | 170.00 | 20.687 | 0.185 | 1.177 | 1.000 | 1.000 |
+| site-mixed-16 | mi | 146.42 | 146.42 | 148.95 | 20.550 | 0.446 | 1.000 | — | — |
+| site-mixed-16 | jev-keyonly | 146.82 | 146.82 | 151.41 | 20.559 | 0.580 | 1.003 | 1.000 | 1.000 |
+| site-mixed-16 | jev-table:oracle-site | 149.71 | 149.71 | 152.07 | 20.558 | 0.538 | 1.022 | 1.020 | 1.020 |
+| site-mixed-16 | jev-table:oracle-context | 33.52 | 33.52 | 117.38 | 20.550 | 0.565 | 0.229 | 0.228 | 0.228 |
+| site-mixed-16 | jev-live:static-site | 154.62 | 154.62 | 153.83 | 20.565 | 0.571 | 1.056 | 1.053 | 1.053 |
+| site-mixed-16 | jev-live:static-model | 46.73 | 46.73 | 127.14 | 20.559 | 0.591 | 0.319 | 0.318 | 0.318 |
+| site-mixed-16 | jev-live:hybrid | 47.33 | 47.33 | 127.14 | 20.561 | 0.623 | 0.323 | 0.322 | 0.322 |
+| site-mixed-16 | jev-live:heuristic | 165.64 | 165.64 | 169.20 | 20.555 | 0.446 | 1.131 | 1.128 | 1.128 |
+| site-mixed-16 | mesh | 149.88 | 149.88 | 147.68 | 20.695 | 0.461 | 1.024 | 0.868 | 0.868 |
+| site-mixed-16 | nomesh | 172.70 | 172.70 | 171.62 | 20.607 | 0.360 | 1.179 | 1.000 | 1.000 |
+| site-pure-1 | mi | 280.22 | 280.22 | 280.02 | 20.589 | 0.087 | 1.000 | — | — |
+| site-pure-1 | jev-keyonly | 280.31 | 280.31 | 280.25 | 20.629 | 0.128 | 1.000 | 1.000 | 1.000 |
+| site-pure-1 | jev-table:oracle-site | 41.37 | 41.37 | 213.94 | 20.730 | 0.229 | 0.148 | 0.148 | 0.148 |
+| site-pure-1 | jev-live:static-model | 43.56 | 43.56 | 216.59 | 20.759 | 0.252 | 0.155 | 0.155 | 0.155 |
+| site-pure-1 | jev-live:hybrid | 43.57 | 43.57 | 216.67 | 20.765 | 0.261 | 0.155 | 0.155 | 0.155 |
+| site-pure-1 | jev-live:heuristic | 228.50 | 228.50 | 286.65 | 20.674 | 0.164 | 0.815 | 0.815 | 0.815 |
+| site-pure-1 | mesh | 270.62 | 270.62 | 270.14 | 21.036 | 0.530 | 0.966 | 0.823 | 0.823 |
+| site-pure-1 | nomesh | 328.86 | 328.86 | 328.50 | 20.759 | 0.258 | 1.174 | 1.000 | 1.000 |
+| site-pure-16 | mi | 296.55 | 296.55 | 298.33 | 20.543 | 0.462 | 1.000 | — | — |
+| site-pure-16 | jev-keyonly | 295.95 | 295.95 | 298.73 | 20.548 | 0.517 | 0.998 | 1.000 | 1.000 |
+| site-pure-16 | jev-table:oracle-site | 51.83 | 51.83 | 221.76 | 20.556 | 0.636 | 0.175 | 0.175 | 0.175 |
+| site-pure-16 | jev-live:static-model | 64.86 | 64.86 | 232.77 | 20.562 | 0.671 | 0.219 | 0.219 | 0.219 |
+| site-pure-16 | jev-live:hybrid | 63.38 | 63.38 | 232.03 | 20.567 | 0.693 | 0.214 | 0.214 | 0.214 |
+| site-pure-16 | jev-live:heuristic | 255.43 | 255.43 | 298.70 | 20.562 | 0.530 | 0.861 | 0.863 | 0.863 |
+| site-pure-16 | mesh | 290.95 | 290.95 | 288.62 | 20.837 | 0.710 | 0.981 | 0.878 | 0.878 |
+| site-pure-16 | nomesh | 331.42 | 331.42 | 330.12 | 20.675 | 0.511 | 1.118 | 1.000 | 1.000 |
+| sqlite | mi | 78.94 | 78.94 | 205.80 | 10.147 | 0.146 | 1.000 | — | — |
+| sqlite | jev-keyonly | 79.01 | 79.01 | 205.79 | 10.154 | 0.154 | 1.001 | 1.000 | 1.000 |
+| sqlite | jev-table:oracle-site | 82.10 | 82.10 | 209.01 | 10.134 | 0.133 | 1.040 | 1.039 | 1.039 |
+| sqlite | mesh | 317.53 | 317.53 | 317.12 | 10.439 | 0.439 | 4.023 | 1.000 | 1.000 |
+| sqlite | nomesh | 317.52 | 317.52 | 317.25 | 10.295 | 0.294 | 4.022 | 1.000 | 1.000 |
+
+Twin is nomesh for both Mesh variants, jev-keyonly for placement policies. Each allocator has its own baseline; a Mesh/mi difference alone does not isolate compaction. CPU is workload-process user plus system time, excluding the sidecar. Full ranges and all costs are in [compaction-summary.json](results/pass9/compaction-summary.json).
+
+The later RocksDB-cache per-site oracle median is 8.4% below mimalloc, with run ranges 111.11–128.12 MiB (oracle) and 123.33–137.04 MiB (mimalloc). The intervals overlap. This uses a new trace and the longer-settle workload; the earlier independent headroom gate is retained separately, and no additional database context/model experiment was added.
+
+Mesh source revision: `2987f883b8695c07a80dc40da67c61f524460dfd` (the recipe follows master). Default randomization is unchanged; the twin differs by `DISABLE_MESHING=ON`. Dependency archives retain the exact pinned revisions. Build logs, hashes and the CMake dependency-fetch adaptation are in [builds](results/pass9/builds).
+This revision checks a 100 ms meshing interval on eligible frees; it does not run a background compaction thread during a completely quiet idle. Waiting longer alone therefore need not trigger another mesh pass.
+These are process RSS measurements, as requested. RSS counts resident mappings; PSS apportions shared pages across mappings ([Linux kernel documentation](https://www.kernel.org/doc/html/latest/filesystems/proc.html)). Because Mesh preserves virtual addresses by aliasing physical pages, RSS alone can understate its physical-memory benefit. This experiment does not measure PSS and does not equate unchanged RSS with zero physical compaction.
+
+Upstream unit checks pass in both configurations (meshing-specific tests are skipped by nomesh). The measured library hashes were verified unchanged before and after the checks. Logs: [Mesh](results/pass9/builds/mesh-unit.log), [nomesh](results/pass9/builds/nomesh-unit.log).
+
+## Earlier passes (history)
+
+# Pass 8 — model priors, runtime evidence, and real programs
+
+**Status: 2/2 site-pure blocks; 7/7 real-program workload blocks; 22/22 regression workloads complete and audited.**
+
+The question is whether a code-only Clef-Flash lifetime prior can separate heap allocations well enough to reduce memory after load drops, and whether observed frees can safely correct it. Hybrid asks the model once per admitted site, then applies fixed runtime rules. Pass 7’s repeatedly queried policy remains available as `model-reask`; it was not rerun.
+
+site-pure-1: hybrid 43.57 MiB, static-model 43.56 MiB, heuristic 228.55 MiB; hybrid captures 99.1% of the best table’s saving.
+site-pure-16: hybrid 63.27 MiB, static-model 63.55 MiB, heuristic 260.22 MiB; hybrid captures 95.2% of the best table’s saving.
+
+**No per-site headroom on 7/7 completed real-program workloads** under the specified oracle and greedy search: leveldb, redis-drop, redis-mesh, redis-sessions, rocksdb-cache, rocksdb-churn, sqlite. Neither table saved more than 5%, so these workloads received no model decisions.
+
+“No per-site headroom” means neither tested table cleared 5%; it is not a proof over all possible labellings. Search training uses three runs per flip and a strict >2% improvement. In the cache-heavy RocksDB case, training gains failed independent validation amid substantial run variability. Headline measurements are five separate interleaved runs. The oracle is a lifetime-majority table, not an RSS optimum.
+
+Wrong permanent priors occur in 12/22 regression workloads. Hybrid demotes many, but RSS effects are mixed and allocator overhead remains severe: sh6benchN costs 35.3× mimalloc, versus 13.1× for static-model. The acceptance targets do not all pass. This is a fix for the site-pure classification regression, with no demonstrated benefit on the seven real-program fragmentation cases.
+
+## Idle RSS
+
+| Workload | mi MiB | Oracle MiB | Search MiB | Best table saving | Static MiB / capture | Hybrid MiB / capture | Heuristic MiB / capture |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| site-pure-1 | 280.22 | 41.32 | — | 85.3% | 43.56 / 99.1% | 43.57 / 99.1% | 228.55 / 21.6% |
+| site-pure-16 | 296.55 | 51.45 | — | 82.6% | 63.55 / 95.1% | 63.27 / 95.2% | 260.22 / 14.8% |
+| leveldb | 87.61 | 87.93 | 87.80 | -0.2% | — | — | — |
+| redis-drop | 270.71 | 271.04 | 271.00 | -0.1% | — | — | — |
+| redis-mesh | 185.85 | 185.96 | 186.06 | -0.1% | — | — | — |
+| redis-sessions | 48.04 | 49.96 | 48.19 | -0.3% | — | — | — |
+| rocksdb-cache | 121.97 | 132.64 | 126.64 | -3.8% | — | — | — |
+| rocksdb-churn | 24.88 | 25.93 | 25.11 | -1.0% | — | — | — |
+| sqlite | 78.95 | 82.07 | 79.01 | -0.1% | — | — | — |
+
+### Model decisions on real stacks
+
+No real-program table passed the headroom gate, so the requested rule prevented model evaluation on these stacks.
+
+### Wrong permanent priors
+
+For example, hybrid lowers glibc-thread peak RSS from 95.30 to 69.16 MiB, but its inverse-throughput score rises from 3.26× to 6.69× mimalloc. That duration-limited comparison also changes completed work. Rptest peak RSS increases from 159.88 to 193.83 MiB. The lower mleak100 median has overlapping five-run ranges. These results do not establish a general RSS benefit from correcting priors.
+
+Counts below compare first-sight static-model answers to the prior trace lifetime oracle. They identify candidate corrections; measured RSS determines whether hybrid helped. Regression RSS is peak rather than idle.
+
+| Workload | Asked sites | Wrong permanent | Wrong sites demoted in hybrid (median) | Hybrid/static peak RSS |
+|---|---:|---:|---:|---:|
+| cfrac | 66 | 64 | 64 | 1.001 |
+| espresso | 500 | 374 | 315 | 1.004 |
+| barnes | 0 | 0 | 0 | 0.999 |
+| larson | 4 | 2 | 2 | 1.207 |
+| larson-sized | 4 | 0 | 0 | 1.001 |
+| xmalloc-test | 2 | 0 | 0 | 0.997 |
+| cache-scratch1 | 0 | 0 | 0 | 0.979 |
+| cache-scratchN | 0 | 0 | 0 | 1.001 |
+| cache-thrash1 | 0 | 0 | 0 | 1.000 |
+| cache-thrashN | 0 | 0 | 0 | 0.979 |
+| mstress | 20 | 1 | 0 | 0.984 |
+| rptest | 7 | 7 | 6 | 1.212 |
+| glibc-simple | 31 | 31 | 31 | 1.037 |
+| glibc-thread | 1 | 1 | 1 | 0.726 |
+| alloc-test1 | 2 | 0 | 0 | 1.008 |
+| alloc-testN | 3 | 0 | 0 | 1.007 |
+| malloc-large | 1 | 1 | 1 | 1.000 |
+| mleak10 | 2 | 2 | 1 | 1.322 |
+| mleak100 | 3 | 2 | 1 | 0.773 |
+| sh6benchN | 1 | 1 | 1 | 0.933 |
+| sh8benchN | 2 | 2 | 2 | 1.269 |
+| redis | 7 | 0 | 0 | 1.000 |
+
+Demotion counts include only sites with the same wrong permanent prior in hybrid, and may include shutdown. They do not establish that a correction happened before peak RSS. Exact wrong-prior probabilities, stacks and per-run hybrid counters are in [wrong-priors.json](results/pass8/wrong-priors.json).
+
+Capture = (mi − policy)/(mi − best table), undefined without positive savings. Fragmentation RSS uses the final idle point; site-pure has two cycles. Model timings replay first-sight answers, while hybrid runtime rules execute afresh during each run. No inference is included in warm headline timing. Target-process CPU excludes the model server and, for Redis, the separate client driver; wall time includes the common settle period.
+
+## Time and model coverage
+
+| Workload | Policy | Wall/mi | CPU/mi | Cold wall s | Cold+fill HTTP s | Asked sites | Byte coverage | Runtime demotions |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| site-pure-1 | static-model | 1.145 | 2.776 | 1.43 | 0.00 | 5 | 100.00% | 0 |
+| site-pure-1 | hybrid | 1.155 | 2.907 | 1.43 | 0.00 | 5 | 100.00% | 0 |
+| site-pure-1 | heuristic | 1.073 | 1.817 | 1.17 | 0.00 | n/a | n/a | 0 |
+| site-pure-16 | static-model | 1.021 | 1.468 | 1.25 | 0.00 | 5 | 100.00% | 0 |
+| site-pure-16 | hybrid | 1.022 | 1.488 | 1.24 | 0.00 | 5 | 100.00% | 0 |
+| site-pure-16 | heuristic | 1.019 | 1.197 | 1.06 | 0.00 | n/a | n/a | 0 |
+
+Runtime demotions above include process shutdown and therefore do not by themselves establish a useful wrong-prior correction. Per-site model probabilities and the exact stack state seen are recorded in [site-decisions.json](results/pass8/site-decisions.json). Search candidates and accepted moves, by function stack, are in [search.md](results/pass8/search.md). Full ranges, program memory, peak RSS and costs are in [details.md](results/pass8/details.md).
+
+## Runtime rule and method
+
+[Final evidence validation](results/pass8/validation.json) recomputes all search decisions and gates and verifies the measured library fingerprints. All 525 retained greedy-search trials also pass the [independent inference audit](results/pass8/search-intervals.inference-audit.json).
+
+Measured allocator SHA-256: `e6ffcfc52823ef422a8565967bccf7986d86ac6e0de6057f13bc5b40681fa48e`. Full Linux correctness passed for 22 workloads, with separate hybrid integration, stack, fragmentation and final-idle metric tests. Published warm matrices have matching independent audit hashes and zero inference overlap.
+
+First sight is exactly stack-v1/static-model, including a neutral program description and up to 12 function/file/line frames, without source. Admission is 64 KiB of successful requested bytes, budget 1,500. Unknown sites remain transient. Both prior probabilities are logged. All pass-8 model answers reused the shared exact-payload cache, so native HTTP inference time was zero, including coverage fills. This pass does not measure fresh-model inference latency. Cache hits still consume budget. Cold wall time includes stack symbolization and sidecar work, while HTTP inference time is reported separately. A one-shot allocation can still escape next-allocation admission. Byte coverage counts all requested bytes at answered sites, including allocations before the answer; it is not the fraction allocated under a model label. Published live counters and the allocation clock are batched and approximate.
+
+Hybrid demotes when at least 16 samples exist and at least 5% of all sampled requested bytes have been freed. Promotion requires no sampled object ever freed, P(transient)<0.7, oldest live reservoir sample older than half the allocation clock, and clock >=64 MiB. Exact cumulative sampled free totals survive reservoir replacement and thread retirement; ages use a 128-entry reservoir and the batched allocation clock. Checks occur on sampled allocations/frees and first-prior arrival. A class change affects future allocations, not existing objects. Unit tests cover threshold boundaries; allocator integration tests cover sample rates 1 and 64, confident transient retention, ambiguous promotion, and wrong-prior demotion without reasking.
+
+The first Redis Mesh search mistakenly averaged its two idle phases. Its entire search and final gate were rerun using final idle; the superseded pilot is archived under results/pass8/redis-mesh-average-idle/ and excluded here. The other six real workloads have one idle phase and are unaffected.
+
+All fragbench variants set MIMALLOC_PURGE_DELAY=0, MIMALLOC_ARENA_PURGE_MULT=1, MIMALLOC_PURGE_DECOMMITS=1; real-program settle time is 500 ms. SQLite reports sqlite3_memory_used. Redis reports used_memory, including metadata/usable sizes. RocksDB sums its memtable, table-reader and block-cache properties, and LevelDB reports approximate-memory-usage; these two are partial estimates, so RSS/live is not an exact fragmentation factor. Sources and build recipes are pinned in scripts/build-real.sh, with source/binary hashes in results/pass8/builds/. No system packages are installed.
+
+## Regression
+
+22/22 workloads complete and independently audited. Peak RSS here is a regression metric, not idle fragmentation. Score is inverse throughput for duration-limited workloads, otherwise elapsed time.
+
+| Workload | mi peak MiB | Static peak MiB | Hybrid peak MiB | Heuristic peak MiB | Static score/mi | Hybrid score/mi | Heuristic score/mi |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| cfrac | 4.273 | 7.449 | 7.453 | 7.445 | 1.888 | 1.988 | 1.908 |
+| espresso | 10.141 | 22.965 | 23.059 | 18.852 | 1.466 | 1.488 | 1.555 |
+| barnes | 63.340 | 65.570 | 65.512 | 65.570 | 0.998 | 1.001 | 1.001 |
+| larson | 157.902 | 182.836 | 220.727 | 218.863 | 2.087 | 3.507 | 2.097 |
+| larson-sized | 154.465 | 182.730 | 182.867 | 218.758 | 2.082 | 3.501 | 2.116 |
+| xmalloc-test | 134.453 | 93.734 | 93.469 | 99.605 | 4.831 | 10.149 | 4.791 |
+| cache-scratch1 | 6.227 | 5.973 | 5.848 | 5.848 | 0.994 | 1.013 | 1.004 |
+| cache-scratchN | 6.105 | 6.094 | 6.098 | 5.973 | 1.004 | 1.006 | 0.995 |
+| cache-thrash1 | 6.227 | 5.973 | 5.973 | 5.969 | 1.035 | 1.048 | 1.030 |
+| cache-thrashN | 6.105 | 6.094 | 5.969 | 6.020 | 1.005 | 1.004 | 1.010 |
+| mstress | 521.242 | 633.559 | 623.285 | 651.371 | 1.059 | 1.086 | 1.084 |
+| rptest | 110.629 | 159.875 | 193.832 | 133.840 | 1.037 | 1.062 | 1.034 |
+| glibc-simple | 5.902 | 6.676 | 6.926 | 6.789 | 1.980 | 2.208 | 2.019 |
+| glibc-thread | 68.371 | 95.305 | 69.160 | 69.184 | 3.261 | 6.692 | 3.377 |
+| alloc-test1 | 15.105 | 15.973 | 16.098 | 16.223 | 1.499 | 1.565 | 1.505 |
+| alloc-testN | 16.434 | 19.344 | 19.473 | 24.223 | 1.803 | 2.841 | 1.812 |
+| malloc-large | 649.863 | 640.051 | 640.055 | 639.926 | 1.000 | 1.012 | 1.010 |
+| mleak10 | 16.105 | 33.410 | 44.152 | 44.215 | 1.394 | 1.407 | 1.383 |
+| mleak100 | 24.164 | 44.223 | 34.203 | 42.227 | 1.343 | 1.343 | 1.369 |
+| sh6benchN | 250.719 | 251.234 | 234.496 | 255.477 | 13.093 | 35.287 | 13.121 |
+| sh8benchN | 210.637 | 215.863 | 273.992 | 220.008 | 9.181 | 20.217 | 9.184 |
+| redis | 13.852 | 20.758 | 20.762 | 20.184 | 1.400 | 1.482 | 1.455 |
+
+All 12 regression variants, warm wall/CPU ranges and peak RSS ranges are in [the full regression table](results/pass8/pass8-regression.md). Duration-limited peak-RSS comparisons also change the amount of work completed.
+
+### Regression model cost and coverage
+
+| Workload | Policy | Cold wall s | Cold+fill HTTP s | Asked sites | Cold byte coverage |
+|---|---|---:|---:|---:|---:|
+| cfrac | static-model | 5.50 | 0.00 | 66 | 99.96% |
+| cfrac | hybrid | 5.68 | 0.00 | 66 | 99.96% |
+| espresso | static-model | 6.38 | 0.00 | 500 | 99.80% |
+| espresso | hybrid | 6.51 | 0.00 | 500 | 99.80% |
+| barnes | static-model | 1.82 | 0.00 | 0 | 0.00% |
+| barnes | hybrid | 1.82 | 0.00 | 0 | 0.00% |
+| larson | static-model | 7.14 | 0.00 | 4 | 100.00% |
+| larson | hybrid | 7.14 | 0.00 | 4 | 100.00% |
+| larson-sized | static-model | 7.14 | 0.00 | 4 | 100.00% |
+| larson-sized | hybrid | 7.13 | 0.00 | 4 | 100.00% |
+| xmalloc-test | static-model | 5.04 | 0.00 | 2 | 100.00% |
+| xmalloc-test | hybrid | 5.04 | 0.00 | 2 | 100.00% |
+| cache-scratch1 | static-model | 2.67 | 0.00 | 0 | 0.00% |
+| cache-scratch1 | hybrid | 2.56 | 0.00 | 0 | 0.00% |
+| cache-scratchN | static-model | 0.13 | 0.00 | 0 | 0.00% |
+| cache-scratchN | hybrid | 0.13 | 0.00 | 0 | 0.00% |
+| cache-thrash1 | static-model | 2.81 | 0.00 | 0 | 0.00% |
+| cache-thrash1 | hybrid | 2.78 | 0.00 | 0 | 0.00% |
+| cache-thrashN | static-model | 0.14 | 0.00 | 0 | 0.00% |
+| cache-thrashN | hybrid | 0.13 | 0.00 | 0 | 0.00% |
+| mstress | static-model | 1.07 | 0.00 | 20 | 100.00% |
+| mstress | hybrid | 1.07 | 0.00 | 20 | 100.00% |
+| rptest | static-model | 16.02 | 0.00 | 7 | 100.00% |
+| rptest | hybrid | 16.02 | 0.00 | 7 | 100.00% |
+| glibc-simple | static-model | 3.00 | 0.00 | 31 | 100.00% |
+| glibc-simple | hybrid | 3.32 | 0.00 | 31 | 100.00% |
+| glibc-thread | static-model | 2.01 | 0.00 | 1 | 100.00% |
+| glibc-thread | hybrid | 2.01 | 0.00 | 1 | 100.00% |
+| alloc-test1 | static-model | 3.15 | 0.00 | 2 | 99.69% |
+| alloc-test1 | hybrid | 3.31 | 0.00 | 2 | 99.69% |
+| alloc-testN | static-model | 5.30 | 0.00 | 3 | 99.98% |
+| alloc-testN | hybrid | 8.23 | 0.00 | 3 | 99.98% |
+| malloc-large | static-model | 0.44 | 0.00 | 1 | 100.00% |
+| malloc-large | hybrid | 0.44 | 0.00 | 1 | 100.00% |
+| mleak10 | static-model | 0.41 | 0.00 | 2 | 97.15% |
+| mleak10 | hybrid | 0.42 | 0.00 | 2 | 97.15% |
+| mleak100 | static-model | 1.48 | 0.00 | 3 | 99.97% |
+| mleak100 | hybrid | 1.45 | 0.00 | 3 | 99.97% |
+| sh6benchN | static-model | 2.22 | 0.00 | 1 | 100.00% |
+| sh6benchN | hybrid | 5.70 | 0.00 | 1 | 100.00% |
+| sh8benchN | static-model | 4.04 | 0.00 | 2 | 99.64% |
+| sh8benchN | hybrid | 8.68 | 0.00 | 2 | 99.64% |
+| redis | static-model | 4.75 | 0.00 | 7 | 99.98% |
+| redis | hybrid | 4.68 | 0.00 | 7 | 99.98% |
+
+### Acceptance target misses
+
+These are diagnostic thresholds, not evidence of statistical significance. All misses remain visible. `none_time` is jev-none/mi score; `none_rss` is jev-none/mi peak RSS; `keyonly_rss` is jev-keyonly/jev-none peak RSS. The inherited `live_time` check is heuristic/oracle score; hybrid costs appear in the regression table above.
+
+| Workload | Check | Ratio | Target |
+|---|---|---:|---:|
+| cfrac | keyonly_rss | 1.032 | 1.03 |
+| larson | live_time | 1.244 | 1.15 |
+| larson-sized | live_time | 1.263 | 1.15 |
+| xmalloc-test | live_time | 2.123 | 1.15 |
+| cache-thrash1 | none_time | 1.034 | 1.03 |
+| cache-thrashN | keyonly_rss | 1.058 | 1.03 |
+| mleak10 | none_rss | 1.493 | 1.03 |
+| sh6benchN | live_time | 4.542 | 1.15 |
+| sh8benchN | live_time | 3.635 | 1.15 |
+
+The original pass-7 regression had already completed when pass 8 inspected the remote host. Its raw logs and aggregates were preserved under results/pass7-regression-partial/ with an explanatory archive note. No running matrix needed stopping. Pass-7 results below are historical and use the repeatedly queried `model` policy (now named `model-reask`).
+
+## Earlier passes (history)
 # Pass 7 — stack-only live classification
 
 **Status: 12/12 fragbench prompt/workload blocks; 22/22 regression workloads complete and audited.** Five interleaved warm repetitions per variant. Pass-6 results below remain the historical `v-permanent-1` measurement.

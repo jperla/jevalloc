@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "statuses": {
+    "context": "0",
+    "validation": "0",
+    "mesh-build": "0",
+    "long-settle-build": "0",
+    "compaction": "0",
+    "mesh-tests": "0"
+  },
+  "audited_intervals": 875,
+  "inference_overlaps": 0,
+  "verified_fingerprints": 279,
+  "owned_benchmark_jobs_remaining": [],
+  "original_model_server": {
+    "pid": 970221,
+    "health": "ok"
+  }
+}

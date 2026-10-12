@@ -1,0 +1,162 @@
+Running main() from /home/quill/jevalloc/src-tree/build/mesh-deps/googletest/googletest/src/gtest_main.cc
+[==========] Running 35 tests from 10 test suites.
+[----------] Global test environment set-up.
+[----------] 1 test from TripleMeshTest
+[ RUN      ] TripleMeshTest.MeshAll
+[       OK ] TripleMeshTest.MeshAll (12 ms)
+[----------] 1 test from TripleMeshTest (12 ms total)
+
+[----------] 5 tests from SizeClass
+[ RUN      ] SizeClass.MinObjectSize
+[       OK ] SizeClass.MinObjectSize (0 ms)
+[ RUN      ] SizeClass.SmallClasses
+[       OK ] SizeClass.SmallClasses (0 ms)
+[ RUN      ] SizeClass.PowerOfTwo
+[       OK ] SizeClass.PowerOfTwo (0 ms)
+[ RUN      ] SizeClass.Reciprocal
+[       OK ] SizeClass.Reciprocal (0 ms)
+[ RUN      ] SizeClass.ReciprocalTable
+[       OK ] SizeClass.ReciprocalTable (0 ms)
+[----------] 5 tests from SizeClass (0 ms total)
+
+[----------] 4 tests from ThreadExitTest
+[ RUN      ] ThreadExitTest.ConcurrentExit
+[       OK ] ThreadExitTest.ConcurrentExit (171 ms)
+[ RUN      ] ThreadExitTest.RapidChurn
+[       OK ] ThreadExitTest.RapidChurn (39 ms)
+[ RUN      ] ThreadExitTest.VariableThreadCount
+[       OK ] ThreadExitTest.VariableThreadCount (70 ms)
+[ RUN      ] ThreadExitTest.StressTest
+[       OK ] ThreadExitTest.StressTest (3001 ms)
+[----------] 4 tests from ThreadExitTest (3283 ms total)
+
+[----------] 1 test from RNG
+[ RUN      ] RNG.MWCRange
+[       OK ] RNG.MWCRange (0 ms)
+[----------] 1 test from RNG (0 ms total)
+
+[----------] 3 tests from PendingListTest
+[ RUN      ] PendingListTest.CycleDetection
+[       OK ] PendingListTest.CycleDetection (1 ms)
+[ RUN      ] PendingListTest.DrainIntegrity
+[       OK ] PendingListTest.DrainIntegrity (0 ms)
+[ RUN      ] PendingListTest.StressTest
+[       OK ] PendingListTest.StressTest (2000 ms)
+[----------] 3 tests from PendingListTest (2002 ms total)
+
+[----------] 2 tests from MeshTest
+[ RUN      ] MeshTest.TryMesh
+[       OK ] MeshTest.TryMesh (0 ms)
+[ RUN      ] MeshTest.TryMeshInverse
+[       OK ] MeshTest.TryMeshInverse (0 ms)
+[----------] 2 tests from MeshTest (0 ms total)
+
+[----------] 3 tests from MeshMemory
+[ RUN      ] MeshMemory.PrecisePageDeallocation
+[MemoryStats] DEBUG: Successfully read 1552 bytes from /proc/self/status
+[MemoryStats] DEBUG: Found VmRSS line, value=4556 KB
+[MemoryStats] DEBUG: Found RssAnon line, value=1088 KB
+[MemoryStats] DEBUG: Found RssFile line, value=3468 KB
+[MemoryStats] DEBUG: Found RssShmem line, value=0 KB
+[MemoryStats] DEBUG: Successfully parsed - RSS=4665344 bytes, mesh_memory=0 bytes, RssAnon=1088 KB, RssFile=3468 KB
+
+=== Testing Precise Page Deallocation ===
+Page size: 4096 bytes
+Platform: Linux
+Baseline RSS: 4665344 bytes, Mesh memory: 0 bytes
+
+=== Phase 1: Allocating 2 miniheaps with complementary allocation patterns ===
+
+After allocation: Mesh memory resident 8192 bytes (expected 8192 bytes for 2 pages)
+
+=== Phase 2: Verifying miniheaps are meshable ===
+
+=== Phase 3: Meshing miniheaps (should free exactly 4096 bytes) ===
+
+After meshing: Mesh memory resident 4096 bytes (expected 4096 bytes)
+
+=== Phase 4: Cleanup ===
+
+Final mesh memory overhead: 0 bytes
+[       OK ] MeshMemory.PrecisePageDeallocation (7 ms)
+[ RUN      ] MeshMemory.VerifyMemoryReductionAfterFree
+[MemoryStats] DEBUG: Successfully read 1552 bytes from /proc/self/status
+[MemoryStats] DEBUG: Found VmRSS line, value=4624 KB
+[MemoryStats] DEBUG: Found RssAnon line, value=1092 KB
+[MemoryStats] DEBUG: Found RssFile line, value=3532 KB
+[MemoryStats] DEBUG: Found RssShmem line, value=0 KB
+[MemoryStats] DEBUG: Successfully parsed - RSS=4734976 bytes, mesh_memory=0 bytes, RssAnon=1092 KB, RssFile=3532 KB
+[MemoryStats] DEBUG: Successfully read 1552 bytes from /proc/self/status
+[MemoryStats] DEBUG: Found VmRSS line, value=5648 KB
+[MemoryStats] DEBUG: Found RssAnon line, value=1092 KB
+[MemoryStats] DEBUG: Found RssFile line, value=3532 KB
+[MemoryStats] DEBUG: Found RssShmem line, value=1024 KB
+[MemoryStats] DEBUG: Successfully parsed - RSS=5783552 bytes, mesh_memory=1048576 bytes, RssAnon=1092 KB, RssFile=3532 KB
+[MemoryStats] DEBUG: Successfully read 1552 bytes from /proc/self/status
+[MemoryStats] DEBUG: Found VmRSS line, value=4624 KB
+[MemoryStats] DEBUG: Found RssAnon line, value=1092 KB
+[MemoryStats] DEBUG: Found RssFile line, value=3532 KB
+[MemoryStats] DEBUG: Found RssShmem line, value=0 KB
+[MemoryStats] DEBUG: Successfully parsed - RSS=4734976 bytes, mesh_memory=0 bytes, RssAnon=1092 KB, RssFile=3532 KB
+
+=== Testing Memory Release After Free ===
+Mesh memory after allocation: 1024 KB
+Mesh memory after free+scavenge: 0 KB
+[       OK ] MeshMemory.VerifyMemoryReductionAfterFree (0 ms)
+[ RUN      ] MeshMemory.BasicMemoryStats
+[MemoryStats] DEBUG: Successfully read 1552 bytes from /proc/self/status
+[MemoryStats] DEBUG: Found VmRSS line, value=4624 KB
+[MemoryStats] DEBUG: Found RssAnon line, value=1092 KB
+[MemoryStats] DEBUG: Found RssFile line, value=3532 KB
+[MemoryStats] DEBUG: Found RssShmem line, value=0 KB
+[MemoryStats] DEBUG: Successfully parsed - RSS=4734976 bytes, mesh_memory=0 bytes, RssAnon=1092 KB, RssFile=3532 KB
+
+=== Basic Memory Statistics ===
+Resident Size (RSS): 4.52 MB
+[       OK ] MeshMemory.BasicMemoryStats (0 ms)
+[----------] 3 tests from MeshMemory (8 ms total)
+
+[----------] 2 tests from ConcurrentMeshTest
+[ RUN      ] ConcurrentMeshTest.TryMesh
+[       OK ] ConcurrentMeshTest.TryMesh (1 ms)
+[ RUN      ] ConcurrentMeshTest.TryMeshInverse
+[       OK ] ConcurrentMeshTest.TryMeshInverse (1 ms)
+[----------] 2 tests from ConcurrentMeshTest (2 ms total)
+
+[----------] 11 tests from BitmapTest
+[ RUN      ] BitmapTest.RepresentationSize
+[       OK ] BitmapTest.RepresentationSize (0 ms)
+[ RUN      ] BitmapTest.LowestSetBitAt
+[       OK ] BitmapTest.LowestSetBitAt (0 ms)
+[ RUN      ] BitmapTest.HighestSetBitAt
+[       OK ] BitmapTest.HighestSetBitAt (0 ms)
+[ RUN      ] BitmapTest.SetAndExchangeAll
+[       OK ] BitmapTest.SetAndExchangeAll (0 ms)
+[ RUN      ] BitmapTest.SetAll
+[       OK ] BitmapTest.SetAll (0 ms)
+[ RUN      ] BitmapTest.SetGet
+[       OK ] BitmapTest.SetGet (6 ms)
+[ RUN      ] BitmapTest.SetGetRelaxed
+[       OK ] BitmapTest.SetGetRelaxed (109 ms)
+[ RUN      ] BitmapTest.Builtins
+[       OK ] BitmapTest.Builtins (0 ms)
+[ RUN      ] BitmapTest.Iter
+[       OK ] BitmapTest.Iter (0 ms)
+[ RUN      ] BitmapTest.Iter2
+[       OK ] BitmapTest.Iter2 (0 ms)
+[ RUN      ] BitmapTest.SetHalf
+[       OK ] BitmapTest.SetHalf (0 ms)
+[----------] 11 tests from BitmapTest (116 ms total)
+
+[----------] 3 tests from Alignment
+[ RUN      ] Alignment.NaturalAlignment
+[       OK ] Alignment.NaturalAlignment (89 ms)
+[ RUN      ] Alignment.NonOverlapping
+[       OK ] Alignment.NonOverlapping (0 ms)
+[ RUN      ] Alignment.PageShiftInitialization
+[       OK ] Alignment.PageShiftInitialization (0 ms)
+[----------] 3 tests from Alignment (89 ms total)
+
+[----------] Global test environment tear-down
+[==========] 35 tests from 10 test suites ran. (5516 ms total)
+[  PASSED  ] 35 tests.

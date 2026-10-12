@@ -1,5 +1,5 @@
 """Validate source attribution, TTL mixture, trace accounting and phase live bytes."""
-import json,subprocess,sys
+import json,os,subprocess,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT/'bench'),str(ROOT/'tools'),str(ROOT/'tests')]
 from run import run_one
@@ -10,7 +10,7 @@ names={'parse_request_buffer','assemble_response_buffer','create_session_state',
 text=subprocess.check_output(['nm','-n',str(ROOT/'build/server-sim')],text=True)
 addresses={line.split()[-1]:line.split()[0] for line in text.splitlines() if line.split() and line.split()[-1] in names}
 assert set(addresses)==names and len(set(addresses.values()))==4,addresses
-out=ROOT/'results/pass6/frag-validation';out.mkdir(parents=True,exist_ok=True)
+out=Path(os.environ.get('JEVALLOC_TEST_REPORT_DIR',ROOT/'results/pass6'))/'frag-validation';out.mkdir(parents=True,exist_ok=True)
 report={'wrapper_addresses':addresses,'workloads':[]}
 for tier in ('site-pure','site-mixed'):
  for threads in (1,16):
@@ -31,10 +31,12 @@ for tier in ('site-pure','site-mixed'):
      assert oracle(s)==expected,(name,functions,s['class_bytes'])
   else:
    payload=[s for s in ss if any(f['function']=='store_request_payload' for f in s['frames'])]
-   assert len(payload)==1,(name,'TTL choices must share one site',len(payload))
-   for s in payload:
-    share=s['fixed_s_class_bytes'][0]/s['bytes']
-    assert .4<share<.6,(name,share)
-    assert .03<s['never_freed_bytes']/s['bytes']<.07,s
+   assert len(payload)==3 and len({s['site_key'] for s in payload})==1,(name,'TTL choices must share one site and three contexts',len(payload))
+   assert {s['context'] for s in payload}=={'kind=store ttl=0','kind=store ttl=short','kind=store ttl=day'}
+   total=sum(s['bytes'] for s in payload)
+   share=sum(s['fixed_s_class_bytes'][0] for s in payload)/total
+   assert .4<share<.6,(name,share)
+   assert .03<sum(s['never_freed_bytes'] for s in payload)/total<.07
+   for s in payload:assert oracle(s)==int(s['context'].endswith('day')),(name,s)
   report['workloads'].append(dict(name=name,sites=len(ss),class_bytes=[sum(s['class_bytes'][i] for s in ss) for i in range(2)],oracle_correct_byte_share=sum(max(s['class_bytes']) for s in ss)/sum(s['bytes'] for s in ss)))
 (out/'checks.json').write_text(json.dumps(report,indent=2));print('FRAGBENCH CORRECTNESS PASSED')

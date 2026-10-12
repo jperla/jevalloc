@@ -1,0 +1,68 @@
+CMake Warning (deprecated) at CMakeLists.txt:73 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for C++ include unistd.h
+-- Looking for C++ include unistd.h - found
+-- Looking for C++ include stdint.h
+-- Looking for C++ include stdint.h - found
+-- Looking for C++ include inttypes.h
+-- Looking for C++ include inttypes.h - found
+-- Looking for C++ include sys/types.h
+-- Looking for C++ include sys/types.h - found
+-- Looking for C++ include sys/stat.h
+-- Looking for C++ include sys/stat.h - found
+-- Looking for C++ include fnmatch.h
+-- Looking for C++ include fnmatch.h - found
+-- Looking for C++ include stddef.h
+-- Looking for C++ include stddef.h - found
+-- Check size of uint32_t
+-- Check size of uint32_t - done
+-- Looking for strtoll
+-- Looking for strtoll - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Check size of pthread_rwlock_t
+-- Check size of pthread_rwlock_t - done
+-- Configuring done (0.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/quill/jevalloc/src-tree/build/real/gflags-build
+[ 37%] Building CXX object CMakeFiles/gflags_static.dir/src/gflags_reporting.cc.o
+[ 37%] Building CXX object CMakeFiles/gflags_nothreads_static.dir/src/gflags.cc.o
+[ 37%] Building CXX object CMakeFiles/gflags_static.dir/src/gflags.cc.o
+[ 62%] Building CXX object CMakeFiles/gflags_static.dir/src/gflags_completions.cc.o
+[ 62%] Building CXX object CMakeFiles/gflags_nothreads_static.dir/src/gflags_completions.cc.o
+[ 75%] Building CXX object CMakeFiles/gflags_nothreads_static.dir/src/gflags_reporting.cc.o
+[ 87%] Linking CXX static library lib/libgflags.a
+[100%] Linking CXX static library lib/libgflags_nothreads.a
+[100%] Built target gflags_static
+[100%] Built target gflags_nothreads_static
+-- Install configuration: ""
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/lib/libgflags.a
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/lib/libgflags_nothreads.a
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/include/gflags/gflags.h
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/include/gflags/gflags_declare.h
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/include/gflags/gflags_completions.h
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/include/gflags/gflags_gflags.h
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/lib/cmake/gflags/gflags-config.cmake
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/lib/cmake/gflags/gflags-config-version.cmake
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/lib/cmake/gflags/gflags-targets.cmake
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/lib/cmake/gflags/gflags-targets-noconfig.cmake
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/lib/cmake/gflags/gflags-nonamespace-targets.cmake
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/lib/cmake/gflags/gflags-nonamespace-targets-noconfig.cmake
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/bin/gflags_completions.sh
+-- Installing: /home/quill/jevalloc/src-tree/build/real/prefix/lib/pkgconfig/gflags.pc
+-- Installing: /home/quill/.cmake/packages/gflags/a8d27c65f409270579a95f74ee9e0747

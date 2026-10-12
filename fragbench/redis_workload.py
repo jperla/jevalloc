@@ -37,12 +37,44 @@ def main():
     def measure(phase,cycle=0):
         time.sleep(.5);m=info(client,'memory');rss=int(Path(f'/proc/{pid}/statm').read_text().split()[1])*os.sysconf('SC_PAGE_SIZE');live=int(m['used_memory'])
         print(json.dumps(dict(phase=phase,cycle=cycle,rss_bytes=rss,live_bytes=live,used_memory_rss=int(m['used_memory_rss']),fragmentation_ratio=rss/live,live_metric='Redis used_memory (includes allocator usable sizes and metadata)')),flush=True)
+        if phase=='idle' and os.environ.get('FRAG_LONG_SETTLE_MS'):
+            time.sleep(max(0,int(os.environ['FRAG_LONG_SETTLE_MS'])/1000-1))
+            measure('idle10',cycle)
     rng=random.Random(1729)
     if mode=='mesh':
         client.cmd('CONFIG','SET','maxmemory','100mb');client.cmd('CONFIG','SET','maxmemory-policy','allkeys-lru')
         for cycle,(count,size) in enumerate(((700000,240),(170000,492))):
             for begin in range(0,count,1000):client.pipeline(('SET',f'{cycle}:{rng.getrandbits(64):016x}',b'x'*size) for _ in range(min(1000,count-begin)))
             measure('idle',cycle)
+    elif mode=='sessions':
+        client.cmd('CONFIG','SET','maxmemory','0')
+        # Catalogue remains; session TTL starts after fixed-work traffic so cold
+        # model latency cannot change the amount of live data at the peak.
+        for begin in range(0,30000,500):
+            client.pipeline(('SET',f'catalogue:{i}',b'c'*1024) for i in range(begin,begin+500))
+        subscribers=[Redis(path) for _ in range(32)]
+        for sub in subscribers:sub.cmd('SUBSCRIBE','updates')
+        def traffic(worker):
+            c=Redis(path)
+            try:
+                for begin in range(worker*4000,(worker+1)*4000,128):
+                    c.pipeline(('SET',f'session:{i}',b's'*(1024+(i%4)*512)) for i in range(begin,min(begin+128,(worker+1)*4000)))
+                    c.pipeline(('GET',f'catalogue:{(i*37)%30000}') for i in range(begin,begin+128))
+                for _ in range(8):c.pipeline(('MGET',*[f'catalogue:{(worker*97+j)%30000}' for j in range(64)]) for _ in range(16))
+            finally:c.close()
+        with concurrent.futures.ThreadPoolExecutor(16) as pool:list(pool.map(traffic,range(16)))
+        for _ in range(32):client.cmd('PUBLISH','updates',b'news'*2048)
+        measure('peak')
+        # Start TTLs after the measured peak. Poll until every session expires;
+        # the same fixed key set and catalogue survive in all allocator variants.
+        for begin in range(0,64000,1000):client.pipeline(('PEXPIRE',f'session:{i}',1000) for i in range(begin,min(begin+1000,64000)))
+        for sub in subscribers:sub.close()
+        until=time.monotonic()+90
+        while int(client.cmd('DBSIZE'))>30000:
+            if time.monotonic()>until:raise RuntimeError('session expiry did not finish')
+            time.sleep(.1)
+        assert int(client.cmd('DBSIZE'))==30000, 'catalogue size changed'
+        measure('drop');measure('idle')
     else:
         client.cmd('CONFIG','SET','maxmemory','0')
         # Sixteen clients create large request buffers while the keyspace grows.

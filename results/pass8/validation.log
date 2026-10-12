@@ -1,0 +1,54 @@
+{
+  "library_sha256": "e6ffcfc52823ef422a8565967bccf7986d86ac6e0de6057f13bc5b40681fa48e",
+  "correctness_workloads": 22,
+  "real": {
+    "leveldb": {
+      "search_trials": 75,
+      "accepted_flips": 0,
+      "headroom": false,
+      "audited_warm_intervals": 15
+    },
+    "redis-drop": {
+      "search_trials": 75,
+      "accepted_flips": 0,
+      "headroom": false,
+      "audited_warm_intervals": 15
+    },
+    "redis-mesh": {
+      "search_trials": 75,
+      "accepted_flips": 0,
+      "headroom": false,
+      "audited_warm_intervals": 15
+    },
+    "redis-sessions": {
+      "search_trials": 75,
+      "accepted_flips": 0,
+      "headroom": false,
+      "audited_warm_intervals": 15
+    },
+    "rocksdb-cache": {
+      "search_trials": 75,
+      "accepted_flips": 2,
+      "headroom": false,
+      "audited_warm_intervals": 15
+    },
+    "rocksdb-churn": {
+      "search_trials": 75,
+      "accepted_flips": 0,
+      "headroom": false,
+      "audited_warm_intervals": 15
+    },
+    "sqlite": {
+      "search_trials": 75,
+      "accepted_flips": 0,
+      "headroom": false,
+      "audited_warm_intervals": 15
+    }
+  },
+  "regression_workloads": 22,
+  "regression_variants": 12,
+  "regression_audited_warm_intervals": 1320,
+  "hybrid_warm_runs_without_rechecks": 110,
+  "pure_audited_warm_intervals": 50,
+  "instrument_audited_warm_intervals": 40
+}

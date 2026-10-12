@@ -1,0 +1,16 @@
+[
+  {
+    "repository": "google/googletest",
+    "revision": "3e0e32ba300ce8afe695ad3ba7e81b21b7cf237a",
+    "archive": "build/source-google-googletest-3e0e32ba300ce8afe695ad3ba7e81b21b7cf237a.tar.gz",
+    "sha256": "e3759c8227500c7bc5754fe0b1a37db542b3b9e316e9936f003f24f4ebdd46d3",
+    "directory": "build/mesh-deps/googletest"
+  },
+  {
+    "repository": "emeryberger/Heap-Layers",
+    "revision": "b0b2c2c7c5553b79c534f55317a5ab3e7d011379",
+    "archive": "build/source-emeryberger-Heap-Layers-b0b2c2c7c5553b79c534f55317a5ab3e7d011379.tar.gz",
+    "sha256": "c6f198366762d76d9624708a94fab68d6ec46bbd67e178dc08e9fb8e39fb0c29",
+    "directory": "build/mesh-deps/heap_layers"
+  }
+]

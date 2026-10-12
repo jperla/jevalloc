@@ -85,6 +85,12 @@ def main():
         report['workloads']=[r for r in report['workloads'] if r['name']!=name]
         report['workloads'].append({'name':name,'sites':len(ss),'trace':trace,'run':run})
         (out/'tests.json').write_text(json.dumps(report,indent=2))
+    subprocess.run([str(ROOT/'build/hybrid-test')],check=True)
+    subprocess.run([sys.executable,str(ROOT/'tests/test_hybrid.py')],check=True)
+    subprocess.run([sys.executable,str(ROOT/'tests/test_context.py')],check=True)
+    subprocess.run([sys.executable,str(ROOT/'tests/test_realtime_policy.py')],check=True)
+    subprocess.run([sys.executable,str(ROOT/'tests/test_headroom.py')],check=True)
+    subprocess.run([sys.executable,str(ROOT/'tests/test_hybrid_integration.py')],check=True)
     subprocess.run([sys.executable,str(ROOT/'tests/test_live.py')],check=True)
     subprocess.run([sys.executable,str(ROOT/'tests/test_permanent.py')],check=True)
     subprocess.run([sys.executable,str(ROOT/'tests/test_replay.py')],check=True)

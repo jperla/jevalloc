@@ -1,0 +1,1 @@
+RocksDB is an embedded key-value database based on a log-structured merge tree, with a block cache and background flush and compaction. db_bench runs write and read workloads against a local database.

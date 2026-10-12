@@ -24,6 +24,8 @@ def stack_state(request, static, prompt):
     lines=['Program: '+program]
     description=Path(__file__).resolve().parents[1]/'descriptions'/(Path(program).name+'.txt')
     if prompt=='stack-v1' and description.exists():lines.append('About the program: '+description.read_text().strip())
+    if request.get('context'):lines.append('What the program is doing right now: '+request['context'])
+    if request.get('per_alloc'):lines.append(f"Requested allocation size: {request['size']} bytes")
     lines.append('Call stack of the allocation to classify (innermost first):')
     for f in frames:
         function=str(f.get('function','?')).split('\n')[0][:160]

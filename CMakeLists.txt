@@ -77,3 +77,6 @@ endif()
 add_executable(defects tests/defects.c)
 target_compile_options(defects PRIVATE -UNDEBUG -fno-builtin -fno-optimize-sibling-calls)
 target_link_libraries(defects PRIVATE Threads::Threads ${CMAKE_DL_LIBS})
+
+add_executable(hybrid-test tests/hybrid.c)
+target_compile_options(hybrid-test PRIVATE -UNDEBUG)

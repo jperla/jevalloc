@@ -1,0 +1,16 @@
+-- Configuring done (0.6s)
+-- Generating done (0.1s)
+-- Build files have been written to: /Users/jperla/josh/repos/jevalloc/build
+[  4%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/segment.c.o
+[  9%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/alloc.c.o
+[ 18%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/heap.c.o
+[ 18%] Building C object CMakeFiles/mi-core.dir/mi-patched/src/init.c.o
+[ 22%] Linking C static library libmi-core.a
+[ 77%] Built target mi-core
+[ 81%] Building C object CMakeFiles/jevalloc.dir/src/jevalloc.c.o
+[ 86%] Building C object CMakeFiles/jevalloc.dir/override.c.o
+[ 90%] Building C object CMakeFiles/jevalloc.dir/zone.c.o
+[ 95%] Building CXX object CMakeFiles/jevalloc.dir/src/new.cpp.o
+[100%] Linking CXX shared library libjevalloc.dylib
+[100%] Built target jevalloc
+[100%] Built target mimalloc

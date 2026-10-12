@@ -1,5 +1,7 @@
 #define _GNU_SOURCE
+#define JEVALLOC_IMPLEMENTATION
 #include "jevalloc.h"
+#include <stdarg.h>
 #include "mimalloc.h"
 #define MI_BUILD_RELEASE 1
 #include "mimalloc/internal.h"
@@ -26,11 +28,12 @@
 #define MAX_IMAGES 1024
 static uint64_t short_bytes=1048576;
 static int depth=4, model_depth=12, default_class=0, policy=0;
+static bool context_enabled=true;
 static bool none_fast, instrumented, ready, tracing, living, legacy_heaps;
 static atomic_bool fail_heaps;
 typedef struct { uint64_t addr; unsigned image; } Frame;
-typedef struct { _Alignas(64) uint64_t raw,key; void* live_site; uint8_t cls,nf,raw_nf; uintptr_t pcs[MAX_DEPTH]; Frame* frames; } KeyCache;
-typedef struct { int recursion; bool main_thread; KeyCache* keys; KeyCache* active_key; mi_heap_t* class_heaps[2]; uintptr_t stack_lo,stack_hi; void* live_shards; void* live_index; uint64_t clock_pending; } Thread;
+typedef struct { _Alignas(64) uint64_t raw,key,site_key,signature; void* live_site; uint8_t cls,nf,raw_nf; uintptr_t pcs[MAX_DEPTH]; Frame* frames; } KeyCache;
+typedef struct { char request_context[256]; uint64_t signature,decision_ordinal; bool allocation_decided; int recursion; bool main_thread; KeyCache* keys; KeyCache* active_key; mi_heap_t* class_heaps[2]; uintptr_t stack_lo,stack_hi; void* live_shards; void* live_index; uint64_t clock_pending; } Thread;
 #ifndef __APPLE__
 static __thread Thread tls_context __attribute__((tls_model("initial-exec")));
 static inline Thread* context(void) { return &tls_context; }
@@ -55,6 +58,20 @@ typedef struct { uint64_t key; unsigned cls; } Entry;
 static Entry* table; static size_t table_cap;
 static uint64_t mix(uint64_t x) { x^=x>>30; x*=UINT64_C(0xbf58476d1ce4e5b9); x^=x>>27; x*=UINT64_C(0x94d049bb133111eb); return x^(x>>31); }
 static uint64_t strhash(const char* p) { uint64_t h=1469598103934665603ULL; while(*p) { h^=(unsigned char)*p++; h*=1099511628211ULL; } return h; }
+void jev_context_set(const char* text) {
+ if(none_fast)return;
+ Thread* t=context();size_t n=0;
+ if(text)while(n<sizeof(t->request_context)-1 && text[n]){t->request_context[n]=text[n];n++;}
+ t->request_context[n]=0;t->signature=n?strhash(t->request_context):0;
+}
+void jev_context_clear(void){jev_context_set(NULL);}
+void jev_context_setf(const char* format,...) {
+ if(none_fast)return;
+ char text[256];Thread* t=context();t->recursion++;
+ va_list ap;va_start(ap,format);vsnprintf(text,sizeof(text),format,ap);va_end(ap);
+ t->recursion--;jev_context_set(text);
+}
+
 #ifdef __APPLE__
 static void image_add(const struct mach_header* header,intptr_t slide) {
   if(header->magic!=MH_MAGIC_64) return;
@@ -175,7 +192,8 @@ static __attribute__((noinline)) uint64_t capture(Frame* frames,unsigned* count,
     }
     uintptr_t next=fp[0]; if(next<=f || next-f>8*1024*1024){fp=NULL;break;} fp=(uintptr_t*)next;
   }
-  raw=raw?raw:1;
+  uint64_t signature=context_enabled?context()->signature:0;
+  raw=mix(raw^signature);raw=raw?raw:1;
   if(!context()->keys) {
     context()->keys=mmap(NULL,key_cache_bytes(),PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANON,-1,0);
     if(context()->keys==MAP_FAILED){context()->keys=NULL;}
@@ -193,9 +211,9 @@ static __attribute__((noinline)) uint64_t capture(Frame* frames,unsigned* count,
   /* Fold every frame into the index; low-bit XOR alone can ignore the innermost
    * PC after the rotations, thrashing sites that share their outer callers. */
   KeyCache* cached=&context()->keys[mix(raw)&(KEY_CACHE_SIZE-1)];
-  if(living)context()->active_key=cached;
+  if(instrumented)context()->active_key=cached;
   unsigned raw_nf=n<(unsigned)depth?n:(unsigned)depth;
-  if(cached->raw==raw&&cached->raw_nf==raw_nf&&same_pcs(cached->pcs,pcs,raw_nf)) {if(count)*count=cached->nf;if(frames)memcpy(frames,cached->frames,cached->nf*sizeof(Frame));if(prediction)*prediction=cached->cls;return cached->key;}
+  if(cached->signature==signature&&cached->raw==raw&&cached->raw_nf==raw_nf&&same_pcs(cached->pcs,pcs,raw_nf)) {if(count)*count=cached->nf;if(frames)memcpy(frames,cached->frames,cached->nf*sizeof(Frame));if(prediction)*prediction=cached->cls;return cached->key;}
   if(instrumented&&!cached->frames)cached->frames=(Frame*)(context()->keys+KEY_CACHE_SIZE)+(cached-context()->keys)*MAX_DEPTH;
   /* Only cache misses need the wider model stack. Keyed hot paths walk K frames. */
   if((tracing||living)&&n==(unsigned)depth)for(unsigned step=0;step<64&&n<(unsigned)model_depth;step++) {
@@ -219,7 +237,9 @@ static __attribute__((noinline)) uint64_t capture(Frame* frames,unsigned* count,
       if(j<(unsigned)depth)h=mix(h^mix(addr)^images[im].hash);nf++;
     }
   }
-  h=h?h:1;cached->raw_nf=raw_nf;memcpy(cached->pcs,pcs,raw_nf*sizeof(uintptr_t));cached->raw=raw;cached->key=h;cached->live_site=NULL;cached->cls=lookup(h);cached->nf=nf;
+  h=h?h:1;cached->site_key=h;cached->signature=signature;
+  if(signature)h=mix(h^mix(signature));h=h?h:1;
+  cached->raw_nf=raw_nf;memcpy(cached->pcs,pcs,raw_nf*sizeof(uintptr_t));cached->raw=raw;cached->key=h;cached->live_site=NULL;cached->cls=lookup(h);cached->nf=nf;
   if(frames)memcpy(frames,cached->frames,nf*sizeof(Frame));
   if(count)*count=nf;
   if(prediction)*prediction=cached->cls;
@@ -274,7 +294,7 @@ static void load_table(const char* path) {
   munmap(input,length+1);if(mprotect(table,table_cap*sizeof(Entry),PROT_READ))abort();
 }
 
-static void trace_alloc(void*,size_t,uint64_t,Frame*,unsigned);
+static void trace_alloc(void*,size_t,uint64_t,Frame*,unsigned,unsigned);
 static void trace_free(void*);
 static void trace_finish(void);
 typedef struct LiveShard LiveShard;
@@ -293,6 +313,7 @@ static void keyed_init(void) {
   if(path_len>0)executable_path[path_len]=0;
 #endif
   busy++;
+  context_enabled=!(getenv("JEVALLOC_CONTEXT") && !strcmp(getenv("JEVALLOC_CONTEXT"),"0"));
   const char* s=getenv("JEVALLOC_DEPTH");if(s)depth=atoi(s);if(depth<1)depth=1;if(depth>MAX_DEPTH)depth=MAX_DEPTH;
   s=getenv("JEVALLOC_MODEL_DEPTH");if(s)model_depth=atoi(s);if(model_depth<1)model_depth=1;if(model_depth>MAX_DEPTH)model_depth=MAX_DEPTH;
   s=getenv("JEVALLOC_SHORT_BYTES");if(s){char* end;errno=0;short_bytes=strtoull(s,&end,10);if(errno||*end||!short_bytes||*s=='-')abort();}
@@ -301,6 +322,7 @@ static void keyed_init(void) {
   legacy_heaps=getenv("JEVALLOC_HEAPS")&&!strcmp(getenv("JEVALLOC_HEAPS"),"legacy");
   fail_heaps=getenv("JEVALLOC_TEST_HEAP_FAIL")!=NULL;
   s=getenv("JEVALLOC_MODE");tracing=s&&!strcmp(s,"trace");living=s&&!strcmp(s,"live");if(living)live_init();
+  if(getenv("JEVALLOC_OBJECT_TRACE"))tracing=true;
 #ifdef __APPLE__
   _dyld_register_func_for_add_image(image_add);
 #else
@@ -344,7 +366,7 @@ static void* allocate(size_t n,size_t alignment,bool zero) {
     if(!heap){busy--;errno=ENOMEM;return NULL;}
   }
   void* p=alignment?(zero?mi_heap_zalloc_aligned(heap,n,alignment):mi_heap_malloc_aligned(heap,n,alignment)):(zero?mi_heap_zalloc(heap,n):mi_heap_malloc(heap,n));
-  if(tracing && p)trace_alloc(p,n,key,frames,nf);if(living&&p)live_alloc(p,n,site); busy--;return p;
+  if(tracing && p)trace_alloc(p,n,key,frames,nf,cls);if(living&&p)live_alloc(p,n,site); busy--;return p;
 }
 void* jev_malloc(size_t n) {if(none_fast)return n<=MI_SMALL_SIZE_MAX?mi_malloc_small(n):mi_malloc(n);return allocate(n,0,false);}
 void* jev_calloc(size_t n,size_t s) {if(none_fast)return mi_calloc(n,s);if(s && n>SIZE_MAX/s){errno=ENOMEM;return NULL;}return allocate(n*s,0,true);}
@@ -355,8 +377,9 @@ void* jev_realloc(void* p,size_t n) {if(none_fast)return mi_realloc(p,n);if(!p)r
   if(ready&&!busy&&(tracing||living)) {
    busy++;Frame frames[MAX_DEPTH];unsigned nf,cls;
    uint64_t key=capture(frames,&nf,&cls);
-   if(tracing){trace_free(p);trace_alloc(p,n,key,frames,nf);}
+   if(tracing)trace_free(p);
    if(living&&key){live_free(p);LiveShard* site=live_before(context()->active_key,n,&cls);live_alloc(p,n,site);}
+   if(tracing)trace_alloc(p,n,key,frames,nf,cls);
    busy--;
   }
   return p;

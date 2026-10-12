@@ -6,13 +6,13 @@ from pathlib import Path
 from definitions import ROOT, definitions
 sys.path.insert(0,str(ROOT/'tools'))
 from selection import accepted
-DEFAULT_VARIANTS=['sys','mi','jev-none','jev-keyonly','jev-table:oracle','jev-table:random','jev-table:size','jev-table:all-transient','jev-table:all-permanent','jev-live:heuristic','jev-live:static-model','jev-live:model']
+DEFAULT_VARIANTS=['sys','mi','jev-none','jev-keyonly','jev-table:oracle','jev-table:random','jev-table:size','jev-table:all-transient','jev-table:all-permanent','jev-live:heuristic','jev-live:static-model','jev-live:hybrid']
 
 def environment(variant, name, tables, mode='run', trace=None):
     env={k:v for k,v in os.environ.items() if not (k.startswith('JEVALLOC_') or k.startswith('MIMALLOC_') or k in ('DYLD_INSERT_LIBRARIES','LD_PRELOAD'))}
     extra={}
     if variant!='sys':
-        lib=ROOT/'build'/('libmimalloc' if variant=='mi' else 'libjevalloc')
+        lib=ROOT/'build'/({'mi':'libmimalloc','mesh':'libmesh','nomesh':'libnomesh'}.get(variant,'libjevalloc'))
         extra['DYLD_INSERT_LIBRARIES' if sys.platform=='darwin' else 'LD_PRELOAD']=str(lib)+('.dylib' if sys.platform=='darwin' else '.so')
     if variant.startswith('jev-'):
         extra['JEVALLOC_MODE']=mode
@@ -88,7 +88,7 @@ def wait_model_idle():
         time.sleep(.2)
     raise RuntimeError('model server did not become idle after warm rep marker')
 
-def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,attempt=0,max_model_decisions=1500):
+def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,attempt=0,max_model_decisions=3000):
     if rep<0:timeout=max(timeout,86400)
     outdir=Path(outdir);outdir.mkdir(parents=True,exist_ok=True)
     label='cold' if rep==-1 else (f'fill{-rep-2}' if rep<-1 else str(rep))
@@ -98,12 +98,16 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
     stdout=outdir/(tag+'.stdout');stderr=outdir/(tag+'.stderr');timing=outdir/(tag+'.time')
     env,extra=environment(variant,row['name'],tables,mode,trace)
     extra.update(row.get('environment',{}))
+    if variant in ('jev-table:oracle-site','jev-live:static-site'):extra['JEVALLOC_CONTEXT']='0'
     cmd=[str(ROOT/'build/bench'/row['binary']),*row['args']]
     sidecar=None;decision_log=outdir/(tag+'.decisions.jsonl');stats=outdir/(tag+'.stats.json')
     if variant.startswith('jev-live:'):
         sock=ROOT/'build'/('jvd-'+hashlib.sha256(tag.encode()).hexdigest()[:12]+'.sock')
         sock.unlink(missing_ok=True);decision_log.unlink(missing_ok=True);stats.unlink(missing_ok=True)
         policy=variant.split(':')[1]
+        if policy=='static-site':policy='static-model'
+        if policy=='hybrid':extra['JEVALLOC_HYBRID']='1'
+        if policy=='per-alloc':extra['JEVALLOC_PER_ALLOC']='1'
         service=[sys.executable,str(ROOT/'tools/jevd.py'),'--socket',str(sock),'--policy',policy,'--prompt',row.get('prompt','stack-v1'),'--short-bytes',str(extra.get('JEVALLOC_SHORT_BYTES',1048576)),'--max-model-decisions',str(max_model_decisions),'--model-cache',str(ROOT/'results/pass7/model-cache'),'--cache',str(outdir/'cache'/row['name']/policy),'--log',str(decision_log),'--table',str(Path(tables)/row['name']/'oracle.txt')]
         if len(variant.split(':'))>2:service+=['--model',variant.split(':',2)[2]]
         replay=schedule_path(row,variant,outdir)
@@ -143,7 +147,7 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
                     time.sleep(.05)
                 cli=[str(ROOT/'build/bench/redis-cli'),'-s',str(redis_socket)]
                 if row.get('redis_driver'):
-                    subprocess.run([sys.executable,str(ROOT/'fragbench/redis_workload.py'),str(redis_socket),row['redis_driver']],env=env,check=True,stdout=out,stderr=err,timeout=timeout)
+                    subprocess.run([sys.executable,str(ROOT/'fragbench/redis_workload.py'),str(redis_socket),row['redis_driver']],env={**env,**{k:v for k,v in extra.items() if k.startswith('FRAG_')}},check=True,stdout=out,stderr=err,timeout=timeout)
                 else:
                     time.sleep(1);subprocess.run([*cli,'flushall'],env=env,check=True,stdout=out,stderr=err,timeout=timeout)
                     time.sleep(1);subprocess.run([str(ROOT/'build/bench/redis-benchmark'),'-s',str(redis_socket),'-r','1000000','-n','100000','-q','-P','16','lpush','a','1','2','3','4','5','lrange','a','1','5'],env=env,check=True,stdout=out,stderr=err,timeout=timeout)
@@ -189,7 +193,7 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
             'unasked_bytes':sum(site_bytes[k] for k in unasked),
             'unasked_byte_share':sum(site_bytes[k] for k in unasked)/sum(site_bytes.values()) if sum(site_bytes.values()) else 0,
             'max_model_decisions':max_model_decisions,
-            'budget_fallbacks':sum(bool(e.get('budget_exhausted')) for e in events)} if policy in ('model','static-model') else None
+            'budget_fallbacks':sum(bool(e.get('budget_exhausted')) for e in events)} if policy in ('model','model-reask','static-model','hybrid','per-alloc') else None
         record['cache_hits']=sum(bool(e.get('cache_hit')) for e in events)
         record['model_seconds']=sum(e.get('model_seconds',0) for e in events)
         record['input_tokens']=sum(e.get('usage',{}).get('input_tokens',0) for e in events if not e.get('cache_hit'))
@@ -234,7 +238,7 @@ def markdown(data):
 def save(path,data):
     data['summary']=summarize(data['runs']);tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(data,indent=2));tmp.replace(path);path.with_suffix('.md').write_text(markdown(data))
 
-def prepare_replay(row,variant,outdir,tables,timeout,data,path,max_model_decisions=1500):
+def prepare_replay(row,variant,outdir,tables,timeout,data,path,max_model_decisions=3000):
     replay=schedule_path(row,variant,outdir)
     for _ in range(12):
         index=sum(r.get('coverage_fill',False) and r['benchmark']==row['name'] and r['variant']==variant for r in data['coverage_runs'])
@@ -246,7 +250,7 @@ def prepare_replay(row,variant,outdir,tables,timeout,data,path,max_model_decisio
     raise RuntimeError('Replay coverage did not converge after 12 cache-fill runs')
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--prompt',choices=['stack-v1','stack-v1-nodesc','v2','v2-no-description','v2-runtime-only'],default='stack-v1');p.add_argument('--short-bytes',type=int,default=1048576);p.add_argument('--name',default='first-pass');p.add_argument('--reps',type=int,default=5);p.add_argument('--variants',nargs='+',default=DEFAULT_VARIANTS);p.add_argument('--benchmarks',nargs='+');p.add_argument('--tables',default=str(ROOT/'results/tables'));p.add_argument('--procs',type=int,default=8 if sys.platform=='darwin' else 16);p.add_argument('--timeout',type=int,default=7200);p.add_argument('--resume',action='store_true');p.add_argument('--allow-cold-upgrade',action='store_true',help='Adopt completed cold-only records across a runner/sidecar coverage change; preserve old code fingerprints');p.add_argument('--max-model-decisions',type=int,default=1500);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--prompt',choices=['stack-v1','stack-v1-nodesc','v2','v2-no-description','v2-runtime-only'],default='stack-v1');p.add_argument('--short-bytes',type=int,default=1048576);p.add_argument('--name',default='first-pass');p.add_argument('--reps',type=int,default=5);p.add_argument('--variants',nargs='+',default=DEFAULT_VARIANTS);p.add_argument('--benchmarks',nargs='+');p.add_argument('--tables',default=str(ROOT/'results/tables'));p.add_argument('--procs',type=int,default=8 if sys.platform=='darwin' else 16);p.add_argument('--timeout',type=int,default=7200);p.add_argument('--resume',action='store_true');p.add_argument('--allow-cold-upgrade',action='store_true',help='Adopt completed cold-only records across a runner/sidecar coverage change; preserve old code fingerprints');p.add_argument('--max-model-decisions',type=int,default=3000);a=p.parse_args()
     if a.max_model_decisions<0:p.error('max-model-decisions must be nonnegative')
     signal.signal(signal.SIGTERM,lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
     signal.signal(signal.SIGINT,lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))

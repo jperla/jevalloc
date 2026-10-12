@@ -1,0 +1,1 @@
+Pass 8 initial inspection: no running regression process. Pass 7 had already completed 22/22 workloads (status 0). This archive preserves the actual completed state despite the requested partial directory name. Original aggregate files remain available for historical links; raw regression logs moved here.

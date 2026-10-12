@@ -17,10 +17,11 @@ for b in bs:
     if b.startswith('site-mixed') and truth_path.exists():
         truth=json.loads(truth_path.read_text())
         print(f"\n{b}: a fixed per-site majority label classifies {100*truth['oracle_correct_byte_share']:.2f}% of traced requested bytes correctly. This is the classification ceiling for this trace; it does not bound idle RSS.\n")
-    oracle=m['jev-table:oracle'];heuristic=m['jev-live:heuristic'];model=m['jev-live:model'];static=m['jev-live:static-model']
+    runtime=next(v for v in ('jev-live:hybrid','jev-live:model-reask','jev-live:model') if v in m)
+    oracle=m['jev-table:oracle'];heuristic=m['jev-live:heuristic'];model=m[runtime];static=m['jev-live:static-model']
     saved=base['rss']-oracle['rss']
     print(f"\nOracle saves {saved/2**20:.2f} MiB ({saved/base['rss']:.1%}) against plain mimalloc.")
-    for label,values in (('Code-only Clef',static),('Clef with runtime',model),('No-model heuristic',heuristic)):
+    for label,values in (('Code-only Clef',static),(runtime.split(':')[1],model),('No-model heuristic',heuristic)):
         capture=f"{(base['rss']-values['rss'])/saved:.1%} of the oracle saving" if saved>0 else 'capture undefined because the oracle saves no memory'
         print(f"{label}: {capture}; idle RSS/oracle {values['rss']/oracle['rss']:.3f}, wall/mi {values['time']/base['time']:.3f}, CPU/mi {values['cpu']/base['cpu']:.3f}.")
     print(f"\n{b}, observed medians: oracle {'beats' if oracle['rss']<base['rss'] else 'does not beat'} mimalloc on idle RSS ({oracle['rss']/base['rss']:.3f}×). Live Clef {'beats' if model['rss']<heuristic['rss'] else 'does not beat'} the heuristic ({model['rss']/heuristic['rss']:.3f}× RSS, {model['time']/heuristic['time']:.3f}× wall time, {model['cpu']/heuristic['cpu']:.3f}× target CPU time). Clef/oracle: {model['rss']/oracle['rss']:.3f}× RSS, {model['time']/oracle['time']:.3f}× wall, {model['cpu']/oracle['cpu']:.3f}× CPU; heuristic/oracle: {heuristic['rss']/oracle['rss']:.3f}× RSS, {heuristic['time']/oracle['time']:.3f}× wall, {heuristic['cpu']/oracle['cpu']:.3f}× CPU. Clef/mi target CPU: {model['cpu']/base['cpu']:.3f}×.\n")

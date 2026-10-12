@@ -1,0 +1,175 @@
+{
+  "complete_workloads": 22,
+  "expected_workloads": 22,
+  "passed": false,
+  "checks": [
+    {
+      "workload": "cfrac",
+      "none_time": 1.0077548678061787,
+      "none_rss": 1.0018281535648994,
+      "keyonly_rss": 1.0319343065693432,
+      "fix1_pass": false
+    },
+    {
+      "workload": "espresso",
+      "none_time": 1.004631884520325,
+      "none_rss": 1.0003852080123266,
+      "keyonly_rss": 1.0080862533692723,
+      "fix1_pass": true
+    },
+    {
+      "workload": "barnes",
+      "none_time": 0.9983451576611918,
+      "none_rss": 1.002158495220475,
+      "keyonly_rss": 1.0002461538461538,
+      "fix1_pass": true
+    },
+    {
+      "workload": "larson",
+      "none_time": 1.0121765601217656,
+      "none_rss": 0.9930979887687702,
+      "keyonly_rss": 0.8527550817058589,
+      "fix1_pass": true,
+      "live_time": 1.244018058690745,
+      "fix2_pass": false
+    },
+    {
+      "workload": "larson-sized",
+      "none_time": 1.0174772036474165,
+      "none_rss": 0.9983815087373239,
+      "keyonly_rss": 0.8778337850502799,
+      "fix1_pass": true,
+      "live_time": 1.2628713994102971,
+      "fix2_pass": false
+    },
+    {
+      "workload": "xmalloc-test",
+      "none_time": 1.0135135135135136,
+      "none_rss": 1.0009877977919814,
+      "keyonly_rss": 0.7622627271144135,
+      "fix1_pass": true,
+      "live_time": 2.1227544910179637,
+      "fix2_pass": false
+    },
+    {
+      "workload": "cache-scratch1",
+      "none_time": 1.0139614206566276,
+      "none_rss": 0.998745294855709,
+      "keyonly_rss": 1.0,
+      "fix1_pass": true
+    },
+    {
+      "workload": "cache-scratchN",
+      "none_time": 1.0014925030384272,
+      "none_rss": 0.9782469609724888,
+      "keyonly_rss": 0.9941137998691956,
+      "fix1_pass": true
+    },
+    {
+      "workload": "cache-thrash1",
+      "none_time": 1.03354643684224,
+      "none_rss": 0.979297365119197,
+      "keyonly_rss": 1.019859064702114,
+      "fix1_pass": false
+    },
+    {
+      "workload": "cache-thrashN",
+      "none_time": 1.0090157367951076,
+      "none_rss": 0.9628918746001279,
+      "keyonly_rss": 1.0578073089700997,
+      "fix1_pass": false
+    },
+    {
+      "workload": "mstress",
+      "none_time": 0.9985001738836667,
+      "none_rss": 1.0011091293334733,
+      "keyonly_rss": 0.9506160825236177,
+      "fix1_pass": true,
+      "live_time": 1.0493853495304595,
+      "fix2_pass": true
+    },
+    {
+      "workload": "rptest",
+      "none_time": 1.0010098772304874,
+      "none_rss": 0.9650082977296,
+      "keyonly_rss": 0.9820343944383462,
+      "fix1_pass": true,
+      "live_time": 1.046287841905868,
+      "fix2_pass": true
+    },
+    {
+      "workload": "glibc-simple",
+      "none_time": 0.983576788640095,
+      "none_rss": 1.00132362673726,
+      "keyonly_rss": 1.0019828155981494,
+      "fix1_pass": true
+    },
+    {
+      "workload": "glibc-thread",
+      "none_time": 1.027021414865028,
+      "none_rss": 1.000114266125807,
+      "keyonly_rss": 1.0011996572407884,
+      "fix1_pass": true
+    },
+    {
+      "workload": "alloc-test1",
+      "none_time": 1.0109522220752267,
+      "none_rss": 0.9829325058184639,
+      "keyonly_rss": 1.0,
+      "fix1_pass": true
+    },
+    {
+      "workload": "alloc-testN",
+      "none_time": 1.0153715429509462,
+      "none_rss": 0.9869265509864511,
+      "keyonly_rss": 1.0154142581888246,
+      "fix1_pass": true
+    },
+    {
+      "workload": "malloc-large",
+      "none_time": 1.0060207366870835,
+      "none_rss": 0.9996213145793887,
+      "keyonly_rss": 1.0000240526271482,
+      "fix1_pass": true
+    },
+    {
+      "workload": "mleak10",
+      "none_time": 1.0136379687718327,
+      "none_rss": 1.4933300994421537,
+      "keyonly_rss": 1.005847003410752,
+      "fix1_pass": false
+    },
+    {
+      "workload": "mleak100",
+      "none_time": 0.9979089132480108,
+      "none_rss": 1.0003233107015843,
+      "keyonly_rss": 1.0008080155138979,
+      "fix1_pass": true
+    },
+    {
+      "workload": "sh6benchN",
+      "none_time": 1.0177433475921296,
+      "none_rss": 0.9945780879970086,
+      "keyonly_rss": 0.979181026380099,
+      "fix1_pass": true,
+      "live_time": 4.54203664353169,
+      "fix2_pass": false
+    },
+    {
+      "workload": "sh8benchN",
+      "none_time": 1.0211709609614217,
+      "none_rss": 0.999777460452868,
+      "keyonly_rss": 1.001576672664206,
+      "fix1_pass": true,
+      "live_time": 3.6347965694532265,
+      "fix2_pass": false
+    },
+    {
+      "workload": "redis",
+      "none_time": 1.0090909668109103,
+      "none_rss": 1.00253807106599,
+      "keyonly_rss": 1.00056258790436,
+      "fix1_pass": true
+    }
+  ]
+}

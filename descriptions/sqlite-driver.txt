@@ -1,0 +1,1 @@
+SQLite is an embedded SQL database engine. This program builds an in-memory database and runs queries through multiple connections and prepared statements.

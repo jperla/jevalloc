@@ -1,0 +1,7 @@
+Superseded pilot: the headroom search incorrectly averaged two idle phases.
+Final reports use the final idle phase. Re-scoring changes the greedy acceptance
+path, so the complete Mesh headroom experiment is rerun with the corrected metric.
+Raw file references in this historical matrix use the original
+results/pass8/real/redis-mesh prefix; its archived files are now under
+results/pass8/redis-mesh-average-idle. Do not join them to the new run's files.
+The old source is preserved as results/pass8/headroom-average-idle.py.

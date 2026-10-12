@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "library_sha256": "7f29e09b37cf0762a2de0c0e002300c94da9f2771cbabc5c74f2b9dcc58eb096",
+  "workloads": [
+    {
+      "workload": "site-mixed-1",
+      "warm_runs": 40,
+      "pairs": 16,
+      "sites": 10,
+      "headroom": true,
+      "search_trials": 0
+    },
+    {
+      "workload": "site-mixed-16",
+      "warm_runs": 40,
+      "pairs": 16,
+      "sites": 10,
+      "headroom": true,
+      "search_trials": 0
+    },
+    {
+      "workload": "redis-mesh",
+      "warm_runs": 25,
+      "pairs": 626,
+      "sites": 621,
+      "headroom": false,
+      "search_trials": 75
+    },
+    {
+      "workload": "redis-drop",
+      "warm_runs": 25,
+      "pairs": 495421,
+      "sites": 629,
+      "headroom": false,
+      "search_trials": 75
+    },
+    {
+      "workload": "redis-sessions",
+      "warm_runs": 25,
+      "pairs": 662,
+      "sites": 644,
+      "headroom": false,
+      "search_trials": 75
+    },
+    {
+      "workload": "per-alloc-small",
+      "warm_runs": 25,
+      "pairs": 9,
+      "sites": 7,
+      "headroom": true,
+      "search_trials": 0
+    }
+  ]
+}

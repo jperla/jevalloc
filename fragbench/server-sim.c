@@ -1,4 +1,5 @@
 #define _GNU_SOURCE
+#include "../src/jevalloc.h"
 #include <pthread.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -16,7 +17,7 @@
 static _Thread_local size_t worker_live;
 static struct { _Alignas(64) size_t bytes; } live_bytes[32];
 static pthread_barrier_t boundary;
-static int workers=1,mixed=0,settle_ms=250;
+static int workers=1,mixed=0,payload_only=0,settle_ms=250;
 static size_t objects=80000;
 static uint64_t random_next(uint64_t* x){*x^=*x<<13;*x^=*x>>7;*x^=*x<<17;return *x;}
 /* Keep TTL selection opaque to the caller so branch threading cannot duplicate
@@ -50,7 +51,14 @@ static void emit(int cycle,const char* name) {
  size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;
  printf("{\"phase\":\"%s\",\"cycle\":%d,\"rss_bytes\":%lu,\"live_bytes\":%zu,\"fragmentation_ratio\":%.6f,\"peak_rss_bytes\":%ld}\n",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);
 }
-static void mark(size_t id,int cycle,const char* name){live_bytes[id].bytes=worker_live;phase(cycle,name);if(id==0)emit(cycle,name);pthread_barrier_wait(&boundary);}
+static void mark(size_t id,int cycle,const char* name){
+ live_bytes[id].bytes=worker_live;phase(cycle,name);if(id==0)emit(cycle,name);pthread_barrier_wait(&boundary);
+ const char* longer=getenv("FRAG_LONG_SETTLE_MS");
+ if(longer&&!strcmp(name,"idle")){
+  int ms=atoi(longer)-settle_ms;if(ms>0)usleep((useconds_t)ms*1000);
+  pthread_barrier_wait(&boundary);if(id==0)emit(cycle,"idle10");pthread_barrier_wait(&boundary);
+ }
+}
 static void* server_worker(void* arg) {
  size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;
  /* Pointer bookkeeping uses the system mapping API so it doesn't enter the
@@ -60,7 +68,7 @@ static void* server_worker(void* arg) {
  size_t* sizes=(size_t*)(slots+count);
  for(int cycle=0;cycle<2;cycle++) {
   for(size_t i=0;i<count;i++) {
-   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;sizes[i]=n;
+   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;n*=payload_only?4:1;sizes[i]=n;
    /* Sessions last many operations; cache entries live until process exit.
     * The two paths allocate interleaved in exactly the same size classes. */
    /* Mixed request data: half expire during this operation, 45% survive until
@@ -68,11 +76,13 @@ static void* server_worker(void* arg) {
     * aliasing the allocator's deterministic sampling period.
     * One call/stack carries transient and permanent objects. */
    unsigned ttl=mixed?request_ttl(&rng):1;
+   if(mixed&&jev_context_setf)jev_context_setf("kind=store ttl=%s",ttl==0?"0":ttl==1?"short":"day");
    if(mixed)slots[i]=store_request_payload(n,ttl);
    else slots[i]=(i%10==0)?insert_cache_index(n):create_session_state(n);
-   void* parse=parse_request_buffer(n);void* response=assemble_response_buffer(n);
-   release(response,n);release(parse,n);
+   if(!payload_only){void* parse=parse_request_buffer(n);void* response=assemble_response_buffer(n);
+   release(response,n);release(parse,n);}
    if(mixed&&ttl==0){release(slots[i],n);slots[i]=NULL;}
+   if(jev_context_clear)jev_context_clear();
   }
   mark(id,cycle,"peak");
   for(size_t i=0;i<count;i++)if(slots[i]&&(mixed?((unsigned char*)slots[i])[0]!=(unsigned char)86400:i%10!=0)){release(slots[i],sizes[i]);slots[i]=NULL;}
@@ -80,7 +90,7 @@ static void* server_worker(void* arg) {
   /* Allocate/free after the purge deadline: mimalloc processes deferred purge
    * during allocator activity. Same pulse on all variants, counted in live bytes. */
   usleep(settle_ms*1000);
-  for(int j=0;j<1024;j++){void* p=parse_request_buffer(64);release(p,64);}
+  for(int j=0;j<(payload_only?0:1024);j++){void* p=parse_request_buffer(64);release(p,64);}
   mark(id,cycle,"idle");
   /* Retained entries are deliberately never freed, including after cycle 1.
    * Their pointers need not remain in slots, but their requested bytes do. */
@@ -89,6 +99,7 @@ static void* server_worker(void* arg) {
 }
 int main(int argc,char** argv) {
  if(argc>1)workers=atoi(argv[1]);if(argc>2)mixed=!strcmp(argv[2],"site-mixed");if(argc>3)objects=strtoull(argv[3],NULL,10);if(argc>4)settle_ms=atoi(argv[4]);
+ if(argc>5)payload_only=!strcmp(argv[5],"payload-only");
  if(workers<1||workers>32||objects<(size_t)workers||settle_ms<100)return 2;
  pthread_barrier_init(&boundary,NULL,workers);pthread_t threads[32];
  for(size_t i=0;i<(size_t)workers;i++)if(pthread_create(&threads[i],NULL,server_worker,(void*)i))abort();

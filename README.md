@@ -5,9 +5,11 @@ model makes decisions **while the program runs**; recorded decisions are replaye
 measure the allocator without today's inference latency. A histogram heuristic and
 same-workload trace oracle are controls. This is a research prototype.
 
-**Current results: [RESULTS.md](RESULTS.md).** Pass 5 uses two fixed-threshold lifetime classes. The archived three-class
-instrument result is historical evidence; current two-class measurements and their
-completeness are reported separately.
+**Current results: [RESULTS.md](RESULTS.md).** Pass 9 adds application-supplied
+request context and a small per-allocation experiment to the code-only model,
+hybrid and heuristic comparisons. Real-program headroom searches precede model
+evaluation. Mesh/nomesh compaction comparisons follow the context measurements;
+earlier regression matrices remain as history.
 [CODEX-REPORT.md](CODEX-REPORT.md) records completed work and remote job status.
 
 ## Build and test
@@ -47,12 +49,12 @@ on the Radeon 780M, `-ngl 99 -t 4`, bound to `127.0.0.1:8765`.
 The script assumes these model/server files already exist.
 
 ```sh
-python3 tools/jevd.py --socket "$PWD/build/jevd.sock" --policy model \
+python3 tools/jevd.py --socket "$PWD/build/jevd.sock" --policy hybrid \
   --cache results/example-cache --log results/example-decisions.jsonl \
-  --max-model-decisions 400 --model-backend vulkan &
+  --max-model-decisions 3000 --model-backend vulkan &
 sidecar_pid=$!
 LD_PRELOAD="$PWD/build/libjevalloc.so" \
-  JEVALLOC_MODE=live JEVALLOC_SOCKET="$PWD/build/jevd.sock" \
+  JEVALLOC_MODE=live JEVALLOC_HYBRID=1 JEVALLOC_SOCKET="$PWD/build/jevd.sock" \
   JEVALLOC_STATS_OUT="$PWD/results/example-stats.json" \
   build/bench/cfrac 17545186520507317056371138836327483792789528
 kill "$sidecar_pid"
@@ -61,21 +63,31 @@ kill "$sidecar_pid"
 Wait for the socket to exist before launching the application. The benchmark runner
 does this automatically. On macOS use `DYLD_INSERT_LIBRARIES` and `.dylib`.
 
-Policies: `model` sees up to twelve named stack frames and a neutral program
-summary (`stack-v1`), with sampled runtime observations at rechecks. `static-model`
-uses the same first-sight context and never rechecks; neither includes source code.
-`stack-v1-nodesc` omits the summary. `heuristic` uses sampled free evidence and an
-age gate (details below). `oracle` reads `--table`; `random` is seeded.
+Policies: `hybrid` (default) asks once using `stack-v1`, exactly like
+`static-model`, then the allocator applies fixed rules to sampled runtime evidence.
+Set `JEVALLOC_HYBRID=1` on the application when using this policy; the benchmark
+runner does this automatically. At least 16 samples and 5% sampled requested bytes
+freed demote a site to transient. Promotion requires no sampled free ever,
+P(transient)<0.7, an allocation clock >=64 MiB, and an oldest live reservoir sample
+older than half that clock. A confident transient prior cannot be promoted merely
+because no frees have happened. Changes affect future allocations.
+
+`model-reask` retains pass 7's repeated model queries (`model` is a compatibility
+alias). `static-model` keeps the first answer forever. First-sight prompts include
+up to twelve named stack frames and a neutral description, with no source code;
+`stack-v1-nodesc` omits the description. `heuristic` uses the previous sampled
+free/age rule. `oracle` reads `--table`; `random` is seeded.
 All requests, probabilities, responses, model latency and provenance are logged.
 
-Sites use the default class until they have successfully requested at least 64 KiB.
+Each (site, context signature) pair uses the default class until it has successfully
+requested at least 64 KiB. Empty context preserves per-site behavior.
 Only then can the allocator ask the sidecar. Cross-thread counter batching can delay
-this threshold. `--max-model-decisions` defaults to 1,500 including cache hits,
+this threshold. `--max-model-decisions` defaults to 3,000 including cache hits,
 rechecks and replay coverage fills. At exhaustion new sites default transient and
 existing sites keep their class without further rechecks. Fallbacks do not enter
 the model cache. `--default-class` should match `JEVALLOC_DEFAULT` when run manually.
 
-First-sight model answers use argmax. An initially transient site can become permanent
+First-sight model answers use argmax. Under `model-reask`, an initially transient site can become permanent
 only when a recheck gives permanent probability >=0.8 and the oldest still-live
 reservoir sample has aged through strictly more than a quarter of the current
 process allocation clock. Replayed runs apply recorded decisions with unchanged
@@ -101,11 +113,16 @@ CPU logs are archived in results. Those historical cfrac cold timings include CP
 | `JEVALLOC_TRACE_OUT` | `jevalloc-trace.jsonl` | Trace at orderly exit |
 | `JEVALLOC_SOCKET` | absent | Live Unix socket |
 | `JEVALLOC_MIN_SITE_BYTES` | `65536` | Successful requested site bytes before sidecar admission; `0` is a protocol-test control |
+| `JEVALLOC_CONTEXT` | `1` | Set `0` to ignore application context for per-site controls |
+| `JEVALLOC_PER_ALLOC` | `0` | Send every admitted allocation with `--policy per-alloc` |
+| `JEVALLOC_OBJECT_TRACE` | absent | Optional exact object events for small accuracy diagnostics |
+| `JEVALLOC_HYBRID` | `0` | Enable local runtime rules using the hybrid sidecar prior |
 | `JEVALLOC_SAMPLE` | `64` | Sample one in this many successful allocations per thread/site |
 | `JEVALLOC_TIMEOUT_MS` | `30000` | One deadline covering socket connect/send/receive |
 | `JEVALLOC_STATS_OUT` | `jevalloc-stats.json` | Live accounting and per-site requested-byte totals |
 
-Same-site requests share one in-flight decision. Rechecks target 1,024, 8,192,
+Requests at the same (site, signature) pair serialize decisions. Cached policies
+reuse the first answer; per-alloc requests each receive their own answer. `model-reask`/heuristic rechecks target 1,024, 8,192,
 65,536 and 524,288 further successful site allocations (at most four), approximately
 when multiple threads contribute batched counters; a new class affects only
 future allocations. Free supports cross-thread ownership. A failed sidecar opens a
@@ -285,3 +302,69 @@ The heuristic additionally requires the oldest still-live reservoir sample to be
 strictly older than one quarter of the current allocation clock before choosing
 permanent. Otherwise it selects transient, including when no live sample exists.
 The age and clock use the same batched snapshot; neither requires final run length.
+
+## Real-program headroom experiments
+
+On the Linux test host, `scripts/build-real.sh` builds pinned SQLite, RocksDB,
+LevelDB and gflags sources under `build/real` without installing system packages.
+`python3 fragbench/headroom.py` runs the three-run, 24-site greedy table search,
+then five interleaved baseline/oracle/search repetitions. It collects static-model,
+hybrid and heuristic results only when a table saves more than 5% idle RSS.
+Use `--benchmarks sqlite leveldb redis-sessions rocksdb-cache rocksdb-churn` to
+select workloads; the default also retains Redis Mesh/drop. RSS is measured after
+500 ms idle, with purge delay zero for every variant. RocksDB and LevelDB program
+memory statistics are partial estimates, explicitly labelled in the output.
+See [RESULTS.md](RESULTS.md) for audited findings and limitations.
+
+Request context (pass 9) requires a small application change at request dispatch:
+
+```c
+#include "jevalloc.h"
+if (jev_context_setf) jev_context_setf("kind=store ttl=%s", ttl_bucket);
+/* Handle the request. */
+if (jev_context_clear) jev_context_clear();
+```
+
+The optional weak symbols allow the same executable to run without jevalloc. On
+macOS, link an application using these unbound optional imports with
+`-Wl,-undefined,dynamic_lookup`; the guarded calls then work both with and without
+the injected library. Linux needs no extra linker option. The library copies at most 255 bytes plus the terminator into thread-local storage.
+`jev_context_set(NULL)` also clears it. Normalize before calling: bucket numeric
+values and remove unique IDs. Text is hashed exactly as supplied; high-cardinality
+contexts defeat caching and increase metadata. Calls do not retain the input
+pointer. Nested dispatch must restore the outer context when it returns.
+
+The decision key combines the stack site with that context signature. Admission
+and hybrid evidence apply to each pair independently. `JEVALLOC_CONTEXT=0` gives
+the per-site control. Context traces include `site_key`, `context_signature` and
+`context`; `tools/context_tables.py` builds both byte-majority oracles from one
+trace. The `stack-v1` question and choices stay unchanged; context adds a line
+beginning “What the program is doing right now:”.
+
+For the small uncached experiment, set `JEVALLOC_MODE=live`,
+`JEVALLOC_PER_ALLOC=1` and run jevd with `--policy per-alloc`. The sidecar also
+advertises this policy in its response. Each admitted allocation sends its own
+context and requested size; no class is reused by signature. The full-request
+response cache permits exact request reuse, and recorded schedules permit warm
+runs without inference (size/context/stack mismatches are rejected). The decision
+budget defaults to 3,000 in jevd. `JEVALLOC_OBJECT_TRACE` enables exact allocation
+and free event logging for accuracy checks; it also enables full trace metadata
+and therefore is intended only for small diagnostics. Set `JEVALLOC_TRACE_OUT`
+explicitly alongside it. `fragbench/realtime.py` runs the pass-9 measurements and
+keeps headroom training separate from the five-run comparisons.
+
+Redis's dispatch patch is in `patches/redis-request-context.patch`; build it with
+`scripts/build-redis-context.sh`. It copies the original tree under `build/real`
+and writes `build/bench/redis-context-server`. It does not tag network/parser
+allocations before command dispatch. `FRAG_LONG_SETTLE_MS=10000` adds an `idle10`
+phase after the normal idle measurement in fragmentation workloads.
+
+After the context measurements and validation complete, `tools/fetch_mesh.py`
+pins the recipe's Mesh master revision and downloads archives under `build/`.
+`scripts/build-mesh.sh` builds `libmesh.so` and `libnomesh.so` with the recipe's
+default settings and `DISABLE_MESHING=ON` respectively. Pinned dependency archives
+replace CMake's git downloads; the build adaptation is recorded with hashes.
+`scripts/build-long-settle.sh` preserves the old real-program binaries before
+rebuilding their optional idle marker. `scripts/pass9-compaction.sh` then runs
+all eleven workloads, five interleaved repetitions, normal and 10-second idle,
+and independent inference-overlap audits. `tools/pass9_status.py` reports progress.

@@ -9,16 +9,19 @@
 #include <fcntl.h>
 #include <time.h>
 #include <sched.h>
+#include "hybrid.h"
 #define COHORT_SIZE 128
 typedef struct CohortEntry {uint64_t birth,size,serial;bool freed;} CohortEntry;
 typedef struct LiveSite {
- uint64_t key;
+ uint64_t key,site_key,signature; char context[256];
  _Atomic uint64_t next_check;
  _Atomic unsigned cls,answers; bool deciding;
  _Alignas(128) _Atomic uint64_t allocs,bytes;
  _Alignas(128) _Atomic uint64_t frees,sampled_bytes,short_freed,hist[65];
  atomic_flag cohort_lock;
- uint64_t cohort_seen;
+ uint64_t cohort_seen,hybrid_bytes,hybrid_freed_bytes,hybrid_frees;
+ double prior_transient; bool has_prior;
+ unsigned hybrid_promotions,hybrid_demotions;
  CohortEntry cohort[COHORT_SIZE];
  Frame frames[MAX_DEPTH]; unsigned nf;
  struct LiveSite* next;
@@ -103,6 +106,8 @@ static _Alignas(128) _Atomic uint64_t sampled_count;
 static uint64_t live_site_count,blocked_ns,decisions,rechecks,timeouts,failures;
 static int last_failure_errno;
 static unsigned sample_rate=64,timeout_ms=30000;
+static bool hybrid_mode;
+static atomic_bool per_alloc_mode;
 static uint64_t min_site_bytes=65536;
 static _Alignas(128) atomic_bool circuit_open,live_closed;
 static const char* socket_path;
@@ -110,6 +115,8 @@ static char socket_path_copy[sizeof(((struct sockaddr_un*)0)->sun_path)];
 static uint64_t nanos(void) {struct timespec t;clock_gettime(CLOCK_MONOTONIC,&t);return (uint64_t)t.tv_sec*1000000000+t.tv_nsec;}
 static uint64_t quant(uint64_t n) {return n?UINT64_C(1)<<(63-__builtin_clzll(n)):0;}
 static void live_init(void) {
+ per_alloc_mode=getenv("JEVALLOC_PER_ALLOC") && !strcmp(getenv("JEVALLOC_PER_ALLOC"),"1");
+ hybrid_mode=getenv("JEVALLOC_HYBRID") && !strcmp(getenv("JEVALLOC_HYBRID"),"1");
  for(unsigned i=0;i<64;i++)atomic_init(&sample_mutex[i].lock,0);
  const char* minimum=getenv("JEVALLOC_MIN_SITE_BYTES");if(minimum)min_site_bytes=strtoull(minimum,NULL,10);
  const char* s=getenv("JEVALLOC_SAMPLE");if(s){long n=strtol(s,NULL,10);if(n>0&&n<=1048576)sample_rate=(unsigned)n;}
@@ -126,7 +133,7 @@ static int socket_wait(int fd,short events,uint64_t deadline) {
   if(p.revents&events)return 0;errno=ECONNRESET;return -1;
  }
 }
-static int exchange(const char* request,unsigned* cls,uint64_t* after) {
+static int exchange(const char* request,unsigned* cls,uint64_t* after,double* prior) {
  if(!socket_path){errno=ENOENT;return -1;}
  struct sockaddr_un address={0};address.sun_family=AF_UNIX;
  if(strlen(socket_path)>=sizeof(address.sun_path)){errno=ENAMETOOLONG;return -1;}
@@ -157,7 +164,13 @@ static int exchange(const char* request,unsigned* cls,uint64_t* after) {
  char *c=strstr(reply,"\"class\""),*a=strstr(reply,"\"recheck_after\"");
  unsigned v;unsigned long long interval;
  if(!c||!a||sscanf(c,"\"class\" : %u",&v)!=1||v>1||sscanf(a,"\"recheck_after\" : %llu",&interval)!=1){errno=EPROTO;goto done;}
- *cls=v;*after=interval;rc=0;
+ *cls=v;*after=interval;
+ char* each=strstr(reply,"\"per_allocation\"");unsigned every=0;
+ if(each && sscanf(each,"\"per_allocation\" : %u",&every)==1 && every)per_alloc_mode=true;
+ char* prob=strstr(reply,"\"prior_transient\"");
+ if(prob && sscanf(prob,"\"prior_transient\" : %lf",prior)!=1){errno=EPROTO;goto done;}
+ if(*prior < -1 || *prior > 1){errno=EPROTO;goto done;}
+ rc=0;
  done: {int err=errno;close(fd);errno=err;}return rc;
 }
 typedef struct LiveTotals {uint64_t frees,sampled_live,sampled_bytes,sampled_live_bytes,short_freed,hist[65],clock,estimate,samples,alive;} LiveTotals;
@@ -181,6 +194,17 @@ static LiveTotals live_totals(LiveSite* site) {
  * Freed entries retain their birth so selection is independent of survival. */
 static void cohort_lock(LiveSite* s){while(atomic_flag_test_and_set_explicit(&s->cohort_lock,memory_order_acquire))sched_yield();}
 static void cohort_unlock(LiveSite* s){atomic_flag_clear_explicit(&s->cohort_lock,memory_order_release);}
+/* Called with cohort_lock. Exact lifetime sample totals, including evicted and
+ * freed reservoir entries, survive thread retirement. No writes on unsampled paths. */
+static void hybrid_update_locked(LiveSite* s,uint64_t now) {
+ if(!hybrid_mode || !s->has_prior)return;
+ uint64_t oldest=0;
+ unsigned count=s->cohort_seen<COHORT_SIZE?s->cohort_seen:COHORT_SIZE;
+ for(unsigned i=0;i<count;i++)if(!s->cohort[i].freed && now>=s->cohort[i].birth && now-s->cohort[i].birth>oldest)oldest=now-s->cohort[i].birth;
+ unsigned before=GET(s->cls);
+ unsigned after=hybrid_class(before,s->prior_transient,s->cohort_seen,s->hybrid_bytes,s->hybrid_freed_bytes,s->hybrid_frees,oldest,now);
+ if(before!=after){if(after)s->hybrid_promotions++;else s->hybrid_demotions++;atomic_store_explicit(&s->cls,after,memory_order_relaxed);}
+}
 static int cohort_birth_compare(const void* a,const void* b){uint64_t x=((const CohortEntry*)a)->birth,y=((const CohortEntry*)b)->birth;return (x>y)-(x<y);}
 static void cohort_stats(LiveSite* s,uint64_t* bytes,uint64_t* freed,unsigned* count,uint64_t now,uint64_t* oldest) {
  CohortEntry copy[COHORT_SIZE];cohort_lock(s);
@@ -209,6 +233,8 @@ static char* live_request(LiveSite* s,size_t size,Frame* frames,unsigned nf) {
 #else
  extern char* program_invocation_short_name;json_string(f,program_invocation_short_name);
 #endif
+ fprintf(f,",\"site_key\":\"%016llx\",\"context_signature\":\"%016llx\",\"context\":",(unsigned long long)s->site_key,(unsigned long long)s->signature);json_string(f,s->context);
+ if(per_alloc_mode)fputs(",\"per_alloc\":true",f);
  fputs(",\"frames\":[",f);
  for(unsigned i=0;i<nf;i++){fprintf(f,"%s{\"addr\":\"0x%llx\",\"image\":",i?",":"",(unsigned long long)frames[i].addr);json_string(f,images[frames[i].image].path);fputc('}',f);}
  fprintf(f,"],\"size\":%zu,\"site\":{\"allocs\":%llu,\"frees\":%llu,\"live\":%llu,\"bytes\":%llu,\"life_hist\":[",size,(unsigned long long)quant(s->allocs),(unsigned long long)quant(totals.frees*sample_rate),(unsigned long long)quant(totals.sampled_live*sample_rate),(unsigned long long)quant(s->bytes));
@@ -257,7 +283,9 @@ static void live_thread_finish(Thread* t) {
  t->live_shards=NULL;mi_free(t->live_index);t->live_index=NULL;live_clock_merge(t);
 }
 static LiveShard* live_before_slow(KeyCache* cached,size_t n,unsigned* cls) {
+ unsigned individual=default_class;
  uint64_t key=cached->key;Frame* frames=cached->frames;unsigned nf=cached->nf;
+ context()->allocation_decided=false;
  if(GET(live_closed)){*cls=default_class;return NULL;}
  LiveShard* shard=cached->live_site;
  if(!shard){
@@ -268,7 +296,7 @@ static LiveShard* live_before_slow(KeyCache* cached,size_t n,unsigned* cls) {
   if(!shard) {
    pthread_mutex_lock(&live_mutex);
    size_t h=mix(key)&16383;LiveSite* site=live_sites[h];while(site&&site->key!=key)site=site->next;
-   if(!site){site=mi_zalloc_aligned(sizeof(*site),128);if(!site)abort();atomic_flag_clear(&site->cohort_lock);site->key=key;site->nf=nf;memcpy(site->frames,frames,nf*sizeof(Frame));site->cls=default_class;site->next=live_sites[h];live_sites[h]=site;live_site_count++;}
+   if(!site){site=mi_zalloc_aligned(sizeof(*site),128);if(!site)abort();atomic_flag_clear(&site->cohort_lock);site->key=key;site->site_key=cached->site_key;site->signature=cached->signature;if(site->signature)memcpy(site->context,context()->request_context,256);site->nf=nf;memcpy(site->frames,frames,nf*sizeof(Frame));site->cls=default_class;site->next=live_sites[h];live_sites[h]=site;live_site_count++;}
    shard=mi_zalloc_aligned(sizeof(*shard),128);if(!shard)abort();shard->site=site;shard->cls=GET(site->cls);shard->refs=1;shard->until_sample=sample_rate;
    shard->sample_mask=(sample_rate&(sample_rate-1))?UINT32_MAX:sample_rate-1;
    shard->next=context()->live_shards;context()->live_shards=shard;
@@ -283,19 +311,21 @@ static LiveShard* live_before_slow(KeyCache* cached,size_t n,unsigned* cls) {
  uint64_t count=GET(s->allocs)+shard->allocs-shard->merged_allocs;
  uint64_t next=GET(s->next_check);
  bool eligible=GET(s->bytes)+shard->bytes-shard->merged_bytes>=min_site_bytes;
- if(eligible && !GET(circuit_open) && (!atomic_load_explicit(&s->answers,memory_order_acquire) || (next&&count>=next))){
+ if(eligible && !GET(circuit_open) && (per_alloc_mode || !atomic_load_explicit(&s->answers,memory_order_acquire) || (next&&count>=next))){
   pthread_mutex_lock(&live_mutex);
   while(s->deciding){uint64_t begin=nanos();pthread_cond_wait(&live_condition,&live_mutex);blocked_ns+=nanos()-begin;}
   next=GET(s->next_check);
-  if(!GET(circuit_open) && (!atomic_load_explicit(&s->answers,memory_order_acquire) || (next&&count>=next))){
+  if(!GET(circuit_open) && (per_alloc_mode || !atomic_load_explicit(&s->answers,memory_order_acquire) || (next&&count>=next))){
    live_merge(shard);live_clock_merge(context());
    s->deciding=true;char* request=live_request(s,n,s->frames,s->nf);unsigned answer=default_class;uint64_t after=0;
-   uint64_t decision_count=GET(s->allocs);
+   double prior=-1;uint64_t decision_count=GET(s->allocs);
    if(GET(s->answers))rechecks++;decisions++;
-   pthread_mutex_unlock(&live_mutex);uint64_t begin=nanos();int rc=exchange(request,&answer,&after);int error=errno;uint64_t elapsed=nanos()-begin;free(request);
+   pthread_mutex_unlock(&live_mutex);uint64_t begin=nanos();int rc=exchange(request,&answer,&after,&prior);int error=errno;uint64_t elapsed=nanos()-begin;free(request);
    pthread_mutex_lock(&live_mutex);blocked_ns+=elapsed;
    if(rc){last_failure_errno=error;failures++;if(error==ETIMEDOUT)timeouts++;circuit_open=true;}
+   individual=answer;context()->allocation_decided=!rc;context()->decision_ordinal=GET(s->answers);
    s->cls=answer;
+   if(hybrid_mode && prior>=0){cohort_lock(s);s->prior_transient=prior;s->has_prior=true;hybrid_update_locked(s,GET(live_clock));cohort_unlock(s);}
    /* Publish infrequent policy changes to attached owners. Allocations then read
     * a class on their local counter line, without dependent shared-site loads. */
    for(LiveShard* sh=all_shards;sh;sh=sh->global_next)if(sh->site==s)atomic_store_explicit(&sh->cls,answer,memory_order_relaxed);
@@ -314,11 +344,11 @@ static LiveShard* live_before_slow(KeyCache* cached,size_t n,unsigned* cls) {
   shard->check_at=next?local+(remaining<64?remaining:64):UINT64_MAX;
   shard->byte_check_at=UINT64_MAX;
  }
- *cls=GET(s->cls);return shard;
+ *cls=per_alloc_mode&&context()->allocation_decided?individual:GET(s->cls);return shard;
 }
 static inline __attribute__((always_inline)) LiveShard* live_before(KeyCache* cached,size_t n,unsigned* cls) {
  LiveShard* shard=cached->live_site;
- if(!GET(live_closed)&&shard&&shard->allocs<shard->check_at&&shard->bytes<shard->byte_check_at){*cls=GET(shard->cls);return shard;}
+ if(!per_alloc_mode&&!GET(live_closed)&&shard&&shard->allocs<shard->check_at&&shard->bytes<shard->byte_check_at){*cls=hybrid_mode?GET(shard->site->cls):GET(shard->cls);return shard;}
  return live_before_slow(cached,n,cls);
 }
 /* Multiplicative hashing uses the high bits of the product, so aligned size
@@ -334,6 +364,7 @@ static void live_sample(void* p,size_t n,LiveShard* shard) {
  LiveSite* site=shard->site;cohort_lock(site);record->serial=++site->cohort_seen;
  uint64_t slot=record->serial<=COHORT_SIZE?record->serial-1:mix(record->serial^site->key)%record->serial;
  if(slot<COHORT_SIZE){record->slot=(unsigned)slot;site->cohort[slot]=(CohortEntry){record->birth,n,record->serial,false};}
+ site->hybrid_bytes+=n;hybrid_update_locked(site,record->birth);
  cohort_unlock(site);samples[h]=record;atomic_store_explicit(&sample_buckets[h],GET(sample_buckets[h])+1,memory_order_relaxed);ADD(shard->refs,1);atomic_store_explicit(&shard->sample_bytes,GET(shard->sample_bytes)+n,memory_order_relaxed);atomic_store_explicit(&shard->sample_count,GET(shard->sample_count)+1,memory_order_relaxed);
  sample_unlock(h);
 }
@@ -354,7 +385,7 @@ static __attribute__((noinline)) void live_free_sample(void* p,size_t h) {
  sample_lock(h);Sample** pp=&samples[h];while(*pp&&(*pp)->p!=p)pp=&(*pp)->next;
  Sample* r=*pp;LiveShard* owner=r?r->owner:NULL;
  if(r){if(filter_mode)filter_update(p,false);*pp=r->next;atomic_store_explicit(&sample_buckets[h],GET(sample_buckets[h])-1,memory_order_relaxed);uint64_t now=live_now();uint64_t life=now>=r->birth?now-r->birth:0;unsigned bucket=life?64-__builtin_clzll(life):0;ADD(owner->hist[bucket],r->size);if(life<short_bytes)ADD(owner->short_freed,r->size);ADD(owner->frees,1);ADD(owner->freed_bytes,r->size);}
- if(r&&r->slot<COHORT_SIZE){LiveSite* site=owner->site;cohort_lock(site);if(site->cohort[r->slot].serial==r->serial)site->cohort[r->slot].freed=true;cohort_unlock(site);}
+ if(r){LiveSite* site=owner->site;cohort_lock(site);site->hybrid_frees++;site->hybrid_freed_bytes+=r->size;if(r->slot<COHORT_SIZE && site->cohort[r->slot].serial==r->serial)site->cohort[r->slot].freed=true;hybrid_update_locked(site,live_now());cohort_unlock(site);}
  if(r){r->next=sample_mutex[h&63].pool;sample_mutex[h&63].pool=r;}sample_unlock(h);if(owner)live_release_shard(owner);busy--;
 }
 static inline __attribute__((always_inline)) void live_free(void* p) {
@@ -367,6 +398,8 @@ static void live_finish(void) {
  pthread_mutex_lock(&live_mutex);live_closed=true;const char* path=getenv("JEVALLOC_STATS_OUT");if(!path)path="jevalloc-stats.json";FILE* f=fopen(path,"w");
  if(f){LiveTotals totals=live_totals(NULL);uint64_t total_bytes=0;fputs("{\"site_bytes\":{",f);bool first=true;
   for(unsigned h=0;h<16384;h++)for(LiveSite* s=live_sites[h];s;s=s->next){uint64_t bytes=GET(s->bytes);total_bytes+=bytes;fprintf(f,"%s\"%016llx\":%llu",first?"":",",(unsigned long long)s->key,(unsigned long long)bytes);first=false;}
+  fputs("},\"hybrid_sites\":{",f);first=true;
+  if(hybrid_mode)for(unsigned h=0;h<16384;h++)for(LiveSite* s=live_sites[h];s;s=s->next){cohort_lock(s);if(s->has_prior){fprintf(f,"%s\"%016llx\":{\"prior_transient\":%.17g,\"class\":%u,\"promotions\":%u,\"demotions\":%u,\"samples\":%llu,\"sampled_bytes\":%llu,\"freed_bytes\":%llu}",first?"":",",(unsigned long long)s->key,s->prior_transient,GET(s->cls),s->hybrid_promotions,s->hybrid_demotions,(unsigned long long)s->cohort_seen,(unsigned long long)s->hybrid_bytes,(unsigned long long)s->hybrid_freed_bytes);first=false;}cohort_unlock(s);}
   fputs("},\"site_sampled_live\":{",f);first=true;
   for(unsigned h=0;h<16384;h++)for(LiveSite* s=live_sites[h];s;s=s->next){uint64_t alive=0;for(LiveShard* sh=all_shards;sh;sh=sh->global_next)if(sh->site==s)alive+=live_survivors(sh);fprintf(f,"%s\"%016llx\":%llu",first?"":",",(unsigned long long)s->key,(unsigned long long)alive);first=false;}
   fprintf(f,"},\"failure_errno\":%d",last_failure_errno);

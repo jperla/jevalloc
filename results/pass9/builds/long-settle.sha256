@@ -1,0 +1,3 @@
+c2a05e08b4de7061644cdddfd748c1b09a72ea49edac44f77cee69e3715b854c  build/bench/sqlite-driver
+40199b986d90be4dbf0f4f97716e23d7926c7239f28fe854004803cc1d2074fd  build/bench/leveldb-driver
+168135c52095e04424db1b69339759009a91ba79997c8ed21affe6dce8bf598f  build/bench/db_bench

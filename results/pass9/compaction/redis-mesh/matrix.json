@@ -1,0 +1,3690 @@
+{
+  "name": "pass9/compaction/redis-mesh",
+  "configuration": {
+    "row": {
+      "stdin": null,
+      "expect": "fragbench OK",
+      "environment": {
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "gate_inference": true,
+      "prompt": "stack-v1",
+      "name": "redis-mesh",
+      "binary": "redis-context-server",
+      "args": [
+        "--activedefrag",
+        "no"
+      ],
+      "redis_driver": "mesh"
+    },
+    "variants": [
+      "mi",
+      "jev-keyonly",
+      "jev-table:oracle-site",
+      "jev-table:oracle-context",
+      "jev-table:search",
+      "mesh",
+      "nomesh"
+    ],
+    "workloads": [
+      "redis-mesh"
+    ],
+    "repetitions": 5,
+    "long_settle_ms": 10000,
+    "fingerprints": {
+      "build/bench/redis-context-server": "b34f4985f02f4b33253e2bd2c45816fc8264eb543d90148aa0fe307e34dc18af",
+      "build/libjevalloc.so": "7f29e09b37cf0762a2de0c0e002300c94da9f2771cbabc5c74f2b9dcc58eb096",
+      "build/libmimalloc.so": "927db9974948cc9a524bee26035671fe0303cafa60d1079af3fa7cd6fa2e319b",
+      "build/libmesh.so": "f817c176a63e722016a57c6d5bc6c3ca5660ba15c9d0d77886b6e2e3df18e956",
+      "build/libnomesh.so": "29c9d3969f812afc3d1a194320b9e0cf37b2bb933885defc6a3b4ebf81d92acc",
+      "bench/run.py": "99b6f3c1ddf716e9e5c2adede1884fced58f6b459c85098cecaedc9a4cbcb48f",
+      "fragbench/redis_workload.py": "d0c81c11a4ca9edaaecc841a70e7572764631fc47316872a036a1781d4d9720f",
+      "fragbench/compaction.py": "ec581c24b0580ae67743371b2def2cb4ff47ca6720885f896ba1ae8a18d68428"
+    }
+  },
+  "runs": [
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791759758.7278864,
+      "finished_unix": 1791759781.5760057,
+      "host_before": {
+        "load_average": [
+          0.0,
+          0.01904296875,
+          0.03369140625
+        ],
+        "MemAvailable_bytes": 14010699776,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "mi",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 22.831378415,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mi-0.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mi-0.stderr",
+      "user_seconds": 1.243281,
+      "sys_seconds": 0.110846,
+      "peak_rss_bytes": 194846720,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.354127,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 22.831378415,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113205248,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113057792,
+          "fragmentation_ratio": 1.079611022355686,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113205248,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113057792,
+          "fragmentation_ratio": 1.079611022355686,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 194994176,
+          "live_bytes": 104857600,
+          "used_memory_rss": 194846720,
+          "fragmentation_ratio": 1.859609375,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 194994176,
+          "live_bytes": 104857600,
+          "used_memory_rss": 194846720,
+          "fragmentation_ratio": 1.859609375,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791759782.5840454,
+      "finished_unix": 1791759805.8838208,
+      "host_before": {
+        "load_average": [
+          0.05615234375,
+          0.03173828125,
+          0.037109375
+        ],
+        "MemAvailable_bytes": 14039195648,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-keyonly",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.278884084,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-keyonly-0.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-keyonly-0.stderr",
+      "user_seconds": 1.677697,
+      "sys_seconds": 0.101197,
+      "peak_rss_bytes": 194822144,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.778894,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.278884084,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113303552,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113033216,
+          "fragmentation_ratio": 1.0805485237861996,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113303552,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113033216,
+          "fragmentation_ratio": 1.0805485237861996,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 195092480,
+          "live_bytes": 104857456,
+          "used_memory_rss": 194822144,
+          "fragmentation_ratio": 1.8605494300758165,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 195092480,
+          "live_bytes": 104857456,
+          "used_memory_rss": 194822144,
+          "fragmentation_ratio": 1.8605494300758165,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791759806.8927057,
+      "finished_unix": 1791759830.0914824,
+      "host_before": {
+        "load_average": [
+          0.09375,
+          0.0439453125,
+          0.04052734375
+        ],
+        "MemAvailable_bytes": 14048141312,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:oracle-site",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle-site.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.18417289,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-0-6241130e.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-0-6241130e.stderr",
+      "user_seconds": 1.592159,
+      "sys_seconds": 0.111511,
+      "peak_rss_bytes": 197087232,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.70367,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.18417289,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 115290112,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115167232,
+          "fragmentation_ratio": 1.0994938651944965,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 115290112,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115167232,
+          "fragmentation_ratio": 1.0994938651944965,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 197140480,
+          "live_bytes": 104857600,
+          "used_memory_rss": 197087232,
+          "fragmentation_ratio": 1.880078125,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 197140480,
+          "live_bytes": 104857600,
+          "used_memory_rss": 197087232,
+          "fragmentation_ratio": 1.880078125,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791759831.0997865,
+      "finished_unix": 1791759854.2480264,
+      "host_before": {
+        "load_average": [
+          0.12890625,
+          0.05615234375,
+          0.0439453125
+        ],
+        "MemAvailable_bytes": 14058790912,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:oracle-context",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle-context.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.128771025,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-0-0d36d436.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-0-0d36d436.stderr",
+      "user_seconds": 1.543756,
+      "sys_seconds": 0.09985,
+      "peak_rss_bytes": 205524992,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.643606,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.128771025,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 114491392,
+          "live_bytes": 104857440,
+          "used_memory_rss": 114384896,
+          "fragmentation_ratio": 1.091876666071573,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 114491392,
+          "live_bytes": 104857440,
+          "used_memory_rss": 114384896,
+          "fragmentation_ratio": 1.091876666071573,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 205545472,
+          "live_bytes": 104857552,
+          "used_memory_rss": 205524992,
+          "fragmentation_ratio": 1.960235272324496,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 205545472,
+          "live_bytes": 104857552,
+          "used_memory_rss": 205524992,
+          "fragmentation_ratio": 1.960235272324496,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791759855.2565114,
+      "finished_unix": 1791759878.5049052,
+      "host_before": {
+        "load_average": [
+          0.09130859375,
+          0.05224609375,
+          0.0419921875
+        ],
+        "MemAvailable_bytes": 14058364928,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:search",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/search.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.223317755,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-0-ff87ffda.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-0-ff87ffda.stderr",
+      "user_seconds": 1.630203,
+      "sys_seconds": 0.088773,
+      "peak_rss_bytes": 194924544,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.718976,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.223317755,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113266688,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113135616,
+          "fragmentation_ratio": 1.080196960749757,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113266688,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113135616,
+          "fragmentation_ratio": 1.080196960749757,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 195055616,
+          "live_bytes": 104857056,
+          "used_memory_rss": 194924544,
+          "fragmentation_ratio": 1.8602049632215498,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 195055616,
+          "live_bytes": 104857056,
+          "used_memory_rss": 194924544,
+          "fragmentation_ratio": 1.8602049632215498,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791759879.5144107,
+      "finished_unix": 1791759903.0152557,
+      "host_before": {
+        "load_average": [
+          0.0595703125,
+          0.04736328125,
+          0.03955078125
+        ],
+        "MemAvailable_bytes": 14054998016,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "mesh",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.475763896,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mesh-0.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mesh-0.stderr",
+      "user_seconds": 1.661661,
+      "sys_seconds": 0.472135,
+      "peak_rss_bytes": 197763072,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.1337960000000002,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.475763896,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 121966592,
+          "live_bytes": 104857568,
+          "used_memory_rss": 121524224,
+          "fragmentation_ratio": 1.1631644174696099,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 121966592,
+          "live_bytes": 104857568,
+          "used_memory_rss": 121524224,
+          "fragmentation_ratio": 1.1631644174696099,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 149606400,
+          "live_bytes": 104857408,
+          "used_memory_rss": 149397504,
+          "fragmentation_ratio": 1.4267604249763641,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 149606400,
+          "live_bytes": 104857408,
+          "used_memory_rss": 149397504,
+          "fragmentation_ratio": 1.4267604249763641,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791759904.0237224,
+      "finished_unix": 1791759927.2733946,
+      "host_before": {
+        "load_average": [
+          0.095703125,
+          0.0576171875,
+          0.04296875
+        ],
+        "MemAvailable_bytes": 14029660160,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "nomesh",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libnomesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.236928451,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-nomesh-0.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-nomesh-0.stderr",
+      "user_seconds": 1.619555,
+      "sys_seconds": 0.183123,
+      "peak_rss_bytes": 207880192,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.802678,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.236928451,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 123105280,
+          "live_bytes": 104857568,
+          "used_memory_rss": 122814464,
+          "fragmentation_ratio": 1.174023795783629,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 123105280,
+          "live_bytes": 104857568,
+          "used_memory_rss": 122814464,
+          "fragmentation_ratio": 1.174023795783629,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 208556032,
+          "live_bytes": 104857136,
+          "used_memory_rss": 207880192,
+          "fragmentation_ratio": 1.98895411371907,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 208556032,
+          "live_bytes": 104857136,
+          "used_memory_rss": 207880192,
+          "fragmentation_ratio": 1.98895411371907,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791759928.2828994,
+      "finished_unix": 1791759951.5809283,
+      "host_before": {
+        "load_average": [
+          0.11962890625,
+          0.06787109375,
+          0.04638671875
+        ],
+        "MemAvailable_bytes": 14056099840,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-keyonly",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.281973243,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-keyonly-1.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-keyonly-1.stderr",
+      "user_seconds": 1.689563,
+      "sys_seconds": 0.107177,
+      "peak_rss_bytes": 194801664,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.79674,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.281973243,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113242112,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113012736,
+          "fragmentation_ratio": 1.0799625853921286,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113242112,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113012736,
+          "fragmentation_ratio": 1.0799625853921286,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 195031040,
+          "live_bytes": 104857472,
+          "used_memory_rss": 194801664,
+          "fragmentation_ratio": 1.8599632079629003,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 195031040,
+          "live_bytes": 104857472,
+          "used_memory_rss": 194801664,
+          "fragmentation_ratio": 1.8599632079629003,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791759952.5906346,
+      "finished_unix": 1791759975.69144,
+      "host_before": {
+        "load_average": [
+          0.13525390625,
+          0.07763671875,
+          0.0498046875
+        ],
+        "MemAvailable_bytes": 14069137408,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:oracle-site",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle-site.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.065205545,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-1-6241130e.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-1-6241130e.stderr",
+      "user_seconds": 1.539276,
+      "sys_seconds": 0.11058,
+      "peak_rss_bytes": 197066752,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.649856,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.065205545,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 115306496,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115146752,
+          "fragmentation_ratio": 1.0996501154329155,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 115306496,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115146752,
+          "fragmentation_ratio": 1.0996501154329155,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 197152768,
+          "live_bytes": 104857360,
+          "used_memory_rss": 197066752,
+          "fragmentation_ratio": 1.8801996159354002,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 197152768,
+          "live_bytes": 104857360,
+          "used_memory_rss": 197066752,
+          "fragmentation_ratio": 1.8801996159354002,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791759976.7013707,
+      "finished_unix": 1791759999.9003072,
+      "host_before": {
+        "load_average": [
+          0.1455078125,
+          0.0859375,
+          0.05322265625
+        ],
+        "MemAvailable_bytes": 14069620736,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:oracle-context",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle-context.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.165395775,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-1-0d36d436.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-1-0d36d436.stderr",
+      "user_seconds": 1.593115,
+      "sys_seconds": 0.102685,
+      "peak_rss_bytes": 205598720,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.6958,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.165395775,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 115335168,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115113984,
+          "fragmentation_ratio": 1.0999235533501486,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 115335168,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115113984,
+          "fragmentation_ratio": 1.0999235533501486,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 205615104,
+          "live_bytes": 104857072,
+          "used_memory_rss": 205467648,
+          "fragmentation_ratio": 1.9609083114584775,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 205615104,
+          "live_bytes": 104857072,
+          "used_memory_rss": 205467648,
+          "fragmentation_ratio": 1.9609083114584775,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760000.910392,
+      "finished_unix": 1791760024.1075392,
+      "host_before": {
+        "load_average": [
+          0.09521484375,
+          0.07861328125,
+          0.05078125
+        ],
+        "MemAvailable_bytes": 14055919616,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:search",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/search.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.142184845,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-1-ff87ffda.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-1-ff87ffda.stderr",
+      "user_seconds": 1.580318,
+      "sys_seconds": 0.093077,
+      "peak_rss_bytes": 195018752,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.673395,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.142184845,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113336320,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113229824,
+          "fragmentation_ratio": 1.0808610242630374,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113336320,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113229824,
+          "fragmentation_ratio": 1.0808610242630374,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 195125248,
+          "live_bytes": 104857072,
+          "used_memory_rss": 195018752,
+          "fragmentation_ratio": 1.8608687452192065,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 195125248,
+          "live_bytes": 104857072,
+          "used_memory_rss": 195018752,
+          "fragmentation_ratio": 1.8608687452192065,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760025.1178622,
+      "finished_unix": 1791760048.6185343,
+      "host_before": {
+        "load_average": [
+          0.06689453125,
+          0.07275390625,
+          0.048828125
+        ],
+        "MemAvailable_bytes": 14066089984,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "mesh",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.485076023,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mesh-1.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mesh-1.stderr",
+      "user_seconds": 1.689545,
+      "sys_seconds": 0.46331,
+      "peak_rss_bytes": 199282688,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.152855,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.485076023,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 122134528,
+          "live_bytes": 104857568,
+          "used_memory_rss": 121589760,
+          "fragmentation_ratio": 1.164765980458368,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 122134528,
+          "live_bytes": 104857568,
+          "used_memory_rss": 121589760,
+          "fragmentation_ratio": 1.164765980458368,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 151748608,
+          "live_bytes": 104857392,
+          "used_memory_rss": 151425024,
+          "fragmentation_ratio": 1.447190370708438,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 151748608,
+          "live_bytes": 104857392,
+          "used_memory_rss": 151425024,
+          "fragmentation_ratio": 1.447190370708438,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760049.6275337,
+      "finished_unix": 1791760072.87556,
+      "host_before": {
+        "load_average": [
+          0.04296875,
+          0.0654296875,
+          0.04638671875
+        ],
+        "MemAvailable_bytes": 14050037760,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "nomesh",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libnomesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.233677989,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-nomesh-1.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-nomesh-1.stderr",
+      "user_seconds": 1.595313,
+      "sys_seconds": 0.188746,
+      "peak_rss_bytes": 206962688,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.784059,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.233677989,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 122306560,
+          "live_bytes": 104857568,
+          "used_memory_rss": 122028032,
+          "fragmentation_ratio": 1.1664066059590472,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 122306560,
+          "live_bytes": 104857568,
+          "used_memory_rss": 122028032,
+          "fragmentation_ratio": 1.1664066059590472,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 207224832,
+          "live_bytes": 104857168,
+          "used_memory_rss": 206962688,
+          "fragmentation_ratio": 1.9762581419326526,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 207224832,
+          "live_bytes": 104857168,
+          "used_memory_rss": 206962688,
+          "fragmentation_ratio": 1.9762581419326526,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760073.884739,
+      "finished_unix": 1791760096.7339308,
+      "host_before": {
+        "load_average": [
+          0.08447265625,
+          0.0751953125,
+          0.0498046875
+        ],
+        "MemAvailable_bytes": 14021824512,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "mi",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 22.804725286,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mi-1.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mi-1.stderr",
+      "user_seconds": 1.235008,
+      "sys_seconds": 0.102035,
+      "peak_rss_bytes": 194957312,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.3370430000000002,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 22.804725286,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113246208,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113168384,
+          "fragmentation_ratio": 1.0800016479517334,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113246208,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113168384,
+          "fragmentation_ratio": 1.0800016479517334,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 195035136,
+          "live_bytes": 104857584,
+          "used_memory_rss": 194957312,
+          "fragmentation_ratio": 1.86000028381352,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 195035136,
+          "live_bytes": 104857584,
+          "used_memory_rss": 194957312,
+          "fragmentation_ratio": 1.86000028381352,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760097.7444575,
+      "finished_unix": 1791760120.8936315,
+      "host_before": {
+        "load_average": [
+          0.11279296875,
+          0.083984375,
+          0.05322265625
+        ],
+        "MemAvailable_bytes": 14072721408,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:oracle-site",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle-site.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.133628104,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-2-6241130e.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-2-6241130e.stderr",
+      "user_seconds": 1.544372,
+      "sys_seconds": 0.115605,
+      "peak_rss_bytes": 197091328,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.659977,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.133628104,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 115261440,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115163136,
+          "fragmentation_ratio": 1.0992204272772632,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 115261440,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115163136,
+          "fragmentation_ratio": 1.0992204272772632,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 197107712,
+          "live_bytes": 104857152,
+          "used_memory_rss": 197091328,
+          "fragmentation_ratio": 1.8797736562595178,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 197107712,
+          "live_bytes": 104857152,
+          "used_memory_rss": 197091328,
+          "fragmentation_ratio": 1.8797736562595178,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760121.9029267,
+      "finished_unix": 1791760145.052005,
+      "host_before": {
+        "load_average": [
+          0.130859375,
+          0.091796875,
+          0.056640625
+        ],
+        "MemAvailable_bytes": 14081417216,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:oracle-context",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle-context.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.114242164,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-2-0d36d436.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-2-0d36d436.stderr",
+      "user_seconds": 1.549544,
+      "sys_seconds": 0.102243,
+      "peak_rss_bytes": 205524992,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.6517870000000001,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.114242164,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 115314688,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115171328,
+          "fragmentation_ratio": 1.099728240552125,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 115314688,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115171328,
+          "fragmentation_ratio": 1.099728240552125,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 205594624,
+          "live_bytes": 104857360,
+          "used_memory_rss": 205524992,
+          "fragmentation_ratio": 1.9607076127035814,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 205594624,
+          "live_bytes": 104857360,
+          "used_memory_rss": 205524992,
+          "fragmentation_ratio": 1.9607076127035814,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760146.0620892,
+      "finished_unix": 1791760169.1594274,
+      "host_before": {
+        "load_average": [
+          0.1533203125,
+          0.099609375,
+          0.06005859375
+        ],
+        "MemAvailable_bytes": 14072905728,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:search",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/search.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.074187453,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-2-ff87ffda.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-2-ff87ffda.stderr",
+      "user_seconds": 1.563508,
+      "sys_seconds": 0.100871,
+      "peak_rss_bytes": 195153920,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.6643789999999998,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.074187453,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113381376,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113098752,
+          "fragmentation_ratio": 1.0812907124186897,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113381376,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113098752,
+          "fragmentation_ratio": 1.0812907124186897,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 195170304,
+          "live_bytes": 104857376,
+          "used_memory_rss": 195022848,
+          "fragmentation_ratio": 1.8612930386509003,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 195170304,
+          "live_bytes": 104857376,
+          "used_memory_rss": 195022848,
+          "fragmentation_ratio": 1.8612930386509003,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760170.1692996,
+      "finished_unix": 1791760193.6677775,
+      "host_before": {
+        "load_average": [
+          0.1083984375,
+          0.091796875,
+          0.05810546875
+        ],
+        "MemAvailable_bytes": 14057168896,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "mesh",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.462023744,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mesh-2.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mesh-2.stderr",
+      "user_seconds": 1.662237,
+      "sys_seconds": 0.466381,
+      "peak_rss_bytes": 197865472,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.128618,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.462023744,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 122445824,
+          "live_bytes": 104857568,
+          "used_memory_rss": 122126336,
+          "fragmentation_ratio": 1.167734731364359,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 122445824,
+          "live_bytes": 104857568,
+          "used_memory_rss": 122126336,
+          "fragmentation_ratio": 1.167734731364359,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 151584768,
+          "live_bytes": 104857040,
+          "used_memory_rss": 151203840,
+          "fragmentation_ratio": 1.4456327205116604,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 151584768,
+          "live_bytes": 104857040,
+          "used_memory_rss": 151203840,
+          "fragmentation_ratio": 1.4456327205116604,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760194.6788113,
+      "finished_unix": 1791760217.926312,
+      "host_before": {
+        "load_average": [
+          0.07080078125,
+          0.08349609375,
+          0.0556640625
+        ],
+        "MemAvailable_bytes": 14061912064,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "nomesh",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libnomesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.207694166,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-nomesh-2.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-nomesh-2.stderr",
+      "user_seconds": 1.599603,
+      "sys_seconds": 0.203006,
+      "peak_rss_bytes": 207618048,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.8026090000000001,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.207694166,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 122245120,
+          "live_bytes": 104857568,
+          "used_memory_rss": 121896960,
+          "fragmentation_ratio": 1.1658206682802332,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 122245120,
+          "live_bytes": 104857568,
+          "used_memory_rss": 121896960,
+          "fragmentation_ratio": 1.1658206682802332,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 208035840,
+          "live_bytes": 104857328,
+          "used_memory_rss": 207618048,
+          "fragmentation_ratio": 1.9839895214571936,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 208035840,
+          "live_bytes": 104857328,
+          "used_memory_rss": 207618048,
+          "fragmentation_ratio": 1.9839895214571936,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760218.937634,
+      "finished_unix": 1791760241.7872138,
+      "host_before": {
+        "load_average": [
+          0.103515625,
+          0.09130859375,
+          0.05908203125
+        ],
+        "MemAvailable_bytes": 14051160064,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "mi",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 22.824734994,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mi-2.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mi-2.stderr",
+      "user_seconds": 1.247593,
+      "sys_seconds": 0.104716,
+      "peak_rss_bytes": 194928640,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.352309,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 22.824734994,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113201152,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113139712,
+          "fragmentation_ratio": 1.0795719597960813,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113201152,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113139712,
+          "fragmentation_ratio": 1.0795719597960813,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 194990080,
+          "live_bytes": 104857488,
+          "used_memory_rss": 194928640,
+          "fragmentation_ratio": 1.8595722987375016,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 194990080,
+          "live_bytes": 104857488,
+          "used_memory_rss": 194928640,
+          "fragmentation_ratio": 1.8595722987375016,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760242.7972178,
+      "finished_unix": 1791760266.0467505,
+      "host_before": {
+        "load_average": [
+          0.125,
+          0.0986328125,
+          0.0625
+        ],
+        "MemAvailable_bytes": 14075977728,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-keyonly",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.215546981,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-keyonly-2.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-keyonly-2.stderr",
+      "user_seconds": 1.625728,
+      "sys_seconds": 0.116698,
+      "peak_rss_bytes": 195043328,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.742426,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.215546981,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113348608,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113254400,
+          "fragmentation_ratio": 1.0809782119418516,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113348608,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113254400,
+          "fragmentation_ratio": 1.0809782119418516,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 195137536,
+          "live_bytes": 104857232,
+          "used_memory_rss": 195043328,
+          "fragmentation_ratio": 1.8609830936601492,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 195137536,
+          "live_bytes": 104857232,
+          "used_memory_rss": 195043328,
+          "fragmentation_ratio": 1.8609830936601492,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760267.0576065,
+      "finished_unix": 1791760290.2057962,
+      "host_before": {
+        "load_average": [
+          0.13916015625,
+          0.10595703125,
+          0.06591796875
+        ],
+        "MemAvailable_bytes": 14075781120,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:oracle-context",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle-context.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.116458515,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-3-0d36d436.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-3-0d36d436.stderr",
+      "user_seconds": 1.542621,
+      "sys_seconds": 0.112518,
+      "peak_rss_bytes": 205451264,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.6551390000000001,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.116458515,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 115257344,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115171328,
+          "fragmentation_ratio": 1.0991813647176585,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 115257344,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115171328,
+          "fragmentation_ratio": 1.0991813647176585,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 205537280,
+          "live_bytes": 104857184,
+          "used_memory_rss": 205451264,
+          "fragmentation_ratio": 1.9601640265296463,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 205537280,
+          "live_bytes": 104857184,
+          "used_memory_rss": 205451264,
+          "fragmentation_ratio": 1.9601640265296463,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760291.2166848,
+      "finished_unix": 1791760314.4807801,
+      "host_before": {
+        "load_average": [
+          0.1591796875,
+          0.11328125,
+          0.0693359375
+        ],
+        "MemAvailable_bytes": 14072037376,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:search",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/search.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.258601979,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-3-ff87ffda.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-3-ff87ffda.stderr",
+      "user_seconds": 1.643881,
+      "sys_seconds": 0.106575,
+      "peak_rss_bytes": 195010560,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.750456,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.258601979,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113352704,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113221632,
+          "fragmentation_ratio": 1.0810172745014563,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113352704,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113221632,
+          "fragmentation_ratio": 1.0810172745014563,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 195141632,
+          "live_bytes": 104857312,
+          "used_memory_rss": 195010560,
+          "fragmentation_ratio": 1.8610207364461144,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 195141632,
+          "live_bytes": 104857312,
+          "used_memory_rss": 195010560,
+          "fragmentation_ratio": 1.8610207364461144,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760315.4921527,
+      "finished_unix": 1791760338.9906971,
+      "host_before": {
+        "load_average": [
+          0.11279296875,
+          0.10546875,
+          0.0673828125
+        ],
+        "MemAvailable_bytes": 14078722048,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "mesh",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.489653094,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mesh-3.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mesh-3.stderr",
+      "user_seconds": 1.689073,
+      "sys_seconds": 0.442607,
+      "peak_rss_bytes": 197267456,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.1316800000000002,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.489653094,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 121970688,
+          "live_bytes": 104857568,
+          "used_memory_rss": 121274368,
+          "fragmentation_ratio": 1.1632034799815307,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 121970688,
+          "live_bytes": 104857568,
+          "used_memory_rss": 121274368,
+          "fragmentation_ratio": 1.1632034799815307,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 151232512,
+          "live_bytes": 104857600,
+          "used_memory_rss": 150437888,
+          "fragmentation_ratio": 1.442265625,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 151232512,
+          "live_bytes": 104857600,
+          "used_memory_rss": 150437888,
+          "fragmentation_ratio": 1.442265625,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760340.0003884,
+      "finished_unix": 1791760363.3008637,
+      "host_before": {
+        "load_average": [
+          0.0732421875,
+          0.095703125,
+          0.06494140625
+        ],
+        "MemAvailable_bytes": 14071611392,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "nomesh",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libnomesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.265909134,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-nomesh-3.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-nomesh-3.stderr",
+      "user_seconds": 1.632597,
+      "sys_seconds": 0.192161,
+      "peak_rss_bytes": 207880192,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.824758,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.265909134,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 122933248,
+          "live_bytes": 104857568,
+          "used_memory_rss": 122683392,
+          "fragmentation_ratio": 1.17238317028295,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 122933248,
+          "live_bytes": 104857568,
+          "used_memory_rss": 122683392,
+          "fragmentation_ratio": 1.17238317028295,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 208289792,
+          "live_bytes": 104857504,
+          "used_memory_rss": 207880192,
+          "fragmentation_ratio": 1.9864080686109027,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 208289792,
+          "live_bytes": 104857504,
+          "used_memory_rss": 207880192,
+          "fragmentation_ratio": 1.9864080686109027,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760364.3114061,
+      "finished_unix": 1791760387.2104967,
+      "host_before": {
+        "load_average": [
+          0.046875,
+          0.08642578125,
+          0.0625
+        ],
+        "MemAvailable_bytes": 14062551040,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "mi",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 22.845373333,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mi-3.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mi-3.stderr",
+      "user_seconds": 1.270157,
+      "sys_seconds": 0.103665,
+      "peak_rss_bytes": 194965504,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.3738219999999999,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 22.845373333,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113229824,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113176576,
+          "fragmentation_ratio": 1.0798453977133144,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113229824,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113176576,
+          "fragmentation_ratio": 1.0798453977133144,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 195018752,
+          "live_bytes": 104857312,
+          "used_memory_rss": 194965504,
+          "fragmentation_ratio": 1.8598488582274548,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 195018752,
+          "live_bytes": 104857312,
+          "used_memory_rss": 194965504,
+          "fragmentation_ratio": 1.8598488582274548,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760388.2221353,
+      "finished_unix": 1791760411.5214913,
+      "host_before": {
+        "load_average": [
+          0.08740234375,
+          0.09423828125,
+          0.06591796875
+        ],
+        "MemAvailable_bytes": 14076006400,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-keyonly",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.288459173,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-keyonly-3.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-keyonly-3.stderr",
+      "user_seconds": 1.682627,
+      "sys_seconds": 0.117369,
+      "peak_rss_bytes": 194908160,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.7999960000000002,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.288459173,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113369088,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113119232,
+          "fragmentation_ratio": 1.0811735247398755,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113369088,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113119232,
+          "fragmentation_ratio": 1.0811735247398755,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 195158016,
+          "live_bytes": 104857232,
+          "used_memory_rss": 194908160,
+          "fragmentation_ratio": 1.861178406845605,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 195158016,
+          "live_bytes": 104857232,
+          "used_memory_rss": 194908160,
+          "fragmentation_ratio": 1.861178406845605,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760412.530622,
+      "finished_unix": 1791760435.8803737,
+      "host_before": {
+        "load_average": [
+          0.11376953125,
+          0.1015625,
+          0.0693359375
+        ],
+        "MemAvailable_bytes": 14064685056,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:oracle-site",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle-site.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.335470398,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-3-6241130e.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-3-6241130e.stderr",
+      "user_seconds": 1.618309,
+      "sys_seconds": 0.11349,
+      "peak_rss_bytes": 197074944,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.731799,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.335470398,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 115359744,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115154944,
+          "fragmentation_ratio": 1.100157928707777,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 115359744,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115154944,
+          "fragmentation_ratio": 1.100157928707777,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 197206016,
+          "live_bytes": 104857376,
+          "used_memory_rss": 197074944,
+          "fragmentation_ratio": 1.8807071426239008,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 197206016,
+          "live_bytes": 104857376,
+          "used_memory_rss": 197074944,
+          "fragmentation_ratio": 1.8807071426239008,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760436.892491,
+      "finished_unix": 1791760460.0924559,
+      "host_before": {
+        "load_average": [
+          0.1318359375,
+          0.10888671875,
+          0.07275390625
+        ],
+        "MemAvailable_bytes": 14084718592,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:search",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/search.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.159682128,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-4-ff87ffda.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-4-ff87ffda.stderr",
+      "user_seconds": 1.613159,
+      "sys_seconds": 0.089004,
+      "peak_rss_bytes": 195043328,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.702163,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.159682128,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113319936,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113254400,
+          "fragmentation_ratio": 1.0807047740246185,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113319936,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113254400,
+          "fragmentation_ratio": 1.0807047740246185,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 195108864,
+          "live_bytes": 104857248,
+          "used_memory_rss": 195043328,
+          "fragmentation_ratio": 1.8607093712777967,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 195108864,
+          "live_bytes": 104857248,
+          "used_memory_rss": 195043328,
+          "fragmentation_ratio": 1.8607093712777967,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760461.1048534,
+      "finished_unix": 1791760484.6546926,
+      "host_before": {
+        "load_average": [
+          0.154296875,
+          0.115234375,
+          0.076171875
+        ],
+        "MemAvailable_bytes": 14062972928,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "mesh",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.509702143,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mesh-4.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mesh-4.stderr",
+      "user_seconds": 1.695399,
+      "sys_seconds": 0.45588,
+      "peak_rss_bytes": 198598656,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 2.151279,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.509702143,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 122155008,
+          "live_bytes": 104857568,
+          "used_memory_rss": 121548800,
+          "fragmentation_ratio": 1.1649612930179727,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 122155008,
+          "live_bytes": 104857568,
+          "used_memory_rss": 121548800,
+          "fragmentation_ratio": 1.1649612930179727,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 152481792,
+          "live_bytes": 104857392,
+          "used_memory_rss": 152330240,
+          "fragmentation_ratio": 1.4541825720784662,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 152481792,
+          "live_bytes": 104857392,
+          "used_memory_rss": 152330240,
+          "fragmentation_ratio": 1.4541825720784662,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760485.6671274,
+      "finished_unix": 1791760508.9673645,
+      "host_before": {
+        "load_average": [
+          0.109375,
+          0.107421875,
+          0.07421875
+        ],
+        "MemAvailable_bytes": 14058196992,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "nomesh",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libnomesh.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.26901776,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-nomesh-4.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-nomesh-4.stderr",
+      "user_seconds": 1.593103,
+      "sys_seconds": 0.217649,
+      "peak_rss_bytes": 207486976,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.810752,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.26901776,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 122228736,
+          "live_bytes": 104857568,
+          "used_memory_rss": 121896960,
+          "fragmentation_ratio": 1.1656644182325495,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 122228736,
+          "live_bytes": 104857568,
+          "used_memory_rss": 121896960,
+          "fragmentation_ratio": 1.1656644182325495,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 207867904,
+          "live_bytes": 104857584,
+          "used_memory_rss": 207486976,
+          "fragmentation_ratio": 1.9823831149876578,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 207867904,
+          "live_bytes": 104857584,
+          "used_memory_rss": 207486976,
+          "fragmentation_ratio": 1.9823831149876578,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760509.9783092,
+      "finished_unix": 1791760532.8279722,
+      "host_before": {
+        "load_average": [
+          0.0712890625,
+          0.09765625,
+          0.07177734375
+        ],
+        "MemAvailable_bytes": 14019022848,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "mi",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 22.823097932,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mi-4.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-mi-4.stderr",
+      "user_seconds": 1.244022,
+      "sys_seconds": 0.110557,
+      "peak_rss_bytes": 194953216,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.354579,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 22.823097932,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113229824,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113164288,
+          "fragmentation_ratio": 1.0798453977133144,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113229824,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113164288,
+          "fragmentation_ratio": 1.0798453977133144,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 195018752,
+          "live_bytes": 104857472,
+          "used_memory_rss": 194953216,
+          "fragmentation_ratio": 1.859846020319849,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 195018752,
+          "live_bytes": 104857472,
+          "used_memory_rss": 194953216,
+          "fragmentation_ratio": 1.859846020319849,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760533.8386283,
+      "finished_unix": 1791760557.0889676,
+      "host_before": {
+        "load_average": [
+          0.12646484375,
+          0.10498046875,
+          0.0751953125
+        ],
+        "MemAvailable_bytes": 14033838080,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-keyonly",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.238400975,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-keyonly-4.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-keyonly-4.stderr",
+      "user_seconds": 1.649697,
+      "sys_seconds": 0.102598,
+      "peak_rss_bytes": 194842624,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.752295,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.238400975,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 113254400,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113053696,
+          "fragmentation_ratio": 1.0800797730709428,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 113254400,
+          "live_bytes": 104857440,
+          "used_memory_rss": 113053696,
+          "fragmentation_ratio": 1.0800797730709428,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 195043328,
+          "live_bytes": 104857168,
+          "used_memory_rss": 194842624,
+          "fragmentation_ratio": 1.860085788317304,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 195043328,
+          "live_bytes": 104857168,
+          "used_memory_rss": 194842624,
+          "fragmentation_ratio": 1.860085788317304,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760558.09966,
+      "finished_unix": 1791760581.2501123,
+      "host_before": {
+        "load_average": [
+          0.14013671875,
+          0.111328125,
+          0.07861328125
+        ],
+        "MemAvailable_bytes": 14049644544,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:oracle-site",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle-site.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.091375956,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-4-6241130e.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-4-6241130e.stderr",
+      "user_seconds": 1.563133,
+      "sys_seconds": 0.089283,
+      "peak_rss_bytes": 196648960,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.652416,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.091375956,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 114892800,
+          "live_bytes": 104857440,
+          "used_memory_rss": 114696192,
+          "fragmentation_ratio": 1.095704796912837,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 114892800,
+          "live_bytes": 104857440,
+          "used_memory_rss": 114696192,
+          "fragmentation_ratio": 1.095704796912837,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 196739072,
+          "live_bytes": 104857456,
+          "used_memory_rss": 196648960,
+          "fragmentation_ratio": 1.8762525766408065,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 196739072,
+          "live_bytes": 104857456,
+          "used_memory_rss": 196648960,
+          "fragmentation_ratio": 1.8762525766408065,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791760582.2630367,
+      "finished_unix": 1791760605.4639087,
+      "host_before": {
+        "load_average": [
+          0.1494140625,
+          0.11669921875,
+          0.08203125
+        ],
+        "MemAvailable_bytes": 14059687936,
+        "SwapFree_bytes": 6978793472,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:oracle-context",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/redis-context-server",
+        "--activedefrag",
+        "no",
+        "--port",
+        "0",
+        "--unixsocket",
+        "/home/quill/jevalloc/src-tree/build/redis-bench.sock",
+        "--save",
+        "",
+        "--appendonly",
+        "no"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass9/redis-mesh/tables/redis-mesh/oracle-context.txt",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 23.168396901,
+      "stdout": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-4-0d36d436.stdout",
+      "stderr": "results/pass9/compaction/redis-mesh/logs/redis-mesh-jev-table-4-0d36d436.stderr",
+      "user_seconds": 1.573047,
+      "sys_seconds": 0.10203,
+      "peak_rss_bytes": 205426688,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 1.6750770000000001,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 23.168396901,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 115331072,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115077120,
+          "fragmentation_ratio": 1.0998844907905438,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 115331072,
+          "live_bytes": 104857440,
+          "used_memory_rss": 115077120,
+          "fragmentation_ratio": 1.0998844907905438,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 205615104,
+          "live_bytes": 104857600,
+          "used_memory_rss": 205426688,
+          "fragmentation_ratio": 1.9608984375,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 205615104,
+          "live_bytes": 104857600,
+          "used_memory_rss": 205426688,
+          "fragmentation_ratio": 1.9608984375,
+          "live_metric": "Redis used_memory (includes allocator usable sizes and metadata)"
+        }
+      ]
+    }
+  ],
+  "coverage_runs": [],
+  "summary": [
+    {
+      "benchmark": "redis-mesh",
+      "variant": "mi",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 22.824734994,
+        "min": 22.804725286,
+        "max": 22.845373333
+      },
+      "user_seconds": {
+        "median": 1.244022,
+        "min": 1.235008,
+        "max": 1.270157
+      },
+      "sys_seconds": {
+        "median": 0.104716,
+        "min": 0.102035,
+        "max": 0.110846
+      },
+      "cpu_seconds": {
+        "median": 1.354127,
+        "min": 1.3370430000000002,
+        "max": 1.3738219999999999
+      },
+      "peak_rss_bytes": {
+        "median": 194953216,
+        "min": 194846720,
+        "max": 194965504
+      },
+      "score": {
+        "median": 22.824734994,
+        "min": 22.804725286,
+        "max": 22.845373333
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.0,
+        "cpu_seconds": 1.0,
+        "peak_rss_bytes": 1.0,
+        "score": 1.0
+      }
+    },
+    {
+      "benchmark": "redis-mesh",
+      "variant": "jev-keyonly",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 23.278884084,
+        "min": 23.215546981,
+        "max": 23.288459173
+      },
+      "user_seconds": {
+        "median": 1.677697,
+        "min": 1.625728,
+        "max": 1.689563
+      },
+      "sys_seconds": {
+        "median": 0.107177,
+        "min": 0.101197,
+        "max": 0.117369
+      },
+      "cpu_seconds": {
+        "median": 1.778894,
+        "min": 1.742426,
+        "max": 1.7999960000000002
+      },
+      "peak_rss_bytes": {
+        "median": 194842624,
+        "min": 194801664,
+        "max": 195043328
+      },
+      "score": {
+        "median": 23.278884084,
+        "min": 23.215546981,
+        "max": 23.288459173
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.0198972338613959,
+        "cpu_seconds": 1.3136832808148717,
+        "peak_rss_bytes": 0.9994327254391125,
+        "score": 1.0198972338613959
+      }
+    },
+    {
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:oracle-site",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 23.133628104,
+        "min": 23.065205545,
+        "max": 23.335470398
+      },
+      "user_seconds": {
+        "median": 1.563133,
+        "min": 1.539276,
+        "max": 1.618309
+      },
+      "sys_seconds": {
+        "median": 0.111511,
+        "min": 0.089283,
+        "max": 0.115605
+      },
+      "cpu_seconds": {
+        "median": 1.659977,
+        "min": 1.649856,
+        "max": 1.731799
+      },
+      "peak_rss_bytes": {
+        "median": 197074944,
+        "min": 196648960,
+        "max": 197091328
+      },
+      "score": {
+        "median": 23.133628104,
+        "min": 23.065205545,
+        "max": 23.335470398
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.0135332616164525,
+        "cpu_seconds": 1.2258650776478128,
+        "peak_rss_bytes": 1.0108832675014707,
+        "score": 1.0135332616164525
+      }
+    },
+    {
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:oracle-context",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 23.128771025,
+        "min": 23.114242164,
+        "max": 23.168396901
+      },
+      "user_seconds": {
+        "median": 1.549544,
+        "min": 1.542621,
+        "max": 1.593115
+      },
+      "sys_seconds": {
+        "median": 0.102243,
+        "min": 0.09985,
+        "max": 0.112518
+      },
+      "cpu_seconds": {
+        "median": 1.6551390000000001,
+        "min": 1.643606,
+        "max": 1.6958
+      },
+      "peak_rss_bytes": {
+        "median": 205524992,
+        "min": 205426688,
+        "max": 205598720
+      },
+      "score": {
+        "median": 23.128771025,
+        "min": 23.114242164,
+        "max": 23.168396901
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.0133204626945251,
+        "cpu_seconds": 1.2222922960697187,
+        "peak_rss_bytes": 1.0542272459870576,
+        "score": 1.0133204626945251
+      }
+    },
+    {
+      "benchmark": "redis-mesh",
+      "variant": "jev-table:search",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 23.159682128,
+        "min": 23.074187453,
+        "max": 23.258601979
+      },
+      "user_seconds": {
+        "median": 1.613159,
+        "min": 1.563508,
+        "max": 1.643881
+      },
+      "sys_seconds": {
+        "median": 0.093077,
+        "min": 0.088773,
+        "max": 0.106575
+      },
+      "cpu_seconds": {
+        "median": 1.702163,
+        "min": 1.6643789999999998,
+        "max": 1.750456
+      },
+      "peak_rss_bytes": {
+        "median": 195018752,
+        "min": 194924544,
+        "max": 195153920
+      },
+      "score": {
+        "median": 23.159682128,
+        "min": 23.074187453,
+        "max": 23.258601979
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.0146747436098622,
+        "cpu_seconds": 1.257018728671683,
+        "peak_rss_bytes": 1.000336162702748,
+        "score": 1.0146747436098622
+      }
+    },
+    {
+      "benchmark": "redis-mesh",
+      "variant": "mesh",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 23.485076023,
+        "min": 23.462023744,
+        "max": 23.509702143
+      },
+      "user_seconds": {
+        "median": 1.689073,
+        "min": 1.661661,
+        "max": 1.695399
+      },
+      "sys_seconds": {
+        "median": 0.46331,
+        "min": 0.442607,
+        "max": 0.472135
+      },
+      "cpu_seconds": {
+        "median": 2.1337960000000002,
+        "min": 2.128618,
+        "max": 2.152855
+      },
+      "peak_rss_bytes": {
+        "median": 197865472,
+        "min": 197267456,
+        "max": 199282688
+      },
+      "score": {
+        "median": 23.485076023,
+        "min": 23.462023744,
+        "max": 23.509702143
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.028930939578207,
+        "cpu_seconds": 1.5757724349340942,
+        "peak_rss_bytes": 1.01493823010337,
+        "score": 1.028930939578207
+      }
+    },
+    {
+      "benchmark": "redis-mesh",
+      "variant": "nomesh",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 23.236928451,
+        "min": 23.207694166,
+        "max": 23.26901776
+      },
+      "user_seconds": {
+        "median": 1.599603,
+        "min": 1.593103,
+        "max": 1.632597
+      },
+      "sys_seconds": {
+        "median": 0.192161,
+        "min": 0.183123,
+        "max": 0.217649
+      },
+      "cpu_seconds": {
+        "median": 1.802678,
+        "min": 1.784059,
+        "max": 1.824758
+      },
+      "peak_rss_bytes": {
+        "median": 207618048,
+        "min": 206962688,
+        "max": 207880192
+      },
+      "score": {
+        "median": 23.236928451,
+        "min": 23.207694166,
+        "max": 23.26901776
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.018059068686158,
+        "cpu_seconds": 1.3312473645381857,
+        "peak_rss_bytes": 1.064963442306076,
+        "score": 1.018059068686158
+      }
+    }
+  ],
+  "complete": true
+}

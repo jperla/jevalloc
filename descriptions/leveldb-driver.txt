@@ -1,0 +1,1 @@
+LevelDB is an embedded ordered key-value store backed by sorted tables and a write-ahead log. This program writes records, runs concurrent reads and iterators, and compacts the database.

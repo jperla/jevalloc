@@ -1,0 +1,56 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,18 +18,19 @@
+ include(ExternalProject)
+ 
+ ExternalProject_Add(googletest
+-        GIT_REPOSITORY    https://github.com/google/googletest.git
+-        GIT_TAG           3e0e32ba300ce8afe695ad3ba7e81b21b7cf237a
+-        SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/googletest-src"
++        CMAKE_ARGS -DCMAKE_POLICY_VERSION_MINIMUM=3.5
++        DOWNLOAD_COMMAND ""
++        UPDATE_COMMAND ""
++        SOURCE_DIR        "${CMAKE_SOURCE_DIR}/../mesh-deps/googletest"
+         BINARY_DIR        "${CMAKE_CURRENT_BINARY_DIR}/googletest-build"
+         INSTALL_COMMAND   ""
+         TEST_COMMAND      ""
+ )
+ 
+ ExternalProject_Add(heap_layers
+-        GIT_REPOSITORY    https://github.com/emeryberger/Heap-Layers.git
+-        GIT_TAG           b0b2c2c7c5553b79c534f55317a5ab3e7d011379
+-        SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/heap_layers-src"
++        DOWNLOAD_COMMAND ""
++        UPDATE_COMMAND ""
++        SOURCE_DIR        "${CMAKE_SOURCE_DIR}/../mesh-deps/heap_layers"
+         BINARY_DIR        "${CMAKE_CURRENT_BINARY_DIR}/heap_layers-build"
+         CONFIGURE_COMMAND ""
+         BUILD_COMMAND     ""
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ #Include current folder to guarantee headers are found by files
+ include_directories(./)
+-include_directories(${CMAKE_CURRENT_BINARY_DIR}/../heap_layers-src)
++include_directories(${CMAKE_SOURCE_DIR}/../mesh-deps/heap_layers)
+ # include_directories(./vendor/Heap-Layers)
+ 
+ #Create a common set of source files
+@@ -54,7 +54,7 @@
+ add_executable(unit.test ${unit_src})
+ target_link_libraries(unit.test PRIVATE -ldl -pthread )
+ 
+-set(GTEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/../googletest-src/googletest)
++set(GTEST_DIR ${CMAKE_SOURCE_DIR}/../mesh-deps/googletest/googletest)
+ 
+ ExternalProject_Get_Property(googletest binary_dir)
+ set(GTEST_LIBRARY_PATH ${binary_dir}/lib/${CMAKE_FIND_LIBRARY_PREFIXES}gtest.a)
+@@ -64,7 +64,7 @@
+ target_link_libraries(unit.test PRIVATE ${GTEST_MAIN_LIBRARY_PATH})
+ 
+ #Include header file paths to the unit tests
+-target_include_directories(unit.test SYSTEM PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/../googletest-src/googletest/include)
++target_include_directories(unit.test SYSTEM PRIVATE ${CMAKE_SOURCE_DIR}/../mesh-deps/googletest/googletest/include)
+ 
+ #Set specific compiler flags for the unit tests
+ target_compile_definitions(unit.test PRIVATE -DGTEST_HAS_PTHREAD=1)
