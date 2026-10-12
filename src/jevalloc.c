@@ -416,7 +416,7 @@ void jev_test_fail_heaps(int enabled){fail_heaps=enabled!=0;}
  * Slow paths perform the final free themselves so negative probes can tail-call
  * the allocator without saving registers across instrumentation calls. */
 extern void _mi_jev_free_page(void*,mi_page_t*);
-static __attribute__((noinline)) void trace_free_release(void* p){busy++;trace_free(p);busy--;mi_free(p);}
+static __attribute__((noinline)) void trace_free_release(void* p){busy++;trace_free(p);if(living)live_free(p);busy--;mi_free(p);}
 static __attribute__((noinline)) void live_free_release(void* p,size_t h,mi_page_t* page){
  live_free_sample(p,h);if(page)_mi_jev_free_page(p,page);else mi_free(p);
 }

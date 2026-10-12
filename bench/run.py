@@ -6,6 +6,7 @@ from pathlib import Path
 from definitions import ROOT, definitions
 sys.path.insert(0,str(ROOT/'tools'))
 from selection import accepted
+LIVE_RULE_POLICIES = ('heuristic', 'rules-neutral', 'rule-names', 'rule-ttl')
 DEFAULT_VARIANTS=['sys','mi','jev-none','jev-keyonly','jev-table:oracle','jev-table:random','jev-table:size','jev-table:all-transient','jev-table:all-permanent','jev-live:heuristic','jev-live:static-model','jev-live:hybrid']
 
 def environment(variant, name, tables, mode='run', trace=None):
@@ -106,12 +107,12 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
         sock.unlink(missing_ok=True);decision_log.unlink(missing_ok=True);stats.unlink(missing_ok=True)
         policy=variant.split(':')[1]
         if policy=='static-site':policy='static-model'
-        if policy=='hybrid':extra['JEVALLOC_HYBRID']='1'
+        if policy in ('hybrid','rules-neutral','rule-names','rule-ttl'):extra['JEVALLOC_HYBRID']='1'
         if policy=='per-alloc':extra['JEVALLOC_PER_ALLOC']='1'
         service=[sys.executable,str(ROOT/'tools/jevd.py'),'--socket',str(sock),'--policy',policy,'--prompt',row.get('prompt','stack-v1'),'--short-bytes',str(extra.get('JEVALLOC_SHORT_BYTES',1048576)),'--max-model-decisions',str(max_model_decisions),'--model-cache',str(ROOT/'results/pass7/model-cache'),'--cache',str(outdir/'cache'/row['name']/policy),'--log',str(decision_log),'--table',str(Path(tables)/row['name']/'oracle.txt')]
         if len(variant.split(':'))>2:service+=['--model',variant.split(':',2)[2]]
         replay=schedule_path(row,variant,outdir)
-        if rep!=-1:
+        if rep!=-1 and policy not in LIVE_RULE_POLICIES:
             service+=['--replay',str(replay)]
             if rep<-1:service+=['--fill-replay']
         sidecar=subprocess.Popen(service,stdout=subprocess.DEVNULL,stderr=open(outdir/(tag+'.jevd.stderr'),'w'))
@@ -194,6 +195,7 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
             'unasked_byte_share':sum(site_bytes[k] for k in unasked)/sum(site_bytes.values()) if sum(site_bytes.values()) else 0,
             'max_model_decisions':max_model_decisions,
             'budget_fallbacks':sum(bool(e.get('budget_exhausted')) for e in events)} if policy in ('model','model-reask','static-model','hybrid','per-alloc') else None
+        record['decision_execution']='live-current-statistics' if policy in LIVE_RULE_POLICIES else ('cold' if rep==-1 else 'replay')
         record['cache_hits']=sum(bool(e.get('cache_hit')) for e in events)
         record['model_seconds']=sum(e.get('model_seconds',0) for e in events)
         record['input_tokens']=sum(e.get('usage',{}).get('input_tokens',0) for e in events if not e.get('cache_hit'))
@@ -225,7 +227,7 @@ def summarize(records):
     return summary
 
 def markdown(data):
-    lines=['# '+data['name'],'','Oracle is fitted and evaluated on the same workload (prior-trace byte-majority site control). Live cold runs are reported separately; headline live timings replay their decision sequence without model inference.','',
+    lines=['# '+data['name'],'','Oracle is fitted and evaluated on the same workload (prior-trace byte-majority site control). Model cold runs are reported separately; warm model policies replay decisions without HTTP inference. Heuristic and fixed rule controls evaluate current-run observations and do not replay decisions.','',
            'Ratios are variant / plain mimalloc; lower is better. Score follows bench.sh throughput normalization for larson, xmalloc-test, rptest, and glibc-thread; otherwise score is wall time. Wall and score are both recorded. RSS and footprint are bytes in JSON.','',
            '| Benchmark | Variant | Wall s median [min, max] | Score / mi | CPU s median [min, max] | CPU / mi | RSS MiB [min, max] | RSS / mi | Footprint MiB [min, max] |',
            '|---|---|---:|---:|---:|---:|---:|---:|---:|']
@@ -239,6 +241,7 @@ def save(path,data):
     data['summary']=summarize(data['runs']);tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(data,indent=2));tmp.replace(path);path.with_suffix('.md').write_text(markdown(data))
 
 def prepare_replay(row,variant,outdir,tables,timeout,data,path,max_model_decisions=3000):
+    if variant.split(':')[1] in LIVE_RULE_POLICIES:return
     replay=schedule_path(row,variant,outdir)
     for _ in range(12):
         index=sum(r.get('coverage_fill',False) and r['benchmark']==row['name'] and r['variant']==variant for r in data['coverage_runs'])

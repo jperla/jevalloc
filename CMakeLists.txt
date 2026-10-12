@@ -65,13 +65,17 @@ target_compile_options(live-test PRIVATE -fno-builtin -fno-optimize-sibling-call
 target_link_libraries(live-test PRIVATE Threads::Threads ${CMAKE_DL_LIBS})
 
 if(NOT APPLE)
- add_executable(server-sim fragbench/server-sim.c)
- target_compile_options(server-sim PRIVATE -fno-builtin -fno-optimize-sibling-calls)
- # Identical-code folding would give distinct lifetime wrappers one debug name.
- if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
-  target_compile_options(server-sim PRIVATE -fno-ipa-icf)
- endif()
- target_link_libraries(server-sim PRIVATE Threads::Threads)
+ foreach(server_target server-sim server-sim-opaque server-sim-plausible)
+  add_executable(${server_target} fragbench/server-sim.c)
+  target_compile_options(${server_target} PRIVATE -fno-builtin -fno-optimize-sibling-calls)
+  # Keep the five allocation wrappers distinct in code and debug attribution.
+  if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
+   target_compile_options(${server_target} PRIVATE -fno-ipa-icf)
+  endif()
+  target_link_libraries(${server_target} PRIVATE Threads::Threads)
+ endforeach()
+ target_compile_definitions(server-sim-opaque PRIVATE JEV_NAMES_OPAQUE)
+ target_compile_definitions(server-sim-plausible PRIVATE JEV_NAMES_PLAUSIBLE)
 endif()
 
 add_executable(defects tests/defects.c)

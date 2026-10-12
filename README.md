@@ -76,7 +76,13 @@ because no frees have happened. Changes affect future allocations.
 alias). `static-model` keeps the first answer forever. First-sight prompts include
 up to twelve named stack frames and a neutral description, with no source code;
 `stack-v1-nodesc` omits the description. `heuristic` uses the previous sampled
-free/age rule. `oracle` reads `--table`; `random` is seeded.
+free/age rule, recomputed from each warm run’s current observations; it cannot
+use `--replay`. `rules-neutral` uses the continuous hybrid rules with
+P(transient)=0.5 and no model. `rule-names` starts permanent iff any function name
+contains cache, index, table, global, config, intern, or registry (case-insensitive);
+`rule-ttl` starts permanent iff context contains `ttl=day`. These two use one-hot
+priors. All three rule controls need `JEVALLOC_HYBRID=1`, which the runner sets.
+`oracle` reads `--table`; `random` is seeded.
 All requests, probabilities, responses, model latency and provenance are logged.
 
 Each (site, context signature) pair uses the default class until it has successfully
@@ -368,3 +374,16 @@ replace CMake's git downloads; the build adaptation is recorded with hashes.
 rebuilding their optional idle marker. `scripts/pass9-compaction.sh` then runs
 all eleven workloads, five interleaved repetitions, normal and 10-second idle,
 and independent inference-overlap audits. `tools/pass9_status.py` reports progress.
+
+## Review-2 matched experiments (pass 10)
+
+After building and passing correctness, `scripts/pass10.sh` runs the original
+server configuration, matched mimalloc-defaults server and naming controls,
+recollects the small per-allocation experiment, then runs default-options real
+applications and the regression set. Results are checkpointed under
+`results/pass10`; resume rejects changed measurement inputs. Defaults remove all
+`MIMALLOC_*` settings and include normal and 10-second idle samples at each
+original cycle. The explicit matched series evaluates all requested policies
+without applying the earlier table-search gate. `tools/pass10_report.py`
+recomputes tables; `tools/pass10_validate.py` verifies repetitions, rule answers,
+trace tables, options, input fingerprints and inference-overlap audits.

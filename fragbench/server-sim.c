@@ -1,4 +1,30 @@
 #define _GNU_SOURCE
+#if defined(JEV_NAMES_OPAQUE)
+#define parse_request_buffer fn_a
+#define assemble_response_buffer fn_b
+#define create_session_state fn_c
+#define insert_cache_index fn_d
+#define store_request_payload fn_e
+#define REQUEST_CONTEXT "k=%s"
+#define TTL_ZERO "0"
+#define TTL_SHORT "1"
+#define TTL_DAY "2"
+#elif defined(JEV_NAMES_PLAUSIBLE)
+#define parse_request_buffer buf_get
+#define assemble_response_buffer resp_build
+#define create_session_state conn_attach
+#define insert_cache_index entry_put
+#define store_request_payload obj_new
+#define REQUEST_CONTEXT "class=%s"
+#define TTL_ZERO "a"
+#define TTL_SHORT "b"
+#define TTL_DAY "c"
+#else
+#define REQUEST_CONTEXT "kind=store ttl=%s"
+#define TTL_ZERO "0"
+#define TTL_SHORT "short"
+#define TTL_DAY "day"
+#endif
 #include "../src/jevalloc.h"
 #include <pthread.h>
 #include <stdint.h>
@@ -76,7 +102,7 @@ static void* server_worker(void* arg) {
     * aliasing the allocator's deterministic sampling period.
     * One call/stack carries transient and permanent objects. */
    unsigned ttl=mixed?request_ttl(&rng):1;
-   if(mixed&&jev_context_setf)jev_context_setf("kind=store ttl=%s",ttl==0?"0":ttl==1?"short":"day");
+   if(mixed&&jev_context_setf)jev_context_setf(REQUEST_CONTEXT,ttl==0?TTL_ZERO:ttl==1?TTL_SHORT:TTL_DAY);
    if(mixed)slots[i]=store_request_payload(n,ttl);
    else slots[i]=(i%10==0)?insert_cache_index(n):create_session_state(n);
    if(!payload_only){void* parse=parse_request_buffer(n);void* response=assemble_response_buffer(n);

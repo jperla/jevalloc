@@ -30,7 +30,7 @@ class Tools(unittest.TestCase):
     def test_legacy_replay_rejected(self):
         with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]/'build') as d:
             p=Path(d);(p/'old').write_text(json.dumps(dict(schema=2,prompt='v2',request={'key':'old'},ordinal=0,response={'class':1,'recheck_after':0})))
-            args=SimpleNamespace(prompt='v2',cache=d,log=str(p/'log'),table=None,replay=str(p/'old'),policy='heuristic')
+            args=SimpleNamespace(prompt='v2',cache=d,log=str(p/'log'),table=None,replay=str(p/'old'),policy='random')
             with self.assertRaisesRegex(ValueError,'Replay prompt'):jevd.Decisions(args)
     def test_no_runtime_leakage(self):
         s={'key':'DEADBEEF','program':'fixture','count':999,'bytes':888,'class_bytes':[7,9], 'frames':[{'image':'secret','address':'123','function':'func','file':'test.c','line':7,'source':[{'line':7,'text':'malloc(42);'}],'count':999}]}

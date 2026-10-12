@@ -9,7 +9,8 @@ from run import run_one, merge_schedule, schedule_path
 def main():
     out=ROOT/'results/replay-test';out.mkdir(exist_ok=True)
     row={'name':'cfrac','binary':'../live-test','args':['single'],'stdin':None,'expect':'live OK'}
-    variant='jev-live:heuristic';tables=ROOT/'results/tables'
+    # Replay transport fixture; the heuristic must run live.
+    variant='jev-live:random';tables=ROOT/'results/tables'
     cold=run_one(row,variant,-1,out,tables)
     schedule=schedule_path(row,variant,out)
     # Deliberately withhold all rechecks to simulate a time-limited cold run.

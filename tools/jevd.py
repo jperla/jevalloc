@@ -7,9 +7,14 @@ from symbolize import symbolize
 
 from prompts import criteria, state, canonical, fit_state, PROMPT_ID, QUESTION, question, PROMPTS
 CRITERIA=criteria('v2')
+LIVE_RULE_POLICIES = ('heuristic', 'rules-neutral', 'rule-names', 'rule-ttl')
+HYBRID_RULE_POLICIES = ('rules-neutral', 'rule-names', 'rule-ttl')
+NAME_KEYWORDS = ('cache', 'index', 'table', 'global', 'config', 'intern', 'registry')
 
 class Decisions:
     def __init__(self,args):
+        if args.policy in LIVE_RULE_POLICIES and args.replay:
+            raise ValueError('Live deterministic policies must not replay historical decisions')
         self.a=args;self.prompt=getattr(args,'prompt','stack-v1');self.lock=threading.Lock();self.ordinal={};self.first_class={};self.model_decisions=0
         self.max_model_decisions=getattr(args,"max_model_decisions",3000)
         self.cache=Path(args.cache);self.cache.mkdir(parents=True,exist_ok=True)
@@ -29,7 +34,7 @@ class Decisions:
             self.model_decisions=sum(e.get('raw_response') is not None for e in self.replay.values())
     def schedule(self,ordinal):
         if self.a.policy=='per-alloc':return 1
-        if self.a.policy in ('static-model','hybrid') or ordinal>=self.a.max_rechecks:return 0
+        if self.a.policy in ('static-model','hybrid',*HYBRID_RULE_POLICIES) or ordinal>=self.a.max_rechecks:return 0
         return 1024*8**ordinal
     def decide(self,request):
         # Serialize model work, cache writes and the ordinal stream.
@@ -67,7 +72,7 @@ class Decisions:
                 identity={'version':3,'class_schema':PROMPT_ID,'policy':self.a.policy,'model':self.a.model,'seed':self.a.seed,'max_rechecks':self.a.max_rechecks,'request':request,'payload':payload,'oracle':self.oracle.get(key)}
                 if self.prompt!='v1':identity['prompt']=self.prompt
                 digest=hashlib.sha256(canonical(identity).encode()).hexdigest();path=self.cache/(digest+'.json')
-                if self.a.policy!='per-alloc' and path.exists():
+                if self.a.policy not in ('per-alloc', *LIVE_RULE_POLICIES) and path.exists():
                     saved=json.loads(path.read_text());cls=saved['class'];raw=saved.get('raw_response');hit=True
                     backend=saved.get('model_backend','cpu' if raw else None);origin=saved.get('model_origin',path.name if raw else None)
                 else:
@@ -99,6 +104,11 @@ class Decisions:
                         site=request.get('site',{})
                         older=site.get('older_sampled_bytes',0);freed=site.get('older_freed_bytes',0)
                         cls=int(site.get('cohort_count',0)>=16 and older>0 and 20*freed<older and 4*site.get('oldest_age_bytes',0)>request.get('process',{}).get('alloc_clock',0))
+                    elif self.a.policy=='rules-neutral':cls=0
+                    elif self.a.policy=='rule-ttl':cls=int('ttl=day' in request.get('context',''))
+                    elif self.a.policy=='rule-names':
+                        named={'frames':[dict(f,address=f.get('address',f.get('addr','0x0'))) for f in request.get('frames',[])]};symbolize([{'frames':[f for f in named['frames'] if 'function' not in f]}])
+                        cls=int(any(word in frame.get('function','').lower() for frame in named.get('frames',[]) for word in NAME_KEYWORDS))
                     elif self.a.policy=='oracle':cls=self.oracle.get(key,0)
                     else:cls=int(hashlib.sha256(f'{self.a.seed}:{key}'.encode()).hexdigest(),16)%2
                     saved={'class':cls,'raw_response':raw,'model_backend':backend,'model_origin':origin};temp=path.with_suffix('.tmp');temp.write_text(canonical(saved));temp.replace(path)
@@ -116,6 +126,9 @@ class Decisions:
             if cls not in (0,1): raise ValueError('class must be 0 or 1')
             response={'class':cls,'recheck_after':recheck}
             if self.a.policy=='per-alloc':response['per_allocation']=1
+            if self.a.policy in HYBRID_RULE_POLICIES:
+                response['prior_transient']=0.5 if self.a.policy=='rules-neutral' else float(1-cls)
+                response['prior_permanent']=1-response['prior_transient']
             if self.a.policy=='hybrid' and raw is not None:
                 response['prior_transient']=float(raw['answers']['lifetime']['probabilities']['transient'])
                 response['prior_permanent']=float(raw['answers']['lifetime']['probabilities']['permanent'])
@@ -142,7 +155,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--socket',default=os.environ.get('JEVALLOC_SOCKET'),required=not bool(os.environ.get('JEVALLOC_SOCKET')))
     p.add_argument('--prompt',choices=PROMPTS,default='stack-v1')
-    p.add_argument('--policy',choices=['model','model-reask','static-model','hybrid','per-alloc','heuristic','oracle','random'],default='hybrid')
+    p.add_argument('--policy',choices=['model','model-reask','static-model','hybrid','per-alloc','heuristic','rules-neutral','rule-names','rule-ttl','oracle','random'],default='hybrid')
     p.add_argument('--model',default='clef-flash');p.add_argument('--decide-url',default='http://127.0.0.1:8765');p.add_argument('--decide-path',default='/v1/systemone')
     p.add_argument('--reasoning',action='store_true');p.add_argument('--max-rechecks',type=int,default=4);p.add_argument('--seed',type=int,default=1729)
     p.add_argument('--model-cache',help='Optional shared native two-class model payload cache; answers still consume the per-policy budget');p.add_argument('--cache',default='results/cache');p.add_argument('--log',default='results/decisions.jsonl');p.add_argument('--table');p.add_argument('--http-timeout',type=float,default=120);p.add_argument('--replay');p.add_argument('--fill-replay',action='store_true')

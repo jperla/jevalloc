@@ -102,7 +102,7 @@ def main():
             report['timeout']=data
         data,elapsed=execute(stats,sock,timeout=50);assert data['failures']==1 and elapsed<10
         report['unreachable']=data
-        # Deterministic workload twice, with a canonical response cache.
+        # Deterministic workload twice; heuristic evaluates current observations each time.
         logs=[]
         for i in range(2):
             log=folder/f'cache-{i}.jsonl';p,sock=daemon(folder,'heuristic',log,folder/'cache')
@@ -126,10 +126,11 @@ def main():
                 return copy
             assert without_rss(logs[0])==without_rss(logs[1]),'allocator state differs'
             known=set(first)
-            assert all(r['cache_hit'] for r in logs[1] if canonical(r['request']) in known)
+            assert all(not r['replayed'] and not r['cache_hit'] for r in logs[1])
         else:
             assert identical,'cfrac requests differ'
-            assert all(r['cache_hit'] for r in logs[1]),'warm cache missed'
+            assert all(not r['replayed'] and not r['cache_hit'] for r in logs[1]),'heuristic was replayed/cached'
+            assert [r['response'] for r in logs[0]]==[r['response'] for r in logs[1]]
         report['cfrac_byte_identical']=identical
         report['cfrac_cache_hits']=sum(r['cache_hit'] for r in logs[1])
         report['cfrac_requests']=len(logs[1])

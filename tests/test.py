@@ -87,6 +87,8 @@ def main():
         (out/'tests.json').write_text(json.dumps(report,indent=2))
     subprocess.run([str(ROOT/'build/hybrid-test')],check=True)
     subprocess.run([sys.executable,str(ROOT/'tests/test_hybrid.py')],check=True)
+    subprocess.run([sys.executable,str(ROOT/'tests/test_combined.py')],check=True)
+    subprocess.run([sys.executable,str(ROOT/'tests/test_review2.py')],check=True)
     subprocess.run([sys.executable,str(ROOT/'tests/test_context.py')],check=True)
     subprocess.run([sys.executable,str(ROOT/'tests/test_realtime_policy.py')],check=True)
     subprocess.run([sys.executable,str(ROOT/'tests/test_headroom.py')],check=True)

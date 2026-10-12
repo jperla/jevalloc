@@ -2281,3 +2281,393 @@ The compact evidence, plots, validation and build/test logs are copied locally.
 Raw traces, decision caches and full run stdout/stderr remain on the test machine.
 The remote-address scan is clean; tools/promptstudy.py is unchanged. Everything
 is left uncommitted, with no git writes, sudo, or system-package installation.
+
+## Pass 10 — review 2, initial state and fixed controls
+
+Read SPEC-REVIEW2.md, review 2, RESULTS.md and this journal. Initial remote
+inspection found no owned benchmark/sidecar jobs; the existing model server
+(PID 970221) is running. Prior evidence is preserved. No promptlab access or
+changes are needed. The four findings are accepted; no disputed measurement
+is being substituted for the requested reruns.
+
+Before any new experiment, the deterministic controls are fixed as follows.
+Rules-neutral starts transient with P(transient)=0.5. Rule-names starts permanent
+iff any symbolized stack function name contains cache, index, table, global,
+config, intern, or registry (case-insensitive), otherwise transient. Rule-ttl
+starts permanent iff the supplied context contains the literal ttl=day,
+otherwise transient. The latter two use one-hot priors. All three retain the
+same 64-KiB admission, placement, sampling and continuous C hybrid rules.
+No rule will be tuned after observing results. Opaque names map the five
+allocation wrappers in source order to fn_a through fn_e; plausible names map
+them to buf_get, resp_build, conn_attach, entry_put, obj_new. TTL values map
+0/short/day to k=0/1/2 or class=a/b/c; the description stays byte-identical.
+
+Work order is F1 fix/tests, live heuristic and neutral rules, semantic rules,
+naming builds, server matrices, fresh small per-allocation collection, then
+real fragbench/defaults and regression measurements. New evidence uses pass10.
+
+F1 combined-mode regression passed on macOS and Linux at sample rates 1 and 64:
+12,288 allocations at one site, all sampled bytes freed, zero survivors and
+exactly one wrong-permanent-prior demotion with logging both disabled/enabled.
+The fixture includes producer-thread exit followed by main-thread frees and
+checks that churn actually reuses addresses. Linux full correctness is running.
+
+F2 warm deterministic policies now reject replay at the service boundary and
+run from current observations. The replay transport fixture uses random instead
+of heuristic. F4 binaries compile the same source with only preprocessor name
+and context-string substitutions; descriptions are copied byte-for-byte. Fresh
+traces provide each binary's own oracle keys. Server runs compare the original
+immediate-purge configuration and defaults on named stacks; the opaque/plausible
+ablation uses defaults. Every defaults variant removes every MIMALLOC_* override
+and records ordinary/10-second idle at each existing workload cycle. Real programs
+with one original cycle retain that protocol. This pass's explicit all-variant
+defaults request supersedes earlier model gates for these matched real controls.
+
+Additional macOS hybrid, context and live-protocol integration passed. Historical
+RESULTS wording now names the immediate-purge configuration, labels replayed
+heuristic schedules, retains the pass-9 logger defect qualification, separates
+TTL bucket matching from a model advantage, qualifies original table gates and
+source-snippet causality, and states process-RSS, realloc and evidence limits.
+For very high-cardinality live runs, compact matrices retain admitted-site exit
+statistics plus exact global/coverage totals; full per-site exit statistics stay
+in the explicitly linked remote stats file. This is output compaction only.
+
+The first complete-workload Linux attempt passed all 22 trace/random pairs and
+allocator integration, then stopped on a harness NameError: the comment added
+when switching the replay fixture to random accidentally swallowed the tables
+assignment. The assignment is restored on its own line. The launcher failed
+closed before any performance run. The replay fixture is tested separately, then
+the complete Linux suite is rerun; both failed-attempt logs are retained. No
+allocator or measured workload source changed for this harness correction.
+
+The defaults small control will replay the freshly recollected fixed-library
+per-object schedule from the immediate configuration, checking size/context/stack
+identity and collecting its own exact object lifetimes. This holds answers fixed
+across the allocator-options comparison and avoids a redundant second HTTP
+collection. Its cold/accuracy record explicitly names the schedule source and
+marks inference as not recollected. The immediate small experiment performs the
+requested fresh cold collection; all its warm measurements use the fixed library.
+
+The rerun of full Linux correctness passed all 22 trace/random workload pairs,
+allocator/C++ stress, combined trace/live tests, context, hybrid, live heuristic,
+replay, budget and exact lifetime checks. Fragmentation source-attribution and
+TTL/accounting checks passed. The measured library is now frozen. The sequential
+server matrices have started; baseline options and every decision-execution mode
+are recorded in each run. Local copies of the correctness evidence are retained.
+
+Pass 10 completed results/pass10/immediate/named/site-pure-1: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Pass 10 completed results/pass10/immediate/named/site-pure-16: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Pass 10 completed results/pass10/immediate/named/site-mixed-1: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Pass 10 completed results/pass10/immediate/named/site-mixed-16: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+The four immediate-purge server blocks are complete and independently audited.
+Pure 1/16-thread idle MiB (mi/static/hybrid/live heuristic/neutral/names):
+280.21/43.67/43.66/228.61/139.38/43.64 and
+296.55/62.67/65.20/259.87/156.20/61.96.
+Mixed 1/16-thread (mi/context oracle/static/hybrid/live heuristic/neutral/TTL):
+144.70/26.06/28.12/28.10/146.87/75.73/28.09 and
+146.43/33.54/46.38/46.67/166.64/89.64/46.29.
+Thus the matched semantic rules reproduce the large model-associated reductions
+in these named fixtures. Continuous neutral rules capture about 50–59% of the
+oracle saving, better than the sparse live heuristic in these four comparisons,
+but below the semantic priors. Hybrid has no transitions; neutral has median two
+promotions and one demotion, and TTL has two demotions (temporary buffer paths).
+These are original-options results, not defaults. Defaults collection follows.
+
+Pass 10 completed results/pass10/defaults/named/site-pure-1: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+First completed defaults block materially changes the absolute saving. At one
+thread site-pure, final ordinary/10-second idle MiB are identical: mi 280.215,
+oracle 213.996, static/hybrid/names rule 216.809, live heuristic 286.828,
+neutral rules 304.812. Static saves 22.6% of mi under defaults, compared with
+84.4% in the new immediate-purge block; the names rule matches it. Cycle zero
+must not be hidden: mi is 122.215 at both observations, oracle 122.184; static,
+hybrid and names rule fall from about 124.93 ordinary idle to 97.621 at 10 s.
+The same sampling protocol is used by all variants. These observations settle
+F3 for this workload without attributing the change to an unmeasured mechanism.
+
+Pass 10 completed results/pass10/defaults/named/site-pure-16: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Default-options site-pure-16 is complete and audited. Final idle MiB:
+mi 296.55, oracle 234.80, static 239.98, hybrid 241.92,
+live heuristic 305.36, neutral 331.91, names rule 239.74.
+The static reduction is about 19.1%, far smaller than under immediate purge;
+neutral and sparse heuristic use more RSS than plain mimalloc here. The keyword
+rule again matches the useful semantic placement closely. Mixed defaults follow.
+
+Pass 10 reporting/verification update: the RESULTS.md entry point now keeps the
+default-options comparison compact and links the full pass report, both-cycle
+phase table and per-site probability table. Final validation additionally audits
+the five logged per-object warm runs independently for inference overlap and
+checks renamed-binary context vocabularies and workload live-byte equality.
+These changes affect reporting and validation only; measured inputs stay frozen.
+
+Pass 10 completed results/pass10/defaults/named/site-mixed-1: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Default-options site-mixed-1 is complete and independently audited. Final
+ordinary/10-second idle MiB: mi 146.215, context oracle 112.184, static
+115.020, hybrid 115.016, live heuristic 147.145, neutral 158.957, names
+147.145, TTL rule 115.016. Static saves about 21.3%; the literal TTL rule
+reproduces its useful reduction. The site-only oracle stays at 146.309.
+Cycle-zero mi is 66.215 and context oracle 68.246; both remain unchanged at
+10 seconds. This further limits the original immediate-purge headline.
+
+Pass 10 completed results/pass10/defaults/named/site-mixed-16: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+All four named default-options server blocks are complete. Site-mixed-16
+final ordinary/10-second idle MiB: mi 170.527, context oracle 138.914,
+static 140.070, hybrid 140.125, live heuristic 171.238, neutral 180.023,
+names 172.070, TTL rule 140.070. Static saves 17.9%; the TTL rule has
+the same median. Oracle range is wide (120.480–138.980 MiB), so the 96.3%
+capture is a ratio of descriptive medians, not a precise efficiency estimate.
+Plain mi cycle-zero idle is 74.527 MiB and unchanged at 10 seconds. Across
+all four named defaults fixtures static-model has no lower median than the
+matching names/TTL rule. Renamed fixtures follow with frozen rules and prompts.
+
+Pass 10 completed results/pass10/defaults/opaque/site-pure-1: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Opaque site-pure-1 is complete and audited. Final idle MiB: mi 280.219,
+oracle 213.996, static 283.121, hybrid 304.809, live heuristic 286.883,
+neutral 304.801, names rule 283.121. The model labels all five asked paths
+transient (P(transient) about 0.57–0.60), including the retained-object path.
+Hybrid and neutral both have median two promotions and one demotion.
+Relative to the matched named saving, static retains -4.6% and hybrid -38.8%;
+negative means an RSS increase, not a surviving positive saving. The oracle
+still reduces RSS, while static and the fixed rule have equal medians.
+
+Pass 10 completed results/pass10/defaults/opaque/site-pure-16: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Opaque site-pure-16 is complete and audited. Final idle MiB: mi 296.547,
+oracle 234.859, static 298.574, hybrid 331.879, live heuristic 307.250,
+neutral 331.934, names rule 298.746. Hybrid and neutral again show median
+two promotions and one demotion. Static is 0.172 MiB below the names-rule
+median, but ranges overlap (297.836–299.199 versus 298.258–298.836) and
+both exceed plain mi. This is not a useful model-specific saving.
+Static/hybrid retain -3.6%/-64.7% of their respective named savings.
+
+Pass 10 completed results/pass10/defaults/opaque/site-mixed-1: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Opaque site-mixed-1 is complete and audited. Final idle MiB: mi 146.215,
+context oracle 112.188, static 147.129, hybrid 158.945, live heuristic
+147.129, neutral 158.945, names rule 147.133, TTL rule 147.129. All ten
+asked model pairs are transient, including retained fn_e/k=2; its transient
+probability is 0.6034. Hybrid and neutral each show median two promotions
+and one demotion. Static equals the matching TTL-rule median.
+Static/hybrid retain -2.9%/-40.8% of the respective named savings; neither
+retains a positive saving here. The correctly labelled context oracle still
+reduces RSS under the same workload and options.
+
+Pass 10 completed results/pass10/defaults/opaque/site-mixed-16: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+All four opaque blocks are complete and audited. Site-mixed-16 final idle
+MiB: mi 170.527, context oracle 138.918, static 172.117, hybrid 178.059,
+live heuristic 171.129, neutral 178.004, names rule 172.070, TTL rule 172.000.
+Hybrid/neutral each have median two promotions and one demotion; their ranges
+are broad and overlapping. Static is slightly above both fixed-rule medians.
+Static/hybrid retain -5.2%/-24.8% of the respective named savings here.
+Across all four opaque comparisons neither has a positive saving over mi;
+the trace-fitted oracle still reduces RSS in each. Plausible names follow.
+
+Pass 10 completed results/pass10/defaults/plausible/site-pure-1: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Plausible-name site-pure-1 gives a positive hybrid result. Final idle MiB:
+mi 280.219, oracle 213.996, static 283.121, hybrid 228.746, heuristic
+286.887, neutral 304.809, names rule 283.117. Hybrid retains 81.2% of
+the named saving and is 54.371 MiB below the names-rule median; their ranges
+do not overlap (228.734–228.750 versus 283.113–283.125). Static retains
+no positive saving. All initial classes are transient. Hybrid promotes only
+entry_put (P(transient)=0.5491), while conn_attach (0.7332) stays transient;
+the fixed promotion gate requires P(transient)<0.7. Buffers also stay transient.
+This observed benefit uses model probability priors plus runtime rules. It must
+remain visible beside the negative opaque and static-model results. Reporting
+now explicitly compares both static and hybrid with the matching fixed rule.
+
+Pass 10 completed results/pass10/defaults/plausible/site-pure-16: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Plausible-name site-pure-16 is complete and audited. Final idle MiB:
+mi 296.547, oracle 234.855, static 298.770, hybrid 267.992, heuristic
+305.125, neutral 332.004, names rule 298.465. Hybrid shows one promotion
+and zero demotions, with a broader 254.797–268.051 MiB range; the names
+rule range is 297.969–298.934 MiB. Hybrid is 30.473 MiB below that rule
+median and saves 9.6% against mi. Static has no positive saving.
+Static/hybrid retain -3.9%/52.3% of their respective named savings.
+Both plausible pure workloads therefore show a benefit for the model-prior
+plus runtime-rule combination, while the static labels alone do not.
+
+Pass 10 completed results/pass10/defaults/plausible/site-mixed-1: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Plausible site-mixed-1 is complete and audited. Final idle MiB: mi 146.215,
+context oracle 112.188, static 147.133, hybrid 120.945, heuristic 147.137,
+neutral 158.945, names rule 147.137, TTL rule 147.133. Hybrid is 26.188 MiB
+below the TTL-rule median; its 120.938–120.953 MiB range does not overlap
+that rule's 147.133 MiB observations. Static equals the TTL-rule median.
+Every warm hybrid run promotes only obj_new/class=c, once, with no demotion.
+The model answers all pairs transient initially; its obj_new transient priors
+are 0.7017/0.7082/0.6789 for class=a/b/c. The fixed 0.7 gate admits only
+class=c for promotion. These probabilities are close to that gate, so this
+is evidence for this fixed naming/context ablation, not robustness to all
+renamings or a held-out real application. Hybrid retains about 81% of its
+named saving. One 16-thread server block remains before per-object recollection.
+
+Pass 10 completed results/pass10/defaults/plausible/site-mixed-16: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Pass 10: server block completed; matrices and inference audits retained under results/pass10.
+
+All 16 server blocks are complete and independently audited. Plausible
+site-mixed-16 final idle MiB: mi 170.531, context oracle 138.914, static
+172.117, hybrid 150.066, heuristic 171.438, neutral 178.055, names/TTL
+rules both 172.070. Hybrid has one promotion and no demotions, with range
+148.016–152.078 MiB; TTL range is 171.949–172.129. It beats that fixed
+rule by 22.004 MiB and saves 12.0% against mi.
+Static/hybrid retain -5.2%/67.3% of their named savings here. Across
+all renamed comparisons static retains no positive saving; opaque hybrid
+also loses the saving, while plausible hybrid retains about 52–81%. This
+benefit over the specified fixed rules is tied to probability priors and
+runtime checks in these particular synthetic ablations. The close mixed
+probabilities around the fixed 0.7 gate remain visible in the site table.
+
+Fresh fixed-library logged per-allocation cold inference has now started,
+followed by logged warm checks and separate unlogged performance repetitions.
+
+An independent local check recomputed all 152 server policy medians from
+760 accepted warm observations and verified five distinct repetitions, audit
+hashes/zero overlap, default-option environments, both renamed context
+vocabularies, and identical requested live bytes in every corresponding phase.
+The compact check record is results/pass10/server-independent-check.json.
+
+Protocol clarification: the defaults series adds the requested quiet 10-second
+observation after each original idle phase. This also delays the following
+cycle, whereas the immediate series preserves its original shorter waits.
+Every variant within a series is matched, but the across-series difference
+changes idle duration as well as options; it cannot assign a causal share
+to those two changes separately. The report and phase-table legend now state
+this explicitly. No performance input or measurement was changed.
+
+Fresh per-allocation cold recollection finished: 2,229 new HTTP requests,
+3,050.571 HTTP seconds and 3,062.905 target wall seconds. The fixed combined
+logger reports 37 samples / 2 survivors, replacing the historical defective
+37 / 37 result. All five logged warm checks also report 37 / 2. Separate
+unlogged interleaved performance runs are collecting before accuracy/RSS
+publication; matching sampled counts do not imply every runtime request field
+is identical, since logging still has memory overhead.
+
+Pass 10 completed results/pass10/immediate/named/per-alloc-small: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+The fresh immediate-options small block is complete and audited. All eleven
+cold/logged-warm/unlogged-warm records agree at 37 samples / 2 survivors.
+Unlike the old logger, every warm request now matches the cold request exactly:
+all ten replay-drift counters are zero, and request-drift.json has no changed
+fields. Object accuracy is unchanged at 2,110/2,229 (94.66%), versus 91.12%
+always-transient and 39.90% permanent recall. The literal TTL rule reproduces
+all 2,229 model-answered classes. Five unlogged idle medians: mi 7.965 MiB,
+key-only 8.055, site oracle 8.051, context oracle 5.117, per-alloc 7.770.
+This remains a small RSS reduction despite exact per-object requests and high
+headline accuracy. Defaults uses this newly collected schedule with fresh
+lifetime logging; its logged checks have started with the 10-second protocol.
+
+Pass 10 completed results/pass10/defaults/named/per-alloc-small: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Pass 10: peralloc block completed; matrices and inference audits retained under results/pass10.
+
+The defaults small block is complete and audited. Final unlogged idle MiB:
+mi 8.129, key-only 8.223, site oracle 8.219, context oracle 6.219, per-alloc
+8.453. The per-object policy has no positive saving in this defaults protocol.
+All eleven sample/survivor records again equal 37 / 2, and all logged/unlogged
+warm request streams match the defaults logged reference exactly.
+
+The defaults reference reuses the newly collected immediate schedule. Compared
+with that source schedule, all defaults runs have 1,200/2,229 changed runtime
+states: process.rss, process.committed and process.alloc_clock differ in 1,200
+requests, and site.oldest_age_bytes in 68. The defaults series adds a phase
+observation between cycles; the model's per-object prompt does not consume
+these runtime fields. Size, context/signature and frames still match under
+the strict replay checks. source-schedule-drift.json records this distinct
+cross-protocol comparison so it cannot be confused with the zero drift
+between logged and unlogged runs within each series. Real defaults now follow.
+
+Independent local object-accuracy verification passed both small series.
+Recomputing each truth label from birth/death clocks and half the sum of all
+requested sizes gives confusion [[2031,0],[119,79]] in both, 3,255,808
+correct model-answered bytes, and 2,229/2,229 TTL-rule agreement. Immediate
+has 2,414 objects and allocation clock 3,695,936; defaults has 2,418 and
+3,698,928, making the extra phase-observation allocation volume explicit.
+See results/pass10/small-independent-check.json.
+
+Pass 10 completed results/pass10/defaults/named/redis-mesh: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+First real defaults block, redis-mesh, is complete and audited. Final
+ordinary/10-second idle MiB: mi 185.973, site oracle 188.031, context
+oracle 196.074, static-site 193.020, static/context 193.008, hybrid
+208.965, heuristic 231.000, neutral 219.031, names rule 192.961, TTL
+rule 193.000. None saves idle RSS versus mi. Target CPU medians are
+1.363 s for mi, 1.781 s for static/context and 1.782 s for hybrid; they
+exclude sidecar CPU. Both original cycles remain in the full phase table.
+The new model runs were included despite the old failed gate, as requested.
+
+Pass 10 completed results/pass10/defaults/named/redis-drop: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Redis-drop defaults is complete and audited, with a severe negative live-context
+result. Final ordinary/10-second idle MiB: mi 274.332, key-only 288.781,
+site oracle 274.582, context oracle 290.266, static-site 281.422,
+static/context 4246.531, hybrid 4245.867, heuristic 4243.613, neutral
+4244.930, names rule 4243.910, TTL rule 4244.422. Thus context-aware live
+RSS is about 4.15 GiB, not a memory saving. Static/context target CPU is
+28.235 s versus mi 0.332 s, and wall is 39.493 s versus 11.924 s including
+the prescribed quiet time. All live context controls exhibit this cost.
+
+Representative first warm static/context record: 495,328 site/context entries,
+9 model-asked entries and 45.0% of requested bytes unasked, versus 629 entries
+and 13 asked in the site-only record. The compact matrix retains admitted-size
+site statistics and exact global/coverage counters; the full exit statistics
+remain at its recorded remote path. This high-cardinality state overhead must
+be prominent, and must not be described as a model-inference cost.
+
+Pass 10 completed results/pass10/defaults/named/redis-sessions: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Redis-sessions defaults is complete and audited. Final ordinary/10-second
+idle MiB: mi 157.406, site oracle 159.387, context oracle 161.562,
+static-site 164.582, static/context 162.238, hybrid 165.258, heuristic
+172.469, neutral 160.301, names rule 172.609, TTL rule 165.523. No tested
+variant has a lower median than mi. Ranges are broad: mi 151.691–189.266,
+static/context 126.855–172.984, hybrid 147.148–172.883 MiB. These overlap
+and do not support a precise effect estimate. Three incomplete warm coverage
+probes were retained outside the published groups; missing schedule entries
+were filled before their replacement measurements. All published warm groups
+still have five successful repetitions and zero inference overlap.
+
+Pass 10 completed results/pass10/defaults/named/sqlite: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+SQLite defaults is complete and audited. Final ordinary/10-second idle MiB:
+mi 207.020, oracle 208.949, static 209.875, hybrid 209.762, heuristic
+209.824, neutral 209.902, names rule 209.773. All tested placement variants
+exceed mi; ranges are narrow. Target CPU is 0.108 s for mi, 0.117 s for
+static and 0.119 s for hybrid, excluding the sidecar. This default-options
+baseline is materially above the historical immediate-purge SQLite value;
+the two series remain separately labelled. LevelDB follows.
+
+Pass 10 completed results/pass10/defaults/named/leveldb: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+LevelDB defaults is complete and audited. Final idle MiB: mi 147.059,
+oracle 147.652, static 151.988, hybrid 152.016, heuristic 156.406,
+neutral 152.219, names rule 152.613. No tested median improves on mi.
+Plain mi remains 147.059 after ten seconds; neutral changes by only 0.004 MiB.
+Oracle range includes one lower observation (141.059–147.699), while static
+is 151.914–152.125 and hybrid 149.504–152.480. The descriptive medians
+and full ranges remain separate. RocksDB cache and churn are next.
+
+RocksDB's live names-rule runs expose substantial symbol-resolution wall cost.
+The sidecar resolves each new frame with addr2line and caches it within that
+process. Warm model replay bypasses prompt preparation/symbolization as well
+as HTTP, whereas rule-names does this work live. Target CPU excludes both
+sidecar and its symbolizer children. The report/README now explicitly bound
+timing comparisons to these implemented paths; no end-to-end model-versus-rule
+speed advantage is inferred. Measured policy code remains unchanged.
+
+Pass-10 RocksDB-cache progress: coverage probes during the third repetition exposed additional internal stack keys. The existing fill/retry procedure converged for static-model and hybrid; all fill/probe records remain excluded from warm medians. The live names rule spends several minutes per process in symbolization, whereas warm model replay bypasses prompt preparation and symbolization as well as HTTP inference. This timing asymmetry is now explicit in the evidence README and report. Measurement inputs remain frozen. Local Python syntax and git diff --check passed during this wait.
+
+Pass 10 completed results/pass10/defaults/named/rocksdb-cache: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+RocksDB-cache defaults completed all five interleaved repetitions and its independent inference audit. Final idle MiB: mi 144.246 (133.000–152.816), oracle 160.023, static-model 242.895, hybrid 1019.105 (941.098–1112.109), live heuristic 236.773, neutral 237.855, names rule 697.719. There is no model saving; hybrid is about seven times the mimalloc median. Names-rule median wall is 397.451 seconds, versus mi 14.576 and warm-replayed static 14.736. Symbolization remains part of the live rule cost, not a fair estimate of end-to-end model-versus-rule latency. The ordinary and 10-second medians match except names-rule changes by 0.016 MiB. No measurement inputs were changed. The report headline now explicitly includes the hybrid RSS failure.
