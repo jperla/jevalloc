@@ -1,0 +1,1 @@
+Redis is an in-memory key-value server supporting strings, collections, and commands over client connections. It provides keyspace operations, expiration, and configurable cache eviction.

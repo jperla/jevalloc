@@ -1,0 +1,62 @@
+[
+  {
+    "sample": 1,
+    "logged": false,
+    "site": {
+      "prior_transient": 0.1,
+      "class": 0,
+      "promotions": 0,
+      "demotions": 1,
+      "samples": 12288,
+      "sampled_bytes": 12582912,
+      "freed_bytes": 12582912
+    },
+    "survivors": 0,
+    "output": "reused=8188\n"
+  },
+  {
+    "sample": 1,
+    "logged": true,
+    "site": {
+      "prior_transient": 0.1,
+      "class": 0,
+      "promotions": 0,
+      "demotions": 1,
+      "samples": 12288,
+      "sampled_bytes": 12582912,
+      "freed_bytes": 12582912
+    },
+    "survivors": 0,
+    "output": "reused=8188\n"
+  },
+  {
+    "sample": 64,
+    "logged": false,
+    "site": {
+      "prior_transient": 0.1,
+      "class": 0,
+      "promotions": 0,
+      "demotions": 1,
+      "samples": 192,
+      "sampled_bytes": 196608,
+      "freed_bytes": 196608
+    },
+    "survivors": 0,
+    "output": "reused=8188\n"
+  },
+  {
+    "sample": 64,
+    "logged": true,
+    "site": {
+      "prior_transient": 0.1,
+      "class": 0,
+      "promotions": 0,
+      "demotions": 1,
+      "samples": 192,
+      "sampled_bytes": 196608,
+      "freed_bytes": 196608
+    },
+    "survivors": 0,
+    "output": "reused=8188\n"
+  }
+]

@@ -1,0 +1,18 @@
+[  9%] Built target live-test
+[  9%] Built target site-test
+[ 11%] Built target measure
+[ 16%] Built target stress
+[ 16%] Built target lifetimes
+[ 19%] Built target cost
+[ 47%] Built target mimalloc
+[ 75%] Built target mi-core
+[ 88%] Built target defects
+[ 88%] Built target server-sim-plausible
+[ 88%] Built target server-sim-opaque
+[ 88%] Built target server-sim
+[ 90%] Building C object CMakeFiles/hybrid-test.dir/tests/hybrid.c.o
+[ 91%] Building C object CMakeFiles/jevalloc.dir/src/jevalloc.c.o
+[ 93%] Linking C executable hybrid-test
+[ 93%] Built target hybrid-test
+[ 95%] Linking C shared library libjevalloc.so
+[100%] Built target jevalloc

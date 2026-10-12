@@ -13,4 +13,9 @@ int main(void){
  assert(hybrid_class(1,.1,16,10000,499,1,m,m)==1);
  assert(hybrid_class(0,.1,10000,1000000,500,1,m,m)==0);
  assert(hybrid_class(1,.1,16,0,0,0,0,0)==1);
+ for(unsigned i=0;i<3;i++) {
+  hybrid_promotion_gate=.6+.1*i;
+  assert(hybrid_class(0,hybrid_promotion_gate,100,10000,0,0,m,m)==0);
+  assert(hybrid_class(0,hybrid_promotion_gate-.001,100,10000,0,0,m,m)==1);
+ }
 }

@@ -24,7 +24,9 @@ typedef struct LiveSite {
  unsigned hybrid_promotions,hybrid_demotions;
  CohortEntry cohort[COHORT_SIZE];
  Frame frames[MAX_DEPTH]; unsigned nf;
- struct LiveSite* next;
+ struct LiveSite *next,*site_next;
+ uint64_t transition_clock[32],transition_ns[32];
+ unsigned transition_class[32],transition_count;
 } LiveSite;
 typedef struct LiveShard {
  /* Only the owning thread reads/writes these counters. Cross-thread reporting
@@ -41,6 +43,7 @@ typedef struct LiveShard {
 static LiveShard* all_shards;
 typedef struct Sample {void* p;uint64_t birth,size;LiveShard* owner;struct Sample* next;uint64_t serial;unsigned slot;} Sample;
 static LiveSite* live_sites[16384];
+static LiveSite* live_site_index[16384];
 static Sample* samples[65536];
 static atomic_uint sample_buckets[65536];
 /* A spatial negative filter keeps unsampled frees away from the pointer table.
@@ -109,12 +112,38 @@ static unsigned sample_rate=64,timeout_ms=30000;
 static bool hybrid_mode;
 static atomic_bool per_alloc_mode;
 static uint64_t min_site_bytes=65536;
+static uint64_t max_pairs=16384,max_contexts=64,max_metadata_bytes=128*UINT64_C(1024)*1024;
+static _Atomic uint64_t metadata_bytes,metadata_peak,metadata_overflows,metadata_overflow_bytes,sample_overflows;
+static uint64_t shard_count,shard_peak,index_count,sample_records,max_observed_contexts;
+/* Reservation includes retained sample pools. CAS also serializes sample-record
+ * reservations, which run under a different lock; no live/sample lock inversion. */
+static bool live_reserve(uint64_t n) {
+ uint64_t old=GET(metadata_bytes);
+ do {if(old>max_metadata_bytes || n>max_metadata_bytes-old)return false;}
+ while(!atomic_compare_exchange_weak_explicit(&metadata_bytes,&old,old+n,memory_order_relaxed,memory_order_relaxed));
+ uint64_t peak=GET(metadata_peak);
+ while(peak<old+n&&!atomic_compare_exchange_weak_explicit(&metadata_peak,&peak,old+n,memory_order_relaxed,memory_order_relaxed)){}
+ return true;
+}
+static uint64_t live_limit(const char* name,uint64_t fallback) {
+ const char* s=getenv(name);if(!s||!*s||*s=='-')return fallback;
+ char* end;errno=0;unsigned long long n=strtoull(s,&end,10);
+ return errno||*end?fallback:n;
+}
+static LiveShard* live_overflow(size_t n,unsigned* cls) {
+ ADD(metadata_overflows,1);ADD(metadata_overflow_bytes,n);*cls=default_class;return NULL;
+}
 static _Alignas(128) atomic_bool circuit_open,live_closed;
 static const char* socket_path;
 static char socket_path_copy[sizeof(((struct sockaddr_un*)0)->sun_path)];
 static uint64_t nanos(void) {struct timespec t;clock_gettime(CLOCK_MONOTONIC,&t);return (uint64_t)t.tv_sec*1000000000+t.tv_nsec;}
 static uint64_t quant(uint64_t n) {return n?UINT64_C(1)<<(63-__builtin_clzll(n)):0;}
 static void live_init(void) {
+ max_pairs=live_limit("JEVALLOC_MAX_PAIRS",max_pairs);
+ max_contexts=live_limit("JEVALLOC_MAX_CONTEXTS",max_contexts);
+ max_metadata_bytes=live_limit("JEVALLOC_MAX_METADATA_BYTES",max_metadata_bytes);
+ const char* gate=getenv("JEVALLOC_PROMOTION_GATE");
+ if(gate){char* end;double value=strtod(gate,&end);if(end!=gate&&!*end&&value>=0&&value<=1)hybrid_promotion_gate=value;}
  per_alloc_mode=getenv("JEVALLOC_PER_ALLOC") && !strcmp(getenv("JEVALLOC_PER_ALLOC"),"1");
  hybrid_mode=getenv("JEVALLOC_HYBRID") && !strcmp(getenv("JEVALLOC_HYBRID"),"1");
  for(unsigned i=0;i<64;i++)atomic_init(&sample_mutex[i].lock,0);
@@ -203,7 +232,9 @@ static void hybrid_update_locked(LiveSite* s,uint64_t now) {
  for(unsigned i=0;i<count;i++)if(!s->cohort[i].freed && now>=s->cohort[i].birth && now-s->cohort[i].birth>oldest)oldest=now-s->cohort[i].birth;
  unsigned before=GET(s->cls);
  unsigned after=hybrid_class(before,s->prior_transient,s->cohort_seen,s->hybrid_bytes,s->hybrid_freed_bytes,s->hybrid_frees,oldest,now);
- if(before!=after){if(after)s->hybrid_promotions++;else s->hybrid_demotions++;atomic_store_explicit(&s->cls,after,memory_order_relaxed);}
+ if(before!=after){unsigned i=s->transition_count++;
+  if(i<32){s->transition_clock[i]=now;s->transition_ns[i]=nanos();s->transition_class[i]=after;}
+  if(after)s->hybrid_promotions++;else s->hybrid_demotions++;atomic_store_explicit(&s->cls,after,memory_order_relaxed);}
 }
 static int cohort_birth_compare(const void* a,const void* b){uint64_t x=((const CohortEntry*)a)->birth,y=((const CohortEntry*)b)->birth;return (x>y)-(x<y);}
 static void cohort_stats(LiveSite* s,uint64_t* bytes,uint64_t* freed,unsigned* count,uint64_t now,uint64_t* oldest) {
@@ -274,13 +305,15 @@ static void live_release_shard(LiveShard* sh) {
  for(unsigned i=0;i<65;i++){uint64_t bytes=GET(sh->hist[i]);if(bytes)atomic_store_explicit(&sh->site->hist[i],GET(sh->site->hist[i])+bytes,memory_order_relaxed);}
  LiveShard** pp=&all_shards;while(*pp&&*pp!=sh)pp=&(*pp)->global_next;
  if(*pp)*pp=sh->global_next;
- pthread_mutex_unlock(&live_mutex);mi_free(sh);
+ shard_count--;mi_free(sh);ADD(metadata_bytes,-sizeof(*sh));pthread_mutex_unlock(&live_mutex);
 }
 static void live_thread_finish(Thread* t) {
  for(LiveShard* sh=t->live_shards;sh;) {
   live_merge(sh);LiveShard* next=sh->next;live_release_shard(sh);sh=next;
  }
- t->live_shards=NULL;mi_free(t->live_index);t->live_index=NULL;live_clock_merge(t);
+ t->live_shards=NULL;
+ if(t->live_index){pthread_mutex_lock(&live_mutex);mi_free(t->live_index);index_count--;ADD(metadata_bytes,-(512*sizeof(LiveShard*)));pthread_mutex_unlock(&live_mutex);}
+ t->live_index=NULL;live_clock_merge(t);
 }
 static LiveShard* live_before_slow(KeyCache* cached,size_t n,unsigned* cls) {
  unsigned individual=default_class;
@@ -289,19 +322,37 @@ static LiveShard* live_before_slow(KeyCache* cached,size_t n,unsigned* cls) {
  if(GET(live_closed)){*cls=default_class;return NULL;}
  LiveShard* shard=cached->live_site;
  if(!shard){
-  /* A raw-cache collision must not scan every site seen by this thread. */
-  if(!context()->live_index)context()->live_index=metadata(512*sizeof(LiveShard*));
-  LiveShard** bucket=&((LiveShard**)context()->live_index)[mix(key)&511];
-  for(shard=*bucket;shard&&shard->site->key!=key;shard=shard->hash_next){}
+  /* The index itself is budgeted; rejected contexts allocate no key table. */
+  LiveShard** bucket=context()->live_index?&((LiveShard**)context()->live_index)[mix(key)&511]:NULL;
+  if(bucket)for(shard=*bucket;shard&&shard->site->key!=key;shard=shard->hash_next){}
   if(!shard) {
    pthread_mutex_lock(&live_mutex);
-   size_t h=mix(key)&16383;LiveSite* site=live_sites[h];while(site&&site->key!=key)site=site->next;
-   if(!site){site=mi_zalloc_aligned(sizeof(*site),128);if(!site)abort();atomic_flag_clear(&site->cohort_lock);site->key=key;site->site_key=cached->site_key;site->signature=cached->signature;if(site->signature)memcpy(site->context,context()->request_context,256);site->nf=nf;memcpy(site->frames,frames,nf*sizeof(Frame));site->cls=default_class;site->next=live_sites[h];live_sites[h]=site;live_site_count++;}
-   shard=mi_zalloc_aligned(sizeof(*shard),128);if(!shard)abort();shard->site=site;shard->cls=GET(site->cls);shard->refs=1;shard->until_sample=sample_rate;
+   size_t h=mix(key)&16383,site_h=mix(cached->site_key)&16383;
+   LiveSite* site=live_sites[h];while(site&&site->key!=key)site=site->next;
+   uint64_t contexts=0;
+   if(!site&&cached->signature)for(LiveSite* s=live_site_index[site_h];s;s=s->site_next)
+    if(s->site_key==cached->site_key&&s->signature)contexts++;
+   size_t index_bytes=bucket?0:512*sizeof(LiveShard*);
+   size_t needed=(site?0:sizeof(LiveSite))+sizeof(LiveShard)+index_bytes;
+   if((!site&&(live_site_count>=max_pairs||(cached->signature&&contexts>=max_contexts)))||!live_reserve(needed)){
+    pthread_mutex_unlock(&live_mutex);return live_overflow(n,cls);
+   }
+   /* Allocate transactionally. Failure also falls back without registering state. */
+   LiveSite* fresh=site?NULL:mi_zalloc_aligned(sizeof(LiveSite),128);
+   shard=mi_zalloc_aligned(sizeof(*shard),128);
+   void* index=index_bytes?mi_zalloc(index_bytes):NULL;
+   if((!site&&!fresh)||!shard||(index_bytes&&!index)){
+    mi_free(fresh);mi_free(shard);mi_free(index);ADD(metadata_bytes,-needed);
+    pthread_mutex_unlock(&live_mutex);return live_overflow(n,cls);
+   }
+   if(index){context()->live_index=index;index_count++;bucket=&((LiveShard**)index)[mix(key)&511];}
+   if(!site){if(cached->signature&&contexts+1>max_observed_contexts)max_observed_contexts=contexts+1;site=fresh;atomic_flag_clear(&site->cohort_lock);site->key=key;site->site_key=cached->site_key;site->signature=cached->signature;if(site->signature)memcpy(site->context,context()->request_context,256);site->nf=nf;memcpy(site->frames,frames,nf*sizeof(Frame));site->cls=default_class;site->next=live_sites[h];live_sites[h]=site;site->site_next=live_site_index[site_h];live_site_index[site_h]=site;live_site_count++;}
+   shard->site=site;shard->cls=GET(site->cls);shard->refs=1;shard->until_sample=sample_rate;
    shard->sample_mask=(sample_rate&(sample_rate-1))?UINT32_MAX:sample_rate-1;
    shard->next=context()->live_shards;context()->live_shards=shard;
    shard->hash_next=*bucket;*bucket=shard;
    shard->global_next=all_shards;all_shards=shard;
+   if(++shard_count>shard_peak)shard_peak=shard_count;
    pthread_mutex_unlock(&live_mutex);
   }
   cached->live_site=shard;
@@ -358,7 +409,13 @@ static void live_sample(void* p,size_t n,LiveShard* shard) {
  size_t h=sample_hash(p);
  sample_lock(h);
  Sample* record=sample_mutex[h&63].pool;
- if(record)sample_mutex[h&63].pool=record->next;else record=metadata(sizeof(*record));
+ if(record)sample_mutex[h&63].pool=record->next;
+ else {
+  if(!live_reserve(sizeof(*record))){ADD(sample_overflows,1);sample_unlock(h);return;}
+  record=mi_zalloc(sizeof(*record));
+  if(!record){ADD(metadata_bytes,-sizeof(*record));ADD(sample_overflows,1);sample_unlock(h);return;}
+  __atomic_fetch_add(&sample_records,1,__ATOMIC_RELAXED);
+ }
  if(filter_mode)filter_update(p,true);
  *record=(Sample){.p=p,.birth=live_now(),.size=n,.owner=shard,.next=samples[h],.slot=COHORT_SIZE};
  LiveSite* site=shard->site;cohort_lock(site);record->serial=++site->cohort_seen;
@@ -402,6 +459,10 @@ static void live_finish(void) {
   if(hybrid_mode)for(unsigned h=0;h<16384;h++)for(LiveSite* s=live_sites[h];s;s=s->next){cohort_lock(s);if(s->has_prior){fprintf(f,"%s\"%016llx\":{\"prior_transient\":%.17g,\"class\":%u,\"promotions\":%u,\"demotions\":%u,\"samples\":%llu,\"sampled_bytes\":%llu,\"freed_bytes\":%llu}",first?"":",",(unsigned long long)s->key,s->prior_transient,GET(s->cls),s->hybrid_promotions,s->hybrid_demotions,(unsigned long long)s->cohort_seen,(unsigned long long)s->hybrid_bytes,(unsigned long long)s->hybrid_freed_bytes);first=false;}cohort_unlock(s);}
   fputs("},\"site_sampled_live\":{",f);first=true;
   for(unsigned h=0;h<16384;h++)for(LiveSite* s=live_sites[h];s;s=s->next){uint64_t alive=0;for(LiveShard* sh=all_shards;sh;sh=sh->global_next)if(sh->site==s)alive+=live_survivors(sh);fprintf(f,"%s\"%016llx\":%llu",first?"":",",(unsigned long long)s->key,(unsigned long long)alive);first=false;}
+  fprintf(f,"},\"metadata\":{\"bytes\":%llu,\"peak_bytes\":%llu,\"max_bytes\":%llu,\"pairs\":%llu,\"max_pairs\":%llu,\"max_contexts\":%llu,\"max_observed_contexts\":%llu,\"shards\":%llu,\"peak_shards\":%llu,\"indexes\":%llu,\"sample_records\":%llu,\"overflow_allocations\":%llu,\"overflow_bytes\":%llu,\"sample_overflows\":%llu,\"site_size\":%zu,\"shard_size\":%zu,\"sample_size\":%zu,\"fixed_bytes\":%zu}",
+   (unsigned long long)GET(metadata_bytes),(unsigned long long)GET(metadata_peak),(unsigned long long)max_metadata_bytes,(unsigned long long)live_site_count,(unsigned long long)max_pairs,(unsigned long long)max_contexts,(unsigned long long)max_observed_contexts,(unsigned long long)shard_count,(unsigned long long)shard_peak,(unsigned long long)index_count,(unsigned long long)__atomic_load_n(&sample_records,__ATOMIC_RELAXED),(unsigned long long)GET(metadata_overflows),(unsigned long long)GET(metadata_overflow_bytes),(unsigned long long)GET(sample_overflows),sizeof(LiveSite),sizeof(LiveShard),sizeof(Sample),sizeof(live_sites)+sizeof(live_site_index)+sizeof(samples)+sizeof(sample_buckets)+sizeof(sample_filter)+sizeof(sample_mutex));
+  fprintf(f,",\"promotion_gate\":%.17g,\"transitions\":{",hybrid_promotion_gate);first=true;
+  if(hybrid_mode)for(unsigned h=0;h<16384;h++)for(LiveSite* s=live_sites[h];s;s=s->next){cohort_lock(s);if(s->transition_count){fprintf(f,"%s\"%016llx\":{\"count\":%u,\"events\":[",first?"":",",(unsigned long long)s->key,s->transition_count);first=false;for(unsigned i=0;i<s->transition_count&&i<32;i++)fprintf(f,"%s{\"class\":%u,\"allocation_clock\":%llu,\"monotonic_ns\":%llu}",i?",":"",s->transition_class[i],(unsigned long long)s->transition_clock[i],(unsigned long long)s->transition_ns[i]);fputs("]}",f);}cohort_unlock(s);}
   fprintf(f,"},\"failure_errno\":%d",last_failure_errno);
   fprintf(f,",\"blocked_ns\":%llu,\"decisions\":%llu,\"rechecks\":%llu,\"timeouts\":%llu,\"failures\":%llu,\"sites\":%llu,\"samples\":%llu,\"sampled_live_objects\":%llu,\"sample_rate\":%u,\"allocation_clock\":%llu}\n",(unsigned long long)blocked_ns,(unsigned long long)decisions,(unsigned long long)rechecks,(unsigned long long)timeouts,(unsigned long long)failures,(unsigned long long)live_site_count,(unsigned long long)totals.samples,(unsigned long long)totals.alive,sample_rate,(unsigned long long)total_bytes);fclose(f);}
  pthread_mutex_unlock(&live_mutex);

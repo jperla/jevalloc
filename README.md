@@ -118,6 +118,10 @@ CPU logs are archived in results. Those historical cfrac cold timings include CP
 | `JEVALLOC_POLICY` | segregation | `none`: bypass key, one heap; `keyonly`: key/lookup on default heap; `explicit`: one explicit heap |
 | `JEVALLOC_TRACE_OUT` | `jevalloc-trace.jsonl` | Trace at orderly exit |
 | `JEVALLOC_SOCKET` | absent | Live Unix socket |
+| `JEVALLOC_MAX_PAIRS` | `16384` | Process-wide live site/context pair cap, checked before allocation; `0` disables live pair admission |
+| `JEVALLOC_MAX_CONTEXTS` | `64` | Distinct nonempty contexts per allocation site; context-free state still counts toward the pair/byte limits |
+| `JEVALLOC_MAX_METADATA_BYTES` | `134217728` | Raw-byte reservations for live pairs, thread shards/indexes and retained sample records; fixed arrays and general stack caches are reported/excluded separately |
+| `JEVALLOC_PROMOTION_GATE` | `0.7` | Strict transient-prior threshold for hybrid promotion; exposed for the predeclared gate diagnostic |
 | `JEVALLOC_MIN_SITE_BYTES` | `65536` | Successful requested site bytes before sidecar admission; `0` is a protocol-test control |
 | `JEVALLOC_CONTEXT` | `1` | Set `0` to ignore application context for per-site controls |
 | `JEVALLOC_PER_ALLOC` | `0` | Send every admitted allocation with `--policy per-alloc` |
@@ -387,3 +391,16 @@ original cycle. The explicit matched series evaluates all requested policies
 without applying the earlier table-search gate. `tools/pass10_report.py`
 recomputes tables; `tools/pass10_validate.py` verifies repetitions, rule answers,
 trace tables, options, input fingerprints and inference-overlap audits.
+
+Live metadata limits apply before decision admission, including contexts that
+never reach 64 KiB. Overflow uses the default class without registering a new
+pair. Exit `metadata` statistics include current/peak reserved raw bytes, pair
+and shard counts, observed contexts, attempted overflow allocations/requested
+bytes, and skipped samples when sample storage is full. Reservations count
+structure/index sizes, not mimalloc size-class rounding or RSS. The fixed live
+arrays are reported separately; general per-thread stack caches and temporary
+IPC serialization are outside this persistent live-state budget. Existing pair
+state is never evicted. Retired shards are freed only after their last sample
+reference disappears; sample pools remain bounded by the same byte budget.
+Redis's normal context patch collapses numeric key suffixes (`k123456` to `k#`);
+the unnormalized patch is retained explicitly as a cardinality stress fixture.

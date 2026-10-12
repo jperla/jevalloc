@@ -74,6 +74,14 @@ Five interleaved repetitions; MiB. Each row reports a workload’s original cycl
 | defaults/named/rocksdb-cache | jev-live:heuristic | 0 | 236.773 [223.500, 250.027] | 236.773 | 323.562 | 14.759 | 63.158 |
 | defaults/named/rocksdb-cache | jev-live:rules-neutral | 0 | 237.855 [219.906, 241.176] | 237.855 | 316.043 | 14.740 | 63.177 |
 | defaults/named/rocksdb-cache | jev-live:rule-names | 0 | 697.719 [622.043, 807.012] | 697.734 | 1560.504 | 397.451 | 79.495 |
+| defaults/named/rocksdb-churn | mi | 0 | 51.004 [44.586, 59.281] | 51.004 | 157.855 | 87.404 | 247.447 |
+| defaults/named/rocksdb-churn | jev-keyonly | 0 | 57.465 [47.172, 63.152] | 57.465 | 156.992 | 87.457 | 243.982 |
+| defaults/named/rocksdb-churn | jev-table:oracle-site | 0 | 84.898 [57.383, 93.211] | 84.898 | 187.828 | 86.963 | 251.578 |
+| defaults/named/rocksdb-churn | jev-live:static-model | 0 | 160.152 [143.977, 167.000] | 160.152 | 331.840 | 87.322 | 250.359 |
+| defaults/named/rocksdb-churn | jev-live:hybrid | 0 | 158.816 [152.109, 170.164] | 158.824 | 583.816 | 86.450 | 253.942 |
+| defaults/named/rocksdb-churn | jev-live:heuristic | 0 | 150.008 [145.777, 157.754] | 150.027 | 280.914 | 88.501 | 251.338 |
+| defaults/named/rocksdb-churn | jev-live:rules-neutral | 0 | 148.922 [142.492, 165.660] | 148.938 | 285.246 | 86.913 | 253.373 |
+| defaults/named/rocksdb-churn | jev-live:rule-names | 0 | 150.086 [141.762, 151.078] | 150.105 | 540.699 | 1237.880 | 232.767 |
 | defaults/named/site-mixed-1 | mi | 0 | 66.215 [66.211, 66.219] | 66.215 | 146.031 | 20.579 | 0.078 |
 | defaults/named/site-mixed-1 | mi | 1 | 146.215 [146.211, 146.219] | 146.215 | 146.031 | 20.579 | 0.078 |
 | defaults/named/site-mixed-1 | jev-keyonly | 0 | 66.312 [66.309, 66.316] | 66.312 | 146.246 | 20.646 | 0.144 |

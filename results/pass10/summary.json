@@ -1489,6 +1489,208 @@
       "capture": null
     }
   },
+  "defaults/named/rocksdb-churn": {
+    "mi": {
+      "idle": 53481472,
+      "idle_range": [
+        46751744,
+        62160896
+      ],
+      "wall": 87.403834612,
+      "cpu": 247.44730900000002,
+      "peak": 165523456,
+      "phases": {
+        "0": {
+          "idle": 53481472,
+          "range": [
+            46751744,
+            62160896
+          ],
+          "idle10": 53481472
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": 0.0,
+      "capture": null
+    },
+    "jev-keyonly": {
+      "idle": 60256256,
+      "idle_range": [
+        49463296,
+        66220032
+      ],
+      "wall": 87.457415959,
+      "cpu": 243.98157700000002,
+      "peak": 164618240,
+      "phases": {
+        "0": {
+          "idle": 60256256,
+          "range": [
+            49463296,
+            66220032
+          ],
+          "idle10": 60256256
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.1266753465574022,
+      "capture": null
+    },
+    "jev-table:oracle-site": {
+      "idle": 89022464,
+      "idle_range": [
+        60170240,
+        97738752
+      ],
+      "wall": 86.963476792,
+      "cpu": 251.577505,
+      "peak": 196952064,
+      "phases": {
+        "0": {
+          "idle": 89022464,
+          "range": [
+            60170240,
+            97738752
+          ],
+          "idle10": 89022464
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -0.6645477521635905,
+      "capture": null
+    },
+    "jev-live:static-model": {
+      "idle": 167931904,
+      "idle_range": [
+        150970368,
+        175112192
+      ],
+      "wall": 87.322273756,
+      "cpu": 250.35929,
+      "peak": 347959296,
+      "phases": {
+        "0": {
+          "idle": 167931904,
+          "range": [
+            150970368,
+            175112192
+          ],
+          "idle10": 167931904
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -2.140001531745424,
+      "capture": null
+    },
+    "jev-live:hybrid": {
+      "idle": 166531072,
+      "idle_range": [
+        159498240,
+        178429952
+      ],
+      "wall": 86.449751765,
+      "cpu": 253.941577,
+      "peak": 612175872,
+      "phases": {
+        "0": {
+          "idle": 166531072,
+          "range": [
+            159498240,
+            178429952
+          ],
+          "idle10": 166539264
+        }
+      },
+      "n": 5,
+      "demotions": 261,
+      "promotions": 0,
+      "saving_fraction": -2.1138086849965534,
+      "capture": null
+    },
+    "jev-live:heuristic": {
+      "idle": 157294592,
+      "idle_range": [
+        152858624,
+        165416960
+      ],
+      "wall": 88.500560347,
+      "cpu": 251.33817,
+      "peak": 294559744,
+      "phases": {
+        "0": {
+          "idle": 157294592,
+          "range": [
+            152858624,
+            165416960
+          ],
+          "idle10": 157315072
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -1.9411043884506394,
+      "capture": null
+    },
+    "jev-live:rules-neutral": {
+      "idle": 156155904,
+      "idle_range": [
+        149413888,
+        173707264
+      ],
+      "wall": 86.912579332,
+      "cpu": 253.373327,
+      "peak": 299102208,
+      "phases": {
+        "0": {
+          "idle": 156155904,
+          "range": [
+            149413888,
+            173707264
+          ],
+          "idle10": 156172288
+        }
+      },
+      "n": 5,
+      "demotions": 0,
+      "promotions": 0,
+      "saving_fraction": -1.919813127058283,
+      "capture": null
+    },
+    "jev-live:rule-names": {
+      "idle": 157376512,
+      "idle_range": [
+        148647936,
+        158416896
+      ],
+      "wall": 1237.880323647,
+      "cpu": 232.76662,
+      "peak": 566964224,
+      "phases": {
+        "0": {
+          "idle": 157376512,
+          "range": [
+            148647936,
+            158416896
+          ],
+          "idle10": 157396992
+        }
+      },
+      "n": 5,
+      "demotions": 478,
+      "promotions": 0,
+      "saving_fraction": -1.94263613387455,
+      "capture": null
+    }
+  },
   "defaults/named/site-mixed-1": {
     "mi": {
       "idle": 153317376,

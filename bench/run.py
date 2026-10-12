@@ -109,7 +109,7 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
         if policy=='static-site':policy='static-model'
         if policy in ('hybrid','rules-neutral','rule-names','rule-ttl'):extra['JEVALLOC_HYBRID']='1'
         if policy=='per-alloc':extra['JEVALLOC_PER_ALLOC']='1'
-        service=[sys.executable,str(ROOT/'tools/jevd.py'),'--socket',str(sock),'--policy',policy,'--prompt',row.get('prompt','stack-v1'),'--short-bytes',str(extra.get('JEVALLOC_SHORT_BYTES',1048576)),'--max-model-decisions',str(max_model_decisions),'--model-cache',str(ROOT/'results/pass7/model-cache'),'--cache',str(outdir/'cache'/row['name']/policy),'--log',str(decision_log),'--table',str(Path(tables)/row['name']/'oracle.txt')]
+        service=[sys.executable,str(ROOT/'tools/jevd.py'),'--socket',str(sock),'--policy',policy,'--prompt',row.get('prompt','stack-v1'),'--short-bytes',str(extra.get('JEVALLOC_SHORT_BYTES',1048576)),'--max-model-decisions',str(max_model_decisions),'--model-cache',str(row.get('model_cache',ROOT/'results/pass7/model-cache')),'--cache',str(outdir/'cache'/row['name']/policy),'--log',str(decision_log),'--table',str(Path(tables)/row['name']/'oracle.txt')]
         if len(variant.split(':'))>2:service+=['--model',variant.split(':',2)[2]]
         replay=schedule_path(row,variant,outdir)
         if rep!=-1 and policy not in LIVE_RULE_POLICIES:
@@ -189,10 +189,12 @@ def run_one(row,variant,rep,outdir,tables,timeout=7200,mode='run',trace=None,att
         site_bytes=record['allocator_stats'].get('site_bytes',{})
         asked={e['request']['key'] for e in events if e.get('raw_response') is not None}
         unasked=set(site_bytes)-asked
+        overflow_bytes=record['allocator_stats'].get('metadata',{}).get('overflow_bytes',0)
         record['model_coverage']={'sites':len(site_bytes),'asked_sites':len(asked & set(site_bytes)),
-            'unasked_sites':len(unasked),'allocated_bytes':sum(site_bytes.values()),
-            'unasked_bytes':sum(site_bytes[k] for k in unasked),
-            'unasked_byte_share':sum(site_bytes[k] for k in unasked)/sum(site_bytes.values()) if sum(site_bytes.values()) else 0,
+            'unasked_sites':len(unasked),'allocated_bytes':sum(site_bytes.values())+overflow_bytes,
+            'untracked_overflow_bytes':overflow_bytes,
+            'unasked_bytes':sum(site_bytes[k] for k in unasked)+overflow_bytes,
+            'unasked_byte_share':(sum(site_bytes[k] for k in unasked)+overflow_bytes)/(sum(site_bytes.values())+overflow_bytes) if sum(site_bytes.values())+overflow_bytes else 0,
             'max_model_decisions':max_model_decisions,
             'budget_fallbacks':sum(bool(e.get('budget_exhausted')) for e in events)} if policy in ('model','model-reask','static-model','hybrid','per-alloc') else None
         record['decision_execution']='live-current-statistics' if policy in LIVE_RULE_POLICIES else ('cold' if rep==-1 else 'replay')

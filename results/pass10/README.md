@@ -29,6 +29,12 @@ are recomputed from individual accepted records. `validation.json` verifies
 complete groups, live rule answers, input hashes, trace labels and independent
 inference-overlap audits.
 
+Final validation passed for 26 matrices, 1,905 accepted warm runs, 10 additional
+logged per-object checks, 953 input fingerprints and 30,758 live-rule answers.
+`independent-check.json` records a separate local recomputation of all 227
+fragmentation policy groups, 400 cycle/phase groups and 22 regression workloads,
+including the matrix hashes and regression score ratios.
+
 The immediate-options small experiment includes a freshly collected logged cold
 schedule; the defaults comparison reuses that checked schedule and recollects
 exact lifetimes. Both include
@@ -39,3 +45,7 @@ artifact checks logging does not suppress sampled frees.
 Full stdout/stderr, raw traces, caches and decision logs remain on the test
 machine at the paths named in each matrix. The compact evidence does not imply
 that those remote artifacts can all be reconstructed from this directory.
+
+Revision scope: review 3 inspected a snapshot where RocksDB-churn, regression,
+and final validation were pending. The final accepted groups and audits are now
+present in this uncommitted working tree; no Git commit is implied by completion.

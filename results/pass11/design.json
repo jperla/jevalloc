@@ -1,0 +1,4718 @@
+{
+  "fragments": [
+    "conn",
+    "sess",
+    "req",
+    "resp",
+    "buf",
+    "obj",
+    "entry",
+    "node",
+    "item",
+    "ctx",
+    "msg",
+    "pkt",
+    "slot",
+    "rec",
+    "blk",
+    "hdr",
+    "str",
+    "vec",
+    "map",
+    "pool",
+    "task",
+    "job",
+    "peer",
+    "port",
+    "path",
+    "name",
+    "field",
+    "value",
+    "data",
+    "chunk",
+    "stream",
+    "frame",
+    "event",
+    "flag",
+    "link",
+    "list",
+    "queue",
+    "group",
+    "token",
+    "handle"
+  ],
+  "verbs": [
+    "new",
+    "get",
+    "put",
+    "add",
+    "make",
+    "init",
+    "attach",
+    "build",
+    "alloc",
+    "push"
+  ],
+  "mappings": [
+    {
+      "name": "plausible",
+      "seed": null,
+      "functions": {
+        "parse_request_buffer": "buf_get",
+        "assemble_response_buffer": "resp_build",
+        "create_session_state": "conn_attach",
+        "insert_cache_index": "entry_put",
+        "store_request_payload": "obj_new"
+      },
+      "contexts": {
+        "0": "a",
+        "short": "b",
+        "day": "c"
+      }
+    },
+    {
+      "name": "seed1",
+      "seed": 1,
+      "functions": {
+        "parse_request_buffer": "item_push",
+        "assemble_response_buffer": "buf_make",
+        "create_session_state": "node_build",
+        "insert_cache_index": "data_build",
+        "store_request_payload": "path_add"
+      },
+      "contexts": {
+        "0": "c",
+        "short": "b",
+        "day": "a"
+      }
+    },
+    {
+      "name": "seed2",
+      "seed": 2,
+      "functions": {
+        "parse_request_buffer": "resp_get",
+        "assemble_response_buffer": "obj_init",
+        "create_session_state": "msg_make",
+        "insert_cache_index": "str_push",
+        "store_request_payload": "rec_push"
+      },
+      "contexts": {
+        "0": "b",
+        "short": "c",
+        "day": "a"
+      }
+    },
+    {
+      "name": "seed3",
+      "seed": 3,
+      "functions": {
+        "parse_request_buffer": "hdr_push",
+        "assemble_response_buffer": "link_put",
+        "create_session_state": "port_push",
+        "insert_cache_index": "stream_push",
+        "store_request_payload": "buf_push"
+      },
+      "contexts": {
+        "0": "c",
+        "short": "b",
+        "day": "a"
+      }
+    },
+    {
+      "name": "seed4",
+      "seed": 4,
+      "functions": {
+        "parse_request_buffer": "hdr_make",
+        "assemble_response_buffer": "entry_attach",
+        "create_session_state": "stream_put",
+        "insert_cache_index": "obj_get",
+        "store_request_payload": "sess_attach"
+      },
+      "contexts": {
+        "0": "a",
+        "short": "b",
+        "day": "c"
+      }
+    },
+    {
+      "name": "seed5",
+      "seed": 5,
+      "functions": {
+        "parse_request_buffer": "handle_make",
+        "assemble_response_buffer": "peer_alloc",
+        "create_session_state": "sess_build",
+        "insert_cache_index": "hdr_new",
+        "store_request_payload": "msg_get"
+      },
+      "contexts": {
+        "0": "a",
+        "short": "c",
+        "day": "b"
+      }
+    }
+  ],
+  "orders": [
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 0,
+      "seed": 110000,
+      "variants": [
+        "model-0.8",
+        "neutral-0.6",
+        "neutral-0.8",
+        "mi",
+        "model-0.6",
+        "rule-0.6",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 1,
+      "seed": 110001,
+      "variants": [
+        "neutral-0.8",
+        "model-0.6",
+        "neutral-0.6",
+        "model-0.8",
+        "rule-0.6",
+        "mi",
+        "model-0.7",
+        "rule-0.8",
+        "rule-0.7",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 2,
+      "seed": 110002,
+      "variants": [
+        "rule-0.8",
+        "model-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "neutral-0.7",
+        "rule-0.7",
+        "neutral-0.6",
+        "model-0.7",
+        "mi",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 3,
+      "seed": 110003,
+      "variants": [
+        "neutral-0.7",
+        "rule-0.7",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.8",
+        "model-0.6",
+        "rule-0.6",
+        "mi",
+        "neutral-0.8",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 4,
+      "seed": 110004,
+      "variants": [
+        "model-0.8",
+        "rule-0.6",
+        "rule-0.8",
+        "neutral-0.7",
+        "model-0.7",
+        "neutral-0.6",
+        "neutral-0.8",
+        "mi",
+        "model-0.6",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 5,
+      "seed": 110005,
+      "variants": [
+        "neutral-0.6",
+        "neutral-0.7",
+        "model-0.6",
+        "model-0.8",
+        "mi",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.8",
+        "rule-0.6",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 6,
+      "seed": 110006,
+      "variants": [
+        "neutral-0.6",
+        "rule-0.8",
+        "neutral-0.7",
+        "neutral-0.8",
+        "model-0.7",
+        "mi",
+        "model-0.6",
+        "model-0.8",
+        "rule-0.6",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 7,
+      "seed": 110007,
+      "variants": [
+        "neutral-0.6",
+        "model-0.6",
+        "model-0.8",
+        "rule-0.8",
+        "neutral-0.7",
+        "model-0.7",
+        "rule-0.7",
+        "neutral-0.8",
+        "rule-0.6",
+        "mi"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 8,
+      "seed": 110008,
+      "variants": [
+        "mi",
+        "rule-0.7",
+        "model-0.6",
+        "rule-0.6",
+        "neutral-0.8",
+        "neutral-0.7",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.8",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 9,
+      "seed": 110009,
+      "variants": [
+        "model-0.6",
+        "rule-0.6",
+        "model-0.8",
+        "mi",
+        "neutral-0.8",
+        "model-0.7",
+        "rule-0.8",
+        "rule-0.7",
+        "neutral-0.7",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 0,
+      "seed": 110010,
+      "variants": [
+        "mi",
+        "rule-0.8",
+        "model-0.7",
+        "rule-0.6",
+        "neutral-0.7",
+        "neutral-0.6",
+        "model-0.6",
+        "model-0.8",
+        "rule-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 1,
+      "seed": 110011,
+      "variants": [
+        "model-0.6",
+        "neutral-0.7",
+        "model-0.8",
+        "neutral-0.8",
+        "mi",
+        "rule-0.7",
+        "rule-0.8",
+        "neutral-0.6",
+        "rule-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 2,
+      "seed": 110012,
+      "variants": [
+        "model-0.6",
+        "rule-0.8",
+        "neutral-0.8",
+        "rule-0.7",
+        "mi",
+        "neutral-0.6",
+        "model-0.8",
+        "model-0.7",
+        "neutral-0.7",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 3,
+      "seed": 110013,
+      "variants": [
+        "neutral-0.6",
+        "rule-0.6",
+        "mi",
+        "neutral-0.7",
+        "model-0.8",
+        "neutral-0.8",
+        "model-0.6",
+        "rule-0.7",
+        "model-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 4,
+      "seed": 110014,
+      "variants": [
+        "neutral-0.8",
+        "rule-0.6",
+        "rule-0.7",
+        "neutral-0.7",
+        "rule-0.8",
+        "model-0.7",
+        "neutral-0.6",
+        "mi",
+        "model-0.6",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 5,
+      "seed": 110015,
+      "variants": [
+        "model-0.7",
+        "rule-0.7",
+        "neutral-0.8",
+        "neutral-0.6",
+        "rule-0.8",
+        "rule-0.6",
+        "neutral-0.7",
+        "model-0.6",
+        "mi",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 6,
+      "seed": 110016,
+      "variants": [
+        "rule-0.6",
+        "rule-0.8",
+        "model-0.6",
+        "mi",
+        "rule-0.7",
+        "neutral-0.7",
+        "neutral-0.8",
+        "model-0.8",
+        "model-0.7",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 7,
+      "seed": 110017,
+      "variants": [
+        "mi",
+        "neutral-0.8",
+        "neutral-0.6",
+        "neutral-0.7",
+        "model-0.8",
+        "rule-0.7",
+        "model-0.7",
+        "model-0.6",
+        "rule-0.6",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 8,
+      "seed": 110018,
+      "variants": [
+        "model-0.7",
+        "rule-0.8",
+        "model-0.8",
+        "neutral-0.6",
+        "mi",
+        "rule-0.6",
+        "model-0.6",
+        "rule-0.7",
+        "neutral-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 9,
+      "seed": 110019,
+      "variants": [
+        "model-0.8",
+        "model-0.6",
+        "rule-0.6",
+        "neutral-0.6",
+        "mi",
+        "rule-0.7",
+        "neutral-0.7",
+        "model-0.7",
+        "rule-0.8",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 0,
+      "seed": 110100,
+      "variants": [
+        "neutral-0.7",
+        "mi",
+        "model-0.6",
+        "neutral-0.8",
+        "rule-0.6",
+        "neutral-0.6",
+        "model-0.7",
+        "model-0.8",
+        "rule-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 1,
+      "seed": 110101,
+      "variants": [
+        "neutral-0.8",
+        "model-0.7",
+        "rule-0.6",
+        "model-0.8",
+        "rule-0.8",
+        "mi",
+        "neutral-0.7",
+        "model-0.6",
+        "neutral-0.6",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 2,
+      "seed": 110102,
+      "variants": [
+        "neutral-0.6",
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.8",
+        "mi",
+        "model-0.8",
+        "rule-0.6",
+        "neutral-0.7",
+        "model-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 3,
+      "seed": 110103,
+      "variants": [
+        "rule-0.6",
+        "rule-0.8",
+        "model-0.7",
+        "model-0.6",
+        "model-0.8",
+        "mi",
+        "neutral-0.6",
+        "neutral-0.8",
+        "rule-0.7",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 4,
+      "seed": 110104,
+      "variants": [
+        "neutral-0.8",
+        "neutral-0.6",
+        "rule-0.7",
+        "model-0.6",
+        "rule-0.8",
+        "rule-0.6",
+        "model-0.7",
+        "neutral-0.7",
+        "mi",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 5,
+      "seed": 110105,
+      "variants": [
+        "mi",
+        "neutral-0.8",
+        "model-0.7",
+        "rule-0.7",
+        "rule-0.8",
+        "rule-0.6",
+        "neutral-0.6",
+        "model-0.6",
+        "neutral-0.7",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 6,
+      "seed": 110106,
+      "variants": [
+        "rule-0.6",
+        "mi",
+        "neutral-0.7",
+        "model-0.6",
+        "model-0.7",
+        "rule-0.8",
+        "model-0.8",
+        "neutral-0.6",
+        "neutral-0.8",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 7,
+      "seed": 110107,
+      "variants": [
+        "mi",
+        "rule-0.7",
+        "model-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "rule-0.8",
+        "neutral-0.7",
+        "rule-0.6",
+        "neutral-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 8,
+      "seed": 110108,
+      "variants": [
+        "model-0.8",
+        "model-0.6",
+        "mi",
+        "neutral-0.8",
+        "rule-0.7",
+        "rule-0.6",
+        "model-0.7",
+        "neutral-0.7",
+        "rule-0.8",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 9,
+      "seed": 110109,
+      "variants": [
+        "model-0.6",
+        "mi",
+        "rule-0.8",
+        "neutral-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "neutral-0.7",
+        "model-0.7",
+        "rule-0.7",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 0,
+      "seed": 110110,
+      "variants": [
+        "neutral-0.7",
+        "model-0.6",
+        "rule-0.6",
+        "rule-0.8",
+        "model-0.7",
+        "rule-0.7",
+        "model-0.8",
+        "mi",
+        "neutral-0.8",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 1,
+      "seed": 110111,
+      "variants": [
+        "mi",
+        "rule-0.6",
+        "model-0.7",
+        "rule-0.7",
+        "neutral-0.6",
+        "model-0.6",
+        "rule-0.8",
+        "model-0.8",
+        "neutral-0.8",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 2,
+      "seed": 110112,
+      "variants": [
+        "neutral-0.7",
+        "rule-0.8",
+        "neutral-0.6",
+        "model-0.8",
+        "rule-0.7",
+        "model-0.7",
+        "mi",
+        "rule-0.6",
+        "neutral-0.8",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 3,
+      "seed": 110113,
+      "variants": [
+        "rule-0.6",
+        "model-0.8",
+        "neutral-0.6",
+        "model-0.6",
+        "rule-0.8",
+        "rule-0.7",
+        "neutral-0.7",
+        "model-0.7",
+        "neutral-0.8",
+        "mi"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 4,
+      "seed": 110114,
+      "variants": [
+        "neutral-0.6",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.8",
+        "mi",
+        "neutral-0.7",
+        "rule-0.8",
+        "rule-0.6",
+        "model-0.6",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 5,
+      "seed": 110115,
+      "variants": [
+        "model-0.6",
+        "neutral-0.7",
+        "neutral-0.6",
+        "neutral-0.8",
+        "model-0.8",
+        "mi",
+        "rule-0.8",
+        "rule-0.7",
+        "rule-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 6,
+      "seed": 110116,
+      "variants": [
+        "model-0.7",
+        "rule-0.8",
+        "mi",
+        "neutral-0.6",
+        "rule-0.7",
+        "neutral-0.8",
+        "neutral-0.7",
+        "rule-0.6",
+        "model-0.6",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 7,
+      "seed": 110117,
+      "variants": [
+        "neutral-0.8",
+        "neutral-0.6",
+        "model-0.8",
+        "mi",
+        "rule-0.7",
+        "rule-0.6",
+        "neutral-0.7",
+        "rule-0.8",
+        "model-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 8,
+      "seed": 110118,
+      "variants": [
+        "mi",
+        "model-0.7",
+        "neutral-0.7",
+        "neutral-0.6",
+        "model-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "rule-0.6",
+        "rule-0.8",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "plausible",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 9,
+      "seed": 110119,
+      "variants": [
+        "neutral-0.7",
+        "neutral-0.6",
+        "rule-0.7",
+        "mi",
+        "rule-0.8",
+        "model-0.7",
+        "model-0.6",
+        "rule-0.6",
+        "neutral-0.8",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 0,
+      "seed": 111000,
+      "variants": [
+        "rule-0.7",
+        "neutral-0.7",
+        "neutral-0.8",
+        "model-0.8",
+        "rule-0.8",
+        "neutral-0.6",
+        "model-0.6",
+        "rule-0.6",
+        "mi",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 1,
+      "seed": 111001,
+      "variants": [
+        "mi",
+        "rule-0.8",
+        "model-0.6",
+        "model-0.8",
+        "neutral-0.6",
+        "rule-0.7",
+        "neutral-0.8",
+        "model-0.7",
+        "neutral-0.7",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 2,
+      "seed": 111002,
+      "variants": [
+        "rule-0.6",
+        "model-0.8",
+        "model-0.6",
+        "neutral-0.8",
+        "rule-0.8",
+        "rule-0.7",
+        "neutral-0.6",
+        "mi",
+        "neutral-0.7",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 3,
+      "seed": 111003,
+      "variants": [
+        "model-0.7",
+        "mi",
+        "rule-0.7",
+        "model-0.8",
+        "rule-0.8",
+        "neutral-0.7",
+        "rule-0.6",
+        "model-0.6",
+        "neutral-0.6",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 4,
+      "seed": 111004,
+      "variants": [
+        "mi",
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.7",
+        "neutral-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "rule-0.8",
+        "rule-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 5,
+      "seed": 111005,
+      "variants": [
+        "mi",
+        "model-0.8",
+        "rule-0.6",
+        "neutral-0.6",
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.6",
+        "model-0.7",
+        "neutral-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 6,
+      "seed": 111006,
+      "variants": [
+        "model-0.7",
+        "mi",
+        "rule-0.6",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.6",
+        "neutral-0.7",
+        "model-0.8",
+        "rule-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 7,
+      "seed": 111007,
+      "variants": [
+        "neutral-0.8",
+        "model-0.7",
+        "mi",
+        "neutral-0.6",
+        "model-0.8",
+        "rule-0.6",
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 8,
+      "seed": 111008,
+      "variants": [
+        "rule-0.6",
+        "neutral-0.6",
+        "model-0.8",
+        "rule-0.8",
+        "mi",
+        "neutral-0.7",
+        "model-0.6",
+        "neutral-0.8",
+        "rule-0.7",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 9,
+      "seed": 111009,
+      "variants": [
+        "rule-0.8",
+        "model-0.8",
+        "rule-0.6",
+        "neutral-0.6",
+        "model-0.7",
+        "mi",
+        "model-0.6",
+        "neutral-0.8",
+        "rule-0.7",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 0,
+      "seed": 111010,
+      "variants": [
+        "neutral-0.6",
+        "model-0.6",
+        "neutral-0.7",
+        "neutral-0.8",
+        "rule-0.8",
+        "rule-0.7",
+        "mi",
+        "model-0.8",
+        "rule-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 1,
+      "seed": 111011,
+      "variants": [
+        "neutral-0.8",
+        "rule-0.7",
+        "model-0.8",
+        "mi",
+        "model-0.6",
+        "rule-0.6",
+        "neutral-0.6",
+        "neutral-0.7",
+        "rule-0.8",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 2,
+      "seed": 111012,
+      "variants": [
+        "model-0.6",
+        "neutral-0.7",
+        "mi",
+        "rule-0.6",
+        "model-0.7",
+        "rule-0.7",
+        "neutral-0.6",
+        "neutral-0.8",
+        "model-0.8",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 3,
+      "seed": 111013,
+      "variants": [
+        "model-0.6",
+        "mi",
+        "neutral-0.6",
+        "model-0.7",
+        "rule-0.7",
+        "rule-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "neutral-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 4,
+      "seed": 111014,
+      "variants": [
+        "model-0.8",
+        "rule-0.6",
+        "mi",
+        "neutral-0.8",
+        "neutral-0.6",
+        "model-0.6",
+        "rule-0.8",
+        "neutral-0.7",
+        "model-0.7",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 5,
+      "seed": 111015,
+      "variants": [
+        "rule-0.8",
+        "neutral-0.7",
+        "rule-0.6",
+        "neutral-0.8",
+        "neutral-0.6",
+        "model-0.6",
+        "model-0.8",
+        "rule-0.7",
+        "model-0.7",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 6,
+      "seed": 111016,
+      "variants": [
+        "neutral-0.7",
+        "model-0.6",
+        "model-0.7",
+        "model-0.8",
+        "neutral-0.6",
+        "rule-0.6",
+        "rule-0.8",
+        "mi",
+        "neutral-0.8",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 7,
+      "seed": 111017,
+      "variants": [
+        "neutral-0.7",
+        "mi",
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.8",
+        "neutral-0.8",
+        "model-0.6",
+        "neutral-0.6",
+        "rule-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 8,
+      "seed": 111018,
+      "variants": [
+        "neutral-0.7",
+        "rule-0.6",
+        "neutral-0.6",
+        "mi",
+        "neutral-0.8",
+        "model-0.6",
+        "model-0.7",
+        "rule-0.7",
+        "rule-0.8",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 9,
+      "seed": 111019,
+      "variants": [
+        "model-0.8",
+        "model-0.7",
+        "rule-0.6",
+        "neutral-0.8",
+        "rule-0.7",
+        "neutral-0.6",
+        "model-0.6",
+        "mi",
+        "rule-0.8",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 0,
+      "seed": 111100,
+      "variants": [
+        "rule-0.8",
+        "neutral-0.7",
+        "rule-0.7",
+        "rule-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "neutral-0.6",
+        "mi",
+        "model-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 1,
+      "seed": 111101,
+      "variants": [
+        "rule-0.7",
+        "model-0.8",
+        "rule-0.8",
+        "mi",
+        "model-0.6",
+        "model-0.7",
+        "neutral-0.7",
+        "neutral-0.8",
+        "rule-0.6",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 2,
+      "seed": 111102,
+      "variants": [
+        "mi",
+        "neutral-0.8",
+        "rule-0.6",
+        "rule-0.7",
+        "model-0.7",
+        "model-0.6",
+        "model-0.8",
+        "neutral-0.6",
+        "neutral-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 3,
+      "seed": 111103,
+      "variants": [
+        "model-0.7",
+        "rule-0.6",
+        "neutral-0.6",
+        "mi",
+        "model-0.6",
+        "rule-0.8",
+        "model-0.8",
+        "rule-0.7",
+        "neutral-0.8",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 4,
+      "seed": 111104,
+      "variants": [
+        "rule-0.7",
+        "neutral-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "neutral-0.7",
+        "rule-0.8",
+        "model-0.7",
+        "model-0.6",
+        "mi",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 5,
+      "seed": 111105,
+      "variants": [
+        "rule-0.6",
+        "model-0.7",
+        "neutral-0.6",
+        "neutral-0.7",
+        "model-0.8",
+        "mi",
+        "neutral-0.8",
+        "rule-0.7",
+        "model-0.6",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 6,
+      "seed": 111106,
+      "variants": [
+        "neutral-0.7",
+        "model-0.8",
+        "rule-0.6",
+        "neutral-0.6",
+        "neutral-0.8",
+        "mi",
+        "model-0.7",
+        "model-0.6",
+        "rule-0.8",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 7,
+      "seed": 111107,
+      "variants": [
+        "model-0.7",
+        "rule-0.6",
+        "rule-0.7",
+        "mi",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.8",
+        "neutral-0.7",
+        "model-0.6",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 8,
+      "seed": 111108,
+      "variants": [
+        "rule-0.8",
+        "rule-0.6",
+        "neutral-0.8",
+        "rule-0.7",
+        "neutral-0.6",
+        "model-0.6",
+        "model-0.8",
+        "mi",
+        "neutral-0.7",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 9,
+      "seed": 111109,
+      "variants": [
+        "model-0.6",
+        "neutral-0.8",
+        "mi",
+        "neutral-0.7",
+        "model-0.8",
+        "model-0.7",
+        "rule-0.6",
+        "rule-0.7",
+        "rule-0.8",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 0,
+      "seed": 111110,
+      "variants": [
+        "mi",
+        "neutral-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "model-0.7",
+        "model-0.6",
+        "rule-0.7",
+        "neutral-0.7",
+        "rule-0.8",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 1,
+      "seed": 111111,
+      "variants": [
+        "model-0.6",
+        "model-0.8",
+        "rule-0.6",
+        "model-0.7",
+        "neutral-0.8",
+        "rule-0.7",
+        "neutral-0.7",
+        "neutral-0.6",
+        "rule-0.8",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 2,
+      "seed": 111112,
+      "variants": [
+        "rule-0.6",
+        "model-0.7",
+        "rule-0.8",
+        "model-0.8",
+        "neutral-0.6",
+        "mi",
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 3,
+      "seed": 111113,
+      "variants": [
+        "model-0.7",
+        "rule-0.7",
+        "neutral-0.6",
+        "rule-0.6",
+        "neutral-0.8",
+        "rule-0.8",
+        "model-0.6",
+        "mi",
+        "neutral-0.7",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 4,
+      "seed": 111114,
+      "variants": [
+        "rule-0.6",
+        "rule-0.7",
+        "rule-0.8",
+        "mi",
+        "neutral-0.7",
+        "model-0.8",
+        "neutral-0.8",
+        "model-0.6",
+        "neutral-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 5,
+      "seed": 111115,
+      "variants": [
+        "model-0.7",
+        "model-0.8",
+        "rule-0.6",
+        "rule-0.7",
+        "neutral-0.6",
+        "mi",
+        "model-0.6",
+        "neutral-0.8",
+        "neutral-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 6,
+      "seed": 111116,
+      "variants": [
+        "mi",
+        "neutral-0.8",
+        "model-0.8",
+        "neutral-0.7",
+        "model-0.7",
+        "rule-0.8",
+        "model-0.6",
+        "rule-0.6",
+        "rule-0.7",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 7,
+      "seed": 111117,
+      "variants": [
+        "neutral-0.6",
+        "rule-0.6",
+        "rule-0.8",
+        "model-0.8",
+        "mi",
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.7",
+        "model-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 8,
+      "seed": 111118,
+      "variants": [
+        "model-0.7",
+        "neutral-0.8",
+        "rule-0.7",
+        "rule-0.8",
+        "neutral-0.7",
+        "neutral-0.6",
+        "model-0.8",
+        "rule-0.6",
+        "model-0.6",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed1",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 9,
+      "seed": 111119,
+      "variants": [
+        "rule-0.6",
+        "mi",
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.8",
+        "neutral-0.7",
+        "model-0.8",
+        "neutral-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 0,
+      "seed": 112000,
+      "variants": [
+        "neutral-0.7",
+        "model-0.6",
+        "rule-0.6",
+        "neutral-0.8",
+        "model-0.8",
+        "rule-0.7",
+        "neutral-0.6",
+        "rule-0.8",
+        "mi",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 1,
+      "seed": 112001,
+      "variants": [
+        "mi",
+        "rule-0.6",
+        "neutral-0.7",
+        "neutral-0.8",
+        "model-0.8",
+        "model-0.7",
+        "rule-0.7",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 2,
+      "seed": 112002,
+      "variants": [
+        "model-0.6",
+        "neutral-0.7",
+        "rule-0.7",
+        "model-0.8",
+        "neutral-0.8",
+        "neutral-0.6",
+        "mi",
+        "model-0.7",
+        "rule-0.6",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 3,
+      "seed": 112003,
+      "variants": [
+        "neutral-0.6",
+        "model-0.8",
+        "model-0.7",
+        "rule-0.6",
+        "neutral-0.7",
+        "model-0.6",
+        "rule-0.8",
+        "neutral-0.8",
+        "mi",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 4,
+      "seed": 112004,
+      "variants": [
+        "model-0.8",
+        "rule-0.6",
+        "model-0.6",
+        "model-0.7",
+        "mi",
+        "neutral-0.6",
+        "rule-0.7",
+        "rule-0.8",
+        "neutral-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 5,
+      "seed": 112005,
+      "variants": [
+        "rule-0.6",
+        "model-0.8",
+        "model-0.6",
+        "model-0.7",
+        "rule-0.7",
+        "rule-0.8",
+        "neutral-0.7",
+        "neutral-0.8",
+        "mi",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 6,
+      "seed": 112006,
+      "variants": [
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.7",
+        "rule-0.6",
+        "neutral-0.8",
+        "neutral-0.7",
+        "mi",
+        "model-0.6",
+        "model-0.8",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 7,
+      "seed": 112007,
+      "variants": [
+        "neutral-0.6",
+        "mi",
+        "rule-0.7",
+        "model-0.6",
+        "model-0.8",
+        "neutral-0.7",
+        "rule-0.8",
+        "neutral-0.8",
+        "model-0.7",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 8,
+      "seed": 112008,
+      "variants": [
+        "model-0.6",
+        "rule-0.8",
+        "neutral-0.8",
+        "model-0.7",
+        "mi",
+        "rule-0.6",
+        "rule-0.7",
+        "neutral-0.7",
+        "neutral-0.6",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 9,
+      "seed": 112009,
+      "variants": [
+        "rule-0.7",
+        "rule-0.6",
+        "neutral-0.6",
+        "rule-0.8",
+        "neutral-0.7",
+        "neutral-0.8",
+        "model-0.7",
+        "model-0.8",
+        "model-0.6",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 0,
+      "seed": 112010,
+      "variants": [
+        "neutral-0.7",
+        "model-0.8",
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.8",
+        "neutral-0.6",
+        "rule-0.6",
+        "model-0.6",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 1,
+      "seed": 112011,
+      "variants": [
+        "neutral-0.7",
+        "rule-0.6",
+        "rule-0.8",
+        "model-0.7",
+        "mi",
+        "model-0.6",
+        "neutral-0.8",
+        "neutral-0.6",
+        "model-0.8",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 2,
+      "seed": 112012,
+      "variants": [
+        "rule-0.8",
+        "rule-0.7",
+        "neutral-0.7",
+        "neutral-0.6",
+        "neutral-0.8",
+        "model-0.6",
+        "model-0.7",
+        "rule-0.6",
+        "model-0.8",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 3,
+      "seed": 112013,
+      "variants": [
+        "rule-0.8",
+        "rule-0.6",
+        "mi",
+        "neutral-0.8",
+        "neutral-0.6",
+        "model-0.8",
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.7",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 4,
+      "seed": 112014,
+      "variants": [
+        "mi",
+        "neutral-0.8",
+        "model-0.7",
+        "neutral-0.7",
+        "model-0.6",
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.8",
+        "rule-0.6",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 5,
+      "seed": 112015,
+      "variants": [
+        "model-0.8",
+        "mi",
+        "rule-0.7",
+        "rule-0.8",
+        "neutral-0.6",
+        "neutral-0.8",
+        "model-0.7",
+        "neutral-0.7",
+        "rule-0.6",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 6,
+      "seed": 112016,
+      "variants": [
+        "rule-0.6",
+        "rule-0.8",
+        "neutral-0.6",
+        "model-0.8",
+        "mi",
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.7",
+        "neutral-0.8",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 7,
+      "seed": 112017,
+      "variants": [
+        "model-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "mi",
+        "rule-0.6",
+        "neutral-0.7",
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 8,
+      "seed": 112018,
+      "variants": [
+        "model-0.6",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.7",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.8",
+        "mi",
+        "rule-0.6",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 9,
+      "seed": 112019,
+      "variants": [
+        "neutral-0.6",
+        "model-0.7",
+        "rule-0.7",
+        "rule-0.8",
+        "neutral-0.8",
+        "rule-0.6",
+        "model-0.8",
+        "model-0.6",
+        "neutral-0.7",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 0,
+      "seed": 112100,
+      "variants": [
+        "neutral-0.7",
+        "model-0.8",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.6",
+        "neutral-0.8",
+        "rule-0.6",
+        "mi",
+        "rule-0.8",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 1,
+      "seed": 112101,
+      "variants": [
+        "mi",
+        "neutral-0.7",
+        "model-0.8",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.6",
+        "rule-0.7",
+        "rule-0.6",
+        "model-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 2,
+      "seed": 112102,
+      "variants": [
+        "model-0.6",
+        "rule-0.7",
+        "rule-0.6",
+        "model-0.7",
+        "neutral-0.6",
+        "mi",
+        "neutral-0.8",
+        "model-0.8",
+        "neutral-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 3,
+      "seed": 112103,
+      "variants": [
+        "rule-0.8",
+        "neutral-0.8",
+        "rule-0.7",
+        "mi",
+        "model-0.6",
+        "model-0.8",
+        "neutral-0.7",
+        "rule-0.6",
+        "neutral-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 4,
+      "seed": 112104,
+      "variants": [
+        "rule-0.8",
+        "model-0.6",
+        "neutral-0.7",
+        "neutral-0.6",
+        "neutral-0.8",
+        "model-0.7",
+        "model-0.8",
+        "mi",
+        "rule-0.6",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 5,
+      "seed": 112105,
+      "variants": [
+        "neutral-0.7",
+        "rule-0.7",
+        "rule-0.8",
+        "rule-0.6",
+        "model-0.6",
+        "model-0.8",
+        "mi",
+        "neutral-0.8",
+        "neutral-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 6,
+      "seed": 112106,
+      "variants": [
+        "rule-0.6",
+        "model-0.7",
+        "model-0.8",
+        "neutral-0.8",
+        "mi",
+        "rule-0.8",
+        "neutral-0.7",
+        "neutral-0.6",
+        "rule-0.7",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 7,
+      "seed": 112107,
+      "variants": [
+        "neutral-0.7",
+        "model-0.7",
+        "rule-0.7",
+        "neutral-0.8",
+        "model-0.6",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.8",
+        "rule-0.6",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 8,
+      "seed": 112108,
+      "variants": [
+        "rule-0.8",
+        "mi",
+        "rule-0.6",
+        "neutral-0.7",
+        "rule-0.7",
+        "model-0.8",
+        "neutral-0.8",
+        "model-0.7",
+        "model-0.6",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 9,
+      "seed": 112109,
+      "variants": [
+        "model-0.6",
+        "rule-0.7",
+        "rule-0.6",
+        "neutral-0.6",
+        "model-0.8",
+        "mi",
+        "neutral-0.7",
+        "rule-0.8",
+        "neutral-0.8",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 0,
+      "seed": 112110,
+      "variants": [
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.8",
+        "neutral-0.6",
+        "rule-0.6",
+        "model-0.6",
+        "mi",
+        "neutral-0.7",
+        "rule-0.8",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 1,
+      "seed": 112111,
+      "variants": [
+        "model-0.8",
+        "neutral-0.6",
+        "rule-0.7",
+        "model-0.7",
+        "mi",
+        "rule-0.8",
+        "neutral-0.7",
+        "rule-0.6",
+        "neutral-0.8",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 2,
+      "seed": 112112,
+      "variants": [
+        "rule-0.8",
+        "model-0.8",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.6",
+        "neutral-0.7",
+        "rule-0.6",
+        "neutral-0.8",
+        "model-0.6",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 3,
+      "seed": 112113,
+      "variants": [
+        "neutral-0.6",
+        "model-0.8",
+        "mi",
+        "rule-0.8",
+        "neutral-0.8",
+        "neutral-0.7",
+        "model-0.6",
+        "rule-0.6",
+        "rule-0.7",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 4,
+      "seed": 112114,
+      "variants": [
+        "model-0.8",
+        "neutral-0.8",
+        "mi",
+        "rule-0.8",
+        "neutral-0.7",
+        "rule-0.6",
+        "model-0.7",
+        "neutral-0.6",
+        "model-0.6",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 5,
+      "seed": 112115,
+      "variants": [
+        "neutral-0.8",
+        "neutral-0.6",
+        "model-0.7",
+        "model-0.8",
+        "model-0.6",
+        "mi",
+        "rule-0.6",
+        "rule-0.7",
+        "neutral-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 6,
+      "seed": 112116,
+      "variants": [
+        "neutral-0.7",
+        "model-0.8",
+        "rule-0.7",
+        "model-0.7",
+        "rule-0.8",
+        "model-0.6",
+        "mi",
+        "rule-0.6",
+        "neutral-0.6",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 7,
+      "seed": 112117,
+      "variants": [
+        "model-0.6",
+        "model-0.8",
+        "rule-0.7",
+        "rule-0.8",
+        "neutral-0.8",
+        "model-0.7",
+        "rule-0.6",
+        "neutral-0.7",
+        "mi",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 8,
+      "seed": 112118,
+      "variants": [
+        "model-0.7",
+        "rule-0.6",
+        "rule-0.8",
+        "mi",
+        "model-0.6",
+        "neutral-0.7",
+        "model-0.8",
+        "rule-0.7",
+        "neutral-0.6",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed2",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 9,
+      "seed": 112119,
+      "variants": [
+        "model-0.7",
+        "neutral-0.6",
+        "model-0.8",
+        "neutral-0.7",
+        "neutral-0.8",
+        "rule-0.7",
+        "mi",
+        "model-0.6",
+        "rule-0.8",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 0,
+      "seed": 113000,
+      "variants": [
+        "neutral-0.6",
+        "model-0.8",
+        "neutral-0.7",
+        "model-0.6",
+        "rule-0.7",
+        "rule-0.6",
+        "rule-0.8",
+        "model-0.7",
+        "neutral-0.8",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 1,
+      "seed": 113001,
+      "variants": [
+        "neutral-0.6",
+        "model-0.7",
+        "rule-0.8",
+        "neutral-0.8",
+        "rule-0.6",
+        "rule-0.7",
+        "model-0.8",
+        "mi",
+        "neutral-0.7",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 2,
+      "seed": 113002,
+      "variants": [
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.7",
+        "model-0.7",
+        "neutral-0.6",
+        "rule-0.8",
+        "neutral-0.8",
+        "mi",
+        "model-0.8",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 3,
+      "seed": 113003,
+      "variants": [
+        "model-0.8",
+        "model-0.7",
+        "rule-0.8",
+        "rule-0.6",
+        "model-0.6",
+        "neutral-0.7",
+        "neutral-0.8",
+        "neutral-0.6",
+        "mi",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 4,
+      "seed": 113004,
+      "variants": [
+        "rule-0.8",
+        "neutral-0.7",
+        "rule-0.6",
+        "model-0.7",
+        "model-0.8",
+        "mi",
+        "model-0.6",
+        "neutral-0.8",
+        "neutral-0.6",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 5,
+      "seed": 113005,
+      "variants": [
+        "neutral-0.8",
+        "model-0.6",
+        "neutral-0.6",
+        "mi",
+        "model-0.7",
+        "model-0.8",
+        "rule-0.7",
+        "rule-0.6",
+        "rule-0.8",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 6,
+      "seed": 113006,
+      "variants": [
+        "rule-0.6",
+        "neutral-0.6",
+        "model-0.7",
+        "mi",
+        "model-0.8",
+        "model-0.6",
+        "rule-0.7",
+        "rule-0.8",
+        "neutral-0.8",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 7,
+      "seed": 113007,
+      "variants": [
+        "model-0.7",
+        "neutral-0.6",
+        "rule-0.7",
+        "rule-0.6",
+        "rule-0.8",
+        "mi",
+        "model-0.6",
+        "neutral-0.7",
+        "neutral-0.8",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 8,
+      "seed": 113008,
+      "variants": [
+        "mi",
+        "neutral-0.7",
+        "model-0.7",
+        "rule-0.7",
+        "rule-0.8",
+        "neutral-0.6",
+        "rule-0.6",
+        "neutral-0.8",
+        "model-0.8",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 9,
+      "seed": 113009,
+      "variants": [
+        "rule-0.6",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.8",
+        "mi",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.8",
+        "model-0.6",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 0,
+      "seed": 113010,
+      "variants": [
+        "rule-0.8",
+        "rule-0.6",
+        "model-0.6",
+        "model-0.8",
+        "model-0.7",
+        "neutral-0.7",
+        "neutral-0.8",
+        "rule-0.7",
+        "neutral-0.6",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 1,
+      "seed": 113011,
+      "variants": [
+        "rule-0.8",
+        "neutral-0.8",
+        "model-0.7",
+        "neutral-0.7",
+        "neutral-0.6",
+        "rule-0.6",
+        "model-0.6",
+        "mi",
+        "rule-0.7",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 2,
+      "seed": 113012,
+      "variants": [
+        "mi",
+        "model-0.7",
+        "model-0.8",
+        "model-0.6",
+        "rule-0.8",
+        "rule-0.7",
+        "neutral-0.8",
+        "neutral-0.7",
+        "neutral-0.6",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 3,
+      "seed": 113013,
+      "variants": [
+        "model-0.8",
+        "neutral-0.6",
+        "rule-0.8",
+        "neutral-0.7",
+        "model-0.6",
+        "mi",
+        "rule-0.6",
+        "model-0.7",
+        "rule-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 4,
+      "seed": 113014,
+      "variants": [
+        "rule-0.6",
+        "rule-0.8",
+        "neutral-0.8",
+        "neutral-0.6",
+        "model-0.6",
+        "model-0.8",
+        "rule-0.7",
+        "neutral-0.7",
+        "mi",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 5,
+      "seed": 113015,
+      "variants": [
+        "neutral-0.8",
+        "rule-0.7",
+        "neutral-0.7",
+        "model-0.6",
+        "model-0.8",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.7",
+        "mi",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 6,
+      "seed": 113016,
+      "variants": [
+        "neutral-0.6",
+        "model-0.6",
+        "neutral-0.7",
+        "rule-0.6",
+        "model-0.8",
+        "rule-0.7",
+        "model-0.7",
+        "mi",
+        "rule-0.8",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 7,
+      "seed": 113017,
+      "variants": [
+        "rule-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "rule-0.8",
+        "model-0.6",
+        "model-0.7",
+        "neutral-0.6",
+        "rule-0.7",
+        "neutral-0.7",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 8,
+      "seed": 113018,
+      "variants": [
+        "model-0.7",
+        "neutral-0.7",
+        "rule-0.7",
+        "model-0.8",
+        "mi",
+        "model-0.6",
+        "rule-0.8",
+        "neutral-0.8",
+        "rule-0.6",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 9,
+      "seed": 113019,
+      "variants": [
+        "neutral-0.6",
+        "rule-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "rule-0.8",
+        "model-0.6",
+        "model-0.7",
+        "neutral-0.7",
+        "rule-0.7",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 0,
+      "seed": 113100,
+      "variants": [
+        "model-0.6",
+        "model-0.8",
+        "model-0.7",
+        "rule-0.7",
+        "mi",
+        "neutral-0.7",
+        "neutral-0.8",
+        "neutral-0.6",
+        "rule-0.6",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 1,
+      "seed": 113101,
+      "variants": [
+        "neutral-0.6",
+        "rule-0.6",
+        "model-0.6",
+        "neutral-0.7",
+        "mi",
+        "model-0.7",
+        "rule-0.7",
+        "neutral-0.8",
+        "rule-0.8",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 2,
+      "seed": 113102,
+      "variants": [
+        "rule-0.8",
+        "mi",
+        "rule-0.6",
+        "model-0.6",
+        "model-0.8",
+        "neutral-0.7",
+        "neutral-0.6",
+        "model-0.7",
+        "rule-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 3,
+      "seed": 113103,
+      "variants": [
+        "rule-0.8",
+        "mi",
+        "model-0.8",
+        "neutral-0.8",
+        "rule-0.6",
+        "model-0.7",
+        "model-0.6",
+        "neutral-0.6",
+        "neutral-0.7",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 4,
+      "seed": 113104,
+      "variants": [
+        "neutral-0.6",
+        "model-0.6",
+        "rule-0.6",
+        "neutral-0.7",
+        "mi",
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.7",
+        "model-0.8",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 5,
+      "seed": 113105,
+      "variants": [
+        "neutral-0.7",
+        "rule-0.7",
+        "mi",
+        "model-0.6",
+        "model-0.7",
+        "neutral-0.8",
+        "model-0.8",
+        "rule-0.6",
+        "neutral-0.6",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 6,
+      "seed": 113106,
+      "variants": [
+        "neutral-0.7",
+        "rule-0.8",
+        "neutral-0.8",
+        "rule-0.6",
+        "model-0.7",
+        "neutral-0.6",
+        "model-0.6",
+        "model-0.8",
+        "mi",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 7,
+      "seed": 113107,
+      "variants": [
+        "model-0.6",
+        "mi",
+        "neutral-0.8",
+        "rule-0.8",
+        "model-0.7",
+        "model-0.8",
+        "rule-0.7",
+        "rule-0.6",
+        "neutral-0.6",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 8,
+      "seed": 113108,
+      "variants": [
+        "rule-0.8",
+        "rule-0.6",
+        "neutral-0.7",
+        "mi",
+        "model-0.8",
+        "neutral-0.8",
+        "neutral-0.6",
+        "rule-0.7",
+        "model-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 9,
+      "seed": 113109,
+      "variants": [
+        "rule-0.8",
+        "neutral-0.8",
+        "mi",
+        "model-0.6",
+        "rule-0.6",
+        "rule-0.7",
+        "neutral-0.6",
+        "model-0.8",
+        "neutral-0.7",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 0,
+      "seed": 113110,
+      "variants": [
+        "model-0.7",
+        "mi",
+        "neutral-0.7",
+        "neutral-0.8",
+        "model-0.6",
+        "neutral-0.6",
+        "rule-0.6",
+        "model-0.8",
+        "rule-0.8",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 1,
+      "seed": 113111,
+      "variants": [
+        "neutral-0.6",
+        "mi",
+        "model-0.7",
+        "model-0.8",
+        "neutral-0.7",
+        "model-0.6",
+        "neutral-0.8",
+        "rule-0.8",
+        "rule-0.6",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 2,
+      "seed": 113112,
+      "variants": [
+        "rule-0.6",
+        "rule-0.8",
+        "model-0.8",
+        "neutral-0.7",
+        "neutral-0.6",
+        "model-0.6",
+        "mi",
+        "neutral-0.8",
+        "rule-0.7",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 3,
+      "seed": 113113,
+      "variants": [
+        "neutral-0.7",
+        "mi",
+        "model-0.6",
+        "model-0.8",
+        "rule-0.8",
+        "model-0.7",
+        "neutral-0.6",
+        "neutral-0.8",
+        "rule-0.7",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 4,
+      "seed": 113114,
+      "variants": [
+        "rule-0.7",
+        "model-0.8",
+        "rule-0.6",
+        "neutral-0.6",
+        "mi",
+        "neutral-0.7",
+        "rule-0.8",
+        "model-0.6",
+        "neutral-0.8",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 5,
+      "seed": 113115,
+      "variants": [
+        "rule-0.6",
+        "model-0.8",
+        "neutral-0.6",
+        "neutral-0.7",
+        "rule-0.7",
+        "model-0.7",
+        "mi",
+        "model-0.6",
+        "neutral-0.8",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 6,
+      "seed": 113116,
+      "variants": [
+        "model-0.7",
+        "model-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "neutral-0.6",
+        "rule-0.7",
+        "rule-0.6",
+        "rule-0.8",
+        "neutral-0.7",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 7,
+      "seed": 113117,
+      "variants": [
+        "neutral-0.7",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.6",
+        "neutral-0.8",
+        "model-0.8",
+        "rule-0.8",
+        "model-0.6",
+        "mi",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 8,
+      "seed": 113118,
+      "variants": [
+        "neutral-0.6",
+        "model-0.7",
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.8",
+        "rule-0.6",
+        "mi",
+        "neutral-0.7",
+        "model-0.6",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed3",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 9,
+      "seed": 113119,
+      "variants": [
+        "model-0.6",
+        "neutral-0.6",
+        "model-0.7",
+        "rule-0.6",
+        "neutral-0.8",
+        "neutral-0.7",
+        "rule-0.7",
+        "model-0.8",
+        "mi",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 0,
+      "seed": 114000,
+      "variants": [
+        "rule-0.7",
+        "rule-0.8",
+        "mi",
+        "neutral-0.8",
+        "model-0.8",
+        "neutral-0.6",
+        "rule-0.6",
+        "model-0.6",
+        "model-0.7",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 1,
+      "seed": 114001,
+      "variants": [
+        "neutral-0.7",
+        "rule-0.8",
+        "rule-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "model-0.7",
+        "model-0.6",
+        "rule-0.7",
+        "mi",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 2,
+      "seed": 114002,
+      "variants": [
+        "neutral-0.8",
+        "model-0.7",
+        "rule-0.7",
+        "neutral-0.6",
+        "model-0.6",
+        "rule-0.6",
+        "mi",
+        "model-0.8",
+        "neutral-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 3,
+      "seed": 114003,
+      "variants": [
+        "model-0.7",
+        "neutral-0.6",
+        "model-0.6",
+        "rule-0.6",
+        "mi",
+        "neutral-0.7",
+        "neutral-0.8",
+        "model-0.8",
+        "rule-0.8",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 4,
+      "seed": 114004,
+      "variants": [
+        "neutral-0.8",
+        "mi",
+        "rule-0.8",
+        "model-0.8",
+        "rule-0.6",
+        "neutral-0.6",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.7",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 5,
+      "seed": 114005,
+      "variants": [
+        "rule-0.7",
+        "rule-0.8",
+        "model-0.7",
+        "model-0.6",
+        "neutral-0.7",
+        "rule-0.6",
+        "mi",
+        "neutral-0.8",
+        "model-0.8",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 6,
+      "seed": 114006,
+      "variants": [
+        "rule-0.6",
+        "mi",
+        "neutral-0.8",
+        "neutral-0.7",
+        "model-0.8",
+        "model-0.7",
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.6",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 7,
+      "seed": 114007,
+      "variants": [
+        "rule-0.8",
+        "neutral-0.6",
+        "model-0.6",
+        "mi",
+        "neutral-0.7",
+        "model-0.8",
+        "rule-0.7",
+        "neutral-0.8",
+        "rule-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 8,
+      "seed": 114008,
+      "variants": [
+        "model-0.6",
+        "mi",
+        "neutral-0.6",
+        "rule-0.7",
+        "rule-0.6",
+        "neutral-0.7",
+        "neutral-0.8",
+        "rule-0.8",
+        "model-0.7",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 9,
+      "seed": 114009,
+      "variants": [
+        "rule-0.6",
+        "model-0.6",
+        "rule-0.7",
+        "rule-0.8",
+        "neutral-0.8",
+        "model-0.7",
+        "model-0.8",
+        "neutral-0.6",
+        "neutral-0.7",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 0,
+      "seed": 114010,
+      "variants": [
+        "neutral-0.6",
+        "rule-0.6",
+        "rule-0.7",
+        "rule-0.8",
+        "model-0.8",
+        "model-0.7",
+        "neutral-0.8",
+        "neutral-0.7",
+        "mi",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 1,
+      "seed": 114011,
+      "variants": [
+        "model-0.8",
+        "model-0.6",
+        "rule-0.8",
+        "neutral-0.6",
+        "rule-0.7",
+        "neutral-0.8",
+        "neutral-0.7",
+        "mi",
+        "rule-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 2,
+      "seed": 114012,
+      "variants": [
+        "model-0.8",
+        "rule-0.6",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.6",
+        "neutral-0.8",
+        "rule-0.8",
+        "mi",
+        "model-0.6",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 3,
+      "seed": 114013,
+      "variants": [
+        "model-0.8",
+        "neutral-0.8",
+        "neutral-0.7",
+        "mi",
+        "neutral-0.6",
+        "rule-0.6",
+        "rule-0.8",
+        "model-0.7",
+        "model-0.6",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 4,
+      "seed": 114014,
+      "variants": [
+        "rule-0.6",
+        "model-0.6",
+        "model-0.7",
+        "neutral-0.7",
+        "neutral-0.8",
+        "neutral-0.6",
+        "model-0.8",
+        "rule-0.8",
+        "mi",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 5,
+      "seed": 114015,
+      "variants": [
+        "mi",
+        "rule-0.8",
+        "model-0.6",
+        "model-0.7",
+        "model-0.8",
+        "rule-0.7",
+        "neutral-0.7",
+        "neutral-0.8",
+        "rule-0.6",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 6,
+      "seed": 114016,
+      "variants": [
+        "rule-0.8",
+        "model-0.7",
+        "model-0.8",
+        "model-0.6",
+        "mi",
+        "rule-0.6",
+        "neutral-0.7",
+        "neutral-0.8",
+        "neutral-0.6",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 7,
+      "seed": 114017,
+      "variants": [
+        "mi",
+        "rule-0.8",
+        "rule-0.6",
+        "model-0.7",
+        "neutral-0.8",
+        "neutral-0.6",
+        "rule-0.7",
+        "neutral-0.7",
+        "model-0.8",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 8,
+      "seed": 114018,
+      "variants": [
+        "neutral-0.6",
+        "model-0.6",
+        "rule-0.6",
+        "rule-0.8",
+        "model-0.7",
+        "neutral-0.8",
+        "neutral-0.7",
+        "mi",
+        "model-0.8",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 9,
+      "seed": 114019,
+      "variants": [
+        "mi",
+        "neutral-0.6",
+        "rule-0.6",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.8",
+        "neutral-0.7",
+        "model-0.8",
+        "model-0.6",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 0,
+      "seed": 114100,
+      "variants": [
+        "rule-0.6",
+        "mi",
+        "model-0.7",
+        "rule-0.7",
+        "neutral-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "model-0.6",
+        "neutral-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 1,
+      "seed": 114101,
+      "variants": [
+        "neutral-0.8",
+        "model-0.8",
+        "rule-0.7",
+        "rule-0.6",
+        "rule-0.8",
+        "model-0.7",
+        "model-0.6",
+        "neutral-0.7",
+        "mi",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 2,
+      "seed": 114102,
+      "variants": [
+        "rule-0.6",
+        "mi",
+        "neutral-0.8",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.8",
+        "model-0.7",
+        "model-0.6",
+        "neutral-0.7",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 3,
+      "seed": 114103,
+      "variants": [
+        "mi",
+        "neutral-0.8",
+        "model-0.8",
+        "rule-0.8",
+        "model-0.7",
+        "neutral-0.6",
+        "rule-0.6",
+        "neutral-0.7",
+        "model-0.6",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 4,
+      "seed": 114104,
+      "variants": [
+        "model-0.6",
+        "neutral-0.6",
+        "rule-0.6",
+        "rule-0.8",
+        "neutral-0.8",
+        "model-0.8",
+        "model-0.7",
+        "mi",
+        "neutral-0.7",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 5,
+      "seed": 114105,
+      "variants": [
+        "neutral-0.6",
+        "rule-0.7",
+        "model-0.7",
+        "model-0.8",
+        "neutral-0.8",
+        "rule-0.6",
+        "mi",
+        "rule-0.8",
+        "model-0.6",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 6,
+      "seed": 114106,
+      "variants": [
+        "neutral-0.8",
+        "neutral-0.7",
+        "model-0.7",
+        "rule-0.7",
+        "rule-0.8",
+        "model-0.8",
+        "model-0.6",
+        "neutral-0.6",
+        "mi",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 7,
+      "seed": 114107,
+      "variants": [
+        "rule-0.7",
+        "model-0.6",
+        "rule-0.8",
+        "neutral-0.6",
+        "neutral-0.8",
+        "rule-0.6",
+        "model-0.7",
+        "model-0.8",
+        "neutral-0.7",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 8,
+      "seed": 114108,
+      "variants": [
+        "rule-0.6",
+        "model-0.8",
+        "neutral-0.6",
+        "neutral-0.7",
+        "rule-0.8",
+        "mi",
+        "model-0.7",
+        "model-0.6",
+        "rule-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 9,
+      "seed": 114109,
+      "variants": [
+        "model-0.8",
+        "rule-0.8",
+        "model-0.7",
+        "rule-0.6",
+        "mi",
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.6",
+        "neutral-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 0,
+      "seed": 114110,
+      "variants": [
+        "mi",
+        "rule-0.7",
+        "model-0.6",
+        "model-0.7",
+        "rule-0.8",
+        "model-0.8",
+        "neutral-0.8",
+        "rule-0.6",
+        "neutral-0.6",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 1,
+      "seed": 114111,
+      "variants": [
+        "neutral-0.7",
+        "model-0.8",
+        "mi",
+        "rule-0.8",
+        "rule-0.6",
+        "neutral-0.6",
+        "rule-0.7",
+        "model-0.6",
+        "model-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 2,
+      "seed": 114112,
+      "variants": [
+        "rule-0.7",
+        "neutral-0.8",
+        "rule-0.6",
+        "model-0.6",
+        "neutral-0.6",
+        "model-0.8",
+        "neutral-0.7",
+        "rule-0.8",
+        "mi",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 3,
+      "seed": 114113,
+      "variants": [
+        "neutral-0.8",
+        "rule-0.8",
+        "model-0.8",
+        "rule-0.6",
+        "mi",
+        "neutral-0.7",
+        "model-0.6",
+        "neutral-0.6",
+        "rule-0.7",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 4,
+      "seed": 114114,
+      "variants": [
+        "model-0.7",
+        "neutral-0.6",
+        "neutral-0.7",
+        "model-0.6",
+        "rule-0.8",
+        "rule-0.6",
+        "mi",
+        "model-0.8",
+        "neutral-0.8",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 5,
+      "seed": 114115,
+      "variants": [
+        "neutral-0.8",
+        "neutral-0.6",
+        "model-0.7",
+        "rule-0.7",
+        "model-0.6",
+        "model-0.8",
+        "rule-0.8",
+        "mi",
+        "neutral-0.7",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 6,
+      "seed": 114116,
+      "variants": [
+        "rule-0.6",
+        "model-0.6",
+        "rule-0.8",
+        "neutral-0.8",
+        "neutral-0.6",
+        "model-0.7",
+        "mi",
+        "neutral-0.7",
+        "model-0.8",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 7,
+      "seed": 114117,
+      "variants": [
+        "rule-0.8",
+        "rule-0.6",
+        "neutral-0.7",
+        "model-0.7",
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.6",
+        "mi",
+        "neutral-0.8",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 8,
+      "seed": 114118,
+      "variants": [
+        "rule-0.6",
+        "mi",
+        "model-0.6",
+        "neutral-0.6",
+        "model-0.7",
+        "model-0.8",
+        "rule-0.8",
+        "neutral-0.8",
+        "neutral-0.7",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed4",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 9,
+      "seed": 114119,
+      "variants": [
+        "model-0.6",
+        "neutral-0.6",
+        "rule-0.6",
+        "rule-0.7",
+        "mi",
+        "model-0.7",
+        "neutral-0.7",
+        "model-0.8",
+        "rule-0.8",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 0,
+      "seed": 115000,
+      "variants": [
+        "rule-0.8",
+        "rule-0.7",
+        "neutral-0.8",
+        "neutral-0.6",
+        "rule-0.6",
+        "neutral-0.7",
+        "model-0.7",
+        "mi",
+        "model-0.6",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 1,
+      "seed": 115001,
+      "variants": [
+        "model-0.6",
+        "rule-0.6",
+        "mi",
+        "neutral-0.7",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.8",
+        "model-0.7",
+        "neutral-0.8",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 2,
+      "seed": 115002,
+      "variants": [
+        "rule-0.6",
+        "model-0.6",
+        "model-0.8",
+        "mi",
+        "neutral-0.6",
+        "neutral-0.8",
+        "neutral-0.7",
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 3,
+      "seed": 115003,
+      "variants": [
+        "rule-0.6",
+        "mi",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.8",
+        "rule-0.7",
+        "model-0.6",
+        "model-0.7",
+        "neutral-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 4,
+      "seed": 115004,
+      "variants": [
+        "model-0.7",
+        "rule-0.6",
+        "model-0.6",
+        "neutral-0.8",
+        "model-0.8",
+        "rule-0.8",
+        "rule-0.7",
+        "neutral-0.7",
+        "mi",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 5,
+      "seed": 115005,
+      "variants": [
+        "rule-0.7",
+        "model-0.8",
+        "neutral-0.6",
+        "neutral-0.7",
+        "rule-0.6",
+        "mi",
+        "neutral-0.8",
+        "model-0.7",
+        "rule-0.8",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 6,
+      "seed": 115006,
+      "variants": [
+        "neutral-0.7",
+        "neutral-0.6",
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.8",
+        "model-0.6",
+        "rule-0.6",
+        "model-0.8",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 7,
+      "seed": 115007,
+      "variants": [
+        "rule-0.7",
+        "model-0.8",
+        "neutral-0.8",
+        "mi",
+        "rule-0.8",
+        "model-0.6",
+        "neutral-0.6",
+        "neutral-0.7",
+        "rule-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 8,
+      "seed": 115008,
+      "variants": [
+        "rule-0.7",
+        "neutral-0.7",
+        "model-0.8",
+        "model-0.6",
+        "neutral-0.6",
+        "mi",
+        "model-0.7",
+        "neutral-0.8",
+        "rule-0.8",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 1,
+      "repetition": 9,
+      "seed": 115009,
+      "variants": [
+        "model-0.6",
+        "model-0.7",
+        "model-0.8",
+        "neutral-0.8",
+        "rule-0.6",
+        "mi",
+        "neutral-0.7",
+        "rule-0.8",
+        "neutral-0.6",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 0,
+      "seed": 115010,
+      "variants": [
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.8",
+        "model-0.8",
+        "model-0.7",
+        "rule-0.6",
+        "neutral-0.6",
+        "mi",
+        "neutral-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 1,
+      "seed": 115011,
+      "variants": [
+        "neutral-0.7",
+        "neutral-0.8",
+        "model-0.8",
+        "rule-0.7",
+        "model-0.6",
+        "neutral-0.6",
+        "rule-0.6",
+        "rule-0.8",
+        "mi",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 2,
+      "seed": 115012,
+      "variants": [
+        "neutral-0.6",
+        "rule-0.7",
+        "neutral-0.8",
+        "neutral-0.7",
+        "rule-0.8",
+        "model-0.8",
+        "model-0.7",
+        "rule-0.6",
+        "mi",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 3,
+      "seed": 115013,
+      "variants": [
+        "neutral-0.6",
+        "rule-0.6",
+        "neutral-0.8",
+        "mi",
+        "model-0.8",
+        "rule-0.8",
+        "model-0.7",
+        "neutral-0.7",
+        "rule-0.7",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 4,
+      "seed": 115014,
+      "variants": [
+        "rule-0.7",
+        "neutral-0.6",
+        "rule-0.8",
+        "mi",
+        "model-0.7",
+        "neutral-0.8",
+        "rule-0.6",
+        "model-0.6",
+        "neutral-0.7",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 5,
+      "seed": 115015,
+      "variants": [
+        "model-0.7",
+        "neutral-0.8",
+        "model-0.6",
+        "rule-0.8",
+        "neutral-0.6",
+        "neutral-0.7",
+        "rule-0.7",
+        "rule-0.6",
+        "model-0.8",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 6,
+      "seed": 115016,
+      "variants": [
+        "mi",
+        "model-0.8",
+        "rule-0.8",
+        "neutral-0.6",
+        "neutral-0.7",
+        "rule-0.6",
+        "model-0.7",
+        "neutral-0.8",
+        "model-0.6",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 7,
+      "seed": 115017,
+      "variants": [
+        "neutral-0.8",
+        "rule-0.6",
+        "rule-0.8",
+        "model-0.7",
+        "neutral-0.6",
+        "rule-0.7",
+        "model-0.8",
+        "model-0.6",
+        "neutral-0.7",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 8,
+      "seed": 115018,
+      "variants": [
+        "rule-0.8",
+        "rule-0.6",
+        "model-0.7",
+        "model-0.8",
+        "rule-0.7",
+        "neutral-0.7",
+        "model-0.6",
+        "neutral-0.6",
+        "neutral-0.8",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-pure",
+      "threads": 16,
+      "repetition": 9,
+      "seed": 115019,
+      "variants": [
+        "model-0.8",
+        "model-0.6",
+        "rule-0.7",
+        "mi",
+        "neutral-0.8",
+        "neutral-0.7",
+        "rule-0.8",
+        "neutral-0.6",
+        "rule-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 0,
+      "seed": 115100,
+      "variants": [
+        "rule-0.6",
+        "rule-0.8",
+        "neutral-0.6",
+        "model-0.6",
+        "model-0.8",
+        "model-0.7",
+        "neutral-0.8",
+        "mi",
+        "neutral-0.7",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 1,
+      "seed": 115101,
+      "variants": [
+        "model-0.6",
+        "rule-0.6",
+        "mi",
+        "neutral-0.7",
+        "model-0.7",
+        "neutral-0.6",
+        "neutral-0.8",
+        "model-0.8",
+        "rule-0.8",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 2,
+      "seed": 115102,
+      "variants": [
+        "rule-0.6",
+        "rule-0.7",
+        "model-0.6",
+        "model-0.7",
+        "mi",
+        "neutral-0.8",
+        "model-0.8",
+        "neutral-0.6",
+        "neutral-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 3,
+      "seed": 115103,
+      "variants": [
+        "neutral-0.7",
+        "neutral-0.6",
+        "rule-0.6",
+        "model-0.7",
+        "neutral-0.8",
+        "mi",
+        "model-0.8",
+        "model-0.6",
+        "rule-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 4,
+      "seed": 115104,
+      "variants": [
+        "rule-0.8",
+        "rule-0.6",
+        "neutral-0.7",
+        "model-0.8",
+        "model-0.6",
+        "mi",
+        "neutral-0.8",
+        "neutral-0.6",
+        "rule-0.7",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 5,
+      "seed": 115105,
+      "variants": [
+        "neutral-0.6",
+        "neutral-0.8",
+        "neutral-0.7",
+        "mi",
+        "model-0.6",
+        "rule-0.6",
+        "model-0.8",
+        "rule-0.8",
+        "model-0.7",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 6,
+      "seed": 115106,
+      "variants": [
+        "model-0.8",
+        "mi",
+        "neutral-0.6",
+        "rule-0.6",
+        "rule-0.7",
+        "neutral-0.8",
+        "model-0.7",
+        "neutral-0.7",
+        "rule-0.8",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 7,
+      "seed": 115107,
+      "variants": [
+        "neutral-0.8",
+        "rule-0.8",
+        "rule-0.6",
+        "model-0.8",
+        "mi",
+        "model-0.6",
+        "neutral-0.7",
+        "neutral-0.6",
+        "model-0.7",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 8,
+      "seed": 115108,
+      "variants": [
+        "model-0.6",
+        "rule-0.8",
+        "rule-0.7",
+        "model-0.8",
+        "neutral-0.8",
+        "rule-0.6",
+        "neutral-0.7",
+        "neutral-0.6",
+        "model-0.7",
+        "mi"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 1,
+      "repetition": 9,
+      "seed": 115109,
+      "variants": [
+        "rule-0.8",
+        "mi",
+        "rule-0.7",
+        "model-0.7",
+        "rule-0.6",
+        "model-0.6",
+        "model-0.8",
+        "neutral-0.7",
+        "neutral-0.8",
+        "neutral-0.6"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 0,
+      "seed": 115110,
+      "variants": [
+        "rule-0.7",
+        "rule-0.8",
+        "model-0.8",
+        "neutral-0.7",
+        "rule-0.6",
+        "neutral-0.6",
+        "model-0.7",
+        "neutral-0.8",
+        "mi",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 1,
+      "seed": 115111,
+      "variants": [
+        "neutral-0.7",
+        "neutral-0.6",
+        "model-0.8",
+        "mi",
+        "rule-0.7",
+        "rule-0.8",
+        "model-0.6",
+        "neutral-0.8",
+        "rule-0.6",
+        "model-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 2,
+      "seed": 115112,
+      "variants": [
+        "rule-0.8",
+        "rule-0.6",
+        "neutral-0.7",
+        "mi",
+        "model-0.8",
+        "neutral-0.6",
+        "model-0.6",
+        "model-0.7",
+        "rule-0.7",
+        "neutral-0.8"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 3,
+      "seed": 115113,
+      "variants": [
+        "neutral-0.8",
+        "mi",
+        "model-0.8",
+        "neutral-0.6",
+        "rule-0.8",
+        "model-0.7",
+        "neutral-0.7",
+        "rule-0.7",
+        "rule-0.6",
+        "model-0.6"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 4,
+      "seed": 115114,
+      "variants": [
+        "neutral-0.7",
+        "model-0.7",
+        "neutral-0.8",
+        "mi",
+        "rule-0.8",
+        "neutral-0.6",
+        "rule-0.7",
+        "model-0.8",
+        "model-0.6",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 5,
+      "seed": 115115,
+      "variants": [
+        "rule-0.8",
+        "mi",
+        "model-0.6",
+        "rule-0.7",
+        "model-0.7",
+        "neutral-0.7",
+        "neutral-0.6",
+        "model-0.8",
+        "neutral-0.8",
+        "rule-0.6"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 6,
+      "seed": 115116,
+      "variants": [
+        "mi",
+        "neutral-0.7",
+        "neutral-0.8",
+        "neutral-0.6",
+        "model-0.8",
+        "model-0.6",
+        "model-0.7",
+        "rule-0.6",
+        "rule-0.7",
+        "rule-0.8"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 7,
+      "seed": 115117,
+      "variants": [
+        "model-0.8",
+        "rule-0.8",
+        "neutral-0.7",
+        "neutral-0.8",
+        "mi",
+        "neutral-0.6",
+        "model-0.7",
+        "model-0.6",
+        "rule-0.6",
+        "rule-0.7"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 8,
+      "seed": 115118,
+      "variants": [
+        "model-0.6",
+        "rule-0.8",
+        "neutral-0.8",
+        "mi",
+        "rule-0.7",
+        "rule-0.6",
+        "model-0.7",
+        "neutral-0.6",
+        "neutral-0.7",
+        "model-0.8"
+      ]
+    },
+    {
+      "naming": "seed5",
+      "workload": "site-mixed",
+      "threads": 16,
+      "repetition": 9,
+      "seed": 115119,
+      "variants": [
+        "model-0.6",
+        "rule-0.7",
+        "neutral-0.8",
+        "neutral-0.7",
+        "rule-0.8",
+        "mi",
+        "model-0.7",
+        "neutral-0.6",
+        "model-0.8",
+        "rule-0.6"
+      ]
+    }
+  ],
+  "bootstrap_seed": 110011,
+  "bootstrap_resamples": 20000
+}

@@ -8,11 +8,11 @@
  #include "monotonic.h"
  #include "cluster.h"
  #include "slowlog.h"
-@@ -3712,6 +3713,43 @@
+@@ -3712,6 +3713,50 @@
   * preventCommandReplication(client *c);
   *
   */
-+/* Application-owned, bounded request context. Networking/parser allocations
++/* Application-owned, bucketed request context. Networking/parser allocations
 + * precede this dispatch hook and intentionally carry no command context. */
 +static _Thread_local char jev_command_context[256];
 +static void jevCommandContext(client *c) {
@@ -22,10 +22,17 @@
 +    if (key > 0 && key < c->argc && sdsEncodedObject(c->argv[key])) {
 +        sds value = c->argv[key]->ptr;
 +        size_t n = sdslen(value), i;
-+        for (i = 0; i < n && i < 16 && value[i] != ':'; i++) {
++        /* Collapse a trailing numeric ID before truncating the family. */
++        size_t end = 0;
++        while (end < n && value[end] != ':') end++;
++        size_t digits = end;
++        while (digits && value[digits-1] >= '0' && value[digits-1] <= '9') digits--;
++        n = digits;
++        for (i = 0; i < n && i < 15; i++) {
 +            unsigned char ch = value[i];
 +            prefix[i] = ch > 32 && ch < 127 ? ch : '_';
 +        }
++        if (digits < end) prefix[i++] = '#';
 +        prefix[i] = 0;
 +    }
 +    int expiry = !strcasecmp(c->cmd->name,"expire") ||
@@ -52,7 +59,7 @@
  void call(client *c, int flags) {
      long long dirty;
      int client_old_flags = c->flags;
-@@ -3741,7 +3779,15 @@
+@@ -3741,7 +3786,15 @@
          monotonic_start = getMonotonicUs();
  
      server.in_nested_call++;

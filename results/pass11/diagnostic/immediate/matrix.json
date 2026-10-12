@@ -1,0 +1,1788 @@
+{
+  "configuration": {
+    "row": {
+      "name": "site-pure-1",
+      "binary": "../server-sim-diag",
+      "args": [
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "expect": "fragbench OK",
+      "gate_inference": true,
+      "prompt": "stack-v1",
+      "environment": {
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1"
+      }
+    },
+    "statistics": "MI_STAT=2; heap areas traversed at each phase",
+    "fingerprints": {
+      "build/server-sim-diag": "32e4ec27ff089caf3157dc6d27584197a067c6b718cd2caeae640c29980610c7",
+      "build/pass11-stats/libjevalloc.so": "48108e69b48a3c3a1e989b6a4e4efa8d2c20dc7f818368fed0a19a4149298c19",
+      "build/pass11-stats/libmimalloc.so": "e55ae6c7446e0249a23f278f6ee132f0fcb509618044296488c313e136a235f3",
+      "fragbench/diagnostic11.py": "20536ce366a02acd7208da688939d944b1ef1185bbde81b05cfc9cb8d43cd256"
+    }
+  },
+  "runs": [
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791828537.55224,
+      "finished_unix": 1791828558.1969922,
+      "host_before": {
+        "load_average": [
+          0.10888671875,
+          0.0966796875,
+          0.2900390625
+        ],
+        "MemAvailable_bytes": 14288994304,
+        "SwapFree_bytes": 6571159552,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "site-pure-1",
+      "variant": "mi/ordinary",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libmimalloc.so",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.640164164,
+      "stdout": "results/pass11/diagnostic/immediate/logs/site-pure-1-mi-0.stdout",
+      "stderr": "results/pass11/diagnostic/immediate/logs/site-pure-1-mi-0.stderr",
+      "user_seconds": 0.114014,
+      "sys_seconds": 0.025003,
+      "peak_rss_bytes": 293601280,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.139017,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.640164164,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 128032768,
+          "live_bytes": 115245248,
+          "fragmentation_ratio": 1.110959,
+          "peak_rss_bytes": 127733760
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 128032768,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.110931,
+          "peak_rss_bytes": 127733760
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 128106496,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.117329,
+          "peak_rss_bytes": 127864832
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 128106496,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.117329,
+          "peak_rss_bytes": 127864832
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 293838848,
+          "live_bytes": 203491136,
+          "fragmentation_ratio": 1.443988,
+          "peak_rss_bytes": 293601280
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 293838848,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.563274,
+          "peak_rss_bytes": 293601280
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 293838848,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.563274,
+          "peak_rss_bytes": 293601280
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 293838848,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.563274,
+          "peak_rss_bytes": 293601280
+        }
+      ],
+      "allocator_phases": [
+        {
+          "mi_phase": "peak",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115542336,
+          "malloc_current": 115249344,
+          "area_committed": 115280192,
+          "area_used": 115249344,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073688576,
+          "purged": 65536,
+          "page_committed": 115538304,
+          "malloc_current": 11527232,
+          "area_committed": 115276160,
+          "area_used": 11527232,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073688576,
+          "purged": 65536,
+          "page_committed": 115542400,
+          "malloc_current": 11527232,
+          "area_committed": 115280256,
+          "area_used": 11527232,
+          "empty_area_committed": 12288
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073688576,
+          "purged": 65536,
+          "page_committed": 115542400,
+          "malloc_current": 11527232,
+          "area_committed": 115280256,
+          "area_used": 11527232,
+          "empty_area_committed": 12288
+        },
+        {
+          "mi_phase": "peak",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1073557504,
+          "purged": 196608,
+          "page_committed": 279719104,
+          "malloc_current": 209893312,
+          "area_committed": 279129280,
+          "area_used": 209893312,
+          "empty_area_committed": 4096
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1073557504,
+          "purged": 196608,
+          "page_committed": 279719104,
+          "malloc_current": 31368640,
+          "area_committed": 279129280,
+          "area_used": 31368640,
+          "empty_area_committed": 4096
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1073557504,
+          "purged": 196608,
+          "page_committed": 279723200,
+          "malloc_current": 31368640,
+          "area_committed": 279133376,
+          "area_used": 31368640,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1073557504,
+          "purged": 196608,
+          "page_committed": 279723200,
+          "malloc_current": 31368640,
+          "area_committed": 279133376,
+          "area_used": 31368640,
+          "empty_area_committed": 8192
+        }
+      ],
+      "transport_variant": "mi",
+      "diagnostic": true,
+      "forced_collection": false
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791828559.2047327,
+      "finished_unix": 1791828579.9995313,
+      "host_before": {
+        "load_average": [
+          0.0771484375,
+          0.0888671875,
+          0.2822265625
+        ],
+        "MemAvailable_bytes": 14392627200,
+        "SwapFree_bytes": 6571159552,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle-site/ordinary",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass11/diagnostic/immediate/tables/site-pure-1/oracle-site.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.776709365,
+      "stdout": "results/pass11/diagnostic/immediate/logs/site-pure-1-jev-table-0-6241130e.stdout",
+      "stderr": "results/pass11/diagnostic/immediate/logs/site-pure-1-jev-table-0-6241130e.stderr",
+      "user_seconds": 0.142479,
+      "sys_seconds": 0.132701,
+      "peak_rss_bytes": 224276480,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.27518,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.776709365,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 128098304,
+          "live_bytes": 115245248,
+          "fragmentation_ratio": 1.111528,
+          "peak_rss_bytes": 127889408
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 23896064,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 2.073747,
+          "peak_rss_bytes": 127889408
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 23969792,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 2.080145,
+          "peak_rss_bytes": 127889408
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 23973888,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 2.0805,
+          "peak_rss_bytes": 127889408
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 223473664,
+          "live_bytes": 203491136,
+          "fragmentation_ratio": 1.098199,
+          "peak_rss_bytes": 224276480
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 43380736,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.411869,
+          "peak_rss_bytes": 224276480
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 43388928,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.412135,
+          "peak_rss_bytes": 224276480
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 43388928,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.412135,
+          "peak_rss_bytes": 224276480
+        }
+      ],
+      "allocator_phases": [
+        {
+          "mi_phase": "peak",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -1783091200,
+          "purged": 2856845312,
+          "page_committed": 115569184,
+          "malloc_current": 115256512,
+          "area_committed": 115307040,
+          "area_used": 115256512,
+          "empty_area_committed": 16288
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -2205405184,
+          "purged": 3279159296,
+          "page_committed": 12071904,
+          "malloc_current": 11534400,
+          "area_committed": 11809760,
+          "area_used": 11534400,
+          "empty_area_committed": 249376
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -2205405184,
+          "purged": 3279159296,
+          "page_committed": 12076000,
+          "malloc_current": 11534400,
+          "area_committed": 11813856,
+          "area_used": 11534400,
+          "empty_area_committed": 253472
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -2205405184,
+          "purged": 3279159296,
+          "page_committed": 12076000,
+          "malloc_current": 11534400,
+          "area_committed": 11813856,
+          "area_used": 11534400,
+          "empty_area_committed": 253472
+        },
+        {
+          "mi_phase": "peak",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -4680044544,
+          "purged": 5753798656,
+          "page_committed": 210482528,
+          "malloc_current": 209900480,
+          "area_committed": 209958240,
+          "area_used": 209900480,
+          "empty_area_committed": 12192
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5357490176,
+          "purged": 6431244288,
+          "page_committed": 32053600,
+          "malloc_current": 31375808,
+          "area_committed": 31529312,
+          "area_used": 31375808,
+          "empty_area_committed": 122912
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5357490176,
+          "purged": 6431244288,
+          "page_committed": 32057696,
+          "malloc_current": 31375808,
+          "area_committed": 31533408,
+          "area_used": 31375808,
+          "empty_area_committed": 127008
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5357490176,
+          "purged": 6431244288,
+          "page_committed": 32057696,
+          "malloc_current": 31375808,
+          "area_committed": 31533408,
+          "area_used": 31375808,
+          "empty_area_committed": 127008
+        }
+      ],
+      "transport_variant": "jev-table:oracle-site",
+      "diagnostic": true,
+      "forced_collection": false
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791828581.0498323,
+      "finished_unix": 1791828601.8975406,
+      "host_before": {
+        "load_average": [
+          0.10791015625,
+          0.09619140625,
+          0.2783203125
+        ],
+        "MemAvailable_bytes": 14306631680,
+        "SwapFree_bytes": 6571159552,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model/ordinary",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-149aaff28cc4.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass11/diagnostic/immediate/logs/site-pure-1-jev-live-0-90f1a81f.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.821733383,
+      "stdout": "results/pass11/diagnostic/immediate/logs/site-pure-1-jev-live-0-90f1a81f.stdout",
+      "stderr": "results/pass11/diagnostic/immediate/logs/site-pure-1-jev-live-0-90f1a81f.stderr",
+      "user_seconds": 0.145552,
+      "sys_seconds": 0.148213,
+      "peak_rss_bytes": 227155968,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.293765,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.821733383,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 129085440,
+          "live_bytes": 115245248,
+          "fragmentation_ratio": 1.120093,
+          "peak_rss_bytes": 130740224
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 25325568,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 2.197802,
+          "peak_rss_bytes": 130740224
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 25292800,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 2.194958,
+          "peak_rss_bytes": 130740224
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 25309184,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 2.19638,
+          "peak_rss_bytes": 130740224
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 225558528,
+          "live_bytes": 203491136,
+          "fragmentation_ratio": 1.108444,
+          "peak_rss_bytes": 227155968
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 45694976,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.487188,
+          "peak_rss_bytes": 227155968
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 45703168,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.487454,
+          "peak_rss_bytes": 227155968
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 45703168,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.487454,
+          "peak_rss_bytes": 227155968
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 8192,
+          "efed40d52a6b8091": 944,
+          "6957cfd0d57e38ee": 4096,
+          "17197380d5cb8a5c": 307213248,
+          "9df5caa29c976838": 944,
+          "41f5f6fb40e1f50a": 307213248,
+          "d97a8d3d2f4172ea": 304,
+          "aecef5ad1ffb72b8": 944,
+          "c53ff36031464623": 30725760,
+          "cbafbb525d63d4eb": 276487488,
+          "18a82b3f5d42e571": 131072,
+          "32babdd70a86ae22": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "efed40d52a6b8091": 0,
+          "6957cfd0d57e38ee": 0,
+          "17197380d5cb8a5c": 0,
+          "9df5caa29c976838": 0,
+          "41f5f6fb40e1f50a": 0,
+          "d97a8d3d2f4172ea": 0,
+          "aecef5ad1ffb72b8": 0,
+          "c53ff36031464623": 1250,
+          "cbafbb525d63d4eb": 0,
+          "18a82b3f5d42e571": 0,
+          "32babdd70a86ae22": 0
+        },
+        "metadata": {
+          "bytes": 475552,
+          "peak_bytes": 502048,
+          "max_bytes": 134217728,
+          "pairs": 12,
+          "max_pairs": 16384,
+          "max_contexts": 64,
+          "max_observed_contexts": 0,
+          "shards": 1,
+          "peak_shards": 12,
+          "indexes": 0,
+          "sample_records": 7036,
+          "overflow_allocations": 0,
+          "overflow_bytes": 0,
+          "sample_overflows": 0,
+          "site_size": 6656,
+          "shard_size": 1664,
+          "sample_size": 56,
+          "fixed_bytes": 1576960
+        },
+        "promotion_gate": 0.7,
+        "transitions": {},
+        "failure_errno": 0,
+        "blocked_ns": 3426270,
+        "decisions": 5,
+        "rechecks": 0,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 12,
+        "samples": 37532,
+        "sampled_live_objects": 1250,
+        "sample_rate": 64,
+        "allocation_clock": 921787184
+      },
+      "blocked_seconds": 0.00342627,
+      "chip_seconds": 20.818307113000003,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass11/diagnostic/immediate/logs/site-pure-1-jev-live-0-90f1a81f.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass11/diagnostic/immediate/logs/site-pure-1-90f1a81f.schedule.jsonl",
+      "model_coverage": {
+        "sites": 12,
+        "asked_sites": 5,
+        "unasked_sites": 7,
+        "allocated_bytes": 921787184,
+        "untracked_overflow_bytes": 0,
+        "unasked_bytes": 16368,
+        "unasked_byte_share": 1.7756810122888407e-05,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 5,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 0,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0,
+      "allocator_phases": [
+        {
+          "mi_phase": "peak",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -1884672000,
+          "purged": 2958426112,
+          "page_committed": 116107360,
+          "malloc_current": 115725696,
+          "area_committed": 115845216,
+          "area_used": 115725696,
+          "empty_area_committed": 62368
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -2314260480,
+          "purged": 3388014592,
+          "page_committed": 13094112,
+          "malloc_current": 12012544,
+          "area_committed": 12831968,
+          "area_used": 12012544,
+          "empty_area_committed": 62368
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -2314457088,
+          "purged": 3388211200,
+          "page_committed": 13133120,
+          "malloc_current": 12030464,
+          "area_committed": 12870976,
+          "area_used": 12030464,
+          "empty_area_committed": 58368
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -2314457088,
+          "purged": 3388211200,
+          "page_committed": 13133120,
+          "malloc_current": 12039424,
+          "area_committed": 12870976,
+          "area_used": 12039424,
+          "empty_area_committed": 58368
+        },
+        {
+          "mi_phase": "peak",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -4368224256,
+          "purged": 5441978368,
+          "page_committed": 211518784,
+          "malloc_current": 210453440,
+          "area_committed": 211060032,
+          "area_used": 210453440,
+          "empty_area_committed": 50176
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5053599744,
+          "purged": 6127353856,
+          "page_committed": 33306944,
+          "malloc_current": 31928768,
+          "area_committed": 32848192,
+          "area_used": 31928768,
+          "empty_area_committed": 137856
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5053599744,
+          "purged": 6127353856,
+          "page_committed": 33311040,
+          "malloc_current": 31928768,
+          "area_committed": 32852288,
+          "area_used": 31928768,
+          "empty_area_committed": 141952
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5053599744,
+          "purged": 6127353856,
+          "page_committed": 33311040,
+          "malloc_current": 31928768,
+          "area_committed": 32852288,
+          "area_used": 31928768,
+          "empty_area_committed": 141952
+        }
+      ],
+      "transport_variant": "jev-live:static-model",
+      "diagnostic": true,
+      "forced_collection": false
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791828602.9062493,
+      "finished_unix": 1791828623.6006677,
+      "host_before": {
+        "load_average": [
+          0.07666015625,
+          0.08837890625,
+          0.27099609375
+        ],
+        "MemAvailable_bytes": 14296330240,
+        "SwapFree_bytes": 6571159552,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "site-pure-1",
+      "variant": "mi/collect",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libmimalloc.so",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "FRAG_COLLECT": "1"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.670558917,
+      "stdout": "results/pass11/diagnostic/immediate/logs/site-pure-1-mi-1.stdout",
+      "stderr": "results/pass11/diagnostic/immediate/logs/site-pure-1-mi-1.stderr",
+      "user_seconds": 0.11949,
+      "sys_seconds": 0.021906,
+      "peak_rss_bytes": 293679104,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.141396,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.670558917,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 128032768,
+          "live_bytes": 115245248,
+          "fragmentation_ratio": 1.110959,
+          "peak_rss_bytes": 127942656
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 128098304,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.116618,
+          "peak_rss_bytes": 127942656
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 128163840,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.122306,
+          "peak_rss_bytes": 127942656
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 128163840,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.122306,
+          "peak_rss_bytes": 127942656
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 293838848,
+          "live_bytes": 203491136,
+          "fragmentation_ratio": 1.443988,
+          "peak_rss_bytes": 293679104
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 293773312,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.561141,
+          "peak_rss_bytes": 293679104
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 293781504,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.561407,
+          "peak_rss_bytes": 293679104
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 293781504,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.561407,
+          "peak_rss_bytes": 293679104
+        },
+        {
+          "phase": "collected-default",
+          "cycle": 1,
+          "rss_bytes": 293056512,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.537812,
+          "peak_rss_bytes": 293679104
+        },
+        {
+          "phase": "collected-all-heaps",
+          "cycle": 1,
+          "rss_bytes": 293056512,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.537812,
+          "peak_rss_bytes": 293679104
+        }
+      ],
+      "allocator_phases": [
+        {
+          "mi_phase": "peak",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115539840,
+          "malloc_current": 115249344,
+          "area_committed": 115277696,
+          "area_used": 115249344,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115539840,
+          "malloc_current": 11527232,
+          "area_committed": 115277696,
+          "area_used": 11527232,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115543936,
+          "malloc_current": 11527232,
+          "area_committed": 115281792,
+          "area_used": 11527232,
+          "empty_area_committed": 12288
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115543936,
+          "malloc_current": 11527232,
+          "area_committed": 115281792,
+          "area_used": 11527232,
+          "empty_area_committed": 12288
+        },
+        {
+          "mi_phase": "peak",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1071722496,
+          "purged": 2031616,
+          "page_committed": 279717056,
+          "malloc_current": 209893312,
+          "area_committed": 279127232,
+          "area_used": 209893312,
+          "empty_area_committed": 4096
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1071656960,
+          "purged": 2097152,
+          "page_committed": 279708992,
+          "malloc_current": 31368640,
+          "area_committed": 279119168,
+          "area_used": 31368640,
+          "empty_area_committed": 4096
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1071656960,
+          "purged": 2097152,
+          "page_committed": 279713088,
+          "malloc_current": 31368640,
+          "area_committed": 279123264,
+          "area_used": 31368640,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1071656960,
+          "purged": 2097152,
+          "page_committed": 279713088,
+          "malloc_current": 31368640,
+          "area_committed": 279123264,
+          "area_used": 31368640,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "collected-default",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1051996160,
+          "purged": 21757952,
+          "page_committed": 279708992,
+          "malloc_current": 31368640,
+          "area_committed": 279119168,
+          "area_used": 31368640,
+          "empty_area_committed": 4096
+        },
+        {
+          "mi_phase": "collected-all-heaps",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1051996160,
+          "purged": 21757952,
+          "page_committed": 279708992,
+          "malloc_current": 31368640,
+          "area_committed": 279119168,
+          "area_used": 31368640,
+          "empty_area_committed": 4096
+        }
+      ],
+      "transport_variant": "mi",
+      "diagnostic": true,
+      "forced_collection": true
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791828624.6102226,
+      "finished_unix": 1791828645.40483,
+      "host_before": {
+        "load_average": [
+          0.05419921875,
+          0.08203125,
+          0.26513671875
+        ],
+        "MemAvailable_bytes": 14408105984,
+        "SwapFree_bytes": 6571159552,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle-site/collect",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass11/diagnostic/immediate/tables/site-pure-1/oracle-site.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "FRAG_COLLECT": "1",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.774796651,
+      "stdout": "results/pass11/diagnostic/immediate/logs/site-pure-1-jev-table-1-6241130e.stdout",
+      "stderr": "results/pass11/diagnostic/immediate/logs/site-pure-1-jev-table-1-6241130e.stderr",
+      "user_seconds": 0.132338,
+      "sys_seconds": 0.141361,
+      "peak_rss_bytes": 224415744,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.273699,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.774796651,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 128102400,
+          "live_bytes": 115245248,
+          "fragmentation_ratio": 1.111563,
+          "peak_rss_bytes": 128024576
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 23900160,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 2.074102,
+          "peak_rss_bytes": 128024576
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 23977984,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 2.080856,
+          "peak_rss_bytes": 128024576
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 23977984,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 2.080856,
+          "peak_rss_bytes": 128024576
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 223477760,
+          "live_bytes": 203491136,
+          "fragmentation_ratio": 1.098219,
+          "peak_rss_bytes": 224415744
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 43384832,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.412002,
+          "peak_rss_bytes": 224415744
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 43393024,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.412269,
+          "peak_rss_bytes": 224415744
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 43393024,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.412269,
+          "peak_rss_bytes": 224415744
+        },
+        {
+          "phase": "collected-default",
+          "cycle": 1,
+          "rss_bytes": 43261952,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.408003,
+          "peak_rss_bytes": 224415744
+        },
+        {
+          "phase": "collected-all-heaps",
+          "cycle": 1,
+          "rss_bytes": 43139072,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.404003,
+          "peak_rss_bytes": 224415744
+        }
+      ],
+      "allocator_phases": [
+        {
+          "mi_phase": "peak",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -1783091200,
+          "purged": 2856845312,
+          "page_committed": 115569184,
+          "malloc_current": 115256512,
+          "area_committed": 115307040,
+          "area_used": 115256512,
+          "empty_area_committed": 16288
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -2205405184,
+          "purged": 3279159296,
+          "page_committed": 12071904,
+          "malloc_current": 11534400,
+          "area_committed": 11809760,
+          "area_used": 11534400,
+          "empty_area_committed": 249376
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -2205405184,
+          "purged": 3279159296,
+          "page_committed": 12076000,
+          "malloc_current": 11534400,
+          "area_committed": 11813856,
+          "area_used": 11534400,
+          "empty_area_committed": 253472
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -2205405184,
+          "purged": 3279159296,
+          "page_committed": 12076000,
+          "malloc_current": 11534400,
+          "area_committed": 11813856,
+          "area_used": 11534400,
+          "empty_area_committed": 253472
+        },
+        {
+          "mi_phase": "peak",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -4680044544,
+          "purged": 5753798656,
+          "page_committed": 210482528,
+          "malloc_current": 209900480,
+          "area_committed": 209958240,
+          "area_used": 209900480,
+          "empty_area_committed": 12192
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5357490176,
+          "purged": 6431244288,
+          "page_committed": 32053600,
+          "malloc_current": 31375808,
+          "area_committed": 31529312,
+          "area_used": 31375808,
+          "empty_area_committed": 122912
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5357490176,
+          "purged": 6431244288,
+          "page_committed": 32057696,
+          "malloc_current": 31375808,
+          "area_committed": 31533408,
+          "area_used": 31375808,
+          "empty_area_committed": 127008
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5357490176,
+          "purged": 6431244288,
+          "page_committed": 32057696,
+          "malloc_current": 31375808,
+          "area_committed": 31533408,
+          "area_used": 31375808,
+          "empty_area_committed": 127008
+        },
+        {
+          "mi_phase": "collected-default",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5357686784,
+          "purged": 6431440896,
+          "page_committed": 32049600,
+          "malloc_current": 31375808,
+          "area_committed": 31525312,
+          "area_used": 31375808,
+          "empty_area_committed": 118912
+        },
+        {
+          "mi_phase": "collected-all-heaps",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5380493312,
+          "purged": 6454247424,
+          "page_committed": 31938880,
+          "malloc_current": 31375808,
+          "area_committed": 31414592,
+          "area_used": 31375808,
+          "empty_area_committed": 8192
+        }
+      ],
+      "transport_variant": "jev-table:oracle-site",
+      "diagnostic": true,
+      "forced_collection": true
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791828646.4561467,
+      "finished_unix": 1791828667.3035352,
+      "host_before": {
+        "load_average": [
+          0.03466796875,
+          0.07470703125,
+          0.2578125
+        ],
+        "MemAvailable_bytes": 14297640960,
+        "SwapFree_bytes": 6571159552,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model/collect",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "MIMALLOC_PURGE_DELAY": "0",
+        "MIMALLOC_ARENA_PURGE_MULT": "1",
+        "MIMALLOC_PURGE_DECOMMITS": "1",
+        "FRAG_COLLECT": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-038273a2b84a.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass11/diagnostic/immediate/logs/site-pure-1-jev-live-1-90f1a81f.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.798765273,
+      "stdout": "results/pass11/diagnostic/immediate/logs/site-pure-1-jev-live-1-90f1a81f.stdout",
+      "stderr": "results/pass11/diagnostic/immediate/logs/site-pure-1-jev-live-1-90f1a81f.stderr",
+      "user_seconds": 0.14798,
+      "sys_seconds": 0.146234,
+      "peak_rss_bytes": 227266560,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.294214,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.798765273,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 129097728,
+          "live_bytes": 115245248,
+          "fragmentation_ratio": 1.1202,
+          "peak_rss_bytes": 130879488
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 25333760,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 2.198513,
+          "peak_rss_bytes": 130879488
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 25305088,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 2.196024,
+          "peak_rss_bytes": 130879488
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 25313280,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 2.196735,
+          "peak_rss_bytes": 130879488
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 225554432,
+          "live_bytes": 203491136,
+          "fragmentation_ratio": 1.108424,
+          "peak_rss_bytes": 227266560
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 45690880,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.487055,
+          "peak_rss_bytes": 227266560
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 45699072,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.487321,
+          "peak_rss_bytes": 227266560
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 45699072,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.487321,
+          "peak_rss_bytes": 227266560
+        },
+        {
+          "phase": "collected-default",
+          "cycle": 1,
+          "rss_bytes": 45449216,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.479189,
+          "peak_rss_bytes": 227266560
+        },
+        {
+          "phase": "collected-all-heaps",
+          "cycle": 1,
+          "rss_bytes": 45346816,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.475857,
+          "peak_rss_bytes": 227266560
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 10240,
+          "efed40d52a6b8091": 944,
+          "6957cfd0d57e38ee": 4096,
+          "17197380d5cb8a5c": 307213248,
+          "deb6eacaacfce723": 472,
+          "9df5caa29c976838": 944,
+          "41f5f6fb40e1f50a": 307213248,
+          "d97a8d3d2f4172ea": 304,
+          "aecef5ad1ffb72b8": 944,
+          "c53ff36031464623": 30725760,
+          "bf79ab53ba309201": 472,
+          "cbafbb525d63d4eb": 276487488,
+          "18a82b3f5d42e571": 131072,
+          "32babdd70a86ae22": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "efed40d52a6b8091": 0,
+          "6957cfd0d57e38ee": 0,
+          "17197380d5cb8a5c": 0,
+          "deb6eacaacfce723": 0,
+          "9df5caa29c976838": 0,
+          "41f5f6fb40e1f50a": 0,
+          "d97a8d3d2f4172ea": 0,
+          "aecef5ad1ffb72b8": 0,
+          "c53ff36031464623": 1250,
+          "bf79ab53ba309201": 0,
+          "cbafbb525d63d4eb": 0,
+          "18a82b3f5d42e571": 0,
+          "32babdd70a86ae22": 0
+        },
+        "metadata": {
+          "bytes": 486568,
+          "peak_bytes": 516392,
+          "max_bytes": 134217728,
+          "pairs": 14,
+          "max_pairs": 16384,
+          "max_contexts": 64,
+          "max_observed_contexts": 0,
+          "shards": 1,
+          "peak_shards": 14,
+          "indexes": 0,
+          "sample_records": 6995,
+          "overflow_allocations": 0,
+          "overflow_bytes": 0,
+          "sample_overflows": 0,
+          "site_size": 6656,
+          "shard_size": 1664,
+          "sample_size": 56,
+          "fixed_bytes": 1576960
+        },
+        "promotion_gate": 0.7,
+        "transitions": {},
+        "failure_errno": 0,
+        "blocked_ns": 3751504,
+        "decisions": 5,
+        "rechecks": 0,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 14,
+        "samples": 37532,
+        "sampled_live_objects": 1250,
+        "sample_rate": 64,
+        "allocation_clock": 921790176
+      },
+      "blocked_seconds": 0.003751504,
+      "chip_seconds": 20.795013769,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass11/diagnostic/immediate/logs/site-pure-1-jev-live-1-90f1a81f.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass11/diagnostic/immediate/logs/site-pure-1-90f1a81f.schedule.jsonl",
+      "model_coverage": {
+        "sites": 14,
+        "asked_sites": 5,
+        "unasked_sites": 9,
+        "allocated_bytes": 921790176,
+        "untracked_overflow_bytes": 0,
+        "unasked_bytes": 19360,
+        "unasked_byte_share": 2.100261046826344e-05,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 5,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 0,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0,
+      "allocator_phases": [
+        {
+          "mi_phase": "peak",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -1864159232,
+          "purged": 2937913344,
+          "page_committed": 116109088,
+          "malloc_current": 115725952,
+          "area_committed": 115846944,
+          "area_used": 115725952,
+          "empty_area_committed": 62368
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -2290929664,
+          "purged": 3364683776,
+          "page_committed": 13095264,
+          "malloc_current": 12012800,
+          "area_committed": 12833120,
+          "area_used": 12012800,
+          "empty_area_committed": 62368
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -2291126272,
+          "purged": 3364880384,
+          "page_committed": 13134272,
+          "malloc_current": 12030720,
+          "area_committed": 12872128,
+          "area_used": 12030720,
+          "empty_area_committed": 58368
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": -2291126272,
+          "purged": 3364880384,
+          "page_committed": 13134272,
+          "malloc_current": 12039680,
+          "area_committed": 12872128,
+          "area_used": 12039680,
+          "empty_area_committed": 58368
+        },
+        {
+          "mi_phase": "peak",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -4457811968,
+          "purged": 5531566080,
+          "page_committed": 211578560,
+          "malloc_current": 210450816,
+          "area_committed": 211054272,
+          "area_used": 210450816,
+          "empty_area_committed": 50176
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5143515136,
+          "purged": 6217269248,
+          "page_committed": 33373824,
+          "malloc_current": 31926144,
+          "area_committed": 32849536,
+          "area_used": 31926144,
+          "empty_area_committed": 141504
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5143515136,
+          "purged": 6217269248,
+          "page_committed": 33377920,
+          "malloc_current": 31926144,
+          "area_committed": 32853632,
+          "area_used": 31926144,
+          "empty_area_committed": 145600
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5143515136,
+          "purged": 6217269248,
+          "page_committed": 33377920,
+          "malloc_current": 31926144,
+          "area_committed": 32853632,
+          "area_used": 31926144,
+          "empty_area_committed": 145600
+        },
+        {
+          "mi_phase": "collected-default",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5144039424,
+          "purged": 6217793536,
+          "page_committed": 33331840,
+          "malloc_current": 31935104,
+          "area_committed": 32807552,
+          "area_used": 31935104,
+          "empty_area_committed": 99520
+        },
+        {
+          "mi_phase": "collected-all-heaps",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": -5165666304,
+          "purged": 6239420416,
+          "page_committed": 33247680,
+          "malloc_current": 31944064,
+          "area_committed": 32723392,
+          "area_used": 31944064,
+          "empty_area_committed": 8192
+        }
+      ],
+      "transport_variant": "jev-live:static-model",
+      "diagnostic": true,
+      "forced_collection": true
+    }
+  ],
+  "coverage_runs": [],
+  "trace": {
+    "inference_gate": "not-requested",
+    "started_unix": 1791828473.645742,
+    "finished_unix": 1791828494.591678,
+    "host_before": {
+      "load_average": [
+        0.12744140625,
+        0.08642578125,
+        0.30224609375
+      ],
+      "MemAvailable_bytes": 14406537216,
+      "SwapFree_bytes": 6571159552,
+      "SwapTotal_bytes": 8589930496
+    },
+    "benchmark": "site-pure-1",
+    "variant": "jev-trace",
+    "repetition": 0,
+    "command": [
+      "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+      "1",
+      "site-pure",
+      "400000",
+      "250"
+    ],
+    "stdin": null,
+    "environment": {
+      "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libjevalloc.so",
+      "JEVALLOC_MODE": "trace",
+      "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/pass11/diagnostic/immediate/trace.jsonl",
+      "JEVALLOC_DEPTH": "4",
+      "JEVALLOC_MODEL_DEPTH": "12",
+      "FRAG_LONG_SETTLE_MS": "10000",
+      "MIMALLOC_PURGE_DELAY": "0",
+      "MIMALLOC_ARENA_PURGE_MULT": "1",
+      "MIMALLOC_PURGE_DECOMMITS": "1"
+    },
+    "exit_status": 0,
+    "output_ok": true,
+    "wall_seconds": 20.936188746,
+    "stdout": "results/pass11/diagnostic/immediate/logs/trace/site-pure-1-jev-trace-0.stdout",
+    "stderr": "results/pass11/diagnostic/immediate/logs/trace/site-pure-1-jev-trace-0.stderr",
+    "user_seconds": 0.399021,
+    "sys_seconds": 0.036092,
+    "peak_rss_bytes": 323198976,
+    "peak_footprint_bytes": null,
+    "cpu_seconds": 0.435113,
+    "time_exit_status": 0,
+    "footprint_final_read": false,
+    "measurement": "wait4 + proc_pid_rusage",
+    "score": 20.936188746,
+    "score_metric": "wall_seconds",
+    "phases": [
+      {
+        "phase": "peak",
+        "cycle": 0,
+        "rss_bytes": 155435008,
+        "live_bytes": 115245248,
+        "fragmentation_ratio": 1.348732,
+        "peak_rss_bytes": 155193344
+      },
+      {
+        "phase": "drop",
+        "cycle": 0,
+        "rss_bytes": 155512832,
+        "live_bytes": 11523136,
+        "fragmentation_ratio": 13.495704,
+        "peak_rss_bytes": 155193344
+      },
+      {
+        "phase": "idle",
+        "cycle": 0,
+        "rss_bytes": 157679616,
+        "live_bytes": 11523136,
+        "fragmentation_ratio": 13.683742,
+        "peak_rss_bytes": 157523968
+      },
+      {
+        "phase": "idle10",
+        "cycle": 0,
+        "rss_bytes": 157683712,
+        "live_bytes": 11523136,
+        "fragmentation_ratio": 13.684097,
+        "peak_rss_bytes": 157523968
+      },
+      {
+        "phase": "peak",
+        "cycle": 1,
+        "rss_bytes": 323358720,
+        "live_bytes": 203491136,
+        "fragmentation_ratio": 1.589056,
+        "peak_rss_bytes": 323198976
+      },
+      {
+        "phase": "drop",
+        "cycle": 1,
+        "rss_bytes": 323293184,
+        "live_bytes": 30725760,
+        "fragmentation_ratio": 10.521894,
+        "peak_rss_bytes": 323198976
+      },
+      {
+        "phase": "idle",
+        "cycle": 1,
+        "rss_bytes": 323301376,
+        "live_bytes": 30725760,
+        "fragmentation_ratio": 10.52216,
+        "peak_rss_bytes": 323198976
+      },
+      {
+        "phase": "idle10",
+        "cycle": 1,
+        "rss_bytes": 323301376,
+        "live_bytes": 30725760,
+        "fragmentation_ratio": 10.52216,
+        "peak_rss_bytes": 323198976
+      }
+    ]
+  },
+  "truth": {
+    "pairs": 12,
+    "sites": 12,
+    "contexts": 1,
+    "oracle_site_correct_bytes": 887280496,
+    "oracle_context_correct_bytes": 887280496,
+    "allocated_bytes": 921787184
+  },
+  "complete": true
+}

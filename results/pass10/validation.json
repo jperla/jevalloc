@@ -1,0 +1,311 @@
+{
+  "passed": true,
+  "matrices": 26,
+  "warm_runs": 1905,
+  "logged_warm_checks": 10,
+  "fingerprints": 953,
+  "live_rule_answers": 30758,
+  "library_sha256": "b0892403a2a03779c1e6ab29caf0a6800c31936a717c9b6d83676858880c582e",
+  "oracle_tables_verified": {
+    "results/pass10/defaults/named/leveldb/tables/leveldb/oracle-context.txt": {
+      "sha256": "3844bc6d1e44acc2497ac80517f6ca1615847482efa8f6fab28e8cc2770439ae",
+      "labels": 352
+    },
+    "results/pass10/defaults/named/leveldb/tables/leveldb/oracle.txt": {
+      "sha256": "3844bc6d1e44acc2497ac80517f6ca1615847482efa8f6fab28e8cc2770439ae",
+      "labels": 352
+    },
+    "results/pass10/defaults/named/leveldb/tables/leveldb/oracle-site.txt": {
+      "sha256": "3844bc6d1e44acc2497ac80517f6ca1615847482efa8f6fab28e8cc2770439ae",
+      "labels": 352
+    },
+    "results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle-context.txt": {
+      "sha256": "66f647647309dd1b097d563fdc803eb4590b9aa14033a8846cd4f74151d46754",
+      "labels": 10
+    },
+    "results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle.txt": {
+      "sha256": "66f647647309dd1b097d563fdc803eb4590b9aa14033a8846cd4f74151d46754",
+      "labels": 10
+    },
+    "results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle-site.txt": {
+      "sha256": "8923db6b6e0e8a4a3a6c8f4e83c99bbb5dc8bfaf28a2b24fa0bcb5b3edcb9212",
+      "labels": 8
+    },
+    "results/pass10/defaults/named/redis-drop/tables/redis-drop/oracle-context.txt": {
+      "sha256": "cb544dcf39816f70ecc79bff62718fc40c34b2c63e3de77863f57e15d12c3a24",
+      "labels": 495448
+    },
+    "results/pass10/defaults/named/redis-drop/tables/redis-drop/oracle.txt": {
+      "sha256": "cb544dcf39816f70ecc79bff62718fc40c34b2c63e3de77863f57e15d12c3a24",
+      "labels": 495448
+    },
+    "results/pass10/defaults/named/redis-drop/tables/redis-drop/oracle-site.txt": {
+      "sha256": "512ded00f79261d254e381c3bd3b8d65bf949e0befba325909d8c1d5f8ab1483",
+      "labels": 629
+    },
+    "results/pass10/defaults/named/redis-mesh/tables/redis-mesh/oracle-context.txt": {
+      "sha256": "991022d6b078bdb0f70e505746bd21e4bcae87903926b2b8fabbaa2817726db8",
+      "labels": 626
+    },
+    "results/pass10/defaults/named/redis-mesh/tables/redis-mesh/oracle.txt": {
+      "sha256": "991022d6b078bdb0f70e505746bd21e4bcae87903926b2b8fabbaa2817726db8",
+      "labels": 626
+    },
+    "results/pass10/defaults/named/redis-mesh/tables/redis-mesh/oracle-site.txt": {
+      "sha256": "4c4507b0b3734f2d2dcaa4a17a9b5d501e0c2d7e9ec2ba1ae5fcc6d416f208f2",
+      "labels": 621
+    },
+    "results/pass10/defaults/named/redis-sessions/tables/redis-sessions/oracle-context.txt": {
+      "sha256": "e8b744b0f0ec6c5f9a66376615777f0af024e29a61df17de46a410a101e114af",
+      "labels": 662
+    },
+    "results/pass10/defaults/named/redis-sessions/tables/redis-sessions/oracle.txt": {
+      "sha256": "e8b744b0f0ec6c5f9a66376615777f0af024e29a61df17de46a410a101e114af",
+      "labels": 662
+    },
+    "results/pass10/defaults/named/redis-sessions/tables/redis-sessions/oracle-site.txt": {
+      "sha256": "b6205944b85df3084876ce067e191275e54a116fdcf8fdda298e5f3913accfee",
+      "labels": 644
+    },
+    "results/pass10/defaults/named/rocksdb-cache/tables/rocksdb-cache/oracle-context.txt": {
+      "sha256": "de76db38ab5dad7636ad3b3d69247ac8676ece2fc8689a5abdb969d805200672",
+      "labels": 8625
+    },
+    "results/pass10/defaults/named/rocksdb-cache/tables/rocksdb-cache/oracle.txt": {
+      "sha256": "de76db38ab5dad7636ad3b3d69247ac8676ece2fc8689a5abdb969d805200672",
+      "labels": 8625
+    },
+    "results/pass10/defaults/named/rocksdb-cache/tables/rocksdb-cache/oracle-site.txt": {
+      "sha256": "de76db38ab5dad7636ad3b3d69247ac8676ece2fc8689a5abdb969d805200672",
+      "labels": 8625
+    },
+    "results/pass10/defaults/named/rocksdb-churn/tables/rocksdb-churn/oracle-context.txt": {
+      "sha256": "74dd18c424c44a4a4bdf24aeb13c70320d1dbc94301d2f7b8ff6c38abbce66bb",
+      "labels": 8672
+    },
+    "results/pass10/defaults/named/rocksdb-churn/tables/rocksdb-churn/oracle.txt": {
+      "sha256": "74dd18c424c44a4a4bdf24aeb13c70320d1dbc94301d2f7b8ff6c38abbce66bb",
+      "labels": 8672
+    },
+    "results/pass10/defaults/named/rocksdb-churn/tables/rocksdb-churn/oracle-site.txt": {
+      "sha256": "74dd18c424c44a4a4bdf24aeb13c70320d1dbc94301d2f7b8ff6c38abbce66bb",
+      "labels": 8672
+    },
+    "results/pass10/defaults/named/site-mixed-1/tables/site-mixed-1/oracle-context.txt": {
+      "sha256": "cb9db2333a7cf8eddd50b85d336260f77722d9b0b4dc13a310462401f3e5cd9d",
+      "labels": 17
+    },
+    "results/pass10/defaults/named/site-mixed-1/tables/site-mixed-1/oracle.txt": {
+      "sha256": "cb9db2333a7cf8eddd50b85d336260f77722d9b0b4dc13a310462401f3e5cd9d",
+      "labels": 17
+    },
+    "results/pass10/defaults/named/site-mixed-1/tables/site-mixed-1/oracle-site.txt": {
+      "sha256": "033cee16f7317933ffa84e97707476dfbde15c0c4f458a53c4d44f009609046f",
+      "labels": 11
+    },
+    "results/pass10/defaults/named/site-mixed-16/tables/site-mixed-16/oracle-context.txt": {
+      "sha256": "cb9db2333a7cf8eddd50b85d336260f77722d9b0b4dc13a310462401f3e5cd9d",
+      "labels": 17
+    },
+    "results/pass10/defaults/named/site-mixed-16/tables/site-mixed-16/oracle.txt": {
+      "sha256": "cb9db2333a7cf8eddd50b85d336260f77722d9b0b4dc13a310462401f3e5cd9d",
+      "labels": 17
+    },
+    "results/pass10/defaults/named/site-mixed-16/tables/site-mixed-16/oracle-site.txt": {
+      "sha256": "033cee16f7317933ffa84e97707476dfbde15c0c4f458a53c4d44f009609046f",
+      "labels": 11
+    },
+    "results/pass10/defaults/named/site-pure-1/tables/site-pure-1/oracle-context.txt": {
+      "sha256": "d10ad59dbf02c7b13f3624cbfd2f873a4af5d6b125e924794ef62cfc218c7e25",
+      "labels": 12
+    },
+    "results/pass10/defaults/named/site-pure-1/tables/site-pure-1/oracle.txt": {
+      "sha256": "d10ad59dbf02c7b13f3624cbfd2f873a4af5d6b125e924794ef62cfc218c7e25",
+      "labels": 12
+    },
+    "results/pass10/defaults/named/site-pure-1/tables/site-pure-1/oracle-site.txt": {
+      "sha256": "d10ad59dbf02c7b13f3624cbfd2f873a4af5d6b125e924794ef62cfc218c7e25",
+      "labels": 12
+    },
+    "results/pass10/defaults/named/site-pure-16/tables/site-pure-16/oracle-context.txt": {
+      "sha256": "d10ad59dbf02c7b13f3624cbfd2f873a4af5d6b125e924794ef62cfc218c7e25",
+      "labels": 12
+    },
+    "results/pass10/defaults/named/site-pure-16/tables/site-pure-16/oracle.txt": {
+      "sha256": "d10ad59dbf02c7b13f3624cbfd2f873a4af5d6b125e924794ef62cfc218c7e25",
+      "labels": 12
+    },
+    "results/pass10/defaults/named/site-pure-16/tables/site-pure-16/oracle-site.txt": {
+      "sha256": "d10ad59dbf02c7b13f3624cbfd2f873a4af5d6b125e924794ef62cfc218c7e25",
+      "labels": 12
+    },
+    "results/pass10/defaults/named/sqlite/tables/sqlite/oracle-context.txt": {
+      "sha256": "94eb080467beb5f6c4e1ee2f4a6f6e0770d048e0b74055b54c6adf1f66f0c318",
+      "labels": 45
+    },
+    "results/pass10/defaults/named/sqlite/tables/sqlite/oracle.txt": {
+      "sha256": "94eb080467beb5f6c4e1ee2f4a6f6e0770d048e0b74055b54c6adf1f66f0c318",
+      "labels": 45
+    },
+    "results/pass10/defaults/named/sqlite/tables/sqlite/oracle-site.txt": {
+      "sha256": "94eb080467beb5f6c4e1ee2f4a6f6e0770d048e0b74055b54c6adf1f66f0c318",
+      "labels": 45
+    },
+    "results/pass10/defaults/opaque/site-mixed-1/tables/site-mixed-1/oracle-context.txt": {
+      "sha256": "3e806699cebcfb2504b87e71a9a87545904f168ff3b2b92f675b87cfb21ef3b2",
+      "labels": 17
+    },
+    "results/pass10/defaults/opaque/site-mixed-1/tables/site-mixed-1/oracle.txt": {
+      "sha256": "3e806699cebcfb2504b87e71a9a87545904f168ff3b2b92f675b87cfb21ef3b2",
+      "labels": 17
+    },
+    "results/pass10/defaults/opaque/site-mixed-1/tables/site-mixed-1/oracle-site.txt": {
+      "sha256": "21ebfb57322e046295e6ca67defbf9a8521707d86254c3afa84abe7e4627db59",
+      "labels": 11
+    },
+    "results/pass10/defaults/opaque/site-mixed-16/tables/site-mixed-16/oracle-context.txt": {
+      "sha256": "3e806699cebcfb2504b87e71a9a87545904f168ff3b2b92f675b87cfb21ef3b2",
+      "labels": 17
+    },
+    "results/pass10/defaults/opaque/site-mixed-16/tables/site-mixed-16/oracle.txt": {
+      "sha256": "3e806699cebcfb2504b87e71a9a87545904f168ff3b2b92f675b87cfb21ef3b2",
+      "labels": 17
+    },
+    "results/pass10/defaults/opaque/site-mixed-16/tables/site-mixed-16/oracle-site.txt": {
+      "sha256": "21ebfb57322e046295e6ca67defbf9a8521707d86254c3afa84abe7e4627db59",
+      "labels": 11
+    },
+    "results/pass10/defaults/opaque/site-pure-1/tables/site-pure-1/oracle-context.txt": {
+      "sha256": "59d8865b156fa9c6988ec5c2524ade703a696ed9eac0dbbc9d877f6fcfde4b13",
+      "labels": 12
+    },
+    "results/pass10/defaults/opaque/site-pure-1/tables/site-pure-1/oracle.txt": {
+      "sha256": "59d8865b156fa9c6988ec5c2524ade703a696ed9eac0dbbc9d877f6fcfde4b13",
+      "labels": 12
+    },
+    "results/pass10/defaults/opaque/site-pure-1/tables/site-pure-1/oracle-site.txt": {
+      "sha256": "59d8865b156fa9c6988ec5c2524ade703a696ed9eac0dbbc9d877f6fcfde4b13",
+      "labels": 12
+    },
+    "results/pass10/defaults/opaque/site-pure-16/tables/site-pure-16/oracle-context.txt": {
+      "sha256": "59d8865b156fa9c6988ec5c2524ade703a696ed9eac0dbbc9d877f6fcfde4b13",
+      "labels": 12
+    },
+    "results/pass10/defaults/opaque/site-pure-16/tables/site-pure-16/oracle.txt": {
+      "sha256": "59d8865b156fa9c6988ec5c2524ade703a696ed9eac0dbbc9d877f6fcfde4b13",
+      "labels": 12
+    },
+    "results/pass10/defaults/opaque/site-pure-16/tables/site-pure-16/oracle-site.txt": {
+      "sha256": "59d8865b156fa9c6988ec5c2524ade703a696ed9eac0dbbc9d877f6fcfde4b13",
+      "labels": 12
+    },
+    "results/pass10/defaults/plausible/site-mixed-1/tables/site-mixed-1/oracle-context.txt": {
+      "sha256": "6d3d49bf49734e6b4f43f578dcb0943515fc22cca8660c24c36244205b6571aa",
+      "labels": 17
+    },
+    "results/pass10/defaults/plausible/site-mixed-1/tables/site-mixed-1/oracle.txt": {
+      "sha256": "6d3d49bf49734e6b4f43f578dcb0943515fc22cca8660c24c36244205b6571aa",
+      "labels": 17
+    },
+    "results/pass10/defaults/plausible/site-mixed-1/tables/site-mixed-1/oracle-site.txt": {
+      "sha256": "e128261ffdc3e20eb99bc41f90bb7de3a1c804a178346a33f78ff6553829da43",
+      "labels": 11
+    },
+    "results/pass10/defaults/plausible/site-mixed-16/tables/site-mixed-16/oracle-context.txt": {
+      "sha256": "6d3d49bf49734e6b4f43f578dcb0943515fc22cca8660c24c36244205b6571aa",
+      "labels": 17
+    },
+    "results/pass10/defaults/plausible/site-mixed-16/tables/site-mixed-16/oracle.txt": {
+      "sha256": "6d3d49bf49734e6b4f43f578dcb0943515fc22cca8660c24c36244205b6571aa",
+      "labels": 17
+    },
+    "results/pass10/defaults/plausible/site-mixed-16/tables/site-mixed-16/oracle-site.txt": {
+      "sha256": "e128261ffdc3e20eb99bc41f90bb7de3a1c804a178346a33f78ff6553829da43",
+      "labels": 11
+    },
+    "results/pass10/defaults/plausible/site-pure-1/tables/site-pure-1/oracle-context.txt": {
+      "sha256": "6edcd7e37b28ac0b517f1d82e3a43cd37da3557ed562e7adf7f15e66a4c26dfc",
+      "labels": 12
+    },
+    "results/pass10/defaults/plausible/site-pure-1/tables/site-pure-1/oracle.txt": {
+      "sha256": "6edcd7e37b28ac0b517f1d82e3a43cd37da3557ed562e7adf7f15e66a4c26dfc",
+      "labels": 12
+    },
+    "results/pass10/defaults/plausible/site-pure-1/tables/site-pure-1/oracle-site.txt": {
+      "sha256": "6edcd7e37b28ac0b517f1d82e3a43cd37da3557ed562e7adf7f15e66a4c26dfc",
+      "labels": 12
+    },
+    "results/pass10/defaults/plausible/site-pure-16/tables/site-pure-16/oracle-context.txt": {
+      "sha256": "6edcd7e37b28ac0b517f1d82e3a43cd37da3557ed562e7adf7f15e66a4c26dfc",
+      "labels": 12
+    },
+    "results/pass10/defaults/plausible/site-pure-16/tables/site-pure-16/oracle.txt": {
+      "sha256": "6edcd7e37b28ac0b517f1d82e3a43cd37da3557ed562e7adf7f15e66a4c26dfc",
+      "labels": 12
+    },
+    "results/pass10/defaults/plausible/site-pure-16/tables/site-pure-16/oracle-site.txt": {
+      "sha256": "6edcd7e37b28ac0b517f1d82e3a43cd37da3557ed562e7adf7f15e66a4c26dfc",
+      "labels": 12
+    },
+    "results/pass10/immediate/named/per-alloc-small/tables/per-alloc-small/oracle-context.txt": {
+      "sha256": "a9c9810f6932c3a880faf44d277b0e683570ea9ca0338db4ca18a38dbd397306",
+      "labels": 9
+    },
+    "results/pass10/immediate/named/per-alloc-small/tables/per-alloc-small/oracle.txt": {
+      "sha256": "a9c9810f6932c3a880faf44d277b0e683570ea9ca0338db4ca18a38dbd397306",
+      "labels": 9
+    },
+    "results/pass10/immediate/named/per-alloc-small/tables/per-alloc-small/oracle-site.txt": {
+      "sha256": "15c976b6e4ec423df08bac2f051c350c7bb7a4367237cc29589d9f60f12d06af",
+      "labels": 7
+    },
+    "results/pass10/immediate/named/site-mixed-1/tables/site-mixed-1/oracle-context.txt": {
+      "sha256": "7aa82a52d3a0074a4f79a13558beb7408c335b4e0db7c0c93079dcb34e834a93",
+      "labels": 16
+    },
+    "results/pass10/immediate/named/site-mixed-1/tables/site-mixed-1/oracle.txt": {
+      "sha256": "7aa82a52d3a0074a4f79a13558beb7408c335b4e0db7c0c93079dcb34e834a93",
+      "labels": 16
+    },
+    "results/pass10/immediate/named/site-mixed-1/tables/site-mixed-1/oracle-site.txt": {
+      "sha256": "7707ffe413a4246daa90d457334c2477eeb543eedc96a160eddb81bffcfd3f58",
+      "labels": 10
+    },
+    "results/pass10/immediate/named/site-mixed-16/tables/site-mixed-16/oracle-context.txt": {
+      "sha256": "7aa82a52d3a0074a4f79a13558beb7408c335b4e0db7c0c93079dcb34e834a93",
+      "labels": 16
+    },
+    "results/pass10/immediate/named/site-mixed-16/tables/site-mixed-16/oracle.txt": {
+      "sha256": "7aa82a52d3a0074a4f79a13558beb7408c335b4e0db7c0c93079dcb34e834a93",
+      "labels": 16
+    },
+    "results/pass10/immediate/named/site-mixed-16/tables/site-mixed-16/oracle-site.txt": {
+      "sha256": "7707ffe413a4246daa90d457334c2477eeb543eedc96a160eddb81bffcfd3f58",
+      "labels": 10
+    },
+    "results/pass10/immediate/named/site-pure-1/tables/site-pure-1/oracle-context.txt": {
+      "sha256": "e0990f07f8103aed87ea68c586c6caecb4b75c6868acdaa7e38f74ef66dc4abb",
+      "labels": 11
+    },
+    "results/pass10/immediate/named/site-pure-1/tables/site-pure-1/oracle.txt": {
+      "sha256": "e0990f07f8103aed87ea68c586c6caecb4b75c6868acdaa7e38f74ef66dc4abb",
+      "labels": 11
+    },
+    "results/pass10/immediate/named/site-pure-1/tables/site-pure-1/oracle-site.txt": {
+      "sha256": "e0990f07f8103aed87ea68c586c6caecb4b75c6868acdaa7e38f74ef66dc4abb",
+      "labels": 11
+    },
+    "results/pass10/immediate/named/site-pure-16/tables/site-pure-16/oracle-context.txt": {
+      "sha256": "e0990f07f8103aed87ea68c586c6caecb4b75c6868acdaa7e38f74ef66dc4abb",
+      "labels": 11
+    },
+    "results/pass10/immediate/named/site-pure-16/tables/site-pure-16/oracle.txt": {
+      "sha256": "e0990f07f8103aed87ea68c586c6caecb4b75c6868acdaa7e38f74ef66dc4abb",
+      "labels": 11
+    },
+    "results/pass10/immediate/named/site-pure-16/tables/site-pure-16/oracle-site.txt": {
+      "sha256": "e0990f07f8103aed87ea68c586c6caecb4b75c6868acdaa7e38f74ef66dc4abb",
+      "labels": 11
+    }
+  }
+}

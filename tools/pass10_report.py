@@ -67,6 +67,9 @@ def headline(summary):
     ratio,name=max((med([r['score'] for r in groups[b,'jev-live:'+policy]])/med([r['score'] for r in groups[b,'mi']]),b) for b in benches)
     worst.append(f'{policy} {ratio:.2f}× ({name})')
    lines+=['',f"Regression with no `MIMALLOC_*` overrides: {len(benches)}/22 workloads complete. Largest median time/inverse-throughput score ratios versus mimalloc are "+'; '.join(worst)+'. Lower is better. All workload scores and peak RSS are in the full report; they are separate from idle fragmentation.']
+  else:lines+=['','Regression matrix is present but accepted workload groups are pending.']
+ else:lines+=['','The requested new-control regression matrix is pending (artifact absent).']
+ if not (BASE/'validation.json').exists():lines+=['','Final validation is pending (artifact absent).']
  lines+=['','The combined logging/live-free bug is fixed. Tests cover cross-thread frees, retired allocating threads, actual address reuse, sample/survivor counts and hybrid demotions with logging on and off. Warm model measurements replay answers and retain service/IPC costs; target CPU excludes sidecar CPU. Compact evidence supports the medians, while full trace/cache reconstruction requires the retained remote artifacts.','']
  return '\n'.join(lines)
 def main():
@@ -209,9 +212,12 @@ def main():
     if v!='mi':value+=f" / {med([r['score'] for r in rs])/base:.2f}×"
     values.append(value)
    lines.append('| '+name+' | '+' | '.join(values)+' |')
+ else:lines+=['','Regression scores are pending: regression.json is absent at this revision.']
+ lines+=['','Final validation: '+('available in validation.json.' if (BASE/'validation.json').exists() else 'pending; validation.json is absent at this revision.'),'','At the snapshot reviewed in review 3, the last real block, regression scores and final validation were pending. Availability here describes the current working tree.']
  lines+=['','The combined object-logging free path now updates trace and sampled-live state exactly once before releasing storage. The dedicated test covers retired allocating threads, cross-thread frees, actual address reuse, sample counts, survivors and hybrid demotions at sample rates 1 and 64.','', 'Warm model runs replay collected answers; hybrid’s rules and all no-model controls execute live. Warm replay retains IPC/service costs and excludes sidecar CPU. It bypasses prompt preparation and sidecar symbolization as well as HTTP inference; rule-names resolves symbols live, so its wall time includes that work. It is not end-to-end deployment or hypothetical on-chip inference. Server-sim live bytes exclude metadata, bookkeeping mappings and thread resources, so RSS/live is process-memory amplification. In-place realloc can log a new policy class while retaining its physical heap. Compact aggregates support the published medians; complete trace/cache/decision reconstruction still needs remote artifacts.','']
  result='\n'.join(lines)
  (BASE/'results.md').write_text(result.replace('(results/pass10/','(')+'\n')
- history=(ROOT/'RESULTS.md').read_text().split('<!-- PASS10-END -->',1)[1]
- (ROOT/'RESULTS.md').write_text(headline(summary)+'\n<!-- PASS10-END -->'+history)
+ previous=(ROOT/'RESULTS.md').read_text();history=previous.split('<!-- PASS10-END -->',1)[1]
+ start=previous.find('# Pass 10 — answering review 2');prefix=previous[:start] if start>=0 else ''
+ (ROOT/'RESULTS.md').write_text(prefix+headline(summary)+'\n<!-- PASS10-END -->'+history)
 if __name__=='__main__':main()

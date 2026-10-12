@@ -1,0 +1,1764 @@
+{
+  "configuration": {
+    "row": {
+      "name": "site-pure-1",
+      "binary": "../server-sim-diag",
+      "args": [
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "expect": "fragbench OK",
+      "gate_inference": true,
+      "prompt": "stack-v1",
+      "environment": {
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      }
+    },
+    "statistics": "MI_STAT=2; heap areas traversed at each phase",
+    "fingerprints": {
+      "build/server-sim-diag": "32e4ec27ff089caf3157dc6d27584197a067c6b718cd2caeae640c29980610c7",
+      "build/pass11-stats/libjevalloc.so": "48108e69b48a3c3a1e989b6a4e4efa8d2c20dc7f818368fed0a19a4149298c19",
+      "build/pass11-stats/libmimalloc.so": "e55ae6c7446e0249a23f278f6ee132f0fcb509618044296488c313e136a235f3",
+      "fragbench/diagnostic11.py": "20536ce366a02acd7208da688939d944b1ef1185bbde81b05cfc9cb8d43cd256"
+    }
+  },
+  "runs": [
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791828344.1877217,
+      "finished_unix": 1791828364.8340774,
+      "host_before": {
+        "load_average": [
+          0.0087890625,
+          0.0576171875,
+          0.33203125
+        ],
+        "MemAvailable_bytes": 14396641280,
+        "SwapFree_bytes": 6571159552,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "site-pure-1",
+      "variant": "mi/ordinary",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libmimalloc.so",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.637736791,
+      "stdout": "results/pass11/diagnostic/defaults/logs/site-pure-1-mi-0.stdout",
+      "stderr": "results/pass11/diagnostic/defaults/logs/site-pure-1-mi-0.stderr",
+      "user_seconds": 0.110093,
+      "sys_seconds": 0.026779,
+      "peak_rss_bytes": 293666816,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.136872,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.637736791,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 128032768,
+          "live_bytes": 115245248,
+          "fragmentation_ratio": 1.110959,
+          "peak_rss_bytes": 127803392
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 128098304,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.116618,
+          "peak_rss_bytes": 127803392
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 128163840,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.122306,
+          "peak_rss_bytes": 127934464
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 128163840,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.122306,
+          "peak_rss_bytes": 127934464
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 293838848,
+          "live_bytes": 203491136,
+          "fragmentation_ratio": 1.443988,
+          "peak_rss_bytes": 293666816
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 293838848,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.563274,
+          "peak_rss_bytes": 293666816
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 293838848,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.563274,
+          "peak_rss_bytes": 293666816
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 293838848,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.563274,
+          "peak_rss_bytes": 293666816
+        }
+      ],
+      "allocator_phases": [
+        {
+          "mi_phase": "peak",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115541760,
+          "malloc_current": 115249344,
+          "area_committed": 115279616,
+          "area_used": 115249344,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115541760,
+          "malloc_current": 11527232,
+          "area_committed": 115279616,
+          "area_used": 11527232,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115545856,
+          "malloc_current": 11527232,
+          "area_committed": 115283712,
+          "area_used": 11527232,
+          "empty_area_committed": 12288
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115545856,
+          "malloc_current": 11527232,
+          "area_committed": 115283712,
+          "area_used": 11527232,
+          "empty_area_committed": 12288
+        },
+        {
+          "mi_phase": "peak",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 279722304,
+          "malloc_current": 209893312,
+          "area_committed": 279132480,
+          "area_used": 209893312,
+          "empty_area_committed": 4096
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 279722304,
+          "malloc_current": 31368640,
+          "area_committed": 279132480,
+          "area_used": 31368640,
+          "empty_area_committed": 4096
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 279726400,
+          "malloc_current": 31368640,
+          "area_committed": 279136576,
+          "area_used": 31368640,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 279726400,
+          "malloc_current": 31368640,
+          "area_committed": 279136576,
+          "area_used": 31368640,
+          "empty_area_committed": 8192
+        }
+      ],
+      "transport_variant": "mi",
+      "diagnostic": true,
+      "forced_collection": false
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791828365.842767,
+      "finished_unix": 1791828386.5385644,
+      "host_before": {
+        "load_average": [
+          0.12939453125,
+          0.08447265625,
+          0.33349609375
+        ],
+        "MemAvailable_bytes": 14424219648,
+        "SwapFree_bytes": 6571159552,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle-site/ordinary",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass11/diagnostic/defaults/tables/site-pure-1/oracle-site.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.668803357,
+      "stdout": "results/pass11/diagnostic/defaults/logs/site-pure-1-jev-table-0-6241130e.stdout",
+      "stderr": "results/pass11/diagnostic/defaults/logs/site-pure-1-jev-table-0-6241130e.stderr",
+      "user_seconds": 0.13664,
+      "sys_seconds": 0.031145,
+      "peak_rss_bytes": 224661504,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.16778500000000002,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.668803357,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 128131072,
+          "live_bytes": 115245248,
+          "fragmentation_ratio": 1.111812,
+          "peak_rss_bytes": 127971328
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 127414272,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.057257,
+          "peak_rss_bytes": 127971328
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 127483904,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.063299,
+          "peak_rss_bytes": 127971328
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 127483904,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.063299,
+          "peak_rss_bytes": 127971328
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 224739328,
+          "live_bytes": 203491136,
+          "fragmentation_ratio": 1.104418,
+          "peak_rss_bytes": 224661504
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 223428608,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 7.271703,
+          "peak_rss_bytes": 224661504
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 223428608,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 7.271703,
+          "peak_rss_bytes": 224661504
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 223428608,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 7.271703,
+          "peak_rss_bytes": 224661504
+        }
+      ],
+      "allocator_phases": [
+        {
+          "mi_phase": "peak",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115569184,
+          "malloc_current": 115256512,
+          "area_committed": 115307040,
+          "area_used": 115256512,
+          "empty_area_committed": 16288
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1056190464,
+          "purged": 17563648,
+          "page_committed": 12071904,
+          "malloc_current": 11534400,
+          "area_committed": 11809760,
+          "area_used": 11534400,
+          "empty_area_committed": 249376
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1056190464,
+          "purged": 17563648,
+          "page_committed": 12076000,
+          "malloc_current": 11534400,
+          "area_committed": 11813856,
+          "area_used": 11534400,
+          "empty_area_committed": 253472
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1056190464,
+          "purged": 17563648,
+          "page_committed": 12076000,
+          "malloc_current": 11534400,
+          "area_committed": 11813856,
+          "area_used": 11534400,
+          "empty_area_committed": 253472
+        },
+        {
+          "mi_phase": "peak",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1056190464,
+          "purged": 17563648,
+          "page_committed": 210482528,
+          "malloc_current": 209900480,
+          "area_committed": 209958240,
+          "area_used": 209900480,
+          "empty_area_committed": 12192
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1033908224,
+          "purged": 39845888,
+          "page_committed": 32053600,
+          "malloc_current": 31375808,
+          "area_committed": 31529312,
+          "area_used": 31375808,
+          "empty_area_committed": 122912
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1033908224,
+          "purged": 39845888,
+          "page_committed": 32057696,
+          "malloc_current": 31375808,
+          "area_committed": 31533408,
+          "area_used": 31375808,
+          "empty_area_committed": 127008
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1033908224,
+          "purged": 39845888,
+          "page_committed": 32057696,
+          "malloc_current": 31375808,
+          "area_committed": 31533408,
+          "area_used": 31375808,
+          "empty_area_committed": 127008
+        }
+      ],
+      "transport_variant": "jev-table:oracle-site",
+      "diagnostic": true,
+      "forced_collection": false
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791828387.5889728,
+      "finished_unix": 1791828408.3380096,
+      "host_before": {
+        "load_average": [
+          0.091796875,
+          0.07861328125,
+          0.32568359375
+        ],
+        "MemAvailable_bytes": 14408658944,
+        "SwapFree_bytes": 6571159552,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model/ordinary",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-149aaff28cc4.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass11/diagnostic/defaults/logs/site-pure-1-jev-live-0-90f1a81f.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.708646463,
+      "stdout": "results/pass11/diagnostic/defaults/logs/site-pure-1-jev-live-0-90f1a81f.stdout",
+      "stderr": "results/pass11/diagnostic/defaults/logs/site-pure-1-jev-live-0-90f1a81f.stderr",
+      "user_seconds": 0.153448,
+      "sys_seconds": 0.051149,
+      "peak_rss_bytes": 227491840,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.204597,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.708646463,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 131158016,
+          "live_bytes": 115245248,
+          "fragmentation_ratio": 1.138077,
+          "peak_rss_bytes": 130961408
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 129335296,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.223967,
+          "peak_rss_bytes": 130961408
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 100769792,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 8.744997,
+          "peak_rss_bytes": 130961408
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 100777984,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 8.745708,
+          "peak_rss_bytes": 130961408
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 227721216,
+          "live_bytes": 203491136,
+          "fragmentation_ratio": 1.119072,
+          "peak_rss_bytes": 227491840
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 225624064,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 7.343156,
+          "peak_rss_bytes": 227491840
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 225624064,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 7.343156,
+          "peak_rss_bytes": 227491840
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 225624064,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 7.343156,
+          "peak_rss_bytes": 227491840
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 8192,
+          "efed40d52a6b8091": 944,
+          "6957cfd0d57e38ee": 4096,
+          "17197380d5cb8a5c": 307213248,
+          "9df5caa29c976838": 944,
+          "41f5f6fb40e1f50a": 307213248,
+          "d97a8d3d2f4172ea": 304,
+          "aecef5ad1ffb72b8": 944,
+          "c53ff36031464623": 30725760,
+          "cbafbb525d63d4eb": 276487488,
+          "18a82b3f5d42e571": 131072,
+          "32babdd70a86ae22": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "efed40d52a6b8091": 0,
+          "6957cfd0d57e38ee": 0,
+          "17197380d5cb8a5c": 0,
+          "9df5caa29c976838": 0,
+          "41f5f6fb40e1f50a": 0,
+          "d97a8d3d2f4172ea": 0,
+          "aecef5ad1ffb72b8": 0,
+          "c53ff36031464623": 1250,
+          "cbafbb525d63d4eb": 0,
+          "18a82b3f5d42e571": 0,
+          "32babdd70a86ae22": 0
+        },
+        "metadata": {
+          "bytes": 474432,
+          "peak_bytes": 500928,
+          "max_bytes": 134217728,
+          "pairs": 12,
+          "max_pairs": 16384,
+          "max_contexts": 64,
+          "max_observed_contexts": 0,
+          "shards": 1,
+          "peak_shards": 12,
+          "indexes": 0,
+          "sample_records": 7016,
+          "overflow_allocations": 0,
+          "overflow_bytes": 0,
+          "sample_overflows": 0,
+          "site_size": 6656,
+          "shard_size": 1664,
+          "sample_size": 56,
+          "fixed_bytes": 1576960
+        },
+        "promotion_gate": 0.7,
+        "transitions": {},
+        "failure_errno": 0,
+        "blocked_ns": 3650318,
+        "decisions": 5,
+        "rechecks": 0,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 12,
+        "samples": 37532,
+        "sampled_live_objects": 1250,
+        "sample_rate": 64,
+        "allocation_clock": 921787184
+      },
+      "blocked_seconds": 0.003650318,
+      "chip_seconds": 20.704996145000003,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass11/diagnostic/defaults/logs/site-pure-1-jev-live-0-90f1a81f.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass11/diagnostic/defaults/logs/site-pure-1-90f1a81f.schedule.jsonl",
+      "model_coverage": {
+        "sites": 12,
+        "asked_sites": 5,
+        "unasked_sites": 7,
+        "allocated_bytes": 921787184,
+        "untracked_overflow_bytes": 0,
+        "unasked_bytes": 16368,
+        "unasked_byte_share": 1.7756810122888407e-05,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 5,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 0,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0,
+      "allocator_phases": [
+        {
+          "mi_phase": "peak",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 116107360,
+          "malloc_current": 115726272,
+          "area_committed": 115845216,
+          "area_used": 115726272,
+          "empty_area_committed": 62368
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1057239040,
+          "purged": 16515072,
+          "page_committed": 13094112,
+          "malloc_current": 12013120,
+          "area_committed": 12831968,
+          "area_used": 12013120,
+          "empty_area_committed": 62368
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1028534272,
+          "purged": 45219840,
+          "page_committed": 13133120,
+          "malloc_current": 12031040,
+          "area_committed": 12870976,
+          "area_used": 12031040,
+          "empty_area_committed": 58368
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1028534272,
+          "purged": 45219840,
+          "page_committed": 13133120,
+          "malloc_current": 12040000,
+          "area_committed": 12870976,
+          "area_used": 12040000,
+          "empty_area_committed": 58368
+        },
+        {
+          "mi_phase": "peak",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1013133312,
+          "purged": 60620800,
+          "page_committed": 211509248,
+          "malloc_current": 210452160,
+          "area_committed": 211050496,
+          "area_used": 210452160,
+          "empty_area_committed": 50176
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 992161792,
+          "purged": 81592320,
+          "page_committed": 33324736,
+          "malloc_current": 31927488,
+          "area_committed": 32865984,
+          "area_used": 31927488,
+          "empty_area_committed": 161280
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 992161792,
+          "purged": 81592320,
+          "page_committed": 33328832,
+          "malloc_current": 31927488,
+          "area_committed": 32870080,
+          "area_used": 31927488,
+          "empty_area_committed": 165376
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 992161792,
+          "purged": 81592320,
+          "page_committed": 33328832,
+          "malloc_current": 31927488,
+          "area_committed": 32870080,
+          "area_used": 31927488,
+          "empty_area_committed": 165376
+        }
+      ],
+      "transport_variant": "jev-live:static-model",
+      "diagnostic": true,
+      "forced_collection": false
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791828409.347708,
+      "finished_unix": 1791828429.9934826,
+      "host_before": {
+        "load_average": [
+          0.06494140625,
+          0.07275390625,
+          0.31787109375
+        ],
+        "MemAvailable_bytes": 14404431872,
+        "SwapFree_bytes": 6571159552,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "site-pure-1",
+      "variant": "mi/collect",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libmimalloc.so",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "FRAG_COLLECT": "1"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.639130882,
+      "stdout": "results/pass11/diagnostic/defaults/logs/site-pure-1-mi-1.stdout",
+      "stderr": "results/pass11/diagnostic/defaults/logs/site-pure-1-mi-1.stderr",
+      "user_seconds": 0.117229,
+      "sys_seconds": 0.020862,
+      "peak_rss_bytes": 293732352,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.138091,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.639130882,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 128028672,
+          "live_bytes": 115245248,
+          "fragmentation_ratio": 1.110924,
+          "peak_rss_bytes": 127864832
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 128094208,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.116263,
+          "peak_rss_bytes": 127864832
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 128159744,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.12195,
+          "peak_rss_bytes": 127995904
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 128159744,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.12195,
+          "peak_rss_bytes": 127995904
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 293834752,
+          "live_bytes": 203491136,
+          "fragmentation_ratio": 1.443968,
+          "peak_rss_bytes": 293732352
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 293834752,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.56314,
+          "peak_rss_bytes": 293732352
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 293834752,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.56314,
+          "peak_rss_bytes": 293732352
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 293834752,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.56314,
+          "peak_rss_bytes": 293732352
+        },
+        {
+          "phase": "collected-default",
+          "cycle": 1,
+          "rss_bytes": 293052416,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.537678,
+          "peak_rss_bytes": 293732352
+        },
+        {
+          "phase": "collected-all-heaps",
+          "cycle": 1,
+          "rss_bytes": 293052416,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 9.537678,
+          "peak_rss_bytes": 293732352
+        }
+      ],
+      "allocator_phases": [
+        {
+          "mi_phase": "peak",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115542336,
+          "malloc_current": 115249344,
+          "area_committed": 115280192,
+          "area_used": 115249344,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115538304,
+          "malloc_current": 11527232,
+          "area_committed": 115276160,
+          "area_used": 11527232,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115542400,
+          "malloc_current": 11527232,
+          "area_committed": 115280256,
+          "area_used": 11527232,
+          "empty_area_committed": 12288
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115542400,
+          "malloc_current": 11527232,
+          "area_committed": 115280256,
+          "area_used": 11527232,
+          "empty_area_committed": 12288
+        },
+        {
+          "mi_phase": "peak",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1073688576,
+          "purged": 65536,
+          "page_committed": 279715328,
+          "malloc_current": 209893312,
+          "area_committed": 279125504,
+          "area_used": 209893312,
+          "empty_area_committed": 4096
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1073688576,
+          "purged": 65536,
+          "page_committed": 279715328,
+          "malloc_current": 31368640,
+          "area_committed": 279125504,
+          "area_used": 31368640,
+          "empty_area_committed": 4096
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1073688576,
+          "purged": 65536,
+          "page_committed": 279719424,
+          "malloc_current": 31368640,
+          "area_committed": 279129600,
+          "area_used": 31368640,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1073688576,
+          "purged": 65536,
+          "page_committed": 279719424,
+          "malloc_current": 31368640,
+          "area_committed": 279129600,
+          "area_used": 31368640,
+          "empty_area_committed": 8192
+        },
+        {
+          "mi_phase": "collected-default",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1054027776,
+          "purged": 19726336,
+          "page_committed": 279715328,
+          "malloc_current": 31368640,
+          "area_committed": 279125504,
+          "area_used": 31368640,
+          "empty_area_committed": 4096
+        },
+        {
+          "mi_phase": "collected-all-heaps",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1054027776,
+          "purged": 19726336,
+          "page_committed": 279715328,
+          "malloc_current": 31368640,
+          "area_committed": 279125504,
+          "area_used": 31368640,
+          "empty_area_committed": 4096
+        }
+      ],
+      "transport_variant": "mi",
+      "diagnostic": true,
+      "forced_collection": true
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791828431.0024495,
+      "finished_unix": 1791828451.6981525,
+      "host_before": {
+        "load_average": [
+          0.1044921875,
+          0.08251953125,
+          0.31396484375
+        ],
+        "MemAvailable_bytes": 14415802368,
+        "SwapFree_bytes": 6571159552,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "site-pure-1",
+      "variant": "jev-table:oracle-site/collect",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass11/diagnostic/defaults/tables/site-pure-1/oracle-site.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "FRAG_COLLECT": "1",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.668157118,
+      "stdout": "results/pass11/diagnostic/defaults/logs/site-pure-1-jev-table-1-6241130e.stdout",
+      "stderr": "results/pass11/diagnostic/defaults/logs/site-pure-1-jev-table-1-6241130e.stderr",
+      "user_seconds": 0.127315,
+      "sys_seconds": 0.040099,
+      "peak_rss_bytes": 224645120,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.167414,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.668157118,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 128131072,
+          "live_bytes": 115245248,
+          "fragmentation_ratio": 1.111812,
+          "peak_rss_bytes": 127959040
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 127414272,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.057257,
+          "peak_rss_bytes": 127959040
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 127479808,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.062944,
+          "peak_rss_bytes": 127959040
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 127479808,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.062944,
+          "peak_rss_bytes": 127959040
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 224735232,
+          "live_bytes": 203491136,
+          "fragmentation_ratio": 1.104398,
+          "peak_rss_bytes": 224645120
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 223358976,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 7.269437,
+          "peak_rss_bytes": 224645120
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 223358976,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 7.269437,
+          "peak_rss_bytes": 224645120
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 223358976,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 7.269437,
+          "peak_rss_bytes": 224645120
+        },
+        {
+          "phase": "collected-default",
+          "cycle": 1,
+          "rss_bytes": 196685824,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 6.401333,
+          "peak_rss_bytes": 224645120
+        },
+        {
+          "phase": "collected-all-heaps",
+          "cycle": 1,
+          "rss_bytes": 43278336,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.408536,
+          "peak_rss_bytes": 224645120
+        }
+      ],
+      "allocator_phases": [
+        {
+          "mi_phase": "peak",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 115572832,
+          "malloc_current": 115256512,
+          "area_committed": 115310688,
+          "area_used": 115256512,
+          "empty_area_committed": 16288
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1056190464,
+          "purged": 17563648,
+          "page_committed": 12074592,
+          "malloc_current": 11534400,
+          "area_committed": 11812448,
+          "area_used": 11534400,
+          "empty_area_committed": 249376
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1056190464,
+          "purged": 17563648,
+          "page_committed": 12078688,
+          "malloc_current": 11534400,
+          "area_committed": 11816544,
+          "area_used": 11534400,
+          "empty_area_committed": 253472
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1056190464,
+          "purged": 17563648,
+          "page_committed": 12078688,
+          "malloc_current": 11534400,
+          "area_committed": 11816544,
+          "area_used": 11534400,
+          "empty_area_committed": 253472
+        },
+        {
+          "mi_phase": "peak",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1042034688,
+          "purged": 31719424,
+          "page_committed": 210416608,
+          "malloc_current": 209900480,
+          "area_committed": 209957856,
+          "area_used": 209900480,
+          "empty_area_committed": 12192
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1019686912,
+          "purged": 54067200,
+          "page_committed": 31990368,
+          "malloc_current": 31375808,
+          "area_committed": 31531616,
+          "area_used": 31375808,
+          "empty_area_committed": 126944
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1019686912,
+          "purged": 54067200,
+          "page_committed": 31994464,
+          "malloc_current": 31375808,
+          "area_committed": 31535712,
+          "area_used": 31375808,
+          "empty_area_committed": 131040
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1019686912,
+          "purged": 54067200,
+          "page_committed": 31994464,
+          "malloc_current": 31375808,
+          "area_committed": 31535712,
+          "area_used": 31375808,
+          "empty_area_committed": 131040
+        },
+        {
+          "mi_phase": "collected-default",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 992948224,
+          "purged": 80805888,
+          "page_committed": 31986368,
+          "malloc_current": 31375808,
+          "area_committed": 31527616,
+          "area_used": 31375808,
+          "empty_area_committed": 122944
+        },
+        {
+          "mi_phase": "collected-all-heaps",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 817246208,
+          "purged": 256507904,
+          "page_committed": 31871616,
+          "malloc_current": 31375808,
+          "area_committed": 31412864,
+          "area_used": 31375808,
+          "empty_area_committed": 8192
+        }
+      ],
+      "transport_variant": "jev-table:oracle-site",
+      "diagnostic": true,
+      "forced_collection": true
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791828452.7491019,
+      "finished_unix": 1791828473.4984121,
+      "host_before": {
+        "load_average": [
+          0.07373046875,
+          0.07666015625,
+          0.30615234375
+        ],
+        "MemAvailable_bytes": 14412222464,
+        "SwapFree_bytes": 6571159552,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "site-pure-1",
+      "variant": "jev-live:static-model/collect",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+        "1",
+        "site-pure",
+        "400000",
+        "250"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "FRAG_COLLECT": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-038273a2b84a.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass11/diagnostic/defaults/logs/site-pure-1-jev-live-1-90f1a81f.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.742058163,
+      "stdout": "results/pass11/diagnostic/defaults/logs/site-pure-1-jev-live-1-90f1a81f.stdout",
+      "stderr": "results/pass11/diagnostic/defaults/logs/site-pure-1-jev-live-1-90f1a81f.stderr",
+      "user_seconds": 0.18355,
+      "sys_seconds": 0.054059,
+      "peak_rss_bytes": 227250176,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.237609,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.742058163,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 131145728,
+          "live_bytes": 115245248,
+          "fragmentation_ratio": 1.137971,
+          "peak_rss_bytes": 130723840
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 129388544,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.228588,
+          "peak_rss_bytes": 130723840
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 129466368,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.235341,
+          "peak_rss_bytes": 130723840
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 129474560,
+          "live_bytes": 11523136,
+          "fragmentation_ratio": 11.236052,
+          "peak_rss_bytes": 130723840
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 227713024,
+          "live_bytes": 203491136,
+          "fragmentation_ratio": 1.119032,
+          "peak_rss_bytes": 227250176
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 225550336,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 7.340757,
+          "peak_rss_bytes": 227250176
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 225550336,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 7.340757,
+          "peak_rss_bytes": 227250176
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 225550336,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 7.340757,
+          "peak_rss_bytes": 227250176
+        },
+        {
+          "phase": "collected-default",
+          "cycle": 1,
+          "rss_bytes": 117358592,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 3.819551,
+          "peak_rss_bytes": 227250176
+        },
+        {
+          "phase": "collected-all-heaps",
+          "cycle": 1,
+          "rss_bytes": 45617152,
+          "live_bytes": 30725760,
+          "fragmentation_ratio": 1.484655,
+          "peak_rss_bytes": 227250176
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 10240,
+          "efed40d52a6b8091": 944,
+          "6957cfd0d57e38ee": 4096,
+          "17197380d5cb8a5c": 307213248,
+          "deb6eacaacfce723": 472,
+          "9df5caa29c976838": 944,
+          "41f5f6fb40e1f50a": 307213248,
+          "d97a8d3d2f4172ea": 304,
+          "aecef5ad1ffb72b8": 944,
+          "c53ff36031464623": 30725760,
+          "bf79ab53ba309201": 472,
+          "cbafbb525d63d4eb": 276487488,
+          "18a82b3f5d42e571": 131072,
+          "32babdd70a86ae22": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "efed40d52a6b8091": 0,
+          "6957cfd0d57e38ee": 0,
+          "17197380d5cb8a5c": 0,
+          "deb6eacaacfce723": 0,
+          "9df5caa29c976838": 0,
+          "41f5f6fb40e1f50a": 0,
+          "d97a8d3d2f4172ea": 0,
+          "aecef5ad1ffb72b8": 0,
+          "c53ff36031464623": 1250,
+          "bf79ab53ba309201": 0,
+          "cbafbb525d63d4eb": 0,
+          "18a82b3f5d42e571": 0,
+          "32babdd70a86ae22": 0
+        },
+        "metadata": {
+          "bytes": 486120,
+          "peak_bytes": 515944,
+          "max_bytes": 134217728,
+          "pairs": 14,
+          "max_pairs": 16384,
+          "max_contexts": 64,
+          "max_observed_contexts": 0,
+          "shards": 1,
+          "peak_shards": 14,
+          "indexes": 0,
+          "sample_records": 6987,
+          "overflow_allocations": 0,
+          "overflow_bytes": 0,
+          "sample_overflows": 0,
+          "site_size": 6656,
+          "shard_size": 1664,
+          "sample_size": 56,
+          "fixed_bytes": 1576960
+        },
+        "promotion_gate": 0.7,
+        "transitions": {},
+        "failure_errno": 0,
+        "blocked_ns": 3624206,
+        "decisions": 5,
+        "rechecks": 0,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 14,
+        "samples": 37532,
+        "sampled_live_objects": 1250,
+        "sample_rate": 64,
+        "allocation_clock": 921790176
+      },
+      "blocked_seconds": 0.003624206,
+      "chip_seconds": 20.738433956999998,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass11/diagnostic/defaults/logs/site-pure-1-jev-live-1-90f1a81f.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass11/diagnostic/defaults/logs/site-pure-1-90f1a81f.schedule.jsonl",
+      "model_coverage": {
+        "sites": 14,
+        "asked_sites": 5,
+        "unasked_sites": 9,
+        "allocated_bytes": 921790176,
+        "untracked_overflow_bytes": 0,
+        "unasked_bytes": 19360,
+        "unasked_byte_share": 2.100261046826344e-05,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 5,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 0,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0,
+      "allocator_phases": [
+        {
+          "mi_phase": "peak",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1073754112,
+          "purged": 0,
+          "page_committed": 116111008,
+          "malloc_current": 115726016,
+          "area_committed": 115848864,
+          "area_used": 115726016,
+          "empty_area_committed": 66400
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1057304576,
+          "purged": 16449536,
+          "page_committed": 13098144,
+          "malloc_current": 12012864,
+          "area_committed": 12836000,
+          "area_used": 12012864,
+          "empty_area_committed": 66400
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1057304576,
+          "purged": 16449536,
+          "page_committed": 13129984,
+          "malloc_current": 12030784,
+          "area_committed": 12867840,
+          "area_used": 12030784,
+          "empty_area_committed": 62400
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 0,
+          "reserved": 1073754112,
+          "committed": 1057304576,
+          "purged": 16449536,
+          "page_committed": 13129984,
+          "malloc_current": 12039744,
+          "area_committed": 12867840,
+          "area_used": 12039744,
+          "empty_area_committed": 62400
+        },
+        {
+          "mi_phase": "peak",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 1012019200,
+          "purged": 61734912,
+          "page_committed": 211502720,
+          "malloc_current": 210450304,
+          "area_committed": 211043968,
+          "area_used": 210450304,
+          "empty_area_committed": 50176
+        },
+        {
+          "mi_phase": "drop",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 990982144,
+          "purged": 82771968,
+          "page_committed": 33310016,
+          "malloc_current": 31925632,
+          "area_committed": 32851264,
+          "area_used": 31925632,
+          "empty_area_committed": 157056
+        },
+        {
+          "mi_phase": "idle",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 990982144,
+          "purged": 82771968,
+          "page_committed": 33314112,
+          "malloc_current": 31925632,
+          "area_committed": 32855360,
+          "area_used": 31925632,
+          "empty_area_committed": 161152
+        },
+        {
+          "mi_phase": "idle10",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 990982144,
+          "purged": 82771968,
+          "page_committed": 33314112,
+          "malloc_current": 31925632,
+          "area_committed": 32855360,
+          "area_used": 31925632,
+          "empty_area_committed": 161152
+        },
+        {
+          "mi_phase": "collected-default",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 882651136,
+          "purged": 191102976,
+          "page_committed": 33268032,
+          "malloc_current": 31934592,
+          "area_committed": 32809280,
+          "area_used": 31934592,
+          "empty_area_committed": 115072
+        },
+        {
+          "mi_phase": "collected-all-heaps",
+          "cycle": 1,
+          "reserved": 1073754112,
+          "committed": 789786624,
+          "purged": 283967488,
+          "page_committed": 33196992,
+          "malloc_current": 31943552,
+          "area_committed": 32738240,
+          "area_used": 31943552,
+          "empty_area_committed": 8192
+        }
+      ],
+      "transport_variant": "jev-live:static-model",
+      "diagnostic": true,
+      "forced_collection": true
+    }
+  ],
+  "coverage_runs": [],
+  "trace": {
+    "inference_gate": "not-requested",
+    "started_unix": 1791828271.821024,
+    "finished_unix": 1791828292.7668333,
+    "host_before": {
+      "load_average": [
+        0.03564453125,
+        0.078125,
+        0.359375
+      ],
+      "MemAvailable_bytes": 14258147328,
+      "SwapFree_bytes": 6571159552,
+      "SwapTotal_bytes": 8589930496
+    },
+    "benchmark": "site-pure-1",
+    "variant": "jev-trace",
+    "repetition": 0,
+    "command": [
+      "/home/quill/jevalloc/src-tree/build/bench/../server-sim-diag",
+      "1",
+      "site-pure",
+      "400000",
+      "250"
+    ],
+    "stdin": null,
+    "environment": {
+      "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/pass11-stats/libjevalloc.so",
+      "JEVALLOC_MODE": "trace",
+      "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/pass11/diagnostic/defaults/trace.jsonl",
+      "JEVALLOC_DEPTH": "4",
+      "JEVALLOC_MODEL_DEPTH": "12",
+      "FRAG_LONG_SETTLE_MS": "10000"
+    },
+    "exit_status": 0,
+    "output_ok": true,
+    "wall_seconds": 20.933895609,
+    "stdout": "results/pass11/diagnostic/defaults/logs/trace/site-pure-1-jev-trace-0.stdout",
+    "stderr": "results/pass11/diagnostic/defaults/logs/trace/site-pure-1-jev-trace-0.stderr",
+    "user_seconds": 0.392335,
+    "sys_seconds": 0.040136,
+    "peak_rss_bytes": 323235840,
+    "peak_footprint_bytes": null,
+    "cpu_seconds": 0.432471,
+    "time_exit_status": 0,
+    "footprint_final_read": false,
+    "measurement": "wait4 + proc_pid_rusage",
+    "score": 20.933895609,
+    "score_metric": "wall_seconds",
+    "phases": [
+      {
+        "phase": "peak",
+        "cycle": 0,
+        "rss_bytes": 155439104,
+        "live_bytes": 115245248,
+        "fragmentation_ratio": 1.348768,
+        "peak_rss_bytes": 155226112
+      },
+      {
+        "phase": "drop",
+        "cycle": 0,
+        "rss_bytes": 155508736,
+        "live_bytes": 11523136,
+        "fragmentation_ratio": 13.495348,
+        "peak_rss_bytes": 155226112
+      },
+      {
+        "phase": "idle",
+        "cycle": 0,
+        "rss_bytes": 157679616,
+        "live_bytes": 11523136,
+        "fragmentation_ratio": 13.683742,
+        "peak_rss_bytes": 157548544
+      },
+      {
+        "phase": "idle10",
+        "cycle": 0,
+        "rss_bytes": 157683712,
+        "live_bytes": 11523136,
+        "fragmentation_ratio": 13.684097,
+        "peak_rss_bytes": 157548544
+      },
+      {
+        "phase": "peak",
+        "cycle": 1,
+        "rss_bytes": 323358720,
+        "live_bytes": 203491136,
+        "fragmentation_ratio": 1.589056,
+        "peak_rss_bytes": 323235840
+      },
+      {
+        "phase": "drop",
+        "cycle": 1,
+        "rss_bytes": 323358720,
+        "live_bytes": 30725760,
+        "fragmentation_ratio": 10.524027,
+        "peak_rss_bytes": 323235840
+      },
+      {
+        "phase": "idle",
+        "cycle": 1,
+        "rss_bytes": 323358720,
+        "live_bytes": 30725760,
+        "fragmentation_ratio": 10.524027,
+        "peak_rss_bytes": 323235840
+      },
+      {
+        "phase": "idle10",
+        "cycle": 1,
+        "rss_bytes": 323358720,
+        "live_bytes": 30725760,
+        "fragmentation_ratio": 10.524027,
+        "peak_rss_bytes": 323235840
+      }
+    ]
+  },
+  "truth": {
+    "pairs": 12,
+    "sites": 12,
+    "contexts": 1,
+    "oracle_site_correct_bytes": 887280496,
+    "oracle_context_correct_bytes": 887280496,
+    "allocated_bytes": 921787184
+  },
+  "complete": true
+}

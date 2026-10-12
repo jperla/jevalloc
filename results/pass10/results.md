@@ -2,7 +2,7 @@
 
 The question is whether lifetime placement saves RSS under mimalloc defaults, whether live runtime rules help, and whether a model adds value beyond the supplied function names and TTL text.
 
-Completed fragmentation blocks: 24/25. Each published group has five interleaved successful repetitions. **Defaults** means no `MIMALLOC_*` overrides on any variant; **immediate** means purge delay 0, arena purge multiplier 1 and decommit enabled. Earlier measurements remain separately labelled below.
+Completed fragmentation blocks: 25/25. Each published group has five interleaved successful repetitions. **Defaults** means no `MIMALLOC_*` overrides on any variant; **immediate** means purge delay 0, arena purge multiplier 1 and decommit enabled. Earlier measurements remain separately labelled below.
 
 With defaults on one-thread site-pure, static-model holds 216.81 MiB versus mimalloc 280.21 MiB: a 22.6% reduction. The names rule holds 216.81 MiB. The earlier roughly 84% model RSS reduction therefore does not carry over to defaults in this fixture. Capturing most of the default-options oracle saving is a smaller absolute benefit.
 
@@ -62,9 +62,41 @@ Default-options real-program final idle / 10-second RSS is in the full phase tab
 | redis-mesh | 185.97 | 196.07 | 193.01 | 208.96 | 231.00 | 219.03 |
 | redis-sessions | 157.41 | 161.56 | 162.24 | 165.26 | 172.47 | 160.30 |
 | rocksdb-cache | 144.25 | 160.02 | 242.89 | 1019.11 | 236.77 | 237.86 |
+| rocksdb-churn | 51.00 | 84.90 | 160.15 | 158.82 | 150.01 | 148.92 |
 | sqlite | 207.02 | 208.95 | 209.88 | 209.76 | 209.82 | 209.90 |
+
+Regression with no `MIMALLOC_*` overrides: 22/22 complete workloads. Peak RSS and inverse-throughput/time scores remain regression metrics, distinct from idle fragmentation.
+
+| Workload | mi peak MiB | Static peak MiB / score ratio | Hybrid peak MiB / score ratio | Live heuristic peak MiB / score ratio | Neutral peak MiB / score ratio |
+|---|---:|---:|---:|---:|---:|
+| cfrac | 4.27 | 7.45 / 1.93× | 7.57 / 2.11× | 7.45 / 1.95× | 7.45 / 2.01× |
+| espresso | 10.14 | 22.97 / 1.48× | 23.02 / 1.52× | 18.80 / 1.70× | 18.99 / 1.56× |
+| barnes | 63.35 | 65.59 / 1.00× | 65.46 / 1.00× | 65.45 / 1.00× | 65.58 / 1.00× |
+| larson | 156.36 | 182.84 / 2.14× | 220.85 / 2.96× | 218.81 / 2.13× | 182.86 / 2.96× |
+| larson-sized | 157.36 | 182.66 / 2.09× | 182.79 / 2.88× | 218.88 / 2.11× | 182.81 / 2.88× |
+| xmalloc-test | 132.45 | 93.60 / 4.81× | 95.46 / 8.97× | 99.49 / 4.91× | 97.45 / 9.12× |
+| cache-scratch1 | 6.23 | 5.97 / 1.01× | 5.97 / 1.02× | 5.97 / 1.03× | 5.97 / 1.01× |
+| cache-scratchN | 6.11 | 6.10 / 1.00× | 6.09 / 1.00× | 6.09 / 1.00× | 6.10 / 1.01× |
+| cache-thrash1 | 6.23 | 5.81 / 0.97× | 5.97 / 1.00× | 5.97 / 0.97× | 5.97 / 1.00× |
+| cache-thrashN | 6.23 | 6.09 / 1.00× | 6.09 / 1.00× | 6.09 / 1.00× | 6.10 / 1.00× |
+| mstress | 496.12 | 617.43 / 1.07× | 625.61 / 1.07× | 641.40 / 1.09× | 617.40 / 1.08× |
+| rptest | 102.98 | 154.02 / 1.04× | 194.02 / 1.07× | 134.00 / 1.04× | 135.98 / 1.04× |
+| glibc-simple | 6.02 | 6.90 / 2.15× | 6.93 / 2.34× | 6.89 / 2.21× | 6.93 / 2.36× |
+| glibc-thread | 68.37 | 95.43 / 3.30× | 69.30 / 5.43× | 69.27 / 3.42× | 69.28 / 5.45× |
+| alloc-test1 | 15.00 | 15.97 / 1.52× | 16.10 / 1.58× | 16.22 / 1.53× | 15.97 / 1.58× |
+| alloc-testN | 16.35 | 19.60 / 1.84× | 19.59 / 2.41× | 24.10 / 1.84× | 19.59 / 2.42× |
+| malloc-large | 649.73 | 640.05 / 0.99× | 640.18 / 0.99× | 648.03 / 0.99× | 640.18 / 0.99× |
+| mleak10 | 24.04 | 42.35 / 1.37× | 42.47 / 1.36× | 40.34 / 1.40× | 35.15 / 1.39× |
+| mleak100 | 24.17 | 44.34 / 1.35× | 44.35 / 1.36× | 44.35 / 1.37× | 42.35 / 1.34× |
+| sh6benchN | 249.37 | 251.25 / 13.17× | 237.82 / 31.11× | 256.12 / 13.15× | 237.05 / 31.14× |
+| sh8benchN | 210.64 | 215.99 / 9.46× | 273.34 / 18.29× | 219.88 / 9.49× | 275.73 / 18.28× |
+| redis | 13.80 | 20.76 / 1.45× | 20.82 / 1.49× | 20.32 / 1.69× | 20.86 / 1.50× |
 
 The combined object-logging free path now updates trace and sampled-live state exactly once before releasing storage. The dedicated test covers retired allocating threads, cross-thread frees, actual address reuse, sample counts, survivors and hybrid demotions at sample rates 1 and 64.
 
 Warm model runs replay collected answers; hybrid’s rules and all no-model controls execute live. Warm replay retains IPC/service costs and excludes sidecar CPU. It bypasses prompt preparation and sidecar symbolization as well as HTTP inference; rule-names resolves symbols live, so its wall time includes that work. It is not end-to-end deployment or hypothetical on-chip inference. Server-sim live bytes exclude metadata, bookkeeping mappings and thread resources, so RSS/live is process-memory amplification. In-place realloc can log a new policy class while retaining its physical heap. Compact aggregates support the published medians; complete trace/cache/decision reconstruction still needs remote artifacts.
 
+
+At the snapshot reviewed in review 3, the last real block, regression scores, and
+validation were pending. They are present in this working tree after pass 10
+finished; this report does not imply they were available in that earlier revision.

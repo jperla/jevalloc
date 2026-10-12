@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "fragmentation_matrices": 25,
+  "regression_sha256": "47bd96a0d35bdba4a986c7d18b627947c34c313ba48385eb4c57d1c49792f9ad",
+  "validation_sha256": "62c231db86c83b4168af8c3426adf4e579b787ebc9dddfcab81c09b6304d723c",
+  "scope": "Unchanged final accepted pass-10 artifacts match the previous independent recomputation and remote final state; no pass-10 performance rerun."
+}

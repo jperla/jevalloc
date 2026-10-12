@@ -2671,3 +2671,290 @@ Pass-10 RocksDB-cache progress: coverage probes during the third repetition expo
 Pass 10 completed results/pass10/defaults/named/rocksdb-cache: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
 
 RocksDB-cache defaults completed all five interleaved repetitions and its independent inference audit. Final idle MiB: mi 144.246 (133.000–152.816), oracle 160.023, static-model 242.895, hybrid 1019.105 (941.098–1112.109), live heuristic 236.773, neutral 237.855, names rule 697.719. There is no model saving; hybrid is about seven times the mimalloc median. Names-rule median wall is 397.451 seconds, versus mi 14.576 and warm-replayed static 14.736. Symbolization remains part of the live rule cost, not a fair estimate of end-to-end model-versus-rule latency. The ordinary and 10-second medians match except names-rule changes by 0.016 MiB. No measurement inputs were changed. The report headline now explicitly includes the hybrid RSS failure.
+
+RocksDB-churn initial static-model collection finished: 2810.0 seconds wall, 1566.7 HTTP seconds, 578 asked sites out of 8676 recorded sites, zero budget fallbacks. Unasked requested-byte share is 0.00029698. This substantial cold cost remains separate from warm replay measurements. Coverage-fill runs now collect additional observed paths; accepted warm runs must still have zero missing answers and zero inference. A resource check during collection found roughly 12 GiB available and no swap in the target process.
+
+RocksDB-churn first complete warm repetition passed for all eight policies. Its live names-rule run required roughly twenty minutes of symbolization plus workload execution; the report already distinguishes this from model replay, which bypasses prompt preparation. All five interleaved repetitions remain required and are continuing unchanged.
+
+Pass 10 completed results/pass10/defaults/named/rocksdb-churn: five interleaved repetitions, current-statistics deterministic policies, zero inference overlap. See matrix.json and the updated phase table.
+
+Pass 10: real block completed; matrices and inference audits retained under results/pass10.
+
+All 25 pass-10 fragmentation blocks are complete. RocksDB-churn defaults passed five interleaved repetitions per policy and the inference-overlap audit. Final idle MiB: mi 51.004 (44.586–59.281), key-only 57.465, oracle 84.898, static-model 160.152 (143.977–167.000), hybrid 158.816 (152.109–170.164), live heuristic 150.008, neutral 148.922, names rule 150.086. No tested median improves on mimalloc. Ten-second values remain within 0.020 MiB of ordinary idle. Names-rule median wall is 1237.880 seconds versus mi 87.404; target CPU excludes symbolization and other sidecar work. Rare-path coverage probes and fills are retained separately; only fully covered warm runs enter medians. None of the seven defaults real workloads has a greater-than-5% static-model or hybrid saving. The required 22-workload, seven-variant, five-repetition regression series has begun, with no MIMALLOC_* overrides.
+
+Local independent recomputation passed for all completed fragmentation evidence: 25 blocks, 227 policy groups, 400 cycle/phase groups and 1135 accepted warm runs. Checks cover exact five-repetition membership, idle medians/ranges, wall/CPU/peak medians, ten-second observations, saving/capture arithmetic, default environments, zero warm inference and matching independent-audit matrix hashes. The regression series is progressing normally; its first eight workloads are complete. Full trace/rule/provenance validation remains scheduled after measurement.
+
+The regression matrix is complete: 22 workloads × 7 variants × 5 accepted warm repetitions = 770 runs. Independent local recomputation now covers all 1905 accepted warm runs across fragmentation and regression, including 227 fragmentation policy groups and 400 cycle/phase groups. Worst score ratios versus mi occur on sh6benchN: static-model 13.16907, hybrid 31.10735, live heuristic 13.15252, neutral 31.13970. Local whitespace/syntax checks pass. An address scan across 115 report/evidence files, including decompressed gzip contents, passes; promptstudy.py remains identical to HEAD. The final remote validator is still independently resolving rule-names symbols and checking trace/provenance evidence.
+
+While measurements ran, new shared-repository commits appeared, including pass-10 snapshots and a review-3/pass-11 specification. I did not create these commits or make any Git writes, and I am not changing history or starting the separate pass-11 task. This pass continues to finish SPEC-REVIEW2.md.
+
+Pass 10: regression and final evidence validation completed.
+
+Pass 10 is complete. The pipeline exited with status 0 and stage complete. Final remote validation passed 26 matrices, 1905 accepted warm runs, 10 additional logged per-object checks, 953 input fingerprints, 30758 live deterministic-rule answers, and all 75 trace-derived oracle tables. Independent local recomputation passed every fragmentation median/range/cost/capture, all 400 cycle/phase groups, all 22 regression workloads and all audit hashes; its record is results/pass10/independent-check.json. Full Linux correctness and focused macOS integration evidence remain in tests/ and tests-local/. No measurement/validation sidecars remain; the pre-existing model server process is still present. Compact evidence, reports and final validation artifacts are synchronized locally; raw traces/caches/logs remain on the remote machine at the matrix paths. No Git writes were performed. Final report/evidence updates are left uncommitted; externally created snapshot/review commits were left untouched. tools/promptstudy.py and promptlab were not modified.
+
+## Pass 11 — review 3, initial state
+
+Read SPEC-REVIEW3.md, review 3 in full, the current RESULTS.md through PASS10-END,
+and the pass-10 journal. Remote checkout is ~/jevalloc/src-tree. The previous
+pipeline has already finished: status 0, stage complete, validation passed for
+26 matrices / 1905 accepted warm runs / 10 logged checks. No benchmark or
+sidecar remains; the pre-existing model server remains running. Local final
+regression and RocksDB-churn matrix hashes match the remote artifacts. These
+accepted groups and audits are already in the uncommitted working tree and are
+preserved. Review 3 examined an earlier committed snapshot; its then-absent
+artifacts were pending at that revision, and are now available in this working
+tree. No commits or other Git writes will be made. promptlab and
+tools/promptstudy.py remain untouched.
+
+Implementation plan: reject new live state before allocation under live_mutex,
+with default-class fallback (no newly registered fallback pair). Bound pairs,
+per-site nonempty contexts, shards across active/retired threads, thread shard
+indexes, and sampled-pointer record storage; retain existing pointer lifetime
+rules. Report attempted-overflow allocations/bytes and raw metadata reservations,
+including peak occupancy and separately the fixed arrays (not an RSS attribution).
+
+### Pass 11 factorial — frozen before any inference or measurement
+
+Six namings: existing plausible plus Python random.Random seeds 1–5. The fixed
+40-fragment list and ten verbs below are the complete sampling vocabulary.
+For each function in original source order, draw one fragment and one verb
+uniformly, join with underscore, retry exact duplicate names only. After five
+names, shuffle [a,b,c] with the same RNG to assign the zero/short/day lifetimes.
+No filtering by apparent semantics or model response and no post-result edits.
+
+Fragments: conn, sess, req, resp, buf, obj, entry, node, item, ctx, msg, pkt, slot, rec, blk, hdr, str, vec, map, pool, task, job, peer, port, path, name, field, value, data, chunk, stream, frame, event, flag, link, list, queue, group, token, handle.
+Verbs: new, get, put, add, make, init, attach, build, alloc, push.
+
+All mappings (original function -> new name; context lifetime -> class letter):
+
+- plausible: {"contexts": {"0": "a", "day": "c", "short": "b"}, "functions": {"assemble_response_buffer": "resp_build", "create_session_state": "conn_attach", "insert_cache_index": "entry_put", "parse_request_buffer": "buf_get", "store_request_payload": "obj_new"}}
+- seed1: {"contexts": {"0": "c", "day": "a", "short": "b"}, "functions": {"assemble_response_buffer": "buf_make", "create_session_state": "node_build", "insert_cache_index": "data_build", "parse_request_buffer": "item_push", "store_request_payload": "path_add"}}
+- seed2: {"contexts": {"0": "b", "day": "a", "short": "c"}, "functions": {"assemble_response_buffer": "obj_init", "create_session_state": "msg_make", "insert_cache_index": "str_push", "parse_request_buffer": "resp_get", "store_request_payload": "rec_push"}}
+- seed3: {"contexts": {"0": "c", "day": "a", "short": "b"}, "functions": {"assemble_response_buffer": "link_put", "create_session_state": "port_push", "insert_cache_index": "stream_push", "parse_request_buffer": "hdr_push", "store_request_payload": "buf_push"}}
+- seed4: {"contexts": {"0": "a", "day": "c", "short": "b"}, "functions": {"assemble_response_buffer": "entry_attach", "create_session_state": "stream_put", "insert_cache_index": "obj_get", "parse_request_buffer": "hdr_make", "store_request_payload": "sess_attach"}}
+- seed5: {"contexts": {"0": "a", "day": "b", "short": "c"}, "functions": {"assemble_response_buffer": "peer_alloc", "create_session_state": "sess_build", "insert_cache_index": "hdr_new", "parse_request_buffer": "handle_make", "store_request_payload": "msg_get"}}
+
+Factors: gates 0.6/0.7/0.8 x prior model/neutral/matching rule x pure/mixed x
+1/16 threads x six namings x ten repetitions = 2160 policy observations, plus
+240 paired plain-mi observations. Defaults remove all MIMALLOC_* overrides.
+400000 objects, settle 250 ms, two cycles, 10-second idle observations in both
+cycles, identical phase histories for every variant. Workload RNG remains
+1729+worker ID as before; naming seeds and class permutations are the holdout.
+Description text is byte-identical to descriptions/server-sim-plausible.txt.
+The plausible naming reuses its pass-10 recorded probabilities. For each new
+mapping collect fresh stack-v1 static code-only model answers at one thread,
+with a fresh dedicated model cache and at most 3000 decisions including fills;
+reuse the frozen answer by key at 16 threads and at every gate. Coverage probes
+precede warm runs. Unexpected warm keys invalidate that attempt and are filled
+under the same budget, with all rejected/fill records retained. No gate or
+prior selection based on RSS. Record every probability and prompt.
+
+Model and neutral use identical hybrid replay transport, schedule keys,
+first-sight IPC and runtime rules. Neutral replaces raw transient/permanent
+probabilities with 0.5/0.5 and initial class with transient (tie convention);
+all other request/answer scheduling stays identical. Matching rule remains
+pass-10 literal names keywords on pure and literal ttl=day on mixed; it does
+not decode the concealed class permutation. It also uses hybrid runtime checks
+at each gate. It is evaluated from symbolized names/context once and encoded
+in the same replay transport with one-hot probabilities, eliminating the
+previous live-symbolization timing asymmetry. This is the same rule semantics,
+not an oracle based on lifetime assignments. Any model permanent initial
+class remains visible; priors include initial placement as well as vetoes.
+
+Within each naming/workload/thread/repetition block shuffle all ten variants
+with Python random.Random(seed). Seed = 110000 + naming_index*1000 +
+workload_index*100 + thread_index*10 + repetition, indices in the list orders
+above (pure then mixed; 1 then 16). Complete orders and seeds are design.json.
+Sequential target runs, no concurrent inference. Record both-cycle ordinary
+and 10-second RSS, target CPU, metadata, every site's promotion/demotion counts,
+and first 32 transition identities/monotonic times/allocation clocks per pair;
+report any event truncation, never interpret missing events as none.
+
+Primary endpoint: final-cycle ordinary idle RSS. Per cell report median and
+min/max over ten runs. Pair each model-minus-rule and model-minus-neutral
+RSS by repetition; estimator is median of the ten paired differences. Bootstrap
+20000 resamples of the ten paired blocks, percentile 2.5/97.5 interval, Python
+Random seed 110011 reset for each comparison. Report differences in MiB,
+negative favors model; descriptive median wins and both-upper-bounds-below-zero
+wins separately. Report for each gate/workload/thread the number out of six
+namings beating both controls and number worse than mi. Also count namings
+that win all four workload/thread conditions per gate. No pooling these
+fixtures into independent applications or claiming calibrated probabilities.
+
+Redis guard follow-up: normalized and retained unnormalized binaries x defaults
+and immediate-purge x mi, key-only, static/site, static/context, hybrid/context,
+live heuristic/context, neutral/context, names/context, TTL/context. Five
+repetitions, randomized block order seed 111000 + naming_index*100 +
+options_index*10 + repetition; explicit target CPU and metadata bytes, final
+idle and 10-second RSS. Cold and coverage work excluded from warm groups.
+
+Diagnostic: site-pure-1, 400000 objects, two cycles and identical 10-second
+history for defaults and immediate purge, mi/oracle-site/static-model. Record
+mimalloc's own reserved/committed/purged statistics at every phase. Separate
+labelled runs for each policy/options invoke mi_collect(true) on the allocating
+worker at each final idle10; these forced-collection runs are diagnostics,
+never included in factorial or ordinary RSS groups. No claims about memory
+being irreducible solely from passive waiting. Diagnostic statistics may
+require a separately labelled MI_STAT-enabled allocator build.
+
+Design SHA256: cd4517bb49504fa455631fad7a867e121b2117785a6dcd63b71e95ae0e6a2b54. No factorial result has been collected at declaration.
+
+Diagnostic implementation clarification, before any pass-11 performance result:
+MI_STAT=2 provides active-allocation counters absent in the release build. The
+separate diagnostic fixture additionally sums mimalloc heap-area committed and
+used bytes on the allocating worker, including both tagged heaps. Area traversal
+may collect delayed frees; all diagnostic variants share this instrumentation.
+Forced collection occurs only after cycle 1 idle10 to preserve both cycle
+histories. First observe mi_collect(true) on the default heap, then separately
+observe mi_heap_collect(true) on each tagged class heap: upstream mi_collect
+alone visits only the default heap, so it would not test tagged-page retention.
+These extra observations remain explicitly diagnostic, outside the factorial.
+
+Before any performance result, the Redis control list is completed with the
+site oracle and context oracle from the review's table, in addition to the nine
+listed policies. This makes 11 variants x five repetitions x four blocks = 220
+accepted warm Redis observations. Their trace-fitted tables are recollected for
+each binary/options block. The factorial design, seeds and mappings are unchanged.
+
+R3-F1 implementation/test update: the first Linux high-cardinality runs passed
+with pair/context/byte/zero limits and active workers doing cross-thread frees;
+the combined logger/live regression passed at sample rates 1 and 64. The test
+now also covers many owners sharing a pair until shard/sample bytes exhaust the
+budget, and reports the maximum observed contexts per site. The full 22-workload
+Linux correctness suite is running before performance. Local macOS combined,
+hybrid protocol, semantic-control tests, numeric Redis-family tests, compilation,
+and whitespace checks passed. The Redis normalization loop is tested from the
+actual patch text (including long numeric IDs and colon families).
+
+Pass-10 completion was independently rechecked here against all 25 matrix hashes
+in its earlier independent recomputation and the regression inference audit;
+results/pass11/inherited-pass10-check.json records this scope. No historical
+performance run was replaced. Overflow requested bytes are now included in live
+model coverage's unasked numerator/denominator instead of silently excluding
+allocations that could not register state. Pair counts remain registered pairs,
+not estimates of the number of rejected distinct contexts.
+
+Full Linux correctness passed all 22 workloads and every integration, including
+the five metadata-limit cases (contexts, pairs, bytes, shared shards/samples,
+zero budget). Evidence is results/pass11/tests/. The production library is now
+frozen at SHA256 0496214ecc6dc27fb9f5c2c39b9b40474e3720aa7736037a0fc3c432ca56e0cc.
+The sequential Redis / diagnostic / factorial pipeline is starting. Both-cycle
+10-second waits alone require about 13 hours across the 2400 factorial runs;
+completed groups will be reported without treating pending groups as available.
+
+Pass 11 Redis normalized/defaults completed all five randomized repetitions for
+11 policies and passed the independent inference-overlap audit. Final idle MiB:
+mi 274.496, key-only 273.117, site/context oracle 274.762/274.719,
+static-site/context 281.570/281.570, hybrid 281.613, heuristic 281.391,
+neutral 281.648, names 281.605, TTL 281.676. Static/context target CPU median
+0.443 s versus mi 0.325 s, with 5.596 MiB raw metadata peak and no overflow.
+The application normalization removes the previous multi-GiB state explosion in
+this block; it does not establish a model saving. The unnormalized guarded
+stress blocks and both remaining experiment stages are still pending.
+The standard full correctness suite regenerated generic regression trace/table
+outputs; all 22 table hashes still match the pass-10 measurement fingerprints
+(results/pass11/inherited-table-check.json). Historical accepted records remain
+unchanged. The plausible binary also matches its pass-10 fingerprint exactly.
+
+Pass-11 synchronized milestone: Redis 2/4 audited blocks; factorial 0/24 audited blocks; 0 diagnostic phase observations. Compact evidence and recomputed tables are local under results/pass11; all other groups remain pending.
+
+Normalized Redis/immediate also completed five randomized repetitions per policy
+and passed its inference audit. Final idle MiB: mi 270.953, static/site 278.180,
+static/context 277.863, hybrid/context 277.844; model policies again lose to mi.
+Static/context target CPU is 0.428 s versus mi 0.335 s, raw metadata peak
+5.596 MiB, no overflow. Both normalized option sets are complete; unnormalized
+high-cardinality guard measurements have begun, with the same frozen library.
+
+Pass-11 synchronized milestone: Redis 3/4 audited blocks; factorial 0/24 audited blocks; 0 diagnostic phase observations. Compact evidence and recomputed tables are local under results/pass11; all other groups remain pending.
+
+Guarded unnormalized Redis/defaults completed five randomized repetitions per
+policy and passed its inference audit. Final idle MiB: mi 274.848, key-only
+289.348, site/context oracle 274.516/290.047, static/site 281.805,
+static/context 283.484, hybrid/context 283.762, heuristic 283.434,
+neutral 284.055, names 283.895, TTL 283.664. Static/context target CPU is
+0.570 s versus mi 0.325 s; historical unguarded values were 4246.531 MiB and
+28.235 s. The guard registers 961 pairs, reaches exactly 64 contexts per site,
+reserves a median peak 7.776 MiB raw metadata, and defaults about 494960 overflow
+allocations. Thus the real high-cardinality failure is bounded without application
+normalization, independently of the model; every live no-model control shows the
+same bounded state. This is not a model saving: each live/context median still
+exceeds mi. Unnormalized immediate purge remains in progress; diagnostics and
+factorial are still pending.
+
+Reporting-only R3-F2 follow-through: the pass-10 report generator now explicitly
+labels absent regression/validation artifacts pending, and preserves newer
+RESULTS.md sections when regenerating its historical section. A temporary
+empty-artifact headline check passed. This does not regenerate or replace any
+historical measurement. The new-pass finalizer is gated on the complete remote
+validation and matching local matrix hashes; it cannot publish completion while
+any requested group or audit is absent.
+
+Pass-11 synchronized milestone: Redis 4/4 audited blocks; factorial 0/24 audited blocks; 0 diagnostic phase observations. Compact evidence and recomputed tables are local under results/pass11; all other groups remain pending.
+
+All four Redis blocks are now complete and inference-audited (220 accepted warm
+runs). Unnormalized immediate-purge idle MiB: mi 270.684, static/site 277.746,
+static/context 279.805, hybrid/context 280.238, heuristic 279.387, neutral
+280.082, names 279.844, TTL 279.941. Static/context target CPU is 0.603 s versus
+mi 0.329 s; raw metadata peak remains 7.776 MiB. In both options series the
+unnormalized application remains bounded without the application normalization;
+all live no-model controls share that result. No static/context or hybrid/context
+median beats plain mi in any of the four blocks. Both-cycle purge diagnostics
+with separate MI_STAT=2 libraries have begun; the production libraries and
+predeclared factorial inputs remain unchanged.
+
+Pass-11 synchronized milestone: Redis 4/4 audited blocks; factorial 0/24 audited blocks; 54 diagnostic phase observations. Compact evidence and recomputed tables are local under results/pass11; all other groups remain pending.
+
+Pass-11 synchronized milestone: Redis 4/4 audited blocks; factorial 0/24 audited blocks; 108 diagnostic phase observations. Compact evidence and recomputed tables are local under results/pass11; all other groups remain pending.
+
+Matched purge diagnostics completed both options and passed their inference audits
+(12 diagnostic runs, 108 phase observations). Defaults oracle idle10 RSS is
+213.012 MiB in the forced run: default-heap mi_collect(true) gives 187.574,
+then collecting tagged class heaps gives 41.273 with unchanged workload live
+bytes. Its heap areas before collection contain 29.922 MiB used / 30.075 MiB
+committed. Defaults static similarly falls 215.102→43.504 MiB. Thus most of the
+placed variants’ roughly 214 MiB is reclaimable resident memory awaiting service,
+not irreducibly occupied heap pages. Plain mi barely changes 280.223→279.477;
+its areas hold 266.199 MiB capacity for 29.915 MiB used blocks and only 0.008 MiB
+in empty areas, supporting live-page pinning in the baseline.
+
+Immediate-purge ordinary final idle10 MiB: mi 280.227, oracle 41.379, static
+43.586. Forced counterparts change only 280.172→279.480, 41.383→41.141, and
+43.582→43.246. These are single MI_STAT=2 diagnostic observations with matched
+histories, not performance medians. Importantly, the immediate placed variants’
+signed committed counters become negative (ordinary oracle −5109.301 MiB).
+Raw values are retained and marked invalid for absolute accounting; even the
+positive counters include sparsely touched reserved arenas, not RSS. Conclusions
+use RSS intervention and heap-area occupancy, not a subtraction of these counters.
+Full explanation: results/pass11/diagnosis.md. The predeclared factorial has begun
+with coverage checks for the unchanged plausible binary and its recorded priors.
+
+While the first factorial block runs, raw metadata bytes independently reconcile exactly with pairs × site size + shards × shard size + 4096-byte thread indexes + sample records × sample size in all 183 available measured records. The final validator now requires this reconciliation on the LP64 test target, and verifies frozen replay-file hashes and every recorded factorial order seed. These are evidence checks only; no measured input, mapping, prior, or gate changed.
+
+Long-run evidence synchronization is now detached locally (PID in results/pass11/sync.pid, progress in sync.log). It retries transient transfer failures every 60 seconds, rebuilds tables only on new inference audits, and runs tools/pass11_finish.py only after remote status 0, stage complete, successful final validation and matching local matrix hashes. The remote sequential pipeline remains unchanged (PID in results/pass11/pid). Both use the existing environment destination without writing its value. This automation preserves pending wording until every requested measurement/audit is present; a remote failure leaves the record pending.
+
+Pass-11 synchronized milestone: Redis 4/4 audited blocks; factorial 1/24 audited blocks; 108 diagnostic phase observations. Compact evidence and recomputed tables are local under results/pass11; all other groups remain pending.
+
+First factorial block complete and inference-audited: plausible / site-pure / one
+thread, 100 accepted warm runs, zero overlap. Median idle MiB: mi 280.215;
+model gates 0.6/0.7/0.8 = 228.781/228.785/304.846; matching rule about 283.16;
+neutral about 304.85 at every gate. Model-minus-rule paired median/95% interval:
+0.6 −54.379 [−54.387, −54.373] MiB; 0.7 −54.375 [−54.379, −54.367];
+0.8 +21.684 [+21.664, +21.688]. At 0.8 model-minus-neutral is 0.000
+[−0.018, +0.035] MiB and model-minus-mi is +24.629 [+24.607, +24.633].
+At 0.6/0.7 only entry_put promotes (64.328 MiB allocation clock); at 0.8,
+model and neutral additionally promote conn_attach at 64.040 MiB and demote
+it at 329.725 MiB. All ten repetitions agree on these transitions. This confirms
+the review's pure-one-thread gate prediction, not generality across namings.
+The other 23 factorial blocks remain pending; plausible / pure / 16 threads is
+now running. The detached watcher has successfully synchronized the first audit
+and generated its paired intervals and per-site promotion table locally.
+
+Pass-11 synchronized milestone: Redis 4/4 audited blocks; factorial 2/24 audited blocks; 108 diagnostic phase observations. Compact evidence and recomputed tables are local under results/pass11; all other groups remain pending.
+
+Pass-11 synchronized milestone: Redis 4/4 audited blocks; factorial 3/24 audited blocks; 108 diagnostic phase observations. Compact evidence and recomputed tables are local under results/pass11; all other groups remain pending.
+
+Pass-11 synchronized milestone: Redis 4/4 audited blocks; factorial 4/24 audited blocks; 108 diagnostic phase observations. Compact evidence and recomputed tables are local under results/pass11; all other groups remain pending.
+
+Pass-11 synchronized milestone: Redis 4/4 audited blocks; factorial 5/24 audited blocks; 108 diagnostic phase observations. Compact evidence and recomputed tables are local under results/pass11; all other groups remain pending.
+
+Pass-11 synchronized milestone: Redis 4/4 audited blocks; factorial 6/24 audited blocks; 108 diagnostic phase observations. Compact evidence and recomputed tables are local under results/pass11; all other groups remain pending.
