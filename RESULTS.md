@@ -2,7 +2,7 @@
 
 This pass asks whether lifetime placement saves memory under mimalloc defaults, whether current runtime statistics help, and whether a model adds value beyond function names and TTL text.
 
-6/25 fragmentation blocks are complete. Every published comparison uses five interleaved repetitions. **Defaults** unsets every MIMALLOC_* override; **immediate purge** sets delay 0, arena multiplier 1 and decommit enabled. Full measurements, both cycles and 10-second idle observations are in the [pass-10 report](results/pass10/results.md) and [phase table](results/pass10/phases.md).
+12/25 fragmentation blocks are complete. Every published comparison uses five interleaved repetitions. **Defaults** unsets every MIMALLOC_* override; **immediate purge** sets delay 0, arena multiplier 1 and decommit enabled. Full measurements, both cycles and 10-second idle observations are in the [pass-10 report](results/pass10/results.md) and [phase table](results/pass10/phases.md).
 
 Final idle RSS under **defaults**, MiB. Plain mimalloc is the `mi` column; rules use the same placement machinery as the model.
 
@@ -10,10 +10,23 @@ Final idle RSS under **defaults**, MiB. Plain mimalloc is the `mi` column; rules
 |---|---:|---:|---:|---:|---:|---:|---:|
 | site-pure-1 | 280.21 | 214.00 | 216.81 | 216.81 | 286.83 | 304.81 | 216.81 |
 | site-pure-16 | 296.55 | 234.80 | 239.98 | 241.92 | 305.36 | 331.91 | 239.74 |
+| site-mixed-1 | 146.21 | 112.18 | 115.02 | 115.02 | 147.14 | 158.96 | 115.02 |
+| site-mixed-16 | 170.53 | 138.91 | 140.07 | 140.12 | 171.24 | 180.02 | 140.07 |
 
 The one-thread pure model reduction is 22.6% under defaults, versus 84.4% with immediate purge. The fixed names rule produces 216.81 MiB under defaults. The original large synthetic saving is configuration-dependent and does not by itself show a model advantage.
 
 The heuristic now recomputes its sparse formula from current observations. Neutral rules use P(transient)=0.5 with hybrid’s continuous C checks. Names and TTL rules use fixed, preregistered semantic tests with those same checks; none calls a model. The full report compares these controls under both configurations.
+
+Fraction of the named saving retained after renaming, **static / hybrid**, relative to each binary’s own mimalloc baseline. Negative means RSS increased. These are the same synthetic workload with changed names and context vocabulary.
+
+| Workload | Opaque | Plausible |
+|---|---:|---:|
+| site-pure-1 | -4.6% / -38.8% | pending |
+| site-pure-16 | -3.6% / -64.7% | pending |
+| site-mixed-1 | -2.9% / -40.8% | pending |
+| site-mixed-16 | -5.2% / -24.8% | pending |
+
+Static-model has a lower median than the matching keyword/TTL rule in 1/8 completed default-options comparisons. The largest difference is 0.17 MiB on opaque/site-pure-16. These are descriptive median comparisons; all differences and ranges remain in the full report. [Every first-sight model answer and probability](results/pass10/model-sites.md) is reported beside trace truth.
 
 The combined logging/live-free bug is fixed. Tests cover cross-thread frees, retired allocating threads, actual address reuse, sample/survivor counts and hybrid demotions with logging on and off. Warm model measurements replay answers and retain service/IPC costs; target CPU excludes sidecar CPU. Compact evidence supports the medians, while full trace/cache reconstruction requires the retained remote artifacts.
 

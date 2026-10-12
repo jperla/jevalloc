@@ -7,7 +7,8 @@ observation at each original workload cycle. Real workloads preserve their
 original cycle count. Each matrix contains five interleaved warm repetitions,
 full phase observations, workload CPU/wall costs and input fingerprints.
 
-`regression.json` uses the existing 22-workload regression protocol and reports
+`regression.json` uses the existing 22-workload regression protocol with the
+MIMALLOC_* overrides removed and reports
 peak RSS and the existing elapsed-time/inverse-throughput metric.
 
 Heuristic and all three rule controls execute from current observations, with
