@@ -1,0 +1,26 @@
+....F..........
+======================================================================
+FAIL: test_legacy_replay_rejected (__main__.Tools.test_legacy_replay_rejected)
+----------------------------------------------------------------------
+ValueError: Live deterministic policies must not replay historical decisions
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/quill/jevalloc/src-tree/tests/test_tools.py", line 34, in test_legacy_replay_rejected
+    with self.assertRaisesRegex(ValueError,'Replay prompt'):jevd.Decisions(args)
+AssertionError: "Replay prompt" does not match "Live deterministic policies must not replay historical decisions"
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.010s
+
+FAILED (failures=1)
+Traceback (most recent call last):
+  File "/home/quill/jevalloc/src-tree/tests/test.py", line 103, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/quill/jevalloc/src-tree/tests/test.py", line 32, in main
+    subprocess.run([sys.executable,str(ROOT/'tests/test_tools.py')],check=True)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/quill/jevalloc/venv/bin/python3', '/home/quill/jevalloc/src-tree/tests/test_tools.py']' returned non-zero exit status 1.

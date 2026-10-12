@@ -1,0 +1,7051 @@
+[
+  {
+    "schema": 3,
+    "class_schema": "transient-permanent-v1",
+    "key": "a3cc4795af0459d5",
+    "program": "server-sim",
+    "site_key": "a3cc4795af0459d5",
+    "context_signature": "0000000000000000",
+    "context": "",
+    "total_allocation_bytes": 921784192,
+    "count": 6,
+    "bytes": 6144,
+    "never_freed": 0,
+    "never_freed_bytes": 0,
+    "lifetime_histogram": [
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lifetime_histogram_bytes": [
+      6144,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "short_bytes": 1048576,
+    "fixed_s_class_bytes": [
+      6144,
+      0
+    ],
+    "class_bytes": [
+      6144,
+      0
+    ],
+    "permanent_bytes_by_percent": {
+      "25": 0,
+      "50": 0,
+      "90": 0
+    },
+    "frames": [
+      {
+        "address": "0x851b5",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__GI__IO_file_doallocate",
+        "file": "./libio/./libio/filedoalloc.c",
+        "line": 101,
+        "source": []
+      },
+      {
+        "address": "0x95524",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__GI__IO_doallocbuf",
+        "file": "./libio/./libio/genops.c",
+        "line": 347,
+        "source": []
+      },
+      {
+        "address": "0x92884",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "_IO_new_file_underflow",
+        "file": "./libio/./libio/fileops.c",
+        "line": 486,
+        "source": []
+      },
+      {
+        "address": "0x955d2",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__GI__IO_default_uflow",
+        "file": "./libio/./libio/genops.c",
+        "line": 362,
+        "source": []
+      },
+      {
+        "address": "0x6c1c4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__vfscanf_internal",
+        "file": "./stdio-common/./stdio-common/vfscanf-internal.c",
+        "line": 676,
+        "source": []
+      },
+      {
+        "address": "0x5fa3f",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__isoc23_fscanf",
+        "file": "./stdio-common/./stdio-common/isoc23_fscanf.c",
+        "line": 30,
+        "source": []
+      },
+      {
+        "address": "0x179d",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "emit",
+        "file": "fragbench/server-sim.c",
+        "line": 75,
+        "source": [
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          },
+          {
+            "line": 79,
+            "text": "}"
+          },
+          {
+            "line": 80,
+            "text": "static void mark(size_t id,int cycle,const char* name){"
+          },
+          {
+            "line": 81,
+            "text": " live_bytes[id].bytes=worker_live;phase(cycle,name);if(id==0)emit(cycle,name);pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 82,
+            "text": " const char* longer=getenv(\"FRAG_LONG_SETTLE_MS\");"
+          },
+          {
+            "line": 83,
+            "text": " if(longer&&!strcmp(name,\"idle\")){"
+          },
+          {
+            "line": 84,
+            "text": "  int ms=atoi(longer)-settle_ms;if(ms>0)usleep((useconds_t)ms*1000);"
+          },
+          {
+            "line": 85,
+            "text": "  pthread_barrier_wait(&boundary);if(id==0)emit(cycle,\"idle10\");pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 86,
+            "text": " }"
+          },
+          {
+            "line": 87,
+            "text": "}"
+          },
+          {
+            "line": 88,
+            "text": "static void* server_worker(void* arg) {"
+          },
+          {
+            "line": 89,
+            "text": " size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;"
+          },
+          {
+            "line": 90,
+            "text": " /* Pointer bookkeeping uses the system mapping API so it doesn't enter the"
+          },
+          {
+            "line": 91,
+            "text": "  * allocator's live requested-byte metric or pin experimental object pages. */"
+          },
+          {
+            "line": 92,
+            "text": " size_t bookkeeping=count*(sizeof(void*)+sizeof(size_t));"
+          },
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          },
+          {
+            "line": 95,
+            "text": " for(int cycle=0;cycle<2;cycle++) {"
+          }
+        ]
+      },
+      {
+        "address": "0x1a23",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "mark",
+        "file": "fragbench/server-sim.c",
+        "line": 81,
+        "source": [
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          },
+          {
+            "line": 79,
+            "text": "}"
+          },
+          {
+            "line": 80,
+            "text": "static void mark(size_t id,int cycle,const char* name){"
+          },
+          {
+            "line": 81,
+            "text": " live_bytes[id].bytes=worker_live;phase(cycle,name);if(id==0)emit(cycle,name);pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 82,
+            "text": " const char* longer=getenv(\"FRAG_LONG_SETTLE_MS\");"
+          },
+          {
+            "line": 83,
+            "text": " if(longer&&!strcmp(name,\"idle\")){"
+          },
+          {
+            "line": 84,
+            "text": "  int ms=atoi(longer)-settle_ms;if(ms>0)usleep((useconds_t)ms*1000);"
+          },
+          {
+            "line": 85,
+            "text": "  pthread_barrier_wait(&boundary);if(id==0)emit(cycle,\"idle10\");pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 86,
+            "text": " }"
+          },
+          {
+            "line": 87,
+            "text": "}"
+          },
+          {
+            "line": 88,
+            "text": "static void* server_worker(void* arg) {"
+          },
+          {
+            "line": 89,
+            "text": " size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;"
+          },
+          {
+            "line": 90,
+            "text": " /* Pointer bookkeeping uses the system mapping API so it doesn't enter the"
+          },
+          {
+            "line": 91,
+            "text": "  * allocator's live requested-byte metric or pin experimental object pages. */"
+          },
+          {
+            "line": 92,
+            "text": " size_t bookkeeping=count*(sizeof(void*)+sizeof(size_t));"
+          },
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          },
+          {
+            "line": 95,
+            "text": " for(int cycle=0;cycle<2;cycle++) {"
+          },
+          {
+            "line": 96,
+            "text": "  for(size_t i=0;i<count;i++) {"
+          },
+          {
+            "line": 97,
+            "text": "   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;n*=payload_only?4:1;sizes[i]=n;"
+          },
+          {
+            "line": 98,
+            "text": "   /* Sessions last many operations; cache entries live until process exit."
+          },
+          {
+            "line": 99,
+            "text": "    * The two paths allocate interleaved in exactly the same size classes. */"
+          },
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          }
+        ]
+      },
+      {
+        "address": "0x1d1d",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "server_worker",
+        "file": "fragbench/server-sim.c",
+        "line": 113,
+        "source": [
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          },
+          {
+            "line": 95,
+            "text": " for(int cycle=0;cycle<2;cycle++) {"
+          },
+          {
+            "line": 96,
+            "text": "  for(size_t i=0;i<count;i++) {"
+          },
+          {
+            "line": 97,
+            "text": "   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;n*=payload_only?4:1;sizes[i]=n;"
+          },
+          {
+            "line": 98,
+            "text": "   /* Sessions last many operations; cache entries live until process exit."
+          },
+          {
+            "line": 99,
+            "text": "    * The two paths allocate interleaved in exactly the same size classes. */"
+          },
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          },
+          {
+            "line": 102,
+            "text": "    * aliasing the allocator's deterministic sampling period."
+          },
+          {
+            "line": 103,
+            "text": "    * One call/stack carries transient and permanent objects. */"
+          },
+          {
+            "line": 104,
+            "text": "   unsigned ttl=mixed?request_ttl(&rng):1;"
+          },
+          {
+            "line": 105,
+            "text": "   if(mixed&&jev_context_setf)jev_context_setf(REQUEST_CONTEXT,ttl==0?TTL_ZERO:ttl==1?TTL_SHORT:TTL_DAY);"
+          },
+          {
+            "line": 106,
+            "text": "   if(mixed)slots[i]=store_request_payload(n,ttl);"
+          },
+          {
+            "line": 107,
+            "text": "   else slots[i]=(i%10==0)?insert_cache_index(n):create_session_state(n);"
+          },
+          {
+            "line": 108,
+            "text": "   if(!payload_only){void* parse=parse_request_buffer(n);void* response=assemble_response_buffer(n);"
+          },
+          {
+            "line": 109,
+            "text": "   release(response,n);release(parse,n);}"
+          },
+          {
+            "line": 110,
+            "text": "   if(mixed&&ttl==0){release(slots[i],n);slots[i]=NULL;}"
+          },
+          {
+            "line": 111,
+            "text": "   if(jev_context_clear)jev_context_clear();"
+          },
+          {
+            "line": 112,
+            "text": "  }"
+          },
+          {
+            "line": 113,
+            "text": "  mark(id,cycle,\"peak\");"
+          },
+          {
+            "line": 114,
+            "text": "  for(size_t i=0;i<count;i++)if(slots[i]&&(mixed?((unsigned char*)slots[i])[0]!=(unsigned char)86400:i%10!=0)){release(slots[i],sizes[i]);slots[i]=NULL;}"
+          },
+          {
+            "line": 115,
+            "text": "  mark(id,cycle,\"drop\");"
+          },
+          {
+            "line": 116,
+            "text": "  /* Allocate/free after the purge deadline: mimalloc processes deferred purge"
+          },
+          {
+            "line": 117,
+            "text": "   * during allocator activity. Same pulse on all variants, counted in live bytes. */"
+          },
+          {
+            "line": 118,
+            "text": "  usleep(settle_ms*1000);"
+          },
+          {
+            "line": 119,
+            "text": "  for(int j=0;j<(payload_only?0:1024);j++){void* p=parse_request_buffer(64);release(p,64);}"
+          },
+          {
+            "line": 120,
+            "text": "  mark(id,cycle,\"idle\");"
+          },
+          {
+            "line": 121,
+            "text": "  /* Retained entries are deliberately never freed, including after cycle 1."
+          },
+          {
+            "line": 122,
+            "text": "   * Their pointers need not remain in slots, but their requested bytes do. */"
+          },
+          {
+            "line": 123,
+            "text": " }"
+          },
+          {
+            "line": 124,
+            "text": " munmap(slots,bookkeeping);return NULL;"
+          },
+          {
+            "line": 125,
+            "text": "}"
+          },
+          {
+            "line": 126,
+            "text": "int main(int argc,char** argv) {"
+          },
+          {
+            "line": 127,
+            "text": " if(argc>1)workers=atoi(argv[1]);if(argc>2)mixed=!strcmp(argv[2],\"site-mixed\");if(argc>3)objects=strtoull(argv[3],NULL,10);if(argc>4)settle_ms=atoi(argv[4]);"
+          },
+          {
+            "line": 128,
+            "text": " if(argc>5)payload_only=!strcmp(argv[5],\"payload-only\");"
+          },
+          {
+            "line": 129,
+            "text": " if(workers<1||workers>32||objects<(size_t)workers||settle_ms<100)return 2;"
+          },
+          {
+            "line": 130,
+            "text": " pthread_barrier_init(&boundary,NULL,workers);pthread_t threads[32];"
+          },
+          {
+            "line": 131,
+            "text": " for(size_t i=0;i<(size_t)workers;i++)if(pthread_create(&threads[i],NULL,server_worker,(void*)i))abort();"
+          },
+          {
+            "line": 132,
+            "text": " for(int i=0;i<workers;i++)pthread_join(threads[i],NULL);"
+          },
+          {
+            "line": 133,
+            "text": " puts(\"fragbench OK\");return 0;"
+          }
+        ]
+      },
+      {
+        "address": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "address": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ]
+  },
+  {
+    "schema": 3,
+    "class_schema": "transient-permanent-v1",
+    "key": "d1b8e7f38b9b0658",
+    "program": "server-sim",
+    "site_key": "d1b8e7f38b9b0658",
+    "context_signature": "0000000000000000",
+    "context": "",
+    "total_allocation_bytes": 921784192,
+    "count": 80000,
+    "bytes": 30725760,
+    "never_freed": 80000,
+    "never_freed_bytes": 30725760,
+    "lifetime_histogram": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lifetime_histogram_bytes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "short_bytes": 1048576,
+    "fixed_s_class_bytes": [
+      0,
+      30725760
+    ],
+    "class_bytes": [
+      0,
+      30725760
+    ],
+    "permanent_bytes_by_percent": {
+      "25": 30725760,
+      "50": 30725760,
+      "90": 30725760
+    },
+    "frames": [
+      {
+        "address": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "xmalloc",
+        "file": "fragbench/server-sim.c",
+        "line": 56,
+        "source": [
+          {
+            "line": 36,
+            "text": "#include <stdatomic.h>"
+          },
+          {
+            "line": 37,
+            "text": "#include <sys/resource.h>"
+          },
+          {
+            "line": 38,
+            "text": "#include <sys/mman.h>"
+          },
+          {
+            "line": 39,
+            "text": ""
+          },
+          {
+            "line": 40,
+            "text": "/* Every allocation shares the same innermost wrapper. Depth 1 cannot classify it."
+          },
+          {
+            "line": 41,
+            "text": " * Workers remain alive at idle so the experiment includes page purging, not just"
+          },
+          {
+            "line": 42,
+            "text": " * wholesale address-space release at thread exit. No allocator-specific collect. */"
+          },
+          {
+            "line": 43,
+            "text": "static _Thread_local size_t worker_live;"
+          },
+          {
+            "line": 44,
+            "text": "static struct { _Alignas(64) size_t bytes; } live_bytes[32];"
+          },
+          {
+            "line": 45,
+            "text": "static pthread_barrier_t boundary;"
+          },
+          {
+            "line": 46,
+            "text": "static int workers=1,mixed=0,payload_only=0,settle_ms=250;"
+          },
+          {
+            "line": 47,
+            "text": "static size_t objects=80000;"
+          },
+          {
+            "line": 48,
+            "text": "static uint64_t random_next(uint64_t* x){*x^=*x<<13;*x^=*x>>7;*x^=*x<<17;return *x;}"
+          },
+          {
+            "line": 49,
+            "text": "/* Keep TTL selection opaque to the caller so branch threading cannot duplicate"
+          },
+          {
+            "line": 50,
+            "text": " * the allocation call into separate PCs for immediate and retained payloads. */"
+          },
+          {
+            "line": 51,
+            "text": "__attribute__((noinline)) static unsigned request_ttl(uint64_t* rng){"
+          },
+          {
+            "line": 52,
+            "text": " unsigned draw=(unsigned)(random_next(rng)%20);"
+          },
+          {
+            "line": 53,
+            "text": " return draw>=10?0:(draw==0?86400:1);"
+          },
+          {
+            "line": 54,
+            "text": "}"
+          },
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          }
+        ]
+      },
+      {
+        "address": "0x16e9",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "insert_cache_index",
+        "file": "fragbench/server-sim.c",
+        "line": 61,
+        "source": [
+          {
+            "line": 41,
+            "text": " * Workers remain alive at idle so the experiment includes page purging, not just"
+          },
+          {
+            "line": 42,
+            "text": " * wholesale address-space release at thread exit. No allocator-specific collect. */"
+          },
+          {
+            "line": 43,
+            "text": "static _Thread_local size_t worker_live;"
+          },
+          {
+            "line": 44,
+            "text": "static struct { _Alignas(64) size_t bytes; } live_bytes[32];"
+          },
+          {
+            "line": 45,
+            "text": "static pthread_barrier_t boundary;"
+          },
+          {
+            "line": 46,
+            "text": "static int workers=1,mixed=0,payload_only=0,settle_ms=250;"
+          },
+          {
+            "line": 47,
+            "text": "static size_t objects=80000;"
+          },
+          {
+            "line": 48,
+            "text": "static uint64_t random_next(uint64_t* x){*x^=*x<<13;*x^=*x>>7;*x^=*x<<17;return *x;}"
+          },
+          {
+            "line": 49,
+            "text": "/* Keep TTL selection opaque to the caller so branch threading cannot duplicate"
+          },
+          {
+            "line": 50,
+            "text": " * the allocation call into separate PCs for immediate and retained payloads. */"
+          },
+          {
+            "line": 51,
+            "text": "__attribute__((noinline)) static unsigned request_ttl(uint64_t* rng){"
+          },
+          {
+            "line": 52,
+            "text": " unsigned draw=(unsigned)(random_next(rng)%20);"
+          },
+          {
+            "line": 53,
+            "text": " return draw>=10?0:(draw==0?86400:1);"
+          },
+          {
+            "line": 54,
+            "text": "}"
+          },
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          },
+          {
+            "line": 79,
+            "text": "}"
+          },
+          {
+            "line": 80,
+            "text": "static void mark(size_t id,int cycle,const char* name){"
+          },
+          {
+            "line": 81,
+            "text": " live_bytes[id].bytes=worker_live;phase(cycle,name);if(id==0)emit(cycle,name);pthread_barrier_wait(&boundary);"
+          }
+        ]
+      },
+      {
+        "address": "0x1b55",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "server_worker",
+        "file": "fragbench/server-sim.c",
+        "line": 107,
+        "source": [
+          {
+            "line": 87,
+            "text": "}"
+          },
+          {
+            "line": 88,
+            "text": "static void* server_worker(void* arg) {"
+          },
+          {
+            "line": 89,
+            "text": " size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;"
+          },
+          {
+            "line": 90,
+            "text": " /* Pointer bookkeeping uses the system mapping API so it doesn't enter the"
+          },
+          {
+            "line": 91,
+            "text": "  * allocator's live requested-byte metric or pin experimental object pages. */"
+          },
+          {
+            "line": 92,
+            "text": " size_t bookkeeping=count*(sizeof(void*)+sizeof(size_t));"
+          },
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          },
+          {
+            "line": 95,
+            "text": " for(int cycle=0;cycle<2;cycle++) {"
+          },
+          {
+            "line": 96,
+            "text": "  for(size_t i=0;i<count;i++) {"
+          },
+          {
+            "line": 97,
+            "text": "   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;n*=payload_only?4:1;sizes[i]=n;"
+          },
+          {
+            "line": 98,
+            "text": "   /* Sessions last many operations; cache entries live until process exit."
+          },
+          {
+            "line": 99,
+            "text": "    * The two paths allocate interleaved in exactly the same size classes. */"
+          },
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          },
+          {
+            "line": 102,
+            "text": "    * aliasing the allocator's deterministic sampling period."
+          },
+          {
+            "line": 103,
+            "text": "    * One call/stack carries transient and permanent objects. */"
+          },
+          {
+            "line": 104,
+            "text": "   unsigned ttl=mixed?request_ttl(&rng):1;"
+          },
+          {
+            "line": 105,
+            "text": "   if(mixed&&jev_context_setf)jev_context_setf(REQUEST_CONTEXT,ttl==0?TTL_ZERO:ttl==1?TTL_SHORT:TTL_DAY);"
+          },
+          {
+            "line": 106,
+            "text": "   if(mixed)slots[i]=store_request_payload(n,ttl);"
+          },
+          {
+            "line": 107,
+            "text": "   else slots[i]=(i%10==0)?insert_cache_index(n):create_session_state(n);"
+          },
+          {
+            "line": 108,
+            "text": "   if(!payload_only){void* parse=parse_request_buffer(n);void* response=assemble_response_buffer(n);"
+          },
+          {
+            "line": 109,
+            "text": "   release(response,n);release(parse,n);}"
+          },
+          {
+            "line": 110,
+            "text": "   if(mixed&&ttl==0){release(slots[i],n);slots[i]=NULL;}"
+          },
+          {
+            "line": 111,
+            "text": "   if(jev_context_clear)jev_context_clear();"
+          },
+          {
+            "line": 112,
+            "text": "  }"
+          },
+          {
+            "line": 113,
+            "text": "  mark(id,cycle,\"peak\");"
+          },
+          {
+            "line": 114,
+            "text": "  for(size_t i=0;i<count;i++)if(slots[i]&&(mixed?((unsigned char*)slots[i])[0]!=(unsigned char)86400:i%10!=0)){release(slots[i],sizes[i]);slots[i]=NULL;}"
+          },
+          {
+            "line": 115,
+            "text": "  mark(id,cycle,\"drop\");"
+          },
+          {
+            "line": 116,
+            "text": "  /* Allocate/free after the purge deadline: mimalloc processes deferred purge"
+          },
+          {
+            "line": 117,
+            "text": "   * during allocator activity. Same pulse on all variants, counted in live bytes. */"
+          },
+          {
+            "line": 118,
+            "text": "  usleep(settle_ms*1000);"
+          },
+          {
+            "line": 119,
+            "text": "  for(int j=0;j<(payload_only?0:1024);j++){void* p=parse_request_buffer(64);release(p,64);}"
+          },
+          {
+            "line": 120,
+            "text": "  mark(id,cycle,\"idle\");"
+          },
+          {
+            "line": 121,
+            "text": "  /* Retained entries are deliberately never freed, including after cycle 1."
+          },
+          {
+            "line": 122,
+            "text": "   * Their pointers need not remain in slots, but their requested bytes do. */"
+          },
+          {
+            "line": 123,
+            "text": " }"
+          },
+          {
+            "line": 124,
+            "text": " munmap(slots,bookkeeping);return NULL;"
+          },
+          {
+            "line": 125,
+            "text": "}"
+          },
+          {
+            "line": 126,
+            "text": "int main(int argc,char** argv) {"
+          },
+          {
+            "line": 127,
+            "text": " if(argc>1)workers=atoi(argv[1]);if(argc>2)mixed=!strcmp(argv[2],\"site-mixed\");if(argc>3)objects=strtoull(argv[3],NULL,10);if(argc>4)settle_ms=atoi(argv[4]);"
+          }
+        ]
+      },
+      {
+        "address": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "address": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ]
+  },
+  {
+    "schema": 3,
+    "class_schema": "transient-permanent-v1",
+    "key": "6957cfd0d57e38ee",
+    "program": "server-sim",
+    "site_key": "6957cfd0d57e38ee",
+    "context_signature": "0000000000000000",
+    "context": "",
+    "total_allocation_bytes": 921784192,
+    "count": 1,
+    "bytes": 4096,
+    "never_freed": 1,
+    "never_freed_bytes": 4096,
+    "lifetime_histogram": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lifetime_histogram_bytes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "short_bytes": 1048576,
+    "fixed_s_class_bytes": [
+      0,
+      4096
+    ],
+    "class_bytes": [
+      0,
+      4096
+    ],
+    "permanent_bytes_by_percent": {
+      "25": 4096,
+      "50": 4096,
+      "90": 4096
+    },
+    "frames": [
+      {
+        "address": "0x851b5",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__GI__IO_file_doallocate",
+        "file": "./libio/./libio/filedoalloc.c",
+        "line": 101,
+        "source": []
+      },
+      {
+        "address": "0x95524",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__GI__IO_doallocbuf",
+        "file": "./libio/./libio/genops.c",
+        "line": 347,
+        "source": []
+      },
+      {
+        "address": "0x92f90",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "_IO_new_file_overflow",
+        "file": "./libio/./libio/fileops.c",
+        "line": 745,
+        "source": []
+      },
+      {
+        "address": "0x93aaf",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "_IO_new_file_xsputn",
+        "file": "./libio/./libio/fileops.c",
+        "line": 1244,
+        "source": []
+      },
+      {
+        "address": "0x60b49",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__printf_buffer_flush_to_file",
+        "file": "./stdio-common/./stdio-common/printf_buffer_to_file.c",
+        "line": 59,
+        "source": []
+      },
+      {
+        "address": "0x607e5",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__printf_buffer_do_flush",
+        "file": "./stdio-common/./stdio-common/printf_buffer_flush.c",
+        "line": 53,
+        "source": []
+      },
+      {
+        "address": "0x60da9",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__printf_buffer_write",
+        "file": "./stdio-common/./stdio-common/Xprintf_buffer_write.c",
+        "line": 33,
+        "source": []
+      },
+      {
+        "address": "0x69484",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__printf_buffer",
+        "file": "./stdio-common/./stdio-common/vfprintf-internal.c",
+        "line": 1028,
+        "source": []
+      },
+      {
+        "address": "0x6b5a2",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__vfprintf_internal",
+        "file": "./stdio-common/./stdio-common/vfprintf-internal.c",
+        "line": 1559,
+        "source": []
+      },
+      {
+        "address": "0x137a3d",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "___printf_chk",
+        "file": "./debug/./debug/printf_chk.c",
+        "line": 33,
+        "source": []
+      },
+      {
+        "address": "0x184d",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "printf",
+        "file": "/usr/include/x86_64-linux-gnu/bits/stdio2.h",
+        "line": 86,
+        "source": []
+      },
+      {
+        "address": "0x1a23",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "mark",
+        "file": "fragbench/server-sim.c",
+        "line": 81,
+        "source": [
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          },
+          {
+            "line": 79,
+            "text": "}"
+          },
+          {
+            "line": 80,
+            "text": "static void mark(size_t id,int cycle,const char* name){"
+          },
+          {
+            "line": 81,
+            "text": " live_bytes[id].bytes=worker_live;phase(cycle,name);if(id==0)emit(cycle,name);pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 82,
+            "text": " const char* longer=getenv(\"FRAG_LONG_SETTLE_MS\");"
+          },
+          {
+            "line": 83,
+            "text": " if(longer&&!strcmp(name,\"idle\")){"
+          },
+          {
+            "line": 84,
+            "text": "  int ms=atoi(longer)-settle_ms;if(ms>0)usleep((useconds_t)ms*1000);"
+          },
+          {
+            "line": 85,
+            "text": "  pthread_barrier_wait(&boundary);if(id==0)emit(cycle,\"idle10\");pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 86,
+            "text": " }"
+          },
+          {
+            "line": 87,
+            "text": "}"
+          },
+          {
+            "line": 88,
+            "text": "static void* server_worker(void* arg) {"
+          },
+          {
+            "line": 89,
+            "text": " size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;"
+          },
+          {
+            "line": 90,
+            "text": " /* Pointer bookkeeping uses the system mapping API so it doesn't enter the"
+          },
+          {
+            "line": 91,
+            "text": "  * allocator's live requested-byte metric or pin experimental object pages. */"
+          },
+          {
+            "line": 92,
+            "text": " size_t bookkeeping=count*(sizeof(void*)+sizeof(size_t));"
+          },
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          },
+          {
+            "line": 95,
+            "text": " for(int cycle=0;cycle<2;cycle++) {"
+          },
+          {
+            "line": 96,
+            "text": "  for(size_t i=0;i<count;i++) {"
+          },
+          {
+            "line": 97,
+            "text": "   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;n*=payload_only?4:1;sizes[i]=n;"
+          },
+          {
+            "line": 98,
+            "text": "   /* Sessions last many operations; cache entries live until process exit."
+          },
+          {
+            "line": 99,
+            "text": "    * The two paths allocate interleaved in exactly the same size classes. */"
+          },
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schema": 3,
+    "class_schema": "transient-permanent-v1",
+    "key": "ede875a8c2f6f80c",
+    "program": "server-sim",
+    "site_key": "ede875a8c2f6f80c",
+    "context_signature": "0000000000000000",
+    "context": "",
+    "total_allocation_bytes": 921784192,
+    "count": 1,
+    "bytes": 304,
+    "never_freed": 1,
+    "never_freed_bytes": 304,
+    "lifetime_histogram": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lifetime_histogram_bytes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "short_bytes": 1048576,
+    "fixed_s_class_bytes": [
+      0,
+      304
+    ],
+    "class_bytes": [
+      0,
+      304
+    ],
+    "permanent_bytes_by_percent": {
+      "25": 304,
+      "50": 304,
+      "90": 304
+    },
+    "frames": [
+      {
+        "address": "0x145ac",
+        "image": "/lib64/ld-linux-x86-64.so.2",
+        "function": "calloc",
+        "file": "./elf/../include/rtld-malloc.h",
+        "line": 44,
+        "source": []
+      },
+      {
+        "address": "0x9d617",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "allocate_stack",
+        "file": "./nptl/./nptl/allocatestack.c",
+        "line": 429,
+        "source": []
+      },
+      {
+        "address": "0x13f8",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "main",
+        "file": "fragbench/server-sim.c",
+        "line": 131,
+        "source": [
+          {
+            "line": 111,
+            "text": "   if(jev_context_clear)jev_context_clear();"
+          },
+          {
+            "line": 112,
+            "text": "  }"
+          },
+          {
+            "line": 113,
+            "text": "  mark(id,cycle,\"peak\");"
+          },
+          {
+            "line": 114,
+            "text": "  for(size_t i=0;i<count;i++)if(slots[i]&&(mixed?((unsigned char*)slots[i])[0]!=(unsigned char)86400:i%10!=0)){release(slots[i],sizes[i]);slots[i]=NULL;}"
+          },
+          {
+            "line": 115,
+            "text": "  mark(id,cycle,\"drop\");"
+          },
+          {
+            "line": 116,
+            "text": "  /* Allocate/free after the purge deadline: mimalloc processes deferred purge"
+          },
+          {
+            "line": 117,
+            "text": "   * during allocator activity. Same pulse on all variants, counted in live bytes. */"
+          },
+          {
+            "line": 118,
+            "text": "  usleep(settle_ms*1000);"
+          },
+          {
+            "line": 119,
+            "text": "  for(int j=0;j<(payload_only?0:1024);j++){void* p=parse_request_buffer(64);release(p,64);}"
+          },
+          {
+            "line": 120,
+            "text": "  mark(id,cycle,\"idle\");"
+          },
+          {
+            "line": 121,
+            "text": "  /* Retained entries are deliberately never freed, including after cycle 1."
+          },
+          {
+            "line": 122,
+            "text": "   * Their pointers need not remain in slots, but their requested bytes do. */"
+          },
+          {
+            "line": 123,
+            "text": " }"
+          },
+          {
+            "line": 124,
+            "text": " munmap(slots,bookkeeping);return NULL;"
+          },
+          {
+            "line": 125,
+            "text": "}"
+          },
+          {
+            "line": 126,
+            "text": "int main(int argc,char** argv) {"
+          },
+          {
+            "line": 127,
+            "text": " if(argc>1)workers=atoi(argv[1]);if(argc>2)mixed=!strcmp(argv[2],\"site-mixed\");if(argc>3)objects=strtoull(argv[3],NULL,10);if(argc>4)settle_ms=atoi(argv[4]);"
+          },
+          {
+            "line": 128,
+            "text": " if(argc>5)payload_only=!strcmp(argv[5],\"payload-only\");"
+          },
+          {
+            "line": 129,
+            "text": " if(workers<1||workers>32||objects<(size_t)workers||settle_ms<100)return 2;"
+          },
+          {
+            "line": 130,
+            "text": " pthread_barrier_init(&boundary,NULL,workers);pthread_t threads[32];"
+          },
+          {
+            "line": 131,
+            "text": " for(size_t i=0;i<(size_t)workers;i++)if(pthread_create(&threads[i],NULL,server_worker,(void*)i))abort();"
+          },
+          {
+            "line": 132,
+            "text": " for(int i=0;i<workers;i++)pthread_join(threads[i],NULL);"
+          },
+          {
+            "line": 133,
+            "text": " puts(\"fragbench OK\");return 0;"
+          },
+          {
+            "line": 134,
+            "text": "}"
+          }
+        ]
+      },
+      {
+        "address": "0x2a1ca",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__libc_start_call_main",
+        "file": "./csu/../sysdeps/x86/libc-start.c",
+        "line": 58,
+        "source": []
+      },
+      {
+        "address": "0x2a28b",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__libc_start_main_impl",
+        "file": "./csu/../csu/libc-start.c",
+        "line": 360,
+        "source": []
+      },
+      {
+        "address": "0x1555",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "_start\n??:?",
+        "file": null,
+        "line": null,
+        "source": []
+      }
+    ]
+  },
+  {
+    "schema": 3,
+    "class_schema": "transient-permanent-v1",
+    "key": "b1f63e1f4cf87cbb",
+    "program": "server-sim",
+    "site_key": "b1f63e1f4cf87cbb",
+    "context_signature": "0000000000000000",
+    "context": "",
+    "total_allocation_bytes": 921784192,
+    "count": 800000,
+    "bytes": 307213248,
+    "never_freed": 0,
+    "never_freed_bytes": 0,
+    "lifetime_histogram": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      99508,
+      500783,
+      199709,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lifetime_histogram_bytes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      19105536,
+      179458624,
+      108649088,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "short_bytes": 1048576,
+    "fixed_s_class_bytes": [
+      307213248,
+      0
+    ],
+    "class_bytes": [
+      307213248,
+      0
+    ],
+    "permanent_bytes_by_percent": {
+      "25": 0,
+      "50": 0,
+      "90": 0
+    },
+    "frames": [
+      {
+        "address": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "xmalloc",
+        "file": "fragbench/server-sim.c",
+        "line": 56,
+        "source": [
+          {
+            "line": 36,
+            "text": "#include <stdatomic.h>"
+          },
+          {
+            "line": 37,
+            "text": "#include <sys/resource.h>"
+          },
+          {
+            "line": 38,
+            "text": "#include <sys/mman.h>"
+          },
+          {
+            "line": 39,
+            "text": ""
+          },
+          {
+            "line": 40,
+            "text": "/* Every allocation shares the same innermost wrapper. Depth 1 cannot classify it."
+          },
+          {
+            "line": 41,
+            "text": " * Workers remain alive at idle so the experiment includes page purging, not just"
+          },
+          {
+            "line": 42,
+            "text": " * wholesale address-space release at thread exit. No allocator-specific collect. */"
+          },
+          {
+            "line": 43,
+            "text": "static _Thread_local size_t worker_live;"
+          },
+          {
+            "line": 44,
+            "text": "static struct { _Alignas(64) size_t bytes; } live_bytes[32];"
+          },
+          {
+            "line": 45,
+            "text": "static pthread_barrier_t boundary;"
+          },
+          {
+            "line": 46,
+            "text": "static int workers=1,mixed=0,payload_only=0,settle_ms=250;"
+          },
+          {
+            "line": 47,
+            "text": "static size_t objects=80000;"
+          },
+          {
+            "line": 48,
+            "text": "static uint64_t random_next(uint64_t* x){*x^=*x<<13;*x^=*x>>7;*x^=*x<<17;return *x;}"
+          },
+          {
+            "line": 49,
+            "text": "/* Keep TTL selection opaque to the caller so branch threading cannot duplicate"
+          },
+          {
+            "line": 50,
+            "text": " * the allocation call into separate PCs for immediate and retained payloads. */"
+          },
+          {
+            "line": 51,
+            "text": "__attribute__((noinline)) static unsigned request_ttl(uint64_t* rng){"
+          },
+          {
+            "line": 52,
+            "text": " unsigned draw=(unsigned)(random_next(rng)%20);"
+          },
+          {
+            "line": 53,
+            "text": " return draw>=10?0:(draw==0?86400:1);"
+          },
+          {
+            "line": 54,
+            "text": "}"
+          },
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          }
+        ]
+      },
+      {
+        "address": "0x1719",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "parse_request_buffer",
+        "file": "fragbench/server-sim.c",
+        "line": 58,
+        "source": [
+          {
+            "line": 38,
+            "text": "#include <sys/mman.h>"
+          },
+          {
+            "line": 39,
+            "text": ""
+          },
+          {
+            "line": 40,
+            "text": "/* Every allocation shares the same innermost wrapper. Depth 1 cannot classify it."
+          },
+          {
+            "line": 41,
+            "text": " * Workers remain alive at idle so the experiment includes page purging, not just"
+          },
+          {
+            "line": 42,
+            "text": " * wholesale address-space release at thread exit. No allocator-specific collect. */"
+          },
+          {
+            "line": 43,
+            "text": "static _Thread_local size_t worker_live;"
+          },
+          {
+            "line": 44,
+            "text": "static struct { _Alignas(64) size_t bytes; } live_bytes[32];"
+          },
+          {
+            "line": 45,
+            "text": "static pthread_barrier_t boundary;"
+          },
+          {
+            "line": 46,
+            "text": "static int workers=1,mixed=0,payload_only=0,settle_ms=250;"
+          },
+          {
+            "line": 47,
+            "text": "static size_t objects=80000;"
+          },
+          {
+            "line": 48,
+            "text": "static uint64_t random_next(uint64_t* x){*x^=*x<<13;*x^=*x>>7;*x^=*x<<17;return *x;}"
+          },
+          {
+            "line": 49,
+            "text": "/* Keep TTL selection opaque to the caller so branch threading cannot duplicate"
+          },
+          {
+            "line": 50,
+            "text": " * the allocation call into separate PCs for immediate and retained payloads. */"
+          },
+          {
+            "line": 51,
+            "text": "__attribute__((noinline)) static unsigned request_ttl(uint64_t* rng){"
+          },
+          {
+            "line": 52,
+            "text": " unsigned draw=(unsigned)(random_next(rng)%20);"
+          },
+          {
+            "line": 53,
+            "text": " return draw>=10?0:(draw==0?86400:1);"
+          },
+          {
+            "line": 54,
+            "text": "}"
+          },
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          }
+        ]
+      },
+      {
+        "address": "0x1c26",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "server_worker",
+        "file": "fragbench/server-sim.c",
+        "line": 108,
+        "source": [
+          {
+            "line": 88,
+            "text": "static void* server_worker(void* arg) {"
+          },
+          {
+            "line": 89,
+            "text": " size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;"
+          },
+          {
+            "line": 90,
+            "text": " /* Pointer bookkeeping uses the system mapping API so it doesn't enter the"
+          },
+          {
+            "line": 91,
+            "text": "  * allocator's live requested-byte metric or pin experimental object pages. */"
+          },
+          {
+            "line": 92,
+            "text": " size_t bookkeeping=count*(sizeof(void*)+sizeof(size_t));"
+          },
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          },
+          {
+            "line": 95,
+            "text": " for(int cycle=0;cycle<2;cycle++) {"
+          },
+          {
+            "line": 96,
+            "text": "  for(size_t i=0;i<count;i++) {"
+          },
+          {
+            "line": 97,
+            "text": "   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;n*=payload_only?4:1;sizes[i]=n;"
+          },
+          {
+            "line": 98,
+            "text": "   /* Sessions last many operations; cache entries live until process exit."
+          },
+          {
+            "line": 99,
+            "text": "    * The two paths allocate interleaved in exactly the same size classes. */"
+          },
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          },
+          {
+            "line": 102,
+            "text": "    * aliasing the allocator's deterministic sampling period."
+          },
+          {
+            "line": 103,
+            "text": "    * One call/stack carries transient and permanent objects. */"
+          },
+          {
+            "line": 104,
+            "text": "   unsigned ttl=mixed?request_ttl(&rng):1;"
+          },
+          {
+            "line": 105,
+            "text": "   if(mixed&&jev_context_setf)jev_context_setf(REQUEST_CONTEXT,ttl==0?TTL_ZERO:ttl==1?TTL_SHORT:TTL_DAY);"
+          },
+          {
+            "line": 106,
+            "text": "   if(mixed)slots[i]=store_request_payload(n,ttl);"
+          },
+          {
+            "line": 107,
+            "text": "   else slots[i]=(i%10==0)?insert_cache_index(n):create_session_state(n);"
+          },
+          {
+            "line": 108,
+            "text": "   if(!payload_only){void* parse=parse_request_buffer(n);void* response=assemble_response_buffer(n);"
+          },
+          {
+            "line": 109,
+            "text": "   release(response,n);release(parse,n);}"
+          },
+          {
+            "line": 110,
+            "text": "   if(mixed&&ttl==0){release(slots[i],n);slots[i]=NULL;}"
+          },
+          {
+            "line": 111,
+            "text": "   if(jev_context_clear)jev_context_clear();"
+          },
+          {
+            "line": 112,
+            "text": "  }"
+          },
+          {
+            "line": 113,
+            "text": "  mark(id,cycle,\"peak\");"
+          },
+          {
+            "line": 114,
+            "text": "  for(size_t i=0;i<count;i++)if(slots[i]&&(mixed?((unsigned char*)slots[i])[0]!=(unsigned char)86400:i%10!=0)){release(slots[i],sizes[i]);slots[i]=NULL;}"
+          },
+          {
+            "line": 115,
+            "text": "  mark(id,cycle,\"drop\");"
+          },
+          {
+            "line": 116,
+            "text": "  /* Allocate/free after the purge deadline: mimalloc processes deferred purge"
+          },
+          {
+            "line": 117,
+            "text": "   * during allocator activity. Same pulse on all variants, counted in live bytes. */"
+          },
+          {
+            "line": 118,
+            "text": "  usleep(settle_ms*1000);"
+          },
+          {
+            "line": 119,
+            "text": "  for(int j=0;j<(payload_only?0:1024);j++){void* p=parse_request_buffer(64);release(p,64);}"
+          },
+          {
+            "line": 120,
+            "text": "  mark(id,cycle,\"idle\");"
+          },
+          {
+            "line": 121,
+            "text": "  /* Retained entries are deliberately never freed, including after cycle 1."
+          },
+          {
+            "line": 122,
+            "text": "   * Their pointers need not remain in slots, but their requested bytes do. */"
+          },
+          {
+            "line": 123,
+            "text": " }"
+          },
+          {
+            "line": 124,
+            "text": " munmap(slots,bookkeeping);return NULL;"
+          },
+          {
+            "line": 125,
+            "text": "}"
+          },
+          {
+            "line": 126,
+            "text": "int main(int argc,char** argv) {"
+          },
+          {
+            "line": 127,
+            "text": " if(argc>1)workers=atoi(argv[1]);if(argc>2)mixed=!strcmp(argv[2],\"site-mixed\");if(argc>3)objects=strtoull(argv[3],NULL,10);if(argc>4)settle_ms=atoi(argv[4]);"
+          },
+          {
+            "line": 128,
+            "text": " if(argc>5)payload_only=!strcmp(argv[5],\"payload-only\");"
+          }
+        ]
+      },
+      {
+        "address": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "address": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ]
+  },
+  {
+    "schema": 3,
+    "class_schema": "transient-permanent-v1",
+    "key": "78eea16946ce75ac",
+    "program": "server-sim",
+    "site_key": "78eea16946ce75ac",
+    "context_signature": "0000000000000000",
+    "context": "",
+    "total_allocation_bytes": 921784192,
+    "count": 2,
+    "bytes": 944,
+    "never_freed": 0,
+    "never_freed_bytes": 0,
+    "lifetime_histogram": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lifetime_histogram_bytes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      944,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "short_bytes": 1048576,
+    "fixed_s_class_bytes": [
+      944,
+      0
+    ],
+    "class_bytes": [
+      944,
+      0
+    ],
+    "permanent_bytes_by_percent": {
+      "25": 0,
+      "50": 0,
+      "90": 0
+    },
+    "frames": [
+      {
+        "address": "0x85e7f",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__fopen_internal",
+        "file": "./libio/./libio/iofopen.c",
+        "line": 65,
+        "source": []
+      },
+      {
+        "address": "0x175c",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "emit",
+        "file": "fragbench/server-sim.c",
+        "line": 74,
+        "source": [
+          {
+            "line": 54,
+            "text": "}"
+          },
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          },
+          {
+            "line": 79,
+            "text": "}"
+          },
+          {
+            "line": 80,
+            "text": "static void mark(size_t id,int cycle,const char* name){"
+          },
+          {
+            "line": 81,
+            "text": " live_bytes[id].bytes=worker_live;phase(cycle,name);if(id==0)emit(cycle,name);pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 82,
+            "text": " const char* longer=getenv(\"FRAG_LONG_SETTLE_MS\");"
+          },
+          {
+            "line": 83,
+            "text": " if(longer&&!strcmp(name,\"idle\")){"
+          },
+          {
+            "line": 84,
+            "text": "  int ms=atoi(longer)-settle_ms;if(ms>0)usleep((useconds_t)ms*1000);"
+          },
+          {
+            "line": 85,
+            "text": "  pthread_barrier_wait(&boundary);if(id==0)emit(cycle,\"idle10\");pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 86,
+            "text": " }"
+          },
+          {
+            "line": 87,
+            "text": "}"
+          },
+          {
+            "line": 88,
+            "text": "static void* server_worker(void* arg) {"
+          },
+          {
+            "line": 89,
+            "text": " size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;"
+          },
+          {
+            "line": 90,
+            "text": " /* Pointer bookkeeping uses the system mapping API so it doesn't enter the"
+          },
+          {
+            "line": 91,
+            "text": "  * allocator's live requested-byte metric or pin experimental object pages. */"
+          },
+          {
+            "line": 92,
+            "text": " size_t bookkeeping=count*(sizeof(void*)+sizeof(size_t));"
+          },
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          }
+        ]
+      },
+      {
+        "address": "0x1a23",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "mark",
+        "file": "fragbench/server-sim.c",
+        "line": 81,
+        "source": [
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          },
+          {
+            "line": 79,
+            "text": "}"
+          },
+          {
+            "line": 80,
+            "text": "static void mark(size_t id,int cycle,const char* name){"
+          },
+          {
+            "line": 81,
+            "text": " live_bytes[id].bytes=worker_live;phase(cycle,name);if(id==0)emit(cycle,name);pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 82,
+            "text": " const char* longer=getenv(\"FRAG_LONG_SETTLE_MS\");"
+          },
+          {
+            "line": 83,
+            "text": " if(longer&&!strcmp(name,\"idle\")){"
+          },
+          {
+            "line": 84,
+            "text": "  int ms=atoi(longer)-settle_ms;if(ms>0)usleep((useconds_t)ms*1000);"
+          },
+          {
+            "line": 85,
+            "text": "  pthread_barrier_wait(&boundary);if(id==0)emit(cycle,\"idle10\");pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 86,
+            "text": " }"
+          },
+          {
+            "line": 87,
+            "text": "}"
+          },
+          {
+            "line": 88,
+            "text": "static void* server_worker(void* arg) {"
+          },
+          {
+            "line": 89,
+            "text": " size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;"
+          },
+          {
+            "line": 90,
+            "text": " /* Pointer bookkeeping uses the system mapping API so it doesn't enter the"
+          },
+          {
+            "line": 91,
+            "text": "  * allocator's live requested-byte metric or pin experimental object pages. */"
+          },
+          {
+            "line": 92,
+            "text": " size_t bookkeeping=count*(sizeof(void*)+sizeof(size_t));"
+          },
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          },
+          {
+            "line": 95,
+            "text": " for(int cycle=0;cycle<2;cycle++) {"
+          },
+          {
+            "line": 96,
+            "text": "  for(size_t i=0;i<count;i++) {"
+          },
+          {
+            "line": 97,
+            "text": "   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;n*=payload_only?4:1;sizes[i]=n;"
+          },
+          {
+            "line": 98,
+            "text": "   /* Sessions last many operations; cache entries live until process exit."
+          },
+          {
+            "line": 99,
+            "text": "    * The two paths allocate interleaved in exactly the same size classes. */"
+          },
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          }
+        ]
+      },
+      {
+        "address": "0x1d1d",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "server_worker",
+        "file": "fragbench/server-sim.c",
+        "line": 113,
+        "source": [
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          },
+          {
+            "line": 95,
+            "text": " for(int cycle=0;cycle<2;cycle++) {"
+          },
+          {
+            "line": 96,
+            "text": "  for(size_t i=0;i<count;i++) {"
+          },
+          {
+            "line": 97,
+            "text": "   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;n*=payload_only?4:1;sizes[i]=n;"
+          },
+          {
+            "line": 98,
+            "text": "   /* Sessions last many operations; cache entries live until process exit."
+          },
+          {
+            "line": 99,
+            "text": "    * The two paths allocate interleaved in exactly the same size classes. */"
+          },
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          },
+          {
+            "line": 102,
+            "text": "    * aliasing the allocator's deterministic sampling period."
+          },
+          {
+            "line": 103,
+            "text": "    * One call/stack carries transient and permanent objects. */"
+          },
+          {
+            "line": 104,
+            "text": "   unsigned ttl=mixed?request_ttl(&rng):1;"
+          },
+          {
+            "line": 105,
+            "text": "   if(mixed&&jev_context_setf)jev_context_setf(REQUEST_CONTEXT,ttl==0?TTL_ZERO:ttl==1?TTL_SHORT:TTL_DAY);"
+          },
+          {
+            "line": 106,
+            "text": "   if(mixed)slots[i]=store_request_payload(n,ttl);"
+          },
+          {
+            "line": 107,
+            "text": "   else slots[i]=(i%10==0)?insert_cache_index(n):create_session_state(n);"
+          },
+          {
+            "line": 108,
+            "text": "   if(!payload_only){void* parse=parse_request_buffer(n);void* response=assemble_response_buffer(n);"
+          },
+          {
+            "line": 109,
+            "text": "   release(response,n);release(parse,n);}"
+          },
+          {
+            "line": 110,
+            "text": "   if(mixed&&ttl==0){release(slots[i],n);slots[i]=NULL;}"
+          },
+          {
+            "line": 111,
+            "text": "   if(jev_context_clear)jev_context_clear();"
+          },
+          {
+            "line": 112,
+            "text": "  }"
+          },
+          {
+            "line": 113,
+            "text": "  mark(id,cycle,\"peak\");"
+          },
+          {
+            "line": 114,
+            "text": "  for(size_t i=0;i<count;i++)if(slots[i]&&(mixed?((unsigned char*)slots[i])[0]!=(unsigned char)86400:i%10!=0)){release(slots[i],sizes[i]);slots[i]=NULL;}"
+          },
+          {
+            "line": 115,
+            "text": "  mark(id,cycle,\"drop\");"
+          },
+          {
+            "line": 116,
+            "text": "  /* Allocate/free after the purge deadline: mimalloc processes deferred purge"
+          },
+          {
+            "line": 117,
+            "text": "   * during allocator activity. Same pulse on all variants, counted in live bytes. */"
+          },
+          {
+            "line": 118,
+            "text": "  usleep(settle_ms*1000);"
+          },
+          {
+            "line": 119,
+            "text": "  for(int j=0;j<(payload_only?0:1024);j++){void* p=parse_request_buffer(64);release(p,64);}"
+          },
+          {
+            "line": 120,
+            "text": "  mark(id,cycle,\"idle\");"
+          },
+          {
+            "line": 121,
+            "text": "  /* Retained entries are deliberately never freed, including after cycle 1."
+          },
+          {
+            "line": 122,
+            "text": "   * Their pointers need not remain in slots, but their requested bytes do. */"
+          },
+          {
+            "line": 123,
+            "text": " }"
+          },
+          {
+            "line": 124,
+            "text": " munmap(slots,bookkeeping);return NULL;"
+          },
+          {
+            "line": 125,
+            "text": "}"
+          },
+          {
+            "line": 126,
+            "text": "int main(int argc,char** argv) {"
+          },
+          {
+            "line": 127,
+            "text": " if(argc>1)workers=atoi(argv[1]);if(argc>2)mixed=!strcmp(argv[2],\"site-mixed\");if(argc>3)objects=strtoull(argv[3],NULL,10);if(argc>4)settle_ms=atoi(argv[4]);"
+          },
+          {
+            "line": 128,
+            "text": " if(argc>5)payload_only=!strcmp(argv[5],\"payload-only\");"
+          },
+          {
+            "line": 129,
+            "text": " if(workers<1||workers>32||objects<(size_t)workers||settle_ms<100)return 2;"
+          },
+          {
+            "line": 130,
+            "text": " pthread_barrier_init(&boundary,NULL,workers);pthread_t threads[32];"
+          },
+          {
+            "line": 131,
+            "text": " for(size_t i=0;i<(size_t)workers;i++)if(pthread_create(&threads[i],NULL,server_worker,(void*)i))abort();"
+          },
+          {
+            "line": 132,
+            "text": " for(int i=0;i<workers;i++)pthread_join(threads[i],NULL);"
+          },
+          {
+            "line": 133,
+            "text": " puts(\"fragbench OK\");return 0;"
+          }
+        ]
+      },
+      {
+        "address": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "address": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ]
+  },
+  {
+    "schema": 3,
+    "class_schema": "transient-permanent-v1",
+    "key": "f596fe201f93ed62",
+    "program": "server-sim",
+    "site_key": "f596fe201f93ed62",
+    "context_signature": "0000000000000000",
+    "context": "",
+    "total_allocation_bytes": 921784192,
+    "count": 2,
+    "bytes": 944,
+    "never_freed": 0,
+    "never_freed_bytes": 0,
+    "lifetime_histogram": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lifetime_histogram_bytes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      944,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "short_bytes": 1048576,
+    "fixed_s_class_bytes": [
+      944,
+      0
+    ],
+    "class_bytes": [
+      944,
+      0
+    ],
+    "permanent_bytes_by_percent": {
+      "25": 0,
+      "50": 0,
+      "90": 0
+    },
+    "frames": [
+      {
+        "address": "0x85e7f",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__fopen_internal",
+        "file": "./libio/./libio/iofopen.c",
+        "line": 65,
+        "source": []
+      },
+      {
+        "address": "0x175c",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "emit",
+        "file": "fragbench/server-sim.c",
+        "line": 74,
+        "source": [
+          {
+            "line": 54,
+            "text": "}"
+          },
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          },
+          {
+            "line": 79,
+            "text": "}"
+          },
+          {
+            "line": 80,
+            "text": "static void mark(size_t id,int cycle,const char* name){"
+          },
+          {
+            "line": 81,
+            "text": " live_bytes[id].bytes=worker_live;phase(cycle,name);if(id==0)emit(cycle,name);pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 82,
+            "text": " const char* longer=getenv(\"FRAG_LONG_SETTLE_MS\");"
+          },
+          {
+            "line": 83,
+            "text": " if(longer&&!strcmp(name,\"idle\")){"
+          },
+          {
+            "line": 84,
+            "text": "  int ms=atoi(longer)-settle_ms;if(ms>0)usleep((useconds_t)ms*1000);"
+          },
+          {
+            "line": 85,
+            "text": "  pthread_barrier_wait(&boundary);if(id==0)emit(cycle,\"idle10\");pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 86,
+            "text": " }"
+          },
+          {
+            "line": 87,
+            "text": "}"
+          },
+          {
+            "line": 88,
+            "text": "static void* server_worker(void* arg) {"
+          },
+          {
+            "line": 89,
+            "text": " size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;"
+          },
+          {
+            "line": 90,
+            "text": " /* Pointer bookkeeping uses the system mapping API so it doesn't enter the"
+          },
+          {
+            "line": 91,
+            "text": "  * allocator's live requested-byte metric or pin experimental object pages. */"
+          },
+          {
+            "line": 92,
+            "text": " size_t bookkeeping=count*(sizeof(void*)+sizeof(size_t));"
+          },
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          }
+        ]
+      },
+      {
+        "address": "0x1a23",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "mark",
+        "file": "fragbench/server-sim.c",
+        "line": 81,
+        "source": [
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          },
+          {
+            "line": 79,
+            "text": "}"
+          },
+          {
+            "line": 80,
+            "text": "static void mark(size_t id,int cycle,const char* name){"
+          },
+          {
+            "line": 81,
+            "text": " live_bytes[id].bytes=worker_live;phase(cycle,name);if(id==0)emit(cycle,name);pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 82,
+            "text": " const char* longer=getenv(\"FRAG_LONG_SETTLE_MS\");"
+          },
+          {
+            "line": 83,
+            "text": " if(longer&&!strcmp(name,\"idle\")){"
+          },
+          {
+            "line": 84,
+            "text": "  int ms=atoi(longer)-settle_ms;if(ms>0)usleep((useconds_t)ms*1000);"
+          },
+          {
+            "line": 85,
+            "text": "  pthread_barrier_wait(&boundary);if(id==0)emit(cycle,\"idle10\");pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 86,
+            "text": " }"
+          },
+          {
+            "line": 87,
+            "text": "}"
+          },
+          {
+            "line": 88,
+            "text": "static void* server_worker(void* arg) {"
+          },
+          {
+            "line": 89,
+            "text": " size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;"
+          },
+          {
+            "line": 90,
+            "text": " /* Pointer bookkeeping uses the system mapping API so it doesn't enter the"
+          },
+          {
+            "line": 91,
+            "text": "  * allocator's live requested-byte metric or pin experimental object pages. */"
+          },
+          {
+            "line": 92,
+            "text": " size_t bookkeeping=count*(sizeof(void*)+sizeof(size_t));"
+          },
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          },
+          {
+            "line": 95,
+            "text": " for(int cycle=0;cycle<2;cycle++) {"
+          },
+          {
+            "line": 96,
+            "text": "  for(size_t i=0;i<count;i++) {"
+          },
+          {
+            "line": 97,
+            "text": "   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;n*=payload_only?4:1;sizes[i]=n;"
+          },
+          {
+            "line": 98,
+            "text": "   /* Sessions last many operations; cache entries live until process exit."
+          },
+          {
+            "line": 99,
+            "text": "    * The two paths allocate interleaved in exactly the same size classes. */"
+          },
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          }
+        ]
+      },
+      {
+        "address": "0x1df8",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "server_worker",
+        "file": "fragbench/server-sim.c",
+        "line": 120,
+        "source": [
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          },
+          {
+            "line": 102,
+            "text": "    * aliasing the allocator's deterministic sampling period."
+          },
+          {
+            "line": 103,
+            "text": "    * One call/stack carries transient and permanent objects. */"
+          },
+          {
+            "line": 104,
+            "text": "   unsigned ttl=mixed?request_ttl(&rng):1;"
+          },
+          {
+            "line": 105,
+            "text": "   if(mixed&&jev_context_setf)jev_context_setf(REQUEST_CONTEXT,ttl==0?TTL_ZERO:ttl==1?TTL_SHORT:TTL_DAY);"
+          },
+          {
+            "line": 106,
+            "text": "   if(mixed)slots[i]=store_request_payload(n,ttl);"
+          },
+          {
+            "line": 107,
+            "text": "   else slots[i]=(i%10==0)?insert_cache_index(n):create_session_state(n);"
+          },
+          {
+            "line": 108,
+            "text": "   if(!payload_only){void* parse=parse_request_buffer(n);void* response=assemble_response_buffer(n);"
+          },
+          {
+            "line": 109,
+            "text": "   release(response,n);release(parse,n);}"
+          },
+          {
+            "line": 110,
+            "text": "   if(mixed&&ttl==0){release(slots[i],n);slots[i]=NULL;}"
+          },
+          {
+            "line": 111,
+            "text": "   if(jev_context_clear)jev_context_clear();"
+          },
+          {
+            "line": 112,
+            "text": "  }"
+          },
+          {
+            "line": 113,
+            "text": "  mark(id,cycle,\"peak\");"
+          },
+          {
+            "line": 114,
+            "text": "  for(size_t i=0;i<count;i++)if(slots[i]&&(mixed?((unsigned char*)slots[i])[0]!=(unsigned char)86400:i%10!=0)){release(slots[i],sizes[i]);slots[i]=NULL;}"
+          },
+          {
+            "line": 115,
+            "text": "  mark(id,cycle,\"drop\");"
+          },
+          {
+            "line": 116,
+            "text": "  /* Allocate/free after the purge deadline: mimalloc processes deferred purge"
+          },
+          {
+            "line": 117,
+            "text": "   * during allocator activity. Same pulse on all variants, counted in live bytes. */"
+          },
+          {
+            "line": 118,
+            "text": "  usleep(settle_ms*1000);"
+          },
+          {
+            "line": 119,
+            "text": "  for(int j=0;j<(payload_only?0:1024);j++){void* p=parse_request_buffer(64);release(p,64);}"
+          },
+          {
+            "line": 120,
+            "text": "  mark(id,cycle,\"idle\");"
+          },
+          {
+            "line": 121,
+            "text": "  /* Retained entries are deliberately never freed, including after cycle 1."
+          },
+          {
+            "line": 122,
+            "text": "   * Their pointers need not remain in slots, but their requested bytes do. */"
+          },
+          {
+            "line": 123,
+            "text": " }"
+          },
+          {
+            "line": 124,
+            "text": " munmap(slots,bookkeeping);return NULL;"
+          },
+          {
+            "line": 125,
+            "text": "}"
+          },
+          {
+            "line": 126,
+            "text": "int main(int argc,char** argv) {"
+          },
+          {
+            "line": 127,
+            "text": " if(argc>1)workers=atoi(argv[1]);if(argc>2)mixed=!strcmp(argv[2],\"site-mixed\");if(argc>3)objects=strtoull(argv[3],NULL,10);if(argc>4)settle_ms=atoi(argv[4]);"
+          },
+          {
+            "line": 128,
+            "text": " if(argc>5)payload_only=!strcmp(argv[5],\"payload-only\");"
+          },
+          {
+            "line": 129,
+            "text": " if(workers<1||workers>32||objects<(size_t)workers||settle_ms<100)return 2;"
+          },
+          {
+            "line": 130,
+            "text": " pthread_barrier_init(&boundary,NULL,workers);pthread_t threads[32];"
+          },
+          {
+            "line": 131,
+            "text": " for(size_t i=0;i<(size_t)workers;i++)if(pthread_create(&threads[i],NULL,server_worker,(void*)i))abort();"
+          },
+          {
+            "line": 132,
+            "text": " for(int i=0;i<workers;i++)pthread_join(threads[i],NULL);"
+          },
+          {
+            "line": 133,
+            "text": " puts(\"fragbench OK\");return 0;"
+          },
+          {
+            "line": 134,
+            "text": "}"
+          }
+        ]
+      },
+      {
+        "address": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "address": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ]
+  },
+  {
+    "schema": 3,
+    "class_schema": "transient-permanent-v1",
+    "key": "2800778c8c769d31",
+    "program": "server-sim",
+    "site_key": "2800778c8c769d31",
+    "context_signature": "0000000000000000",
+    "context": "",
+    "total_allocation_bytes": 921784192,
+    "count": 720000,
+    "bytes": 276487488,
+    "never_freed": 0,
+    "never_freed_bytes": 0,
+    "lifetime_histogram": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      5,
+      14,
+      26,
+      55,
+      107,
+      221,
+      445,
+      874,
+      1760,
+      3495,
+      6987,
+      14011,
+      27925,
+      55903,
+      111756,
+      223663,
+      248334,
+      24417,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lifetime_histogram_bytes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      960,
+      1792,
+      4736,
+      9664,
+      20224,
+      39040,
+      78464,
+      157824,
+      314240,
+      628096,
+      1255744,
+      2518144,
+      5032192,
+      10066752,
+      20131584,
+      40269632,
+      80531648,
+      103714496,
+      11712256,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "short_bytes": 1048576,
+    "fixed_s_class_bytes": [
+      626944,
+      275860544
+    ],
+    "class_bytes": [
+      241980288,
+      34507200
+    ],
+    "permanent_bytes_by_percent": {
+      "25": 138220160,
+      "50": 34507200,
+      "90": 0
+    },
+    "frames": [
+      {
+        "address": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "xmalloc",
+        "file": "fragbench/server-sim.c",
+        "line": 56,
+        "source": [
+          {
+            "line": 36,
+            "text": "#include <stdatomic.h>"
+          },
+          {
+            "line": 37,
+            "text": "#include <sys/resource.h>"
+          },
+          {
+            "line": 38,
+            "text": "#include <sys/mman.h>"
+          },
+          {
+            "line": 39,
+            "text": ""
+          },
+          {
+            "line": 40,
+            "text": "/* Every allocation shares the same innermost wrapper. Depth 1 cannot classify it."
+          },
+          {
+            "line": 41,
+            "text": " * Workers remain alive at idle so the experiment includes page purging, not just"
+          },
+          {
+            "line": 42,
+            "text": " * wholesale address-space release at thread exit. No allocator-specific collect. */"
+          },
+          {
+            "line": 43,
+            "text": "static _Thread_local size_t worker_live;"
+          },
+          {
+            "line": 44,
+            "text": "static struct { _Alignas(64) size_t bytes; } live_bytes[32];"
+          },
+          {
+            "line": 45,
+            "text": "static pthread_barrier_t boundary;"
+          },
+          {
+            "line": 46,
+            "text": "static int workers=1,mixed=0,payload_only=0,settle_ms=250;"
+          },
+          {
+            "line": 47,
+            "text": "static size_t objects=80000;"
+          },
+          {
+            "line": 48,
+            "text": "static uint64_t random_next(uint64_t* x){*x^=*x<<13;*x^=*x>>7;*x^=*x<<17;return *x;}"
+          },
+          {
+            "line": 49,
+            "text": "/* Keep TTL selection opaque to the caller so branch threading cannot duplicate"
+          },
+          {
+            "line": 50,
+            "text": " * the allocation call into separate PCs for immediate and retained payloads. */"
+          },
+          {
+            "line": 51,
+            "text": "__attribute__((noinline)) static unsigned request_ttl(uint64_t* rng){"
+          },
+          {
+            "line": 52,
+            "text": " unsigned draw=(unsigned)(random_next(rng)%20);"
+          },
+          {
+            "line": 53,
+            "text": " return draw>=10?0:(draw==0?86400:1);"
+          },
+          {
+            "line": 54,
+            "text": "}"
+          },
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          }
+        ]
+      },
+      {
+        "address": "0x16f9",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "create_session_state",
+        "file": "fragbench/server-sim.c",
+        "line": 60,
+        "source": [
+          {
+            "line": 40,
+            "text": "/* Every allocation shares the same innermost wrapper. Depth 1 cannot classify it."
+          },
+          {
+            "line": 41,
+            "text": " * Workers remain alive at idle so the experiment includes page purging, not just"
+          },
+          {
+            "line": 42,
+            "text": " * wholesale address-space release at thread exit. No allocator-specific collect. */"
+          },
+          {
+            "line": 43,
+            "text": "static _Thread_local size_t worker_live;"
+          },
+          {
+            "line": 44,
+            "text": "static struct { _Alignas(64) size_t bytes; } live_bytes[32];"
+          },
+          {
+            "line": 45,
+            "text": "static pthread_barrier_t boundary;"
+          },
+          {
+            "line": 46,
+            "text": "static int workers=1,mixed=0,payload_only=0,settle_ms=250;"
+          },
+          {
+            "line": 47,
+            "text": "static size_t objects=80000;"
+          },
+          {
+            "line": 48,
+            "text": "static uint64_t random_next(uint64_t* x){*x^=*x<<13;*x^=*x>>7;*x^=*x<<17;return *x;}"
+          },
+          {
+            "line": 49,
+            "text": "/* Keep TTL selection opaque to the caller so branch threading cannot duplicate"
+          },
+          {
+            "line": 50,
+            "text": " * the allocation call into separate PCs for immediate and retained payloads. */"
+          },
+          {
+            "line": 51,
+            "text": "__attribute__((noinline)) static unsigned request_ttl(uint64_t* rng){"
+          },
+          {
+            "line": 52,
+            "text": " unsigned draw=(unsigned)(random_next(rng)%20);"
+          },
+          {
+            "line": 53,
+            "text": " return draw>=10?0:(draw==0?86400:1);"
+          },
+          {
+            "line": 54,
+            "text": "}"
+          },
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          },
+          {
+            "line": 79,
+            "text": "}"
+          },
+          {
+            "line": 80,
+            "text": "static void mark(size_t id,int cycle,const char* name){"
+          }
+        ]
+      },
+      {
+        "address": "0x1c11",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "server_worker",
+        "file": "fragbench/server-sim.c",
+        "line": 107,
+        "source": [
+          {
+            "line": 87,
+            "text": "}"
+          },
+          {
+            "line": 88,
+            "text": "static void* server_worker(void* arg) {"
+          },
+          {
+            "line": 89,
+            "text": " size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;"
+          },
+          {
+            "line": 90,
+            "text": " /* Pointer bookkeeping uses the system mapping API so it doesn't enter the"
+          },
+          {
+            "line": 91,
+            "text": "  * allocator's live requested-byte metric or pin experimental object pages. */"
+          },
+          {
+            "line": 92,
+            "text": " size_t bookkeeping=count*(sizeof(void*)+sizeof(size_t));"
+          },
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          },
+          {
+            "line": 95,
+            "text": " for(int cycle=0;cycle<2;cycle++) {"
+          },
+          {
+            "line": 96,
+            "text": "  for(size_t i=0;i<count;i++) {"
+          },
+          {
+            "line": 97,
+            "text": "   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;n*=payload_only?4:1;sizes[i]=n;"
+          },
+          {
+            "line": 98,
+            "text": "   /* Sessions last many operations; cache entries live until process exit."
+          },
+          {
+            "line": 99,
+            "text": "    * The two paths allocate interleaved in exactly the same size classes. */"
+          },
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          },
+          {
+            "line": 102,
+            "text": "    * aliasing the allocator's deterministic sampling period."
+          },
+          {
+            "line": 103,
+            "text": "    * One call/stack carries transient and permanent objects. */"
+          },
+          {
+            "line": 104,
+            "text": "   unsigned ttl=mixed?request_ttl(&rng):1;"
+          },
+          {
+            "line": 105,
+            "text": "   if(mixed&&jev_context_setf)jev_context_setf(REQUEST_CONTEXT,ttl==0?TTL_ZERO:ttl==1?TTL_SHORT:TTL_DAY);"
+          },
+          {
+            "line": 106,
+            "text": "   if(mixed)slots[i]=store_request_payload(n,ttl);"
+          },
+          {
+            "line": 107,
+            "text": "   else slots[i]=(i%10==0)?insert_cache_index(n):create_session_state(n);"
+          },
+          {
+            "line": 108,
+            "text": "   if(!payload_only){void* parse=parse_request_buffer(n);void* response=assemble_response_buffer(n);"
+          },
+          {
+            "line": 109,
+            "text": "   release(response,n);release(parse,n);}"
+          },
+          {
+            "line": 110,
+            "text": "   if(mixed&&ttl==0){release(slots[i],n);slots[i]=NULL;}"
+          },
+          {
+            "line": 111,
+            "text": "   if(jev_context_clear)jev_context_clear();"
+          },
+          {
+            "line": 112,
+            "text": "  }"
+          },
+          {
+            "line": 113,
+            "text": "  mark(id,cycle,\"peak\");"
+          },
+          {
+            "line": 114,
+            "text": "  for(size_t i=0;i<count;i++)if(slots[i]&&(mixed?((unsigned char*)slots[i])[0]!=(unsigned char)86400:i%10!=0)){release(slots[i],sizes[i]);slots[i]=NULL;}"
+          },
+          {
+            "line": 115,
+            "text": "  mark(id,cycle,\"drop\");"
+          },
+          {
+            "line": 116,
+            "text": "  /* Allocate/free after the purge deadline: mimalloc processes deferred purge"
+          },
+          {
+            "line": 117,
+            "text": "   * during allocator activity. Same pulse on all variants, counted in live bytes. */"
+          },
+          {
+            "line": 118,
+            "text": "  usleep(settle_ms*1000);"
+          },
+          {
+            "line": 119,
+            "text": "  for(int j=0;j<(payload_only?0:1024);j++){void* p=parse_request_buffer(64);release(p,64);}"
+          },
+          {
+            "line": 120,
+            "text": "  mark(id,cycle,\"idle\");"
+          },
+          {
+            "line": 121,
+            "text": "  /* Retained entries are deliberately never freed, including after cycle 1."
+          },
+          {
+            "line": 122,
+            "text": "   * Their pointers need not remain in slots, but their requested bytes do. */"
+          },
+          {
+            "line": 123,
+            "text": " }"
+          },
+          {
+            "line": 124,
+            "text": " munmap(slots,bookkeeping);return NULL;"
+          },
+          {
+            "line": 125,
+            "text": "}"
+          },
+          {
+            "line": 126,
+            "text": "int main(int argc,char** argv) {"
+          },
+          {
+            "line": 127,
+            "text": " if(argc>1)workers=atoi(argv[1]);if(argc>2)mixed=!strcmp(argv[2],\"site-mixed\");if(argc>3)objects=strtoull(argv[3],NULL,10);if(argc>4)settle_ms=atoi(argv[4]);"
+          }
+        ]
+      },
+      {
+        "address": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "address": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ]
+  },
+  {
+    "schema": 3,
+    "class_schema": "transient-permanent-v1",
+    "key": "d530a5059e084b88",
+    "program": "server-sim",
+    "site_key": "d530a5059e084b88",
+    "context_signature": "0000000000000000",
+    "context": "",
+    "total_allocation_bytes": 921784192,
+    "count": 800000,
+    "bytes": 307213248,
+    "never_freed": 0,
+    "never_freed_bytes": 0,
+    "lifetime_histogram": [
+      800000,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lifetime_histogram_bytes": [
+      307213248,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "short_bytes": 1048576,
+    "fixed_s_class_bytes": [
+      307213248,
+      0
+    ],
+    "class_bytes": [
+      307213248,
+      0
+    ],
+    "permanent_bytes_by_percent": {
+      "25": 0,
+      "50": 0,
+      "90": 0
+    },
+    "frames": [
+      {
+        "address": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "xmalloc",
+        "file": "fragbench/server-sim.c",
+        "line": 56,
+        "source": [
+          {
+            "line": 36,
+            "text": "#include <stdatomic.h>"
+          },
+          {
+            "line": 37,
+            "text": "#include <sys/resource.h>"
+          },
+          {
+            "line": 38,
+            "text": "#include <sys/mman.h>"
+          },
+          {
+            "line": 39,
+            "text": ""
+          },
+          {
+            "line": 40,
+            "text": "/* Every allocation shares the same innermost wrapper. Depth 1 cannot classify it."
+          },
+          {
+            "line": 41,
+            "text": " * Workers remain alive at idle so the experiment includes page purging, not just"
+          },
+          {
+            "line": 42,
+            "text": " * wholesale address-space release at thread exit. No allocator-specific collect. */"
+          },
+          {
+            "line": 43,
+            "text": "static _Thread_local size_t worker_live;"
+          },
+          {
+            "line": 44,
+            "text": "static struct { _Alignas(64) size_t bytes; } live_bytes[32];"
+          },
+          {
+            "line": 45,
+            "text": "static pthread_barrier_t boundary;"
+          },
+          {
+            "line": 46,
+            "text": "static int workers=1,mixed=0,payload_only=0,settle_ms=250;"
+          },
+          {
+            "line": 47,
+            "text": "static size_t objects=80000;"
+          },
+          {
+            "line": 48,
+            "text": "static uint64_t random_next(uint64_t* x){*x^=*x<<13;*x^=*x>>7;*x^=*x<<17;return *x;}"
+          },
+          {
+            "line": 49,
+            "text": "/* Keep TTL selection opaque to the caller so branch threading cannot duplicate"
+          },
+          {
+            "line": 50,
+            "text": " * the allocation call into separate PCs for immediate and retained payloads. */"
+          },
+          {
+            "line": 51,
+            "text": "__attribute__((noinline)) static unsigned request_ttl(uint64_t* rng){"
+          },
+          {
+            "line": 52,
+            "text": " unsigned draw=(unsigned)(random_next(rng)%20);"
+          },
+          {
+            "line": 53,
+            "text": " return draw>=10?0:(draw==0?86400:1);"
+          },
+          {
+            "line": 54,
+            "text": "}"
+          },
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          }
+        ]
+      },
+      {
+        "address": "0x1709",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "assemble_response_buffer",
+        "file": "fragbench/server-sim.c",
+        "line": 59,
+        "source": [
+          {
+            "line": 39,
+            "text": ""
+          },
+          {
+            "line": 40,
+            "text": "/* Every allocation shares the same innermost wrapper. Depth 1 cannot classify it."
+          },
+          {
+            "line": 41,
+            "text": " * Workers remain alive at idle so the experiment includes page purging, not just"
+          },
+          {
+            "line": 42,
+            "text": " * wholesale address-space release at thread exit. No allocator-specific collect. */"
+          },
+          {
+            "line": 43,
+            "text": "static _Thread_local size_t worker_live;"
+          },
+          {
+            "line": 44,
+            "text": "static struct { _Alignas(64) size_t bytes; } live_bytes[32];"
+          },
+          {
+            "line": 45,
+            "text": "static pthread_barrier_t boundary;"
+          },
+          {
+            "line": 46,
+            "text": "static int workers=1,mixed=0,payload_only=0,settle_ms=250;"
+          },
+          {
+            "line": 47,
+            "text": "static size_t objects=80000;"
+          },
+          {
+            "line": 48,
+            "text": "static uint64_t random_next(uint64_t* x){*x^=*x<<13;*x^=*x>>7;*x^=*x<<17;return *x;}"
+          },
+          {
+            "line": 49,
+            "text": "/* Keep TTL selection opaque to the caller so branch threading cannot duplicate"
+          },
+          {
+            "line": 50,
+            "text": " * the allocation call into separate PCs for immediate and retained payloads. */"
+          },
+          {
+            "line": 51,
+            "text": "__attribute__((noinline)) static unsigned request_ttl(uint64_t* rng){"
+          },
+          {
+            "line": 52,
+            "text": " unsigned draw=(unsigned)(random_next(rng)%20);"
+          },
+          {
+            "line": 53,
+            "text": " return draw>=10?0:(draw==0?86400:1);"
+          },
+          {
+            "line": 54,
+            "text": "}"
+          },
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          },
+          {
+            "line": 79,
+            "text": "}"
+          }
+        ]
+      },
+      {
+        "address": "0x1c31",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "server_worker",
+        "file": "fragbench/server-sim.c",
+        "line": 108,
+        "source": [
+          {
+            "line": 88,
+            "text": "static void* server_worker(void* arg) {"
+          },
+          {
+            "line": 89,
+            "text": " size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;"
+          },
+          {
+            "line": 90,
+            "text": " /* Pointer bookkeeping uses the system mapping API so it doesn't enter the"
+          },
+          {
+            "line": 91,
+            "text": "  * allocator's live requested-byte metric or pin experimental object pages. */"
+          },
+          {
+            "line": 92,
+            "text": " size_t bookkeeping=count*(sizeof(void*)+sizeof(size_t));"
+          },
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          },
+          {
+            "line": 95,
+            "text": " for(int cycle=0;cycle<2;cycle++) {"
+          },
+          {
+            "line": 96,
+            "text": "  for(size_t i=0;i<count;i++) {"
+          },
+          {
+            "line": 97,
+            "text": "   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;n*=payload_only?4:1;sizes[i]=n;"
+          },
+          {
+            "line": 98,
+            "text": "   /* Sessions last many operations; cache entries live until process exit."
+          },
+          {
+            "line": 99,
+            "text": "    * The two paths allocate interleaved in exactly the same size classes. */"
+          },
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          },
+          {
+            "line": 102,
+            "text": "    * aliasing the allocator's deterministic sampling period."
+          },
+          {
+            "line": 103,
+            "text": "    * One call/stack carries transient and permanent objects. */"
+          },
+          {
+            "line": 104,
+            "text": "   unsigned ttl=mixed?request_ttl(&rng):1;"
+          },
+          {
+            "line": 105,
+            "text": "   if(mixed&&jev_context_setf)jev_context_setf(REQUEST_CONTEXT,ttl==0?TTL_ZERO:ttl==1?TTL_SHORT:TTL_DAY);"
+          },
+          {
+            "line": 106,
+            "text": "   if(mixed)slots[i]=store_request_payload(n,ttl);"
+          },
+          {
+            "line": 107,
+            "text": "   else slots[i]=(i%10==0)?insert_cache_index(n):create_session_state(n);"
+          },
+          {
+            "line": 108,
+            "text": "   if(!payload_only){void* parse=parse_request_buffer(n);void* response=assemble_response_buffer(n);"
+          },
+          {
+            "line": 109,
+            "text": "   release(response,n);release(parse,n);}"
+          },
+          {
+            "line": 110,
+            "text": "   if(mixed&&ttl==0){release(slots[i],n);slots[i]=NULL;}"
+          },
+          {
+            "line": 111,
+            "text": "   if(jev_context_clear)jev_context_clear();"
+          },
+          {
+            "line": 112,
+            "text": "  }"
+          },
+          {
+            "line": 113,
+            "text": "  mark(id,cycle,\"peak\");"
+          },
+          {
+            "line": 114,
+            "text": "  for(size_t i=0;i<count;i++)if(slots[i]&&(mixed?((unsigned char*)slots[i])[0]!=(unsigned char)86400:i%10!=0)){release(slots[i],sizes[i]);slots[i]=NULL;}"
+          },
+          {
+            "line": 115,
+            "text": "  mark(id,cycle,\"drop\");"
+          },
+          {
+            "line": 116,
+            "text": "  /* Allocate/free after the purge deadline: mimalloc processes deferred purge"
+          },
+          {
+            "line": 117,
+            "text": "   * during allocator activity. Same pulse on all variants, counted in live bytes. */"
+          },
+          {
+            "line": 118,
+            "text": "  usleep(settle_ms*1000);"
+          },
+          {
+            "line": 119,
+            "text": "  for(int j=0;j<(payload_only?0:1024);j++){void* p=parse_request_buffer(64);release(p,64);}"
+          },
+          {
+            "line": 120,
+            "text": "  mark(id,cycle,\"idle\");"
+          },
+          {
+            "line": 121,
+            "text": "  /* Retained entries are deliberately never freed, including after cycle 1."
+          },
+          {
+            "line": 122,
+            "text": "   * Their pointers need not remain in slots, but their requested bytes do. */"
+          },
+          {
+            "line": 123,
+            "text": " }"
+          },
+          {
+            "line": 124,
+            "text": " munmap(slots,bookkeeping);return NULL;"
+          },
+          {
+            "line": 125,
+            "text": "}"
+          },
+          {
+            "line": 126,
+            "text": "int main(int argc,char** argv) {"
+          },
+          {
+            "line": 127,
+            "text": " if(argc>1)workers=atoi(argv[1]);if(argc>2)mixed=!strcmp(argv[2],\"site-mixed\");if(argc>3)objects=strtoull(argv[3],NULL,10);if(argc>4)settle_ms=atoi(argv[4]);"
+          },
+          {
+            "line": 128,
+            "text": " if(argc>5)payload_only=!strcmp(argv[5],\"payload-only\");"
+          }
+        ]
+      },
+      {
+        "address": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "address": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ]
+  },
+  {
+    "schema": 3,
+    "class_schema": "transient-permanent-v1",
+    "key": "79ad8781f59e8774",
+    "program": "server-sim",
+    "site_key": "79ad8781f59e8774",
+    "context_signature": "0000000000000000",
+    "context": "",
+    "total_allocation_bytes": 921784192,
+    "count": 2048,
+    "bytes": 131072,
+    "never_freed": 0,
+    "never_freed_bytes": 0,
+    "lifetime_histogram": [
+      2048,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lifetime_histogram_bytes": [
+      131072,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "short_bytes": 1048576,
+    "fixed_s_class_bytes": [
+      131072,
+      0
+    ],
+    "class_bytes": [
+      131072,
+      0
+    ],
+    "permanent_bytes_by_percent": {
+      "25": 0,
+      "50": 0,
+      "90": 0
+    },
+    "frames": [
+      {
+        "address": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "xmalloc",
+        "file": "fragbench/server-sim.c",
+        "line": 56,
+        "source": [
+          {
+            "line": 36,
+            "text": "#include <stdatomic.h>"
+          },
+          {
+            "line": 37,
+            "text": "#include <sys/resource.h>"
+          },
+          {
+            "line": 38,
+            "text": "#include <sys/mman.h>"
+          },
+          {
+            "line": 39,
+            "text": ""
+          },
+          {
+            "line": 40,
+            "text": "/* Every allocation shares the same innermost wrapper. Depth 1 cannot classify it."
+          },
+          {
+            "line": 41,
+            "text": " * Workers remain alive at idle so the experiment includes page purging, not just"
+          },
+          {
+            "line": 42,
+            "text": " * wholesale address-space release at thread exit. No allocator-specific collect. */"
+          },
+          {
+            "line": 43,
+            "text": "static _Thread_local size_t worker_live;"
+          },
+          {
+            "line": 44,
+            "text": "static struct { _Alignas(64) size_t bytes; } live_bytes[32];"
+          },
+          {
+            "line": 45,
+            "text": "static pthread_barrier_t boundary;"
+          },
+          {
+            "line": 46,
+            "text": "static int workers=1,mixed=0,payload_only=0,settle_ms=250;"
+          },
+          {
+            "line": 47,
+            "text": "static size_t objects=80000;"
+          },
+          {
+            "line": 48,
+            "text": "static uint64_t random_next(uint64_t* x){*x^=*x<<13;*x^=*x>>7;*x^=*x<<17;return *x;}"
+          },
+          {
+            "line": 49,
+            "text": "/* Keep TTL selection opaque to the caller so branch threading cannot duplicate"
+          },
+          {
+            "line": 50,
+            "text": " * the allocation call into separate PCs for immediate and retained payloads. */"
+          },
+          {
+            "line": 51,
+            "text": "__attribute__((noinline)) static unsigned request_ttl(uint64_t* rng){"
+          },
+          {
+            "line": 52,
+            "text": " unsigned draw=(unsigned)(random_next(rng)%20);"
+          },
+          {
+            "line": 53,
+            "text": " return draw>=10?0:(draw==0?86400:1);"
+          },
+          {
+            "line": 54,
+            "text": "}"
+          },
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          }
+        ]
+      },
+      {
+        "address": "0x192e",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "parse_request_buffer",
+        "file": "fragbench/server-sim.c",
+        "line": 58,
+        "source": [
+          {
+            "line": 38,
+            "text": "#include <sys/mman.h>"
+          },
+          {
+            "line": 39,
+            "text": ""
+          },
+          {
+            "line": 40,
+            "text": "/* Every allocation shares the same innermost wrapper. Depth 1 cannot classify it."
+          },
+          {
+            "line": 41,
+            "text": " * Workers remain alive at idle so the experiment includes page purging, not just"
+          },
+          {
+            "line": 42,
+            "text": " * wholesale address-space release at thread exit. No allocator-specific collect. */"
+          },
+          {
+            "line": 43,
+            "text": "static _Thread_local size_t worker_live;"
+          },
+          {
+            "line": 44,
+            "text": "static struct { _Alignas(64) size_t bytes; } live_bytes[32];"
+          },
+          {
+            "line": 45,
+            "text": "static pthread_barrier_t boundary;"
+          },
+          {
+            "line": 46,
+            "text": "static int workers=1,mixed=0,payload_only=0,settle_ms=250;"
+          },
+          {
+            "line": 47,
+            "text": "static size_t objects=80000;"
+          },
+          {
+            "line": 48,
+            "text": "static uint64_t random_next(uint64_t* x){*x^=*x<<13;*x^=*x>>7;*x^=*x<<17;return *x;}"
+          },
+          {
+            "line": 49,
+            "text": "/* Keep TTL selection opaque to the caller so branch threading cannot duplicate"
+          },
+          {
+            "line": 50,
+            "text": " * the allocation call into separate PCs for immediate and retained payloads. */"
+          },
+          {
+            "line": 51,
+            "text": "__attribute__((noinline)) static unsigned request_ttl(uint64_t* rng){"
+          },
+          {
+            "line": 52,
+            "text": " unsigned draw=(unsigned)(random_next(rng)%20);"
+          },
+          {
+            "line": 53,
+            "text": " return draw>=10?0:(draw==0?86400:1);"
+          },
+          {
+            "line": 54,
+            "text": "}"
+          },
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          }
+        ]
+      },
+      {
+        "address": "0x1dcd",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "server_worker",
+        "file": "fragbench/server-sim.c",
+        "line": 119,
+        "source": [
+          {
+            "line": 99,
+            "text": "    * The two paths allocate interleaved in exactly the same size classes. */"
+          },
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          },
+          {
+            "line": 102,
+            "text": "    * aliasing the allocator's deterministic sampling period."
+          },
+          {
+            "line": 103,
+            "text": "    * One call/stack carries transient and permanent objects. */"
+          },
+          {
+            "line": 104,
+            "text": "   unsigned ttl=mixed?request_ttl(&rng):1;"
+          },
+          {
+            "line": 105,
+            "text": "   if(mixed&&jev_context_setf)jev_context_setf(REQUEST_CONTEXT,ttl==0?TTL_ZERO:ttl==1?TTL_SHORT:TTL_DAY);"
+          },
+          {
+            "line": 106,
+            "text": "   if(mixed)slots[i]=store_request_payload(n,ttl);"
+          },
+          {
+            "line": 107,
+            "text": "   else slots[i]=(i%10==0)?insert_cache_index(n):create_session_state(n);"
+          },
+          {
+            "line": 108,
+            "text": "   if(!payload_only){void* parse=parse_request_buffer(n);void* response=assemble_response_buffer(n);"
+          },
+          {
+            "line": 109,
+            "text": "   release(response,n);release(parse,n);}"
+          },
+          {
+            "line": 110,
+            "text": "   if(mixed&&ttl==0){release(slots[i],n);slots[i]=NULL;}"
+          },
+          {
+            "line": 111,
+            "text": "   if(jev_context_clear)jev_context_clear();"
+          },
+          {
+            "line": 112,
+            "text": "  }"
+          },
+          {
+            "line": 113,
+            "text": "  mark(id,cycle,\"peak\");"
+          },
+          {
+            "line": 114,
+            "text": "  for(size_t i=0;i<count;i++)if(slots[i]&&(mixed?((unsigned char*)slots[i])[0]!=(unsigned char)86400:i%10!=0)){release(slots[i],sizes[i]);slots[i]=NULL;}"
+          },
+          {
+            "line": 115,
+            "text": "  mark(id,cycle,\"drop\");"
+          },
+          {
+            "line": 116,
+            "text": "  /* Allocate/free after the purge deadline: mimalloc processes deferred purge"
+          },
+          {
+            "line": 117,
+            "text": "   * during allocator activity. Same pulse on all variants, counted in live bytes. */"
+          },
+          {
+            "line": 118,
+            "text": "  usleep(settle_ms*1000);"
+          },
+          {
+            "line": 119,
+            "text": "  for(int j=0;j<(payload_only?0:1024);j++){void* p=parse_request_buffer(64);release(p,64);}"
+          },
+          {
+            "line": 120,
+            "text": "  mark(id,cycle,\"idle\");"
+          },
+          {
+            "line": 121,
+            "text": "  /* Retained entries are deliberately never freed, including after cycle 1."
+          },
+          {
+            "line": 122,
+            "text": "   * Their pointers need not remain in slots, but their requested bytes do. */"
+          },
+          {
+            "line": 123,
+            "text": " }"
+          },
+          {
+            "line": 124,
+            "text": " munmap(slots,bookkeeping);return NULL;"
+          },
+          {
+            "line": 125,
+            "text": "}"
+          },
+          {
+            "line": 126,
+            "text": "int main(int argc,char** argv) {"
+          },
+          {
+            "line": 127,
+            "text": " if(argc>1)workers=atoi(argv[1]);if(argc>2)mixed=!strcmp(argv[2],\"site-mixed\");if(argc>3)objects=strtoull(argv[3],NULL,10);if(argc>4)settle_ms=atoi(argv[4]);"
+          },
+          {
+            "line": 128,
+            "text": " if(argc>5)payload_only=!strcmp(argv[5],\"payload-only\");"
+          },
+          {
+            "line": 129,
+            "text": " if(workers<1||workers>32||objects<(size_t)workers||settle_ms<100)return 2;"
+          },
+          {
+            "line": 130,
+            "text": " pthread_barrier_init(&boundary,NULL,workers);pthread_t threads[32];"
+          },
+          {
+            "line": 131,
+            "text": " for(size_t i=0;i<(size_t)workers;i++)if(pthread_create(&threads[i],NULL,server_worker,(void*)i))abort();"
+          },
+          {
+            "line": 132,
+            "text": " for(int i=0;i<workers;i++)pthread_join(threads[i],NULL);"
+          },
+          {
+            "line": 133,
+            "text": " puts(\"fragbench OK\");return 0;"
+          },
+          {
+            "line": 134,
+            "text": "}"
+          }
+        ]
+      },
+      {
+        "address": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "address": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ]
+  },
+  {
+    "schema": 3,
+    "class_schema": "transient-permanent-v1",
+    "key": "12507c88144ea932",
+    "program": "server-sim",
+    "site_key": "12507c88144ea932",
+    "context_signature": "0000000000000000",
+    "context": "",
+    "total_allocation_bytes": 921784192,
+    "count": 2,
+    "bytes": 944,
+    "never_freed": 0,
+    "never_freed_bytes": 0,
+    "lifetime_histogram": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lifetime_histogram_bytes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      944,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "short_bytes": 1048576,
+    "fixed_s_class_bytes": [
+      944,
+      0
+    ],
+    "class_bytes": [
+      944,
+      0
+    ],
+    "permanent_bytes_by_percent": {
+      "25": 0,
+      "50": 0,
+      "90": 0
+    },
+    "frames": [
+      {
+        "address": "0x85e7f",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "__fopen_internal",
+        "file": "./libio/./libio/iofopen.c",
+        "line": 65,
+        "source": []
+      },
+      {
+        "address": "0x175c",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "emit",
+        "file": "fragbench/server-sim.c",
+        "line": 74,
+        "source": [
+          {
+            "line": 54,
+            "text": "}"
+          },
+          {
+            "line": 55,
+            "text": "__attribute__((noinline)) static void* xmalloc(size_t n) {"
+          },
+          {
+            "line": 56,
+            "text": " void* p=malloc(n);if(!p)abort();memset(p,0xa5,n);worker_live+=n;return p;"
+          },
+          {
+            "line": 57,
+            "text": "}"
+          },
+          {
+            "line": 58,
+            "text": "__attribute__((noinline)) static void* parse_request_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 59,
+            "text": "__attribute__((noinline)) static void* assemble_response_buffer(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 60,
+            "text": "__attribute__((noinline)) static void* create_session_state(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          },
+          {
+            "line": 79,
+            "text": "}"
+          },
+          {
+            "line": 80,
+            "text": "static void mark(size_t id,int cycle,const char* name){"
+          },
+          {
+            "line": 81,
+            "text": " live_bytes[id].bytes=worker_live;phase(cycle,name);if(id==0)emit(cycle,name);pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 82,
+            "text": " const char* longer=getenv(\"FRAG_LONG_SETTLE_MS\");"
+          },
+          {
+            "line": 83,
+            "text": " if(longer&&!strcmp(name,\"idle\")){"
+          },
+          {
+            "line": 84,
+            "text": "  int ms=atoi(longer)-settle_ms;if(ms>0)usleep((useconds_t)ms*1000);"
+          },
+          {
+            "line": 85,
+            "text": "  pthread_barrier_wait(&boundary);if(id==0)emit(cycle,\"idle10\");pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 86,
+            "text": " }"
+          },
+          {
+            "line": 87,
+            "text": "}"
+          },
+          {
+            "line": 88,
+            "text": "static void* server_worker(void* arg) {"
+          },
+          {
+            "line": 89,
+            "text": " size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;"
+          },
+          {
+            "line": 90,
+            "text": " /* Pointer bookkeeping uses the system mapping API so it doesn't enter the"
+          },
+          {
+            "line": 91,
+            "text": "  * allocator's live requested-byte metric or pin experimental object pages. */"
+          },
+          {
+            "line": 92,
+            "text": " size_t bookkeeping=count*(sizeof(void*)+sizeof(size_t));"
+          },
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          }
+        ]
+      },
+      {
+        "address": "0x1a23",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "mark",
+        "file": "fragbench/server-sim.c",
+        "line": 81,
+        "source": [
+          {
+            "line": 61,
+            "text": "__attribute__((noinline)) static void* insert_cache_index(size_t n){return xmalloc(n);}"
+          },
+          {
+            "line": 62,
+            "text": "/* TTL is data, deliberately absent from the stack key: a per-site predictor must"
+          },
+          {
+            "line": 63,
+            "text": " * give retained and temporary payloads one class. Its oracle is a majority label. */"
+          },
+          {
+            "line": 64,
+            "text": "__attribute__((noinline)) static void* store_request_payload(size_t n,unsigned ttl){"
+          },
+          {
+            "line": 65,
+            "text": " void* p=xmalloc(n);((unsigned char*)p)[0]=(unsigned char)ttl;return p;"
+          },
+          {
+            "line": 66,
+            "text": "}"
+          },
+          {
+            "line": 67,
+            "text": "static void release(void* p,size_t n){free(p);worker_live-=n;}"
+          },
+          {
+            "line": 68,
+            "text": "static void phase(int cycle,const char* name) {"
+          },
+          {
+            "line": 69,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 70,
+            "text": " if(!strcmp(name,\"idle\"))usleep(settle_ms*1000);"
+          },
+          {
+            "line": 71,
+            "text": " pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 72,
+            "text": "}"
+          },
+          {
+            "line": 73,
+            "text": "static void emit(int cycle,const char* name) {"
+          },
+          {
+            "line": 74,
+            "text": " FILE* f=fopen(\"/proc/self/statm\",\"r\");unsigned long pages=0,resident=0;"
+          },
+          {
+            "line": 75,
+            "text": " if(!f||fscanf(f,\"%lu %lu\",&pages,&resident)!=2)abort();fclose(f);"
+          },
+          {
+            "line": 76,
+            "text": " struct rusage r;getrusage(RUSAGE_SELF,&r);"
+          },
+          {
+            "line": 77,
+            "text": " size_t live=0;for(int i=0;i<workers;i++)live+=live_bytes[i].bytes;"
+          },
+          {
+            "line": 78,
+            "text": " printf(\"{\\\"phase\\\":\\\"%s\\\",\\\"cycle\\\":%d,\\\"rss_bytes\\\":%lu,\\\"live_bytes\\\":%zu,\\\"fragmentation_ratio\\\":%.6f,\\\"peak_rss_bytes\\\":%ld}\\n\",name,cycle,resident*sysconf(_SC_PAGESIZE),live,live?(double)(resident*sysconf(_SC_PAGESIZE))/live:0,r.ru_maxrss*1024);fflush(stdout);"
+          },
+          {
+            "line": 79,
+            "text": "}"
+          },
+          {
+            "line": 80,
+            "text": "static void mark(size_t id,int cycle,const char* name){"
+          },
+          {
+            "line": 81,
+            "text": " live_bytes[id].bytes=worker_live;phase(cycle,name);if(id==0)emit(cycle,name);pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 82,
+            "text": " const char* longer=getenv(\"FRAG_LONG_SETTLE_MS\");"
+          },
+          {
+            "line": 83,
+            "text": " if(longer&&!strcmp(name,\"idle\")){"
+          },
+          {
+            "line": 84,
+            "text": "  int ms=atoi(longer)-settle_ms;if(ms>0)usleep((useconds_t)ms*1000);"
+          },
+          {
+            "line": 85,
+            "text": "  pthread_barrier_wait(&boundary);if(id==0)emit(cycle,\"idle10\");pthread_barrier_wait(&boundary);"
+          },
+          {
+            "line": 86,
+            "text": " }"
+          },
+          {
+            "line": 87,
+            "text": "}"
+          },
+          {
+            "line": 88,
+            "text": "static void* server_worker(void* arg) {"
+          },
+          {
+            "line": 89,
+            "text": " size_t id=(size_t)arg,count=objects/workers;uint64_t rng=1729+id;"
+          },
+          {
+            "line": 90,
+            "text": " /* Pointer bookkeeping uses the system mapping API so it doesn't enter the"
+          },
+          {
+            "line": 91,
+            "text": "  * allocator's live requested-byte metric or pin experimental object pages. */"
+          },
+          {
+            "line": 92,
+            "text": " size_t bookkeeping=count*(sizeof(void*)+sizeof(size_t));"
+          },
+          {
+            "line": 93,
+            "text": " void** slots=mmap(NULL,bookkeeping,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);if(slots==(void*)-1)abort();"
+          },
+          {
+            "line": 94,
+            "text": " size_t* sizes=(size_t*)(slots+count);"
+          },
+          {
+            "line": 95,
+            "text": " for(int cycle=0;cycle<2;cycle++) {"
+          },
+          {
+            "line": 96,
+            "text": "  for(size_t i=0;i<count;i++) {"
+          },
+          {
+            "line": 97,
+            "text": "   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;n*=payload_only?4:1;sizes[i]=n;"
+          },
+          {
+            "line": 98,
+            "text": "   /* Sessions last many operations; cache entries live until process exit."
+          },
+          {
+            "line": 99,
+            "text": "    * The two paths allocate interleaved in exactly the same size classes. */"
+          },
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          }
+        ]
+      },
+      {
+        "address": "0x1da3",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim",
+        "function": "server_worker",
+        "file": "fragbench/server-sim.c",
+        "line": 115,
+        "source": [
+          {
+            "line": 95,
+            "text": " for(int cycle=0;cycle<2;cycle++) {"
+          },
+          {
+            "line": 96,
+            "text": "  for(size_t i=0;i<count;i++) {"
+          },
+          {
+            "line": 97,
+            "text": "   size_t n=(cycle?384:192)+(random_next(&rng)%4)*64;n*=payload_only?4:1;sizes[i]=n;"
+          },
+          {
+            "line": 98,
+            "text": "   /* Sessions last many operations; cache entries live until process exit."
+          },
+          {
+            "line": 99,
+            "text": "    * The two paths allocate interleaved in exactly the same size classes. */"
+          },
+          {
+            "line": 100,
+            "text": "   /* Mixed request data: half expire during this operation, 45% survive until"
+          },
+          {
+            "line": 101,
+            "text": "    * the load drop, and 5% are retained. The latter are about 10% of peak live slots. Seeded TTL draws avoid"
+          },
+          {
+            "line": 102,
+            "text": "    * aliasing the allocator's deterministic sampling period."
+          },
+          {
+            "line": 103,
+            "text": "    * One call/stack carries transient and permanent objects. */"
+          },
+          {
+            "line": 104,
+            "text": "   unsigned ttl=mixed?request_ttl(&rng):1;"
+          },
+          {
+            "line": 105,
+            "text": "   if(mixed&&jev_context_setf)jev_context_setf(REQUEST_CONTEXT,ttl==0?TTL_ZERO:ttl==1?TTL_SHORT:TTL_DAY);"
+          },
+          {
+            "line": 106,
+            "text": "   if(mixed)slots[i]=store_request_payload(n,ttl);"
+          },
+          {
+            "line": 107,
+            "text": "   else slots[i]=(i%10==0)?insert_cache_index(n):create_session_state(n);"
+          },
+          {
+            "line": 108,
+            "text": "   if(!payload_only){void* parse=parse_request_buffer(n);void* response=assemble_response_buffer(n);"
+          },
+          {
+            "line": 109,
+            "text": "   release(response,n);release(parse,n);}"
+          },
+          {
+            "line": 110,
+            "text": "   if(mixed&&ttl==0){release(slots[i],n);slots[i]=NULL;}"
+          },
+          {
+            "line": 111,
+            "text": "   if(jev_context_clear)jev_context_clear();"
+          },
+          {
+            "line": 112,
+            "text": "  }"
+          },
+          {
+            "line": 113,
+            "text": "  mark(id,cycle,\"peak\");"
+          },
+          {
+            "line": 114,
+            "text": "  for(size_t i=0;i<count;i++)if(slots[i]&&(mixed?((unsigned char*)slots[i])[0]!=(unsigned char)86400:i%10!=0)){release(slots[i],sizes[i]);slots[i]=NULL;}"
+          },
+          {
+            "line": 115,
+            "text": "  mark(id,cycle,\"drop\");"
+          },
+          {
+            "line": 116,
+            "text": "  /* Allocate/free after the purge deadline: mimalloc processes deferred purge"
+          },
+          {
+            "line": 117,
+            "text": "   * during allocator activity. Same pulse on all variants, counted in live bytes. */"
+          },
+          {
+            "line": 118,
+            "text": "  usleep(settle_ms*1000);"
+          },
+          {
+            "line": 119,
+            "text": "  for(int j=0;j<(payload_only?0:1024);j++){void* p=parse_request_buffer(64);release(p,64);}"
+          },
+          {
+            "line": 120,
+            "text": "  mark(id,cycle,\"idle\");"
+          },
+          {
+            "line": 121,
+            "text": "  /* Retained entries are deliberately never freed, including after cycle 1."
+          },
+          {
+            "line": 122,
+            "text": "   * Their pointers need not remain in slots, but their requested bytes do. */"
+          },
+          {
+            "line": 123,
+            "text": " }"
+          },
+          {
+            "line": 124,
+            "text": " munmap(slots,bookkeeping);return NULL;"
+          },
+          {
+            "line": 125,
+            "text": "}"
+          },
+          {
+            "line": 126,
+            "text": "int main(int argc,char** argv) {"
+          },
+          {
+            "line": 127,
+            "text": " if(argc>1)workers=atoi(argv[1]);if(argc>2)mixed=!strcmp(argv[2],\"site-mixed\");if(argc>3)objects=strtoull(argv[3],NULL,10);if(argc>4)settle_ms=atoi(argv[4]);"
+          },
+          {
+            "line": 128,
+            "text": " if(argc>5)payload_only=!strcmp(argv[5],\"payload-only\");"
+          },
+          {
+            "line": 129,
+            "text": " if(workers<1||workers>32||objects<(size_t)workers||settle_ms<100)return 2;"
+          },
+          {
+            "line": 130,
+            "text": " pthread_barrier_init(&boundary,NULL,workers);pthread_t threads[32];"
+          },
+          {
+            "line": 131,
+            "text": " for(size_t i=0;i<(size_t)workers;i++)if(pthread_create(&threads[i],NULL,server_worker,(void*)i))abort();"
+          },
+          {
+            "line": 132,
+            "text": " for(int i=0;i<workers;i++)pthread_join(threads[i],NULL);"
+          },
+          {
+            "line": 133,
+            "text": " puts(\"fragbench OK\");return 0;"
+          },
+          {
+            "line": 134,
+            "text": "}"
+          }
+        ]
+      },
+      {
+        "address": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "address": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ]
+  }
+]

@@ -1,10 +1,21 @@
 # Pass 10 — answering review 2
 
-The pass tests whether lifetime placement survives mimalloc defaults and whether
-model answers outperform fixed names/TTL rules when semantic hints are removed.
-The combined trace/live free bug is fixed and passes targeted Linux/macOS tests.
-Fresh live-heuristic, neutral-rule, semantic-rule and renamed-workload measurements
-are pending; no default-options RSS or model-specific advantage is claimed yet.
+This pass asks whether lifetime placement saves memory under mimalloc defaults, whether current runtime statistics help, and whether a model adds value beyond function names and TTL text.
+
+6/25 fragmentation blocks are complete. Every published comparison uses five interleaved repetitions. **Defaults** unsets every MIMALLOC_* override; **immediate purge** sets delay 0, arena multiplier 1 and decommit enabled. Full measurements, both cycles and 10-second idle observations are in the [pass-10 report](results/pass10/results.md) and [phase table](results/pass10/phases.md).
+
+Final idle RSS under **defaults**, MiB. Plain mimalloc is the `mi` column; rules use the same placement machinery as the model.
+
+| Workload | mi | Oracle | Static model | Hybrid | Live heuristic | Neutral rules | Names / TTL rule |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| site-pure-1 | 280.21 | 214.00 | 216.81 | 216.81 | 286.83 | 304.81 | 216.81 |
+| site-pure-16 | 296.55 | 234.80 | 239.98 | 241.92 | 305.36 | 331.91 | 239.74 |
+
+The one-thread pure model reduction is 22.6% under defaults, versus 84.4% with immediate purge. The fixed names rule produces 216.81 MiB under defaults. The original large synthetic saving is configuration-dependent and does not by itself show a model advantage.
+
+The heuristic now recomputes its sparse formula from current observations. Neutral rules use P(transient)=0.5 with hybrid’s continuous C checks. Names and TTL rules use fixed, preregistered semantic tests with those same checks; none calls a model. The full report compares these controls under both configurations.
+
+The combined logging/live-free bug is fixed. Tests cover cross-thread frees, retired allocating threads, actual address reuse, sample/survivor counts and hybrid demotions with logging on and off. Warm model measurements replay answers and retain service/IPC costs; target CPU excludes sidecar CPU. Compact evidence supports the medians, while full trace/cache reconstruction requires the retained remote artifacts.
 
 <!-- PASS10-END -->
 

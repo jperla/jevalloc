@@ -1,0 +1,95 @@
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.010s
+
+OK
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.005s
+
+OK
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.051s
+
+OK
+stress OK
+stress OK
+stress OK
+defects OK
+stress OK
+lifetimes OK
+lifetimes OK
+lifetimes OK
+TRACE cfrac
+RANDOM RUN cfrac (175 sites)
+TRACE espresso
+RANDOM RUN espresso (1045 sites)
+TRACE barnes
+RANDOM RUN barnes (20 sites)
+TRACE larson
+RANDOM RUN larson (9 sites)
+TRACE larson-sized
+RANDOM RUN larson-sized (9 sites)
+TRACE xmalloc-test
+RANDOM RUN xmalloc-test (8 sites)
+TRACE cache-scratch1
+RANDOM RUN cache-scratch1 (5 sites)
+TRACE cache-scratchN
+RANDOM RUN cache-scratchN (5 sites)
+TRACE cache-thrash1
+RANDOM RUN cache-thrash1 (3 sites)
+TRACE cache-thrashN
+RANDOM RUN cache-thrashN (3 sites)
+TRACE mstress
+RANDOM RUN mstress (22 sites)
+TRACE rptest
+RANDOM RUN rptest (22 sites)
+TRACE glibc-simple
+RANDOM RUN glibc-simple (35 sites)
+TRACE glibc-thread
+RANDOM RUN glibc-thread (3 sites)
+TRACE alloc-test1
+RANDOM RUN alloc-test1 (11 sites)
+TRACE alloc-testN
+RANDOM RUN alloc-testN (11 sites)
+TRACE malloc-large
+RANDOM RUN malloc-large (1 sites)
+TRACE mleak10
+RANDOM RUN mleak10 (4 sites)
+TRACE mleak100
+RANDOM RUN mleak100 (4 sites)
+TRACE sh6benchN
+RANDOM RUN sh6benchN (4 sites)
+TRACE sh8benchN
+RANDOM RUN sh8benchN (7 sites)
+TRACE redis
+RANDOM RUN redis (627 sites)
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+COMBINED TRACE/LIVE PASSED
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.003s
+
+OK
+CONTEXT INTEGRATION PASSED
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.004s
+
+OK
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+HYBRID INTEGRATION PASSED
+LIVE TESTS PASSED
+PERMANENT HEURISTIC INTEGRATION PASSED
+REPLAY COVERAGE TEST PASSED
+BUDGET INTEGRATION TEST PASSED
+ALL TESTS PASSED
