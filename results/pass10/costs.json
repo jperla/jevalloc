@@ -1,5 +1,138 @@
 [
   {
+    "block": "defaults/named/per-alloc-small",
+    "variant": "jev-live:per-alloc",
+    "repetition": -1,
+    "wall": 21.314629572,
+    "http": 0.0,
+    "answers": 2229,
+    "budget_fallbacks": 0,
+    "coverage": {
+      "sites": 10,
+      "asked_sites": 3,
+      "unasked_sites": 7,
+      "allocated_bytes": 3698928,
+      "unasked_bytes": 16368,
+      "unasked_byte_share": 0.004425065856918545,
+      "max_model_decisions": 3000,
+      "budget_fallbacks": 0
+    }
+  },
+  {
+    "block": "defaults/named/redis-mesh",
+    "variant": "jev-live:static-site",
+    "repetition": -1,
+    "wall": 52.596192638,
+    "http": 28.60121513530612,
+    "answers": 12,
+    "budget_fallbacks": 0,
+    "coverage": {
+      "sites": 630,
+      "asked_sites": 12,
+      "unasked_sites": 618,
+      "allocated_bytes": 419231607,
+      "unasked_bytes": 803723,
+      "unasked_byte_share": 0.001917133600091369,
+      "max_model_decisions": 3000,
+      "budget_fallbacks": 0
+    }
+  },
+  {
+    "block": "defaults/named/redis-mesh",
+    "variant": "jev-live:static-model",
+    "repetition": -1,
+    "wall": 43.27354282,
+    "http": 19.52214454393834,
+    "answers": 15,
+    "budget_fallbacks": 0,
+    "coverage": {
+      "sites": 635,
+      "asked_sites": 15,
+      "unasked_sites": 620,
+      "allocated_bytes": 419180845,
+      "unasked_bytes": 821093,
+      "unasked_byte_share": 0.0019588037234859815,
+      "max_model_decisions": 3000,
+      "budget_fallbacks": 0
+    }
+  },
+  {
+    "block": "defaults/named/redis-mesh",
+    "variant": "jev-live:hybrid",
+    "repetition": -1,
+    "wall": 23.822703243,
+    "http": 0.0,
+    "answers": 15,
+    "budget_fallbacks": 0,
+    "coverage": {
+      "sites": 635,
+      "asked_sites": 15,
+      "unasked_sites": 620,
+      "allocated_bytes": 419054578,
+      "unasked_bytes": 819598,
+      "unasked_byte_share": 0.001955826384027715,
+      "max_model_decisions": 3000,
+      "budget_fallbacks": 0
+    }
+  },
+  {
+    "block": "defaults/named/redis-mesh",
+    "variant": "jev-live:static-site",
+    "repetition": -2,
+    "wall": 23.309101825,
+    "http": 0.0,
+    "answers": 11,
+    "budget_fallbacks": 0,
+    "coverage": {
+      "sites": 621,
+      "asked_sites": 11,
+      "unasked_sites": 610,
+      "allocated_bytes": 418955748,
+      "unasked_bytes": 834214,
+      "unasked_byte_share": 0.0019911744951163672,
+      "max_model_decisions": 3000,
+      "budget_fallbacks": 0
+    }
+  },
+  {
+    "block": "defaults/named/redis-mesh",
+    "variant": "jev-live:static-model",
+    "repetition": -2,
+    "wall": 23.329024325,
+    "http": 0.0,
+    "answers": 15,
+    "budget_fallbacks": 0,
+    "coverage": {
+      "sites": 626,
+      "asked_sites": 15,
+      "unasked_sites": 611,
+      "allocated_bytes": 418947123,
+      "unasked_bytes": 817189,
+      "unasked_byte_share": 0.001950577901450346,
+      "max_model_decisions": 3000,
+      "budget_fallbacks": 0
+    }
+  },
+  {
+    "block": "defaults/named/redis-mesh",
+    "variant": "jev-live:hybrid",
+    "repetition": -2,
+    "wall": 23.262873153,
+    "http": 0.0,
+    "answers": 14,
+    "budget_fallbacks": 0,
+    "coverage": {
+      "sites": 626,
+      "asked_sites": 14,
+      "unasked_sites": 612,
+      "allocated_bytes": 418962191,
+      "unasked_bytes": 851207,
+      "unasked_byte_share": 0.002031703619766491,
+      "max_model_decisions": 3000,
+      "budget_fallbacks": 0
+    }
+  },
+  {
     "block": "defaults/named/site-mixed-1",
     "variant": "jev-live:static-site",
     "repetition": -1,
@@ -1135,6 +1268,25 @@
       "allocated_bytes": 923791616,
       "unasked_bytes": 20928,
       "unasked_byte_share": 2.2654459769420554e-05,
+      "max_model_decisions": 3000,
+      "budget_fallbacks": 0
+    }
+  },
+  {
+    "block": "immediate/named/per-alloc-small",
+    "variant": "jev-live:per-alloc",
+    "repetition": -1,
+    "wall": 3062.90514515,
+    "http": 3050.5710365269333,
+    "answers": 2229,
+    "budget_fallbacks": 0,
+    "coverage": {
+      "sites": 9,
+      "asked_sites": 3,
+      "unasked_sites": 6,
+      "allocated_bytes": 3695936,
+      "unasked_bytes": 13376,
+      "unasked_byte_share": 0.003619110287624028,
       "max_model_decisions": 3000,
       "budget_fallbacks": 0
     }

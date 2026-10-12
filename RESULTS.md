@@ -2,9 +2,9 @@
 
 This pass asks whether lifetime placement saves memory under mimalloc defaults, whether current runtime statistics help, and whether a model adds value beyond function names and TTL text.
 
-16/25 fragmentation blocks are complete. Every published comparison uses five interleaved repetitions. **Defaults** unsets every MIMALLOC_* override; **immediate purge** sets delay 0, arena multiplier 1 and decommit enabled. Full measurements, both cycles and 10-second idle observations are in the [pass-10 report](results/pass10/results.md) and [phase table](results/pass10/phases.md).
+19/25 fragmentation blocks are complete. Every published comparison uses five interleaved repetitions. **Defaults** unsets every `MIMALLOC_*` override; **immediate purge** sets delay 0, arena multiplier 1 and decommit enabled. Full measurements, both cycles and 10-second idle observations are in the [pass-10 report](results/pass10/results.md) and [phase table](results/pass10/phases.md).
 
-Final idle RSS under **defaults**, MiB. Plain mimalloc is the `mi` column; rules use the same placement machinery as the model.
+Final idle RSS under **defaults**, MiB. Plain mimalloc is `mi`; oracle uses sites on pure workloads and context pairs on mixed. Rules share the model’s placement machinery.
 
 | Workload | mi | Oracle | Static model | Hybrid | Live heuristic | Neutral rules | Names / TTL rule |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -13,26 +13,17 @@ Final idle RSS under **defaults**, MiB. Plain mimalloc is the `mi` column; rules
 | site-mixed-1 | 146.21 | 112.18 | 115.02 | 115.02 | 147.14 | 158.96 | 115.02 |
 | site-mixed-16 | 170.53 | 138.91 | 140.07 | 140.12 | 171.24 | 180.02 | 140.07 |
 
-The one-thread pure model reduction is 22.6% under defaults, versus 84.4% with immediate purge. The fixed names rule produces 216.81 MiB under defaults. The original large synthetic saving is configuration-dependent and does not by itself show a model advantage.
+The one-thread pure model reduction is 22.6% under defaults, versus 84.4% with immediate purge. Defaults also adds a 10-second wait between cycles. The fixed names rule produces 216.81 MiB under defaults. The original large synthetic saving is configuration-dependent and does not by itself show a model advantage.
 
-The heuristic now recomputes its sparse formula from current observations. Neutral rules use P(transient)=0.5 with hybrid’s continuous C checks. Names and TTL rules use fixed, preregistered semantic tests with those same checks; none calls a model. The full report compares these controls under both configurations.
+The heuristic now runs on current observations. Neutral rules use a 0.5 prior with hybrid’s continuous checks. Both use more idle RSS than mimalloc in all four named defaults fixtures. Fixed names/TTL rules closely match the useful model placement there.
 
-Fraction of the named saving retained after renaming, **static / hybrid**, relative to each binary’s own mimalloc baseline. Negative means RSS increased. These are the same synthetic workload with changed names and context vocabulary.
+Static-model retains a positive saving over its own mimalloc baseline in 0/8 renamed comparisons. Exact per-naming RSS, oracle capture and fractions of the original saving are in the full report. Hybrid retains a positive saving in 0/4 opaque comparisons.
 
-| Workload | Opaque | Plausible |
-|---|---:|---:|
-| site-pure-1 | -4.6% / -38.8% | -4.6% / 81.2% |
-| site-pure-16 | -3.6% / -64.7% | -3.9% / 52.3% |
-| site-mixed-1 | -2.9% / -40.8% | -2.9% / 81.0% |
-| site-mixed-16 | -5.2% / -24.8% | -5.2% / 67.3% |
+With plausible names, hybrid retains 52.3–81.2% of its named saving and beats the matching fixed names/TTL rule by 22.00–54.37 MiB. The model initially chooses transient, but its probability priors permit promotion of the retained path while blocking the session path. Some mixed-context priors lie close to the fixed 0.7 gate. This is a benefit in these specific synthetic ablations; the [answer/probability table](results/pass10/model-sites.md) and full ranges show its scope.
 
-static-model has a lower median than the matching keyword/TTL rule in 1/12 completed default-options comparisons. The largest difference is 0.17 MiB on opaque/site-pure-16.
+Default-options real programs: 1/7 complete. Model-policy reductions above 5% are absent in the completed workloads. All policies, costs and ranges are in the full report. Earlier table-search gates and the later contrary RocksDB result remain below.
 
-hybrid has a lower median than the matching keyword/TTL rule in 4/12 completed default-options comparisons. The largest difference is 54.37 MiB on plausible/site-pure-1.
-
-These are descriptive median comparisons; all differences and ranges remain in the full report. [Every first-sight model answer and probability](results/pass10/model-sites.md) is reported beside trace truth.
-
-On plausible-name pure-1, hybrid holds 228.75 MiB versus the names rule’s 283.12 MiB. Its recorded promotion is on entry_put. The model’s transient priors are 0.549 for entry_put and 0.733 for conn_attach, on opposite sides of hybrid’s fixed 0.7 promotion gate; all initial classes are transient. This positive result uses model probabilities together with runtime rules. Static-model alone does not retain the named saving in this case.
+The recollected small per-object run has 94.66% model-answered accuracy versus 91.12% always-transient accuracy, with 39.90% permanent recall. The TTL rule reproduces 2229/2229 model-answered classes. Accuracy, logged checks and separate unlogged RSS/cost comparisons are in the full report. Unlogged per-object idle RSS is immediate: 7.77 versus mi 7.96 MiB; defaults: 8.45 versus mi 8.13 MiB. Fresh cold inference took 50.8 minutes.
 
 The combined logging/live-free bug is fixed. Tests cover cross-thread frees, retired allocating threads, actual address reuse, sample/survivor counts and hybrid demotions with logging on and off. Warm model measurements replay answers and retain service/IPC costs; target CPU excludes sidecar CPU. Compact evidence supports the medians, while full trace/cache reconstruction requires the retained remote artifacts.
 

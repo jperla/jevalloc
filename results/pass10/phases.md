@@ -1,9 +1,41 @@
 # Pass 10 measured phases
 
-Five interleaved repetitions; MiB. Each row reports a workload’s original cycle. Defaults unset every MIMALLOC_* variable; immediate sets purge delay 0, arena multiplier 1, decommit 1. Wall time includes the prescribed idle waits; target CPU excludes sidecar CPU.
+Five interleaved repetitions; MiB. Each row reports a workload’s original cycle. Defaults unset every `MIMALLOC_*` variable; immediate sets purge delay 0, arena multiplier 1, decommit 1. Wall time includes the prescribed idle waits; target CPU excludes sidecar CPU. The extra 10-second observation also delays the next cycle under defaults; across-series comparisons therefore change idle duration as well as allocator options.
 
 | Options / naming / workload | Variant | Cycle | Idle median [min, max] MiB | 10 s idle MiB | Peak MiB | Wall s | Target CPU s |
 |---|---|---:|---:|---:|---:|---:|---:|
+| defaults/named/per-alloc-small | mi | 0 | 6.129 [6.121, 6.129] | 6.129 | 8.035 | 20.506 | 0.005 |
+| defaults/named/per-alloc-small | mi | 1 | 8.129 [8.121, 8.129] | 8.129 | 8.035 | 20.506 | 0.005 |
+| defaults/named/per-alloc-small | jev-keyonly | 0 | 6.223 [6.215, 6.227] | 6.223 | 8.188 | 20.508 | 0.006 |
+| defaults/named/per-alloc-small | jev-keyonly | 1 | 8.223 [8.219, 8.230] | 8.223 | 8.188 | 20.508 | 0.006 |
+| defaults/named/per-alloc-small | jev-table:oracle-site | 0 | 6.219 [6.215, 6.219] | 6.219 | 8.184 | 20.507 | 0.006 |
+| defaults/named/per-alloc-small | jev-table:oracle-site | 1 | 8.219 [8.219, 8.223] | 8.219 | 8.184 | 20.507 | 0.006 |
+| defaults/named/per-alloc-small | jev-table:oracle-context | 0 | 6.219 [6.215, 6.223] | 6.219 | 6.184 | 20.507 | 0.006 |
+| defaults/named/per-alloc-small | jev-table:oracle-context | 1 | 6.219 [6.215, 6.223] | 6.219 | 6.184 | 20.507 | 0.006 |
+| defaults/named/per-alloc-small | jev-live:per-alloc | 0 | 6.391 [6.383, 6.398] | 6.395 | 8.086 | 21.336 | 0.162 |
+| defaults/named/per-alloc-small | jev-live:per-alloc | 1 | 8.453 [8.449, 8.465] | 8.453 | 8.086 | 21.336 | 0.162 |
+| defaults/named/redis-mesh | mi | 0 | 107.973 [107.961, 108.027] | 107.973 | 185.938 | 22.828 | 1.363 |
+| defaults/named/redis-mesh | mi | 1 | 185.973 [185.961, 186.027] | 185.973 | 185.938 | 22.828 | 1.363 |
+| defaults/named/redis-mesh | jev-keyonly | 0 | 108.094 [108.035, 108.160] | 108.094 | 186.000 | 23.236 | 1.755 |
+| defaults/named/redis-mesh | jev-keyonly | 1 | 186.094 [186.035, 186.160] | 186.094 | 186.000 | 23.236 | 1.755 |
+| defaults/named/redis-mesh | jev-table:oracle-site | 0 | 110.020 [109.973, 110.035] | 110.020 | 187.988 | 23.077 | 1.641 |
+| defaults/named/redis-mesh | jev-table:oracle-site | 1 | 188.031 [188.020, 188.090] | 188.031 | 187.988 | 23.077 | 1.641 |
+| defaults/named/redis-mesh | jev-table:oracle-context | 0 | 110.070 [110.008, 110.098] | 110.070 | 196.004 | 23.133 | 1.656 |
+| defaults/named/redis-mesh | jev-table:oracle-context | 1 | 196.074 [196.066, 196.152] | 196.074 | 196.004 | 23.133 | 1.656 |
+| defaults/named/redis-mesh | jev-live:static-site | 0 | 115.020 [114.996, 115.047] | 115.020 | 192.879 | 23.324 | 1.842 |
+| defaults/named/redis-mesh | jev-live:static-site | 1 | 193.020 [192.996, 193.047] | 193.020 | 192.879 | 23.324 | 1.842 |
+| defaults/named/redis-mesh | jev-live:static-model | 0 | 115.008 [114.934, 115.031] | 115.008 | 192.988 | 23.269 | 1.781 |
+| defaults/named/redis-mesh | jev-live:static-model | 1 | 193.008 [192.934, 193.031] | 193.008 | 192.988 | 23.269 | 1.781 |
+| defaults/named/redis-mesh | jev-live:hybrid | 0 | 131.039 [131.008, 132.965] | 131.039 | 208.848 | 23.269 | 1.782 |
+| defaults/named/redis-mesh | jev-live:hybrid | 1 | 208.965 [207.039, 209.023] | 208.965 | 208.848 | 23.269 | 1.782 |
+| defaults/named/redis-mesh | jev-live:heuristic | 0 | 147.000 [144.965, 147.047] | 147.000 | 230.848 | 23.342 | 1.822 |
+| defaults/named/redis-mesh | jev-live:heuristic | 1 | 231.000 [228.965, 231.047] | 231.000 | 230.848 | 23.342 | 1.822 |
+| defaults/named/redis-mesh | jev-live:rules-neutral | 0 | 159.020 [153.031, 161.000] | 159.020 | 218.910 | 23.316 | 1.848 |
+| defaults/named/redis-mesh | jev-live:rules-neutral | 1 | 219.031 [216.957, 222.812] | 219.031 | 218.910 | 23.316 | 1.848 |
+| defaults/named/redis-mesh | jev-live:rule-names | 0 | 114.961 [114.945, 115.039] | 114.961 | 192.770 | 23.717 | 1.858 |
+| defaults/named/redis-mesh | jev-live:rule-names | 1 | 192.961 [192.945, 193.039] | 192.961 | 192.770 | 23.717 | 1.858 |
+| defaults/named/redis-mesh | jev-live:rule-ttl | 0 | 115.000 [114.977, 115.023] | 115.000 | 192.848 | 23.328 | 1.852 |
+| defaults/named/redis-mesh | jev-live:rule-ttl | 1 | 193.000 [192.977, 193.023] | 193.000 | 192.848 | 23.328 | 1.852 |
 | defaults/named/site-mixed-1 | mi | 0 | 66.215 [66.211, 66.219] | 66.215 | 146.031 | 20.579 | 0.078 |
 | defaults/named/site-mixed-1 | mi | 1 | 146.215 [146.211, 146.219] | 146.215 | 146.031 | 20.579 | 0.078 |
 | defaults/named/site-mixed-1 | jev-keyonly | 0 | 66.312 [66.309, 66.316] | 66.312 | 146.246 | 20.646 | 0.144 |
@@ -232,6 +264,16 @@ Five interleaved repetitions; MiB. Each row reports a workload’s original cycl
 | defaults/plausible/site-pure-16 | jev-live:rules-neutral | 1 | 332.004 [331.871, 332.051] | 332.004 | 331.805 | 20.561 | 0.596 |
 | defaults/plausible/site-pure-16 | jev-live:rule-names | 0 | 139.922 [139.875, 141.863] | 139.926 | 299.688 | 20.730 | 0.541 |
 | defaults/plausible/site-pure-16 | jev-live:rule-names | 1 | 298.465 [297.969, 298.934] | 298.465 | 299.688 | 20.730 | 0.541 |
+| immediate/named/per-alloc-small | mi | 0 | 6.129 [6.125, 6.129] | — | 8.008 | 1.006 | 0.005 |
+| immediate/named/per-alloc-small | mi | 1 | 7.965 [7.961, 7.969] | — | 8.008 | 1.006 | 0.005 |
+| immediate/named/per-alloc-small | jev-keyonly | 0 | 6.219 [6.191, 6.223] | — | 8.145 | 1.007 | 0.005 |
+| immediate/named/per-alloc-small | jev-keyonly | 1 | 8.055 [8.027, 8.059] | — | 8.145 | 1.007 | 0.005 |
+| immediate/named/per-alloc-small | jev-table:oracle-site | 0 | 6.215 [6.211, 6.223] | — | 8.184 | 1.007 | 0.006 |
+| immediate/named/per-alloc-small | jev-table:oracle-site | 1 | 8.051 [8.047, 8.059] | — | 8.184 | 1.007 | 0.006 |
+| immediate/named/per-alloc-small | jev-table:oracle-context | 0 | 5.785 [5.781, 5.789] | — | 6.059 | 1.008 | 0.006 |
+| immediate/named/per-alloc-small | jev-table:oracle-context | 1 | 5.117 [5.109, 5.129] | — | 6.059 | 1.008 | 0.006 |
+| immediate/named/per-alloc-small | jev-live:per-alloc | 0 | 6.270 [6.270, 6.273] | — | 8.133 | 1.819 | 0.160 |
+| immediate/named/per-alloc-small | jev-live:per-alloc | 1 | 7.770 [7.750, 7.777] | — | 8.133 | 1.819 | 0.160 |
 | immediate/named/site-mixed-1 | mi | 0 | 65.695 [65.695, 65.699] | — | 145.855 | 1.148 | 0.147 |
 | immediate/named/site-mixed-1 | mi | 1 | 144.695 [144.691, 144.715] | — | 145.855 | 1.148 | 0.147 |
 | immediate/named/site-mixed-1 | jev-keyonly | 0 | 65.793 [65.773, 65.797] | — | 145.984 | 1.217 | 0.214 |

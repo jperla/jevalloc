@@ -1,0 +1,4765 @@
+{
+  "name": "pass10/defaults/named/per-alloc-small",
+  "configuration": {
+    "row": {
+      "stdin": null,
+      "expect": "fragbench OK",
+      "environment": {
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "gate_inference": true,
+      "prompt": "stack-v1",
+      "name": "per-alloc-small",
+      "binary": "../server-sim",
+      "args": [
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ]
+    },
+    "options": "defaults",
+    "naming": "named",
+    "variants": [
+      "mi",
+      "jev-keyonly",
+      "jev-table:oracle-site",
+      "jev-table:oracle-context",
+      "jev-live:per-alloc"
+    ],
+    "repetitions": 5,
+    "workloads": [
+      "per-alloc-small"
+    ],
+    "fingerprints": {
+      "build/bench/../server-sim": "ae574099413b96df990aa8175ba1b21603889a7b3ad04681e1843dccdf221bc0",
+      "build/libjevalloc.so": "b0892403a2a03779c1e6ab29caf0a6800c31936a717c9b6d83676858880c582e",
+      "build/libmimalloc.so": "927db9974948cc9a524bee26035671fe0303cafa60d1079af3fa7cd6fa2e319b",
+      "bench/run.py": "58f1425c3b23b7a4a51c93f77a108fbc24cd2b5db7f50024b1ed050fdc098814",
+      "tools/jevd.py": "f4eae35096d132a4c409264f2a511901bcb1a26b57ef5953adeb3630edf29083",
+      "tools/prompts.py": "7c8f1b5a5e7ad5d0809c26c46f60b180134f9ea9b2436f4bfe60a92018ee60f8",
+      "tools/symbolize.py": "0120115e2ecbe28d2e8b3d7146181244f2d78aa61d8bd2579cc7258e47c23177",
+      "fragbench/server-sim.c": "acb56ad5b94098e20d4627821cfc3055a0c2e42bdc2c136bb2eb49e3f88ee41d",
+      "fragbench/redis_workload.py": "d0c81c11a4ca9edaaecc841a70e7572764631fc47316872a036a1781d4d9720f",
+      "fragbench/review2.py": "81e1b2ac579a6222e8b8e043817f7fbf79da0a27327a1e9b738df86ca74106f8",
+      "descriptions/alloc-test.txt": "92fdd1fe7c1aebc14cc4d125eeb89eb6ce7478960617c41d1008f2c380d4b31d",
+      "descriptions/barnes.txt": "4cf040ef82e3109be696b252e6bb0690b5cd57f5f84fb30bb2509c31dcf2166b",
+      "descriptions/cache-scratch.txt": "bc78b70ef8daee4eda1976c11ff3c683cce3e4900876b0cd57efc34eb60a6aa8",
+      "descriptions/cache-thrash.txt": "fee622bc8e0e2263535a4a864b70099bbfb3662d2382cd6cf9ce3f00d2944ba8",
+      "descriptions/cfrac.txt": "a9bddca082f8d6585db0bb50facb8d3f5a6afe272c5d535d6478b2a9d11d73e7",
+      "descriptions/db_bench.txt": "0ebb0bd87799df9fb068b63ba27fd3bc2d0d34a19daf92491d5f2d80492281bd",
+      "descriptions/espresso.txt": "5e12050977f6fa152beeb0d364a250e12d5e13514a77648b0a5dbfaa670e37cf",
+      "descriptions/glibc-simple.txt": "b77f1fbc1713c72d39906a030a9aff6a90777c378527658a9853ee44e8e734a9",
+      "descriptions/glibc-thread.txt": "d0362bc6977469479e0bc7589490e80a986479116907f3d2f3cc6f52f5ee1e25",
+      "descriptions/larson-sized.txt": "7f8aee285a890bccf000813a3ad57dcbd9d6597cedd3842cd112e8342a7cdd5c",
+      "descriptions/larson.txt": "c3c31d1a593e849b1bb529df477c39e2159411e6f61f4633165ed9d31760cf18",
+      "descriptions/leveldb-driver.txt": "6d01dec4a8f621053d1a02979c822296ef76a43bd8a08160a5bc7b6df231a70b",
+      "descriptions/malloc-large.txt": "cb72f58244cec1b9b2c84d45bb488d7783d269bb9916599885a2865df3b1314c",
+      "descriptions/mleak.txt": "6f22a9cbf6c42cbf5b814de221ad2dcaa8e37ec4b10633a9f198d4654cacd9b6",
+      "descriptions/mstress.txt": "9b51507fc8144b2d50aff7635f91b5dc5dbc16eeb1be51b64e95a146fdb6179d",
+      "descriptions/redis-context-server.txt": "cb1e2682fab3a78000b716249e0e94758b6e1642a6311b808e5987628bc39eff",
+      "descriptions/redis-server.txt": "cb1e2682fab3a78000b716249e0e94758b6e1642a6311b808e5987628bc39eff",
+      "descriptions/rptest.txt": "f962d0a35301908d251add993ed9ad6f60e00a990d591418a28b2765491e3edc",
+      "descriptions/server-sim-opaque.txt": "8da4db6643df00fb798fb35ef1ff5c3a0f7972e0180589ef094f7cdcb2c429aa",
+      "descriptions/server-sim-plausible.txt": "8da4db6643df00fb798fb35ef1ff5c3a0f7972e0180589ef094f7cdcb2c429aa",
+      "descriptions/server-sim.txt": "8da4db6643df00fb798fb35ef1ff5c3a0f7972e0180589ef094f7cdcb2c429aa",
+      "descriptions/sh6bench.txt": "542c7170ca529445520953561a68f8efcb2203b53419a07768e0565e4399592c",
+      "descriptions/sh8bench.txt": "8d09f2763380768acaa9c900677ce05f8be6746e63e8c406fe2e287375e1e682",
+      "descriptions/sqlite-driver.txt": "da3169e3d25e621245e3510f65706080a4d6e496c9ca542edd05fd98bc3a7db1",
+      "descriptions/xmalloc-test.txt": "a52e04d9c548bf855bdb22e6ae82a71e1895927142aa2cd1af37bb63eae9dbd0"
+    }
+  },
+  "runs": [
+    {
+      "inference_gate": "not-requested",
+      "started_unix": 1791791843.7551246,
+      "finished_unix": 1791791865.1176019,
+      "host_before": {
+        "load_average": [
+          0.0791015625,
+          0.10888671875,
+          0.0888671875
+        ],
+        "MemAvailable_bytes": 13910118400,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-live:per-alloc",
+      "repetition": -1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_OBJECT_TRACE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/objects--2.jsonl",
+        "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/objects--2.trace.jsonl",
+        "JEVALLOC_PER_ALLOC": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-56b20ea5c30d.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-fill0-0e93ba5b.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 21.314629572,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-fill0-0e93ba5b.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-fill0-0e93ba5b.stderr",
+      "user_seconds": 0.05811,
+      "sys_seconds": 0.107203,
+      "peak_rss_bytes": 16875520,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.16531300000000002,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 21.314629572,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 15044608,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 22.285931,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 15056896,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 186.126582,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 15130624,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 187.037975,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 15142912,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 187.189873,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 17350656,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 14.009095,
+          "peak_rss_bytes": 16875520
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 17285120,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.241169,
+          "peak_rss_bytes": 16875520
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 17285120,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.241169,
+          "peak_rss_bytes": 16875520
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 17285120,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.241169,
+          "peak_rss_bytes": 16875520
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 8192,
+          "6957cfd0d57e38ee": 4096,
+          "ede875a8c2f6f80c": 304,
+          "78eea16946ce75ac": 944,
+          "f596fe201f93ed62": 944,
+          "ad3382736f297fa3": 1622528,
+          "8928cdbd63df0455": 210176,
+          "bc2dc64e86a33c6a": 944,
+          "d1c78a5bcfc55993": 1849856,
+          "12507c88144ea932": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "6957cfd0d57e38ee": 0,
+          "ede875a8c2f6f80c": 0,
+          "78eea16946ce75ac": 0,
+          "f596fe201f93ed62": 0,
+          "ad3382736f297fa3": 0,
+          "8928cdbd63df0455": 2,
+          "bc2dc64e86a33c6a": 0,
+          "d1c78a5bcfc55993": 0,
+          "12507c88144ea932": 0
+        },
+        "failure_errno": 0,
+        "blocked_ns": 711242258,
+        "decisions": 2229,
+        "rechecks": 2226,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 10,
+        "samples": 37,
+        "sampled_live_objects": 2,
+        "sample_rate": 64,
+        "allocation_clock": 3698928
+      },
+      "blocked_seconds": 0.711242258,
+      "chip_seconds": 20.603387314000003,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-fill0-0e93ba5b.decisions.jsonl",
+      "cold": true,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-0e93ba5b.schedule.jsonl",
+      "model_coverage": {
+        "sites": 10,
+        "asked_sites": 3,
+        "unasked_sites": 7,
+        "allocated_bytes": 3698928,
+        "unasked_bytes": 16368,
+        "unasked_byte_share": 0.004425065856918545,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 2229,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 1200,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0,
+      "schedule_source": "results/pass10/immediate/named/per-alloc-small/logs/per-alloc-small-0e93ba5b.schedule.jsonl",
+      "cold_inference_recollected": false
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791791978.8828037,
+      "finished_unix": 1791791999.4284241,
+      "host_before": {
+        "load_average": [
+          0.091796875,
+          0.0927734375,
+          0.08740234375
+        ],
+        "MemAvailable_bytes": 13980676096,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "mi",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.506066008,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-mi-0.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-mi-0.stderr",
+      "user_seconds": 0.000897,
+      "sys_seconds": 0.004458,
+      "peak_rss_bytes": 8425472,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.005355,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.506066008,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6295552,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.325749,
+          "peak_rss_bytes": 6197248
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6361088,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 78.632911,
+          "peak_rss_bytes": 6197248
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6426624,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.443038,
+          "peak_rss_bytes": 6328320
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6426624,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.443038,
+          "peak_rss_bytes": 6328320
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8523776,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.882183,
+          "peak_rss_bytes": 8425472
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8523776,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.55542,
+          "peak_rss_bytes": 8425472
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8523776,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.55542,
+          "peak_rss_bytes": 8425472
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8523776,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.55542,
+          "peak_rss_bytes": 8425472
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792000.438403,
+      "finished_unix": 1791792020.9836361,
+      "host_before": {
+        "load_average": [
+          0.06494140625,
+          0.08544921875,
+          0.08544921875
+        ],
+        "MemAvailable_bytes": 13984747520,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-keyonly",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.507586366,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-keyonly-0.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-keyonly-0.stderr",
+      "user_seconds": 0.0,
+      "sys_seconds": 0.005892,
+      "peak_rss_bytes": 8613888,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.005892,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.507586366,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6385664,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.459234,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6451200,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.746835,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6516736,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.556962,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.958247,
+          "peak_rss_bytes": 8613888
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8613888
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8613888
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8613888
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792021.995507,
+      "finished_unix": 1791792042.5410504,
+      "host_before": {
+        "load_average": [
+          0.0458984375,
+          0.07958984375,
+          0.08349609375
+        ],
+        "MemAvailable_bytes": 13984595968,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-table:oracle-site",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle-site.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.508702011,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-0-6241130e.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-0-6241130e.stderr",
+      "user_seconds": 0.002787,
+      "sys_seconds": 0.003716,
+      "peak_rss_bytes": 8581120,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.006503,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.508702011,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6385664,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.459234,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6455296,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.797468,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6524928,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.658228,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8622080,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.961554,
+          "peak_rss_bytes": 8581120
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8622080,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.023143,
+          "peak_rss_bytes": 8581120
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8622080,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.023143,
+          "peak_rss_bytes": 8581120
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8622080,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.023143,
+          "peak_rss_bytes": 8581120
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792043.5530422,
+      "finished_unix": 1791792064.0998008,
+      "host_before": {
+        "load_average": [
+          0.029296875,
+          0.072265625,
+          0.0810546875
+        ],
+        "MemAvailable_bytes": 13982269440,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-table:oracle-context",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle-context.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.506662772,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-0-0d36d436.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-0-0d36d436.stderr",
+      "user_seconds": 0.001076,
+      "sys_seconds": 0.00439,
+      "peak_rss_bytes": 6483968,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.0054659999999999995,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.506662772,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6385664,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.459234,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6455296,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.797468,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 6520832,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 5.264986,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 6520832,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.025579,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 6520832,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.025579,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 6520832,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.025579,
+          "peak_rss_bytes": 6483968
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792065.202419,
+      "finished_unix": 1791792086.5574453,
+      "host_before": {
+        "load_average": [
+          0.02001953125,
+          0.06640625,
+          0.0791015625
+        ],
+        "MemAvailable_bytes": 13938036736,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-live:per-alloc",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_PER_ALLOC": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-30f2ff6e1f94.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-0-0e93ba5b.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 21.341865878,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-0-0e93ba5b.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-0-0e93ba5b.stderr",
+      "user_seconds": 0.038706,
+      "sys_seconds": 0.117088,
+      "peak_rss_bytes": 8478720,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.155794,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 21.341865878,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6623232,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.811149,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6635520,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.025316,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6701056,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.835443,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6705152,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.886076,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8941568,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 7.219512,
+          "peak_rss_bytes": 8478720
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8876032,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.231425,
+          "peak_rss_bytes": 8478720
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8876032,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.231425,
+          "peak_rss_bytes": 8478720
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8876032,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.231425,
+          "peak_rss_bytes": 8478720
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 8192,
+          "6957cfd0d57e38ee": 4096,
+          "ede875a8c2f6f80c": 304,
+          "78eea16946ce75ac": 944,
+          "f596fe201f93ed62": 944,
+          "ad3382736f297fa3": 1622528,
+          "8928cdbd63df0455": 210176,
+          "bc2dc64e86a33c6a": 944,
+          "d1c78a5bcfc55993": 1849856,
+          "12507c88144ea932": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "6957cfd0d57e38ee": 0,
+          "ede875a8c2f6f80c": 0,
+          "78eea16946ce75ac": 0,
+          "f596fe201f93ed62": 0,
+          "ad3382736f297fa3": 0,
+          "8928cdbd63df0455": 2,
+          "bc2dc64e86a33c6a": 0,
+          "d1c78a5bcfc55993": 0,
+          "12507c88144ea932": 0
+        },
+        "failure_errno": 0,
+        "blocked_ns": 746122791,
+        "decisions": 2229,
+        "rechecks": 2226,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 10,
+        "samples": 37,
+        "sampled_live_objects": 2,
+        "sample_rate": 64,
+        "allocation_clock": 3698928
+      },
+      "blocked_seconds": 0.746122791,
+      "chip_seconds": 20.595743087,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-0-0e93ba5b.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-0e93ba5b.schedule.jsonl",
+      "model_coverage": {
+        "sites": 10,
+        "asked_sites": 3,
+        "unasked_sites": 7,
+        "allocated_bytes": 3698928,
+        "unasked_bytes": 16368,
+        "unasked_byte_share": 0.004425065856918545,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 2229,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 1200,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792087.6076536,
+      "finished_unix": 1791792108.1534145,
+      "host_before": {
+        "load_average": [
+          0.01220703125,
+          0.05908203125,
+          0.07666015625
+        ],
+        "MemAvailable_bytes": 13964210176,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-keyonly",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.507763118,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-keyonly-1.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-keyonly-1.stderr",
+      "user_seconds": 0.002005,
+      "sys_seconds": 0.00401,
+      "peak_rss_bytes": 8585216,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.0060149999999999995,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.507763118,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6393856,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.471369,
+          "peak_rss_bytes": 6356992
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6463488,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.898734,
+          "peak_rss_bytes": 6356992
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6529024,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.708861,
+          "peak_rss_bytes": 6488064
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6529024,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.708861,
+          "peak_rss_bytes": 6488064
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8626176,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.964862,
+          "peak_rss_bytes": 8585216
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8626176,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.042631,
+          "peak_rss_bytes": 8585216
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8626176,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.042631,
+          "peak_rss_bytes": 8585216
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8626176,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.042631,
+          "peak_rss_bytes": 8585216
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792109.1648788,
+      "finished_unix": 1791792129.7113817,
+      "host_before": {
+        "load_average": [
+          0.0078125,
+          0.0546875,
+          0.07470703125
+        ],
+        "MemAvailable_bytes": 13974425600,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-table:oracle-site",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle-site.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.507447802,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-1-6241130e.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-1-6241130e.stderr",
+      "user_seconds": 0.002009,
+      "sys_seconds": 0.004019,
+      "peak_rss_bytes": 8581120,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.006028,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.507447802,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6385664,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.459234,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6455296,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.797468,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.958247,
+          "peak_rss_bytes": 8581120
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8581120
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8581120
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8581120
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792130.7231472,
+      "finished_unix": 1791792151.2713594,
+      "host_before": {
+        "load_average": [
+          0.0048828125,
+          0.05078125,
+          0.07275390625
+        ],
+        "MemAvailable_bytes": 13981712384,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-table:oracle-context",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle-context.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.507319819,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-1-0d36d436.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-1-0d36d436.stderr",
+      "user_seconds": 0.001679,
+      "sys_seconds": 0.004199,
+      "peak_rss_bytes": 6483968,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.0058779999999999995,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.507319819,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6393856,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.471369,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6459392,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.848101,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6524928,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.658228,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6524928,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.658228,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 6524928,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 5.268293,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 6524928,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.045067,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 6524928,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.045067,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 6524928,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.045067,
+          "peak_rss_bytes": 6483968
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792152.3756661,
+      "finished_unix": 1791792173.729638,
+      "host_before": {
+        "load_average": [
+          0.0830078125,
+          0.06298828125,
+          0.076171875
+        ],
+        "MemAvailable_bytes": 13932261376,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-live:per-alloc",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_PER_ALLOC": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-7fa0805b32da.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-1-0e93ba5b.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 21.33971178,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-1-0e93ba5b.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-1-0e93ba5b.stderr",
+      "user_seconds": 0.03552,
+      "sys_seconds": 0.133138,
+      "peak_rss_bytes": 8605696,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.168658,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 21.33971178,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6627328,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.817217,
+          "peak_rss_bytes": 6356992
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6639616,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.075949,
+          "peak_rss_bytes": 6488064
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6709248,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.936709,
+          "peak_rss_bytes": 6488064
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6713344,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.987342,
+          "peak_rss_bytes": 6488064
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8929280,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 7.209591,
+          "peak_rss_bytes": 8605696
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8863744,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.17296,
+          "peak_rss_bytes": 8605696
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8863744,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.17296,
+          "peak_rss_bytes": 8605696
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8863744,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.17296,
+          "peak_rss_bytes": 8605696
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 8192,
+          "6957cfd0d57e38ee": 4096,
+          "ede875a8c2f6f80c": 304,
+          "78eea16946ce75ac": 944,
+          "f596fe201f93ed62": 944,
+          "ad3382736f297fa3": 1622528,
+          "8928cdbd63df0455": 210176,
+          "bc2dc64e86a33c6a": 944,
+          "d1c78a5bcfc55993": 1849856,
+          "12507c88144ea932": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "6957cfd0d57e38ee": 0,
+          "ede875a8c2f6f80c": 0,
+          "78eea16946ce75ac": 0,
+          "f596fe201f93ed62": 0,
+          "ad3382736f297fa3": 0,
+          "8928cdbd63df0455": 2,
+          "bc2dc64e86a33c6a": 0,
+          "d1c78a5bcfc55993": 0,
+          "12507c88144ea932": 0
+        },
+        "failure_errno": 0,
+        "blocked_ns": 735476276,
+        "decisions": 2229,
+        "rechecks": 2226,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 10,
+        "samples": 37,
+        "sampled_live_objects": 2,
+        "sample_rate": 64,
+        "allocation_clock": 3698928
+      },
+      "blocked_seconds": 0.735476276,
+      "chip_seconds": 20.604235504,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-1-0e93ba5b.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-0e93ba5b.schedule.jsonl",
+      "model_coverage": {
+        "sites": 10,
+        "asked_sites": 3,
+        "unasked_sites": 7,
+        "allocated_bytes": 3698928,
+        "unasked_bytes": 16368,
+        "unasked_byte_share": 0.004425065856918545,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 2229,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 1200,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792174.7871847,
+      "finished_unix": 1791792195.3328502,
+      "host_before": {
+        "load_average": [
+          0.05859375,
+          0.0576171875,
+          0.07421875
+        ],
+        "MemAvailable_bytes": 13971816448,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "mi",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.507523088,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-mi-1.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-mi-1.stderr",
+      "user_seconds": 0.0,
+      "sys_seconds": 0.00575,
+      "peak_rss_bytes": 8441856,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.00575,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.507523088,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6295552,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.325749,
+          "peak_rss_bytes": 6197248
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6361088,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 78.632911,
+          "peak_rss_bytes": 6197248
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6426624,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.443038,
+          "peak_rss_bytes": 6328320
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6426624,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.443038,
+          "peak_rss_bytes": 6328320
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8523776,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.882183,
+          "peak_rss_bytes": 8441856
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8523776,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.55542,
+          "peak_rss_bytes": 8441856
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8523776,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.55542,
+          "peak_rss_bytes": 8441856
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8523776,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.55542,
+          "peak_rss_bytes": 8441856
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792196.3451493,
+      "finished_unix": 1791792216.8914294,
+      "host_before": {
+        "load_average": [
+          0.041015625,
+          0.0537109375,
+          0.072265625
+        ],
+        "MemAvailable_bytes": 13959446528,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-table:oracle-site",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle-site.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.506952771,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-2-6241130e.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-2-6241130e.stderr",
+      "user_seconds": 0.0,
+      "sys_seconds": 0.00615,
+      "peak_rss_bytes": 8581120,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.00615,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.506952771,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6381568,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.453166,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6451200,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.746835,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6516736,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.556962,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.958247,
+          "peak_rss_bytes": 8581120
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8581120
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8581120
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8581120
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792217.9042401,
+      "finished_unix": 1791792238.4509566,
+      "host_before": {
+        "load_average": [
+          0.02587890625,
+          0.048828125,
+          0.06982421875
+        ],
+        "MemAvailable_bytes": 13980090368,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-table:oracle-context",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle-context.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.50625903,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-2-0d36d436.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-2-0d36d436.stderr",
+      "user_seconds": 0.001108,
+      "sys_seconds": 0.004335,
+      "peak_rss_bytes": 6463488,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.005443,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.50625903,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6381568,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.453166,
+          "peak_rss_bytes": 6332416
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6451200,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.746835,
+          "peak_rss_bytes": 6332416
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6516736,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.556962,
+          "peak_rss_bytes": 6463488
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6516736,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.556962,
+          "peak_rss_bytes": 6463488
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 6516736,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 5.261678,
+          "peak_rss_bytes": 6463488
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 6516736,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.00609,
+          "peak_rss_bytes": 6463488
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 6516736,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.00609,
+          "peak_rss_bytes": 6463488
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 6516736,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.00609,
+          "peak_rss_bytes": 6463488
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792239.5559068,
+      "finished_unix": 1791792260.9102635,
+      "host_before": {
+        "load_average": [
+          0.017578125,
+          0.044921875,
+          0.06787109375
+        ],
+        "MemAvailable_bytes": 13916688384,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-live:per-alloc",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_PER_ALLOC": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-cd833b204224.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-2-0e93ba5b.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 21.321047109,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-2-0e93ba5b.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-2-0e93ba5b.stderr",
+      "user_seconds": 0.044413,
+      "sys_seconds": 0.113052,
+      "peak_rss_bytes": 8613888,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.157465,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 21.321047109,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6619136,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.805082,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6635520,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.025316,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6701056,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.835443,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6705152,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.886076,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8937472,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 7.216205,
+          "peak_rss_bytes": 8613888
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8871936,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.211937,
+          "peak_rss_bytes": 8613888
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8871936,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.211937,
+          "peak_rss_bytes": 8613888
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8871936,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.211937,
+          "peak_rss_bytes": 8613888
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 8192,
+          "6957cfd0d57e38ee": 4096,
+          "ede875a8c2f6f80c": 304,
+          "78eea16946ce75ac": 944,
+          "f596fe201f93ed62": 944,
+          "ad3382736f297fa3": 1622528,
+          "8928cdbd63df0455": 210176,
+          "bc2dc64e86a33c6a": 944,
+          "d1c78a5bcfc55993": 1849856,
+          "12507c88144ea932": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "6957cfd0d57e38ee": 0,
+          "ede875a8c2f6f80c": 0,
+          "78eea16946ce75ac": 0,
+          "f596fe201f93ed62": 0,
+          "ad3382736f297fa3": 0,
+          "8928cdbd63df0455": 2,
+          "bc2dc64e86a33c6a": 0,
+          "d1c78a5bcfc55993": 0,
+          "12507c88144ea932": 0
+        },
+        "failure_errno": 0,
+        "blocked_ns": 724887221,
+        "decisions": 2229,
+        "rechecks": 2226,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 10,
+        "samples": 37,
+        "sampled_live_objects": 2,
+        "sample_rate": 64,
+        "allocation_clock": 3698928
+      },
+      "blocked_seconds": 0.724887221,
+      "chip_seconds": 20.596159888,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-2-0e93ba5b.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-0e93ba5b.schedule.jsonl",
+      "model_coverage": {
+        "sites": 10,
+        "asked_sites": 3,
+        "unasked_sites": 7,
+        "allocated_bytes": 3698928,
+        "unasked_bytes": 16368,
+        "unasked_byte_share": 0.004425065856918545,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 2229,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 1200,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792261.9605258,
+      "finished_unix": 1791792282.5062706,
+      "host_before": {
+        "load_average": [
+          0.01171875,
+          0.041015625,
+          0.06591796875
+        ],
+        "MemAvailable_bytes": 13962371072,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "mi",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.50627498,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-mi-2.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-mi-2.stderr",
+      "user_seconds": 0.002694,
+      "sys_seconds": 0.002694,
+      "peak_rss_bytes": 8421376,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.005388,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.50627498,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6291456,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.319681,
+          "peak_rss_bytes": 6193152
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6356992,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 78.582278,
+          "peak_rss_bytes": 6193152
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6422528,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.392405,
+          "peak_rss_bytes": 6324224
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6422528,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.392405,
+          "peak_rss_bytes": 6324224
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8519680,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.878876,
+          "peak_rss_bytes": 8421376
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8519680,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.535932,
+          "peak_rss_bytes": 8421376
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8519680,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.535932,
+          "peak_rss_bytes": 8421376
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8519680,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.535932,
+          "peak_rss_bytes": 8421376
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792283.5189557,
+      "finished_unix": 1791792304.0650785,
+      "host_before": {
+        "load_average": [
+          0.0068359375,
+          0.0361328125,
+          0.0634765625
+        ],
+        "MemAvailable_bytes": 13973524480,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-keyonly",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.506984534,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-keyonly-2.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-keyonly-2.stderr",
+      "user_seconds": 0.001985,
+      "sys_seconds": 0.004241,
+      "peak_rss_bytes": 8585216,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.006226,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.506984534,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6393856,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.471369,
+          "peak_rss_bytes": 6356992
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6459392,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.848101,
+          "peak_rss_bytes": 6356992
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6524928,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.658228,
+          "peak_rss_bytes": 6488064
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6524928,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.658228,
+          "peak_rss_bytes": 6488064
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8622080,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.961554,
+          "peak_rss_bytes": 8585216
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8622080,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.023143,
+          "peak_rss_bytes": 8585216
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8622080,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.023143,
+          "peak_rss_bytes": 8585216
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8622080,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.023143,
+          "peak_rss_bytes": 8585216
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792305.07748,
+      "finished_unix": 1791792325.6216373,
+      "host_before": {
+        "load_average": [
+          0.00439453125,
+          0.0322265625,
+          0.0615234375
+        ],
+        "MemAvailable_bytes": 13977092096,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-table:oracle-context",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle-context.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.507284408,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-3-0d36d436.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-3-0d36d436.stderr",
+      "user_seconds": 0.0,
+      "sys_seconds": 0.005538,
+      "peak_rss_bytes": 6352896,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.005538,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.507284408,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6385664,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.459234,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6455296,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.797468,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 6520832,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 5.264986,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 6520832,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.025579,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 6520832,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.025579,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 6520832,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.025579,
+          "peak_rss_bytes": 6352896
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792326.7260683,
+      "finished_unix": 1791792348.0806823,
+      "host_before": {
+        "load_average": [
+          0.00244140625,
+          0.02880859375,
+          0.0595703125
+        ],
+        "MemAvailable_bytes": 13924560896,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-live:per-alloc",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_PER_ALLOC": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-7f57cd8cfc79.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-3-0e93ba5b.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 21.335611078,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-3-0e93ba5b.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-3-0e93ba5b.stderr",
+      "user_seconds": 0.036433,
+      "sys_seconds": 0.126558,
+      "peak_rss_bytes": 8462336,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.162991,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 21.335611078,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6627328,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.817217,
+          "peak_rss_bytes": 6356992
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6639616,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.075949,
+          "peak_rss_bytes": 6356992
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6705152,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.886076,
+          "peak_rss_bytes": 6356992
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6709248,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.936709,
+          "peak_rss_bytes": 6356992
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8929280,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 7.209591,
+          "peak_rss_bytes": 8462336
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8863744,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.17296,
+          "peak_rss_bytes": 8462336
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8863744,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.17296,
+          "peak_rss_bytes": 8462336
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8863744,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.17296,
+          "peak_rss_bytes": 8462336
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 8192,
+          "6957cfd0d57e38ee": 4096,
+          "ede875a8c2f6f80c": 304,
+          "78eea16946ce75ac": 944,
+          "f596fe201f93ed62": 944,
+          "ad3382736f297fa3": 1622528,
+          "8928cdbd63df0455": 210176,
+          "bc2dc64e86a33c6a": 944,
+          "d1c78a5bcfc55993": 1849856,
+          "12507c88144ea932": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "6957cfd0d57e38ee": 0,
+          "ede875a8c2f6f80c": 0,
+          "78eea16946ce75ac": 0,
+          "f596fe201f93ed62": 0,
+          "ad3382736f297fa3": 0,
+          "8928cdbd63df0455": 2,
+          "bc2dc64e86a33c6a": 0,
+          "d1c78a5bcfc55993": 0,
+          "12507c88144ea932": 0
+        },
+        "failure_errno": 0,
+        "blocked_ns": 734706421,
+        "decisions": 2229,
+        "rechecks": 2226,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 10,
+        "samples": 37,
+        "sampled_live_objects": 2,
+        "sample_rate": 64,
+        "allocation_clock": 3698928
+      },
+      "blocked_seconds": 0.734706421,
+      "chip_seconds": 20.600904657,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-3-0e93ba5b.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-0e93ba5b.schedule.jsonl",
+      "model_coverage": {
+        "sites": 10,
+        "asked_sites": 3,
+        "unasked_sites": 7,
+        "allocated_bytes": 3698928,
+        "unasked_bytes": 16368,
+        "unasked_byte_share": 0.004425065856918545,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 2229,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 1200,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792349.1321335,
+      "finished_unix": 1791792369.6783805,
+      "host_before": {
+        "load_average": [
+          0.06298828125,
+          0.0419921875,
+          0.06298828125
+        ],
+        "MemAvailable_bytes": 13961965568,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "mi",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.506212063,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-mi-3.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-mi-3.stderr",
+      "user_seconds": 0.003152,
+      "sys_seconds": 0.002101,
+      "peak_rss_bytes": 8421376,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.005253,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.506212063,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6287360,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.313614,
+          "peak_rss_bytes": 6193152
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6352896,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 78.531646,
+          "peak_rss_bytes": 6193152
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6418432,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.341772,
+          "peak_rss_bytes": 6324224
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6418432,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.341772,
+          "peak_rss_bytes": 6324224
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8515584,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.875568,
+          "peak_rss_bytes": 8421376
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8515584,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.516443,
+          "peak_rss_bytes": 8421376
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8515584,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.516443,
+          "peak_rss_bytes": 8421376
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8515584,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.516443,
+          "peak_rss_bytes": 8421376
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792370.6918628,
+      "finished_unix": 1791792391.2385352,
+      "host_before": {
+        "load_average": [
+          0.04443359375,
+          0.0380859375,
+          0.06103515625
+        ],
+        "MemAvailable_bytes": 13983633408,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-keyonly",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.508928659,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-keyonly-3.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-keyonly-3.stderr",
+      "user_seconds": 0.002835,
+      "sys_seconds": 0.002835,
+      "peak_rss_bytes": 8478720,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.00567,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.508928659,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6385664,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.459234,
+          "peak_rss_bytes": 6348800
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6455296,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.797468,
+          "peak_rss_bytes": 6348800
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6348800
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6348800
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.958247,
+          "peak_rss_bytes": 8478720
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8478720
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8478720
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8478720
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792392.2527943,
+      "finished_unix": 1791792412.7999077,
+      "host_before": {
+        "load_average": [
+          0.03076171875,
+          0.0341796875,
+          0.05908203125
+        ],
+        "MemAvailable_bytes": 13980815360,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-table:oracle-site",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle-site.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.507167229,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-3-6241130e.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-3-6241130e.stderr",
+      "user_seconds": 0.001143,
+      "sys_seconds": 0.004572,
+      "peak_rss_bytes": 8617984,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.005715,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.507167229,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6389760,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.465301,
+          "peak_rss_bytes": 6356992
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6455296,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.797468,
+          "peak_rss_bytes": 6356992
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6488064
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6524928,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.658228,
+          "peak_rss_bytes": 6488064
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8622080,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.961554,
+          "peak_rss_bytes": 8617984
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8622080,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.023143,
+          "peak_rss_bytes": 8617984
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8622080,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.023143,
+          "peak_rss_bytes": 8617984
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8622080,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.023143,
+          "peak_rss_bytes": 8617984
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792413.90563,
+      "finished_unix": 1791792435.257368,
+      "host_before": {
+        "load_average": [
+          0.01904296875,
+          0.029296875,
+          0.056640625
+        ],
+        "MemAvailable_bytes": 13922811904,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-live:per-alloc",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_PER_ALLOC": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-479b08408427.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-4-0e93ba5b.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 21.335805535,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-4-0e93ba5b.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-4-0e93ba5b.stderr",
+      "user_seconds": 0.046245,
+      "sys_seconds": 0.115839,
+      "peak_rss_bytes": 8454144,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.162084,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 21.335805535,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6623232,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.811149,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6627328,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 81.924051,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6692864,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.734177,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6701056,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 82.835443,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8925184,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 7.206284,
+          "peak_rss_bytes": 8454144
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8859648,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.153471,
+          "peak_rss_bytes": 8454144
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8859648,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.153471,
+          "peak_rss_bytes": 8454144
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8859648,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 42.153471,
+          "peak_rss_bytes": 8454144
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 8192,
+          "6957cfd0d57e38ee": 4096,
+          "ede875a8c2f6f80c": 304,
+          "78eea16946ce75ac": 944,
+          "f596fe201f93ed62": 944,
+          "ad3382736f297fa3": 1622528,
+          "8928cdbd63df0455": 210176,
+          "bc2dc64e86a33c6a": 944,
+          "d1c78a5bcfc55993": 1849856,
+          "12507c88144ea932": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "6957cfd0d57e38ee": 0,
+          "ede875a8c2f6f80c": 0,
+          "78eea16946ce75ac": 0,
+          "f596fe201f93ed62": 0,
+          "ad3382736f297fa3": 0,
+          "8928cdbd63df0455": 2,
+          "bc2dc64e86a33c6a": 0,
+          "d1c78a5bcfc55993": 0,
+          "12507c88144ea932": 0
+        },
+        "failure_errno": 0,
+        "blocked_ns": 735624615,
+        "decisions": 2229,
+        "rechecks": 2226,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 10,
+        "samples": 37,
+        "sampled_live_objects": 2,
+        "sample_rate": 64,
+        "allocation_clock": 3698928
+      },
+      "blocked_seconds": 0.735624615,
+      "chip_seconds": 20.60018092,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-4-0e93ba5b.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-0e93ba5b.schedule.jsonl",
+      "model_coverage": {
+        "sites": 10,
+        "asked_sites": 3,
+        "unasked_sites": 7,
+        "allocated_bytes": 3698928,
+        "unasked_bytes": 16368,
+        "unasked_byte_share": 0.004425065856918545,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 2229,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 1200,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792436.3115563,
+      "finished_unix": 1791792456.8569021,
+      "host_before": {
+        "load_average": [
+          0.0126953125,
+          0.02734375,
+          0.0546875
+        ],
+        "MemAvailable_bytes": 13969817600,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "mi",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libmimalloc.so",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.506949726,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-mi-4.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-mi-4.stderr",
+      "user_seconds": 0.002676,
+      "sys_seconds": 0.002689,
+      "peak_rss_bytes": 8425472,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.005365,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.506949726,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6295552,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.325749,
+          "peak_rss_bytes": 6197248
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6361088,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 78.632911,
+          "peak_rss_bytes": 6197248
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6426624,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.443038,
+          "peak_rss_bytes": 6328320
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6426624,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.443038,
+          "peak_rss_bytes": 6328320
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8523776,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.882183,
+          "peak_rss_bytes": 8425472
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8523776,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.55542,
+          "peak_rss_bytes": 8425472
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8523776,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.55542,
+          "peak_rss_bytes": 8425472
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8523776,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 40.55542,
+          "peak_rss_bytes": 8425472
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792457.8707888,
+      "finished_unix": 1791792478.416019,
+      "host_before": {
+        "load_average": [
+          0.00732421875,
+          0.02490234375,
+          0.05224609375
+        ],
+        "MemAvailable_bytes": 13970395136,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-keyonly",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_POLICY": "keyonly",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.507562496,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-keyonly-4.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-keyonly-4.stderr",
+      "user_seconds": 0.000983,
+      "sys_seconds": 0.005219,
+      "peak_rss_bytes": 8585216,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.006201999999999999,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.507562496,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6393856,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.471369,
+          "peak_rss_bytes": 6356992
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6459392,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.848101,
+          "peak_rss_bytes": 6356992
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6529024,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.708861,
+          "peak_rss_bytes": 6488064
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6533120,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.759494,
+          "peak_rss_bytes": 6488064
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8630272,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.968169,
+          "peak_rss_bytes": 8585216
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8630272,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.062119,
+          "peak_rss_bytes": 8585216
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8630272,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.062119,
+          "peak_rss_bytes": 8585216
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8630272,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.062119,
+          "peak_rss_bytes": 8585216
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792479.430015,
+      "finished_unix": 1791792499.975758,
+      "host_before": {
+        "load_average": [
+          0.00439453125,
+          0.02294921875,
+          0.05029296875
+        ],
+        "MemAvailable_bytes": 13974626304,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-table:oracle-site",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle-site.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_CONTEXT": "0"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.508253728,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-4-6241130e.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-4-6241130e.stderr",
+      "user_seconds": 0.002688,
+      "sys_seconds": 0.003798,
+      "peak_rss_bytes": 8581120,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.0064860000000000004,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.508253728,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6385664,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.459234,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6455296,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.797468,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6520832,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.607595,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 6.958247,
+          "peak_rss_bytes": 8581120
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8581120
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8581120
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 8617984,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 41.003654,
+          "peak_rss_bytes": 8581120
+        }
+      ]
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791792500.9895623,
+      "finished_unix": 1791792521.5357757,
+      "host_before": {
+        "load_average": [
+          0.00244140625,
+          0.02099609375,
+          0.04833984375
+        ],
+        "MemAvailable_bytes": 13968334848,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-table:oracle-context",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "run",
+        "JEVALLOC_TABLE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/tables/per-alloc-small/oracle-context.txt",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 20.507323141,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-4-0d36d436.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-table-4-0d36d436.stderr",
+      "user_seconds": 0.002338,
+      "sys_seconds": 0.003691,
+      "peak_rss_bytes": 6483968,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.006029,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 20.507323141,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 6389760,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 9.465301,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 6459392,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 79.848101,
+          "peak_rss_bytes": 6352896
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 6524928,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.658228,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 6524928,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 80.658228,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 6524928,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 5.268293,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 6524928,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.045067,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 6524928,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.045067,
+          "peak_rss_bytes": 6483968
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 6524928,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 31.045067,
+          "peak_rss_bytes": 6483968
+        }
+      ]
+    }
+  ],
+  "coverage_runs": [],
+  "trace_run": {
+    "inference_gate": "not-requested",
+    "started_unix": 1791791823.0919654,
+    "finished_unix": 1791791843.6372561,
+    "host_before": {
+      "load_average": [
+        0.11181640625,
+        0.11669921875,
+        0.0908203125
+      ],
+      "MemAvailable_bytes": 13958336512,
+      "SwapFree_bytes": 6879703040,
+      "SwapTotal_bytes": 8589930496
+    },
+    "benchmark": "per-alloc-small",
+    "variant": "jev-trace",
+    "repetition": 0,
+    "command": [
+      "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+      "1",
+      "site-mixed",
+      "1200",
+      "250",
+      "payload-only"
+    ],
+    "stdin": null,
+    "environment": {
+      "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+      "JEVALLOC_MODE": "trace",
+      "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/trace.jsonl",
+      "JEVALLOC_DEPTH": "4",
+      "JEVALLOC_MODEL_DEPTH": "12",
+      "FRAG_LONG_SETTLE_MS": "10000"
+    },
+    "exit_status": 0,
+    "output_ok": true,
+    "wall_seconds": 20.509004973,
+    "stdout": "results/pass10/defaults/named/per-alloc-small/logs/trace/per-alloc-small-jev-trace-0.stdout",
+    "stderr": "results/pass10/defaults/named/per-alloc-small/logs/trace/per-alloc-small-jev-trace-0.stderr",
+    "user_seconds": 0.001883,
+    "sys_seconds": 0.005651,
+    "peak_rss_bytes": 16838656,
+    "peak_footprint_bytes": null,
+    "cpu_seconds": 0.007534,
+    "time_exit_status": 0,
+    "footprint_final_read": false,
+    "measurement": "wait4 + proc_pid_rusage",
+    "score": 20.509004973,
+    "score_metric": "wall_seconds",
+    "phases": [
+      {
+        "phase": "peak",
+        "cycle": 0,
+        "rss_bytes": 14807040,
+        "live_bytes": 675072,
+        "fragmentation_ratio": 21.934016,
+        "peak_rss_bytes": 14610432
+      },
+      {
+        "phase": "drop",
+        "cycle": 0,
+        "rss_bytes": 14880768,
+        "live_bytes": 80896,
+        "fragmentation_ratio": 183.949367,
+        "peak_rss_bytes": 14610432
+      },
+      {
+        "phase": "idle",
+        "cycle": 0,
+        "rss_bytes": 14950400,
+        "live_bytes": 80896,
+        "fragmentation_ratio": 184.810127,
+        "peak_rss_bytes": 14741504
+      },
+      {
+        "phase": "idle10",
+        "cycle": 0,
+        "rss_bytes": 14954496,
+        "live_bytes": 80896,
+        "fragmentation_ratio": 184.860759,
+        "peak_rss_bytes": 14741504
+      },
+      {
+        "phase": "peak",
+        "cycle": 1,
+        "rss_bytes": 17051648,
+        "live_bytes": 1238528,
+        "fragmentation_ratio": 13.767673,
+        "peak_rss_bytes": 16838656
+      },
+      {
+        "phase": "drop",
+        "cycle": 1,
+        "rss_bytes": 17051648,
+        "live_bytes": 210176,
+        "fragmentation_ratio": 81.130329,
+        "peak_rss_bytes": 16838656
+      },
+      {
+        "phase": "idle",
+        "cycle": 1,
+        "rss_bytes": 17051648,
+        "live_bytes": 210176,
+        "fragmentation_ratio": 81.130329,
+        "peak_rss_bytes": 16838656
+      },
+      {
+        "phase": "idle10",
+        "cycle": 1,
+        "rss_bytes": 17051648,
+        "live_bytes": 210176,
+        "fragmentation_ratio": 81.130329,
+        "peak_rss_bytes": 16838656
+      }
+    ]
+  },
+  "truth": {
+    "pairs": 10,
+    "sites": 8,
+    "contexts": 4,
+    "oracle_site_correct_bytes": 3259632,
+    "oracle_context_correct_bytes": 3469808,
+    "allocated_bytes": 3698928
+  },
+  "trace_complete": true,
+  "summary": [
+    {
+      "benchmark": "per-alloc-small",
+      "variant": "mi",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 20.50627498,
+        "min": 20.506066008,
+        "max": 20.507523088
+      },
+      "user_seconds": {
+        "median": 0.002676,
+        "min": 0.0,
+        "max": 0.003152
+      },
+      "sys_seconds": {
+        "median": 0.002694,
+        "min": 0.002101,
+        "max": 0.00575
+      },
+      "cpu_seconds": {
+        "median": 0.005365,
+        "min": 0.005253,
+        "max": 0.00575
+      },
+      "peak_rss_bytes": {
+        "median": 8425472,
+        "min": 8421376,
+        "max": 8441856
+      },
+      "score": {
+        "median": 20.50627498,
+        "min": 20.506066008,
+        "max": 20.507523088
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.0,
+        "cpu_seconds": 1.0,
+        "peak_rss_bytes": 1.0,
+        "score": 1.0
+      }
+    },
+    {
+      "benchmark": "per-alloc-small",
+      "variant": "jev-keyonly",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 20.507586366,
+        "min": 20.506984534,
+        "max": 20.508928659
+      },
+      "user_seconds": {
+        "median": 0.001985,
+        "min": 0.0,
+        "max": 0.002835
+      },
+      "sys_seconds": {
+        "median": 0.004241,
+        "min": 0.002835,
+        "max": 0.005892
+      },
+      "cpu_seconds": {
+        "median": 0.0060149999999999995,
+        "min": 0.00567,
+        "max": 0.006226
+      },
+      "peak_rss_bytes": {
+        "median": 8585216,
+        "min": 8478720,
+        "max": 8613888
+      },
+      "score": {
+        "median": 20.507586366,
+        "min": 20.506984534,
+        "max": 20.508928659
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.000063950473759,
+        "cpu_seconds": 1.1211556383970176,
+        "peak_rss_bytes": 1.0189596499756928,
+        "score": 1.000063950473759
+      }
+    },
+    {
+      "benchmark": "per-alloc-small",
+      "variant": "jev-table:oracle-site",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 20.507447802,
+        "min": 20.506952771,
+        "max": 20.508702011
+      },
+      "user_seconds": {
+        "median": 0.002009,
+        "min": 0.0,
+        "max": 0.002787
+      },
+      "sys_seconds": {
+        "median": 0.004019,
+        "min": 0.003716,
+        "max": 0.00615
+      },
+      "cpu_seconds": {
+        "median": 0.00615,
+        "min": 0.005715,
+        "max": 0.006503
+      },
+      "peak_rss_bytes": {
+        "median": 8581120,
+        "min": 8581120,
+        "max": 8617984
+      },
+      "score": {
+        "median": 20.507447802,
+        "min": 20.506952771,
+        "max": 20.508702011
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.0000571933225877,
+        "cpu_seconds": 1.146318732525629,
+        "peak_rss_bytes": 1.018473505104521,
+        "score": 1.0000571933225877
+      }
+    },
+    {
+      "benchmark": "per-alloc-small",
+      "variant": "jev-table:oracle-context",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 20.507284408,
+        "min": 20.50625903,
+        "max": 20.507323141
+      },
+      "user_seconds": {
+        "median": 0.001108,
+        "min": 0.0,
+        "max": 0.002338
+      },
+      "sys_seconds": {
+        "median": 0.004335,
+        "min": 0.003691,
+        "max": 0.005538
+      },
+      "cpu_seconds": {
+        "median": 0.005538,
+        "min": 0.005443,
+        "max": 0.006029
+      },
+      "peak_rss_bytes": {
+        "median": 6483968,
+        "min": 6352896,
+        "max": 6483968
+      },
+      "score": {
+        "median": 20.507284408,
+        "min": 20.50625903,
+        "max": 20.507323141
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.0000492253225408,
+        "cpu_seconds": 1.032246039142591,
+        "peak_rss_bytes": 0.7695673310646572,
+        "score": 1.0000492253225408
+      }
+    },
+    {
+      "benchmark": "per-alloc-small",
+      "variant": "jev-live:per-alloc",
+      "repetitions": 5,
+      "score_metric": "wall_seconds",
+      "wall_seconds": {
+        "median": 21.335805535,
+        "min": 21.321047109,
+        "max": 21.341865878
+      },
+      "user_seconds": {
+        "median": 0.038706,
+        "min": 0.03552,
+        "max": 0.046245
+      },
+      "sys_seconds": {
+        "median": 0.117088,
+        "min": 0.113052,
+        "max": 0.133138
+      },
+      "cpu_seconds": {
+        "median": 0.162084,
+        "min": 0.155794,
+        "max": 0.168658
+      },
+      "peak_rss_bytes": {
+        "median": 8478720,
+        "min": 8454144,
+        "max": 8613888
+      },
+      "score": {
+        "median": 21.335805535,
+        "min": 21.321047109,
+        "max": 21.341865878
+      },
+      "relative_to_mi": {
+        "wall_seconds": 1.04045252274287,
+        "cpu_seconds": 30.211369990680335,
+        "peak_rss_bytes": 1.006319883325231,
+        "score": 1.04045252274287
+      }
+    }
+  ],
+  "logged_runs": [
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791791866.4106078,
+      "finished_unix": 1791791887.6141684,
+      "host_before": {
+        "load_average": [
+          0.05615234375,
+          0.10107421875,
+          0.0869140625
+        ],
+        "MemAvailable_bytes": 13907058688,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-live:per-alloc",
+      "repetition": 0,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_OBJECT_TRACE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/objects-0.jsonl",
+        "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/objects-0.trace.jsonl",
+        "JEVALLOC_PER_ALLOC": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-792326573997.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-0-0e93ba5b-attempt99.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 21.176500534,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-0-0e93ba5b-attempt99.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-0-0e93ba5b-attempt99.stderr",
+      "user_seconds": 0.035869,
+      "sys_seconds": 0.104271,
+      "peak_rss_bytes": 16920576,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.14014,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 21.176500534,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 15032320,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 22.267728,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 15048704,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 186.025316,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 15118336,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 186.886076,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 15134720,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 187.088608,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 17334272,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 13.995866,
+          "peak_rss_bytes": 16920576
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 17268736,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.163216,
+          "peak_rss_bytes": 16920576
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 17268736,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.163216,
+          "peak_rss_bytes": 16920576
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 17268736,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.163216,
+          "peak_rss_bytes": 16920576
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 8192,
+          "6957cfd0d57e38ee": 4096,
+          "ede875a8c2f6f80c": 304,
+          "78eea16946ce75ac": 944,
+          "f596fe201f93ed62": 944,
+          "ad3382736f297fa3": 1622528,
+          "8928cdbd63df0455": 210176,
+          "bc2dc64e86a33c6a": 944,
+          "d1c78a5bcfc55993": 1849856,
+          "12507c88144ea932": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "6957cfd0d57e38ee": 0,
+          "ede875a8c2f6f80c": 0,
+          "78eea16946ce75ac": 0,
+          "f596fe201f93ed62": 0,
+          "ad3382736f297fa3": 0,
+          "8928cdbd63df0455": 2,
+          "bc2dc64e86a33c6a": 0,
+          "d1c78a5bcfc55993": 0,
+          "12507c88144ea932": 0
+        },
+        "failure_errno": 0,
+        "blocked_ns": 588079916,
+        "decisions": 2229,
+        "rechecks": 2226,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 10,
+        "samples": 37,
+        "sampled_live_objects": 2,
+        "sample_rate": 64,
+        "allocation_clock": 3698928
+      },
+      "blocked_seconds": 0.588079916,
+      "chip_seconds": 20.588420617999997,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-0-0e93ba5b-attempt99.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-0e93ba5b.schedule.jsonl",
+      "model_coverage": {
+        "sites": 10,
+        "asked_sites": 3,
+        "unasked_sites": 7,
+        "allocated_bytes": 3698928,
+        "unasked_bytes": 16368,
+        "unasked_byte_share": 0.004425065856918545,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 2229,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 1200,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791791888.7603855,
+      "finished_unix": 1791791910.164685,
+      "host_before": {
+        "load_average": [
+          0.03564453125,
+          0.09130859375,
+          0.08447265625
+        ],
+        "MemAvailable_bytes": 13919870976,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-live:per-alloc",
+      "repetition": 1,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_OBJECT_TRACE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/objects-1.jsonl",
+        "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/objects-1.trace.jsonl",
+        "JEVALLOC_PER_ALLOC": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-49f0a325902b.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-1-0e93ba5b-attempt99.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 21.348735494,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-1-0e93ba5b-attempt99.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-1-0e93ba5b-attempt99.stderr",
+      "user_seconds": 0.052577,
+      "sys_seconds": 0.113604,
+      "peak_rss_bytes": 16990208,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.166181,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 21.348735494,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 15028224,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 22.261661,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 15048704,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 186.025316,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 15118336,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 186.886076,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 15126528,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 186.987342,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 17358848,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 14.015709,
+          "peak_rss_bytes": 16990208
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 17293312,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.280146,
+          "peak_rss_bytes": 16990208
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 17293312,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.280146,
+          "peak_rss_bytes": 16990208
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 17293312,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.280146,
+          "peak_rss_bytes": 16990208
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 8192,
+          "6957cfd0d57e38ee": 4096,
+          "ede875a8c2f6f80c": 304,
+          "78eea16946ce75ac": 944,
+          "f596fe201f93ed62": 944,
+          "ad3382736f297fa3": 1622528,
+          "8928cdbd63df0455": 210176,
+          "bc2dc64e86a33c6a": 944,
+          "d1c78a5bcfc55993": 1849856,
+          "12507c88144ea932": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "6957cfd0d57e38ee": 0,
+          "ede875a8c2f6f80c": 0,
+          "78eea16946ce75ac": 0,
+          "f596fe201f93ed62": 0,
+          "ad3382736f297fa3": 0,
+          "8928cdbd63df0455": 2,
+          "bc2dc64e86a33c6a": 0,
+          "d1c78a5bcfc55993": 0,
+          "12507c88144ea932": 0
+        },
+        "failure_errno": 0,
+        "blocked_ns": 744063978,
+        "decisions": 2229,
+        "rechecks": 2226,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 10,
+        "samples": 37,
+        "sampled_live_objects": 2,
+        "sample_rate": 64,
+        "allocation_clock": 3698928
+      },
+      "blocked_seconds": 0.744063978,
+      "chip_seconds": 20.604671516,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-1-0e93ba5b-attempt99.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-0e93ba5b.schedule.jsonl",
+      "model_coverage": {
+        "sites": 10,
+        "asked_sites": 3,
+        "unasked_sites": 7,
+        "allocated_bytes": 3698928,
+        "unasked_bytes": 16368,
+        "unasked_byte_share": 0.004425065856918545,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 2229,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 1200,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791791911.3091066,
+      "finished_unix": 1791791932.7219763,
+      "host_before": {
+        "load_average": [
+          0.09912109375,
+          0.10107421875,
+          0.08837890625
+        ],
+        "MemAvailable_bytes": 13918089216,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-live:per-alloc",
+      "repetition": 2,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_OBJECT_TRACE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/objects-2.jsonl",
+        "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/objects-2.trace.jsonl",
+        "JEVALLOC_PER_ALLOC": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-23708e1d9190.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-2-0e93ba5b-attempt99.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 21.366464382,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-2-0e93ba5b-attempt99.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-2-0e93ba5b-attempt99.stderr",
+      "user_seconds": 0.049507,
+      "sys_seconds": 0.12008,
+      "peak_rss_bytes": 16982016,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.16958700000000002,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 21.366464382,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 15032320,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 22.267728,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 15056896,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 186.126582,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 15126528,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 186.987342,
+          "peak_rss_bytes": 14753792
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 15138816,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 187.139241,
+          "peak_rss_bytes": 14884864
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 17371136,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 14.02563,
+          "peak_rss_bytes": 16982016
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 17305600,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.338611,
+          "peak_rss_bytes": 16982016
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 17305600,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.338611,
+          "peak_rss_bytes": 16982016
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 17305600,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.338611,
+          "peak_rss_bytes": 16982016
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 8192,
+          "6957cfd0d57e38ee": 4096,
+          "ede875a8c2f6f80c": 304,
+          "78eea16946ce75ac": 944,
+          "f596fe201f93ed62": 944,
+          "ad3382736f297fa3": 1622528,
+          "8928cdbd63df0455": 210176,
+          "bc2dc64e86a33c6a": 944,
+          "d1c78a5bcfc55993": 1849856,
+          "12507c88144ea932": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "6957cfd0d57e38ee": 0,
+          "ede875a8c2f6f80c": 0,
+          "78eea16946ce75ac": 0,
+          "f596fe201f93ed62": 0,
+          "ad3382736f297fa3": 0,
+          "8928cdbd63df0455": 2,
+          "bc2dc64e86a33c6a": 0,
+          "d1c78a5bcfc55993": 0,
+          "12507c88144ea932": 0
+        },
+        "failure_errno": 0,
+        "blocked_ns": 759338097,
+        "decisions": 2229,
+        "rechecks": 2226,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 10,
+        "samples": 37,
+        "sampled_live_objects": 2,
+        "sample_rate": 64,
+        "allocation_clock": 3698928
+      },
+      "blocked_seconds": 0.759338097,
+      "chip_seconds": 20.607126285,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-2-0e93ba5b-attempt99.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-0e93ba5b.schedule.jsonl",
+      "model_coverage": {
+        "sites": 10,
+        "asked_sites": 3,
+        "unasked_sites": 7,
+        "allocated_bytes": 3698928,
+        "unasked_bytes": 16368,
+        "unasked_byte_share": 0.004425065856918545,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 2229,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 1200,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791791933.867764,
+      "finished_unix": 1791791955.2809532,
+      "host_before": {
+        "load_average": [
+          0.064453125,
+          0.09130859375,
+          0.0859375
+        ],
+        "MemAvailable_bytes": 13933518848,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-live:per-alloc",
+      "repetition": 3,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_OBJECT_TRACE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/objects-3.jsonl",
+        "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/objects-3.trace.jsonl",
+        "JEVALLOC_PER_ALLOC": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-cce06d5fbebc.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-3-0e93ba5b-attempt99.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 21.357009592,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-3-0e93ba5b-attempt99.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-3-0e93ba5b-attempt99.stderr",
+      "user_seconds": 0.066998,
+      "sys_seconds": 0.093797,
+      "peak_rss_bytes": 16969728,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.16079500000000002,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 21.357009592,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 15032320,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 22.267728,
+          "peak_rss_bytes": 14749696
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 15052800,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 186.075949,
+          "peak_rss_bytes": 14749696
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 15122432,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 186.936709,
+          "peak_rss_bytes": 14749696
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 15134720,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 187.088608,
+          "peak_rss_bytes": 14749696
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 17346560,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 14.005788,
+          "peak_rss_bytes": 16969728
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 17281024,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.221681,
+          "peak_rss_bytes": 16969728
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 17281024,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.221681,
+          "peak_rss_bytes": 16969728
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 17281024,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.221681,
+          "peak_rss_bytes": 16969728
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 8192,
+          "6957cfd0d57e38ee": 4096,
+          "ede875a8c2f6f80c": 304,
+          "78eea16946ce75ac": 944,
+          "f596fe201f93ed62": 944,
+          "ad3382736f297fa3": 1622528,
+          "8928cdbd63df0455": 210176,
+          "bc2dc64e86a33c6a": 944,
+          "d1c78a5bcfc55993": 1849856,
+          "12507c88144ea932": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "6957cfd0d57e38ee": 0,
+          "ede875a8c2f6f80c": 0,
+          "78eea16946ce75ac": 0,
+          "f596fe201f93ed62": 0,
+          "ad3382736f297fa3": 0,
+          "8928cdbd63df0455": 2,
+          "bc2dc64e86a33c6a": 0,
+          "d1c78a5bcfc55993": 0,
+          "12507c88144ea932": 0
+        },
+        "failure_errno": 0,
+        "blocked_ns": 755249522,
+        "decisions": 2229,
+        "rechecks": 2226,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 10,
+        "samples": 37,
+        "sampled_live_objects": 2,
+        "sample_rate": 64,
+        "allocation_clock": 3698928
+      },
+      "blocked_seconds": 0.755249522,
+      "chip_seconds": 20.60176007,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-3-0e93ba5b-attempt99.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-0e93ba5b.schedule.jsonl",
+      "model_coverage": {
+        "sites": 10,
+        "asked_sites": 3,
+        "unasked_sites": 7,
+        "allocated_bytes": 3698928,
+        "unasked_bytes": 16368,
+        "unasked_byte_share": 0.004425065856918545,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 2229,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 1200,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0
+    },
+    {
+      "inference_gate": "idle-before-run",
+      "started_unix": 1791791956.4255035,
+      "finished_unix": 1791791977.8293803,
+      "host_before": {
+        "load_average": [
+          0.04541015625,
+          0.08447265625,
+          0.083984375
+        ],
+        "MemAvailable_bytes": 13917835264,
+        "SwapFree_bytes": 6879703040,
+        "SwapTotal_bytes": 8589930496
+      },
+      "benchmark": "per-alloc-small",
+      "variant": "jev-live:per-alloc",
+      "repetition": 4,
+      "command": [
+        "/home/quill/jevalloc/src-tree/build/bench/../server-sim",
+        "1",
+        "site-mixed",
+        "1200",
+        "250",
+        "payload-only"
+      ],
+      "stdin": null,
+      "environment": {
+        "LD_PRELOAD": "/home/quill/jevalloc/src-tree/build/libjevalloc.so",
+        "JEVALLOC_MODE": "live",
+        "JEVALLOC_DEPTH": "4",
+        "JEVALLOC_MODEL_DEPTH": "12",
+        "FRAG_LONG_SETTLE_MS": "10000",
+        "JEVALLOC_OBJECT_TRACE": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/objects-4.jsonl",
+        "JEVALLOC_TRACE_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/objects-4.trace.jsonl",
+        "JEVALLOC_PER_ALLOC": "1",
+        "JEVALLOC_SOCKET": "/home/quill/jevalloc/src-tree/build/jvd-218d43b650fc.sock",
+        "JEVALLOC_STATS_OUT": "/home/quill/jevalloc/src-tree/results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-4-0e93ba5b-attempt99.stats.json",
+        "JEVALLOC_TIMEOUT_MS": "600000"
+      },
+      "exit_status": 0,
+      "output_ok": true,
+      "wall_seconds": 21.388892323,
+      "stdout": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-4-0e93ba5b-attempt99.stdout",
+      "stderr": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-4-0e93ba5b-attempt99.stderr",
+      "user_seconds": 0.055088,
+      "sys_seconds": 0.117646,
+      "peak_rss_bytes": 17088512,
+      "peak_footprint_bytes": null,
+      "cpu_seconds": 0.172734,
+      "time_exit_status": 0,
+      "footprint_final_read": false,
+      "measurement": "wait4 + proc_pid_rusage",
+      "score": 21.388892323,
+      "score_metric": "wall_seconds",
+      "phases": [
+        {
+          "phase": "peak",
+          "cycle": 0,
+          "rss_bytes": 15040512,
+          "live_bytes": 675072,
+          "fragmentation_ratio": 22.279863,
+          "peak_rss_bytes": 14757888
+        },
+        {
+          "phase": "drop",
+          "cycle": 0,
+          "rss_bytes": 15052800,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 186.075949,
+          "peak_rss_bytes": 14757888
+        },
+        {
+          "phase": "idle",
+          "cycle": 0,
+          "rss_bytes": 15130624,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 187.037975,
+          "peak_rss_bytes": 14757888
+        },
+        {
+          "phase": "idle10",
+          "cycle": 0,
+          "rss_bytes": 15147008,
+          "live_bytes": 80896,
+          "fragmentation_ratio": 187.240506,
+          "peak_rss_bytes": 14757888
+        },
+        {
+          "phase": "peak",
+          "cycle": 1,
+          "rss_bytes": 17350656,
+          "live_bytes": 1238528,
+          "fragmentation_ratio": 14.009095,
+          "peak_rss_bytes": 17088512
+        },
+        {
+          "phase": "drop",
+          "cycle": 1,
+          "rss_bytes": 17285120,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.241169,
+          "peak_rss_bytes": 17088512
+        },
+        {
+          "phase": "idle",
+          "cycle": 1,
+          "rss_bytes": 17285120,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.241169,
+          "peak_rss_bytes": 17088512
+        },
+        {
+          "phase": "idle10",
+          "cycle": 1,
+          "rss_bytes": 17285120,
+          "live_bytes": 210176,
+          "fragmentation_ratio": 82.241169,
+          "peak_rss_bytes": 17088512
+        }
+      ],
+      "allocator_stats": {
+        "site_bytes": {
+          "a3cc4795af0459d5": 8192,
+          "6957cfd0d57e38ee": 4096,
+          "ede875a8c2f6f80c": 304,
+          "78eea16946ce75ac": 944,
+          "f596fe201f93ed62": 944,
+          "ad3382736f297fa3": 1622528,
+          "8928cdbd63df0455": 210176,
+          "bc2dc64e86a33c6a": 944,
+          "d1c78a5bcfc55993": 1849856,
+          "12507c88144ea932": 944
+        },
+        "hybrid_sites": {},
+        "site_sampled_live": {
+          "a3cc4795af0459d5": 0,
+          "6957cfd0d57e38ee": 0,
+          "ede875a8c2f6f80c": 0,
+          "78eea16946ce75ac": 0,
+          "f596fe201f93ed62": 0,
+          "ad3382736f297fa3": 0,
+          "8928cdbd63df0455": 2,
+          "bc2dc64e86a33c6a": 0,
+          "d1c78a5bcfc55993": 0,
+          "12507c88144ea932": 0
+        },
+        "failure_errno": 0,
+        "blocked_ns": 752983907,
+        "decisions": 2229,
+        "rechecks": 2226,
+        "timeouts": 0,
+        "failures": 0,
+        "sites": 10,
+        "samples": 37,
+        "sampled_live_objects": 2,
+        "sample_rate": 64,
+        "allocation_clock": 3698928
+      },
+      "blocked_seconds": 0.752983907,
+      "chip_seconds": 20.635908416,
+      "chip_time_note": "Approximation: sums blocked intervals across threads; can be negative.",
+      "decision_log": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-jev-live-4-0e93ba5b-attempt99.decisions.jsonl",
+      "cold": false,
+      "coverage_fill": false,
+      "replay_schedule": "results/pass10/defaults/named/per-alloc-small/logs/per-alloc-small-0e93ba5b.schedule.jsonl",
+      "model_coverage": {
+        "sites": 10,
+        "asked_sites": 3,
+        "unasked_sites": 7,
+        "allocated_bytes": 3698928,
+        "unasked_bytes": 16368,
+        "unasked_byte_share": 0.004425065856918545,
+        "max_model_decisions": 3000,
+        "budget_fallbacks": 0
+      },
+      "decision_execution": "replay",
+      "cache_hits": 2229,
+      "model_seconds": 0.0,
+      "input_tokens": 0,
+      "replay_drift": 1200,
+      "new_decisions": 0,
+      "replay_missing": 0,
+      "decision_errors": 0,
+      "dollars": 0
+    }
+  ],
+  "complete": true
+}

@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "checks": {
+    "immediate": {
+      "objects": 2414,
+      "allocation_clock": 3695936,
+      "confusion": [
+        [
+          2031,
+          0
+        ],
+        [
+          119,
+          79
+        ]
+      ],
+      "answered": 2229,
+      "correct_bytes": 3255808,
+      "ttl_rule_matching": 2229
+    },
+    "defaults": {
+      "objects": 2418,
+      "allocation_clock": 3698928,
+      "confusion": [
+        [
+          2031,
+          0
+        ],
+        [
+          119,
+          79
+        ]
+      ],
+      "answered": 2229,
+      "correct_bytes": 3255808,
+      "ttl_rule_matching": 2229
+    }
+  },
+  "note": "Truth independently recalculated from each birth/death clock and half of the sum of all requested sizes, without trusting stored truth or aggregate confusion."
+}

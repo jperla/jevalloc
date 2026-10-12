@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "completed_server_blocks": 16,
+  "policy_groups": 152,
+  "warm_runs": 760,
+  "checks": [
+    "independent idle medians",
+    "five distinct repetitions",
+    "inference audit fingerprints and zero overlap",
+    "defaults environment",
+    "renamed context vocabularies",
+    "identical requested live bytes by phase"
+  ]
+}

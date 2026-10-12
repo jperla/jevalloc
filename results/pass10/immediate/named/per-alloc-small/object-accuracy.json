@@ -1,0 +1,198 @@
+{
+  "by_context": {
+    "kind=store ttl=0": {
+      "all_payloads": {
+        "objects": 1218,
+        "correct": 1218,
+        "accuracy": 1.0,
+        "bytes": 1849856,
+        "correct_bytes": 1849856,
+        "permanent": 0,
+        "confusion": [
+          [
+            1218,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "model_answered": {
+        "objects": 1159,
+        "correct": 1159,
+        "accuracy": 1.0,
+        "bytes": 1784320,
+        "correct_bytes": 1784320,
+        "permanent": 0,
+        "confusion": [
+          [
+            1159,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "kind=store ttl=day": {
+      "all_payloads": {
+        "objects": 135,
+        "correct": 79,
+        "accuracy": 0.5851851851851851,
+        "bytes": 210176,
+        "correct_bytes": 143872,
+        "permanent": 135,
+        "confusion": [
+          [
+            0,
+            0
+          ],
+          [
+            56,
+            79
+          ]
+        ]
+      },
+      "model_answered": {
+        "objects": 79,
+        "correct": 79,
+        "accuracy": 1.0,
+        "bytes": 143872,
+        "correct_bytes": 143872,
+        "permanent": 79,
+        "confusion": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            79
+          ]
+        ]
+      }
+    },
+    "kind=store ttl=short": {
+      "all_payloads": {
+        "objects": 1047,
+        "correct": 928,
+        "accuracy": 0.8863419293218721,
+        "bytes": 1622528,
+        "correct_bytes": 1393408,
+        "permanent": 119,
+        "confusion": [
+          [
+            928,
+            0
+          ],
+          [
+            119,
+            0
+          ]
+        ]
+      },
+      "model_answered": {
+        "objects": 991,
+        "correct": 872,
+        "accuracy": 0.8799192734611504,
+        "bytes": 1556736,
+        "correct_bytes": 1327616,
+        "permanent": 119,
+        "confusion": [
+          [
+            872,
+            0
+          ],
+          [
+            119,
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "payload_objects": {
+    "objects": 2400,
+    "correct": 2225,
+    "accuracy": 0.9270833333333334,
+    "bytes": 3682560,
+    "correct_bytes": 3387136,
+    "permanent": 254,
+    "confusion": [
+      [
+        2146,
+        0
+      ],
+      [
+        175,
+        79
+      ]
+    ]
+  },
+  "final_allocation_clock": 3695936,
+  "all_objects": {
+    "objects": 2414,
+    "correct": 2237,
+    "accuracy": 0.9266777133388566,
+    "bytes": 3695936,
+    "correct_bytes": 3396112,
+    "permanent": 256,
+    "confusion": [
+      [
+        2158,
+        0
+      ],
+      [
+        177,
+        79
+      ]
+    ]
+  },
+  "model_answered": {
+    "objects": 2229,
+    "correct": 2110,
+    "accuracy": 0.9466128308658591,
+    "bytes": 3484928,
+    "correct_bytes": 3255808,
+    "permanent": 198,
+    "confusion": [
+      [
+        2031,
+        0
+      ],
+      [
+        119,
+        79
+      ]
+    ]
+  },
+  "unasked": {
+    "objects": 185,
+    "correct": 127,
+    "accuracy": 0.6864864864864865,
+    "bytes": 211008,
+    "correct_bytes": 140304,
+    "permanent": 58,
+    "confusion": [
+      [
+        127,
+        0
+      ],
+      [
+        58,
+        0
+      ]
+    ]
+  },
+  "decisions": 2229,
+  "model_decisions": 2229,
+  "http_requests": 2229,
+  "model_seconds": 3050.5710365269333,
+  "cold_wall": 3062.90514515,
+  "budget_fallbacks": 0,
+  "note": "Object truth: never freed, or alive for more than half final requested allocation volume. Confusion rows=truth transient/permanent, columns=chosen transient/permanent. Exact object logging overhead included."
+}
