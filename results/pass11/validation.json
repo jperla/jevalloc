@@ -1,0 +1,113 @@
+{
+  "passed": true,
+  "matrices": 30,
+  "accepted_warm_runs": 2620,
+  "decision_events": 18423,
+  "recorded_probabilities": 90,
+  "matrix_sha256": {
+    "factorial/seed5/site-pure/1/matrix.json": "24957ffdf6b699c2ebc1cdc97fca5d8c7828afc1a0bc44dfab3ae3047e2a8c2c",
+    "factorial/seed5/site-pure/16/matrix.json": "c82caa833b7fb15ad9f1772f9679a8192e9b84a5467783ae0b9853ccb68a6e07",
+    "factorial/seed5/site-mixed/1/matrix.json": "85a7baea6c2b32c604c0797ce197af4212bf75ba849d64431f6ae22a94b105d0",
+    "factorial/seed5/site-mixed/16/matrix.json": "8b2f8afd701de49251475ba7d044e1eebc7bb427c2723033c463032dc34da0fb",
+    "factorial/plausible/site-pure/1/matrix.json": "174c9c03bfe2189ede60384495e72aac19cc10960d5dee9f0a8eadfeae2fe6b7",
+    "factorial/plausible/site-pure/16/matrix.json": "d90f8c62cca5cc23b1723b941ed18e400443289393909a939854b038d0bd120d",
+    "factorial/plausible/site-mixed/1/matrix.json": "9c6538f7fb33160e4b5d072661b903161cde4f65623fb56797314a3921a2b8de",
+    "factorial/plausible/site-mixed/16/matrix.json": "58b5f0c2d6377425b26f0add49673f4a72c8eec0883f7da8dfce9ba52648962e",
+    "factorial/seed1/site-pure/1/matrix.json": "a75c70e36221c99b64541afa257e3d3e36f50eef669a75d83fc72f04ec1d5201",
+    "factorial/seed1/site-pure/16/matrix.json": "a5d036e9a31b48b50d26ec92486ca273174f3c111747a51a1283f8169eec9f8b",
+    "factorial/seed1/site-mixed/1/matrix.json": "2041f2a0bfb6a3f00ab63e583aaf0a4602e20a20c827fd2e8700ac8ffa9d6806",
+    "factorial/seed1/site-mixed/16/matrix.json": "1186c8bdf5fbe1c1bc529234aaa10f3566fec8b029ad60893788ff48e51cf1e6",
+    "factorial/seed2/site-pure/1/matrix.json": "a11b45c31afda3a374cd4d1122c59d11b41bad536980411266f97e515c4f0a7b",
+    "factorial/seed2/site-pure/16/matrix.json": "2364478e173c955f9f1a9f3e91cbb258f6b0884b2456b13ba844cf01ce1521b4",
+    "factorial/seed2/site-mixed/1/matrix.json": "ca08680638a32e47afa2c5264615d74ce1e60ee7e2844186981c70fbb781356b",
+    "factorial/seed2/site-mixed/16/matrix.json": "f899a15e8d63e80f3aaf220ed4061f891956732438de71d3052c11eb2ae03dd6",
+    "factorial/seed4/site-pure/1/matrix.json": "110f0d55004c8ce045d5ef11f27ad35cab7b8c2017e9ebe9f2d0eb5759941a44",
+    "factorial/seed4/site-pure/16/matrix.json": "840056221e248f2d552df90aebb3b52fc000509c078fbadcdde024599f213e07",
+    "factorial/seed4/site-mixed/1/matrix.json": "2a672a8eed6f7657f0b1f83186445f466cc00e41eda4e8af694dedf7f8192ceb",
+    "factorial/seed4/site-mixed/16/matrix.json": "80bfa8638d3a4c9bbee4457e80d44380e581df89b6f25119b9e0cff3384f698f",
+    "factorial/seed3/site-pure/1/matrix.json": "6f531c9c825e711d1a84737af478f53371a5df9d2b74af1159b15b069bd2c02e",
+    "factorial/seed3/site-pure/16/matrix.json": "40dfcee48aad3e0f58113c214980af528dd03ee06b111e357e50a5748ab3096e",
+    "factorial/seed3/site-mixed/1/matrix.json": "57f7a8b4490f5abfae2d34af2dba5c9d3690707a3c71f07ff413076c80f9c955",
+    "factorial/seed3/site-mixed/16/matrix.json": "4359e08d62d8101fde2da3cb27295c3de3094dd9aa0326ee4013947f488535de",
+    "redis/unnormalized/defaults/matrix.json": "79102095b56808f997afda54073edc3823a1c312eacf8d90825119f107b4759d",
+    "redis/unnormalized/immediate/matrix.json": "193792e4a4960f75bc45f850928b9f8983d5dea6fa18e086780433e887b00df2",
+    "redis/normalized/defaults/matrix.json": "d040ec4f796de9ec316d1ddc99b63f1a69629026affc5c168fdcb29af8990278",
+    "redis/normalized/immediate/matrix.json": "d4e88b7b39ef6ad8961d012cd1710b8b11b0228da76a18f4ba83680312b68baa",
+    "diagnostic/defaults/matrix.json": "d8833dc358ec35179157e104cc5d160a02a23596dd640a168512f98ec3d6141d",
+    "diagnostic/immediate/matrix.json": "69a9960b2783a6eb2e06eb63cca25197b8ea23cc8ba776c8106b29019fcd03a5"
+  },
+  "oracle_tables": {
+    "redis/unnormalized/defaults/tables/redis-drop/oracle.txt": {
+      "labels": 495411,
+      "sha256": "1297eaf70df5bce2eb8246676c03798e194744f2ad96ef1920139ebc6440e32a"
+    },
+    "redis/unnormalized/defaults/tables/redis-drop/oracle-context.txt": {
+      "labels": 495411,
+      "sha256": "1297eaf70df5bce2eb8246676c03798e194744f2ad96ef1920139ebc6440e32a"
+    },
+    "redis/unnormalized/defaults/tables/redis-drop/oracle-site.txt": {
+      "labels": 629,
+      "sha256": "8062516824cd9c99fa48ec2b1f4d8000f80c0ea994d0d6b8543d92aebb52a6a7"
+    },
+    "redis/unnormalized/immediate/tables/redis-drop/oracle.txt": {
+      "labels": 495439,
+      "sha256": "90975e3f07c56544273bc223dd1c8fcc957f65dd1b2050393f5cba3015520c54"
+    },
+    "redis/unnormalized/immediate/tables/redis-drop/oracle-context.txt": {
+      "labels": 495439,
+      "sha256": "90975e3f07c56544273bc223dd1c8fcc957f65dd1b2050393f5cba3015520c54"
+    },
+    "redis/unnormalized/immediate/tables/redis-drop/oracle-site.txt": {
+      "labels": 629,
+      "sha256": "8062516824cd9c99fa48ec2b1f4d8000f80c0ea994d0d6b8543d92aebb52a6a7"
+    },
+    "redis/normalized/defaults/tables/redis-drop/oracle.txt": {
+      "labels": 636,
+      "sha256": "370a824023a67a22b2a593dd1dd290df6bca596579730c0270c40de43a0e07a4"
+    },
+    "redis/normalized/defaults/tables/redis-drop/oracle-context.txt": {
+      "labels": 636,
+      "sha256": "370a824023a67a22b2a593dd1dd290df6bca596579730c0270c40de43a0e07a4"
+    },
+    "redis/normalized/defaults/tables/redis-drop/oracle-site.txt": {
+      "labels": 629,
+      "sha256": "ad450ff02e1ccb0d14a4b676b1d67c91615c8cb3e1e35e828b987e5e5a680436"
+    },
+    "redis/normalized/immediate/tables/redis-drop/oracle.txt": {
+      "labels": 636,
+      "sha256": "370a824023a67a22b2a593dd1dd290df6bca596579730c0270c40de43a0e07a4"
+    },
+    "redis/normalized/immediate/tables/redis-drop/oracle-context.txt": {
+      "labels": 636,
+      "sha256": "370a824023a67a22b2a593dd1dd290df6bca596579730c0270c40de43a0e07a4"
+    },
+    "redis/normalized/immediate/tables/redis-drop/oracle-site.txt": {
+      "labels": 629,
+      "sha256": "ad450ff02e1ccb0d14a4b676b1d67c91615c8cb3e1e35e828b987e5e5a680436"
+    },
+    "diagnostic/defaults/tables/site-pure-1/oracle.txt": {
+      "labels": 12,
+      "sha256": "557db7fe632d08559e06854374c9692cfbcf08189a27c72e289380b6016f6d57"
+    },
+    "diagnostic/defaults/tables/site-pure-1/oracle-context.txt": {
+      "labels": 12,
+      "sha256": "557db7fe632d08559e06854374c9692cfbcf08189a27c72e289380b6016f6d57"
+    },
+    "diagnostic/defaults/tables/site-pure-1/oracle-site.txt": {
+      "labels": 12,
+      "sha256": "557db7fe632d08559e06854374c9692cfbcf08189a27c72e289380b6016f6d57"
+    },
+    "diagnostic/immediate/tables/site-pure-1/oracle.txt": {
+      "labels": 12,
+      "sha256": "557db7fe632d08559e06854374c9692cfbcf08189a27c72e289380b6016f6d57"
+    },
+    "diagnostic/immediate/tables/site-pure-1/oracle-context.txt": {
+      "labels": 12,
+      "sha256": "557db7fe632d08559e06854374c9692cfbcf08189a27c72e289380b6016f6d57"
+    },
+    "diagnostic/immediate/tables/site-pure-1/oracle-site.txt": {
+      "labels": 12,
+      "sha256": "557db7fe632d08559e06854374c9692cfbcf08189a27c72e289380b6016f6d57"
+    }
+  }
+}

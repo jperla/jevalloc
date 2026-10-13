@@ -1,0 +1,712 @@
+[
+  {
+    "key": "3725cf91bb39c3ee",
+    "context": "class=b",
+    "frames": [
+      {
+        "addr": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1691",
+        "function": "xmalloc",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 57,
+        "source": []
+      },
+      {
+        "addr": "0x1719",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1719",
+        "function": "resp_get",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 59,
+        "source": []
+      },
+      {
+        "addr": "0x1e68",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1e68",
+        "function": "server_worker",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 109,
+        "source": []
+      },
+      {
+        "addr": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x9caa4",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "addr": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x129c6c",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ],
+    "probabilities": {
+      "permanent": 0.2726920461715194,
+      "transient": 0.7273079538284807
+    },
+    "rule_class": 0,
+    "model_class": 0,
+    "model_request": {
+      "model": "clef-flash",
+      "questions": {
+        "lifetime": {
+          "criteria": {
+            "permanent": "No: it stays until the program exits - an entry added to a cache, index or global table that is never removed.",
+            "transient": "Yes: it is freed at some point - right away, when the request finishes, or when a session or connection ends."
+          },
+          "instructions": "The marked lines lead to a heap allocation. Will this object be freed while the program is still running?",
+          "type": "choice"
+        }
+      },
+      "state": "Program: server-sim-seed2\nAbout the program: server-sim is a request server: it parses each request, builds a response, keeps per-client session state while a session is active, and maintains a cache index of content it has served.\nWhat the program is doing right now: class=b\nCall stack of the allocation to classify (innermost first):\n  xmalloc  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:57)\n  resp_get  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:59)\n  server_worker  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:109)\n  start_thread  (./nptl/./nptl/pthread_create.c:447)\n  clone3  (./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S:78)"
+    }
+  },
+  {
+    "key": "46b34470b5e420b7",
+    "context": "",
+    "frames": [
+      {
+        "addr": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1691",
+        "function": "xmalloc",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 57,
+        "source": []
+      },
+      {
+        "addr": "0x192e",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x192e",
+        "function": "resp_get",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 59,
+        "source": []
+      },
+      {
+        "addr": "0x1dcd",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1dcd",
+        "function": "server_worker",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 120,
+        "source": []
+      },
+      {
+        "addr": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x9caa4",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "addr": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x129c6c",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ],
+    "probabilities": {
+      "permanent": 0.29928215784856416,
+      "transient": 0.7007178421514358
+    },
+    "rule_class": 0,
+    "model_class": 0,
+    "model_request": {
+      "model": "clef-flash",
+      "questions": {
+        "lifetime": {
+          "criteria": {
+            "permanent": "No: it stays until the program exits - an entry added to a cache, index or global table that is never removed.",
+            "transient": "Yes: it is freed at some point - right away, when the request finishes, or when a session or connection ends."
+          },
+          "instructions": "The marked lines lead to a heap allocation. Will this object be freed while the program is still running?",
+          "type": "choice"
+        }
+      },
+      "state": "Program: server-sim-seed2\nAbout the program: server-sim is a request server: it parses each request, builds a response, keeps per-client session state while a session is active, and maintains a cache index of content it has served.\nCall stack of the allocation to classify (innermost first):\n  xmalloc  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:57)\n  resp_get  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:59)\n  server_worker  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:120)\n  start_thread  (./nptl/./nptl/pthread_create.c:447)\n  clone3  (./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S:78)"
+    }
+  },
+  {
+    "key": "4b5cef8b7c2229a8",
+    "context": "class=a",
+    "frames": [
+      {
+        "addr": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1691",
+        "function": "xmalloc",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 57,
+        "source": []
+      },
+      {
+        "addr": "0x1709",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1709",
+        "function": "obj_init",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 60,
+        "source": []
+      },
+      {
+        "addr": "0x1e74",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1e74",
+        "function": "server_worker",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 109,
+        "source": []
+      },
+      {
+        "addr": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x9caa4",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "addr": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x129c6c",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ],
+    "probabilities": {
+      "permanent": 0.3184931204127595,
+      "transient": 0.6815068795872404
+    },
+    "rule_class": 0,
+    "model_class": 0,
+    "model_request": {
+      "model": "clef-flash",
+      "questions": {
+        "lifetime": {
+          "criteria": {
+            "permanent": "No: it stays until the program exits - an entry added to a cache, index or global table that is never removed.",
+            "transient": "Yes: it is freed at some point - right away, when the request finishes, or when a session or connection ends."
+          },
+          "instructions": "The marked lines lead to a heap allocation. Will this object be freed while the program is still running?",
+          "type": "choice"
+        }
+      },
+      "state": "Program: server-sim-seed2\nAbout the program: server-sim is a request server: it parses each request, builds a response, keeps per-client session state while a session is active, and maintains a cache index of content it has served.\nWhat the program is doing right now: class=a\nCall stack of the allocation to classify (innermost first):\n  xmalloc  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:57)\n  obj_init  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:60)\n  server_worker  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:109)\n  start_thread  (./nptl/./nptl/pthread_create.c:447)\n  clone3  (./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S:78)"
+    }
+  },
+  {
+    "key": "56eb1a3f28a76ea9",
+    "context": "class=c",
+    "frames": [
+      {
+        "addr": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1691",
+        "function": "xmalloc",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 57,
+        "source": []
+      },
+      {
+        "addr": "0x1719",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1719",
+        "function": "resp_get",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 59,
+        "source": []
+      },
+      {
+        "addr": "0x1e68",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1e68",
+        "function": "server_worker",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 109,
+        "source": []
+      },
+      {
+        "addr": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x9caa4",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "addr": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x129c6c",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ],
+    "probabilities": {
+      "permanent": 0.29744537942000693,
+      "transient": 0.7025546205799931
+    },
+    "rule_class": 0,
+    "model_class": 0,
+    "model_request": {
+      "model": "clef-flash",
+      "questions": {
+        "lifetime": {
+          "criteria": {
+            "permanent": "No: it stays until the program exits - an entry added to a cache, index or global table that is never removed.",
+            "transient": "Yes: it is freed at some point - right away, when the request finishes, or when a session or connection ends."
+          },
+          "instructions": "The marked lines lead to a heap allocation. Will this object be freed while the program is still running?",
+          "type": "choice"
+        }
+      },
+      "state": "Program: server-sim-seed2\nAbout the program: server-sim is a request server: it parses each request, builds a response, keeps per-client session state while a session is active, and maintains a cache index of content it has served.\nWhat the program is doing right now: class=c\nCall stack of the allocation to classify (innermost first):\n  xmalloc  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:57)\n  resp_get  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:59)\n  server_worker  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:109)\n  start_thread  (./nptl/./nptl/pthread_create.c:447)\n  clone3  (./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S:78)"
+    }
+  },
+  {
+    "key": "6139b64e9ff056d1",
+    "context": "class=a",
+    "frames": [
+      {
+        "addr": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1691",
+        "function": "xmalloc",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 57,
+        "source": []
+      },
+      {
+        "addr": "0x16d0",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x16d0",
+        "function": "rec_push",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 66,
+        "source": []
+      },
+      {
+        "addr": "0x1cc4",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1cc4",
+        "function": "server_worker",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 107,
+        "source": []
+      },
+      {
+        "addr": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x9caa4",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "addr": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x129c6c",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ],
+    "probabilities": {
+      "permanent": 0.3557912872811985,
+      "transient": 0.6442087127188014
+    },
+    "rule_class": 0,
+    "model_class": 0,
+    "model_request": {
+      "model": "clef-flash",
+      "questions": {
+        "lifetime": {
+          "criteria": {
+            "permanent": "No: it stays until the program exits - an entry added to a cache, index or global table that is never removed.",
+            "transient": "Yes: it is freed at some point - right away, when the request finishes, or when a session or connection ends."
+          },
+          "instructions": "The marked lines lead to a heap allocation. Will this object be freed while the program is still running?",
+          "type": "choice"
+        }
+      },
+      "state": "Program: server-sim-seed2\nAbout the program: server-sim is a request server: it parses each request, builds a response, keeps per-client session state while a session is active, and maintains a cache index of content it has served.\nWhat the program is doing right now: class=a\nCall stack of the allocation to classify (innermost first):\n  xmalloc  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:57)\n  rec_push  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:66)\n  server_worker  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:107)\n  start_thread  (./nptl/./nptl/pthread_create.c:447)\n  clone3  (./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S:78)"
+    }
+  },
+  {
+    "key": "6c1aa251930c814e",
+    "context": "class=b",
+    "frames": [
+      {
+        "addr": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1691",
+        "function": "xmalloc",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 57,
+        "source": []
+      },
+      {
+        "addr": "0x1709",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1709",
+        "function": "obj_init",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 60,
+        "source": []
+      },
+      {
+        "addr": "0x1e74",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1e74",
+        "function": "server_worker",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 109,
+        "source": []
+      },
+      {
+        "addr": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x9caa4",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "addr": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x129c6c",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ],
+    "probabilities": {
+      "permanent": 0.29820668303339504,
+      "transient": 0.701793316966605
+    },
+    "rule_class": 0,
+    "model_class": 0,
+    "model_request": {
+      "model": "clef-flash",
+      "questions": {
+        "lifetime": {
+          "criteria": {
+            "permanent": "No: it stays until the program exits - an entry added to a cache, index or global table that is never removed.",
+            "transient": "Yes: it is freed at some point - right away, when the request finishes, or when a session or connection ends."
+          },
+          "instructions": "The marked lines lead to a heap allocation. Will this object be freed while the program is still running?",
+          "type": "choice"
+        }
+      },
+      "state": "Program: server-sim-seed2\nAbout the program: server-sim is a request server: it parses each request, builds a response, keeps per-client session state while a session is active, and maintains a cache index of content it has served.\nWhat the program is doing right now: class=b\nCall stack of the allocation to classify (innermost first):\n  xmalloc  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:57)\n  obj_init  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:60)\n  server_worker  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:109)\n  start_thread  (./nptl/./nptl/pthread_create.c:447)\n  clone3  (./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S:78)"
+    }
+  },
+  {
+    "key": "6da414f33c586ab0",
+    "context": "class=c",
+    "frames": [
+      {
+        "addr": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1691",
+        "function": "xmalloc",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 57,
+        "source": []
+      },
+      {
+        "addr": "0x16d0",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x16d0",
+        "function": "rec_push",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 66,
+        "source": []
+      },
+      {
+        "addr": "0x1cc4",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1cc4",
+        "function": "server_worker",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 107,
+        "source": []
+      },
+      {
+        "addr": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x9caa4",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "addr": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x129c6c",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ],
+    "probabilities": {
+      "permanent": 0.3720906158618747,
+      "transient": 0.6279093841381254
+    },
+    "rule_class": 0,
+    "model_class": 0,
+    "model_request": {
+      "model": "clef-flash",
+      "questions": {
+        "lifetime": {
+          "criteria": {
+            "permanent": "No: it stays until the program exits - an entry added to a cache, index or global table that is never removed.",
+            "transient": "Yes: it is freed at some point - right away, when the request finishes, or when a session or connection ends."
+          },
+          "instructions": "The marked lines lead to a heap allocation. Will this object be freed while the program is still running?",
+          "type": "choice"
+        }
+      },
+      "state": "Program: server-sim-seed2\nAbout the program: server-sim is a request server: it parses each request, builds a response, keeps per-client session state while a session is active, and maintains a cache index of content it has served.\nWhat the program is doing right now: class=c\nCall stack of the allocation to classify (innermost first):\n  xmalloc  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:57)\n  rec_push  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:66)\n  server_worker  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:107)\n  start_thread  (./nptl/./nptl/pthread_create.c:447)\n  clone3  (./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S:78)"
+    }
+  },
+  {
+    "key": "6e8242d364b4570e",
+    "context": "class=b",
+    "frames": [
+      {
+        "addr": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1691",
+        "function": "xmalloc",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 57,
+        "source": []
+      },
+      {
+        "addr": "0x16d0",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x16d0",
+        "function": "rec_push",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 66,
+        "source": []
+      },
+      {
+        "addr": "0x1cc4",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1cc4",
+        "function": "server_worker",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 107,
+        "source": []
+      },
+      {
+        "addr": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x9caa4",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "addr": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x129c6c",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ],
+    "probabilities": {
+      "permanent": 0.33848123520393575,
+      "transient": 0.6615187647960642
+    },
+    "rule_class": 0,
+    "model_class": 0,
+    "model_request": {
+      "model": "clef-flash",
+      "questions": {
+        "lifetime": {
+          "criteria": {
+            "permanent": "No: it stays until the program exits - an entry added to a cache, index or global table that is never removed.",
+            "transient": "Yes: it is freed at some point - right away, when the request finishes, or when a session or connection ends."
+          },
+          "instructions": "The marked lines lead to a heap allocation. Will this object be freed while the program is still running?",
+          "type": "choice"
+        }
+      },
+      "state": "Program: server-sim-seed2\nAbout the program: server-sim is a request server: it parses each request, builds a response, keeps per-client session state while a session is active, and maintains a cache index of content it has served.\nWhat the program is doing right now: class=b\nCall stack of the allocation to classify (innermost first):\n  xmalloc  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:57)\n  rec_push  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:66)\n  server_worker  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:107)\n  start_thread  (./nptl/./nptl/pthread_create.c:447)\n  clone3  (./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S:78)"
+    }
+  },
+  {
+    "key": "e2015245cdb591d3",
+    "context": "class=c",
+    "frames": [
+      {
+        "addr": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1691",
+        "function": "xmalloc",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 57,
+        "source": []
+      },
+      {
+        "addr": "0x1709",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1709",
+        "function": "obj_init",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 60,
+        "source": []
+      },
+      {
+        "addr": "0x1e74",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1e74",
+        "function": "server_worker",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 109,
+        "source": []
+      },
+      {
+        "addr": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x9caa4",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "addr": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x129c6c",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ],
+    "probabilities": {
+      "permanent": 0.3338699638539851,
+      "transient": 0.6661300361460148
+    },
+    "rule_class": 0,
+    "model_class": 0,
+    "model_request": {
+      "model": "clef-flash",
+      "questions": {
+        "lifetime": {
+          "criteria": {
+            "permanent": "No: it stays until the program exits - an entry added to a cache, index or global table that is never removed.",
+            "transient": "Yes: it is freed at some point - right away, when the request finishes, or when a session or connection ends."
+          },
+          "instructions": "The marked lines lead to a heap allocation. Will this object be freed while the program is still running?",
+          "type": "choice"
+        }
+      },
+      "state": "Program: server-sim-seed2\nAbout the program: server-sim is a request server: it parses each request, builds a response, keeps per-client session state while a session is active, and maintains a cache index of content it has served.\nWhat the program is doing right now: class=c\nCall stack of the allocation to classify (innermost first):\n  xmalloc  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:57)\n  obj_init  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:60)\n  server_worker  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:109)\n  start_thread  (./nptl/./nptl/pthread_create.c:447)\n  clone3  (./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S:78)"
+    }
+  },
+  {
+    "key": "f59061ecea970dc4",
+    "context": "class=a",
+    "frames": [
+      {
+        "addr": "0x1691",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1691",
+        "function": "xmalloc",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 57,
+        "source": []
+      },
+      {
+        "addr": "0x1719",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1719",
+        "function": "resp_get",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 59,
+        "source": []
+      },
+      {
+        "addr": "0x1e68",
+        "image": "/home/quill/jevalloc/src-tree/build/server-sim-seed2",
+        "address": "0x1e68",
+        "function": "server_worker",
+        "file": "/home/quill/jevalloc/src-tree/build/pass11/server-sim.c",
+        "line": 109,
+        "source": []
+      },
+      {
+        "addr": "0x9caa4",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x9caa4",
+        "function": "start_thread",
+        "file": "./nptl/./nptl/pthread_create.c",
+        "line": 447,
+        "source": []
+      },
+      {
+        "addr": "0x129c6c",
+        "image": "/lib/x86_64-linux-gnu/libc.so.6",
+        "address": "0x129c6c",
+        "function": "clone3",
+        "file": "./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S",
+        "line": 78,
+        "source": []
+      }
+    ],
+    "probabilities": {
+      "permanent": 0.27950957036664353,
+      "transient": 0.7204904296333565
+    },
+    "rule_class": 0,
+    "model_class": 0,
+    "model_request": {
+      "model": "clef-flash",
+      "questions": {
+        "lifetime": {
+          "criteria": {
+            "permanent": "No: it stays until the program exits - an entry added to a cache, index or global table that is never removed.",
+            "transient": "Yes: it is freed at some point - right away, when the request finishes, or when a session or connection ends."
+          },
+          "instructions": "The marked lines lead to a heap allocation. Will this object be freed while the program is still running?",
+          "type": "choice"
+        }
+      },
+      "state": "Program: server-sim-seed2\nAbout the program: server-sim is a request server: it parses each request, builds a response, keeps per-client session state while a session is active, and maintains a cache index of content it has served.\nWhat the program is doing right now: class=a\nCall stack of the allocation to classify (innermost first):\n  xmalloc  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:57)\n  resp_get  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:59)\n  server_worker  (/home/quill/jevalloc/src-tree/build/pass11/server-sim.c:109)\n  start_thread  (./nptl/./nptl/pthread_create.c:447)\n  clone3  (./misc/../sysdeps/unix/sysv/linux/x86_64/clone3.S:78)"
+    }
+  }
+]

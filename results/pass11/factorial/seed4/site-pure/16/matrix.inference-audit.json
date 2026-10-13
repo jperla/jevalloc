@@ -1,0 +1,659 @@
+{
+  "matrix_sha256": "840056221e248f2d552df90aebb3b52fc000509c078fbadcdde024599f213e07",
+  "server_pid": 970221,
+  "source_log": "/home/quill/jevalloc/model-server.log",
+  "checked": 100,
+  "overlapping_runs": 0,
+  "runs": [
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.6",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.6",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.7",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.8",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.8",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.7",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.8",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.7",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.6",
+      "repetition": 0,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.8",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.6",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.8",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.6",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.7",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.8",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.7",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.6",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.7",
+      "repetition": 1,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.8",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.6",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.7",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.7",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.6",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.8",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.8",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.6",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.7",
+      "repetition": 2,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.8",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.8",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.7",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.6",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.6",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.8",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.7",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.6",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.7",
+      "repetition": 3,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.6",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.6",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.7",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.7",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.8",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.6",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.8",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.8",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.7",
+      "repetition": 4,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 5,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.8",
+      "repetition": 5,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.6",
+      "repetition": 5,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.7",
+      "repetition": 5,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.8",
+      "repetition": 5,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.7",
+      "repetition": 5,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.7",
+      "repetition": 5,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.8",
+      "repetition": 5,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.6",
+      "repetition": 5,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.6",
+      "repetition": 5,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.8",
+      "repetition": 6,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.7",
+      "repetition": 6,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.8",
+      "repetition": 6,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.6",
+      "repetition": 6,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 6,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.6",
+      "repetition": 6,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.7",
+      "repetition": 6,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.8",
+      "repetition": 6,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.6",
+      "repetition": 6,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.7",
+      "repetition": 6,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 7,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.8",
+      "repetition": 7,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.6",
+      "repetition": 7,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.7",
+      "repetition": 7,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.8",
+      "repetition": 7,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.6",
+      "repetition": 7,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.7",
+      "repetition": 7,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.7",
+      "repetition": 7,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.8",
+      "repetition": 7,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.6",
+      "repetition": 7,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.6",
+      "repetition": 8,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.6",
+      "repetition": 8,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.6",
+      "repetition": 8,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.8",
+      "repetition": 8,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.7",
+      "repetition": 8,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.8",
+      "repetition": 8,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.7",
+      "repetition": 8,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 8,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.8",
+      "repetition": 8,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.7",
+      "repetition": 8,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "mi",
+      "repetition": 9,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.6",
+      "repetition": 9,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.6",
+      "repetition": 9,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.7",
+      "repetition": 9,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.7",
+      "repetition": 9,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.8",
+      "repetition": 9,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "neutral-0.7",
+      "repetition": 9,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.8",
+      "repetition": 9,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "model-0.6",
+      "repetition": 9,
+      "tasks": []
+    },
+    {
+      "benchmark": "site-pure-16",
+      "variant": "rule-0.8",
+      "repetition": 9,
+      "tasks": []
+    }
+  ],
+  "clock_calibration": {
+    "logger_start_unix": 1791649771.3960829,
+    "process_start_unix": 1791649771.19,
+    "spread_seconds": 3.0994415283203125e-06,
+    "wall_minus_monotonic": 1786470747.1873248,
+    "pairs": [
+      {
+        "log_release_seconds": 155340.937425,
+        "monotonic_release_seconds": 5334365.146183
+      },
+      {
+        "log_release_seconds": 155351.809971,
+        "monotonic_release_seconds": 5334376.018729
+      },
+      {
+        "log_release_seconds": 155369.316363,
+        "monotonic_release_seconds": 5334393.525121
+      },
+      {
+        "log_release_seconds": 155438.638774,
+        "monotonic_release_seconds": 5334462.847532
+      },
+      {
+        "log_release_seconds": 155500.071454,
+        "monotonic_release_seconds": 5334524.280212
+      },
+      {
+        "log_release_seconds": 155559.85053,
+        "monotonic_release_seconds": 5334584.059289
+      },
+      {
+        "log_release_seconds": 155704.628584,
+        "monotonic_release_seconds": 5334728.837343
+      },
+      {
+        "log_release_seconds": 175056.91486699998,
+        "monotonic_release_seconds": 5354081.123625
+      },
+      {
+        "log_release_seconds": 175196.383165,
+        "monotonic_release_seconds": 5354220.591925
+      },
+      {
+        "log_release_seconds": 176863.116362,
+        "monotonic_release_seconds": 5355887.325119
+      }
+    ],
+    "source": "common/log.cpp t_us; tools/server/server-context.cpp release/t_last_used; ggml/src/ggml.c ggml_time_us"
+  },
+  "clock_note": "Explicit wall-clock benchmark intervals. Logger origin calibrated from recent paired wall-log/CLOCK_MONOTONIC release timestamps; PID start independently verified. Calibration is approximate at sub-millisecond logging granularity."
+}

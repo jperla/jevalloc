@@ -1,7 +1,8 @@
 {
   "redis_complete": 4,
-  "factorial_complete": 6,
+  "factorial_complete": 24,
   "diagnostic_phases": 108,
-  "stage": "factorial",
-  "_audit_signature": "9f7e488f533132d9e718430febbc9660bbcdb094e6690f66a18943d3d21794fd"
+  "stage": "complete",
+  "exit_status": 0,
+  "_audit_signature": "856d48e38392e6a9ec271dcef7d469c355accc1f9e77fa28131f4f2537b7fcea"
 }
