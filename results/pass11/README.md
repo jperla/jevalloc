@@ -1,4 +1,4 @@
-# Pass 11 evidence (collection running)
+# Pass 11 evidence (complete)
 
 The design in `design.json` and CODEX-REPORT.md was fixed before inference and
 performance measurements: six namings, three gates, three priors, two workloads,
@@ -6,9 +6,8 @@ two thread counts, ten randomized repetitions. A plain-mi observation accompanie
 every paired block. New mappings use fresh inference; the existing plausible
 mapping retains pass-10 answers. All priors use the same hybrid replay transport.
 
-`results.md` explicitly reports completed/expected groups. Missing or incomplete
-factorial, Redis and diagnostic artifacts remain pending. `validation.json` is
-pending until all groups and their inference-overlap audits pass. A successful
+`results.md` explicitly reports completed/expected groups. All requested factorial, Redis and diagnostic artifacts and `validation.json`
+are present and complete. Earlier partial snapshots were explicitly pending. A successful
 correctness suite is not a substitute for the requested measurements.
 
 Metadata reservations include live pair records, thread shards, shard indexes,

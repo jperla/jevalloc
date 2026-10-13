@@ -2,7 +2,7 @@
 
 
 
-All 24 factorial blocks (2400 runs), four Redis blocks (220 runs), and both diagnostic option sets are complete and inference-audited. Pass 10’s remaining accepted groups and validation were already complete at this pass’s initial inspection and remain uncommitted.
+All 24 factorial blocks (2400 runs), four Redis blocks (220 runs), and both diagnostic option sets are complete and inference-audited. Pass 10’s remaining accepted groups and validation were already complete at this pass’s initial inspection and are committed with this pass.
 
 
 
